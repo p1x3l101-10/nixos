@@ -18,7 +18,7 @@ inputs: inputs.snowfall-lib.mkFlake {
     formatter = channels.nixpkgs.nixpkgs-fmt;
   };
   channels-config = {
-    #contentAddressedByDefault = true;
+    contentAddressedByDefault = true;
     # List of unfree packages to allow
     # I could enable them all using one config, but that seems unsafe...
     # Make packages work using this one simple trick, Stallman hates him!
