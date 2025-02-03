@@ -28,10 +28,7 @@
       url = "github:nix-community/nixpkgs-xr";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    peerix = {
-      url = "github:cid-chan/peerix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    peerix.url = "github:cid-chan/peerix";
   };
   outputs = inputs: import ./outputs.nix inputs;
 }

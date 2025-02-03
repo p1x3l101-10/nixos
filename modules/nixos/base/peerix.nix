@@ -1,7 +1,8 @@
-{ ... }:
+{ inputs, system, ... }:
 {
   services.peerix = {
     enable = true;
+    package = inputs.peerix.packages.${system}.peerix;
     openFirewall = true;
     privateKeyFile = "/nix/host/keys/peerix/ed25519.key";
     publicKeyFile = "/nix/host/keys/peerix/ed25519.key.pub";

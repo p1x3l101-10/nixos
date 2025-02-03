@@ -4,6 +4,7 @@ inputs: inputs.snowfall-lib.mkFlake {
       lanzaboote.nixosModules.lanzaboote
       impermanence.nixosModules.impermanence
       disko.nixosModules.disko
+      peerix.nixosModules.peerix
     ];
     hosts = {
       pixels-pc.modules = with inputs; [
