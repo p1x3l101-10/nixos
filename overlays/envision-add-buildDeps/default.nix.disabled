@@ -1,0 +1,25 @@
+{ channels, ... }:
+
+final: prev: {
+  envision = prev.envision.override (oldAttrs: rec {
+    # Add custom packages to envision buildenv
+    targetPkgs = pkgs: (oldAttrs.targetPkgs pkgs) ++ ( with pkgs; ( with gst_all_1; [
+        gstreamer
+        gst-plugins-base
+        gst-plugins-good
+        /*
+        gst-plugins-bag
+        gst-plugins-ugly
+        */
+        gst-libav
+        gst-vaapi
+        ]) ++ [
+        glslang
+        libdrm
+        openxr-loader
+        opencomposite
+        khronos-ocl-icd-loader
+        vulkan-loader
+    ]);
+  });
+}

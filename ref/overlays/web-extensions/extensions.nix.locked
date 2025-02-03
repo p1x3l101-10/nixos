@@ -1,0 +1,129 @@
+{ buildFirefoxXpiAddon, fetchurl, lib, stdenv }:
+  {
+    "darkreader" = buildFirefoxXpiAddon {
+      pname = "darkreader";
+      version = "4.9.86";
+      addonId = "addon@darkreader.org";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4295557/darkreader-4.9.86.xpi";
+      sha256 = "dde9896751858d0179f3d724a59f2bd4a0d61e599cb8822dc8ed2de320510714";
+      meta = with lib;
+      {
+        homepage = "https://darkreader.org/";
+        description = "Dark mode for every website. Take care of your eyes, use dark theme for night and daily browsing.";
+        license = licenses.mit;
+        mozPermissions = [
+          "alarms"
+          "contextMenus"
+          "storage"
+          "tabs"
+          "theme"
+          "<all_urls>"
+        ];
+        platforms = platforms.all;
+      };
+    };
+    "don-t-fuck-with-paste" = buildFirefoxXpiAddon {
+      pname = "don-t-fuck-with-paste";
+      version = "2.7";
+      addonId = "DontFuckWithPaste@raim.ist";
+      url = "https://addons.mozilla.org/firefox/downloads/file/3630212/don_t_fuck_with_paste-2.7.xpi";
+      sha256 = "ef17dcef7e2034a25982a106e54d19e24c9f226434a396a808195ef0de021a40";
+      meta = with lib;
+      {
+        homepage = "https://github.com/aaronraimist/DontFuckWithPaste";
+        description = "This add-on stops websites from blocking copy and paste for password fields and other input fields.";
+        license = licenses.mit;
+        mozPermissions = [ "storage" "tabs" "<all_urls>" ];
+        platforms = platforms.all;
+      };
+    };
+    "old-reddit-redirect" = buildFirefoxXpiAddon {
+      pname = "old-reddit-redirect";
+      version = "1.8.1";
+      addonId = "{9063c2e9-e07c-4c2c-9646-cfe7ca8d0498}";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4182157/old_reddit_redirect-1.8.1.xpi";
+      sha256 = "bd411715bb36bd535a0211a47bd69c73abefac6153164f7e00f5b57971397700";
+      meta = with lib;
+      {
+        homepage = "https://github.com/tom-james-watson/old-reddit-redirect";
+        description = "Ensure Reddit always loads the old design";
+        license = licenses.mit;
+        mozPermissions = [
+          "webRequest"
+          "webRequestBlocking"
+          "*://reddit.com/*"
+          "*://www.reddit.com/*"
+          "*://np.reddit.com/*"
+          "*://amp.reddit.com/*"
+          "*://i.reddit.com/*"
+          "*://i.redd.it/*"
+          "*://preview.redd.it/*"
+          "*://old.reddit.com/*"
+        ];
+        platforms = platforms.all;
+      };
+    };
+    "reddit-enhancement-suite" = buildFirefoxXpiAddon {
+      pname = "reddit-enhancement-suite";
+      version = "5.24.6";
+      addonId = "jid1-xUfzOsOFlzSOXg@jetpack";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4282309/reddit_enhancement_suite-5.24.6.xpi";
+      sha256 = "8065fa2d119e6f6bde2a0d7d2e1696e45709a1583de63bb700eeaa31876f146a";
+      meta = with lib;
+      {
+        homepage = "https://redditenhancementsuite.com/";
+        description = "Reddit Enhancement Suite (RES) is a suite of tools to enhance your Reddit browsing experience.";
+        license = licenses.gpl3;
+        mozPermissions = [
+          "https://*.reddit.com/*"
+          "cookies"
+          "identity"
+          "tabs"
+          "history"
+          "storage"
+          "scripting"
+          "unlimitedStorage"
+        ];
+        platforms = platforms.all;
+      };
+    };
+    "ublock-origin" = buildFirefoxXpiAddon {
+      pname = "ublock-origin";
+      version = "1.58.0";
+      addonId = "uBlock0@raymondhill.net";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4290466/ublock_origin-1.58.0.xpi";
+      sha256 = "470c56994a7174db21578adce598b158a5dc0970c87c5cfe889ac632bd3085ea";
+      meta = with lib;
+      {
+        homepage = "https://github.com/gorhill/uBlock#ublock-origin";
+        description = "Finally, an efficient wide-spectrum content blocker. Easy on CPU and memory.";
+        license = licenses.gpl3;
+        mozPermissions = [
+          "alarms"
+          "dns"
+          "menus"
+          "privacy"
+          "storage"
+          "tabs"
+          "unlimitedStorage"
+          "webNavigation"
+          "webRequest"
+          "webRequestBlocking"
+          "<all_urls>"
+          "http://*/*"
+          "https://*/*"
+          "file://*/*"
+          "https://easylist.to/*"
+          "https://*.fanboy.co.nz/*"
+          "https://filterlists.com/*"
+          "https://forums.lanik.us/*"
+          "https://github.com/*"
+          "https://*.github.io/*"
+          "https://github.com/uBlockOrigin/*"
+          "https://ublockorigin.github.io/*"
+          "https://*.reddit.com/r/uBlockOrigin/*"
+        ];
+        platforms = platforms.all;
+      };
+    };
+  }

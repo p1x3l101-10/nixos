@@ -1,0 +1,38 @@
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [
+    adw-gtk3
+    eartag
+    gnome.dconf-editor
+    dconf2nix
+    authenticator
+    gnome-graphs
+    wike
+    drawing
+    amberol
+    helvum
+    dissent
+    pika-backup
+    resources
+    wl-clipboard
+    evolution
+    giara
+    blackbox-terminal
+    gst_all_1.gst-plugins-bad
+    cartridges
+    foliate
+    gnome.gnome-power-manager
+    paper-clip
+    gnome-podcasts
+    gnome-secrets
+    shortwave
+    gnome.polari
+    citations
+    newsflash
+    metadata-cleaner
+    folio
+    lollypop
+    gnome-builder
+    gitg
+  ];
+}
