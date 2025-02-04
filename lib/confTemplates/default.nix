@@ -11,7 +11,6 @@
     , swap-size ? "20G"
       # tmpfs systems
     , root-size ? "4G"
-    , tmp-size ? "10G"
     }: {
       disko.devices = {
         disk = {
@@ -51,11 +50,6 @@
         nodev."/" = {
           fsType = "tmpfs";
           mountOptions = [ "defaults" "size=${root-size}" "mode=755" ];
-        };
-
-        nodev."/tmp" = {
-          fsType = "tmpfs";
-          mountOptions = [ "defaults" "size=${tmp-size}" "mode=755" ];
         };
       };
     };

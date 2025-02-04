@@ -3,6 +3,7 @@
     environment.persistence."/nix/host/cache".directories = [
         "/var/tmp"
         "/var/cache"
+        "/tmp"
     ];
     disko.devices.nodev."/var/lib/containers" = {
         fsType = "tmpfs";
