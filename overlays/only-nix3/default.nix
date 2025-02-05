@@ -3,7 +3,7 @@ let
   lib = channels.nixpkgs.lib;
 in
 final: prev: {
-  nixCustom = prev.nix.overrideAttrs (oldAttrs: {
+  nix3-only = prev.nix.overrideAttrs (oldAttrs: {
     fixupPhase = ''
       ${oldAttrs.fixupPhase or ""}
       # Remove nix2 symlinks
