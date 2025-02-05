@@ -1,3 +1,0 @@
-{
-  services.arrpc.enable = true;
-}
