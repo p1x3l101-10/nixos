@@ -15,5 +15,8 @@ final: prev: {
       # Fix nix-daemon.service to use `nix daemon`
       sed -i 's|^ExecStart=.*|ExecStart=@${prev.nix}/bin/nix daemon|' $out/lib/systemd/system/nix-daemon.service
     '';
+    # Disable tests as they use `nix-store --init`
+    # Also the tests should procede anyways bc prev.nix works
+    doInstallCheck = false;
   });
 }
