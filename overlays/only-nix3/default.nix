@@ -1,7 +1,8 @@
 { channels, self, nixpkgs, ... }:
 let
   lib = nixpkgs.lib;
-in final: prev: {
+in
+final: prev: {
   nix = prev.overrideAttrs (oldAttrs: {
     postInstall = (oldAttrs.postInstall or "") + ''
       # Remove nix2 symlinks
