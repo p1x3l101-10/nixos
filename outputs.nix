@@ -1,11 +1,5 @@
 inputs: inputs.snowfall-lib.mkFlake {
   systems = {
-    modules.nixos = with inputs; [
-      lanzaboote.nixosModules.lanzaboote
-      impermanence.nixosModules.impermanence
-      disko.nixosModules.disko
-      peerix.nixosModules.peerix
-    ];
     hosts = {
       pixels-pc.modules = with inputs; [
         nixpkgs-xr.nixosModules.nixpkgs-xr
