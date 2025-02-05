@@ -12,7 +12,10 @@
     # Clear cache on reboot
     boot.initrd.systemd.services.cleanSystemCache = {
         description = "Clean system disk cache";
-        script = "${pkgs.coreutils}/bin/rm -rfv /sysroot/nix/host/cache";
+        script = ''
+            ${pkgs.coreutils}/bin/rm -rfv /sysroot/nix/host/cache
+            echo "Sucessfully cleared cache!
+        ''; # NOTE: if you do not see the last line, bump the timeout number and try again
         wantedBy = [ "initrd.target" ];
         after = [ "initrd-root-fs.target" ];
         unitConfig = {
