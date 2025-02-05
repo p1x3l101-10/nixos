@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, inputs, ... }:
 {
   environment.binsh = "${pkgs.dash}/bin/dash";
 
@@ -17,7 +17,7 @@
   boot.initrd.systemd.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nix.package = pkgs.internal.only-nix3;
+  nix.package = inputs.self.packages.x86_64-linux.only-nix3;
   programs.git = {
     enable = true;
     package = lib.mkDefault pkgs.gitMinimal;
