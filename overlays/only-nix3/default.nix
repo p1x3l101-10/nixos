@@ -1,18 +1,21 @@
-{ channels, self, nixpkgs, ... }:
+{ channels, ... }:
 let
-  lib = nixpkgs.lib;
+  lib = channels.nixpkgs.lib;
 in
 final: prev: {
   nix = prev.nix.overrideAttrs (oldAttrs: {
-    postInstall = (oldAttrs.postInstall or "") + ''
-      # Remove nix2 symlinks
-      for bin in $out/bin/*; do
-        if [[ "$(basename "$bin")" != "nix" ]] ; then
-          rm -v "$bin"
-        fi
-      done
-      # Fix nix-daemon.service to use `nix daemon`
-      sed -i 's|^ExecStart=.*|ExecStart=@${prev.nix}/bin/nix daemon|' $out/lib/systemd/system/nix-daemon.service
-    '';
+    postInstall = lib.concatLines [
+      oldAttrs.postInstall
+      ''
+        # Remove nix2 symlinks
+        for bin in $out/bin/*; do
+          if [[ "$(basename "$bin")" != "nix" ]] ; then
+            rm -v "$bin"
+          fi
+        done
+        # Fix nix-daemon.service to use `nix daemon`
+        sed -i 's|^ExecStart=.*|ExecStart=@${prev.nix}/bin/nix daemon|' $out/lib/systemd/system/nix-daemon.service
+      ''
+    ];
   });
 }
