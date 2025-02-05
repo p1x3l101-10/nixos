@@ -17,7 +17,7 @@
   boot.initrd.systemd.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nix.package = (pkgs.callPackage ../../packages/only-nix3 {});
+  nix.package = (pkgs.callPackage ../../../packages/only-nix3 {});
   programs.git = {
     enable = true;
     package = lib.mkDefault pkgs.gitMinimal;
