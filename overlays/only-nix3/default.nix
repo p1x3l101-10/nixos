@@ -4,6 +4,12 @@ let
 in
 final: prev: {
   nix3-only = prev.nix.overrideAttrs (oldAttrs: {
+    outputs = [
+      "out"
+      "dev"
+      "doc"
+      "man"
+    ];
     fixupPhase = ''
       ${oldAttrs.fixupPhase or ""}
       # Remove nix2 symlinks
