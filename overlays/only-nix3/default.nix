@@ -4,8 +4,8 @@ let
 in
 final: prev: {
   nix = prev.nix.overrideAttrs (oldAttrs: {
-    installPhase = ''
-      ${oldAttrs.installPhase}
+    fixupPhase = ''
+      ${oldAttrs.fixupPhase}
       # Remove nix2 symlinks
       for bin in $out/bin/*; do
         if [[ "$(basename "$bin")" != "nix" && -L "$bin" ]] ; then
