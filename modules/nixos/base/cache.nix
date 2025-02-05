@@ -10,7 +10,6 @@
         mountOptions = [ "defaults" "size=5G" "mode=755" ];
     };
     # Clear cache on reboot
-    /*
     boot.initrd.systemd.services.cleanSystemCache = {
         description = "Clean system disk cache";
         script = "${pkgs.coreutils}/bin/rm -rfv /sysroot/nix/host/cache";
@@ -20,7 +19,7 @@
             RequiresMountsFor = "/sysroot/nix";
             Type = "Oneshot";
             RemainAfterExit = true;
+            TimeoutStartSec = "300"; # Ensure there is enough time for all directories to get removed
         };
-    };*/
-    boot.initrd.systemd.tmpfiles.settings."00-clean-cache"."/sysroot/nix/host/cache".R.argument = "0";
+    };
 }
