@@ -4,6 +4,7 @@
 
 symlinkJoin {
   name = nix.pname;
+  version = nix.version;
   paths = [ nix ];
   postBuild = ''
     # Remove nix2 symlinks
