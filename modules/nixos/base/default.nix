@@ -15,7 +15,6 @@
     ./impermanence.nix
     ./ipfs.nix
     ./locale.nix
-    ./nix3-daemon.nix
     ./secureBoot.nix
     ./ssh.nix
   ];
