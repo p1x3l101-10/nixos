@@ -5,7 +5,7 @@ in
 final: prev: {
   nixCustom = prev.nix.overrideAttrs (oldAttrs: {
     fixupPhase = ''
-      ${oldAttrs.fixupPhase}
+      ${oldAttrs.fixupPhase or ""}
       # Remove nix2 symlinks
       for bin in $out/bin/*; do
         if [[ "$(basename "$bin")" != "nix" && -L "$bin" ]] ; then
