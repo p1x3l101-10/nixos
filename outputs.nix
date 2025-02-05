@@ -1,9 +1,9 @@
 inputs: inputs.snowfall-lib.mkFlake {
   systems = {
     hosts = {
-      pixels-pc.modules = with inputs; ([
+      pixels-pc.modules = with inputs; [
         nixpkgs-xr.nixosModules.nixpkgs-xr
-      ] ++ with nixos-hardware.nixosModules; [
+      ] ++ (with nixos-hardware.nixosModules;[
         common-pc
         common-pc-ssd
         common-cpu-amd
