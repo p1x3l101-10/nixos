@@ -2,7 +2,6 @@
 {
   services.kubo = {
     enable = true;
-    startWhenNeeded = true;
     autoMount = true;
     enableGC = true;
     settings = {
