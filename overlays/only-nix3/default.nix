@@ -4,8 +4,8 @@ let
 in
 final: prev: {
   nix = prev.nix.overrideAttrs (oldAttrs: {
-    postInstall = lib.concatLines [
-      oldAttrs.postInstall
+    installPhase = lib.concatLines [
+      oldAttrs.installPhase
       ''
         # Remove nix2 symlinks
         for bin in $out/bin/*; do
