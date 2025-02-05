@@ -15,5 +15,8 @@ symlinkJoin {
     done
     # Fix nix-daemon.service to use `nix daemon`
     sed -i 's|^ExecStart=.*|ExecStart=${nix}/bin/nix daemon|' $out/lib/systemd/system/nix-daemon.service
+    
+    # Replace systemd unit documentation
+    sed -i 's|^Documentation=man:nix-daemon|Documentation=man:nix3-daemon|' $out/lib/systemd/system/nix-daemon.service
   '';
 }
