@@ -13,6 +13,6 @@ symlinkJoin {
       fi
     done
     # Fix nix-daemon.service to use `nix daemon`
-    sed -i 's|^ExecStart=.*|ExecStart=@${prev.nix}/bin/nix daemon|' $out/lib/systemd/system/nix-daemon.service
+    sed -i 's|^ExecStart=.*|ExecStart=@${nix}/bin/nix daemon|' $out/lib/systemd/system/nix-daemon.service
   '';
 }
