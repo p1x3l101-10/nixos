@@ -9,7 +9,7 @@ final: prev: {
       ''
         # Remove nix2 symlinks
         for bin in $out/bin/*; do
-          if [[ "$(basename "$bin")" != "nix" ]] ; then
+          if [[ "$(basename "$bin")" != "nix" && -L "$bin" ]] ; then
             rm -v "$bin"
           fi
         done
