@@ -6,7 +6,7 @@ in final: prev: {
     postInstall = (oldAttrs.postInstall or "") + ''
       # Remove nix2 symlinks
       for bin in $out/bin/*; do
-        if [[ "$(basename "$bin")" != "nix" ]] || [[ "$(basename "$bin")" != "nix-daemon" ]]; then # Preserve nix-daemon (for now)
+        if [[ "$(basename "$bin")" != "nix" ]] ; then
           rm -v "$bin"
         fi
       done
