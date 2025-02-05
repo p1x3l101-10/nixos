@@ -11,7 +11,6 @@
     ./impermanence.nix
     ./ipfs.nix
     ./locale.nix
-    ./peerix.nix
     ./secureBoot.nix
     ./ssh.nix
   ];
