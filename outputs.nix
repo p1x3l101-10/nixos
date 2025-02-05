@@ -17,7 +17,7 @@ inputs: inputs.snowfall-lib.mkFlake {
   outputs-builder = channels: {
     formatter = channels.nixpkgs.nixpkgs-fmt;
   };
-  aliases.modules.nixos.default = "base";
+  alias.modules.nixos.default = "base";
   channels-config = {
     contentAddressedByDefault = true;
     # List of unfree packages to allow
