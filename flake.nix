@@ -32,7 +32,7 @@
 
     # Macbook things
     nix-darwin = {
-      url = "github:nix-darwin/nix-darwin-24.11";
+      url = "github:LnL7/nix-darwin/nix-darwin-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-homebrew = {
