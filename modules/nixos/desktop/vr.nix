@@ -180,7 +180,6 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
             }
         }
     );
-
   '';
   # Others
   environment.systemPackages = with pkgs; [
