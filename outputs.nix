@@ -9,6 +9,10 @@ inputs: inputs.snowfall-lib.mkFlake {
         common-cpu-amd
         common-gpu-amd
       ]);
+      SS-Mac-sblatt.modules = with inputs; [
+        nix-homebrew.darwinModules.nix-homebrew
+        nix-darwin.darwinModules.nix-darwin
+      ];
     };
   };
   inherit inputs;
