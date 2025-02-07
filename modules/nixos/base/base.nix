@@ -18,6 +18,9 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.package = (pkgs.callPackage ../../../packages/only-nix3 {});
+  environment.systemPackages = [
+    (pkgs.callPackage ../../../packages/rebuild {})
+  ];
   programs.git = {
     enable = true;
     package = lib.mkDefault pkgs.gitMinimal;
