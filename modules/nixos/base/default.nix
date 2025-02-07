@@ -5,7 +5,7 @@
     impermanence.nixosModules.impermanence
     disko.nixosModules.disko
 
-    ./autoUpgrade.nix
+    #./autoUpgrade.nix
     ./base.nix
     ./bash.nix
     ./cachix.nix
