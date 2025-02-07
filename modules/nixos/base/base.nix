@@ -19,7 +19,7 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.package = (pkgs.callPackage ../../../packages/only-nix3 {});
   environment.systemPackages = [
-    (pkgs.callPackage ../../../packages/rebuild {})
+    (import ../../../packages/rebuild { inherit (pkgs) gitMinimal writeShellScriptBin; inherit lib; })
   ];
   programs.git = {
     enable = true;
