@@ -1,4 +1,9 @@
-inputs: inputs.snowfall-lib.mkFlake {
+inputs: let
+  lib = inputs.snowfall-lib.mkLib {
+    inherit inputs;
+    src = ./.;
+  };
+in lib.mkFlake {
   systems = {
     hosts = {
       pixels-pc.modules = with inputs; [
@@ -9,14 +14,8 @@ inputs: inputs.snowfall-lib.mkFlake {
         common-cpu-amd
         common-gpu-amd
       ]);
-      SS-Mac-sblatt.modules = with inputs; [
-        nix-homebrew.darwinModules.nix-homebrew
-        nix-darwin.darwinModules.nix-darwin
-      ];
     };
   };
-  inherit inputs;
-  src = ./.;
   supportedSystems = [ "x86_64-linux" ];
   outputs-builder = channels: {
     formatter = channels.nixpkgs.nixpkgs-fmt;
