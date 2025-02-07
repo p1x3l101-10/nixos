@@ -5,6 +5,6 @@
 
 writeShellScriptBin ''
   cd /etc/nixos
-  ${git}/bin/git pull
+  ${gitMinimal}/bin/git pull
   sudo nix shell nixpkgs#nix --command nixos-rebuild switch
 ''
