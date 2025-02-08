@@ -9,12 +9,12 @@ inputs: lib.attrsets.mapAttrs' (
 used for generating registries
 { inputs, lib, ... }:
 {
-  nix.settings.registry = lib.internal.confTemplates.registry inputs;
+  nix.registry = lib.internal.confTemplates.registry inputs;
 }
 
 turns into this
 {
-  nix.settings.registry = {
+  nix.registry = {
     self.flake = inputs.self;
     nixpkgs.flake = inputs.nixpkgs;
     ...

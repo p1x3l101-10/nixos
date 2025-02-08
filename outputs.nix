@@ -7,7 +7,7 @@ in lib.mkFlake {
   systems = {
     # Generate registries
     nixos.modules = [{
-      nix.settings.registry = lib.internal.confTemplates.registry inputs;
+      nix.registry = lib.internal.confTemplates.registry inputs;
     }];
     hosts = {
       pixels-pc.modules = with inputs; [
