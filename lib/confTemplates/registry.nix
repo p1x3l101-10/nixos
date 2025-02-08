@@ -1,6 +1,6 @@
 { lib, ... }:
 
-inputs: builtins.mapAttrs' (
+inputs: lib.attrsets.mapAttrs' (
   name: value: lib.attrsets.nameValuePair
     name ({ flake = inputs.${name}; })
 ) inputs
