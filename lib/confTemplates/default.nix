@@ -53,4 +53,5 @@
         };
       };
     };
+  confTemplates.registry = import ./registry.nix { inherit lib; };
 }

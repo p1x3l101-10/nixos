@@ -5,6 +5,10 @@ inputs: let
   };
 in lib.mkFlake {
   systems = {
+    # Generate registries
+    nixos.modules = [{
+      nix.settings.registry = lib.internal.confTemplates.registry inputs;
+    }];
     hosts = {
       pixels-pc.modules = with inputs; [
         nixpkgs-xr.nixosModules.nixpkgs-xr
