@@ -16,5 +16,5 @@ genLib ./. [
   "lists"
 
   # Has deps, must be ordered
-  "environment" # Depends on `attrsets`
+  "environment" # Depends on `(attrsets) createAttr`
 ]
