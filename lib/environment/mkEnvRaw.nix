@@ -3,7 +3,7 @@
 name: value:
 
 if (value != null) then (
-  lib.internal.createAttr name value
+  lib.internal.attrsets.createAttr (lib.strings.toUpper name) (builtins.toString value)
 ) else (
   {}
 )

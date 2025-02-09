@@ -3,7 +3,7 @@
 name: value: seperator:
 
 if (value != []) then (
-  lib.internal.mkEnvRaw (lib.toUpper name) (lib.toUpper(lib.concatStringsSep seperator value))
+  lib.internal.attrsets.mkEnvRaw (lib.strings.toUpper name) (lib.strings.toUpper(lib.strings.concatStringsSep seperator value))
 ) else (
   {}
 )
