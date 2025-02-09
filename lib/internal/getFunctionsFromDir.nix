@@ -12,6 +12,6 @@ in
 lib.attrsets.mapAttrs' (
   fileName: _: {
     name = lib.strings.removeSuffix ".nix" fileName;
-    value = a: b: callLib (dir + "/${fileName}") a b;  # Wrap in function to call with args
+    value =  callLib (dir + "/${fileName}");  # Wrap in function to call with args
   }
 ) nixFileNames
