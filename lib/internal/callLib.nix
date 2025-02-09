@@ -7,7 +7,7 @@ let
   fn = callLibPrimitive path;  # Import the function
   argCount = builtins.length (builtins.attrNames (builtins.functionArgs fn));
   # Create a minimal clone of lib.internal.lists.switch to avoid pulling in non-internal deps
-  switch = c: d: (lib.lists.findFirst (lib.builtins.getAttr "case") {} c).out or d;
+  switch = c: d: (lib.lists.findFirst (builtins.getAttr "case") {} c).out or d;
 in
 
 switch [
