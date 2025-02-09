@@ -1,7 +1,7 @@
 { lib, inputs, namespace, snowfall-inputs }:
 
 let
-  ext = import ./ext.nix { inherit inputs namespace; }; # Any extra configuration to be passed to the functions
+  ext = import ./ext.nix { inherit lib inputs namespace snowfall-inputs; }; # Any extra configuration to be passed to the functions
   # Create temp callLib function and use it to pull in genLib
   c = f: import f { inherit lib ext; };
   genLib = s: a: c ./internal/genLib.nix c s a;
