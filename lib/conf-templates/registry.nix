@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, ext }:
 
 inputs: lib.attrsets.mapAttrs' (
   name: value: lib.attrsets.nameValuePair

@@ -1,9 +1,7 @@
-{ lib
-, inputs
-, ...
-}:
+{ lib, ext }:
+
 let
-  pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+  inherit (ext) pkgs;
 in
 {
   hideApp = { pkg, name ? pkg.name }: lib.hiPrio (pkgs.runCommand "${name}.desktop-hide" { } ''
