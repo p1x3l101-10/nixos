@@ -1,7 +1,7 @@
 { lib, ext }:
-getFunctionsFromDir: src:
+getFunctionsFromDir:
 
-dirs:
+src: dirs:
 
 lib.attrsets.foldlAttrs (
   acc: dirName: _: acc // { ${dirName} = getFunctionsFromDir (src + "/${dirName}"); }
