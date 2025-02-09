@@ -20,7 +20,7 @@ in lib.mkFlake {
       ]);
     };
   };
-  supportedSystems = inputs.systems;
+  supportedSystems = import inputs.systems;
   outputs-builder = channels: {
     formatter = channels.nixpkgs.nixpkgs-fmt;
   };
