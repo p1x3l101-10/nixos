@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ lib, ... }:
 
 lib.internal.conf-templates.disko {
   disk-id = "ata-Samsung_SSD_870_QVO_2TB_S5VWNJ0R105727V";
