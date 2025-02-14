@@ -8,7 +8,6 @@
       dates = lib.mkDefault "2day";
       options = lib.mkDefault "--delete-older-than 2d";
     };
-    package = pkgs.nixVersions.latest;
   };
   environment.etc.nixos.source = "/home/pixel/Programs/nixos";
 }
