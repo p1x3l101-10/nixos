@@ -5,10 +5,6 @@
     "/var/cache"
     "/tmp"
   ];
-  disko.devices.nodev."/var/lib/containers" = {
-    fsType = "tmpfs";
-    mountOptions = [ "defaults" "size=5G" "mode=755" ];
-  };
   # Clear cache on reboot
   boot.initrd.systemd.services.cleanSystemCache = {
     description = "Clean system disk cache";
