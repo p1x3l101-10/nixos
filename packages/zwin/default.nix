@@ -6,6 +6,8 @@
 , pkg-config
 , wayland-scanner
 , wayland
+, cmake
+, libxml
 }:
 
 stdenv.mkDerivation rec {
@@ -24,6 +26,8 @@ stdenv.mkDerivation rec {
     ninja
     pkg-config
     wayland-scanner
+    cmake
+    xml
   ];
   nativeBuildInputs = [
     wayland
