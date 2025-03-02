@@ -3,8 +3,6 @@
 , fetchFromGithub
 , meson
 , ninja
-, meson
-, ninja
 , pkgconfig
 , wayland-scanner
 , wayland
