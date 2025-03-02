@@ -8,13 +8,14 @@
 , wayland
 }:
 
-stdenv.mkDerivation {
+stdenv.mkDerivation rec {
   name = "zwin";
   version = "0.1.0";
 
   src = fetchFromGitHub {
     owner = "zwin-project";
     repo = "zwin";
+    tag = "v" + version;
   };
 
   buildInputs = [
