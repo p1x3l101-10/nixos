@@ -1,6 +1,6 @@
 { lib
 , stdenv
-, fetchFromGithub
+, fetchFromGitHub
 , meson
 , ninja
 , pkg-config
@@ -12,7 +12,7 @@ stdenv.mkDerivation {
   name = "zwin";
   version = "0.1.0";
 
-  src = fetchFromGithub {
+  src = fetchFromGitHub {
     owner = "zwin-project";
     repo = "zwin";
   };
