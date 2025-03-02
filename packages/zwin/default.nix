@@ -6,7 +6,7 @@
 , pkg-config
 , wayland-scanner
 , wayland
-, cmake
+, cmakeMinimal
 , libxml
 }:
 
@@ -26,7 +26,7 @@ stdenv.mkDerivation rec {
     ninja
     pkg-config
     wayland-scanner
-    cmake
+    cmakeMinimal
     xml
   ];
   nativeBuildInputs = [
