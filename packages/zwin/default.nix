@@ -3,7 +3,7 @@
 , fetchFromGithub
 , meson
 , ninja
-, pkgconfig
+, pkg-config
 , wayland-scanner
 , wayland
 }:
@@ -20,7 +20,7 @@ stdenv.mkDerivation {
   buildInputs = [
     meson
     ninja
-    pkgconfig
+    pkg-config
     wayland-scanner
   ];
   nativeBuildInputs = [
