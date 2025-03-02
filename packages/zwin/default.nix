@@ -7,7 +7,7 @@
 , wayland-scanner
 , wayland
 , cmakeMinimal
-, libxml
+, libxml2
 }:
 
 stdenv.mkDerivation rec {
@@ -27,7 +27,7 @@ stdenv.mkDerivation rec {
     pkg-config
     wayland-scanner
     cmakeMinimal
-    libxml
+    libxml2
   ];
   nativeBuildInputs = [
     wayland
