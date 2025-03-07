@@ -25,12 +25,7 @@
     script = ''
       ${pkgs.coreutils}/bin/rm -rfv /nix/host/.cache.old && \
       echo "Sucessfully cleared old cache!"
-    ''; # NOTE: if you do not see the last line, bump the timeout number and try again
+    '';
     wantedBy = [ "multi-user.target" ];
-    unitConfig = {
-      RequiresMountsFor = "/nix";
-      RemainAfterExit = true;
-      TimeoutStartSec = "300"; # Ensure there is enough time for all directories to get removed
-    };
   };
 }
