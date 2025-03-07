@@ -9,7 +9,7 @@
   boot.initrd.systemd.services.moveSystemCache = {
     description = "Clean system disk cache (Stage 1)";
     script = ''
-      ${pkgs.coreutils}/bin/mv -v /sysroot/nix/host/cache /sysroot/nix/host/.cache.old
+      ${pkgs.coreutils}/bin/mv -v /sysroot/nix/host/cache /sysroot/nix/host/.cache.old && \
       ${pkgs.coreutils}/bin/mkdir /sysroot/nix/host/cache
       echo "Sucessfully cleaned cache!"
     '';
@@ -23,7 +23,7 @@
   systemd.services.clearOldCache = {
     description = "Clean system disk cache (Stage 2)";
     script = ''
-      ${pkgs.coreutils}/bin/rm -rfv /sysroot/nix/host/.cache.old
+      ${pkgs.coreutils}/bin/rm -rfv /sysroot/nix/host/.cache.old && \
       echo "Sucessfully cleared old cache!"
     ''; # NOTE: if you do not see the last line, bump the timeout number and try again
     wantedBy = [ "multi-user.target" ];
