@@ -22,5 +22,17 @@ in {
       "repo/objects"
       "repo/tmp"
     ];
+  } // {
+    "/var/lib/flatpak/repo/config".c = {
+      user = "root";
+      group = "root";
+      mode = "0777";
+      argument = builtins.toString (pkgs.writeTextFile "flatpak-config" ''
+        [core]
+        repo_version=1
+        mode=bare-user-only
+        min-free-space-size=500MB
+      '')
+    };
   };
 }
