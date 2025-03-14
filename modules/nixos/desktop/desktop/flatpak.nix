@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ pkgs, lib, ... }:
 let
   mkTmp = { baseDir, permissions, subdirs ? []}: builtins.listToAttrs (
     [ { name = baseDir; value = { d = permissions; }; } ] ++
