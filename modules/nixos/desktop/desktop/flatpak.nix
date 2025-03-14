@@ -27,7 +27,7 @@ in {
       user = "root";
       group = "root";
       mode = "0777";
-      argument = builtins.toString (pkgs.writeTextFile "flatpak-config" ''
+      argument = builtins.toString (pkgs.writeText "flatpak-config" ''
         [core]
         repo_version=1
         mode=bare-user-only
