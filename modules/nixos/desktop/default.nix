@@ -16,6 +16,7 @@
     ./silence.nix
     ./sound.nix
     ./systemd-homed.nix
+    ./tablet.nix
     ./vCamera.nix
     ./vr.nix
 
