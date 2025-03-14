@@ -23,7 +23,7 @@ in {
       "repo/tmp"
     ];
   } // {
-    "/var/lib/flatpak/repo/config".c = {
+    "/var/lib/flatpak/repo/config".C = {
       user = "root";
       group = "root";
       mode = "0777";
