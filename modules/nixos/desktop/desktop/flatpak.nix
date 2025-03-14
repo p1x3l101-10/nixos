@@ -18,13 +18,9 @@ in {
       mode = "0777";
     };
     subdirs = [
-      "app"
-      "appstream"
-      "db"
-      "exports"
-      "overrides"
       "repo"
-      "runtime"
+      "repo/objects"
+      "repo/tmp"
     ];
   };
 }
