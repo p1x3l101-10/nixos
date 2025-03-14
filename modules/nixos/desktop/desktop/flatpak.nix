@@ -32,7 +32,7 @@ in {
         repo_version=1
         mode=bare-user-only
         min-free-space-size=500MB
-      '')
+      '');
     };
   };
 }
