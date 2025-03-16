@@ -9,4 +9,25 @@
     btrfs-progs
     cryptsetup
   ];
+  systemd.tmpfiles.settings."99-Accountservice-fixes" = {
+    "/var/lib/AccountsService/users/pixel"."C+" = {
+      user = "root";
+      group = "root";
+      mode = "0644";
+      argument = builtins.toString (pkgs.writeText "pixel-as-config" ''
+        [User]
+        Session=
+        Icon=/var/lib/AccountsService/icons/homed/pixel
+        SystemAccount=false
+      '');
+    };
+    "/var/lib/AccountsService/icon/homed".d = {
+      user = "root";
+      group = "root";
+      mode = "0644";
+    };
+    "/var/lib/AccountsService/icon/homed/pixel"."L+" = {
+      argument = "/var/cache/systemd/home/pixel/avatar";
+    };
+  };
 }
