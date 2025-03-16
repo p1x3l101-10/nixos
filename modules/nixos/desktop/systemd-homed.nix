@@ -24,7 +24,7 @@
     "/var/lib/AccountsService/icons/homed".d = {
       user = "root";
       group = "root";
-      mode = "0644";
+      mode = "0755";
     };
     "/var/lib/AccountsService/icons/homed/pixel"."L+" = {
       argument = "/var/cache/systemd/home/pixel/avatar";
