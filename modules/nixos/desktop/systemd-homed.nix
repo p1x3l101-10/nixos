@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  environment.persistence."/nix/host/state/systemd-homed".directories = [
+  environment.persistence."/nix/host/state/System".directories = [
     "/var/lib/systemd/home"
     "/var/cache/systemd/home"
   ];
