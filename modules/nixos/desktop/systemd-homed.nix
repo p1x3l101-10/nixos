@@ -21,12 +21,12 @@
         SystemAccount=false
       '');
     };
-    "/var/lib/AccountsService/icon/homed".d = {
+    "/var/lib/AccountsService/icons/homed".d = {
       user = "root";
       group = "root";
       mode = "0644";
     };
-    "/var/lib/AccountsService/icon/homed/pixel"."L+" = {
+    "/var/lib/AccountsService/icons/homed/pixel"."L+" = {
       argument = "/var/cache/systemd/home/pixel/avatar";
     };
   };
