@@ -24,5 +24,6 @@
     ./desktop/fonts.nix
     ./desktop/gnome.nix
     ./desktop/syncthing.nix
+    ./desktop/waydroid.nix
   ];
 }
