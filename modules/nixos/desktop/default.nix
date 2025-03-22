@@ -23,6 +23,7 @@
     ./desktop/flatpak.nix
     ./desktop/fonts.nix
     ./desktop/gnome.nix
+    ./desktop/sunshine.nix
     ./desktop/syncthing.nix
     ./desktop/waydroid.nix
   ];
