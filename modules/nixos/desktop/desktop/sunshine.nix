@@ -11,8 +11,8 @@
     source = "${pkgs.sunshine}/bin/sunshine";
   };
   networking.firewall = {
-    allowedTCPPorts = [ { from = 47984; to = 48010; } ];
-    allowedUDPPortRanges = [ { from = 47998; to = 48000; } ];
+    allowedTCPPortRanges = [{ from = 47984; to = 48010; }];
+    allowedUDPPortRanges = [{ from = 47998; to = 48010; }];
   };
   systemd.user.services.sunshine = {
     description = "Sunshine self-hosted game stream host for Moonlight";
