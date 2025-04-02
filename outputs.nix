@@ -32,9 +32,5 @@ in {
     };
   };
   formatter.${system} = pkgs.nixpkgs-fmt;
-  packages.${system} = lib1.flake.genPackages {
-    src = ./packages;
-    inherit (pkgs) newScope;
-    inherit (lib1.flake) genModules;
-  };
+  packages.${system} = lib1.flake.genPackages ./packages pkgs.newScope
 }
