@@ -1,5 +1,1 @@
-{ lib, ext }:
-
-file:
-
-import file { inherit lib ext; }
+../internal-raw/callLibPrimitive.nix

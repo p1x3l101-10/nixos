@@ -1,16 +1,5 @@
 { lib, ext }:
-getFunctionsFromDir:
 
 src: dirs:
 
-lib.attrsets.foldlAttrs (
-  acc: dirName: _: acc // { ${dirName} = getFunctionsFromDir (src + "/${dirName}"); }
-) {} (
-  builtins.listToAttrs (
-    map (
-      dir: {
-        name = dir; value = null;
-      }
-    ) dirs
-  )
-)
+lib.internal.callLibPrimitive ../internal-raw/genLib.nix lib.internal.getFunctionsFromDir src dirs
