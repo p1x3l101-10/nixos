@@ -3,7 +3,7 @@
 { packages, namespace }:
 
 {
-  nixpkgs.overlays = [final: prev: {
+  nixpkgs.overlays = [(final: prev: {
     "${namespace}" = packages;
-  }];
+  })];
 }
