@@ -3,7 +3,7 @@ namespace = "internal";
   lib0 = inputs.nixpkgs.lib;
   lib1 = import ./lib { lib = lib0; inherit inputs namespace; };
   lib = lib0.extend (finalLib: prevLib: { "${namespace}" = lib1; });
-  system = builtins.elemAt 0 (import inputs.systems);
+  system = builtins.elemAt (import inputs.systems) 0;
   pkgs = inputs.nixpkgs.legacyPackages.${system};
 in {
   lib = lib1;
