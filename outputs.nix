@@ -16,7 +16,7 @@ in {
       specialArgs = inputs;
       modules = [
         { "${namespace}" = lib1; }
-        lib.internal.flake.genPkgOverlay { inherit namespace; packages = inputs.self.packages.x86_64-linux; }
+        (lib.internal.flake.genPkgOverlay { inherit namespace; packages = inputs.self.packages.x86_64-linux; })
         ./systems/pixels-pc
       ] ++ (with inputs.self.nixosModules; [
         base
