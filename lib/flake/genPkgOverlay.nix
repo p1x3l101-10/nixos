@@ -1,8 +1,6 @@
 { lib, ext }:
 
-{ packages
-, namespace ? "internal"
-}:
+{ packages, namespace }:
 
 {
   nixpkgs.overlays = [final: prev: {
