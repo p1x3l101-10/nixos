@@ -3,7 +3,7 @@
 { src }:
 
 lib.attrsets.mapAttrs (name: _:
-  src + "/" + name
+  src + "/${name}"
 ) (
   lib.attrsets.filterAttrs (_: type:
     type == "directory"
