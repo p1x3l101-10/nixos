@@ -2,14 +2,12 @@
 
 { src, newScope }:
 
-lib.makeScope newScope (self: (
-  lib.attrsets.mapAttrs (name: _:
-    self.callPackage (src + "/" + name) {} # Package
-  ) (
-    lib.attrsets.filterAttrs (_: type: # filter the dirs
-      type == "directory"
+lib.makeScope newScope (self:
+  (
+    lib.attrsets.mapAttrs (name: value:
+      self.callPackage value { }
     ) (
-      builtins.readDir src
+      lib.internal.flake.genModules { inherit src; }
     )
   )
-))
+)
