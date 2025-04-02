@@ -16,7 +16,7 @@ in {
       specialArgs = inputs;
       modules = [
         { "${namespace}" = lib1; }
-        lib.internal.flake.genPkgOverlay { inherit namespace; inherit (inputs.self) packages; }
+        lib.internal.flake.genPkgOverlay { inherit namespace; packages = inputs.self.packages.x86_64-linux; }
         ./systems/pixels-pc
       ] ++ (with inputs.self.nixosModules; [
         base
@@ -31,8 +31,8 @@ in {
       ]);
     };
   };
-  formatter = pkgs.nixpkgs-fmt;
-  packages = lib.internal.flake.genPackages {
+  formatter.x86_64-linux = pkgs.nixpkgs-fmt;
+  packages.x86_64-linux = lib.internal.flake.genPackages {
     src = ./packages;
     inherit (pkgs) newScope;
   };
