@@ -5,7 +5,7 @@
 lib.makeScope newScope (self:
   (
     lib.attrsets.mapAttrs (name: value:
-      self.callPackage value { }
+      (self.callPackage value { })
     ) (
       genModules { inherit src; }
     )
