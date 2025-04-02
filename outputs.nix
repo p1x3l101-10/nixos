@@ -5,6 +5,12 @@ namespace = "internal";
   lib = lib0.extend (finalLib: prevLib: { "${namespace}" = lib1; });
   system = builtins.elemAt (import inputs.systems) 0;
   pkgs = inputs.nixpkgs.legacyPackages.${system};
+  common-modules = with inputs; [
+    lanzaboote.nixosModules.lanzaboote
+    impermanence.nixosModules.impermanence
+    disko.nixosModules.disko
+    self.nixosModules.base
+  ];
 in {
   lib = lib1;
   nixosModules = lib.internal.flake.genModules {
@@ -19,20 +25,14 @@ in {
         (lib.internal.flake.genPkgOverlay { inherit namespace; packages = inputs.self.packages.x86_64-linux; })
         ./systems/pixels-pc
       ] ++ (with inputs; [
-        lanzaboote.nixosModules.lanzaboote
-        impermanence.nixosModules.impermanence
-        disko.nixosModules.disko
-      ]) ++ (with inputs.self.nixosModules; [
-        base
-        desktop
-      ]) ++ (with inputs; [
+        self.nixosModules.desktop
         nixpkgs-xr.nixosModules.nixpkgs-xr
       ]) ++ (with inputs.nixos-hardware.nixosModules; [
         common-pc
         common-pc-ssd
         common-cpu-amd
         common-gpu-amd
-      ]);
+      ]) ++ common-modules;
     };
   };
   formatter.${system} = pkgs.nixpkgs-fmt;
