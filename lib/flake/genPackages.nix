@@ -2,7 +2,7 @@
 
 { src, newScope }:
 
-lib.makeScope newScope (self:
+lib.makeScope newScope (self: (
   lib.attrsets.mapAttrs (name: _:
     self.callPackage (src + "/" + name) {} # Package
   ) (
@@ -12,4 +12,4 @@ lib.makeScope newScope (self:
       builtins.readDir src
     )
   )
-)
+))
