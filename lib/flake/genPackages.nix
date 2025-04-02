@@ -1,6 +1,6 @@
 { lib, ext }:
 
-{ src, newScope, genModules ? lib.internal.flake.genModules }:
+{ src, newScope, genModules ? lib.internal.flake.genModules }@args:
 
 lib.makeScope newScope (self:
   (
