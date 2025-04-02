@@ -32,5 +32,5 @@ in {
     };
   };
   formatter.${system} = pkgs.nixpkgs-fmt;
-  packages.${system} = lib1.flake.genPackages ./packages pkgs.newScope
+  packages.${system} = lib1.flake.genPackages ./packages pkgs.newScope;
 }
