@@ -15,10 +15,14 @@ in {
       inherit system;
       specialArgs = inputs;
       modules = [
-        { "${namespace}" = lib1; }
+        { lib."${namespace}" = lib1; }
         (lib.internal.flake.genPkgOverlay { inherit namespace; packages = inputs.self.packages.x86_64-linux; })
         ./systems/pixels-pc
-      ] ++ (with inputs.self.nixosModules; [
+      ] ++ (with inputs; [
+        lanzaboote.nixosModules.lanzaboote
+        impermanence.nixosModules.impermanence
+        disko.nixosModules.disko
+      ]) ++ (with inputs.self.nixosModules; [
         base
         desktop
       ]) ++ (with inputs; [

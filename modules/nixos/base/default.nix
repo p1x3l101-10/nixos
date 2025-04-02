@@ -1,10 +1,6 @@
 { lib, inputs, ... }:
 {
-  imports = with inputs; [
-    lanzaboote.nixosModules.lanzaboote
-    impermanence.nixosModules.impermanence
-    disko.nixosModules.disko
-
+  imports = [
     #./autoUpgrade.nix
     ./base.nix
     ./bash.nix
