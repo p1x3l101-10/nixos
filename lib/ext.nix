@@ -1,4 +1,4 @@
-{ lib, inputs, namespace, snowfall-inputs }:
+{ lib, inputs }:
 
 {
   pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;

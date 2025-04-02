@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ lib, inputs, ... }:
 {
   imports = with inputs; [
     lanzaboote.nixosModules.lanzaboote
@@ -18,4 +18,5 @@
     ./secureBoot.nix
     ./ssh.nix
   ];
+  nix.registry = lib.internal.confTemplates.registry inputs;
 }
