@@ -35,5 +35,6 @@ in {
   packages.${system} = lib1.flake.genPackages {
     src = ./packages;
     inherit (pkgs) newScope;
+    inherit (lib1.flake) genModules
   };
 }

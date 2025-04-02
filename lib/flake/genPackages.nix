@@ -1,13 +1,13 @@
 { lib, ext }:
 
-{ src, newScope }:
+{ src, newScope, genModules ? lib.internal.flake.genModules }:
 
 lib.makeScope newScope (self:
   (
     lib.attrsets.mapAttrs (name: value:
       self.callPackage value { }
     ) (
-      lib.internal.flake.genModules { inherit src; }
+      genModules { inherit src; }
     )
   )
 )
