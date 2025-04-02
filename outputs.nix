@@ -31,8 +31,8 @@ in {
       ]);
     };
   };
-  formatter.x86_64-linux = pkgs.nixpkgs-fmt;
-  packages.x86_64-linux = lib.internal.flake.genPackages {
+  formatter.${system} = pkgs.nixpkgs-fmt;
+  packages.${system} = lib.internal.flake.genPackages {
     src = ./packages;
     inherit (pkgs) newScope;
   };
