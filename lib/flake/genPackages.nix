@@ -8,6 +8,8 @@ lib.makeScope newScope (self:
   ) (
     lib.attrsets.filterAttrs (_: type: # filter the dirs
       type == "directory"
-    ) builtins.readDir src
+    ) (
+      builtins.readDir src
+    )
   )
 )

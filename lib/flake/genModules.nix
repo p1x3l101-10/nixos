@@ -7,5 +7,7 @@ lib.attrsets.mapAttrs (name: _:
 ) (
   lib.attrsets.filterAttrs (_: type:
     type == "directory"
-  ) builtins.readDir src
+  ) (
+    builtins.readDir src
+  )
 )
