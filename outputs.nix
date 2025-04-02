@@ -34,6 +34,6 @@ in {
   formatter.${system} = pkgs.nixpkgs-fmt;
   packages.${system} = lib.internal.flake.genPackages {
     src = ./packages;
-    inherit (pkgs) newScope;
+    inherit (pkgs) callPackage;
   };
 }
