@@ -203,7 +203,7 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
   };
   nixpkgs.config = {
     allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-      # Holy crap, thats a lot of cuda things lol
+      # Agree only to these packages, not the "CUDA Toolkit End User License Agreement (EULA)" as a whole
       "cuda-merged"
       "cuda_cccl"
       "cuda_cudart"

@@ -10,6 +10,7 @@
     ./git.nix
     ./impermanence.nix
     ./ipfs.nix
+    ./licenses.nix
     ./locale.nix
     ./secureBoot.nix
     ./ssh.nix
