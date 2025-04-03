@@ -19,7 +19,7 @@ in {
   nixosConfigurations = {
     pixels-pc = lib.nixosSystem {
       inherit system;
-      specialArgs = inputs;
+      specialArgs = { inputs };
       modules = [
         { lib."${namespace}" = lib1; }
         (lib.internal.flake.genPkgOverlay { inherit namespace; packages = inputs.self.packages.x86_64-linux; })
