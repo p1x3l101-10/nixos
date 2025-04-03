@@ -4,7 +4,6 @@
   imports = [ (modulesPath + "/virtualisation/digital-ocean-image.nix") ];
   # Slim the image
   system = {
-    switch.enable = false;
     tools = {
       nixos-version.enable = false;
       nixos-rebuild.enable = false;
@@ -27,5 +26,6 @@
       mutable = false;
     };
   };
+  services.userborn.enable = true;
   nix.enable = false;
 }
