@@ -1,4 +1,4 @@
-{ lib, ext }:
+{ lib, ext, self }:
 
 lib.makeOverridable (
   { stdenv ? ext.pkgs.stdenvNoCC

@@ -1,4 +1,4 @@
-{ lib, ext }:
+{ lib, ext, self }:
 
 # Set `from` to either "modrinth" or "curseforge"
 { dataPack ? false

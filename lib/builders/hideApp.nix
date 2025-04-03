@@ -1,4 +1,4 @@
-{ lib, ext }:
+{ lib, ext, self }:
 
 let
   inherit (ext) pkgs;

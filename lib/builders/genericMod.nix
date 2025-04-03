@@ -1,4 +1,4 @@
-{ lib, ext }:
+{ lib, ext, self }:
 
 { stdenv ? ext.pkgs.stdenvNoCC
 , name
