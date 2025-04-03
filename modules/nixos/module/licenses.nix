@@ -3,7 +3,7 @@
 {
   # Make an option to shim the nixpkgs config
   options.system.allowedUnfree = with lib; {
-    enable = mkEnableOption "Better license management";
+    enable = mkEnableOption "Better license management" // { default = true; };
     licenses = mkOption {
       type = with types; listOf str;
       default = [];

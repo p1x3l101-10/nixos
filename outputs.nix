@@ -10,6 +10,9 @@ namespace = "internal";
     impermanence.nixosModules.impermanence
     disko.nixosModules.disko
     self.nixosModules.base
+    self.nixosModules.module
+    { lib."${namespace}" = lib1; }
+    (lib.internal.flake.genPkgOverlay { inherit namespace; packages = inputs.self.packages.x86_64-linux; })
   ];
 in {
   lib = lib1;
@@ -21,8 +24,6 @@ in {
       inherit system;
       specialArgs = { inherit inputs; };
       modules = [
-        { lib."${namespace}" = lib1; }
-        (lib.internal.flake.genPkgOverlay { inherit namespace; packages = inputs.self.packages.x86_64-linux; })
         ./systems/pixels-pc
       ] ++ (with inputs; [
         self.nixosModules.desktop
@@ -32,6 +33,18 @@ in {
         common-pc-ssd
         common-cpu-amd
         common-gpu-amd
+      ]) ++ common-modules;
+    };
+    pixels-server = lib.nixosSystem {
+      inherit system;
+      specialArgs = { inherit inputs; };
+      modules = [
+        ./systems/pixels-server
+        inputs.self.nixosModules.server
+      ] ++ ( with inputs.nixos-hardware.nixosModules; [
+        common-pc
+        common-pc-ssd
+        common-cpu-intel-cpu-only
       ]) ++ common-modules;
     };
   };

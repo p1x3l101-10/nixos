@@ -1,0 +1,5 @@
+{ ... }:
+
+{
+  services.nextcloud.configureRedis = true;
+}

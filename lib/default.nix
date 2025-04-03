@@ -17,6 +17,8 @@ genLib ./. [
 
   # Has deps, must be ordered
   "environment" # Depends on `(attrsets) createAttr`
+  "minecraft"
+  "sss"
 
   # Last
   "flake"

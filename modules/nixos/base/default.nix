@@ -10,11 +10,9 @@
     ./git.nix
     ./impermanence.nix
     ./ipfs.nix
-    ./licenses.nix
     ./locale.nix
     ./secureBoot.nix
     ./ssh.nix
   ];
-  system.allowedUnfree.enable = lib.mkDefault true;
   nix.registry = lib.internal.confTemplates.registry inputs;
 }
