@@ -1,40 +1,52 @@
 { lib, pkgs, ... }:
 {
+  # Posix shell
   environment.binsh = "${pkgs.dash}/bin/dash";
 
+  # Bootloader
   services.fwupd.enable = true;
-  boot.loader = {
-    timeout = lib.mkDefault 3;
-    efi = {
-      canTouchEfiVariables = true;
-      efiSysMountPoint = "/efi";
+  boot = {
+    loader = {
+      timeout = lib.mkDefault 3;
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/efi";
+      };
+      systemd-boot = {
+        enable = true;
+        editor = false;
+      };
     };
-    systemd-boot = {
-      enable = true;
-      editor = false;
+    initrd.systemd.enable = true;
+  };
+
+  # Nix settings (and git for flakes)
+  nix = {
+    package = pkgs.internal.only-nix3;
+    settings = {
+      auto-optimise-store = true;
+      experimental-features = [ "nix-command" "flakes" ];
     };
   };
-  boot.initrd.systemd.enable = true;
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nix.package = (pkgs.callPackage ../../../packages/only-nix3 {});
   environment.systemPackages = [
-    (pkgs.callPackage ../../../packages/rebuild { })
+    pkgs.internal.rebuild
   ];
   programs.git = {
     enable = true;
     package = lib.mkDefault pkgs.gitMinimal;
   };
 
+  # Networking
   networking.networkmanager.enable = true;
   #networking.useNetworkd = true;
   #systemd.network.enable = true;
 
+  # Clutter
   programs.nano.enable = lib.mkDefault false;
 
-  nix.settings.auto-optimise-store = true;
-
+  # Nice to have
   services.envfs.enable = true;
 
+  # Needed, don't change unless absolutly needed (never)
   system.stateVersion = "24.11";
 }
