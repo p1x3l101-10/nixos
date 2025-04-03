@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 let
   getdata = key: names: (import ../userdata.nix { inherit lib; }).getdata key names;
