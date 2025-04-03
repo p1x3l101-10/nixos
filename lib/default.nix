@@ -12,7 +12,7 @@ genLib ./. [
   # No deps (other than internal)
   "attrsets"
   "builders"
-  "conf-templates"
+  "confTemplates"
   "lists"
 
   # Has deps, must be ordered
