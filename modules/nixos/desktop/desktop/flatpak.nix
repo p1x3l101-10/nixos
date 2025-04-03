@@ -9,7 +9,7 @@ let
 in {
   services.flatpak.enable = true;
   hardware.steam-hardware.enable = true;
-  system.allowlistedLicenses.packages = [ "steam-unwrapped" ];
+  system.allowedUnfree.packages = [ "steam-unwrapped" ];
   # Fix dir permissions
   systemd.tmpfiles.settings."99-permission-fixes" = mkTmp {
     baseDir = "/var/lib/flatpak";

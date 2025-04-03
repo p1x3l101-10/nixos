@@ -201,7 +201,7 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
     enable = true;
     enable32Bit = true;
   };
-  system.allowlistedLicenses.packages = [
+  system.allowedUnfree.packages = [
     # Agree only to these packages, not the "CUDA Toolkit End User License Agreement (EULA)" as a whole
     "cuda-merged"
     "cuda_cccl"
