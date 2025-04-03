@@ -227,5 +227,6 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
       "libnpp"
       "libnvjitlink"
     ];
+    xr.enable = true;
   };
 }
