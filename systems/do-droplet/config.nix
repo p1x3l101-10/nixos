@@ -16,10 +16,12 @@ in
     mode = "-";
   };
   services.openssh.settings.AllowUsers = [ "pixel" ];
-  virtualisation.digitalOceanImage = {
-    compressionMethod = "bzip2";
-    seedEntropy = true;
-    setSshKeys = false;
-    setRootPassword = false;
+  virtualisation = {
+    digitalOceanImage.compressionMethod = "bzip2";
+    digitalOcean = {
+      seedEntropy = true;
+      setSshKeys = false;
+      setRootPassword = false;
+    };
   };
 }
