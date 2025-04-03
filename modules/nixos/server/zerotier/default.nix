@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  system.allowedUnfree = [
+  system.allowedUnfree.packages = [
     "zerotierone"
   ];
   services.zerotierone = {
