@@ -6,7 +6,7 @@ let
   # Habit
   cfg.enable = true;
 in {
-  config = lib.modules.mkIf cfg.enable (lib.nixos-home.attrsets.mergeAttrs [
+  config = lib.modules.mkIf cfg.enable (lib.internal.attrsets.mergeAttrs [
     {
       containers.nextcloud = {
         autoStart = true;

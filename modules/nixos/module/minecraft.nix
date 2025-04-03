@@ -241,7 +241,7 @@ in
   };
   config = mkIf cfg.enable {
     virtualisation.oci-containers.containers.minecraft = {
-      environment = (lib.nixos-home.attrsets.mergeAttrs (let inherit (lib.nixos-home.environment) mkEnv mkEnvRawList mkEnvRaw; in [
+      environment = (lib.internal.attrsets.mergeAttrs (let inherit (lib.internal.environment) mkEnv mkEnvRawList mkEnvRaw; in [
         cfg.settings.extraEnv
         (mkEnv "EULA" (lib.trivial.boolToString cfg.settings.eula))
         # Modrinth mod list
