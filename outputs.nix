@@ -47,6 +47,13 @@ in {
         common-cpu-intel-cpu-only
       ]) ++ common-modules;
     };
+    do-droplet = lib.nixosSystem {
+      inherit system;
+      specialArgs = { inherit inputs; };
+      modules = [
+        ./systems/do-droplet # Will be kinda on its own
+      ];
+    };
   };
   formatter.${system} = pkgs.nixpkgs-fmt;
   packages.${system} = lib1.flake.genPackages ./packages pkgs.newScope;
