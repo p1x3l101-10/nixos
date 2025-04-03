@@ -1,12 +1,6 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
-    snowfall-lib = {
-      url = "github:snowfallorg/lib";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
     nixpkgs-unfree = {
       url = "github:numtide/nixpkgs-unfree";
       inputs.nixpkgs.follows = "nixpkgs";
