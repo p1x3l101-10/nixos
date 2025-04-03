@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 
 {
   # List of licences that I am ok with as a whole
