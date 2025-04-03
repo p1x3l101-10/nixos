@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 
 let
   base = ../../modules/nixos/base;
