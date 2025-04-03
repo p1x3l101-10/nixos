@@ -201,32 +201,33 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
     enable = true;
     enable32Bit = true;
   };
+  system.allowlistedLicenses.packages = [
+    # Agree only to these packages, not the "CUDA Toolkit End User License Agreement (EULA)" as a whole
+    "cuda-merged"
+    "cuda_cccl"
+    "cuda_cudart"
+    "cuda_cuobjdump"
+    "cuda_cupti"
+    "cuda_cuxxfilt"
+    "cuda_gdb"
+    "cuda_nvcc"
+    "cuda_nvdisasm"
+    "cuda_nvml_dev"
+    "cuda_nvprune"
+    "cuda_nvrtc"
+    "cuda_nvtx"
+    "cuda_profiler_api"
+    "cuda_sanitizer_api"
+    "libcublas"
+    "libcufft"
+    "libcurand"
+    "libcusolver"
+    "libcusparse"
+    "libnpp"
+    "libnvjitlink"
+  ];
   nixpkgs.config = {
-    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-      # Agree only to these packages, not the "CUDA Toolkit End User License Agreement (EULA)" as a whole
-      "cuda-merged"
-      "cuda_cccl"
-      "cuda_cudart"
-      "cuda_cuobjdump"
-      "cuda_cupti"
-      "cuda_cuxxfilt"
-      "cuda_gdb"
-      "cuda_nvcc"
-      "cuda_nvdisasm"
-      "cuda_nvml_dev"
-      "cuda_nvprune"
-      "cuda_nvrtc"
-      "cuda_nvtx"
-      "cuda_profiler_api"
-      "cuda_sanitizer_api"
-      "libcublas"
-      "libcufft"
-      "libcurand"
-      "libcusolver"
-      "libcusparse"
-      "libnpp"
-      "libnvjitlink"
-    ];
     xr.enable = true;
+    rocmSupport = true;
   };
 }

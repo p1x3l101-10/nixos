@@ -15,5 +15,6 @@
     ./secureBoot.nix
     ./ssh.nix
   ];
+  system.allowlistedLicenses.enable = lib.mkDefault true;
   nix.registry = lib.internal.confTemplates.registry inputs;
 }
