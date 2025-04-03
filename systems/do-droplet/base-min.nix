@@ -9,6 +9,7 @@ in
     "${base}/locale.nix"
     "${base}/ssh.nix"
   ];
+  boot.initrd.systemd.enable = true;
   networking = {
     dhcpcd.enable = false;
     networkmanager.enable = lib.mkForce false;
