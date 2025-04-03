@@ -15,7 +15,6 @@ in
     networkmanager.enable = lib.mkForce false;
     useDHCP = false;
     useNetworkd = true;
-    usePredictableInterfaceNames = true;
   };
   systemd.network = {
     enable = true;
