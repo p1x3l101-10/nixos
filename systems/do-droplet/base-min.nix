@@ -9,6 +9,7 @@ in
     "${base}/locale.nix"
     "${base}/ssh.nix"
   ];
+  environment.binsh = "${pkgs.dash}/bin/dash";
   boot.initrd.systemd.enable = true;
   networking = {
     dhcpcd.enable = false;
