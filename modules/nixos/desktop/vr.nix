@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, ... }:
+{ config, pkgs, lib, ... }:
 let
   defaultRuntime = "Envision";
   monadoHelperShell = pkgs.writeShellScriptBin "setup-monado-handModels.sh" ''
@@ -45,7 +45,7 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
   # Envsion
   programs.envision = {
     enable = true;
-    package = inputs.self.packages.x86_64-linux.envision.override {
+    package = pkgs.internal.envision.override {
       extraPackages = with pkgs; (with gst_all_1; [
         gstreamer
         gst-plugins-base
@@ -202,7 +202,7 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
     enable32Bit = true;
   };
   nixpkgs.config = {
-    allowUnfreePredicate = pkg: builtins.elem (inputs.nixpkgs.lib.getName pkg) [
+    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
       # Holy crap, thats a lot of cuda things lol
       "cuda-merged"
       "cuda_cccl"

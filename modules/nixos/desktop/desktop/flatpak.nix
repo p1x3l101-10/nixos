@@ -9,7 +9,7 @@ let
 in {
   services.flatpak.enable = true;
   # Add controller drivers
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (inputs.nixpkgs.lib.getName pkg) [ "steam-unwrapped" ];
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "steam-unwrapped" ];
   hardware.steam-hardware.enable = true;
   # Fix dir permissions
   systemd.tmpfiles.settings."99-permission-fixes" = mkTmp {
