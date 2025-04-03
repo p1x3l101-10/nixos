@@ -9,7 +9,7 @@ inputs: lib.attrsets.mapAttrs' (
 used for generating registries
 { inputs, lib, ... }:
 {
-  nix.registry = lib.internal.confTemplates.registry inputs;
+  nix.registry = self.confTemplates.registry inputs;
 }
 
 turns into this

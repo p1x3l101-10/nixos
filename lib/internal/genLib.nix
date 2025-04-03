@@ -2,4 +2,4 @@
 
 src: libraryArray:
 
-lib.internal.callLibPrimitive ../internal-raw/genLib.nix lib.internal.callLibPrimitive
+self.callLibPrimitive ../internal-raw/genLib.nix self.callLibPrimitive

@@ -2,4 +2,4 @@
 
 path:
 
-lib.internal.callLibPrimitive ../internal-raw lib.internal.callLibPrimitive path
+self.callLibPrimitive ../internal-raw self.callLibPrimitive path

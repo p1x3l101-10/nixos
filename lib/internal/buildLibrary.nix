@@ -2,4 +2,4 @@
 
 src: dirs:
 
-lib.internal.callLibPrimitive ../internal-raw/genLib.nix lib.internal.getFunctionsFromDir src dirs
+self.callLibPrimitive ../internal-raw/genLib.nix self.getFunctionsFromDir src dirs

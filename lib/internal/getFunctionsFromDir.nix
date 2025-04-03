@@ -2,4 +2,4 @@
 
 dir:
 
-lib.internal.callLibPrimitive ../internal-raw/getFunctionsFromDir.nix lib.internal.callLib dir
+self.callLibPrimitive ../internal-raw/getFunctionsFromDir.nix self.callLib dir
