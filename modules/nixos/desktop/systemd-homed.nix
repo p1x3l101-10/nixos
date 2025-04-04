@@ -10,7 +10,7 @@
     cryptsetup
   ];
   systemd.tmpfiles.settings."99-Accountservice-fixes" = {
-    "/var/lib/AccountsService/users/pixel"."C+" = {
+    "/var/lib/AccountsService/users/pixel"."C!" = {
       user = "root";
       group = "root";
       mode = "0644";
