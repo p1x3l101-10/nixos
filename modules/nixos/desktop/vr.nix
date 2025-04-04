@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 let
-  defaultRuntime = "Envision";
+  defaultRuntime = "WiVRn";
   monadoHelperShell = pkgs.writeShellScriptBin "setup-monado-handModels.sh" ''
     mkdir -p ~/.local/share/monado
     cd ~/.local/share/monado
@@ -8,11 +8,6 @@ let
   '';
 in
 lib.mkIf (config.networking.hostName == "pixels-pc") {
-  # Monado
-  services.monado = {
-    enable = true;
-    defaultRuntime = (defaultRuntime == "Envision");
-  };
   systemd.user.services.monado.environment = {
     STEAMVR_LH_ENABLE = "1";
     XRT_COMPOSITOR_COMPUTE = "1";
@@ -40,114 +35,6 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
           }
         ];
       };
-    };
-  };
-  # Envsion
-  programs.envision = {
-    enable = true;
-    package = pkgs.internal.envision.override {
-      extraPackages = with pkgs; (with gst_all_1; [
-        gstreamer
-        gst-plugins-base
-        gst-plugins-good
-        /*
-                gst-plugins-bag
-                gst-plugins-ugly
-                */
-        gst-libav
-        gst-vaapi
-      ]) ++ [
-        glslang
-        libdrm
-        openxr-loader
-        opencomposite
-        khronos-ocl-icd-loader
-        vulkan-loader
-        openssl
-        libnotify.dev
-        libnotify
-        libsysprof-capture
-        gdk-pixbuf.dev
-        gdk-pixbuf
-        libbsd.dev
-        libbsd
-        libpng.dev
-        libpng
-        util-linux.dev
-        util-linux
-        libtiff.dev
-        libtiff
-        libwebp
-        xr-hardware
-        lerc.dev
-        lerc
-        wayland
-        libglvnd
-        libglvnd.dev
-        SDL2
-        SDL2.dev
-        udev
-        udev.dev
-      ]
-      # WiVRn build inputs
-      ++ [
-        avahi
-        boost
-        bluez
-        cjson
-        cli11
-        dbus
-        eigen
-        elfutils
-        ffmpeg
-        freetype
-        glib
-        glm
-        gst_all_1.gst-plugins-base
-        gst_all_1.gstreamer
-        harfbuzz
-        hidapi
-        libbsd
-        libdrm
-        libdwg
-        libGL
-        libjpeg
-        libmd
-        libnotify
-        librealsense
-        libsurvive
-        libunwind
-        libusb1
-        libuvc
-        libva
-        xorg.libX11
-        xorg.libXrandr
-        libpulseaudio
-        nlohmann_json
-        opencv4
-        openhmd
-        openvr
-        openxr-loader
-        onnxruntime
-        orc
-        pipewire
-        qt6.qtbase
-        qt6.qttools
-        SDL2
-        shaderc
-        spdlog
-        systemd
-        udev
-        vulkan-headers
-        vulkan-loader
-        wayland
-        wayland-protocols
-        wayland-scanner
-        x264
-      ];
-      extraProfile = ''
-        export OPENSSL_ROOT_DIR="${pkgs.openssl}"
-      '';
     };
   };
   # Kernel patches
