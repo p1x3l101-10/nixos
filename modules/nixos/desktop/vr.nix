@@ -120,10 +120,8 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
   networking.firewall.allowedUDPPorts = [ 9943 9944 9945 9946 9947 9949 5353 ];
   services.avahi = {
     enable = true;
-    nssmdns = true;
-    openFirewall = true; # optional since you're managing firewall yourself
+    nssmdns4 = true;
+    nssmdns6 = true;
+    openFirewall = true;
   };
-  environment.etc."nsswitch.conf".text = ''
-    hosts: files mdns4_minimal [NOTFOUND=return] dns
-  '';
 }

@@ -26,8 +26,12 @@
       group = "root";
       mode = "0755";
     };
-    "/var/lib/AccountsService/icons/homed/pixel"."L+" = {
+    "/var/lib/AccountsService/icons/homed/pixel"."L" = {
       argument = "/var/cache/systemd/home/pixel/avatar";
     };
+  };
+  system.nssDatabases = {
+    passwd = [ "systemd" "files" ];
+    group = [ "systemd" "files" ];
   };
 }
