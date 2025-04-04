@@ -9,27 +9,27 @@
     btrfs-progs
     cryptsetup
   ];
-  systemd.tmpfiles.settings."99-Accountservice-fixes" = {
-    "/var/lib/AccountsService/users/pixel"."C!" = {
-      user = "root";
-      group = "root";
-      mode = "0644";
-      argument = builtins.toString (pkgs.writeText "pixel-as-config" ''
-        [User]
-        Session=
-        Icon=/var/lib/AccountsService/icons/homed/pixel
-        SystemAccount=false
-      '');
-    };
-    "/var/lib/AccountsService/icons/homed".d = {
-      user = "root";
-      group = "root";
-      mode = "0755";
-    };
-    "/var/lib/AccountsService/icons/homed/pixel"."L" = {
-      argument = "/var/cache/systemd/home/pixel/avatar";
-    };
+  systemd.services.fix-accountsservice-pixel = {
+    description = "Force avatar config for pixel user";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "accounts-daemon.service" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = pkgs.writeShellScript "fix-accountsservice-pixel" ''
+        set -euo pipefail
+        mkdir -p /var/lib/AccountsService/icons/homed
+        ln -sf /var/cache/systemd/home/pixel/avatar /var/lib/AccountsService/icons/homed/pixel
+
+        cat > /var/lib/AccountsService/users/pixel <<EOF
+[User]
+Session=
+Icon=/var/lib/AccountsService/icons/homed/pixel
+SystemAccount=false
+EOF
+    '';
   };
+};
+
   system.nssDatabases = {
     passwd = [ "systemd" "files" ];
     group = [ "systemd" "files" ];
