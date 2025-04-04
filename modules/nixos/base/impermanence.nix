@@ -12,4 +12,8 @@
       "/root/.local/share/nix"
     ];
   };
+  system.etc.overlay = {
+    enable = true;
+    mutable = true;
+  };
 }
