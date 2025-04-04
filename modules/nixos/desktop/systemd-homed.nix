@@ -10,12 +10,10 @@
     cryptsetup
   ];
   systemd.services.fix-accountsservice-pixel = {
-    description = "Force avatar config for pixel user";
-    wantedBy = [ "multi-user.target" ];
-    after = [ "accounts-daemon.service" ];
+    description = "Fix avatar for pixel in AccountsService after it gets clobbered";
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = pkgs.writeShellScript "fix-accountsservice-pixel" ''
+      ExecStart = pkgs.writeShellScript "fix-pixel-avatar" ''
         set -euo pipefail
         mkdir -p /var/lib/AccountsService/icons/homed
         ln -sf /var/cache/systemd/home/pixel/avatar /var/lib/AccountsService/icons/homed/pixel
@@ -26,9 +24,16 @@ Session=
 Icon=/var/lib/AccountsService/icons/homed/pixel
 SystemAccount=false
 EOF
-    '';
+      '';
+    };
   };
-};
+
+  systemd.paths.fix-accountsservice-pixel = {
+    wantedBy = [ "multi-user.target" ];
+    pathConfig = {
+      PathChanged = "/var/lib/AccountsService/users/pixel";
+    };
+  };
 
   system.nssDatabases = {
     passwd = [ "systemd" "files" ];
