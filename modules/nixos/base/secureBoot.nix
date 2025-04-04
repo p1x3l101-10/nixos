@@ -14,13 +14,13 @@ in
   };
   # Make sure keys are present for system
   environment.etc = {
-    "secureboot/GUID" = { source = "${keydir}/GUID"; mode = "0644"; };
-    "secureboot/keys/PK/PK.key" = { source = "${keydir}/PK/PK.key"; mode = "0400"; };
-    "secureboot/keys/PK/PK.pem" = { source = "${keydir}/PK/PK.pem"; mode = "0444"; };
-    "secureboot/keys/KEK/KEK.key" = { source = "${keydir}/KEK/KEK.key"; mode = "0400"; };
-    "secureboot/keys/KEK/KEK.pem" = { source = "${keydir}/KEK/KEK.pem"; mode = "0444"; };
-    "secureboot/keys/db/db.key" = { source = "${keydir}/db/db.key"; mode = "0400"; };
-    "secureboot/keys/db/db.pem" = { source = "${keydir}/db/db.pem"; mode = "0444"; };
+    "secureboot/GUID".source = "${keydir}/GUID";
+    "secureboot/keys/PK/PK.key".source = "${keydir}/PK/PK.key";
+    "secureboot/keys/PK/PK.pem".source = "${keydir}/PK/PK.pem";
+    "secureboot/keys/KEK/KEK.key".source = "${keydir}/KEK/KEK.key";
+    "secureboot/keys/KEK/KEK.pem".source = "${keydir}/KEK/KEK.pem";
+    "secureboot/keys/db/db.key".source = "${keydir}/db/db.key";
+    "secureboot/keys/db/db.pem".source = "${keydir}/db/db.pem";
   };
   # Make sure keys are present for bootloader
   # Only copy pubKeys
