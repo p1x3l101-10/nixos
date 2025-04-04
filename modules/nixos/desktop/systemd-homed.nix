@@ -9,6 +9,19 @@
     btrfs-progs
     cryptsetup
   ];
+  systemd.services.load-homed-users = {
+  description = "Force AccountsService to load homed users early";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "systemd-homed.service" "accounts-daemon.service" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = pkgs.writeShellScript "load-homed-users" ''
+        set -euo pipefail
+        # Force AccountsService to reload users and metadata
+        accountsservice --reload
+      '';
+    };
+  };
   systemd.services.fix-accountsservice-pixel = {
     description = "Fix avatar for pixel in AccountsService after it gets clobbered";
     serviceConfig = {
