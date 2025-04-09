@@ -14,6 +14,7 @@
   };
   system.etc.overlay = {
     enable = true;
-    mutable = true;
+    mutable = false;
   };
+  services.userborn.enable = true;
 }
