@@ -15,6 +15,7 @@
       systemd-boot = {
         enable = true;
         editor = false;
+        netbootxyz.enable = true;
       };
     };
     initrd.systemd.enable = true;
