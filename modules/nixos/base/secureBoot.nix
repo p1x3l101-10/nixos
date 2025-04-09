@@ -1,6 +1,6 @@
 { config, lib, ... }:
 let
-  keydir = "/nix/host/keys/secureboot/keys";
+  keydir = "/nix/host/keys/secureboot";
   bootDir = config.boot.loader.efi.efiSysMountPoint;
 in
 {
@@ -9,18 +9,17 @@ in
     loader.grub.enable = lib.mkForce false;
     lanzaboote = {
       enable = true;
-      pkiBundle = "${keydir}/..";
+      pkiBundle = "${keydir}";
     };
   };
   # Make sure keys are present for system
-  environment.etc = {
-    "secureboot/GUID".source = "${keydir}/GUID";
-    "secureboot/keys/PK/PK.key".source = "${keydir}/PK/PK.key";
-    "secureboot/keys/PK/PK.pem".source = "${keydir}/PK/PK.pem";
-    "secureboot/keys/KEK/KEK.key".source = "${keydir}/KEK/KEK.key";
-    "secureboot/keys/KEK/KEK.pem".source = "${keydir}/KEK/KEK.pem";
-    "secureboot/keys/db/db.key".source = "${keydir}/db/db.key";
-    "secureboot/keys/db/db.pem".source = "${keydir}/db/db.pem";
+  systemd..tmpfiles.settings."01-secureboot" = {
+    "/var/lib/sbctl".L = {
+      user = "root";
+      group = "root";
+      mode = "0700";
+      argument = keydir;
+    };
   };
   # Make sure keys are present for bootloader
   # Only copy pubKeys
