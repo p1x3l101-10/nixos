@@ -13,7 +13,7 @@ in
     };
   };
   # Make sure keys are present for system
-  systemd..tmpfiles.settings."01-secureboot" = {
+  systemd.tmpfiles.settings."01-secureboot" = {
     "/var/lib/sbctl".L = {
       user = "root";
       group = "root";
