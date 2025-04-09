@@ -49,6 +49,11 @@
 
   # Nice to have
   services.envfs.enable = true;
+  # Fix any broken refs that envfs makes
+  users = {
+    defaultUserShell = pkgs.bashInteractive;
+    users.root.shell = pkgs.bashInteractive;
+  };
 
   # Needed, don't change unless absolutly needed (never)
   system.stateVersion = "24.11";
