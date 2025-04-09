@@ -20,6 +20,7 @@
       };
     };
     initrd.systemd.enable = true;
+    uki.tries = 1;
   };
 
   # Nix settings (and git for flakes)
