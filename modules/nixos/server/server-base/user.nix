@@ -13,6 +13,7 @@ in
       borgbackup
       vim
     ];
+    uid = 1000; # Prevent issues
     subUidRanges = [{ count = 65536; startuid = 100000; }];
     subGidRanges = [{ count = 65536; startuid = 100000; }];
   };
