@@ -16,6 +16,7 @@
         enable = true;
         editor = false;
         netbootxyz.enable = true;
+        edk2-uefi-shell.enable = true;
       };
     };
     initrd.systemd.enable = true;
