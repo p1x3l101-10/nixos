@@ -8,7 +8,7 @@
     ./nix-serve
     ./s3
     ./server-base
+    ./tailscale
     ./terraria
-    ./zerotier
   ];
 }
