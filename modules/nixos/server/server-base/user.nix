@@ -13,17 +13,16 @@ in
       borgbackup
       vim
     ];
-    uid = 1000; # Prevent issues
     subUidRanges = [{ count = 65536; startuid = 100000; }];
     subGidRanges = [{ count = 65536; startuid = 100000; }];
   };
   users.users.root.openssh.authorizedKeys.keys = getdata "sshKeys" [ "scott" ];
   users.mutableUsers = false;
   services.openssh.settings.AllowUsers = [ "pixel" "root" ];
-  environment.etc.nixos.source = "/home/pixel/nix-server";
+  environment.etc.nixos.source = "/home/pixel/nixos";
   environment.persistence."/nix/host/state/UserData".users.pixel.directories = [
     ".ssh"
-    "nix-server"
+    "nixos"
     "dump"
   ];
   programs.git.config = {
@@ -33,7 +32,7 @@ in
     };
     init.defaultBranch = "main";
   };
-  systemd.tmpfiles.settings."10-sudo-lectures"."/var/db/sudo/lectured/1000".f = {
+  systemd.tmpfiles.settings."10-sudo-lectures"."/var/db/sudo/lectured/1001".f = {
     user = "root";
     group = "root";
     mode = "-";
