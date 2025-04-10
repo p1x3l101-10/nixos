@@ -1,7 +1,7 @@
 { lib, inputs, ... }:
 {
   imports = [
-    #./autoUpgrade.nix
+    ./autoUpgrade.nix
     ./base.nix
     ./bash.nix
     ./cachix.nix
