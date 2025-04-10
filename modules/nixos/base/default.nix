@@ -8,6 +8,7 @@
     ./cache.nix
     ./content-addressed.nix
     ./git.nix
+    ./hideGetty.nix
     ./impermanence.nix
     ./ipfs.nix
     ./locale.nix
