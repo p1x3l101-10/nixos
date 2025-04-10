@@ -69,6 +69,7 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
     );
   '';
   # Others
+  /*
   environment.systemPackages = with pkgs; [
     monadoHelperShell
     wlx-overlay-s
@@ -84,6 +85,7 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
     stardust-xr-atmosphere
     stardust-xr-kiara
   ];
+  */
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
