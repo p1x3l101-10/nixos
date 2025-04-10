@@ -29,6 +29,8 @@ lib.fix (self:{
         fi
       fi
     '';
+    before = [ "nixos-upgrade.service" ];
+    requiredBy = [ "nixos-upgrade.service" ];
   };
   environment.etc.version.text = inputs.self.sourceInfo.rev;
 })
