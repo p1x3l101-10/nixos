@@ -12,5 +12,4 @@
     };
   }
   ) 5);
-  systemd.services."getty@tty6".enable = true; # Ensure tty6 exists
 }
