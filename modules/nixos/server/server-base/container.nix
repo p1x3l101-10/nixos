@@ -26,8 +26,4 @@
     { directory = "/var/lib/machines"; mode = "0700"; }
     { directory = "/var/lib/containers"; mode = "0700"; }
   ];
-  environment.etc = {
-    "containers/network".source = (pkgs.runCommand "empty-dir" {} "mkdir -p $out");
-    "NetworkManager/system-connections".source = (pkgs.runCommand "empty-dir" {} "mkdir -p $out");
-  };
 }
