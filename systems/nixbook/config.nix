@@ -73,7 +73,7 @@
       nautilus
       blackbox-terminal
       gnome-extension-manager
-      inputs.zen-browser.packages."${config.nixpkgs.hostPlatform.system}".default
+      inputs.zen-browser.packages."x86_64-linux".default
     ];
     persistence = {
       "/nix/host/state/System".directories = [
