@@ -2,10 +2,11 @@
 
 let
   nixbookSystem = self.nixosConfigurations.nixbook;
-  closureTxt = pkgs.runCommand "closure.txt" {
-    buildInputs = [ pkgs.nix ];
-  } ''
-    nix-store --query --requisites --no-gc ${nixbookSystem.config.system.build.toplevel} | sort > $out
+  closure = pkgs.closureInfo {
+    rootPaths = [ nixbookSystem.config.system.build.toplevel ];
+  };
+  closureTxt = pkgs.runCommand "closure.txt" ''
+    cat "${closure}" | sort > $out
   '';
   updateVersion = self.rev;
 in {
