@@ -6,12 +6,13 @@ let
     rootPaths = [ nixbookSystem.config.system.build.toplevel ];
   };
   updateVersion = self.rev;
+  UKI = nixbookSystem.config.system.build.uki + "/" + nixbookSystem.config.system.build.uki.name;
 in {
   system-update = pkgs.runCommand "nixbook-update-${updateVersion}" {
     nativeBuildInputs = [ pkgs.coreutils pkgs.nix ];
   } ''
     mkdir -p $out/${updateVersion}
-    cp ${nixbookSystem.config.system.build.uki}/*.uki $out/${updateVersion}/system.uki
+    cp ${UKI} $out/${updateVersion}/system.uki
     cp ${closure}/store-paths $out/${updateVersion}/closure.txt
     nix copy --to file://$out/${updateVersion}/store --no-check-sigs $(cat ${closure}/store-paths)
 
