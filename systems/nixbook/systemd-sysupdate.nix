@@ -12,7 +12,7 @@ in {
   } ''
     mkdir -p $out/${updateVersion}
     cp ${nixbookSystem.config.system.build.uki} $out/${updateVersion}/system.uki
-    cp ${closureInfo}/store-paths $out/${updateVersion}/closure.txt
+    cp ${closure}/store-paths $out/${updateVersion}/closure.txt
     nix copy --to file://$out/${updateVersion}/store --no-check-sigs $(cat ${closureTxt})
 
     cat > $out/${updateVersion}/update.conf <<EOF
