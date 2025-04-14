@@ -29,8 +29,8 @@
   nix.enable = false;
   nixpkgs.hostPlatform = {
     gcc = {
-      arch = "";
-      tune = "";
+      arch = "x86_64";
+      tune = "generic";
     };
     system = "x86_64-linux";
   };
