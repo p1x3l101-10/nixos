@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   environment.persistence."/nix/host/state/System" = {
     hideMounts = true;
