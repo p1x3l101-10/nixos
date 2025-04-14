@@ -11,7 +11,7 @@ in {
     nativeBuildInputs = [ pkgs.coreutils pkgs.nix ];
   } ''
     mkdir -p $out/${updateVersion}
-    cp ${nixbookSystem.config.system.build.uki} $out/${updateVersion}/system.uki
+    cp ${nixbookSystem.config.system.build.uki}/*.uki $out/${updateVersion}/system.uki
     cp ${closure}/store-paths $out/${updateVersion}/closure.txt
     nix copy --to file://$out/${updateVersion}/store --no-check-sigs $(cat ${closure}/store-paths)
 
