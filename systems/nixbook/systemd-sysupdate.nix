@@ -13,7 +13,7 @@ in {
     nativeBuildInputs = [ pkgs.coreutils pkgs.nix ];
   } ''
     mkdir -p $out/${updateVersion}
-    cp ${nixbookSystem.config.boot.loader.efi.efiFile} $out/${updateVersion}/system.uki
+    cp ${nixbookSystem.config.system.build.uki} $out/${updateVersion}/system.uki
     cp ${closureTxt} $out/${updateVersion}/closure.txt
 
     cat > $out/${updateVersion}/update.conf <<EOF
