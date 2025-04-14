@@ -67,7 +67,5 @@ in {
     };
   };
   formatter.${system} = pkgs.nixpkgs-fmt;
-  packages.${system} = lib1.flake.genPackages ./packages pkgs.newScope // {
-    nixbook-update = import ./systems/nixbook/systemd-sysupdate.nix { inherit pkgs lib; inherit (inputs) self; };
-  };
+  packages.${system} = lib1.flake.genPackages ./packages pkgs.newScope;
 }
