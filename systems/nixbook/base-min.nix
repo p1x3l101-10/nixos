@@ -26,6 +26,7 @@ in
     };
     lanzaboote = {
       enable = true;
+      pkiBundle = "/nix/host/keys/secureboot";
       configurationLimit = 2;
     };
     initrd.systemd.enable = true;
