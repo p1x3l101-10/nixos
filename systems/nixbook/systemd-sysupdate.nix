@@ -16,7 +16,7 @@ in {
     cp ${closure}/store-paths $out/${updateVersion}/closure.txt
     mkdir -p "$out/${updateVersion}/store"
     while read path; do
-      cp -aL "$path" "$out/${updateVersion}/store/"
+      cp -a --parents "$path" "$out/${updateVersion}/store/"
     done < ${closure}/store-paths
 
     cat > $out/${updateVersion}/update.conf <<EOF
