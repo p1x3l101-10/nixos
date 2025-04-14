@@ -12,10 +12,6 @@
       nixos-enter.enable = false;
       nixos-build-vms.enable = false;
     };
-    image = {
-      id = "do-droplet";
-      version = "1";
-    };
     includeBuildDependencies = false;
     etc.overlay = {
       enable = true;
