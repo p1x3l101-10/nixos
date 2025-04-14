@@ -3,7 +3,7 @@
 { buildFHSEnv
 , envision-unwrapped
 , lib
-, extraPackages ? pkgs: [ ]
+, extraPackages ? [ ]
 , extraProfile ? [ ]
 }:
 
