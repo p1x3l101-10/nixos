@@ -17,7 +17,7 @@ in {
     mkdir -p "$out/${updateVersion}/store"
     while read path; do
       cp -aL "$path" "$out/${updateVersion}/store/"
-    done < ${closureInfo}/store-paths
+    done < ${closure}/store-paths
 
     cat > $out/${updateVersion}/update.conf <<EOF
 [Update]
