@@ -62,6 +62,7 @@ in {
       ] ++ (with inputs; [
         lanzaboote.nixosModules.lanzaboote
         impermanence.nixosModules.impermanence
+        disko.nixosModules.disko
         { lib."${namespace}" = lib1; }
       ]);
     };
