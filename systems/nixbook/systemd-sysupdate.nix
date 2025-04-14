@@ -8,7 +8,7 @@ let
   updateVersion = self.rev;
   UKI = nixbookSystem.config.system.build.uki + "/" + nixbookSystem.config.system.build.uki.name;
   storeTarball = pkgs.runCommand "store.tar.xz" {
-    nativeBuildInputs = [ closure pkgs.gnutar pkgs.coreutils pkgs.findutils ];
+    nativeBuildInputs = [ pkgs.gnutar pkgs.coreutils pkgs.findutils ];
   } ''
     mkdir -p tmp-root
 
@@ -26,7 +26,7 @@ let
   '';
 in {
   system-update = pkgs.runCommand "nixbook-update-${updateVersion}" {
-    nativeBuildInputs = [ pkgs.coreutils pkgs.nix closure storeTarball ];
+    nativeBuildInputs = [ pkgs.coreutils pkgs.nix ];
   } ''
     mkdir -p $out/${updateVersion}
     cp ${UKI} $out/${updateVersion}/system.uki
