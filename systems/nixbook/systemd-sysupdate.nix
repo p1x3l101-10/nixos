@@ -8,12 +8,20 @@ let
   updateVersion = self.rev;
   UKI = nixbookSystem.config.system.build.uki + "/" + nixbookSystem.config.system.build.uki.name;
   storeTarball = pkgs.runCommand "store-tarball" {
-    nativeBuildInputs = [ closure pkgs.gnutar ];
+    nativeBuildInputs = [ closure pkgs.gnutar pkgs.coreutils pkgs.findutils pkgs.zstd ];
   } ''
     mkdir -p tmp-root
+
     while read path; do
-      cp -a --parents "$path" tmp-root/
-    done < ${closure}/store-paths
+      if [ -d "$path" ]; then
+        # If it's a directory, recreate it explicitly with parents
+        mkdir -p "tmp-root$path"
+      else
+        # Copy file or symlink, preserving full store path
+        cp -a --parents "$path" tmp-root/
+      fi
+    done < ${closureInfo}/store-paths
+
     tar --zstd cvf $out -C tmp-root .
   '';
 in {
