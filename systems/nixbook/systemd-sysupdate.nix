@@ -5,9 +5,6 @@ let
   closure = pkgs.closureInfo {
     rootPaths = [ nixbookSystem.config.system.build.toplevel ];
   };
-  closureTxt = pkgs.runCommand "closure.txt" ''
-    cat "${closure}" | sort > $out
-  '';
   updateVersion = self.rev;
 in {
   system-update = pkgs.runCommand "nixbook-update-${updateVersion}" {
@@ -15,7 +12,7 @@ in {
   } ''
     mkdir -p $out/${updateVersion}
     cp ${nixbookSystem.config.system.build.uki} $out/${updateVersion}/system.uki
-    cp ${closureTxt} $out/${updateVersion}/closure.txt
+    cp ${closureInfo}/store-paths $out/${updateVersion}/closure.txt
     nix copy --to file://$out/${updateVersion}/store --no-check-sigs $(cat ${closureTxt})
 
     cat > $out/${updateVersion}/update.conf <<EOF
