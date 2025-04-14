@@ -19,11 +19,14 @@ in
         efiSysMountPoint = "/efi";
       };
       systemd-boot = {
-        enable = true;
+        enable = false;
         editor = false;
-        netbootxyz.enable = true;
         edk2-uefi-shell.enable = true;
       };
+    };
+    lanzaboote = {
+      enable = true;
+      lanzaboote.configurationLimit = 2;
     };
     initrd.systemd.enable = true;
     uki.tries = 1;
