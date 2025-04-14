@@ -16,7 +16,7 @@ in {
     cp ${closure}/store-paths $out/${updateVersion}/closure.txt
     mkdir -p "$out/${updateVersion}/store"
     while read path; do
-      if [[ "$path" ~= "(?<=\/nix\/store\/)[^\/]*empty-dir" ]]; then
+      if [[ "$path" =~ "(?<=\/nix\/store\/)[^\/]*empty-dir" ]]; then
         mkdir -p "$out/${updateVersion}/store/''${BASH_REMATCH[1]}""
       else
         cp -a --parents "$path" "$out/${updateVersion}/store/"
