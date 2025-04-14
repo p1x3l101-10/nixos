@@ -14,7 +14,7 @@ in {
     mkdir -p $out/${updateVersion}
     cp ${UKI} $out/${updateVersion}/system.uki
     cp ${closure}/store-paths $out/${updateVersion}/closure.txt
-    nix copy --to file://$out/${updateVersion}/store --no-check-sigs $(cat ${closure}/store-paths)
+    nix --extra-experimental-features nix-command copy --to file://$out/${updateVersion}/store --no-check-sigs $(cat ${closure}/store-paths)
 
     cat > $out/${updateVersion}/update.conf <<EOF
 [Update]
