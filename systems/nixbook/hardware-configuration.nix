@@ -12,9 +12,6 @@
       nixos-enter.enable = false;
       nixos-build-vms.enable = false;
     };
-    forbiddenDependenciesRegexes = [
-      "-dev$"
-    ];
     image = {
       id = "do-droplet";
       version = "1";

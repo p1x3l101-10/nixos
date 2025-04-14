@@ -98,7 +98,7 @@
     noto-fonts-cjk-sans
     noto-fonts-emoji
   ];
-  documentation.nixos.enable = false;
+  documentation.enable = false;
   systemd = {
     sysupdate = {
       enable = true;
