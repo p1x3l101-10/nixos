@@ -27,6 +27,7 @@
   };
   services.userborn.enable = true;
   nix.enable = false;
+  /*
   nixpkgs.hostPlatform = {
     gcc = {
       arch = "x86-64";
@@ -34,4 +35,5 @@
     };
     system = "x86_64-linux";
   };
+  */
 }
