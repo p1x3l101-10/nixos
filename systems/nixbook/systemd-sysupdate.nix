@@ -20,7 +20,7 @@ let
         # Copy file or symlink, preserving full store path
         cp -a --parents "$path" tmp-root/
       fi
-    done < ${closureInfo}/store-paths
+    done < ${closure}/store-paths
 
     tar --zstd cvf $out -C tmp-root .
   '';
