@@ -54,7 +54,20 @@ in {
         ./systems/do-droplet # Will be kinda on its own
       ];
     };
+    nixbook = lib.nixosSystem {
+      inherit system;
+      specialArgs = { inherit inputs; };
+      modules = [
+        ./systems/nixbook
+      ] ++ (with inputs; [
+        lanzaboote.nixosModules.lanzaboote
+        impermanence.nixosModules.impermanence
+        { lib."${namespace}" = lib1; }
+      ]);
+    };
   };
   formatter.${system} = pkgs.nixpkgs-fmt;
-  packages.${system} = lib1.flake.genPackages ./packages pkgs.newScope;
+  packages.${system} = lib1.flake.genPackages ./packages pkgs.newScope // {
+    nixbook-update = import ./systems/nixbook/systemd-sysupdate.nix { inherit pkgs lib; inherit (inputs) self; };
+  };
 }
