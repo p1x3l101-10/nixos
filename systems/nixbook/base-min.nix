@@ -26,7 +26,7 @@ in
     };
     lanzaboote = {
       enable = true;
-      lanzaboote.configurationLimit = 2;
+      configurationLimit = 2;
     };
     initrd.systemd.enable = true;
     uki.tries = 1;
