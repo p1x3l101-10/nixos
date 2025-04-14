@@ -5,7 +5,7 @@ let
   closureTxt = pkgs.runCommand "closure.txt" {
     buildInputs = [ pkgs.nix ];
   } ''
-    nix-store -qR ${nixbookSystem.config.system.build.toplevel} | sort > $out
+    nix-store --query --requisites --no-gc ${nixbookSystem.config.system.build.toplevel} | sort > $out
   '';
   updateVersion = self.rev;
 in {
