@@ -7,8 +7,8 @@ let
   };
   updateVersion = self.rev;
   UKI = nixbookSystem.config.system.build.uki + "/" + nixbookSystem.config.system.build.uki.name;
-  storeTarball = pkgs.runCommand "store-tarball" {
-    nativeBuildInputs = [ closure pkgs.gnutar pkgs.coreutils pkgs.findutils pkgs.zstd ];
+  storeTarball = pkgs.runCommand "store.tar.xz" {
+    nativeBuildInputs = [ closure pkgs.gnutar pkgs.coreutils pkgs.findutils ];
   } ''
     mkdir -p tmp-root
 
@@ -22,7 +22,7 @@ let
       fi
     done < ${closure}/store-paths
 
-    tar --zstd cvf $out -C tmp-root .
+    tar cvJf $out -C tmp-root .
   '';
 in {
   system-update = pkgs.runCommand "nixbook-update-${updateVersion}" {
