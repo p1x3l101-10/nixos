@@ -11,6 +11,7 @@ in {
       "kenton"
       "dylan"
       "spradley"
+      "daniel"
     ];
     shell = pkgs.shadow;
     home = "/var/empty";
