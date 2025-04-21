@@ -18,7 +18,7 @@
   };
   services.userborn.enable = true;
   environment.etc = {
-    "containers/network".source = (pkgs.runCommand "empty-dir" {} "mkdir -p $out");
+    "containers/networks".source = (pkgs.runCommand "empty-dir" {} "mkdir -p $out");
     "NetworkManager/system-connections".source = (pkgs.runCommand "empty-dir" {} "mkdir -p $out");
   };
 }
