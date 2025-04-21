@@ -26,8 +26,8 @@ in {
             };
           })
           (pkgs.fetchzip {
-            url = "https://downloads.gtnewhorizons.com/ServerPacks/GT_New_Horizons_2.7.2_Server_Java_17-21.zip";
-            hash = "sha256-/1zYsc0P6X5guWHWX0Y57KL9kbzQNmQ+PJreq50wQOw=";
+            url = "https://downloads.gtnewhorizons.com/ServerPacks/GT_New_Horizons_2.7.4_Server_Java_17-21.zip";
+            hash = "sha256-wWGDbVwVe6989SyPjS0d/82oXTu//rHkDbjIVzFAVgY=";
             stripRoot=false;
           })
         ];
