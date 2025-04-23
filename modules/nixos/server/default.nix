@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 
 {
   # Add a data getter
