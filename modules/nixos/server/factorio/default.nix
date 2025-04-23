@@ -21,7 +21,7 @@
     };
   };
   environment.persistence."/nix/host/state/Servers/Factorio/Space-Age".directories = [
-    "/var/lib/factorio"
+    "/var/lib/private/factorio"
   ];
   system.allowedUnfree.packages = [
     "factorio-headless"
