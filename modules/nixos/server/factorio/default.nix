@@ -20,9 +20,10 @@
       "space-age" = true;
     };
   };
+  /*
   environment.persistence."/nix/host/state/Servers/Factorio/Space-Age".directories = [
     "/var/lib/factorio"
-  ];
+  ];*/
   system.allowedUnfree.packages = [
     "factorio-headless"
   ];
