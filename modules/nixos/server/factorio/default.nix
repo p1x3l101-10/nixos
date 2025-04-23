@@ -19,6 +19,7 @@
       quality = true;
       "space-age" = true;
     };
+    port = 25565;
   };
   environment.persistence."/nix/host/state/Servers/Factorio/Space-Age".directories = [
     "/var/lib/private/factorio"
