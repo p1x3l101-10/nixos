@@ -4,7 +4,7 @@
   services.factorio = {
     enable = true;
     package = (pkgs.factorio-headless.override {
-      versionsJson = builtins.toFile "versions.json" (builtins.toJSON (import ./versions.nix { inherit lib; }));
+      versionsJson = builtins.toFile "versions.json" (builtins.toJSON (import ./versions.nix));
     });
     requireUserVerification = false;
     nonBlockingSaving = true;
