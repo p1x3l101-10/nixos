@@ -22,7 +22,7 @@
     port = 25565;
   };
   environment.persistence."/nix/host/state/Servers/Factorio/Space-Age".directories = [
-    "/var/lib/private/factorio"
+    { directory = "/var/lib/private/factorio"; mode = "0700"; }
   ];
   system.allowedUnfree.packages = [
     "factorio-headless"
