@@ -2,7 +2,7 @@
 
 {
   services.factorio = {
-    enable = true;
+    enable = false;
     package = (pkgs.factorio-headless.override {
       versionsJson = builtins.toFile "versions.json" (builtins.toJSON (import ./versions.nix));
     });
