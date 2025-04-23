@@ -21,9 +21,9 @@ in
       modDrvs = unique (flatten (map recursiveDeps mods));
       enabledModsJson = if (enabledMods != null)
       then 
-        builtins.toFile "mods-list.json" (builtins.toJson enabledMods)
+        builtins.toFile "mods-list.json" (builtins.toJSON enabledMods)
       else
-        builtins.toFile "mods-list.json" (builtins.toJson {});
+        builtins.toFile "mods-list.json" (builtins.toJSON {});
     in
     stdenv.mkDerivation {
       name = "factorio-mod-directory";
