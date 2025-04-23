@@ -10,7 +10,7 @@
     nonBlockingSaving = true;
     openFirewall = true;
     game-password = "AdAstra";
-    allowedPlayers = getdata [ "factorioUsername" ] [
+    allowedPlayers = userdata [ "factorioUsername" ] [
       "scott"
     ];
     modList = { # Dlc server
