@@ -10,6 +10,40 @@ let
     }
   else null;
   modDir = newUtils.mkModDirDrv cfg.mods cfg.mods-dat cfg.modList;
+  # Copied from the module
+  stateDir = "/var/lib/${cfg.stateDirName}";
+  mkSavePath = name: "${stateDir}/saves/${name}.zip";
+  serverSettings = {
+    name = cfg.game-name;
+    description = cfg.description;
+    visibility = {
+      public = cfg.public;
+      lan = cfg.lan;
+    };
+    username = cfg.username;
+    password = cfg.password;
+    token = cfg.token;
+    game_password = cfg.game-password;
+    require_user_verification = cfg.requireUserVerification;
+    max_upload_in_kilobytes_per_second = 0;
+    minimum_latency_in_ticks = 0;
+    ignore_player_limit_for_returning_players = false;
+    allow_commands = "admins-only";
+    autosave_interval = cfg.autosave-interval;
+    autosave_slots = 5;
+    afk_autokick_interval = 0;
+    auto_pause = true;
+    only_admins_can_pause_the_game = true;
+    autosave_only_on_server = true;
+    non_blocking_saving = cfg.nonBlockingSaving;
+  } // cfg.extraSettings;
+  serverSettingsString = builtins.toJSON (lib.filterAttrsRecursive (n: v: v != null) serverSettings);
+  serverSettingsFile = pkgs.writeText "server-settings.json" serverSettingsString;
+  playerListOption =
+    name: list:
+    lib.optionalString (
+      list != [ ]
+    ) "--${name}=${pkgs.writeText "${name}.json" (builtins.toJSON list)}";
 in {
   options = with lib; {
     services.factorio.modList = mkOption {
