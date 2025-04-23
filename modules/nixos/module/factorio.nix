@@ -53,7 +53,7 @@ in {
   };
   config = lib.mkIf cfg.enable {
     systemd.services.factorio = {
-      preStart = lib.mkForce
+      preStart = lib.mkForce (
         (toString [
           "test -e ${stateDir}/saves/${cfg.saveName}.zip"
           "||"
@@ -66,9 +66,9 @@ in {
           "\necho ${lib.strings.escapeShellArg serverSettingsString}"
           + " \"$(cat ${cfg.extraSettingsFile})\" | ${lib.getExe pkgs.jq} -s add"
           + " > ${stateDir}/server-settings.json"
-        ));
+        )));
       serviceConfig = {
-        ExecStart = lib.mkForce toString [
+        ExecStart = lib.mkForce (toString [
           "${cfg.package}/bin/factorio"
           "--config=${cfg.configFile}"
           "--port=${toString cfg.port}"
@@ -82,7 +82,7 @@ in {
           (playerListOption "server-adminlist" cfg.admins)
           (playerListOption "server-whitelist" cfg.allowedPlayers)
           (lib.optionalString (cfg.allowedPlayers != [ ]) "--use-server-whitelist")
-        ];
+        ]);
       };
     };
   };
