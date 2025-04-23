@@ -1,11 +1,9 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, userdata, ... }:
 
-let
-  getdata = key: names: (import ../userdata.nix { inherit lib; }).getdata key names;
-in {
+{
   users.users.proxy = {
     isNormalUser = true;
-    openssh.authorizedKeys.keys = getdata [ "proxyKey" ] [
+    openssh.authorizedKeys.keys = userdata [ "proxyKey" ] [
       "scott"
       "cayden"
       "kenton"

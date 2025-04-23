@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, userdata, ... }:
 
 let
   fetchGHRelease = { owner, repo, version, fileName, hash }: pkgs.fetchurl {
@@ -132,7 +132,7 @@ in {
       rconStartup = [
         "difficulty hard"
       ];
-      whitelist = getdata [ "mcUsername" ] (import ./overrides/whitelist.nix);
+      whitelist = userdata [ "mcUsername" ] (import ./overrides/whitelist.nix);
     };
   };
   # Persist server

@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, userdata, ... }:
 
 let
   genEmc = set: (
@@ -146,7 +146,7 @@ in
       memory = 8;
       port = 25565;
       openFirewall = true;
-      whitelist = getdata [ "mcUsername" ] (import ./overrides/whitelist.nix);
+      whitelist = userdata [ "mcUsername" ] (import ./overrides/whitelist.nix);
       rconStartup = [
         "gamerule playersSleepingPercentage 10"
       ];

@@ -1,11 +1,10 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, userdata, ... }:
 
 let
   fetchGHRelease = { owner, repo, version, fileName, hash }: pkgs.fetchurl {
     url = "https://github.com/${owner}/${repo}/releases/download/${version}/${fileName}";
     inherit hash;
   };
-  getdata = key: names: (import ../userdata.nix { inherit lib; }).getdata key names;
 in {
   services.minecraft = {
     enable = true;
@@ -52,7 +51,7 @@ in {
         "difficulty hard"
       ];
       customServer = "lwjgl3ify-forgePatches.jar";
-      whitelist = getdata [ "mcUsername" ] (import ./overrides/whitelist.nix);
+      whitelist = userdata [ "mcUsername" ] (import ./overrides/whitelist.nix);
     };
   };
   virtualisation.oci-containers.containers.minecraft.volumes = [
