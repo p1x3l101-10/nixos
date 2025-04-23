@@ -19,7 +19,7 @@ in {
   };
   config = lib.mkIf cfg.enable {
     systemd.services.factorio = {
-      lib.mkForce preStart =
+      preStart = lib.mkForce
         (toString [
           "test -e ${stateDir}/saves/${cfg.saveName}.zip"
           "||"
@@ -34,7 +34,7 @@ in {
           + " > ${stateDir}/server-settings.json"
         ));
       serviceConfig = {
-        lib.mkForce ExecStart = toString [
+        ExecStart = lib.mkForce toString [
           "${cfg.package}/bin/factorio"
           "--config=${cfg.configFile}"
           "--port=${toString cfg.port}"
