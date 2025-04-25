@@ -4,7 +4,7 @@
   services.minecraft = {
     enable = true;
     generic = {
-      pack = (
+      pack = builtins.toString (
         pkgs.fetchzip {
           url = "https://pixeldrain.com/api/file/T7a45JRE?download";
           hash = lib.fakeHash;
