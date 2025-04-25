@@ -4,6 +4,7 @@
   services.minecraft = {
     enable = true;
     generic = {
+      forceUpdate = true;
       pack = builtins.toString (lib.internal.builders.genericPack {
         packList = [
           (pkgs.fetchzip {
