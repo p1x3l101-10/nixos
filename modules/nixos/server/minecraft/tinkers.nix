@@ -6,7 +6,7 @@
     generic = {
       pack = builtins.toString (
         pkgs.fetchzip {
-          url = "https://pixeldrain.com/api/file/T7a45JRE?download";
+          url = "https://pixeldrain.com/api/file/T7a45JRE";
           hash = lib.fakeHash;
           stripRoot=false;
         }
