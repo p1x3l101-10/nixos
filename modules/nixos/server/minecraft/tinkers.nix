@@ -3,19 +3,6 @@
 {
   services.minecraft = {
     enable = true;
-    generic = {
-      forceUpdate = true;
-      pack = builtins.toString (lib.internal.builders.genericPack {
-        packList = [
-          (pkgs.fetchzip {
-            url = "https://pixeldrain.com/api/file/Ly4psV1s";
-            hash = "sha256-uUMWycVrJa0GwvPAatVjjGVEEBxIG3wfXnyFpI4+fXQ=";
-            stripRoot=false;
-            extension = "zip";
-          })
-        ];
-      });
-    };
     settings = {
       eula = true;
       type = "forge";
