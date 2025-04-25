@@ -19,7 +19,12 @@
       eula = true;
       type = "forge";
       version = "1.12.2";
-      whitelist = userdata [ "mcUsername" ] (import ./overrides/whitelist.nix);
+      whitelist = userdata [ "mcUsername" ] [
+          "cayden"
+          "spradley"
+          "scott"
+          "dylan"
+      ];
       rconStartup = [
         "gamerule playersSleepingPercentage 10"
       ];
