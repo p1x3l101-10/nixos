@@ -9,6 +9,7 @@
           url = "https://pixeldrain.com/api/file/T7a45JRE";
           hash = lib.fakeHash;
           stripRoot=false;
+          extension = "zip";
         }
       );
     };
