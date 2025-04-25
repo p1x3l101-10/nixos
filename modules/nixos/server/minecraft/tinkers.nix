@@ -9,7 +9,8 @@
         packList = [
           (pkgs.fetchzip {
             url = "https://pixeldrain.com/api/file/Ly4psV1s";
-            hash = lib.fakeHash;
+            hash = "";
+            stripRoot=false;
             extension = "zip";
           })
         ];
