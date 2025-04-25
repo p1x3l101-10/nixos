@@ -2,6 +2,6 @@
 
 {
   imports = [
-    #./gtnh.nix
+    ./tinkers.nix
   ];
 }
