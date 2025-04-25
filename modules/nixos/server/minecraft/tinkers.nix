@@ -8,8 +8,8 @@
       pack = builtins.toString (lib.internal.builders.genericPack {
         packList = [
           (pkgs.fetchzip {
-            url = "https://pixeldrain.com/api/file/T7a45JRE";
-            hash = "sha256-pvyElDBta/fTAGcFkM3rz00Zfi+AO0VTgqf+JxJOuTE=";
+            url = "https://pixeldrain.com/api/file/Ly4psV1s";
+            hash = lib.fakeHash;
             extension = "zip";
           })
         ];
