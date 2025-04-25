@@ -9,7 +9,6 @@
           (pkgs.fetchzip {
             url = "https://pixeldrain.com/api/file/T7a45JRE";
             hash = "sha256-pvyElDBta/fTAGcFkM3rz00Zfi+AO0VTgqf+JxJOuTE=";
-            stripRoot=false;
             extension = "zip";
           })
         ];
