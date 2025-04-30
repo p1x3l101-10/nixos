@@ -23,12 +23,7 @@
         "gamerule playersSleepingPercentage 10"
       ];
       memory = 8;
-      java = {
-        version = "17-alpine";
-        args = [
-          "-Djava.security.manager=disallow"
-        ];
-      };
+      java.version = "8";
     };
   };
   # Persist server
