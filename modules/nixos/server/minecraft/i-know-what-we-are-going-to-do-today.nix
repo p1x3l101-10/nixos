@@ -18,6 +18,7 @@
       ];
       ops = userdata [ "mcUsername" ] [
           "scott"
+          "spradley"
       ];
       rconStartup = [
         "gamerule playersSleepingPercentage 10"
