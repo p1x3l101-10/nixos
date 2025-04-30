@@ -24,7 +24,7 @@
       ];
       memory = 8;
       java = {
-        version = "17-graalvm";
+        version = "17-alpine";
         args = [
           "-Djava.security.manager=disallow"
         ];
