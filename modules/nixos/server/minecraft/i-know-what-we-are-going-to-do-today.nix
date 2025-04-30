@@ -7,6 +7,7 @@
     settings = {
       eula = true;
       type = "forge";
+      forgeVersion = "36.2.26";
       version = "1.16.5";
       whitelist = userdata [ "mcUsername" ] [
           "cayden"
