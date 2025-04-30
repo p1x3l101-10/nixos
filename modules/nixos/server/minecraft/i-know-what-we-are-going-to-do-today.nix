@@ -23,7 +23,12 @@
         "gamerule playersSleepingPercentage 10"
       ];
       memory = 8;
-      java.version = "17-graalvm";
+      java = {
+        version = "17-graalvm";
+        args = [
+          "-Djava.security.manager=allow"
+        ];
+      };
     };
   };
   # Persist server
