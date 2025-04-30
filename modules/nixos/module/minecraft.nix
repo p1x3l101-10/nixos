@@ -137,6 +137,9 @@ in
         };
       };
     };
+    packwiz = {
+      url = mkMcOption "PackWiz pack.toml url";
+    };
     settings = {
       eula = mkEnableOption "Agree to EULA";
       openFirewall = mkEnableOption "Open firewall ports";
@@ -278,6 +281,7 @@ in
         (mkEnvRawList "JVM_XX_OPTS" cfg.settings.java.XXargs " ")
         (mkEnvRawList "JVM_DD_OPTS" cfg.settings.java.DDargs " ")
         (mkEnvRawList "CURSEFORGE_FILES" (lib.forEach cfg.curseforge.mods (x: lib.internal.minecraft.translateModName x "curseforge")) "\n")
+        (mkEnvRaw "PACKWIZ_URL" cfg.packwiz.url)
       ]));
       ports = [
         "${builtins.toString cfg.settings.port}:25565"
