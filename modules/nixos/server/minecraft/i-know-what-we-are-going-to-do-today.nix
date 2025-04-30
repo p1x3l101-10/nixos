@@ -26,7 +26,7 @@
       java = {
         version = "17-graalvm";
         args = [
-          "-Djava.security.manager=allow"
+          "-Djava.security.manager=disallow"
         ];
       };
     };
