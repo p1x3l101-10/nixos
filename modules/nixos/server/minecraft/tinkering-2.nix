@@ -29,6 +29,7 @@
             url = "https://git.sleeping.town/unascribed/unsup/releases/download/v1.1-pre9/unsup-1.1-pre9.jar";
             sha256 = "sha256:fd17f95dd938399bfbd31e7b04d7a04dc62ebecc43b8b6ae3863890c429aead7";
           }}"
+          "-Dunsup.disableReconciliation=true"
         ];
       };
     };
