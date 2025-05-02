@@ -7,7 +7,7 @@
       eula = true;
       type = "forge";
       version = "1.12.2";
-      forgeVersion = "14.23.5.60";
+      forgeVersion = "14.23.5.2860";
       whitelist = userdata [ "mcUsername" ] [
           "cayden"
           "spradley"
