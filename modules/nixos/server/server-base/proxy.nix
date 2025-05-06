@@ -10,6 +10,7 @@
       "dylan"
       "spradley"
       "daniel"
+      "david"
     ];
     shell = pkgs.shadow;
     home = "/var/empty";

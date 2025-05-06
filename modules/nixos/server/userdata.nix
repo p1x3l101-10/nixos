@@ -30,6 +30,9 @@ lib.fix (self: {
     daniel = {
       proxyKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILjJy6JkD/3tZvJst4g/84213u8Pexhi7WRrB8XztSrN daniell@SS-Mac-daniell.local";
     };
+    david = {
+      proxyKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAuX+dijhcCefNUgybmINO5PBRTcErJchyD6ilo1QtDu baileyd@SS-Mac-baileyd.local";
+    };
   };
   getdata = key: names: (lib.lists.flatten (lib.lists.forEach names (x:
     lib.attrsets.getAttrFromPath ([ x ] ++ (lib.lists.flatten [ key ])) self.data
