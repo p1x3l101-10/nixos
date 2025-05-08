@@ -231,6 +231,7 @@ in
         default = [];
         description = "List of players to op";
       };
+      spawnProtection = mkMcIntOption "Spawn protection";
     };
     autoPause = {
       enable = mkEnableOption "Autopause";
@@ -282,6 +283,7 @@ in
         (mkEnvRawList "JVM_DD_OPTS" cfg.settings.java.DDargs " ")
         (mkEnvRawList "CURSEFORGE_FILES" (lib.forEach cfg.curseforge.mods (x: lib.internal.minecraft.translateModName x "curseforge")) "\n")
         (mkEnvRaw "PACKWIZ_URL" cfg.packwiz.url)
+        (mkEnv "SPAWN_PROTECTION" cfg.settings.spawnProtection)
       ]));
       ports = [
         "${builtins.toString cfg.settings.port}:25565"

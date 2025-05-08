@@ -32,6 +32,7 @@
           "-Dunsup.disableReconciliation=true"
         ];
       };
+      spawnProtection = 0;
     };
   };
   # Persist server
