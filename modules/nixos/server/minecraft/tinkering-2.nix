@@ -26,8 +26,8 @@
         version = "8";
         args = [
           "-javaagent:${builtins.fetchurl {
-            url = "https://git.sleeping.town/unascribed/unsup/releases/download/v1.1-pre9/unsup-1.1-pre9.jar";
-            sha256 = "sha256:fd17f95dd938399bfbd31e7b04d7a04dc62ebecc43b8b6ae3863890c429aead7";
+            url = "https://git.sleeping.town/unascribed/unsup/releases/download/v1.1-beta1/unsup-1.1-beta1.jar";
+            sha256 = "sha256:0xa2zdfb9v1qgrxw7d45vca8ygsgrjd5x2xbmxz7v0s3b2ywr1zx";
           }}"
           "-Dunsup.disableReconciliation=true"
         ];
