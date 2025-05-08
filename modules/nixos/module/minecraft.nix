@@ -231,7 +231,7 @@ in
         default = [];
         description = "List of players to op";
       };
-      spawnProtection = mkMcIntOption "Spawn protection";
+      spawnProtection = mkMcIntOption "Spawn protection radius (0 is off)";
     };
     autoPause = {
       enable = mkEnableOption "Autopause";
