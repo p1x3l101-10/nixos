@@ -6,11 +6,7 @@
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
     virtualHosts."_" = {
-      listen = [
-        { addr = "0.0.0.0"; port = 443; ssl = true; }
-        { addr = "0.0.0.0"; port = 80; ssl = false; }
-      ];
-
+      onlySSL = true; # Figura expects https, no reason to use http when its not being exposed
       enableACME = false;  # No domain
       sslCertificate = "/run/secrets/nginx/nginx.crt";
       sslCertificateKey = "/run/secrets/nginx/nginx.key";
