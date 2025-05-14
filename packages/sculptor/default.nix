@@ -48,8 +48,9 @@ let
     pname = "sculptor-data-files";
     inherit (sculptor-bin) version src;
     installPhase = ''
-      mkdir -p $out/share/factory/etc/sculptor
+      mkdir -p $out/share/factory/etc/sculptor $out/bin
       cp ./Config.toml.example $out/share/factory/etc/sculptor/Config.toml
+      touch $out/bin/.split
     '';
   };
 in
