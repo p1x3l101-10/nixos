@@ -116,7 +116,9 @@ in {
           inherit (cfg.config) assetsUpdaterEnabled limitations advancedUsers;
           motd = {
             inherit (cfg.config.motd) displayServerInfo sInfoUptime sInfoAuthClients sInfoDrawIndent;
-            customText = builtins.toJSON cfg.config.motd.customText;
+            customText = ''
+              ${builtins.toJSON cfg.config.motd.customText};
+            '';
           };
         };
       };
