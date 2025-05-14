@@ -20,6 +20,10 @@
         prefixLength = 24;
       }];
     };
+    interfaces.host0.ipv4.addresses = [{
+      address = "10.10.10.1";
+      prefixLength = 24;
+    }];
   };
   environment.persistence."/nix/host/cache".directories = [
     { directory = "/var/lib/machines"; mode = "0700"; }
