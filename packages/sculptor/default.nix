@@ -50,7 +50,7 @@ let
     installPhase = ''
       mkdir -p $out/share/factory/etc/sculptor $out/bin
       cp ./Config.toml.example $out/share/factory/etc/sculptor/Config.toml
-      touch $out/bin/.split
+      touch $out/bin/split
     '';
   };
 in
@@ -64,6 +64,7 @@ buildEnv {
     makeWrapper
   ];
   postBuild = ''
+    rm $out/bin/split
     wrapProgram $out/bin/sculptor \
         --set RUST_CONFIG "/etc/sculptor/Config.toml" \
         --set ASSETS_FOLDER "/var/lib/sculptor/assets" \
