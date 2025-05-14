@@ -109,7 +109,7 @@ in {
     ];
     environment.etc."sculptor/Config.toml" = {
       mode = "0444";
-      text = lib.toToml {
+      text = pkgs.formats.toml {
         # Stupid JSON processing
         listen = with cfg.config.listen; "${address}:${port}";
         inherit (cfg.config) assetsUpdaterEnabled limitations advancedUsers;
