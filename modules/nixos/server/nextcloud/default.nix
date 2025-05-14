@@ -4,7 +4,7 @@
 
 let
   # Habit
-  cfg.enable = true;
+  cfg.enable = false;
 in {
   config = lib.modules.mkIf cfg.enable (lib.internal.attrsets.mergeAttrs [
     {
