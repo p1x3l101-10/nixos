@@ -125,6 +125,10 @@ in {
       description = "The Sculptor";
       wantedBy = [ "multi-user.target" ];
       after = [ "network.target" ];
+      reloadTriggers = [
+        "/etc/sculptor/Config.toml"
+      ];
+      reloadIfChanged = true;
       serviceConfig = {
         ExecStart = "${cfg.package}/bin/sculptor";
         StateDirectory = "sculptor";
