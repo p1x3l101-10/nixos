@@ -128,7 +128,7 @@ in {
       restartTriggers = [
         "/etc/sculptor/Config.toml"
       ];
-      reloadIfChanged = true;
+      restartIfChanged = true;
       serviceConfig = {
         ExecStart = "${cfg.package}/bin/sculptor";
         StateDirectory = "sculptor";
