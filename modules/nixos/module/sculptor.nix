@@ -109,7 +109,7 @@ in {
     ];
     environment.etc."sculptor/Config.toml" = {
       mode = "0444";
-      text = pkgs.formats.toml {
+      text = (pkgs.formats.toml { }).generate "Config.toml" {
         value = {
           # Stupid JSON processing
           listen = with cfg.config.listen; "${address}:${port}";
