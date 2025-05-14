@@ -24,6 +24,7 @@ rustPlatform.buildRustPackage (finalAttrs: {
   nativeBuiltInputs = [
     makeWrapper
     openssl.dev
+    pkgconf
   ];
 
   postInstallPhase = ''
