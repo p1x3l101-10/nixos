@@ -59,6 +59,7 @@ buildEnv {
   name = "sculptor";
   paths = [
     sculptor-bin
+    sculptor-data
   ];
   buildInputs = [
     makeWrapper
