@@ -125,7 +125,7 @@ in {
       description = "The Sculptor";
       wantedBy = [ "multi-user.target" ];
       after = [ "network.target" ];
-      reloadTriggers = [
+      restartTriggers = [
         "/etc/sculptor/Config.toml"
       ];
       reloadIfChanged = true;
