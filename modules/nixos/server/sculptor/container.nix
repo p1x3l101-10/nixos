@@ -5,6 +5,7 @@
     # Modules needed
     ../../module/default.nix
     # Container
+    ./network.nix
     ./nginx.nix
     ./sculptor.nix
   ];
