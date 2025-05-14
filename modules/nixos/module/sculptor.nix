@@ -2,7 +2,7 @@
 
 let
   cfg = config.services.sculptor;
-  stringOpt = default: mkOption {
+  stringOpt = default: lib.mkOption {
     type = lib.types.str;
     inherit default;
   };
