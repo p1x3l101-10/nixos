@@ -5,7 +5,7 @@
     enable = true;
     openFirewall = true;
     config = {
-      listen.port = 4443; # Exposed on 7002
+      listen.port = 25565; # Exposed on 25565
     };
   };
   environment.persistence."/nix/host/state/Servers/Sculptor".directories = [
