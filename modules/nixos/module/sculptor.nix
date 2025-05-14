@@ -20,6 +20,16 @@ in {
         type = types.str;
         default = "0.0.0.0:6665";
       };
+      authProviders = mkOption {
+        type = with types; listOf (submodule { options = {
+          name = mkOption { type = types.str; };
+          url = mkOption { type = types.str; };
+        };});
+        description = "Can't work without at least one provider!";
+        default = [
+          { name = "Mojang"; url = "https://sessionserver.mojang.com/session/minecraft/hasJoined"; }
+        ];
+      };
       listen = {
         address = stringOpt "0.0.0.0";
         port = mkOption {
