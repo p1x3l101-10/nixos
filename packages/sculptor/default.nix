@@ -2,7 +2,7 @@
 , fetchFromGitHub
 , rustPlatform
 , makeWrapper
-, pkgconf
+, pkg-config
 , openssl
 }:
 
@@ -24,7 +24,7 @@ rustPlatform.buildRustPackage (finalAttrs: {
   nativeBuiltInputs = [
     makeWrapper
     openssl.dev
-    pkgconf
+    pkg-config
   ];
 
   postInstallPhase = ''
