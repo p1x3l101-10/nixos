@@ -1,5 +1,5 @@
 { ... }:
 
 {
-  services.sculptor.enable = true
+  services.sculptor.enable = true;
 }
