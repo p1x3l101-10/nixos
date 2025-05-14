@@ -2,6 +2,8 @@
 , fetchFromGitHub
 , rustPlatform
 , makeWrapper
+, pkgconf
+, openssl
 }:
 
 rustPlatform.buildRustPackage (finalAttrs: {
@@ -15,7 +17,13 @@ rustPlatform.buildRustPackage (finalAttrs: {
     hash = "sha256-+Jqvxi1v09g686A6bJ+mI6tp9WSYpHSU0MD8j1chV54=";
   };
 
-  nativeBuiltInputs = [ makeWrapper ];
+  buildInputs = [
+    openssl
+  ];
+
+  nativeBuiltInputs = [
+    makeWrapper
+  ];
 
   postInstallPhase = ''
     wrapProgram $out/bin/sculptor \
