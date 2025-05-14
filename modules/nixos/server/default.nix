@@ -12,6 +12,7 @@
     ./nextcloud
     ./nix-serve
     ./s3
+    ./sculptor
     ./server-base
     ./tailscale
     ./terraria

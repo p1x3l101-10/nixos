@@ -1,0 +1,42 @@
+{ lib
+, fetchFromGitHub
+, rustPlatform
+, makeWrapper
+}:
+
+rustPlatform.buildRustPackage (finalAttrs: {
+  pname = "sculptor";
+  version = "0.4.0";
+
+  src = fetchFromGitHub {
+    owner = "shiroyashik";
+    repo = finalAttrs.pname;
+    tag = "v${finalAttrs.version}";
+    hash = lib.fakeHash;
+  };
+
+  nativeBuiltInputs = [ makeWrapper ];
+
+  postInstallPhase = ''
+    wrapProgram $out/bin/sculptor \
+      --set RUST_CONFIG "/etc/sculptor/Config.toml" \
+      --set ASSETS_FOLDER "/var/lib/sculptor/assets" \
+      --set AVATARS_FOLDER "/var/lib/sculptor/avatars" \
+      --set LOGS_FOLDER "/var/log/sculptor"
+  '';
+
+  cargoHash = lib.fakeHash;
+
+  # There are no tests
+  doCheck = false;
+
+  meta = with lib; {
+    name = "Sculptor";
+    description = "Unofficial backend V2 for minecraft mod Figura";
+    homepage = "https://github.com/shiroyashik/sculptor?";
+    changelog = "https://github.com/shiroyashik/sculptor/releases/tag/v${finalAttrs.version}";
+    license = lib.licenses.gpl3;
+    mainProgram = "sculptor";
+    platforms = lib.platforms.unix;
+  };
+})
