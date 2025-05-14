@@ -124,7 +124,7 @@ in {
       wantedBy = [ "multi-user.target" ];
       after = [ "network.target" ];
       serviceConfig = {
-        ExecStart = "${cfg.package}/bin/${cfg.package.mainProgram}";
+        ExecStart = "${cfg.package}/bin/${cfg.package.meta.mainProgram}";
         StateDirectory = "sculptor";
         LogsDirectory = "sculptor";
         ConfigurationDirectory = "sculptor";
