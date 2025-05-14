@@ -44,15 +44,15 @@ let
       platforms = lib.platforms.unix;
     };
   });
-  sculptor-data = stdenv.mkDerivation {
+  sculptor-data = stdenv.mkDerivation (finalAttrs: {
     pname = "sculptor-data-files";
     inherit (sculptor-bin) version src;
     installPhase = ''
       mkdir -p $out/share/factory/etc/sculptor $out/bin
-      cp ./Config.toml.example $out/share/factory/etc/sculptor/Config.toml
+      cp ${finalAttrs.src}/Config.toml.example $out/share/factory/etc/sculptor/Config.toml
       touch $out/bin/split
     '';
-  };
+  });
 in
 
 buildEnv {
