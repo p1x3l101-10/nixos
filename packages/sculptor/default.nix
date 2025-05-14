@@ -25,7 +25,7 @@ rustPlatform.buildRustPackage (finalAttrs: {
       --set LOGS_FOLDER "/var/log/sculptor"
   '';
 
-  cargoHash = lib.fakeHash;
+  cargoHash = "sha256-N7j0zKeCrBw6PzfXYnHfn/4Q29bMOzfeWaKrf9ZzZPk=";
 
   # There are no tests
   doCheck = false;
