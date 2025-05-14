@@ -8,7 +8,7 @@ let
 in {
   config = lib.modules.mkIf cfg.enable (lib.internal.attrsets.mergeAttrs [
     {
-      containers.nextcloud = {
+      containers.sculptor = {
         autoStart = true;
         privateNetwork = true;
         localAddress = "10.10.10.4/24";
