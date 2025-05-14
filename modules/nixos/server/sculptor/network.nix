@@ -22,7 +22,6 @@
     dnsovertls = "true";
   };
   networking = {
-    firewall.allowedTCPPorts = [ 80 ];
     # Disable alterantives
     dhcpcd.enable = false;
     networkmanager.enable = lib.mkForce false;
