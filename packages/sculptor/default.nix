@@ -12,7 +12,7 @@ rustPlatform.buildRustPackage (finalAttrs: {
     owner = "shiroyashik";
     repo = finalAttrs.pname;
     tag = "v${finalAttrs.version}";
-    hash = lib.fakeHash;
+    hash = "sha256-+Jqvxi1v09g686A6bJ+mI6tp9WSYpHSU0MD8j1chV54=";
   };
 
   nativeBuiltInputs = [ makeWrapper ];
