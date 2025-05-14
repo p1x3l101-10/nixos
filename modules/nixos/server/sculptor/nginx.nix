@@ -18,7 +18,7 @@
   };
   networking.firewall.allowedTCPPorts = [ 80 443 ];
   # User fixes
-  "10-fix-nginx-keys" = {
+  systemd.tmpfiles.settings."10-fix-nginx-keys" = {
     "/nix/host/keys/nginx-certs".Z = {
       user = config.services.nginx.user;
       group = config.services.nginx.group;
