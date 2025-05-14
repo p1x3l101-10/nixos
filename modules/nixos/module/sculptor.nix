@@ -109,7 +109,7 @@ in {
     ];
     environment.etc."sculptor/Config.toml" = {
       mode = "0444";
-      text = (pkgs.formats.toml { }).generate "Config.toml" {
+      text = ((pkgs.formats.toml { }).generate "Config.toml" {
         value = {
           # Stupid JSON processing
           listen = with cfg.config.listen; "${address}:${port}";
@@ -117,11 +117,11 @@ in {
           motd = {
             inherit (cfg.config.motd) displayServerInfo sInfoUptime sInfoAuthClients sInfoDrawIndent;
             customText = ''
-              ${builtins.toJSON cfg.config.motd.customText};
+              ${builtins.toJSON cfg.config.motd.customText}
             '';
           };
         };
-      };
+      });
     };
     systemd.services.sculptor = {
       description = "The Sculptor";
