@@ -149,6 +149,6 @@ in {
         MemoryDenyWriteExecute = true;
       };
     };
+    networking.firewall.allowedUDPPorts = lib.optional cfg.openFirewall cfg.config.listen.port;
   };
-  networking.firewall.allowedUDPPorts = lib.optional cfg.openFirewall cfg.config.listen.port;
 }
