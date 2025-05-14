@@ -21,7 +21,7 @@ rustPlatform.buildRustPackage (finalAttrs: {
     openssl
   ];
 
-  nativeBuiltInputs = [
+  nativeBuildInputs = [
     makeWrapper
     openssl.dev
     pkg-config
