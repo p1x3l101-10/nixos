@@ -110,12 +110,14 @@ in {
     environment.etc."sculptor/Config.toml" = {
       mode = "0444";
       text = pkgs.formats.toml {
-        # Stupid JSON processing
-        listen = with cfg.config.listen; "${address}:${port}";
-        inherit (cfg.config) assetsUpdaterEnabled limitations advancedUsers;
-        motd = {
-          inherit (cfg.config.motd) displayServerInfo sInfoUptime sInfoAuthClients sInfoDrawIndent;
-          customText = builtins.toJSON cfg.config.motd.customText;
+        value = {
+          # Stupid JSON processing
+          listen = with cfg.config.listen; "${address}:${port}";
+          inherit (cfg.config) assetsUpdaterEnabled limitations advancedUsers;
+          motd = {
+            inherit (cfg.config.motd) displayServerInfo sInfoUptime sInfoAuthClients sInfoDrawIndent;
+            customText = builtins.toJSON cfg.config.motd.customText;
+          };
         };
       };
     };
