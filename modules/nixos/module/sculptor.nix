@@ -16,10 +16,6 @@ in {
     };
     openFirewall = mkEnableOption "opening firewall";
     config = {
-      listen = mkOption {
-        type = types.str;
-        default = "0.0.0.0:6665";
-      };
       authProviders = mkOption {
         type = with types; listOf (submodule { options = {
           name = mkOption { type = types.str; };
