@@ -49,7 +49,7 @@ let
     inherit (sculptor-bin) version src;
     installPhase = ''
       mkdir -p $out/share/factory/etc/sculptor $out/bin
-      cp ${finalAttrs.src}/Config.toml.example $out/share/factory/etc/sculptor/Config.toml
+      cp ${finalAttrs.src}/Config.example.toml $out/share/factory/etc/sculptor/Config.toml
       touch $out/bin/split
     '';
   });
