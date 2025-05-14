@@ -2,7 +2,7 @@
 
 {
   services.tailscale = {
-    enable = true;
+    enable = false;
     openFirewall = true;
     authKeyFile = "/var/lib/tailscale/authKey";
   };
