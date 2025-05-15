@@ -19,10 +19,6 @@
     ];
     interfaces.veth0 = {
       useDHCP = false;
-      ipv4.addresses = [{
-        address = "10.10.10.2";
-        prefixLength = 24;
-      }];
     };
   };
   environment.persistence."/nix/host/cache".directories = [
