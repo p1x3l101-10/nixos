@@ -40,20 +40,16 @@ in {
         };
         routingPolicyRules = [
           {
-            routingPolicyRuleConfig = {
-              InvertRule = true;
-              FirewallMark = wgFwMark;
-              Table = wgTable;
-              Priority = 10;
-            };
+            InvertRule = true;
+            FirewallMark = wgFwMark;
+            Table = wgTable;
+            Priority = 10;
           }
         ];
         routes = [
           {
-            routeConfig = {
-              Destination = "0.0.0.0/0";
-              Table = wgTable;
-            };
+            Destination = "0.0.0.0/0";
+            Table = wgTable;
           }
         ];
         linkConfig = {
