@@ -21,6 +21,14 @@
       locations."/" = {
         proxyPass = "http://127.0.0.1:25576";
       };
+      # Websocket
+      extraConfig = ''
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+      '';
     };
   };
   networking.firewall.allowedTCPPorts = [ 25575 ];
