@@ -9,17 +9,21 @@
   networking = {
     nat = {
       enable = true;
-      internalInterfaces = [ "ve-+" "vb-+" "br0" ];
+      internalInterfaces = [ "ve-+" "vb-+" "br0" "veth0" ];
       externalInterface = "enp2s0";
       enableIPv6 = true;
     };
     bridges.br0.interfaces = [
-      "eth0"
+      "enp2s0"
+      "veth0"
     ];
-    interfaces.host0.ipv4.addresses = [{
-      address = "10.10.10.1";
-      prefixLength = 24;
-    }];
+    interfaces.veth0 = {
+      useDHCP = false;
+      ipv4.addresses = [{
+        address = "10.10.10.2";
+        prefixLength = 24;
+      }];
+    };
   };
   environment.persistence."/nix/host/cache".directories = [
     { directory = "/var/lib/machines"; mode = "0700"; }
