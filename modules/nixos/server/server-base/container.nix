@@ -9,7 +9,7 @@
   networking = {
     nat = {
       enable = true;
-      internalInterfaces = [ "ve-*" "vb-*" "br0" ];
+      internalInterfaces = [ "ve-*" "vb-*" "ve-+" "vb-+" "br0" ];
       externalInterface = "enp2s0";
       enableIPv6 = true;
     };
@@ -24,7 +24,7 @@
       }];
     };
     firewall = {
-      trustedInterfaces = [ "ve-*" "vb-*" "br0" ];
+      trustedInterfaces = [ "ve-*" "vb-*" "ve-+" "vb-+" "br0" ];
     };
   };
   environment.persistence."/nix/host/cache".directories = [
