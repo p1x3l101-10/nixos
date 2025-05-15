@@ -1,7 +1,9 @@
 { config, lib, pkgs, ... }:
 
 {
-  boot.extraModulePackages = [config.boot.kernelPackages.wireguard];
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+    wireguard
+  ];
   systemd.network = {
     netdevs = {
       "10-wg0" = {
