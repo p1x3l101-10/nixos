@@ -20,7 +20,7 @@
 
       locations."/" = {
         proxyPass = "http://127.0.0.1:25576";
-        roxyWebsockets = true;
+        proxyWebsockets = true;
       };
     };
   };
