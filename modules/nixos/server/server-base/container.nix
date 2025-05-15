@@ -23,6 +23,9 @@
         prefixLength = 24;
       }];
     };
+    firewall = {
+      trustedInterfaces = [ "ve-+" "vb-+" "br0" ];
+    };
   };
   environment.persistence."/nix/host/cache".directories = [
     { directory = "/var/lib/machines"; mode = "0700"; }
