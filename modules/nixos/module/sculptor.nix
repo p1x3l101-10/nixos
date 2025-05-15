@@ -53,7 +53,7 @@ in {
               text = "The Sculptor";
             }
             {
-              text = "\\\\nUnofficial Backend V2 for Figura\\\\n\\\\n";
+              text = "\\nUnofficial Backend V2 for Figura\\n\\n";
             }
             {
               clickEvent = {
@@ -76,7 +76,7 @@ in {
                 action = "open_url";
                 value = "https://github.com/shiroyashik/sculptor";
               };
-              text = " me on GitHub!\\\\n\\\\n";
+              text = " me on GitHub!\\n\\n";
             }
           ];
         };
