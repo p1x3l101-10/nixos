@@ -8,8 +8,8 @@
     virtualHosts."_" = {
       onlySSL = true; # Figura expects https, no reason to use http when its not being exposed
       enableACME = false;  # No domain
-      sslCertificate = "/run/secrets/nginx/nginx.crt";
-      sslCertificateKey = "/run/secrets/nginx/nginx.key";
+      sslCertificate = "/nix/host/keys/nginx-certs/nginx.crt";
+      sslCertificateKey = "/nix/host/keys/nginx-certs/nginx.key";
       listen = [
         {
           addr = "0.0.0.0";
