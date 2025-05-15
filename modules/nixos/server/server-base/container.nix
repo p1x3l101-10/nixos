@@ -9,7 +9,7 @@
   networking = {
     nat = {
       enable = true;
-      internalInterfaces = [ "ve-+" ];
+      internalInterfaces = [ "ve-+" "vb-+" "br0" ];
       externalInterface = "enp2s0";
       enableIPv6 = true;
     };
