@@ -7,6 +7,7 @@
     kernel.sysctl."net.ipv4.ip_forward" = 1;
   };
   networking = {
+    /*
     nat = {
       enable = true;
       internalInterfaces = [ "ve-*" "vb-*" "ve-+" "vb-+" "br0" ];
@@ -27,6 +28,7 @@
       trustedInterfaces = [ "ve-*" "vb-*" "ve-+" "vb-+" "br0" ];
     };
     nftables.enable = true;
+    */
   };
   environment.persistence."/nix/host/cache".directories = [
     { directory = "/var/lib/machines"; mode = "0700"; }
