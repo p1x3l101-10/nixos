@@ -9,7 +9,7 @@ in {
   config = lib.modules.mkIf cfg.enable (lib.internal.attrsets.mergeAttrs [
     {
       containers.sculptor = {
-        autoStart = true;
+        #autoStart = true;
         privateNetwork = true;
         ephemeral = true;
         forwardPorts = [
