@@ -12,6 +12,8 @@ in {
         #autoStart = true;
         privateNetwork = true;
         ephemeral = true;
+        localAddress = "10.10.10.4/24";
+        hostBridge = "br0";
         forwardPorts = [
           {
             containerPort = 443;
