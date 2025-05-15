@@ -9,7 +9,7 @@
   networking = {
     nat = {
       enable = true;
-      internalInterfaces = [ "ve-*" "vb-*" "br0" "veth0" ];
+      internalInterfaces = [ "ve-+" "vb-+" "br0" "veth0" ];
       externalInterface = "enp2s0";
       enableIPv6 = true;
     };
@@ -23,7 +23,6 @@
         prefixLength = 24;
       }];
     };
-    nftables.enable = true; # switch to nftables
   };
   environment.persistence."/nix/host/cache".directories = [
     { directory = "/var/lib/machines"; mode = "0700"; }
