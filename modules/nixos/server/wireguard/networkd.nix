@@ -39,26 +39,27 @@ in {
           Domains = "~."; # default DNS route for all domains?
         };
         routingPolicyRules = [
-        {
-          routingPolicyRuleConfig = {
-            InvertRule = true;
-            FirewallMark = wgFwMark;
-            Table = wgTable;
-            Priority = 10;
-          };
-        }
-      ];
-      routes = [
-        {
-          routeConfig = {
-            Destination = "0.0.0.0/0";
-            Table = wgTable;
-          };
-        }
-      ];
-      linkConfig = {
-        ActivationPolicy = "manual"; # manually turn on/off wireguard tunnel with networkctl instead of automatically at boot
-        RequiredForOnline = "no";
+          {
+            routingPolicyRuleConfig = {
+              InvertRule = true;
+              FirewallMark = wgFwMark;
+              Table = wgTable;
+              Priority = 10;
+            };
+          }
+        ];
+        routes = [
+          {
+            routeConfig = {
+              Destination = "0.0.0.0/0";
+              Table = wgTable;
+            };
+          }
+        ];
+        linkConfig = {
+          ActivationPolicy = "manual"; # manually turn on/off wireguard tunnel with networkctl instead of automatically at boot
+          RequiredForOnline = "no";
+        };
       };
     };
   };
