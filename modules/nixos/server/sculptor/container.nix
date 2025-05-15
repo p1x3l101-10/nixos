@@ -9,6 +9,6 @@
     ./nginx.nix
     ./sculptor.nix
   ];
-  networking.firewall.enable = true;
+  networking.firewall.enable = false;
   system.stateVersion = "24.11";
 }
