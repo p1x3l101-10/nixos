@@ -52,10 +52,6 @@ in {
             Table = wgTable;
           }
         ];
-        linkConfig = {
-          ActivationPolicy = "manual"; # manually turn on/off wireguard tunnel with networkctl instead of automatically at boot
-          RequiredForOnline = "no";
-        };
       };
     };
   };
