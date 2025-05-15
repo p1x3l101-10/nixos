@@ -19,7 +19,7 @@
     interfaces.br0 = {
       useDHCP = false;
       ipv4.addresses = [{
-        address = "10.10.10.2/24";
+        address = "10.233.4.2/24";
         prefixLength = 24;
       }];
     };
