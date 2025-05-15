@@ -12,6 +12,7 @@ in {
         autoStart = true;
         privateNetwork = true;
         ephemeral = true;
+        hostAddress = "192.168.42.6";
         localAddress = "10.10.10.4/24";
         hostBridge = "br0";
         forwardPorts = [
