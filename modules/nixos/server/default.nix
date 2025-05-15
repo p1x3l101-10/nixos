@@ -14,7 +14,7 @@
     ./s3
     ./sculptor
     ./server-base
-    ./tailscale
     ./terraria
+    ./wireguard
   ];
 }
