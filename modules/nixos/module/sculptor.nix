@@ -50,11 +50,11 @@ in {
             { text = "You are connected to "; }
             {
               color = "gold";
-              text = "The Sculptor";
+              text = ''The Sculptor
+              '';
             }
             {
-              text = ''
-                Unofficial Backend V2 for Figura
+              text = ''Unofficial Backend V2 for Figura
                 
               '';
             }
@@ -71,7 +71,7 @@ in {
                 value = "https://github.com/shiroyashik/sculptor";
               };
               color = "gold";
-              text = "Star";
+              text = "Star ";
               underlined = true;
             }
             {
@@ -79,7 +79,7 @@ in {
                 action = "open_url";
                 value = "https://github.com/shiroyashik/sculptor";
               };
-              text = '' me on GitHub!
+              text = ''me on GitHub!
               
               '';
             }
