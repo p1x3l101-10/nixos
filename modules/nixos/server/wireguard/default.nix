@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./client.nix
-    ./firewall.nix
+    ./networkd.nix
   ];
 }
