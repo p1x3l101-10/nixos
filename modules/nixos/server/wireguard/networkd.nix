@@ -3,23 +3,25 @@
 {
   boot.extraModulePackages = [config.boot.kernelPackages.wireguard];
   systemd.network = {
-    "10-wg0" = {
-      netdevConfig = {
-        Kind = "wireguard";
-        Name = "wg0";
-        MTUBytes = "1300";
+    netdevs = {
+      "10-wg0" = {
+        netdevConfig = {
+          Kind = "wireguard";
+          Name = "wg0";
+          MTUBytes = "1300";
+        };
+        wireguardConfig = {
+          PrivateKeyFile = "/nix/host/keys/wireguard/psk";
+          ListenPort = 9918;
+        };
+        wireguardPeers = [
+          {
+            PublicKey = "ucgK70UvjSTHb534wxkkGzAuuSeqmjzq81nMw5F64A0=";
+            AllowedIPs = ["fc00::1/64" "10.100.0.1"];
+            Endpoint = "piplup.pp.ua:51820";
+          }
+        ];
       };
-      wireguardConfig = {
-        PrivateKeyFile = "/nix/host/keys/wireguard/psk";
-        ListenPort = 9918;
-      };
-      wireguardPeers = [
-        {
-          PublicKey = "ucgK70UvjSTHb534wxkkGzAuuSeqmjzq81nMw5F64A0=";
-          AllowedIPs = ["fc00::1/64" "10.100.0.1"];
-          Endpoint = "piplup.pp.ua:51820";
-        }
-      ];
     };
     networks.wg0 = {
       matchConfig.Name = "wg0";
