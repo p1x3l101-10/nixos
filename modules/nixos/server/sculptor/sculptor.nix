@@ -6,7 +6,7 @@
     package = pkgs.callPackage ../../../../packages/sculptor { };
     openFirewall = true;
     config = {
-      listen.port = 25575;
+      listen.port = 25576;
     };
   };
 }

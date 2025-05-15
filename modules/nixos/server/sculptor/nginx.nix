@@ -10,13 +10,20 @@
       enableACME = false;  # No domain
       sslCertificate = "/run/secrets/nginx/nginx.crt";
       sslCertificateKey = "/run/secrets/nginx/nginx.key";
+      listen = [
+        {
+          addr = "0.0.0.0";
+          port = 25575;
+          ssl = true;
+        }
+      ];
 
       locations."/" = {
-        proxyPass = "http://127.0.0.1:25575";
+        proxyPass = "http://127.0.0.1:25576";
       };
     };
   };
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.allowedTCPPorts = [ 25575 ];
   # User fixes
   systemd.tmpfiles.settings."10-fix-nginx-keys" = {
     "/nix/host/keys/nginx-certs".Z = {
