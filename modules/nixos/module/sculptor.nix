@@ -71,7 +71,7 @@ in {
                 value = "https://github.com/shiroyashik/sculptor";
               };
               color = "gold";
-              text = "Star ";
+              text = "Star";
               underlined = true;
             }
             {
@@ -79,9 +79,7 @@ in {
                 action = "open_url";
                 value = "https://github.com/shiroyashik/sculptor";
               };
-              text = ''me on GitHub!
-              
-              '';
+              text = " me on GitHub!";
             }
           ];
         };
