@@ -13,7 +13,9 @@
       externalInterface = "enp2s0";
       enableIPv6 = true;
     };
-    bridges.br0.interfaces = [ ];
+    bridges.br0.interfaces = [
+      "eth0"
+    ];
     interfaces.host0.ipv4.addresses = [{
       address = "10.10.10.1";
       prefixLength = 24;
