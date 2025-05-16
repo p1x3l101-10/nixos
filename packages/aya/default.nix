@@ -2,6 +2,7 @@
 , buildGoModule
 , fetchgit
 , aya
+, derivationWithMeta
 }:
 
 buildGoModule {
