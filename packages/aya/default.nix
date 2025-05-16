@@ -20,9 +20,9 @@ buildGoModule {
 
   installPhase = ''
     dir="$GOPATH/bin"
-    [ -e "$dir" ] && cp -r $dir $out
-    mkdir $doc
-    install -Dm644 aya.1 $doc/share/man/man1/aya.1
+    [ -e "$dir" ] && cp -vr $dir $out
+    mkdir -vp $doc/share/man/man1
+    cp -v aya.1 $doc/share/man/man1/aya.1
   '';
 
   meta = with lib; {
