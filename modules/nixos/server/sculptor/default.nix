@@ -1,8 +1,8 @@
 { globals, ... }:
 
 {
-  imports = (globals.server.dns.requiredList [
+  imports = [
     ./nginx.nix
     ./sculptor.nix
-  ]);
+  ];
 }

@@ -2,7 +2,7 @@
 
 {
   services.sculptor = {
-    enable = true;
+    enable = globals.server.dns.exists;
     config = {
       listen.port = 25575;
     };

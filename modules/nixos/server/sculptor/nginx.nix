@@ -1,7 +1,7 @@
 { config, globals, ... }:
 
 {
-  services.nginx.virtualHosts."sculptor.${globals.server.dns.basename}" = {
+  services.nginx.virtualHosts."sculptor.${globals.server.dns.basename}" = globals.server.dns.required {
     addSSL = true;
     enableACME = true;
     locations."/" = {
