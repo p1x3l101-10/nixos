@@ -61,7 +61,7 @@ in {
           -i /nix/host/keys/ssh-tunnel/id.key \
           -o UserKnownHostsFile=${toString (pkgs.writeTextFile {
             name = "known_hosts";
-            text = lib.lists.concatStringsSep "\n" cfg.trustedHostKeys;
+            text = lib.concatStringsSep "\n" cfg.trustedHostKeys;
           })} \
           -o ServerAliveInterval=60 \
           -o ExitOnForwardFailure=yes \
