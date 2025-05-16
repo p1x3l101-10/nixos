@@ -1,0 +1,24 @@
+# The current DNS records that would need to exist
+# Note to readers, all references to ips and self-refs for the domain name are specifically excluded to make this more portable
+A:
+  - "@"
+SRV:
+  - service: ssh
+    proto: tcp
+    host: portal
+    priority: 10
+    weight: 5
+    port: 22
+  - service: minecraft
+    proto: tcp
+    host: mc
+    priority: 10
+    weight: 100
+    port: 25565
+CNAME:
+  - sculptor
+  - nextcloud
+  - git
+  - mastodon
+  - matrix
+  - cdn
