@@ -10,6 +10,7 @@
     ./ftp
     ./minecraft
     ./nextcloud
+    ./nginx
     ./nix-serve
     ./s3
     ./sculptor
