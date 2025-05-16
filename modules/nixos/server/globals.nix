@@ -8,4 +8,15 @@ lib.fix (self: {
       required = conditional: (lib.mkIf self.dns.exists conditional); # mkIf wrapper to check if the dns is set or not
     };
   };
+  vps = {
+    ip = "";
+    dns = self.server.dns.basename;
+    valid = self.server.dns.exists;
+    get = (
+      if self.vps.valid then
+        self.vps.dns
+      else
+        self.vps.ip
+    );
+  };
 })
