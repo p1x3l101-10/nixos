@@ -1,6 +1,7 @@
 { lib
 , buildGoModule
 , fetchgit
+, aya
 }:
 
 buildGoModule {
@@ -24,6 +25,28 @@ buildGoModule {
     mkdir -vp $out/share/man/man1
     cp -v aya.1 $out/share/man/man1/aya.1
   '';
+
+  # For building sites
+  passthru.build = { src, env ? {} }: derivation (
+    {
+      name = "aya-build";
+      builder = "${aya}/bin/aya";
+      args = [
+        "build"
+      ];
+      outputs = [
+        "PUBDIR" # Output path
+      ];
+      AYADIR = src; # Input
+    } // lib.listToAttrs (
+      lib.forEach (lib.attrsToList) (x:
+        { # Format the envvars so aya takes them
+          name = "AYA_${lib.toUpper x.name}";
+          inherit (x) value;
+        }
+      )
+    )
+  );
 
   meta = with lib; {
     name = "Aya";
