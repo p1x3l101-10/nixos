@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 
 {
   services.nginx = {
@@ -7,7 +7,7 @@
     recommendedTlsSettings = true;
     virtualHosts."_" = {
       enableACME = true;
-      locations."/".root = ./landing;
+      locations."/".root = lib.mkDefault ./landing;
     };
   };
   networking.firewall.allowedTCPPorts = [
