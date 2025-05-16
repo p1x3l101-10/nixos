@@ -1,10 +1,10 @@
-{ pkgs, lib, userdata, ... }:
+{ pkgs, lib, globals, ... }:
 
 {
   services.nextcloud = lib.fix (self: {
     enable = true;
     package = pkgs.nextcloud31;
-    hostname = "nextcloud.${userdata "domainName" [ "server" ]}";
+    hostname = "nextcloud.${globals.server.dns.basename}";
     https = true;
     apps = {
       inherit (self.package.packages.apps)
