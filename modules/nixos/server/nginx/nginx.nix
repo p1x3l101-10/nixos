@@ -1,17 +1,16 @@
-{ lib, ... }:
+{ lib, globals, ... }:
 
 {
   services.nginx = {
     enable = true;
     recommendedProxySettings = true;
-    recommendedTlsSettings = true;
+    recommendedTlsSettings = globals.dns.exists;
     virtualHosts."_" = {
-      enableACME = true;
+      enableACME = globals.dns.exists;
       locations."/".root = lib.mkDefault ./landing;
     };
   };
   networking.firewall.allowedTCPPorts = [
     80
-    443
-  ];
+  ] ++ (lib.optionals globals.dns.exists [ 443 ]); # Only open https when we can actually use it
 }
