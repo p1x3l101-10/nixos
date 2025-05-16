@@ -21,7 +21,7 @@ buildGoModule (finalAttrs: {
 
   installPhase = ''
     install -Dm755 $GOPATH/bin/aya $out/bin/aya
-    install -Dm644 ${toString finalAttrs.src}/aya.1 $doc/share/man/man1/aya.1
+    install -Dm644 aya.1 $doc/share/man/man1/aya.1
   '';
 
   meta = with lib; {
