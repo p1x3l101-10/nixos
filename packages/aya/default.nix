@@ -9,7 +9,7 @@ buildGoModule {
   src = fetchgit {
     url = "https://git.yakumo.dev/yakumo.izuru/aya";
     rev = "9307af7e09530096eaf2647e630dd70cb9f2ee24";
-    hash = lib.fakeHash;
+    hash = "sha256-e3GwP+HN5DrqgKNMOcZqleHikT6vq08EXo4bjNmz5m0=";
   };
 
   vendorHash = lib.fakeHash;
