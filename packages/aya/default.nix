@@ -18,7 +18,7 @@ buildGoModule {
     "doc"
   ];
 
-  postInstallPhase = ''
+  postInstall = ''
     install -Dm644 aya.1 $doc/share/man/man1/aya.1
   '';
 
