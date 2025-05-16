@@ -67,7 +67,7 @@ in {
           -o ExitOnForwardFailure=yes \
           ${lib.concatStringsSep " " portArgs} \
           ${cfg.proxyUser}@${globals.vps.get} \
-          -p ${cfg.sshPort}
+          -p ${toString cfg.sshPort}
       '';
       serviceConfig = {
         Restart = "on-failure";
