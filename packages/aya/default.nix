@@ -3,7 +3,7 @@
 , fetchgit
 }:
 
-buildGoModule (finalAttrs: {
+buildGoModule {
   name = "aya";
   src = fetchgit {
     url = "https://git.yakumo.dev/yakumo.izuru/aya";
@@ -30,4 +30,4 @@ buildGoModule (finalAttrs: {
     license = licenses.mit;
     platforms = lib.platforms.unix;
   };
-})
+}
