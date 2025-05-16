@@ -39,7 +39,7 @@ buildGoModule {
       ];
       AYADIR = src; # Input
     } // lib.listToAttrs (
-      lib.forEach (lib.attrsToList) (x:
+      lib.forEach (lib.attrsToList env) (x:
         { # Format the envvars so aya takes them
           name = "AYA_${lib.toUpper x.name}";
           inherit (x) value;
