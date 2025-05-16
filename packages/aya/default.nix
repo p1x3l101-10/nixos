@@ -20,8 +20,8 @@ buildGoModule {
   ];
 
   installPhase = ''
-    install -Dm755 $GOPATH/bin/myprogram $out/bin/myprogram
-    install -Dm644 docs/myprogram.1 $doc/share/man/man1/myprogram.1
+    install -Dm755 $GOPATH/bin/aya $out/bin/aya
+    install -Dm644 docs/aya.1 $doc/share/man/man1/aya.1
   '';
 
   meta = with lib; {
