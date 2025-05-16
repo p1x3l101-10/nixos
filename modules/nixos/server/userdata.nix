@@ -11,7 +11,7 @@ lib.fix (self: {
       sshKeys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP7hEnkX2r9nnIoVUa+isMwtdEppqWMTU9VDVE47ftLb MacBook"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK9YD5mX4qfWS35Kcrk2hymaXlcSEUs3lWYa9bLKOcNW Pixels-PC"
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAx/wpS8Ix+smNyCL+RBlw0YIzONm5LDxxOtVRQ1nZSR"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAx/wpS8Ix+smNyCL+RBlw0YIzONm5LDxxOtVRQ1nZSR SSHPORTAL"
       ];
       mcUsername = "P1x3l101";
       factorioUsername = "P1x3l101";
