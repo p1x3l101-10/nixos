@@ -6,7 +6,7 @@
     recommendedProxySettings = true;
     recommendedTlsSettings = globals.server.dns.exists;
     virtualHosts."_" = { # The default landing page
-      enableACME = false;
+      enableACME = lib.mkDefault false;
       locations."/".root = lib.mkDefault ./landing;
     };
   };
