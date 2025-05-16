@@ -12,5 +12,6 @@ in {
     ./sculptor
     ./server-base
     ./ssh-forward
+    ./website
   ];
 }
