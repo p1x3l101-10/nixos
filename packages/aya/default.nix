@@ -15,14 +15,13 @@ buildGoModule {
 
   outputs = [
     "out"
-    "doc"
   ];
 
   installPhase = ''
     dir="$GOPATH/bin"
     [ -e "$dir" ] && cp -vr $dir $out
-    mkdir -vp $doc/share/man/man1
-    cp -v aya.1 $doc/share/man/man1/aya.1
+    mkdir -vp $out/share/man/man1
+    cp -v aya.1 $out/share/man/man1/aya.1
   '';
 
   meta = with lib; {
