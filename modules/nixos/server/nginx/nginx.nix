@@ -6,5 +6,8 @@
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
   };
-  networking.firewall.allowedTCPPorts = [ 443 ];
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+  ];
 }
