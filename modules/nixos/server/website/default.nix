@@ -6,6 +6,7 @@
     enableACME = true;
     locations."/".root = pkgs.internal.aya.build {
       src = ./webpage;
+      service = ./aya-meta;
     };
   };
 }
