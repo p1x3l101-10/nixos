@@ -27,10 +27,10 @@ buildGoModule {
   '';
 
   # For building sites
-  passthru.build = { src, env ? {} }: derivation (
+  passthru.build = { src, env ? {} }: derivationWithMeta (
     {
       name = "aya-build";
-      system = aya.meta.platforms;
+      meta.platforms = aya.meta.platforms;
       builder = "${aya}/bin/aya";
       args = [
         "build"
