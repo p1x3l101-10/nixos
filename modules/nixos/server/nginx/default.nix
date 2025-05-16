@@ -1,9 +1,9 @@
-{ lib, globals, ... }:
+{ globals, ... }:
 
 {
   imports = [
     ./nginx.nix
-  ] ++ lib.optionals globals.dns.exists [
+  ] ++ (globals.server.dns.requiredList [
     ./acme.nix
-  ];
+  ]);
 }

@@ -4,8 +4,9 @@ lib.fix (self: {
   server = {
     dns = { # DNS data and helpers
       basename = "piplup.pp.ua"; # Basename for dns
-      exists = (if self.basename != "" then true else false); # True when dns is not empty, otherwise false
-      required = conditional: (lib.mkIf self.dns.exists conditional); # mkIf wrapper to check if the dns is set or not
+      exists = (if self.server.basename != "" then true else false); # True when dns is not empty, otherwise false
+      required = attrs: (lib.mkIf self.server.dns.exists attrs); # mkIf wrapper to check if the dns is set or not
+      requiredList = list: (lib.optionals self.server.dns.exists list) # Optionals wrapper to do the same but for lists
     };
   };
   vps = {
