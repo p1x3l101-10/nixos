@@ -6,7 +6,7 @@
     recommendedProxySettings = true;
     recommendedTlsSettings = globals.server.dns.exists;
     virtualHosts."_" = if
-        (config.services.nginx.virtualHosts."${globals.server.dns.basename}" == {}) # Redirect to normal website when it actually exists
+        globals.server.www.exists # Redirect to normal website when it actually exists
       then
         { # The default landing page
           enableACME = lib.mkDefault false;
