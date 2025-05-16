@@ -18,8 +18,7 @@ buildGoModule {
     "doc"
   ];
 
-  installPhase = ''
-    install -Dm755 $GOPATH/bin/aya $out/bin/aya
+  postInstallPhase = ''
     install -Dm644 aya.1 $doc/share/man/man1/aya.1
   '';
 
