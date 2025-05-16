@@ -1,7 +1,7 @@
-{ config, userdata, ... }:
+{ config, globals, ... }:
 
 {
-  services.nginx.virtualHosts."sculptor.${userdata "domainName" [ "server" ]}" = {
+  services.nginx.virtualHosts."sculptor.${globals.server.dns.basename}" = {
     addSSL = true;
     enableACME = true;
     locations."/" = {
