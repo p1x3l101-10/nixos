@@ -2,7 +2,7 @@
 , buildGoModule
 , fetchgit
 , aya
-, derivationWithMeta
+, hostplatform
 }:
 
 buildGoModule {
@@ -28,10 +28,10 @@ buildGoModule {
   '';
 
   # For building sites
-  passthru.build = { src, env ? {} }: derivationWithMeta (
+  passthru.build = { src, env ? {} }: derivation (
     {
       name = "aya-build";
-      meta.platforms = aya.meta.platforms;
+      inherit (hostplatform) system;
       builder = "${aya}/bin/aya";
       args = [
         "build"
