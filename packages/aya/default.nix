@@ -4,7 +4,7 @@
 , go
 }:
 
-buildGoModule {
+buildGoModule (finalAttrs: {
   name = "aya";
   src = fetchgit {
     url = "https://git.yakumo.dev/yakumo.izuru/aya";
@@ -21,7 +21,7 @@ buildGoModule {
 
   installPhase = ''
     install -Dm755 $GOPATH/bin/aya $out/bin/aya
-    install -Dm644 aya.1 $doc/share/man/man1/aya.1
+    install -Dm644 ${finalAttrs.src}/aya.1 $doc/share/man/man1/aya.1
   '';
 
   meta = with lib; {
@@ -31,4 +31,4 @@ buildGoModule {
     license = licenses.mit;
     platforms = lib.platforms.unix;
   };
-}
+})
