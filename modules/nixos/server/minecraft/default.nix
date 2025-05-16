@@ -2,6 +2,9 @@
 
 {
   imports = [
-    #./gtnh.nix
+    ./gtnh.nix
+  ];
+  networking.sshForwarding.ports = [
+    25565
   ];
 }

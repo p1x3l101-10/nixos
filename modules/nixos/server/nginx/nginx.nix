@@ -10,7 +10,9 @@
       locations."/".root = lib.mkDefault ./landing;
     };
   };
-  networking.firewall.allowedTCPPorts = [
-    80
-  ] ++ (lib.optionals globals.dns.exists [ 443 ]); # Only open https when we can actually use it
+  networking.sshForwarding.ports = [
+    { host = 80; remote = 8080; }
+  ] ++ (lib.optionals globals.dns.exists [ # Only open https when we can actually use it
+    { host = 443; remote = 4443; }
+  ]);
 }
