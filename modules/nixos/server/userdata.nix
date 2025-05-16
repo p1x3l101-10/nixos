@@ -2,11 +2,15 @@
 
 lib.fix (self: {
   data = {
+    server = {
+      domainName = "piplup.pp.ua";
+    };
     dylan = {
       proxyKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDsCrCpDvwG00kYONWjsKByp7c91+soPLcHhoqjzXleq dylanv3@SS-Mac-dylanv3.local";
       mcUsername = "Dillpikle2022";
     };
     scott = {
+      website = self.server.domainName;
       proxyKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMxvRlsW70GEkuqN/tdVM5X8EqdE6M/iA2iOHsA+HX8e sblatt@SS-Mac-sblatt.local";
       sshKeys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP7hEnkX2r9nnIoVUa+isMwtdEppqWMTU9VDVE47ftLb MacBook"

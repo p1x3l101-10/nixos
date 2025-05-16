@@ -1,7 +1,7 @@
-{ config, ... }:
+{ config, userdata, ... }:
 
 {
-  services.nginx.virtualHosts."sculptor.piplup.pp.ua" = {
+  services.nginx.virtualHosts."sculptor.${userdata "domainName" [ "server" ]}" = {
     addSSL = true;
     enableACME = true;
     locations."/" = {
