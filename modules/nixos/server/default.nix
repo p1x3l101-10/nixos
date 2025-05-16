@@ -8,7 +8,7 @@
   imports = [
     #./factorio
     #./ftp
-    ./minecraft
+    #./minecraft
     #./nextcloud
     ./nginx
     #./nix-serve
