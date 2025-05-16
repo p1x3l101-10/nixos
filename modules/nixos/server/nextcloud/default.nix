@@ -1,8 +1,8 @@
-{ globals, ... }:
+{ ... }:
 
 {
-  imports = (globals.server.dns.requiredList [
+  imports = [
     ./nextcloud.nix
     ./nginx.nix
-  ]);
+  ];
 }
