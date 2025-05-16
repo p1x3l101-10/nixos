@@ -1,7 +1,6 @@
 { lib
 , buildGoModule
 , fetchgit
-, go
 }:
 
 buildGoModule (finalAttrs: {
