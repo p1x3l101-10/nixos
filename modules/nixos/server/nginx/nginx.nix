@@ -5,7 +5,8 @@
     enable = true;
     recommendedProxySettings = true;
     recommendedTlsSettings = globals.server.dns.exists;
-    virtualHosts."_" = if
+    virtualHosts."_" = (
+      if
         globals.server.www.exists # Redirect to normal website when it actually exists
       then
         {
@@ -16,6 +17,7 @@
           enableACME = lib.mkDefault false;
           locations."/".root = lib.mkDefault ./landing;
         }
+      )
     ;
   };
   networking.sshForwarding.ports = [
