@@ -12,7 +12,7 @@ buildGoModule {
     hash = "sha256-e3GwP+HN5DrqgKNMOcZqleHikT6vq08EXo4bjNmz5m0=";
   };
 
-  vendorHash = lib.fakeHash;
+  vendorHash = "sha256-7JtEbrG3Q5YV8paxfngB5doLaC65+mqab6ihXxAxgi4=";
 
   outputs = [
     "out"
