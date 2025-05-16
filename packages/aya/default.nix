@@ -14,12 +14,12 @@ buildGoModule (finalAttrs: {
   vendorHash = "sha256-7JtEbrG3Q5YV8paxfngB5doLaC65+mqab6ihXxAxgi4=";
 
   outputs = [
-    "out"
+    "bin"
     "doc"
   ];
 
   installPhase = ''
-    install -Dm755 $GOPATH/bin/aya $out/bin/aya
+    install -Dm755 $GOPATH/bin/aya $bin/bin/aya
     install -Dm644 aya.1 $doc/share/man/man1/aya.1
   '';
 
