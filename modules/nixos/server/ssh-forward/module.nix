@@ -59,6 +59,7 @@ in {
           -NTC \
           -vvv \
           -i /nix/host/keys/ssh-tunnel/id.key \
+          -oStrictHostKeyChecking=yes \
           -o UserKnownHostsFile=${toString (pkgs.writeTextFile {
             name = "known_hosts";
             text = lib.concatStringsSep "\n" cfg.trustedHostKeys;
