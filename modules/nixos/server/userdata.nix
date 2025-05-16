@@ -11,7 +11,7 @@ lib.fix (self: {
       sshKeys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP7hEnkX2r9nnIoVUa+isMwtdEppqWMTU9VDVE47ftLb MacBook"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK9YD5mX4qfWS35Kcrk2hymaXlcSEUs3lWYa9bLKOcNW Pixels-PC"
-        "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDKJDB+tzuxx/W50M/KrEiIlC2Nq0gSVJZZ5MHm0Dwa2szp6P7Lk+zMnJZf555KXG3QlhPxpJ9nj9vlrykORg8God9NqV1LBS8yy4STtircBflfGzbSrPGXiQgtM3dc/In7tWtwRPxp5hv6BIRvvsaMX9QEZOZ9svAaamNIb6OMIqhNlajF6hZTeoZSMAFHBa/TfAM8Drf3cLOfRHDjiI5VzPbqpDSz0wR2eQyZqUFIOIkQho2LGNJRn+c17Emp508Jg450jxd5Fc51UAsfdseBXnp0f3643Zay572GE6axTDBKJ6dEsroXiVkBzjVOGn/2bRG31a/bfUQHi8vqCzyR sshportal"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAx/wpS8Ix+smNyCL+RBlw0YIzONm5LDxxOtVRQ1nZSR"
       ];
       mcUsername = "P1x3l101";
       factorioUsername = "P1x3l101";
