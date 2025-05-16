@@ -8,13 +8,14 @@
     virtualHosts."_" = if
         globals.server.www.exists # Redirect to normal website when it actually exists
       then
+        {
+          globalRedirect = globals.server.dns.basename;
+        }
+      else
         { # The default landing page
           enableACME = lib.mkDefault false;
           locations."/".root = lib.mkDefault ./landing;
         }
-      else {
-        globalRedirect = globals.server.dns.basename;
-      }
     ;
   };
   networking.sshForwarding.ports = [
