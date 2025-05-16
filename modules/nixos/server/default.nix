@@ -8,6 +8,7 @@ in {
     inherit globals userdata;
   };
   imports = [
+    ./nextcloud
     ./nginx
     ./sculptor
     ./server-base
