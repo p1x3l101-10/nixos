@@ -6,7 +6,7 @@
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
     virtualHosts."_" = {
-      enableACME = false;
+      enableACME = true;
       locations."/".root = ./landing;
     };
   };
