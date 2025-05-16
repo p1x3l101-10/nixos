@@ -18,6 +18,7 @@ buildGoModule {
   ];
 
   installPhase = ''
+    mkdir -p $out
     dir="$GOPATH/bin"
     [ -e "$dir" ] && cp -vr $dir $out
     mkdir -vp $out/share/man/man1
