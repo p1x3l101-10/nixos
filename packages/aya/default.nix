@@ -30,6 +30,7 @@ buildGoModule {
   passthru.build = { src, env ? {} }: derivation (
     {
       name = "aya-build";
+      system = aya.meta.platforms;
       builder = "${aya}/bin/aya";
       args = [
         "build"
