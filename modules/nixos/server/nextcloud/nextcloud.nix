@@ -8,7 +8,7 @@
     https = true;
     appstoreEnable = true;
     config = {
-      dbtype = "sqlite";
+      dbtype = "postgres";
       adminuser = "internal-admin";
       adminpassFile = "/nix/host/keys/nextcloud/admin-password.txt";
     };
