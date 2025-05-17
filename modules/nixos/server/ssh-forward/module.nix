@@ -10,8 +10,8 @@ let
       };
       remote = mkOption {
         description = "The remote port to listen on";
-        type = types.port;
-        default = self.config.host;
+        type = with types; nullOr port;
+        default = null;
       };
     };
   };
