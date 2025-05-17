@@ -11,6 +11,7 @@ in {
     ./cdn
     ./forjo
     ./mastodon
+    ./matrix
     ./nextcloud
     ./nginx
     ./sculptor
