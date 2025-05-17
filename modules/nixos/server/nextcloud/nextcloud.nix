@@ -24,4 +24,10 @@
   environment.persistence."/nix/host/state/Servers/Nextcloud".directories = [
     "/var/lib/nextcloud"
   ];
+  systemd.tmpfiles.settings."10-fix-nextcloud-passwd" = {
+    "/nix/host/keys/nginx-certs".Z = {
+      user = "nextcloud";
+      group = "nextcloud";
+    };
+  };
 }
