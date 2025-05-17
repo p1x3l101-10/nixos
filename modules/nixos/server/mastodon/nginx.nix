@@ -37,7 +37,7 @@
       };
     };
   };
-  users.user.${config.services.nginx.user}.extraGroups = [
+  users.users.${config.services.nginx.user}.extraGroups = [
     "mastodon-web"
   ];
 }
