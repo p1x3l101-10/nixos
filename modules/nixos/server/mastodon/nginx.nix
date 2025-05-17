@@ -1,4 +1,4 @@
-{ globals, pkgs, config, ... }:
+{ globals, pkgs, config, lib, ... }:
 
 {
   services.nginx.virtualHosts."mastodon.${globals.server.dns.basename}" = globals.server.dns.required {
