@@ -4,7 +4,6 @@
   imports = [
     ./borg.nix
     ./container.nix
-    ./errorfixes.nix
     ./network.nix
     ./nix.nix
     ./proxy.nix
