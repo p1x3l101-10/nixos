@@ -6,7 +6,7 @@
     package = pkgs.nextcloud31;
     hostName = "nextcloud.${globals.server.dns.basename}";
     https = true;
-    extraAppsEnable = true;
+    appstoreEnable = true
     config = {
       dbtype = "sqlite";
     };
