@@ -11,6 +11,18 @@
         news
         contacts
         calendar
+        cookbook
+        cospend
+        deck
+        end_to_end_encryption
+        forms
+        mail
+        notes
+        onlyoffice
+        polls
+        quota_warning
+        spreed
+        bookmarks
         tasks
       ;
     };
