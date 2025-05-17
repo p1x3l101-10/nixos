@@ -6,7 +6,7 @@
     package = pkgs.nextcloud31;
     hostname = "nextcloud.${globals.server.dns.basename}";
     https = true;
-    apps = {
+    extraApps = {
       inherit (self.package.packages.apps)
         news
         contacts
