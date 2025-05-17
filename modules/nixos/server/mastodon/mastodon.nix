@@ -10,6 +10,7 @@
     smtp.fromAddress = "noreply@mastodon.${globals.server.dns.basename}";
   };
   environment.persistence."/nix/host/state/Servers/Mastodon".directories = [
-    "/var/lib/mastodon"
+    { directory = "/var/lib/mastodon"; user = "mastodon"; group = "mastodon"; }
+    { directory = "/var/lib/redis-mastodon"; user = "redis-mastodon"; group = "redis-mastodon"; }
   ];
 }
