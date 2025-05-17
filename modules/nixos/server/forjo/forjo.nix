@@ -24,6 +24,6 @@ in {
     };
   };
   environment.persistence."/nix/host/state/Servers/Forjo".directories = [
-
+    "/var/lib/forgejo"
   ];
 }
