@@ -10,7 +10,6 @@
     appstoreEnable = true;
     database.createLocally = true;
     maxUploadSize = "16G";
-    enableBrokenCiphersForSSE = false;
     config = {
       overwriteProtocol = "https";
       dbtype = "pgsql";
