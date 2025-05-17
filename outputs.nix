@@ -40,6 +40,7 @@ in {
       specialArgs = { inherit inputs; };
       modules = [
         ./systems/pixels-server
+        inputs.simple-nixos-mailserver.nixosModules.default
         inputs.self.nixosModules.server
       ] ++ ( with inputs.nixos-hardware.nixosModules; [
         common-pc
