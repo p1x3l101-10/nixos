@@ -7,7 +7,7 @@
       enableACME = true;
       locations = {
         "/" = {
-          proxyPass = "http://127.0.0.1:${config.services.mastodon.webPort}";
+          proxyPass = "http://127.0.0.1:${toString config.services.mastodon.webPort}";
           proxyWebsockets = true;
         };
         "/system/" = {
