@@ -9,6 +9,7 @@ in {
   };
   imports = [
     ./forjo
+    ./mastodon
     ./nextcloud
     ./nginx
     ./sculptor
