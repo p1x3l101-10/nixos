@@ -25,6 +25,13 @@
       )
     ;
   };
+  systemd.tmpfiles.settings."50-nginx-cache" = {
+    "/var/cache/nginx-proxyCache".d = {
+      user = "1000";
+      group = "1000";
+      mode = "0755";
+    };
+  };
   networking.sshForwarding.ports = [
     { host = 80; remote = 8080; }
   ] ++ (lib.optionals globals.server.dns.exists [ # Only open https when we can actually use it
