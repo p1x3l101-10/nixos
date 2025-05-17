@@ -21,8 +21,8 @@
       };
     };
     upstreams = {
-      mastodon-web = {
-        server = "unix:/run/mastodon-web/web.socket";
+      mastodon-web.servers = {
+        "unix:/run/mastodon-web/web.socket" = {};
       };
       mastodon-streaming = {
         extraConfig = ''
