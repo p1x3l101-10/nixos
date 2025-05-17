@@ -7,7 +7,7 @@
       enableACME = true;
       locations = {
         "/" = {
-          proxyPass = "http://127.0.0.1:${toString config.services.mastodon.webPort}";
+          proxyPass = "http://mastodon-web";
           proxyWebsockets = true;
         };
         "/system/" = {
@@ -20,16 +20,21 @@
         };
       };
     };
-    upstreams.mastodon-streaming = {
-      extraConfig = ''
-        least_conn;
-      '';
-      servers = builtins.listToAttrs (
-        map (i: {
-          name = "unix:/run/mastodon-streaming/streaming-${toString i}.socket";
-          value = { };
-        }) (lib.range 1 config.services.mastodon.streamingProcesses)
-      );
+    upstreams = {
+      mastodon-web = {
+        server = "unix:/run/mastodon-web/web.socket";
+      };
+      mastodon-streaming = {
+        extraConfig = ''
+          least_conn;
+        '';
+        servers = builtins.listToAttrs (
+          map (i: {
+            name = "unix:/run/mastodon-streaming/streaming-${toString i}.socket";
+            value = { };
+          }) (lib.range 1 config.services.mastodon.streamingProcesses)
+        );
+      };
     };
   };
 }
