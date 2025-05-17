@@ -14,6 +14,9 @@
       server_name = "matrix.${globals.server.dns.basename}";
     };
   };
+  environment.persistence."/nix/host/state/Servers/Matrix".directories = [
+    { directory = "/var/lib/private/matrix-conduit"; mode = "0700"; }
+  ];
   networking.sshForwarding.ports = [
     8448
   ];
