@@ -1,7 +1,7 @@
 # The current DNS records that would need to exist
 # Note to readers, all references to ips and self-refs for the domain name are specifically excluded to make this more portable
 A:
-  - "@"
+  - "srv01"
 SRV:
   - service: ssh
     proto: tcp
@@ -16,9 +16,5 @@ SRV:
     weight: 100
     port: 25565
 CNAME:
-  - sculptor
-  - nextcloud
-  - git
-  - mastodon
-  - matrix
-  - cdn
+  - subdomain: "*"
+    to: srv01
