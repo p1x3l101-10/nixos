@@ -6,10 +6,6 @@
     recommendedProxySettings = true;
     recommendedTlsSettings = globals.server.dns.exists;
     recommendedGzipSettings = true;
-    proxyCachePath."proxyCache" = {
-      enable = true;
-      useTempPath = false;
-    };
     virtualHosts."_" = (
       if
         globals.server.www.exists # Redirect to normal website when it actually exists
@@ -24,13 +20,6 @@
         }
       )
     ;
-  };
-  systemd.tmpfiles.settings."50-nginx-cache" = {
-    "/var/cache/nginx/proxyCache".d = {
-      user = "1000";
-      group = "1000";
-      mode = "0755";
-    };
   };
   networking.sshForwarding.ports = [
     { host = 80; remote = 8080; }
