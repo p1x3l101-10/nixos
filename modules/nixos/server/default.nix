@@ -8,6 +8,7 @@ in {
     inherit globals userdata;
   };
   imports = [
+    ./cdn
     ./forjo
     ./mastodon
     ./nextcloud
