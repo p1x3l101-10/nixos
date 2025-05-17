@@ -10,8 +10,7 @@ let
       };
       remote = mkOption {
         description = "The remote port to listen on";
-        type = with types; nullOr port;
-        default = null;
+        type = types.port;
       };
     };
   };
@@ -39,7 +38,7 @@ in {
       default = "";
     };
     ports = mkOption {
-      type = with types; listOf (coercedTo port (host: { inherit host; }) (submodule portFormat));
+      type = with types; listOf (coercedTo port (host: { inherit host; remote = host; }) (submodule portFormat));
       description = "List of ports to forward";
       default = [];
     };
