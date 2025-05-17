@@ -6,7 +6,7 @@
     recommendedProxySettings = true;
     recommendedTlsSettings = globals.server.dns.exists;
     recommendedGzipSettings = true;
-    recommendedOptimisationSettings = true;
+    recommendedOptimizationSettings = true;
     virtualHosts."_" = (
       if
         globals.server.www.exists # Redirect to normal website when it actually exists
