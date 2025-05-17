@@ -7,7 +7,7 @@
     locations."/".root = "/var/lib/http-cdn";
   };
   environment.persistence."/nix/host/state/Servers/HTTP-CDN".directories = [
-    { directory = "/var/lib/private/sculptor"; mode = "7770"; group = "cdn"; }
+    { directory = "/var/lib/http-cdn"; mode = "7770"; group = "cdn"; }
   ];
   users.groups.http-cdn = {
     members = [
