@@ -3,17 +3,13 @@
 {
   services.nginx = {
     virtualHosts."mastodon.${globals.server.dns.basename}" = globals.server.dns.required {
+      root = "${config.services.mastodon.package}/public/";
       forceSSL = true;
       enableACME = true;
       locations = {
-        "/" = {
-          proxyPass = "http://mastodon-web";
-          proxyWebsockets = true;
-        };
-        "/system/" = {
-          root = "/var/lib/mastodon/public-system/";
-          proxyWebsockets = true;
-        };
+        "/".tryFiles = "$uri @proxy";
+        "@proxy".proxyPass = "http://unix:/run/mastodon-web/web.socket";
+        "/system/".alias = "/var/lib/mastodon/public-system/";
         "/api/v1/streaming/" = {
           proxyPass = "http://mastodon-streaming";
           proxyWebsockets = true;
@@ -21,9 +17,6 @@
       };
     };
     upstreams = {
-      mastodon-web.servers = {
-        "unix:/run/mastodon-web/web.socket" = {};
-      };
       mastodon-streaming = {
         extraConfig = ''
           least_conn;
@@ -37,7 +30,5 @@
       };
     };
   };
-  users.users.${config.services.nginx.user}.extraGroups = [
-    "mastodon-web"
-  ];
+  users.groups.${config.services.mastodon.group}.members = [ config.services.nginx.user ];
 }
