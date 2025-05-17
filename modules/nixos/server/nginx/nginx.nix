@@ -6,7 +6,7 @@
     recommendedProxySettings = true;
     recommendedTlsSettings = globals.server.dns.exists;
     recommendedGzipSettings = true;
-    proxyCachePath."/var/cache/nginx-proxyCache" = {
+    proxyCachePath."proxyCache" = {
       enable = true;
       useTempPath = false;
     };
@@ -26,7 +26,7 @@
     ;
   };
   systemd.tmpfiles.settings."50-nginx-cache" = {
-    "/var/cache/nginx-proxyCache".d = {
+    "/var/cache/nginx/proxyCache".d = {
       user = "1000";
       group = "1000";
       mode = "0755";
