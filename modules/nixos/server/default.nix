@@ -8,6 +8,7 @@ in {
     inherit globals userdata;
   };
   imports = [
+    ./forjo
     ./nextcloud
     ./nginx
     ./sculptor
