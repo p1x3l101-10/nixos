@@ -6,6 +6,10 @@
     recommendedProxySettings = true;
     recommendedTlsSettings = globals.server.dns.exists;
     recommendedGzipSettings = true;
+    proxyCachePath."/var/cache/nginx-proxyCache" = {
+      enable = true;
+      useTempPath = false;
+    };
     virtualHosts."_" = (
       if
         globals.server.www.exists # Redirect to normal website when it actually exists
