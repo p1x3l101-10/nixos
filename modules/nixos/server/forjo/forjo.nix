@@ -11,7 +11,7 @@ in {
     lfs.enable = true;
     settings = {
       server = {
-        DOMAIN = "git.${globals.server.dns.name}";
+        DOMAIN = "git.${globals.server.dns.basename}";
         # You need to specify this to remove the port from URLs in the web UI.
         ROOT_URL = "https://${srv.DOMAIN}/"; 
         HTTP_PORT = 3000;
@@ -23,4 +23,7 @@ in {
       };
     };
   };
+  environment.persistence."/nix/host/state/Servers/Forjo".directories = [
+
+  ];
 }

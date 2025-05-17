@@ -7,4 +7,7 @@
     extraConfig.SINGLE_USER_MODE = "true";
     streamingProcesses = 3;
   };
+  environment.persistence."/nix/host/state/Servers/Mastodon".directories = [
+    "/var/lib/mastodon"
+  ];
 }
