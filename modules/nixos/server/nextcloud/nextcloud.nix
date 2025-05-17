@@ -19,6 +19,8 @@
   });
   environment.persistence."/nix/host/state/Servers/Nextcloud".directories = [
     { directory = "/var/lib/nextcloud"; user = "nextcloud"; group = "nextcloud"; }
+  ];
+  environment.persistence."/nix/host/state/Servers/Postgresql".directories = [
     "/var/lib/postgresql"
   ];
 }
