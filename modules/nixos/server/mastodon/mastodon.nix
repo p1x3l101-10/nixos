@@ -6,7 +6,7 @@
     localDomain = "mastodon.${globals.server.dns.basename}";
     extraConfig.SINGLE_USER_MODE = "true";
     streamingProcesses = 3;
-    webPort = 3001;
+    webPort = 3023;
     smtp.fromAddress = "noreply@mastodon.${globals.server.dns.basename}";
   };
   environment.persistence."/nix/host/state/Servers/Mastodon".directories = [
