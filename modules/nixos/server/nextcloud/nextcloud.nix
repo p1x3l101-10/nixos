@@ -5,6 +5,7 @@
     enable = globals.server.dns.exists;
     package = pkgs.nextcloud31;
     hostName = "nextcloud.${globals.server.dns.basename}";
+    configureRedis = true;
     https = true;
     appstoreEnable = true;
     config = {
