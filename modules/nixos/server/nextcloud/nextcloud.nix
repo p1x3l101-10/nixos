@@ -4,7 +4,7 @@
   services.nextcloud = lib.fix (self: {
     enable = globals.server.dns.exists;
     package = pkgs.nextcloud31;
-    hostname = "nextcloud.${globals.server.dns.basename}";
+    hostName = "nextcloud.${globals.server.dns.basename}";
     https = true;
     extraApps = {
       inherit (self.package.packages.apps)
