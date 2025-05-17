@@ -8,7 +8,12 @@
     configureRedis = true;
     https = true;
     appstoreEnable = true;
+    database.createLocally = true;
+    maxUploadSize = "16G";
+    https = true;
+    enableBrokenCiphersForSSE = false;
     config = {
+      overwriteProtocol = "https";
       dbtype = "pgsql";
       adminuser = "internal-admin";
       adminpassFile = "/nix/host/keys/nextcloud/admin-password.txt";
@@ -16,5 +21,6 @@
   });
   environment.persistence."/nix/host/state/Servers/Nextcloud".directories = [
     { directory = "/var/lib/nextcloud"; user = "nextcloud"; group = "nextcloud"; }
+    "/var/lib/postgresql"
   ];
 }
