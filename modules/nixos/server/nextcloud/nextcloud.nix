@@ -11,7 +11,7 @@
     database.createLocally = true;
     maxUploadSize = "16G";
     config = {
-      overwriteProtocol = "https";
+      overwriteprotocol = "https";
       dbtype = "pgsql";
       adminuser = "internal-admin";
       adminpassFile = "/nix/host/keys/nextcloud/admin-password.txt";
