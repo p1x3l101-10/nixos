@@ -9,7 +9,6 @@ in {
   };
   imports = [
     ./cdn
-    ./forjo
     ./mastodon
     ./nextcloud
     ./nginx
