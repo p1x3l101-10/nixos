@@ -11,7 +11,7 @@ buildNpmPackage (finalAttrs: {
     owner = "11ty";
     repo = "eleventy";
     rev = "v${finalAttrs.version}";
-    hash = lib.fakeHash;
+    hash = "sha256-ZkADU7ytOc0I+9rEzkkGxNK8Ixu24diunoYsUNy5TIU=";
   };
 
   npmDepsHash = lib.fakeHash;
