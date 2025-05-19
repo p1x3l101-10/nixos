@@ -10,6 +10,7 @@ in {
   imports = [
     ./cdn
     ./mastodon
+    ./minecraft
     ./nextcloud
     ./nginx
     ./sculptor
