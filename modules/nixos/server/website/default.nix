@@ -4,9 +4,18 @@
   services.nginx.virtualHosts."${globals.server.dns.basename}" = globals.server.dns.required {
     addSSL = true;
     enableACME = true;
-    locations."/".root = pkgs.internal.aya.build {
+    locations."/".root = pkgs.stdenv.mkDerivation {
+      name = "zola-build";
       src = ./webpage;
-      service = ./aya-meta;
+      nativeBuildInputs = with pkgs; [
+        zola
+      ];
+      buildPhase = ''
+        zola build
+      '';
+      installPhase = ''
+        mv public $out
+      '';
     };
   };
 }
