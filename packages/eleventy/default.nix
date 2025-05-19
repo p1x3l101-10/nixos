@@ -14,7 +14,7 @@ buildNpmPackage (finalAttrs: {
     hash = "sha256-ZkADU7ytOc0I+9rEzkkGxNK8Ixu24diunoYsUNy5TIU=";
   };
 
-  npmDepsHash = lib.fakeHash;
+  npmDepsHash = "sha256-gfy+G1iiZGkdA8KfgT+iJLeQP+byyjcUNgH2EfXEIjQ=";
 
   meta = with lib; {
     description = "A simpler site generator. Transforms a directory of templates (of varying types) into HTML.";
