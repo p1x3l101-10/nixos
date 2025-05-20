@@ -6,7 +6,7 @@
     openssh.authorizedKeys.keys = userdata [ "sshKeys" ] [
       "scott"
     ];
-    shell = pkgs.shadow;
+    shell = "${pkgs.git}/bin/git-shell";
     home = "/var/lib/git";
     autoSubUidGidRange = false;
   };
