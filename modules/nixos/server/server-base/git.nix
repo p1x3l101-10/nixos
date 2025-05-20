@@ -21,6 +21,6 @@
     mode = "0755";
   };
   environment.persistence."/nix/host/state/Servers/Git".directories = [
-    "/var/lib/git"
+    { directory = "/var/lib/git"; user = "git"; owner = "users"; mode = "0755"; }
   ];
 }
