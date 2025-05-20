@@ -15,11 +15,6 @@
     Match User proxy
       ForceCommand git-shell
   '';
-  systemd.tmpfiles.settings."10-git"."/var/lib/git".d = {
-    user = "git";
-    group = "users";
-    mode = "0755";
-  };
   environment.persistence."/nix/host/state/Servers/Git".directories = [
     { directory = "/var/lib/git"; user = "git"; group = "users"; mode = "0755"; }
   ];
