@@ -3,7 +3,6 @@
 lib.fix (self: {
   data = {
     dylan = {
-      proxyKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDsCrCpDvwG00kYONWjsKByp7c91+soPLcHhoqjzXleq dylanv3@SS-Mac-dylanv3.local";
       mcUsername = "Dillpikle2022";
     };
     scott = { # Das me!

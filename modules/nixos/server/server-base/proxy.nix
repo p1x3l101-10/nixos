@@ -7,7 +7,6 @@
       "scott"
       "cayden"
       "kenton"
-      "dylan"
       "spradley"
       "daniel"
       "david"
