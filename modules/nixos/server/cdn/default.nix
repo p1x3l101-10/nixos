@@ -19,7 +19,6 @@
       "pixel"
       config.services.nginx.user
       "nextcloud"
-      "git"
     ];
   };
 }
