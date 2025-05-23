@@ -3,7 +3,6 @@
 {
   services.minecraft = {
     enable = true;
-    packwiz.url = "https://raw.githubusercontent.com/p1x3l101-10/i-know-what-we-are-going-to-do-today/refs/heads/main/pack.toml";
     settings = {
       eula = true;
       type = "forge";
