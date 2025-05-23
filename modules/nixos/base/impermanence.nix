@@ -26,7 +26,7 @@ in {
   ];
   system.etc.overlay = {
     enable = true;
-    mutable = false;
+    mutable = true;
   };
   services.userborn.enable = true;
   environment.etc = {
