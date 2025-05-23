@@ -24,7 +24,7 @@
       ];
       memory = 8;
       java = {
-        version = "8";
+        version = "17";
         args = [
           "-javaagent:${builtins.fetchurl {
             url = "https://git.sleeping.town/unascribed/unsup/releases/download/v1.1.3/unsup-1.1.3.jar";
