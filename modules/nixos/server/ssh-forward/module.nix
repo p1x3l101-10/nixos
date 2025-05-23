@@ -84,7 +84,7 @@ in {
       default = "";
     };
     ports = mkOption {
-      type = with types; listOf (coercedTo port (host: { inherit host; remote = host; }) (submodule portFormat));
+      type = with types; listOf (coercedTo port (host: { inherit host; remote = host; }) (submodule subMod));
       description = "List of ports to forward";
       default = [];
     };
