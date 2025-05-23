@@ -1,6 +1,7 @@
 { lib }:
 
 lib.fix (self: {
+  type = "server";
   server = {
     dns = { # DNS data and helpers
       basename = "piplup.pp.ua"; # Basename for dns

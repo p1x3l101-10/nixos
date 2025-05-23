@@ -1,5 +1,10 @@
 { ... }:
 {
+  _module.args = {
+    globals = {
+      type = "desktop";
+    };
+  };
   imports = [
     ./ipfs.nix
     ./impermanence.nix

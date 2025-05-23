@@ -1,4 +1,4 @@
-{ pkgs, lib, globals ? {}, ... }:
+{ pkgs, lib, globals, ... }:
 {
   environment.persistence."/nix/host/state/System" = {
     hideMounts = true;
@@ -9,7 +9,7 @@
       "/var/lib/systemd"
       { directory = "/var/lib/colord"; user = "colord"; group = "colord"; mode = "u=rwx,g=rx,o="; }
       "/root/.local/share/nix"
-    ] ++ (lib.optionals (globals == {}) [
+    ] ++ (lib.optionals (globals.type != "server") [
       "/etc/NetworkManager/system-connections" # Stuff that breaks on the server
     ]);
   };
