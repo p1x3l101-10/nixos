@@ -1,6 +1,6 @@
 { config, lib, ... }:
 {
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security = {
     polkit.enable = true;
     rtkit.enable = true;

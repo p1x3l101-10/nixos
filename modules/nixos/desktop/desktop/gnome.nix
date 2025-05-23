@@ -27,7 +27,7 @@
   services.displayManager.defaultSession = "gnome";
 
   services.gnome.games.enable = false;
-  services.gnome.core-utilities.enable = false;
+  services.gnome.core-apps.enable = false;
   services.gnome.core-developer-tools.enable = false;
 
   environment.gnome = {
