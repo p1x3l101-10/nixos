@@ -4,13 +4,59 @@ let
   cfg = config.networking.sshForwarding;
   portFormat = _: {
     options = with lib; {
-      host = mkOption {
+      address = mkOption {
+        description = "The host to bind to";
+        type = with types; nullOr str;
+        default = null;
+      };
+      port = mkOption {
         description = "The host port to expose";
-        type = types.port;
+        type = with types; nullOr port;
+        default = null;
+      };
+    };
+  };
+  bindFormat = _: {
+    options = with lib; {
+      type = mkOption {
+        description = "Type of binding";
+        type = with types; enum [
+          "port"
+          "socket"
+        ];
+        default = "port";
+      };
+      forwardPort = mkOption {
+        description = "The host to bind to";
+        type = with types; nullOr (coercedTo port (port: { address = "127.0.0.1"; inherit port; }) (submodule portFormat));
+        default = null;
+      };
+      forwardSocket = mkOption {
+        description = "The socket to bind to";
+        type = with types; nullOr str;
+        default = null;
+      };
+    };
+  };
+  subMod = _: {
+    options = with lib; {
+      
+      host = mkOption {
+        type = with types; (coercedTo port (port: {
+          forwardPort = {
+            address = "127.0.0.1";
+            inherit port;
+          };
+          type = "port";
+        }) (submodule bindFormat));
       };
       remote = mkOption {
-        description = "The remote port to listen on";
-        type = types.port;
+        type = with types; (coercedTo port (port: {
+          forwardPort = {
+            inherit port;
+          };
+          type = "port";
+        }) (submodule bindFormat));
       };
     };
   };
@@ -51,7 +97,23 @@ in {
       restartIfChanged = true;
       script = let
         portArgs = lib.forEach cfg.ports (x:
-          "-R ${toString x.remote}:127.0.0.1:${toString x.host}"
+          "-R ${
+            if (x.remote.type == "port") then (
+              if (x.remote.forwardPort.address != null) then (
+                x.remote.forwardPort.address + ":" + (toString x.remote.forwardPort.port)
+              ) else (
+                toString x.remote.forwardPort.port
+              )
+            ) else (
+              x.remote.forwardSocket
+            )
+          }:${
+            if (x.host.type == "port") then (
+              x.host.forwardPort.address + ":" + (toString x.host.forwardPort.port)
+            ) else (
+              x.remote.forwardSocket
+            )
+          }"
         );
       in ''
         ${pkgs.openssh}/bin/ssh \
