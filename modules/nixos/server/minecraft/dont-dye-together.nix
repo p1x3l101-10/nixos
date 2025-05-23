@@ -28,7 +28,7 @@
         args = [
           "-javaagent:${builtins.fetchurl {
             url = "https://git.sleeping.town/unascribed/unsup/releases/download/v1.1.3/unsup-1.1.3.jar";
-            sha256 = lib.fakeHash;
+            sha256 = "sha256:1386wka7bar1cdd5v7gi0x3pf177phvz3d449m5ybmzza49mmjir";
           }}"
           "-Dunsup.disableReconciliation=true"
           "-Dunsup.bootstrapUrl='https://raw.githubusercontent.com/p1x3l101-10/dont-dye-together/refs/heads/main/unsup.ini'" 
