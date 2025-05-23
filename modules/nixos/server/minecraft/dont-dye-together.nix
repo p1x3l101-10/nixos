@@ -24,7 +24,7 @@
       ];
       memory = 8;
       java = {
-        version = "17-graalvm";
+        version = "17-alpine";
         args = [
           "-javaagent:${builtins.fetchurl {
             url = "https://git.sleeping.town/unascribed/unsup/releases/download/v1.1.3/unsup-1.1.3.jar";
@@ -38,7 +38,7 @@
     };
   };
   # Persist server
-  environment.persistence."/nix/host/state/Servers/Minecraft/tinkering-2".directories = [
+  environment.persistence."/nix/host/state/Servers/Minecraft/dont-dye-together".directories = [
     { directory = "/var/lib/minecraft"; user = "1000"; group = "1000"; }
   ];
 }
