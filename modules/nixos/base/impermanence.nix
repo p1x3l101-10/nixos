@@ -1,5 +1,14 @@
 { pkgs, lib, globals, ... }:
-{
+
+let
+  mountUnit = what: where: {
+    inherit what where;
+    type = "none";
+    options = "bind";
+    wantedBy = [ "local-fs.target" ];
+  };
+  imperSubst = dir: (mountUnit "/nix/host/state/System/${dir}" dir);
+in {
   environment.persistence."/nix/host/state/System" = {
     hideMounts = true;
     directories = [
@@ -9,9 +18,11 @@
       "/var/lib/systemd"
       { directory = "/var/lib/colord"; user = "colord"; group = "colord"; mode = "u=rwx,g=rx,o="; }
       "/root/.local/share/nix"
-    ] ++ (lib.optionals (globals.type != "server") [
-      "/etc/NetworkManager/system-connections" # Stuff that breaks on the server
-    ]);
+    ];
+  };
+  systemd.mounts = {
+    "NetworkManager" = imperSubst "/etc/NetworkManager/system-connections";
+    "avahi" = imperSubst "/etc/avahi";
   };
   system.etc.overlay = {
     enable = true;
@@ -19,7 +30,8 @@
   };
   services.userborn.enable = true;
   environment.etc = {
-    "containers/networks".source = (pkgs.runCommand "empty-dir" {} "mkdir -p $out");
-    "NetworkManager/system-connections".source = (pkgs.runCommand "empty-dir" {} "mkdir -p $out");
+    "containers/networks/.keep".source = (pkgs.runCommand "empty-file" {} "touch $out");
+    "NetworkManager/system-connections/.keep".source = (pkgs.runCommand "empty-file" {} "touch $out");
+    "avahi/.keep".source = (pkgs.runCommand "empty-file" {} "touch $out");
   };
 }

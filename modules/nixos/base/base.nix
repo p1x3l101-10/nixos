@@ -41,8 +41,6 @@
 
   # Networking
   networking.networkmanager.enable = true;
-  #networking.useNetworkd = true;
-  #systemd.network.enable = true;
 
   # Clutter
   programs.nano.enable = lib.mkDefault false;
