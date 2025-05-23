@@ -28,7 +28,7 @@ let
       };
       forwardPort = mkOption {
         description = "The host to bind to";
-        type = with types; nullOr (coercedTo port (port: { address = "127.0.0.1"; inherit port; }) (submodule portFormat));
+        type = with types; nullOr (coercedTo port (port: { inherit port; }) (submodule portFormat));
         default = null;
       };
       forwardSocket = mkOption {
