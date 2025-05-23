@@ -29,7 +29,7 @@ let
       pkg-config
     ];
 
-    cargoHash = "sha256-c1p87NoajnHF7Hz9JyRhCS4xW6T8Lcr6G9GxkbEScoM=";
+    cargoHash = "sha256-7dQK4tpkRgWojsNWAjxBY/ftlGByRnlwa+apBTnmJVc=";
 
     # There are no tests
     doCheck = false;
