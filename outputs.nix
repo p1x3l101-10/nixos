@@ -48,31 +48,16 @@ in {
         common-cpu-intel-cpu-only
       ]) ++ common-modules;
     };
-    do-droplet = lib.nixosSystem {
+    hetzner-vps = lib.nixosSystem {
       inherit system;
       specialArgs = { inherit inputs; };
       modules = [
-        ./systems/do-droplet # Will be kinda on its own
-      ];
-    };
-    nixbook = lib.nixosSystem {
-      inherit system;
-      specialArgs = { inherit inputs; };
-      modules = [
-        ./systems/nixbook
-      ] ++ (with inputs; [
-        lanzaboote.nixosModules.lanzaboote
-        impermanence.nixosModules.impermanence
-        disko.nixosModules.disko
-        { lib."${namespace}" = lib1; }
-      ]);
+        ./systems/hetzner-vps
+      ] ++ ( with inputs; ( with self.nixosModules; [
+        vps
+      ]) ++ []) ++ common-modules;
     };
   };
   formatter.${system} = pkgs.nixpkgs-fmt;
-  packages.${system} = let
-    nixbook = import ./systems/nixbook/systemd-sysupdate.nix { inherit pkgs lib; inherit (inputs) self; };
-  in lib1.flake.genPackages ./packages pkgs.newScope //  {
-    nixbook-sysupdate = nixbook.system-update;
-    nixbook-system = nixbook.system;
-  };
+  packages.${system} = lib1.flake.genPackages ./packages pkgs.newScope;
 }
