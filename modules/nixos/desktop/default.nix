@@ -22,7 +22,6 @@
     ./sound.nix
     ./systemd-homed.nix
     ./tablet.nix
-    ./tailscale.nix
     ./vCamera.nix
     ./vr.nix
 
