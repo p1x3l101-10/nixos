@@ -20,10 +20,10 @@ in {
       "/root/.local/share/nix"
     ];
   };
-  systemd.mounts = {
-    "NetworkManager" = imperSubst "/etc/NetworkManager/system-connections";
-    "avahi" = imperSubst "/etc/avahi";
-  };
+  systemd.mounts = [
+    (imperSubst "/etc/NetworkManager/system-connections")
+    (imperSubst "/etc/avahi")
+  ];
   system.etc.overlay = {
     enable = true;
     mutable = false;
