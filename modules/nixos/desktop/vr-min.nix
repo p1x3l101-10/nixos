@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ config, lib, ... }:
 
 lib.mkIf (config.networking.hostName == "pixels-pc") {
   networking.firewall = {
