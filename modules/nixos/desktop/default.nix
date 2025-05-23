@@ -23,7 +23,7 @@
     ./systemd-homed.nix
     ./tablet.nix
     ./vCamera.nix
-    ./vr.nix
+    #./vr.nix
 
     ./desktop/flatpak.nix
     ./desktop/fonts.nix
