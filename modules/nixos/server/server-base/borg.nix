@@ -7,6 +7,7 @@
     autoSubUidGidRange = false;
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKlmhvzQ1zV76AiZUt13OoFV5vyL6xlFkSfUh1IbNBue sblatt@SS-Mac-sblatt.local"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIARrwHdep1PJc8hpTi0SLC6JTyaWAtVpTw6X42sO+V7i pixel@pixels-pc"
     ];
     packages = with pkgs; [
       borgbackup
