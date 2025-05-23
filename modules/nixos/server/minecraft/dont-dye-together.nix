@@ -27,7 +27,7 @@
         version = "8";
         args = [
           "-javaagent:${builtins.fetchurl {
-            url = "https://git.sleeping.town/unascribed/unsup/releases/download/v1.1-beta1/unsup-1.1.3.jar";
+            url = "https://git.sleeping.town/unascribed/unsup/releases/download/v1.1.3/unsup-1.1.3.jar";
             sha256 = lib.fakeHash;
           }}"
           "-Dunsup.disableReconciliation=true"
