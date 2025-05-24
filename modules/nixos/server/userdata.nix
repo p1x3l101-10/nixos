@@ -34,6 +34,9 @@ lib.fix (self: {
     david = {
       proxyKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAuX+dijhcCefNUgybmINO5PBRTcErJchyD6ilo1QtDu baileyd@SS-Mac-baileyd.local";
     };
+    kirby = {
+      mcUsername = "MetaKnight22";
+    };
   };
   getdata = key: names: (lib.lists.flatten (lib.lists.forEach names (x:
     lib.attrsets.getAttrFromPath ([ x ] ++ (lib.lists.flatten [ key ])) self.data

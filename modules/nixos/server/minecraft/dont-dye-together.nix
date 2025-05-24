@@ -14,6 +14,7 @@
           "scott"
           "dylan"
           "kenton"
+          "kirby"
       ];
       ops = userdata [ "mcUsername" ] [
           "scott"
