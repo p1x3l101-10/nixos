@@ -36,6 +36,9 @@
           "-Dunsup.bootstrapKey='signify RWRBgYcfobPE7I7STPLaQnp69F06aqQaBSWk0AuUFKlUoCyE6VUZKxJv'"
         ];
       };
+      extraEnv = {
+        ALLOW_FLIGHT = "TRUE";
+      };
     };
   };
   # Persist server
