@@ -3,7 +3,7 @@
 let
   bluemap_port = 8100;
 in {
-  services.minecraft.extraPorts = [
+  services.minecraft.settings.extraPorts = [
     bluemap_port
   ];
   services.nginx = {
