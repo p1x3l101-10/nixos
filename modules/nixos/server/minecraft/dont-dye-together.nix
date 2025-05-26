@@ -16,6 +16,7 @@
           "kenton"
           "kirby"
           "isaiah"
+          "landen"
       ];
       rconStartup = [
         "gamerule playersSleepingPercentage 10"
