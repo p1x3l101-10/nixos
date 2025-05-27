@@ -42,7 +42,7 @@
           "-Dunsup.disableReconciliation=true"
           "-Dunsup.bootstrapUrl='https://raw.githubusercontent.com/p1x3l101-10/dont-dye-together/refs/heads/main/unsup.ini'" 
           "-Dunsup.bootstrapKey='signify RWRBgYcfobPE7I7STPLaQnp69F06aqQaBSWk0AuUFKlUoCyE6VUZKxJv'"
-          "-Dadastra.stations=${toString (builtins.toFile (builtins.toJSON stations))}"
+          "-Dadastra.stations=${toString (builtins.toFile "stations.json" (builtins.toJSON stations))}"
         ];
       };
       extraEnv = {
