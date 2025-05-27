@@ -17,6 +17,7 @@
           "kirby"
           "isaiah"
           "landen"
+          "eqquise"
       ];
       rconStartup = [
         "gamerule playersSleepingPercentage 10"
