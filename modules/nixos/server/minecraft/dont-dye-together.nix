@@ -28,7 +28,7 @@
           stations = {
             stations = [
               {
-                url = "https://stream.gensokyoradio.net/3";
+                url = "https://stream.gensokyoradio.net/2";
                 title = "Gensokyo Radio";
                 name = "Gensokyo Radio";
               }
