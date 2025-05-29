@@ -48,6 +48,7 @@
       };
       extraEnv = {
         ALLOW_FLIGHT = "TRUE";
+        LEVEL_TYPE = "exdecorum:voidworld";
       };
     };
   };
