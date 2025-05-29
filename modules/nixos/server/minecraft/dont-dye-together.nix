@@ -50,6 +50,9 @@
         ALLOW_FLIGHT = "TRUE";
         LEVEL_TYPE = "exdecorum:voidworld";
       };
+      extraPorts = [
+        24454
+      ];
     };
   };
   # Persist server

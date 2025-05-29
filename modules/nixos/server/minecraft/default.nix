@@ -7,5 +7,6 @@
   ];
   networking.sshForwarding.ports = [
     25565
+    24454
   ];
 }
