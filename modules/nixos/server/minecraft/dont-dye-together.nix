@@ -51,7 +51,7 @@
         LEVEL_TYPE = "exdecorum:voidworld";
       };
       extraPorts = [
-        24454
+        24454 # Simple voice chat
       ];
     };
   };
