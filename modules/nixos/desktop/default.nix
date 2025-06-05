@@ -7,6 +7,7 @@
   };
   imports = [
     ./ipfs.nix
+    ./kernel.nix
     ./impermanence.nix
     ./nebula.nix
     ./nix-exper.nix
