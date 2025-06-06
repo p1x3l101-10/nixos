@@ -8,17 +8,7 @@
       type = "forge";
       forgeVersion = "47.4.0";
       version = "1.20.1";
-      whitelist = userdata [ "mcUsername" ] [
-          "cayden"
-          "spradley"
-          "scott"
-          "dylan"
-          "kenton"
-          "kirby"
-          "isaiah"
-          "landen"
-          "eqquise"
-      ];
+      whitelist = userdata [ "mcUsername" ] (import ./overrides/whitelist.nix);
       rconStartup = [
         "gamerule playersSleepingPercentage 10"
       ];
