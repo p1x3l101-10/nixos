@@ -2,8 +2,21 @@
 
 lib.mkIf (config.networking.hostName == "pixels-pc") {
   networking.firewall = {
-    allowedUDPPorts = [ 9943 9944 9945 9946 9947 9949 5353 ];
-    allowedTCPPorts = [ 5353 9757 ];
+    allowedUDPPorts = [
+      9943
+      9944
+      9945
+      9946
+      9947
+      9949
+      5353
+    ];
+    allowedTCPPorts = [
+      9943
+      9944
+      5353
+      9757
+    ];
   };
   boot.kernelPatches = [
     {
