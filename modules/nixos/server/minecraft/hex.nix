@@ -22,7 +22,7 @@
           }}"
           "-Dunsup.disableReconciliation=true"
           "-Dunsup.bootstrapUrl=https://raw.githubusercontent.com/p1x3l101-10/hex/refs/heads/main/unsup.ini" 
-          "-Dunsup.bootstrapKey=signify RWRBgYcfobPE7I7STPLaQnp69F06aqQaBSWk0AuUFKlUoCyE6VUZKxJv"
+          "-Dunsup.bootstrapKey=\"signify RWRBgYcfobPE7I7STPLaQnp69F06aqQaBSWk0AuUFKlUoCyE6VUZKxJv\""
         ];
       };
     };
