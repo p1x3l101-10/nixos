@@ -221,6 +221,7 @@ in
       };
       customServer = mkMcOption "Custom server jar";
       forgeVersion = mkMcOption "";
+      fabricVersion = mkMcOption "";
       whitelist = mkOption {
         type = with types; listOf str;
         default = [];
@@ -266,6 +267,7 @@ in
         #(mkEnvRaw "GENERIC_PACK" ( if cfg.settings.extraFiles == null then null else (toString (pkgs.callPackage ./resources/genericPack.nix { src = cfg.settings.extraFiles; }))))
         (mkEnvRaw "GENERIC_PACK" cfg.generic.pack)
         (mkEnvRaw "forge_version" cfg.settings.forgeVersion)
+        (mkEnvRaw "FABRIC_LOADER_VERSION" cfg.settings.fabricVersion)
         (mkEnvRaw "MODRINTH_MODPACK" cfg.modrinth.pack.project)
         (mkEnvRaw "MODRINTH_LOADER" cfg.modrinth.pack.loader)
         (mkEnvRaw "MODRINTH_VERSION" cfg.modrinth.pack.version)
