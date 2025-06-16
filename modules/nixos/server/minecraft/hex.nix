@@ -21,8 +21,7 @@
             sha256 = "sha256:1386wka7bar1cdd5v7gi0x3pf177phvz3d449m5ybmzza49mmjir";
           }}"
           "-Dunsup.disableReconciliation=true"
-          "-Dunsup.bootstrapUrl=https://raw.githubusercontent.com/p1x3l101-10/hex/refs/heads/main/unsup.ini" 
-          "-Dunsup.bootstrapKey=\"signify RWRBgYcfobPE7I7STPLaQnp69F06aqQaBSWk0AuUFKlUoCyE6VUZKxJv\""
+          "-Dunsup.bootstrapUrl=https://raw.githubusercontent.com/p1x3l101-10/hex/refs/heads/main/unsup.ini"
         ];
       };
     };
