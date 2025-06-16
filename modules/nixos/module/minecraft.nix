@@ -246,6 +246,7 @@ in
   };
   config = mkIf cfg.enable {
     virtualisation.oci-containers.containers.minecraft = {
+      serviceName = "minecraft";
       environment = (lib.internal.attrsets.mergeAttrs (let inherit (lib.internal.environment) mkEnv mkEnvRawList mkEnvRaw; in [
         cfg.settings.extraEnv
         (mkEnv "EULA" (lib.trivial.boolToString cfg.settings.eula))

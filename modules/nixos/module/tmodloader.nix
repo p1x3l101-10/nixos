@@ -143,6 +143,7 @@ in
   };
   config = mkIf cfg.enable {
     virtualisation.oci-containers.containers.tmodloader = {
+      serviceName = "tmodloader";
       environment = (lib.internal.attrsets.mergeAttrs (let inherit (lib.internal.environment) mkEnv mkEnvList mkEnvRaw; in [
         cfg.extraConfig
         (mkEnvRaw "tmod_pass" cfg.password)
