@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ./spellbound-skies.nix
-    #./bluemap-nginx.nix
+    ./dylan-bad-lol.nix
+    ./bluemap-nginx.nix
     #./gtnh.nix
   ];
   networking.sshForwarding.ports = [
