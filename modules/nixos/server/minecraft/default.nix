@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./hex.nix
+    ./spellbound-skies.nix
     #./bluemap-nginx.nix
     #./gtnh.nix
   ];
