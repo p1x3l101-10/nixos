@@ -24,8 +24,8 @@
     ./systemd-homed.nix
     ./tablet.nix
     ./vCamera.nix
-    ./vr-min.nix
-    #./vr.nix
+    #./vr-min.nix
+    ./vr.nix
 
     ./desktop/flatpak.nix
     ./desktop/fonts.nix
