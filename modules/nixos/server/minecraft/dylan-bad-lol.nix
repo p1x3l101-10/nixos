@@ -11,6 +11,7 @@
       whitelist = userdata [ "mcUsername" ] (import ./overrides/whitelist.nix);
       rconStartup = [
         "gamerule playersSleepingPercentage 10"
+        "datapack disable \"mod:createappliedkinetics\""
       ];
       memory = 8;
       java = {
