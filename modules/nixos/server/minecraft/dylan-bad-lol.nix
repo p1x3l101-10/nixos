@@ -10,7 +10,7 @@
       version = "1.20.1";
       whitelist = userdata [ "mcUsername" ] (import ./overrides/whitelist.nix);
       rconStartup = [
-        "gamerule playersSleepingPercentage 10"
+        "gamerule playersSleepingPercentage 50"
         "datapack disable \"mod:createappliedkinetics\""
       ];
       memory = 8;
