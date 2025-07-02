@@ -200,6 +200,7 @@ in
         description = "Server type to use";
       };
       version = mkMcOption "";
+      allowFlight = mkEnableOption "flying";
       port = mkOption {
         type = types.port;
         default = 25565;
@@ -287,6 +288,7 @@ in
         (mkEnvRawList "CURSEFORGE_FILES" (lib.forEach cfg.curseforge.mods (x: lib.internal.minecraft.translateModName x "curseforge")) "\n")
         (mkEnvRaw "PACKWIZ_URL" cfg.packwiz.url)
         (mkEnv "SPAWN_PROTECTION" cfg.settings.spawnProtection)
+        (mkEnv "ALLOW_FLIGHT" (lib.trivial.boolToString cfg.settings.allowFlight))
       ]));
       ports = [
         "${builtins.toString cfg.settings.port}:25565"

@@ -19,4 +19,5 @@
         extraArgs = jvmArgs;
       })
   );
+  allowFlight = true;
 }

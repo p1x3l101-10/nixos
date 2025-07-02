@@ -26,14 +26,10 @@
         forgeVersion = "47.4.0";
         version = "1.20.1";
         java.version = "17-alpine";
-        extraEnv = {
-          ALLOW_FLIGHT = "TRUE";
-          LEVEL_TYPE = "exdecorum:voidworld";
-        };
         extraPorts = [
           24454 # Simple voice chat
         ];
-        }
+      }
     ];
   };
   # Persist server
