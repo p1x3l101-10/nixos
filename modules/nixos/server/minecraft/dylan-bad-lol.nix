@@ -18,8 +18,8 @@
         version = "17-alpine";
         args = [
           "-javaagent:${builtins.fetchurl {
-            url = "https://git.sleeping.town/unascribed/unsup/releases/download/v1.1.3/unsup-1.1.3.jar";
-            sha256 = "sha256:1386wka7bar1cdd5v7gi0x3pf177phvz3d449m5ybmzza49mmjir";
+            url = "https://git.sleeping.town/unascribed/unsup/releases/download/v1.1.5/unsup-1.1.5.jar";
+            sha256 = "sha256:08nhk4rnj367qlk0dasr06p9jgjng123si9c9fwd3m3l8lbp2675";
           }}"
           "-Dunsup.disableReconciliation=true"
           "-Dunsup.bootstrapUrl='https://raw.githubusercontent.com/p1x3l101-10/dylan-bad-lol/refs/heads/main/unsup.ini'" 
