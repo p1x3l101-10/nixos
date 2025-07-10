@@ -7,6 +7,7 @@
     ./cachix.nix
     ./cache.nix
     ./content-addressed.nix
+    ./editor.nix
     ./git.nix
     ./hideGetty.nix
     ./impermanence.nix
