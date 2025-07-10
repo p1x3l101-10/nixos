@@ -43,7 +43,6 @@
   environment.systemPackages = with pkgs; [
     nautilus
     gnome-software
-    blackbox-terminal
   ];
   programs.ssh.enableAskPassword = false;
   documentation.nixos.enable = false;
