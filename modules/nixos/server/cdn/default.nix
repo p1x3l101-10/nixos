@@ -12,7 +12,7 @@
     };
   };
   environment.persistence."/nix/host/state/Servers/HTTP-CDN".directories = [
-    { directory = "/var/lib/http-cdn"; mode = "0770"; group = config.users.groups.http-cdn.gid; }
+    { directory = "/var/lib/http-cdn"; mode = "0770"; group = config.users.groups.http-cdn.name; }
   ];
   users.groups.http-cdn = {
     members = [
