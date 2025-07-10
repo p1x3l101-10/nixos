@@ -8,6 +8,7 @@
   imports = [
     ./ipfs.nix
     ./kernel.nix
+    ./modpack-working.nix
     ./impermanence.nix
     ./nebula.nix
     ./nix-exper.nix
