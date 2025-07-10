@@ -5,7 +5,7 @@
 
 {
   eula = true;
-  whitelist = userdata [ "mcUsername" ] (import ./overrides/whitelist.nix);
+  whitelist = userdata [ "mcUsername" ] (import ./whitelist.nix);
   rconStartup = [
     "gamerule playersSleepingPercentage 10"
   ];
