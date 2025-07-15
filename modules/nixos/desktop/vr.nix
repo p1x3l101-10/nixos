@@ -83,6 +83,7 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
     stardust-xr-sphereland
     stardust-xr-atmosphere
     stardust-xr-kiara
+    libva
   ];
   hardware.graphics = {
     enable = true;
