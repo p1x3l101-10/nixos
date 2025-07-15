@@ -48,14 +48,13 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
       };
     }
   ];
-  # CoreCTRL
-  programs.corectrl = {
+  # GPU Userspace temp overclocking
+  hardware.amdgpu.overdrive = {
     enable = true;
-    gpuOverclock = {
-      enable = true;
-      ppfeaturemask = "0xfffd7fff";
-    };
+    ppfeaturemask = "0xfffd7fff";
   };
+  # CoreCTRL
+  programs.corectrl.enable = true;
   security.polkit.extraConfig = ''
     polkit.addRule(function(action, subject) {
         if ((action.id == "org.corectrl.helper.init" ||
