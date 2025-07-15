@@ -15,6 +15,7 @@
     extraPackages = with pkgs; [
       gamescope
       alvr
+      adwaita-icon-theme
     ];
   };
   system.allowedUnfree.packages = [
