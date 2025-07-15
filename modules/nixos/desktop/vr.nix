@@ -17,6 +17,10 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
     config = {
       enable = true;
       json = {
+        # Autostart wlx-overlay
+        application = [
+          "${wlx-overlay-s}" "--replace"
+        ];
         # 1.0x foveation scaling
         scale = 1.0;
         # 100 Mb/s
@@ -57,7 +61,6 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
   # Others
   environment.systemPackages = with pkgs; [
     immersed
-    wlx-overlay-s
     opencomposite
     xr-hardware
     internal.telescope
