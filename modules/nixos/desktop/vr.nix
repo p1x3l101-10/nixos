@@ -68,15 +68,7 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
     wlx-overlay-s
     opencomposite
     xr-hardware
-    stardust-xr-server
-    stardust-xr-gravity
-    stardust-xr-phobetor
-    stardust-xr-magnetar
-    stardust-xr-flatland
-    stardust-xr-protostar
-    stardust-xr-sphereland
-    stardust-xr-atmosphere
-    stardust-xr-kiara
+    telescope
     libva
     opencomposite
   ];
