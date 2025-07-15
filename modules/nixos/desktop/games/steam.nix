@@ -14,7 +14,6 @@
     ];
     extraPackages = with pkgs; [
       gamescope
-      alvr
       adwaita-icon-theme
     ];
   };
