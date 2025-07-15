@@ -14,6 +14,7 @@
     ];
     extraPackages = with pkgs; [
       gamescope
+      alvr
     ];
   };
   system.allowedUnfree.packages = [
