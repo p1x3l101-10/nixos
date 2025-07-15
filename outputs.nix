@@ -27,7 +27,7 @@ in {
         ./systems/pixels-pc
       ] ++ (with inputs; [
         self.nixosModules.desktop
-        nixpkgs-xr.nixosModules.nixpkgs-xr
+        #nixpkgs-xr.nixosModules.nixpkgs-xr
       ]) ++ (with inputs.nixos-hardware.nixosModules; [
         common-pc
         common-pc-ssd
