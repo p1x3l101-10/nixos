@@ -1,11 +1,13 @@
 { lib
 , buildFHSEnv
 , callPackage
-, envision-unwrapped ? callPackage ./unwrapped.nix { }
 , envision
 , testers
-,
 }:
+
+let
+  envision-unwrapped = callPackage ./unwrapped.nix { };
+in
 
 buildFHSEnv {
   pname = "envision";
