@@ -6,6 +6,7 @@
     };
   };
   imports = [
+    ./adb.nix
     ./ipfs.nix
     ./kernel.nix
     ./modpack-working.nix
