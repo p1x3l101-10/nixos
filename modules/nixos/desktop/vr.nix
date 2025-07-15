@@ -104,7 +104,7 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
     "libnvjitlink"
   ];
   nixpkgs.config = {
-    xr.enable = false;
+    #xr.enable = false;
     rocmSupport = true;
   };
   services.avahi = {

@@ -30,10 +30,12 @@
       url = "github:Lassulus/nix-autobahn";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    /* # Breaks vr suprisingly
     nixpkgs-xr = {
       url = "github:nix-community/nixpkgs-xr";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    */
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       #inputs.nixpkgs.follows = "nixpkgs";
