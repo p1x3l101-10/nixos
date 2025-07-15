@@ -11,6 +11,6 @@ writeShellApplication {
     stardust-xr-server
   ];
   text = ''
-    stardust-xr-server -d -o 1 -e "${startup}/bin/init" "$@"
+    stardust-xr-server -d -o 1 -e "${init-script}/bin/init" "$@"
   '';
 }
