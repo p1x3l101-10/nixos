@@ -22,7 +22,6 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
   # Others
   environment.systemPackages = with pkgs; [
     immersed
-    monadoHelperShell
     wlx-overlay-s
     opencomposite
     xr-hardware
