@@ -10,6 +10,7 @@
     extest.enable = true;
     extraCompatPackages = with pkgs; [
       proton-ge-bin
+      steam-play-none
     ];
     extraPackages = with pkgs; [
       gamescope
