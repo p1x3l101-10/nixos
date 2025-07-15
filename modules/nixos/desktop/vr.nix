@@ -19,7 +19,7 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
       json = {
         # Autostart wlx-overlay
         application = [
-          pkgs.wlx-overlay-s "--replace"
+          pkgs.wlx-overlay-s
         ];
         # 1.0x foveation scaling
         scale = 1.0;
