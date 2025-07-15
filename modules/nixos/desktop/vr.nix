@@ -68,7 +68,7 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
     wlx-overlay-s
     opencomposite
     xr-hardware
-    telescope
+    internal.telescope
     libva
     opencomposite
   ];
