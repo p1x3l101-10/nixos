@@ -2,6 +2,6 @@
 
 {
   environment.systemPackages = [
-    inputs.fjordlauncher."${pkgs.system}".fjordlauncher
+    inputs.fjordlauncher.packages."${pkgs.system}".fjordlauncher
   ];
 }
