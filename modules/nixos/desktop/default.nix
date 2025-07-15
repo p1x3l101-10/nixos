@@ -33,5 +33,8 @@
     ./desktop/gnome.nix
     ./desktop/syncthing.nix
     ./desktop/waydroid.nix
+
+    ./games/minecraft.nix
+    ./games/steam.nix
   ];
 }
