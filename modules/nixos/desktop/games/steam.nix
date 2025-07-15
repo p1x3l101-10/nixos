@@ -18,6 +18,10 @@
       adwaita-icon-theme
     ];
   };
+  programs.alvr = {
+    enable = true;
+    openFirewall = true;
+  };
   system.allowedUnfree.packages = [
     "steam"
     "steam-unwrapped"
