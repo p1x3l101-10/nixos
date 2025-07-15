@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ pkgs, lib, ... }:
 {
   services.pulseaudio.enable = false;
   security = {
@@ -11,4 +11,5 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+  environment.systemPackages = [ pkgs.pipewire ];
 }
