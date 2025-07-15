@@ -3,7 +3,8 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
   # Envision
   programs.envision = {
     enable = true;
-    openFirewall = true; # This is set true by default
+    #package = pkgs.internal.envision;
+    openFirewall = true;
   };
   # GPU Userspace temp overclocking
   hardware.amdgpu.overdrive = {
