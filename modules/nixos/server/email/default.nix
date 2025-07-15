@@ -2,7 +2,8 @@
 
 let
   email = username: "${username}@${globals.server.dns.basename}";
-in {
+in
+{
   mailserver = {
     enable = globals.server.dns.exists;
     fqdn = "mail.${globals.server.dns.basename}";

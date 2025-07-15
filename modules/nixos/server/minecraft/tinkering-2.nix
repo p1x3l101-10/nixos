@@ -9,14 +9,14 @@
       version = "1.12.2";
       forgeVersion = "14.23.5.2860";
       whitelist = userdata [ "mcUsername" ] [
-          "cayden"
-          "spradley"
-          "scott"
-          "dylan"
-          "kenton"
+        "cayden"
+        "spradley"
+        "scott"
+        "dylan"
+        "kenton"
       ];
       ops = userdata [ "mcUsername" ] [
-          "scott"
+        "scott"
       ];
       rconStartup = [
         "gamerule playersSleepingPercentage 10"

@@ -5,7 +5,8 @@ let
     url = "https://github.com/${owner}/${repo}/releases/download/${version}/${fileName}";
     inherit hash;
   };
-in {
+in
+{
   services.minecraft = {
     enable = true;
     generic = {
@@ -27,7 +28,7 @@ in {
           (pkgs.fetchzip {
             url = "https://downloads.gtnewhorizons.com/ServerPacks/GT_New_Horizons_2.7.4_Server_Java_17-21.zip";
             hash = "sha256-wWGDbVwVe6989SyPjS0d/82oXTu//rHkDbjIVzFAVgY=";
-            stripRoot=false;
+            stripRoot = false;
           })
         ];
       });

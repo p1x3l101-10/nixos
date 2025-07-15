@@ -2,7 +2,8 @@
 
 let
   bluemap_port = 8100;
-in {
+in
+{
   services.minecraft.settings.extraPorts = [
     bluemap_port
   ];

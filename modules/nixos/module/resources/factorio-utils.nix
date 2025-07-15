@@ -19,11 +19,12 @@ in
     let
       recursiveDeps = modDrv: [ modDrv ] ++ map recursiveDeps modDrv.deps;
       modDrvs = unique (flatten (map recursiveDeps mods));
-      enabledModsJson = if (enabledMods != null)
-      then 
-        builtins.toFile "mods-list.json" (builtins.toJSON enabledMods)
-      else
-        builtins.toFile "mods-list.json" (builtins.toJSON {});
+      enabledModsJson =
+        if (enabledMods != null)
+        then
+          builtins.toFile "mods-list.json" (builtins.toJSON enabledMods)
+        else
+          builtins.toFile "mods-list.json" (builtins.toJSON { });
     in
     stdenv.mkDerivation {
       name = "factorio-mod-directory";
@@ -47,12 +48,12 @@ in
 
   modDrv =
     { allRecommendedMods, allOptionalMods }:
-    {
-      src,
-      name ? null,
-      deps ? [ ],
-      optionalDeps ? [ ],
-      recommendedDeps ? [ ],
+    { src
+    , name ? null
+    , deps ? [ ]
+    , optionalDeps ? [ ]
+    , recommendedDeps ? [ ]
+    ,
     }:
     stdenv.mkDerivation {
 

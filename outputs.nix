@@ -1,5 +1,6 @@
-inputs: let
-namespace = "internal";
+inputs:
+let
+  namespace = "internal";
   lib0 = inputs.nixpkgs.lib;
   lib1 = import ./lib { lib = lib0; inherit inputs namespace; };
   lib = lib0.extend (finalLib: prevLib: { "${namespace}" = lib1; });
@@ -14,7 +15,8 @@ namespace = "internal";
     { lib."${namespace}" = lib1; }
     (lib.internal.flake.genPkgOverlay { inherit namespace; packages = inputs.self.packages.x86_64-linux; })
   ];
-in {
+in
+{
   lib = lib1;
   nixosModules = lib.internal.flake.genModules {
     src = ./modules/nixos;
@@ -42,7 +44,7 @@ in {
         ./systems/pixels-server
         inputs.simple-nixos-mailserver.nixosModules.default
         inputs.self.nixosModules.server
-      ] ++ ( with inputs.nixos-hardware.nixosModules; [
+      ] ++ (with inputs.nixos-hardware.nixosModules; [
         common-pc
         common-pc-ssd
         common-cpu-intel-cpu-only
@@ -53,9 +55,9 @@ in {
       specialArgs = { inherit inputs; };
       modules = [
         ./systems/hetzner-vps
-      ] ++ ( with inputs; ( with self.nixosModules; [
+      ] ++ (with inputs; (with self.nixosModules; [
         vps
-      ]) ++ []) ++ common-modules;
+      ]) ++ [ ]) ++ common-modules;
     };
   };
   formatter.${system} = pkgs.nixpkgs-fmt;

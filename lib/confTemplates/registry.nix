@@ -1,23 +1,26 @@
 { lib, ext, self }:
 
-inputs: lib.attrsets.mapAttrs' (
-  name: value: lib.attrsets.nameValuePair
-    name ({ flake = inputs.${name}; })
-) inputs
+inputs: lib.attrsets.mapAttrs'
+  (
+    name: value: lib.attrsets.nameValuePair
+      name
+      ({ flake = inputs.${name}; })
+  )
+  inputs
 
 /*
-used for generating registries
-{ inputs, lib, ... }:
-{
+  used for generating registries
+  { inputs, lib, ... }:
+  {
   nix.registry = self.confTemplates.registry inputs;
-}
+  }
 
-turns into this
-{
+  turns into this
+  {
   nix.registry = {
-    self.flake = inputs.self;
-    nixpkgs.flake = inputs.nixpkgs;
-    ...
+  self.flake = inputs.self;
+  nixpkgs.flake = inputs.nixpkgs;
+  ...
   };
-}
+  }
 */

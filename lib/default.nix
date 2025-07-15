@@ -6,7 +6,7 @@ let
   # Create temp callLib function and use it to pull in genLib
   c = f: import f { inherit lib ext self; };
   genLib = s: a: c ./internal-raw/genLib.nix c s a;
-in 
+in
 genLib ./. [
   "internal" # Always first
 

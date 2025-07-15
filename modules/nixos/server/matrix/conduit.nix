@@ -4,7 +4,7 @@
   services.matrix-conduit = {
     enable = globals.server.dns.exists;
     settings.global = {
-      address = "127.0.0.1"; 
+      address = "127.0.0.1";
       allow_registration = false;
       registration_token = "opensesame";
       database_backend = "rocksdb";

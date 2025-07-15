@@ -6,15 +6,15 @@
     enable = mkEnableOption "Better license management" // { default = true; };
     licenses = mkOption {
       type = with types; listOf str;
-      default = [];
+      default = [ ];
     };
     blockedLicenses = mkOption {
       type = with types; listOf str;
-      default = [];
+      default = [ ];
     };
     packages = mkOption {
       type = with types; listOf str;
-      default = [];
+      default = [ ];
     };
   };
   config = lib.mkIf config.system.allowedUnfree.enable {

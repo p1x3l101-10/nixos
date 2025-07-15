@@ -3,7 +3,8 @@
 lib.fix (self: {
   type = "server";
   server = {
-    dns = { # DNS data and helpers
+    dns = {
+      # DNS data and helpers
       basename = "piplup.pp.ua"; # Basename for dns
       exists = (if self.server.dns.basename != "" then true else false); # True when dns is not empty, otherwise false
       required = attrs: (lib.mkIf self.server.dns.exists attrs); # mkIf wrapper to check if the dns is set or not

@@ -2,7 +2,8 @@
 
 let
   inherit (import ./key.nix) rootCredentialsFile;
-in {
+in
+{
   services.minio = {
     enable = true;
     listenAddress = "127.0.0.1:9000";

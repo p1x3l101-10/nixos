@@ -5,7 +5,8 @@ lib.fix (self: {
     dylan = {
       mcUsername = "Dillpikle2022";
     };
-    scott = { # Das me!
+    scott = {
+      # Das me!
       website = globals.dns.basename;
       proxyKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMxvRlsW70GEkuqN/tdVM5X8EqdE6M/iA2iOHsA+HX8e sblatt@SS-Mac-sblatt.local";
       sshKeys = [

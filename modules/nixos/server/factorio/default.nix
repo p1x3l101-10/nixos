@@ -13,7 +13,8 @@
     allowedPlayers = userdata [ "factorioUsername" ] [
       "scott"
     ];
-    modList = { # Dlc server
+    modList = {
+      # Dlc server
       base = true;
       "elevated-rails" = true;
       quality = true;

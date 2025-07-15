@@ -30,7 +30,8 @@ let
       mv ./${src.name} $out/lwjgl3ify-forgePatches.jar
     '';
   };
-in {
+in
+{
   services.minecraft = {
     enable = true;
     generic.pack = builtins.toString (lib.internal.builders.genericPack {

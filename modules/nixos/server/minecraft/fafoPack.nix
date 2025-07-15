@@ -6,12 +6,14 @@ let
       builtins.toJSON (
         {
           entries = (
-            lib.attrsets.mapAttrsToList (name: value:
-              {
-                item = name;
-                emc = value;
-              }
-            ) set
+            lib.attrsets.mapAttrsToList
+              (name: value:
+                {
+                  item = name;
+                  emc = value;
+                }
+              )
+              set
           );
         }
       )

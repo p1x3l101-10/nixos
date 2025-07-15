@@ -1,5 +1,5 @@
 { packId ? ""
-, jvmArgs ? []
+, jvmArgs ? [ ]
 , userdata
 }:
 

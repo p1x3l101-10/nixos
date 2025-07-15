@@ -1,10 +1,10 @@
 { lib, ext, self }:
 
 { disk-id
-# Actual disk
+  # Actual disk
 , esp-size ? "500m"
 , swap-size ? "20G"
-# tmpfs systems
+  # tmpfs systems
 , root-size ? "4G"
 }:
 

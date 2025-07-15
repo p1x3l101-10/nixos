@@ -83,7 +83,7 @@ in
       };
       mods = mkOption {
         type = with types; listOf (coercedTo str (slug: { inherit slug; }) (submodule curseforgeMod));
-        default = [];
+        default = [ ];
         description = "List of mods from modrinth to install";
         example = ''
           [
@@ -109,7 +109,7 @@ in
       mods = {
         projects = mkOption {
           type = with types; listOf (coercedTo str (modId: { inherit modId; }) (submodule modrinthMod));
-          default = [];
+          default = [ ];
           description = "List of mods from modrinth to install";
           example = ''
             [
@@ -162,17 +162,17 @@ in
         };
         args = mkOption {
           type = with types; listOf str;
-          default = [];
+          default = [ ];
           description = "JVM arguments";
         };
         DDargs = mkOption {
           type = with types; listOf str;
-          default = [];
+          default = [ ];
           description = "JVM DD arguments (shorthand list)";
         };
         XXargs = mkOption {
           type = with types; listOf str;
-          default = [];
+          default = [ ];
           description = "JVM XX arguments (shorthand list)";
         };
       };
@@ -207,17 +207,17 @@ in
       };
       extraEnv = mkOption {
         type = with types; attrsOf str;
-        default = {};
+        default = { };
         description = "Extra environment variables to merge into server";
       };
       extraPorts = mkOption {
         type = with types; listOf (coercedTo port (to: { inherit to; }) (submodule portPair));
-        default = [];
+        default = [ ];
         description = "Extra ports to map";
       };
       rconStartup = mkOption {
         type = with types; listOf str;
-        default = [];
+        default = [ ];
         description = "RCon commands to run on server startup";
       };
       customServer = mkMcOption "Custom server jar";
@@ -225,12 +225,12 @@ in
       fabricVersion = mkMcOption "";
       whitelist = mkOption {
         type = with types; listOf str;
-        default = [];
+        default = [ ];
         description = "List of players to whitelist";
       };
       ops = mkOption {
         type = with types; listOf str;
-        default = [];
+        default = [ ];
         description = "List of players to op";
       };
       spawnProtection = mkMcIntOption "Spawn protection radius (0 is off)";
@@ -248,51 +248,53 @@ in
   config = mkIf cfg.enable {
     virtualisation.oci-containers.containers.minecraft = {
       serviceName = "minecraft";
-      environment = (lib.internal.attrsets.mergeAttrs (let inherit (lib.internal.environment) mkEnv mkEnvRawList mkEnvRaw; in [
-        cfg.settings.extraEnv
-        (mkEnv "EULA" (lib.trivial.boolToString cfg.settings.eula))
-        # Modrinth mod list
-        (mkEnvRawList "MODRINTH_PROJECTS" (lib.forEach cfg.modrinth.mods.projects (x: lib.internal.minecraft.translateModName x "modrinth")) "\n")
-        (mkEnvRaw "MODRINTH_ALLOWED_VERSION_TYPE" cfg.modrinth.mods.allowedVersionType)
-        (mkEnvRaw "MODRINTH_DOWNLOAD_DEPENDENCIES" cfg.modrinth.mods.downloadDependancies)
-        # Type and version
-        (mkEnv "VERSION" cfg.settings.version)
-        (mkEnv "TYPE" cfg.settings.type)
-        # API Keys
-        (mkEnvRaw "CF_API_KEY" cfg.curseforge.apiKey)
-        # Curseforge modpack
-        (mkEnv "CF_SLUG" cfg.curseforge.pack.slug)
-        (mkEnv "CF_FILE_ID" cfg.curseforge.pack.fileId)
-        # Settings
-        (mkEnv "MEMORY" ((builtins.toString cfg.settings.memory) + "G"))
-        (mkEnvRaw "RCON_CMDS_STARTUP" (lib.strings.concatStringsSep "\n" cfg.settings.rconStartup))
-        #(mkEnvRaw "GENERIC_PACK" ( if cfg.settings.extraFiles == null then null else (toString (pkgs.callPackage ./resources/genericPack.nix { src = cfg.settings.extraFiles; }))))
-        (mkEnvRaw "GENERIC_PACK" cfg.generic.pack)
-        (mkEnvRaw "forge_version" cfg.settings.forgeVersion)
-        (mkEnvRaw "FABRIC_LOADER_VERSION" cfg.settings.fabricVersion)
-        (mkEnvRaw "MODRINTH_MODPACK" cfg.modrinth.pack.project)
-        (mkEnvRaw "MODRINTH_LOADER" cfg.modrinth.pack.loader)
-        (mkEnvRaw "MODRINTH_VERSION" cfg.modrinth.pack.version)
-        (mkEnvRaw "CUSTOM_SERVER" cfg.settings.customServer)
-        (mkEnv "ENABLE_AUTOPAUSE" (lib.trivial.boolToString cfg.autoPause.enable))
-        (mkEnv "AUTOPAUSE_TIMEOUT_EST" cfg.autoPause.timeout.established)
-        (mkEnv "AUTOPAUSE_TIMEOUT_INIT" cfg.autoPause.timeout.init)
-        (mkEnv "AUTOPAUSE_TIMEOUT_KN" cfg.autoPause.timeout.knock)
-        (mkEnv "AUTOPAUSE_PERIOD" cfg.autoPause.period)
-        (mkEnvRawList "WHITELIST" cfg.settings.whitelist "\n")
-        (mkEnvRawList "OPS" cfg.settings.ops "\n")
-        (mkEnv "FORCE_GENERIC_PACK_UPDATE" (lib.trivial.boolToString cfg.generic.forceUpdate))
-        (mkEnvRawList "JVM_OPTS" cfg.settings.java.args " ")
-        (mkEnvRawList "JVM_XX_OPTS" cfg.settings.java.XXargs " ")
-        (mkEnvRawList "JVM_DD_OPTS" cfg.settings.java.DDargs " ")
-        (mkEnvRawList "CURSEFORGE_FILES" (lib.forEach cfg.curseforge.mods (x: lib.internal.minecraft.translateModName x "curseforge")) "\n")
-        (mkEnvRaw "PACKWIZ_URL" cfg.packwiz.url)
-        (mkEnv "SPAWN_PROTECTION" cfg.settings.spawnProtection)
-        (mkEnv "ALLOW_FLIGHT" (lib.trivial.boolToString cfg.settings.allowFlight))
-      ]));
+      environment = (lib.internal.attrsets.mergeAttrs (
+        let inherit (lib.internal.environment) mkEnv mkEnvRawList mkEnvRaw; in [
+          cfg.settings.extraEnv
+          (mkEnv "EULA" (lib.trivial.boolToString cfg.settings.eula))
+          # Modrinth mod list
+          (mkEnvRawList "MODRINTH_PROJECTS" (lib.forEach cfg.modrinth.mods.projects (x: lib.internal.minecraft.translateModName x "modrinth")) "\n")
+          (mkEnvRaw "MODRINTH_ALLOWED_VERSION_TYPE" cfg.modrinth.mods.allowedVersionType)
+          (mkEnvRaw "MODRINTH_DOWNLOAD_DEPENDENCIES" cfg.modrinth.mods.downloadDependancies)
+          # Type and version
+          (mkEnv "VERSION" cfg.settings.version)
+          (mkEnv "TYPE" cfg.settings.type)
+          # API Keys
+          (mkEnvRaw "CF_API_KEY" cfg.curseforge.apiKey)
+          # Curseforge modpack
+          (mkEnv "CF_SLUG" cfg.curseforge.pack.slug)
+          (mkEnv "CF_FILE_ID" cfg.curseforge.pack.fileId)
+          # Settings
+          (mkEnv "MEMORY" ((builtins.toString cfg.settings.memory) + "G"))
+          (mkEnvRaw "RCON_CMDS_STARTUP" (lib.strings.concatStringsSep "\n" cfg.settings.rconStartup))
+          #(mkEnvRaw "GENERIC_PACK" ( if cfg.settings.extraFiles == null then null else (toString (pkgs.callPackage ./resources/genericPack.nix { src = cfg.settings.extraFiles; }))))
+          (mkEnvRaw "GENERIC_PACK" cfg.generic.pack)
+          (mkEnvRaw "forge_version" cfg.settings.forgeVersion)
+          (mkEnvRaw "FABRIC_LOADER_VERSION" cfg.settings.fabricVersion)
+          (mkEnvRaw "MODRINTH_MODPACK" cfg.modrinth.pack.project)
+          (mkEnvRaw "MODRINTH_LOADER" cfg.modrinth.pack.loader)
+          (mkEnvRaw "MODRINTH_VERSION" cfg.modrinth.pack.version)
+          (mkEnvRaw "CUSTOM_SERVER" cfg.settings.customServer)
+          (mkEnv "ENABLE_AUTOPAUSE" (lib.trivial.boolToString cfg.autoPause.enable))
+          (mkEnv "AUTOPAUSE_TIMEOUT_EST" cfg.autoPause.timeout.established)
+          (mkEnv "AUTOPAUSE_TIMEOUT_INIT" cfg.autoPause.timeout.init)
+          (mkEnv "AUTOPAUSE_TIMEOUT_KN" cfg.autoPause.timeout.knock)
+          (mkEnv "AUTOPAUSE_PERIOD" cfg.autoPause.period)
+          (mkEnvRawList "WHITELIST" cfg.settings.whitelist "\n")
+          (mkEnvRawList "OPS" cfg.settings.ops "\n")
+          (mkEnv "FORCE_GENERIC_PACK_UPDATE" (lib.trivial.boolToString cfg.generic.forceUpdate))
+          (mkEnvRawList "JVM_OPTS" cfg.settings.java.args " ")
+          (mkEnvRawList "JVM_XX_OPTS" cfg.settings.java.XXargs " ")
+          (mkEnvRawList "JVM_DD_OPTS" cfg.settings.java.DDargs " ")
+          (mkEnvRawList "CURSEFORGE_FILES" (lib.forEach cfg.curseforge.mods (x: lib.internal.minecraft.translateModName x "curseforge")) "\n")
+          (mkEnvRaw "PACKWIZ_URL" cfg.packwiz.url)
+          (mkEnv "SPAWN_PROTECTION" cfg.settings.spawnProtection)
+          (mkEnv "ALLOW_FLIGHT" (lib.trivial.boolToString cfg.settings.allowFlight))
+        ]
+      ));
       ports = [
         "${builtins.toString cfg.settings.port}:25565"
-      ] ++ (lib.optionals (cfg.settings.extraPorts != []) (lib.forEach cfg.settings.extraPorts
+      ] ++ (lib.optionals (cfg.settings.extraPorts != [ ]) (lib.forEach cfg.settings.extraPorts
         (x:
           (toString (if (x.from != null) then x.from else x.to)) + ":" + (toString x.to)
         )
@@ -306,10 +308,10 @@ in
       image = "internal/docker-minecraft:${toString cfg.settings.java.version}";
       imageFile = pkgs.internal.dockerMinecraft.override {
         inherit ((import (./resources/minecraft.nix)).versionList.${cfg.settings.java.version}) imageDigest sha256;
-        finalImageTag = (toString cfg.settings.java.version); 
+        finalImageTag = (toString cfg.settings.java.version);
       };
       autoStart = true;
-      extraOptions = (lib.lists.optionals cfg.autoPause.enable ["--cap-add=CAP_NET_RAW" "--network=slirp4netns:port_handler=slirp4netns"]);
+      extraOptions = (lib.lists.optionals cfg.autoPause.enable [ "--cap-add=CAP_NET_RAW" "--network=slirp4netns:port_handler=slirp4netns" ]);
     };
     systemd.tmpfiles.settings."50-minecraft" = {
       "/var/lib/minecraft".d = {
@@ -331,7 +333,7 @@ in
     networking.firewall.allowedTCPPorts = (
       lib.lists.optional cfg.settings.openFirewall cfg.settings.port
       ++
-      lib.lists.optionals (cfg.settings.extraPorts != []) (lib.lists.forEach cfg.settings.extraPorts (x: x.to))
+      lib.lists.optionals (cfg.settings.extraPorts != [ ]) (lib.lists.forEach cfg.settings.extraPorts (x: x.to))
     );
     assertions = [
       {
@@ -340,7 +342,7 @@ in
           You need to agree to the Minecraft EULA in order to run the Minecraft Server
           You can read the EULA at https://www.minecraft.net/en-us/eula
           Once you have agreed to the EULA, set `services.minecraft.settings.eula = true` to agree
-        ''; 
+        '';
       }
       {
         assertion = ! ((lib.strings.hasInfix "alpine" cfg.settings.java.version) && (cfg.generic.pack != null));
@@ -352,12 +354,12 @@ in
       }
     ];
     # Encurage people to not use extraEnv
-    warnings = (lib.lists.optional (cfg.settings.extraEnv != {}) ''
+    warnings = (lib.lists.optional (cfg.settings.extraEnv != { }) ''
       services.minecraft.settings.extraEnv is unsupported
       be sure to check if there is a better way to set values
     '')
     ++
-    (lib.lists.optional (lib.lists.any (x: x.from == 25575) cfg.settings.extraPorts)''
+    (lib.lists.optional (lib.lists.any (x: x.from == 25575) cfg.settings.extraPorts) ''
       DO NOT port forward RCON on 25575 without first setting RCON_PASSWORD to a secure value.
       It is highly recommended to only use RCON within the container, such as with rcon-cli
     '');

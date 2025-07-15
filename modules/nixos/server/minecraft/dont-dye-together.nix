@@ -7,19 +7,21 @@
       (import ./overrides/settings.nix {
         inherit userdata;
         packId = "dont-dye-together";
-        jvmArgs = let
-          stations = {
-            stations = [
-              {
-                url = "https://stream.gensokyoradio.net/1";
-                title = "Gensokyo Radio";
-                name = "Gensokyo Radio";
-              }
-            ];
-          };
-        in [
-          "-Dadastra.stations=${toString (builtins.toFile "stations.json" (builtins.toJSON stations))}"
-        ];
+        jvmArgs =
+          let
+            stations = {
+              stations = [
+                {
+                  url = "https://stream.gensokyoradio.net/1";
+                  title = "Gensokyo Radio";
+                  name = "Gensokyo Radio";
+                }
+              ];
+            };
+          in
+          [
+            "-Dadastra.stations=${toString (builtins.toFile "stations.json" (builtins.toJSON stations))}"
+          ];
       })
       {
         type = "forge";

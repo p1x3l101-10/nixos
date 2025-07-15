@@ -9,9 +9,11 @@ let
   nixFileNames = lib.attrsets.filterAttrs (name: _: lib.strings.hasSuffix ".nix" name) nixFiles;
 in
 
-lib.attrsets.mapAttrs' (
-  fileName: _: {
-    name = lib.strings.removeSuffix ".nix" fileName;
-    value =  callLib (dir + "/${fileName}");  # Wrap in function to call with args
-  }
-) nixFileNames
+lib.attrsets.mapAttrs'
+  (
+    fileName: _: {
+      name = lib.strings.removeSuffix ".nix" fileName;
+      value = callLib (dir + "/${fileName}"); # Wrap in function to call with args
+    }
+  )
+  nixFileNames

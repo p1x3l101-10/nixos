@@ -8,7 +8,8 @@ let
     wantedBy = [ "local-fs.target" ];
   };
   imperSubst = dir: (mountUnit "/nix/host/state/System/${dir}" dir);
-in {
+in
+{
   environment.persistence."/nix/host/state/System" = {
     hideMounts = true;
     directories = [
@@ -30,8 +31,8 @@ in {
   };
   services.userborn.enable = true;
   environment.etc = {
-    "containers/networks/.keep".source = (pkgs.runCommand "empty-file" {} "touch $out");
-    "NetworkManager/system-connections/.keep".source = (pkgs.runCommand "empty-file" {} "touch $out");
-    "avahi/.keep".source = (pkgs.runCommand "empty-file" {} "touch $out");
+    "containers/networks/.keep".source = (pkgs.runCommand "empty-file" { } "touch $out");
+    "NetworkManager/system-connections/.keep".source = (pkgs.runCommand "empty-file" { } "touch $out");
+    "avahi/.keep".source = (pkgs.runCommand "empty-file" { } "touch $out");
   };
 }

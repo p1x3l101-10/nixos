@@ -3,7 +3,8 @@
 let
   cfg = config.services.forgejo;
   srv = cfg.settings.server;
-in {
+in
+{
   services.forgejo = {
     enable = globals.server.dns.exists;
     database.type = "postgres";
@@ -13,10 +14,10 @@ in {
       server = {
         DOMAIN = "git.${globals.server.dns.basename}";
         # You need to specify this to remove the port from URLs in the web UI.
-        ROOT_URL = "https://${srv.DOMAIN}/"; 
+        ROOT_URL = "https://${srv.DOMAIN}/";
         HTTP_PORT = 3000;
       };
-      service.DISABLE_REGISTRATION = true; 
+      service.DISABLE_REGISTRATION = true;
       actions = {
         ENABLED = true;
         DEFAULT_ACTIONS_URL = "github";

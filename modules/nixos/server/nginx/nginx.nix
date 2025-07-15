@@ -14,16 +14,18 @@
           globalRedirect = globals.server.dns.basename;
         }
       else
-        { # The default landing page
+        {
+          # The default landing page
           enableACME = lib.mkDefault false;
           locations."/".root = lib.mkDefault ./landing;
         }
-      )
+    )
     ;
   };
   networking.sshForwarding.ports = [
     { host = 80; remote = 8080; }
-  ] ++ (lib.optionals globals.server.dns.exists [ # Only open https when we can actually use it
+  ] ++ (lib.optionals globals.server.dns.exists [
+    # Only open https when we can actually use it
     { host = 443; remote = 4443; }
   ]);
 }

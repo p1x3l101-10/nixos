@@ -3,7 +3,8 @@
 let
   cfg = config.services.forgejo;
   srv = cfg.settings.server;
-in {
+in
+{
   services.nginx = {
     virtualHosts.${cfg.settings.server.DOMAIN} = globals.server.dns.required {
       forceSSL = true;

@@ -28,25 +28,27 @@ buildGoModule {
   '';
 
   # For building sites
-  passthru.build = { src, service, env ? {}, buildInputs ? [] }: stdenv.mkDerivation {
-    name = "aya-build";
-    inherit src;
-    nativeBuildInputs = [
-      aya
-    ] ++ buildInputs;
-    patchPhase = ''
-      cp -r ${service} ./.aya
-    '';
-    buildPhase = ''
-      aya build
-    '';
-    installPhase = ''
-      mv ./.pub $out
-    '';
-  } // ( # Extra envvars needed
+  passthru.build = { src, service, env ? { }, buildInputs ? [ ] }: stdenv.mkDerivation
+    {
+      name = "aya-build";
+      inherit src;
+      nativeBuildInputs = [
+        aya
+      ] ++ buildInputs;
+      patchPhase = ''
+        cp -r ${service} ./.aya
+      '';
+      buildPhase = ''
+        aya build
+      '';
+      installPhase = ''
+        mv ./.pub $out
+      '';
+    } // (# Extra envvars needed
     lib.listToAttrs (
       lib.forEach (lib.attrsToList env) (x:
-        { # Format the envvars so aya takes them
+        {
+          # Format the envvars so aya takes them
           name = "AYA_${lib.toUpper x.name}";
           inherit (x) value;
         }

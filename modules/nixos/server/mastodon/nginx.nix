@@ -22,10 +22,12 @@
           least_conn;
         '';
         servers = builtins.listToAttrs (
-          map (i: {
-            name = "unix:/run/mastodon-streaming/streaming-${toString i}.socket";
-            value = { };
-          }) (lib.range 1 config.services.mastodon.streamingProcesses)
+          map
+            (i: {
+              name = "unix:/run/mastodon-streaming/streaming-${toString i}.socket";
+              value = { };
+            })
+            (lib.range 1 config.services.mastodon.streamingProcesses)
         );
       };
     };

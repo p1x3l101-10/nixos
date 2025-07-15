@@ -1,6 +1,6 @@
 { pkgs, lib, inputs, ... }:
 
-lib.fix (self:{
+lib.fix (self: {
   system.autoUpgrade = {
     flags = [ "--show-trace" ];
     flake = "github:p1x3l101-10/nixos";

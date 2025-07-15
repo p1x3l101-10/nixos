@@ -8,15 +8,15 @@
       type = "forge";
       version = "1.12.2";
       whitelist = userdata [ "mcUsername" ] [
-          "cayden"
-          "spradley"
-          "scott"
-          "dylan"
-          "kenton"
+        "cayden"
+        "spradley"
+        "scott"
+        "dylan"
+        "kenton"
       ];
       ops = userdata [ "mcUsername" ] [
-          "spradley"
-          "scott"
+        "spradley"
+        "scott"
       ];
       rconStartup = [
         "gamerule playersSleepingPercentage 10"

@@ -12,18 +12,20 @@ from:
 let
   inherit (lib.lists) optional singleton;
   inherit (lib.strings) concatStringsSep;
-in (
+in
+(
   if (from == "modrinth") then
-    concatStringsSep ":" (
-      (optional dataPack "datapack")
-      ++ singleton modId
-      ++ (optional (versionId != null) versionId)
-    )
+    concatStringsSep ":"
+      (
+        (optional dataPack "datapack")
+        ++ singleton modId
+        ++ (optional (versionId != null) versionId)
+      )
   else # curseforge
     (if (slug != null) then slug else (builtins.toString modId))
-    + (
+      + (
       if (versionId != null) then ":${builtins.toString versionId}"
       else if (partialFilename != null) then "@${partialFilename}"
-    else ""
-  )
+      else ""
+    )
 )

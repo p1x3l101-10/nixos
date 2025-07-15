@@ -3,7 +3,8 @@
 let
   gccArches = [
   ];
-in {
+in
+{
   /* Make builds the same again
     nixpkgs.system = lib.mkForce {
     features = [ "gccarch-znver3" ];

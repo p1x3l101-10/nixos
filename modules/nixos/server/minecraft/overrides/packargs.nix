@@ -1,5 +1,5 @@
 { packId
-, extraArgs ? []
+, extraArgs ? [ ]
 }:
 
 (import ./unsup.nix {

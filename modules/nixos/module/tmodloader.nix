@@ -144,39 +144,41 @@ in
   config = mkIf cfg.enable {
     virtualisation.oci-containers.containers.tmodloader = {
       serviceName = "tmodloader";
-      environment = (lib.internal.attrsets.mergeAttrs (let inherit (lib.internal.environment) mkEnv mkEnvList mkEnvRaw; in [
-        cfg.extraConfig
-        (mkEnvRaw "tmod_pass" cfg.password)
-        (mkEnvRaw "tmod_worldname" cfg.world.name)
-        (mkEnvRaw "tmod_worldseed" cfg.world.seed)
-        (mkEnv "tmod_difficulty" (lib.attrsets.attrByPath [cfg.difficulty] 0 {
-          journey = -1;
-          classic = 0;
-          expert = 1;
-          master = 2;
-        }))
-        (mkEnv "tmod_worldsize" (lib.attrsets.attrByPath [ cfg.difficulty ] 0 {
-          small = 0;
-          medium = 1;
-          large = 2;
-        }))
-        (mkEnvList "tmod_autodownload" cfg.mods.download ",")
-        (mkEnvList "tmod_enabledMods" cfg.mods.enabled ",")
-        (mkEnv "tmod_journey_setFrozen" (fromJourney cfg.journey.setFrozen))
-        (mkEnv "tmod_journey_setDawn" (fromJourney cfg.journey.setDawn))
-        (mkEnv "tmod_journey_setNoon" (fromJourney cfg.journey.setNoon))
-        (mkEnv "tmod_journey_setDusk" (fromJourney cfg.journey.setDusk))
-        (mkEnv "tmod_journey_godmode" (fromJourney cfg.journey.godmode))
-        (mkEnv "tmod_journey_wind_strength" (fromJourney cfg.journey.windStrength))
-        (mkEnv "tmod_journey_rain_strength" (fromJourney cfg.journey.rainStrength))
-        (mkEnv "tmod_journey_time_speed" (fromJourney cfg.journey.timeSpeed))
-        (mkEnv "tmod_journey_rain_frozen" (fromJourney cfg.journey.rainFrozen))
-        (mkEnv "tmod_journey_wind_rozen" (fromJourney cfg.journey.windFrozen))
-        (mkEnv "tmod_journey_placement_range" (fromJourney cfg.journey.placementRange))
-        (mkEnv "tmod_journey_set_difficulty" (fromJourney cfg.journey.setDifficulty))
-        (mkEnv "tmod_journey_biome_spread" (fromJourney cfg.journey.biomeSpread))
-        (mkEnv "tmod_journey_spawn_rate" (fromJourney cfg.journey.spawnRate))
-      ]));
+      environment = (lib.internal.attrsets.mergeAttrs (
+        let inherit (lib.internal.environment) mkEnv mkEnvList mkEnvRaw; in [
+          cfg.extraConfig
+          (mkEnvRaw "tmod_pass" cfg.password)
+          (mkEnvRaw "tmod_worldname" cfg.world.name)
+          (mkEnvRaw "tmod_worldseed" cfg.world.seed)
+          (mkEnv "tmod_difficulty" (lib.attrsets.attrByPath [ cfg.difficulty ] 0 {
+            journey = -1;
+            classic = 0;
+            expert = 1;
+            master = 2;
+          }))
+          (mkEnv "tmod_worldsize" (lib.attrsets.attrByPath [ cfg.difficulty ] 0 {
+            small = 0;
+            medium = 1;
+            large = 2;
+          }))
+          (mkEnvList "tmod_autodownload" cfg.mods.download ",")
+          (mkEnvList "tmod_enabledMods" cfg.mods.enabled ",")
+          (mkEnv "tmod_journey_setFrozen" (fromJourney cfg.journey.setFrozen))
+          (mkEnv "tmod_journey_setDawn" (fromJourney cfg.journey.setDawn))
+          (mkEnv "tmod_journey_setNoon" (fromJourney cfg.journey.setNoon))
+          (mkEnv "tmod_journey_setDusk" (fromJourney cfg.journey.setDusk))
+          (mkEnv "tmod_journey_godmode" (fromJourney cfg.journey.godmode))
+          (mkEnv "tmod_journey_wind_strength" (fromJourney cfg.journey.windStrength))
+          (mkEnv "tmod_journey_rain_strength" (fromJourney cfg.journey.rainStrength))
+          (mkEnv "tmod_journey_time_speed" (fromJourney cfg.journey.timeSpeed))
+          (mkEnv "tmod_journey_rain_frozen" (fromJourney cfg.journey.rainFrozen))
+          (mkEnv "tmod_journey_wind_rozen" (fromJourney cfg.journey.windFrozen))
+          (mkEnv "tmod_journey_placement_range" (fromJourney cfg.journey.placementRange))
+          (mkEnv "tmod_journey_set_difficulty" (fromJourney cfg.journey.setDifficulty))
+          (mkEnv "tmod_journey_biome_spread" (fromJourney cfg.journey.biomeSpread))
+          (mkEnv "tmod_journey_spawn_rate" (fromJourney cfg.journey.spawnRate))
+        ]
+      ));
       image = "internal/docker-tmodloader:latest";
       imageFile = cfg.image;
       ports = [

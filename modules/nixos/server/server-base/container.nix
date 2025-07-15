@@ -8,26 +8,26 @@
   };
   networking = {
     /*
-    nat = {
+      nat = {
       enable = true;
       internalInterfaces = [ "ve-*" "vb-*" "ve-+" "vb-+" "br0" ];
       externalInterface = "enp2s0";
       enableIPv6 = true;
-    };
-    bridges.br0.interfaces = [
+      };
+      bridges.br0.interfaces = [
       "enp2s0"
-    ];
-    interfaces.br0 = {
+      ];
+      interfaces.br0 = {
       useDHCP = false;
       ipv4.addresses = [{
         address = "10.233.4.2/24";
         prefixLength = 24;
       }];
-    };
-    firewall = {
+      };
+      firewall = {
       trustedInterfaces = [ "ve-*" "vb-*" "ve-+" "vb-+" "br0" ];
-    };
-    nftables.enable = true;
+      };
+      nftables.enable = true;
     */
   };
   environment.persistence."/nix/host/cache".directories = [

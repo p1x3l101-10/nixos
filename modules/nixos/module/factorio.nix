@@ -1,14 +1,15 @@
 { config, options, pkgs, lib, ... }:
 
 let
-  newUtils = pkgs.callPackage ./resources/factorio-utils.nix {};
+  newUtils = pkgs.callPackage ./resources/factorio-utils.nix { };
   cfg = config.services.factorio;
-  modSerialized = if (cfg.modList != null)
-  then
-    {
-      mods = lib.forEach (lib.attrsToList cfg.modList) (x: { inherit (x) name; enabled = x.value; });
-    }
-  else null;
+  modSerialized =
+    if (cfg.modList != null)
+    then
+      {
+        mods = lib.forEach (lib.attrsToList cfg.modList) (x: { inherit (x) name; enabled = x.value; });
+      }
+    else null;
   modDir = newUtils.mkModDirDrv cfg.mods cfg.mods-dat cfg.modList;
   # Copied from the module
   stateDir = "/var/lib/${cfg.stateDirName}";
@@ -41,10 +42,12 @@ let
   serverSettingsFile = pkgs.writeText "server-settings.json" serverSettingsString;
   playerListOption =
     name: list:
-    lib.optionalString (
-      list != [ ]
-    ) "--${name}=${pkgs.writeText "${name}.json" (builtins.toJSON list)}";
-in {
+    lib.optionalString
+      (
+        list != [ ]
+      ) "--${name}=${pkgs.writeText "${name}.json" (builtins.toJSON list)}";
+in
+{
   options = with lib; {
     services.factorio.modList = mkOption {
       type = with types; nullOr attrSet;
@@ -66,7 +69,8 @@ in {
           "\necho ${lib.strings.escapeShellArg serverSettingsString}"
           + " \"$(cat ${cfg.extraSettingsFile})\" | ${lib.getExe pkgs.jq} -s add"
           + " > ${stateDir}/server-settings.json"
-        )));
+        ))
+      );
       serviceConfig = {
         ExecStart = lib.mkForce (toString [
           "${cfg.package}/bin/factorio"

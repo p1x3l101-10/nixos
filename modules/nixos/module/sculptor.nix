@@ -6,7 +6,8 @@ let
     type = lib.types.str;
     inherit default;
   };
-in {
+in
+{
   options.services.sculptor = with lib; {
     enable = mkEnableOption "The Sculptor";
     package = mkOption {
@@ -17,10 +18,12 @@ in {
     openFirewall = mkEnableOption "opening firewall";
     config = {
       authProviders = mkOption {
-        type = with types; listOf (submodule { options = {
-          name = mkOption { type = types.str; };
-          url = mkOption { type = types.str; };
-        };});
+        type = with types; listOf (submodule {
+          options = {
+            name = mkOption { type = types.str; };
+            url = mkOption { type = types.str; };
+          };
+        });
         description = "Can't work without at least one provider!";
         default = [
           { name = "Mojang"; url = "https://sessionserver.mojang.com/session/minecraft/hasJoined"; }
@@ -100,7 +103,7 @@ in {
       };
       advancedUsers = mkOption {
         type = types.attrs;
-        default = {};
+        default = { };
         description = "With advancedUsers you can set additional parameters";
       };
     };

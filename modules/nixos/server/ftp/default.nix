@@ -5,7 +5,8 @@
 let
   # Habit
   cfg.enable = false;
-in {
+in
+{
   config = lib.modules.mkIf cfg.enable (lib.internal.attrsets.mergeAttrs [
     {
       containers.ftp = {
