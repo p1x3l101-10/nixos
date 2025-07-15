@@ -68,8 +68,8 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
     );
   '';
   # Others
-  /*
   environment.systemPackages = with pkgs; [
+    immersed
     monadoHelperShell
     wlx-overlay-s
     opencomposite
@@ -84,12 +84,13 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
     stardust-xr-atmosphere
     stardust-xr-kiara
   ];
-  */
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
   };
   system.allowedUnfree.packages = [
+    # Needed for an app
+    "immersed"
     # Agree only to these packages, not the "CUDA Toolkit End User License Agreement (EULA)" as a whole
     "cuda-merged"
     "cuda_cccl"
