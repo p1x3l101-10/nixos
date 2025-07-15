@@ -1,53 +1,5 @@
 { config, pkgs, lib, ... }:
-let
-  defaultRuntime = "WiVRn";
-  monadoHelperShell = pkgs.writeShellScriptBin "setup-monado-handModels.sh" ''
-    mkdir -p ~/.local/share/monado
-    cd ~/.local/share/monado
-    git clone https://gitlab.freedesktop.org/monado/utilities/hand-tracking-models
-  '';
-in
 lib.mkIf (config.networking.hostName == "pixels-pc") {
-  systemd.user.services.monado.environment = {
-    STEAMVR_LH_ENABLE = "1";
-    XRT_COMPOSITOR_COMPUTE = "1";
-  };
-  # WiVRn
-  services.wivrn = {
-    enable = true;
-    openFirewall = true;
-    defaultRuntime = (defaultRuntime == "WiVRn");
-    autoStart = true;
-    config = {
-      enable = true;
-      json = {
-        scale = 1.0;
-        bitrate = 100000000;
-        encoders = [
-          {
-            encoder = "vaapi";
-            codec = "h265";
-            # 1.0 x 1.0 scaling
-            width = 1.0;
-            height = 1.0;
-            offset_x = 0.0;
-            offset_y = 0.0;
-          }
-        ];
-      };
-    };
-  };
-  # Kernel patches
-  boot.kernelPatches = [
-    {
-      name = "amdgpu-ignore-ctx-privileges";
-      patch = pkgs.fetchpatch {
-        name = "cap_sys_nice_begone.patch";
-        url = "https://github.com/Frogging-Family/community-patches/raw/master/linux61-tkg/cap_sys_nice_begone.mypatch";
-        hash = "sha256-Y3a0+x2xvHsfLax/uwycdJf3xLxvVfkfDVqjkxNaYEo=";
-      };
-    }
-  ];
   # GPU Userspace temp overclocking
   hardware.amdgpu.overdrive = {
     enable = true;
@@ -120,7 +72,6 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
     xr.enable = true;
     rocmSupport = true;
   };
-  networking.firewall.allowedUDPPorts = [ 9943 9944 9945 9946 9947 9949 5353 ];
   services.avahi = {
     enable = true;
     nssmdns4 = true;
