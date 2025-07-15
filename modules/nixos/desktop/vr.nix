@@ -1,20 +1,5 @@
 { config, pkgs, lib, ... }:
 lib.mkIf (config.networking.hostName == "pixels-pc") {
-  # Monado
-  services.monado = {
-    enable = true;
-  };
-  systemd.user.services.monado.environment = {
-    STEAMVR_LH_ENABLE = "1";
-    XRT_COMPOSITOR_COMPUTE = "1";
-  };
-  # WiVRn
-  services.wivrn = {
-    enable = true;
-    openFirewall = true;
-    defaultRuntime = true;
-    autoStart = false;
-  };
   # Envision
   programs.envision = {
     enable = true;
