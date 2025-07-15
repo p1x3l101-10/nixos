@@ -15,4 +15,8 @@
       gamescope
     ];
   };
+  system.allowedUnfree.packages = [
+    "steam"
+    "steam-unwrapped"
+  ];
 }
