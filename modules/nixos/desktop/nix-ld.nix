@@ -25,6 +25,7 @@
       libgpg-error
       harfbuzz
       libz
+      fuse
     ];
   };
   environment.systemPackages = [
