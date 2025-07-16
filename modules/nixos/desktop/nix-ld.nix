@@ -3,19 +3,28 @@
   programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [
-      alsa-lib.out
+      alsa-lib
       dbus.lib
-      libGL.out
+      libGL
       fontconfig.lib
-      openxr-loader.out
-      pipewire.out
+      openxr-loader
+      pipewire
       libgcc.lib
-      kdePackages.wayland.out
-      xorg.libX11.out
-      xorg.libxcb.out
-      xorg.libXext.out
-      libxkbcommon.out
-      xorg.libXrandr.out
+      kdePackages.wayland
+      xorg.libX11
+      xorg.libxcb
+      xorg.libXext
+      libxkbcommon
+      xorg.libXrandr
+      e2fsprogs
+      libdrm
+      expat
+      freetype
+      fribidi
+      libgbm
+      libgpg-error
+      harfbuzz
+      libz
     ];
   };
   environment.systemPackages = [
