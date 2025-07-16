@@ -3,7 +3,7 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
   # Envision
   programs.envision = {
     enable = true;
-    #package = pkgs.internal.envision;
+    package = pkgs.internal.envision;
     openFirewall = true;
   };
   # GPU Userspace temp overclocking
