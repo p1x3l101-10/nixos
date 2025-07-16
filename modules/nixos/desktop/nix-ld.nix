@@ -30,5 +30,7 @@
   };
   environment.systemPackages = [
     inputs.nix-autobahn.packages.x86_64-linux.nix-autobahn
+    nix-index
+    fuse
   ];
 }
