@@ -52,6 +52,8 @@ buildFHSEnv {
       libgpg-error
       harfbuzz
       libz
+      # Plugin other deps
+      xorg.setxkbmap
     ])
     ++ (
       # OpenHMD dependencies
