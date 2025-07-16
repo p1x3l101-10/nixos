@@ -43,6 +43,7 @@
   environment.systemPackages = with pkgs; [
     nautilus
     gnome-software
+    morewaita-icon-theme
   ];
   programs.ssh.enableAskPassword = false;
   documentation.nixos.enable = false;

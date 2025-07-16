@@ -15,6 +15,7 @@
     extraPackages = with pkgs; [
       gamescope
       adwaita-icon-theme
+      morewaita-icon-theme
     ];
   };
   programs.alvr = {
