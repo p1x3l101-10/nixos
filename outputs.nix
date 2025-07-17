@@ -1,10 +1,9 @@
-inputs:
+inputs: inputs.flake-utils.lib.eachDefaultSystem (system:
 let
   namespace = "internal";
   lib0 = inputs.nixpkgs.lib;
   lib1 = import ./lib { lib = lib0; inherit inputs namespace; };
   lib = lib0.extend (finalLib: prevLib: { "${namespace}" = lib1; });
-  system = builtins.elemAt (import inputs.systems) 0;
   pkgs = inputs.nixpkgs.legacyPackages.${system};
   common-modules = with inputs; [
     lanzaboote.nixosModules.lanzaboote
@@ -13,10 +12,9 @@ let
     self.nixosModules.base
     self.nixosModules.module
     { lib."${namespace}" = lib1; }
-    (lib.internal.flake.genPkgOverlay { inherit namespace; packages = inputs.self.packages.x86_64-linux; })
+    (lib.internal.flake.genPkgOverlay { inherit namespace; packages = inputs.self.packages.${system}; })
   ];
-in
-{
+in {
   lib = lib1;
   nixosModules = lib.internal.flake.genModules {
     src = ./modules/nixos;
@@ -62,4 +60,4 @@ in
   };
   formatter.${system} = pkgs.nixpkgs-fmt;
   packages.${system} = lib1.flake.genPackages ./packages pkgs.newScope;
-}
+})
