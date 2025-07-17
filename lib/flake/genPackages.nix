@@ -1,16 +1,12 @@
 { lib, ext, self }:
 
-src: newScope: extraAutoArgs:
+src: newScope: extraArgs:
 
-let
-  scopeWithArgs = lib.makeScope newScope (_: extraAutoArgs);
-in
-
-lib.makeScope scopeWithArgs.newScope (self:
+lib.makeScope newScope (self:
 (
   lib.attrsets.mapAttrs
     (name: value:
-    (self.callPackage value { })
+    (self.callPackage value extraArgs)
     )
     (
       lib.attrsets.mapAttrs
