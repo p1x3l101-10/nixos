@@ -8,8 +8,8 @@ in inputs.flake-utils.lib.eachDefaultSystem (system:
   let
     pkgs = inputs.nixpkgs.legacyPackages.${system};
   in {
-    formatter.${system} = pkgs.nixpkgs-fmt;
-    packages.${system} = lib1.flake.genPackages ./packages pkgs.newScope;
+    formatter = pkgs.nixpkgs-fmt;
+    packages = lib1.flake.genPackages ./packages pkgs.newScope;
   }
 ) // inputs.flake-utils.lib.eachDefaultSystemPassThrough (system: 
   let
