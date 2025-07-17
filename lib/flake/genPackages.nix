@@ -3,10 +3,10 @@
 src: newScope: extraAutoArgs:
 
 let
-  newScopeWithArgs = lib.makeScope newScope (_: extraAutoArgs);
+  scopeWithArgs = lib.makeScope newScope (_: extraAutoArgs);
 in
 
-lib.makeScope newScopeWithArgs (self:
+lib.makeScope scopeWithArgs.newScope (self:
 (
   lib.attrsets.mapAttrs
     (name: value:
