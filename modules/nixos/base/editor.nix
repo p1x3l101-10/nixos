@@ -10,7 +10,11 @@
         start = [];
         opt = [];
       };
-      vimrcConfig.customRC = '''';
+      vimrcConfig.customRC = ''
+        " Spellcheck and imperitive adding
+        set spell spelllang=en_us
+        set spellfile=~/.vim/spell/en_US.utf-8.add
+      '';
     };
   };
 }
