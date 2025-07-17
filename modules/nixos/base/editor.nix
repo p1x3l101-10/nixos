@@ -7,7 +7,17 @@
     package = (pkgs.vim-full.override { }).customize {
       name = "vim-with-plugins";
       vimrcConfig.packages.myplugins = with pkgs.vimPlugins; {
-        start = [];
+        start = [
+          vim-lsp # LSP
+          # LSP for snippets in other languages
+          vim-vsnip
+          vim-vsnip-integ
+          # Autocomplete
+          asyncomplete-lsp-vim
+          asyncomplete-file-vim
+          vim-vinegar # Improve dir browser
+          vim-rename # `saveas` to rename file
+        ];
         opt = [];
       };
       vimrcConfig.customRC = ''
