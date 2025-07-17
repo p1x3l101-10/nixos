@@ -4,9 +4,7 @@ let
   lib0 = inputs.nixpkgs.lib;
   lib1 = import ./lib { lib = lib0; inherit inputs namespace; };
   lib = lib0.extend (finalLib: prevLib: { "${namespace}" = lib1; });
-in 
-
-inputs.flake-utils.lib.eachDefaultSystem (system:
+in inputs.flake-utils.lib.eachDefaultSystem (system:
   let
     pkgs = inputs.nixpkgs.legacyPackages.${system};
   in {
