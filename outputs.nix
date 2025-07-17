@@ -3,10 +3,18 @@ let
   namespace = "internal";
   lib0 = inputs.nixpkgs.lib;
   lib1 = import ./lib { lib = lib0; inherit inputs namespace; };
-in (inputs.flake-utils.lib.eachDefaultSystem (system:
+  lib = lib0.extend (finalLib: prevLib: { "${namespace}" = lib1; });
+in 
+
+inputs.flake-utils.lib.eachDefaultSystem (system:
   let
-    lib = lib0.extend (finalLib: prevLib: { "${namespace}" = lib1; });
     pkgs = inputs.nixpkgs.legacyPackages.${system};
+  in {
+    formatter.${system} = pkgs.nixpkgs-fmt;
+    packages.${system} = lib1.flake.genPackages ./packages pkgs.newScope;
+  }
+) // inputs.flake-utils.lib.eachDefaultSystemPassThrough (system: 
+  let
     common-modules = with inputs; [
       lanzaboote.nixosModules.lanzaboote
       impermanence.nixosModules.impermanence
@@ -17,6 +25,7 @@ in (inputs.flake-utils.lib.eachDefaultSystem (system:
       (lib.internal.flake.genPkgOverlay { inherit namespace; packages = inputs.self.packages.${system}; })
     ];
   in {
+    lib = lib1;
     nixosModules = lib.internal.flake.genModules {
       src = ./modules/nixos;
     };
@@ -59,9 +68,5 @@ in (inputs.flake-utils.lib.eachDefaultSystem (system:
         ]) ++ [ ]) ++ common-modules;
       };
     };
-    formatter.${system} = pkgs.nixpkgs-fmt;
-    packages.${system} = lib1.flake.genPackages ./packages pkgs.newScope;
-  })
-) // {
-  lib = lib1;
-}
+  }
+)
