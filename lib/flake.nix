@@ -32,7 +32,7 @@
       }
     )
     // inputs.flake-utils.lib.eachDefaultSystemPassThrough (system: {
-      lib = import ./lib { lib = inputs.nixpkgs.lib; namespace = "internal"; inherit inputs; };
+      lib = import . { lib = inputs.nixpkgs.lib; namespace = "internal"; inherit inputs; };
     })
   );
 }
