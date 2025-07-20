@@ -4,7 +4,7 @@
   boot = {
     plymouth = {
       enable = true;
-      theme = "breeze";
+      theme = "bgrt";
     };
     consoleLogLevel = 0;
     initrd.verbose = false;
