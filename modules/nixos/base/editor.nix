@@ -16,7 +16,6 @@
           asyncomplete-lsp-vim
           asyncomplete-file-vim
           vim-vinegar # Improve dir browser
-          vim-rename # `saveas` to rename file
         ];
         opt = [];
       };
