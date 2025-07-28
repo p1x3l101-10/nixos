@@ -1,5 +1,29 @@
 {
   "nodes": {
+    "astronvim": {
+      "inputs": {
+        "nix-formatter-pack": "nix-formatter-pack",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "nixvim": [
+          "nixvim"
+        ]
+      },
+      "locked": {
+        "lastModified": 1718578797,
+        "narHash": "sha256-fdq1HW4XDNi0OI46W5cIiwnhopK8r79wj89JMUfM7u0=",
+        "owner": "nicolas-goudry",
+        "repo": "nixvim-config",
+        "rev": "1ff2f4e92971f8afa027219f909373ff04147520",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nicolas-goudry",
+        "repo": "nixvim-config",
+        "type": "github"
+      }
+    },
     "blobs": {
       "flake": false,
       "locked": {
@@ -462,6 +486,29 @@
         "type": "github"
       }
     },
+    "nix-formatter-pack": {
+      "inputs": {
+        "nixpkgs": [
+          "astronvim",
+          "nixpkgs"
+        ],
+        "nmd": "nmd",
+        "nmt": "nmt"
+      },
+      "locked": {
+        "lastModified": 1715807870,
+        "narHash": "sha256-lutvG1LFGSpXsGA7U4TWfdfq6p71WdSlhw3vM4W/Opk=",
+        "owner": "Gerschtli",
+        "repo": "nix-formatter-pack",
+        "rev": "ab5feb867e5d074918852de6134500a82a09dc48",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Gerschtli",
+        "repo": "nix-formatter-pack",
+        "type": "github"
+      }
+    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1752666637,
@@ -592,6 +639,38 @@
         "type": "github"
       }
     },
+    "nmd": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1666190571,
+        "narHash": "sha256-Z1hc7M9X6L+H83o9vOprijpzhTfOBjd0KmUTnpHAVjA=",
+        "owner": "rycee",
+        "repo": "nmd",
+        "rev": "b75d312b4f33bd3294cd8ae5c2ca8c6da2afc169",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "rycee",
+        "repo": "nmd",
+        "type": "gitlab"
+      }
+    },
+    "nmt": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1648075362,
+        "narHash": "sha256-u36WgzoA84dMVsGXzml4wZ5ckGgfnvS0ryzo/3zn/Pc=",
+        "owner": "rycee",
+        "repo": "nmt",
+        "rev": "d83601002c99b78c89ea80e5e6ba21addcfe12ae",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "rycee",
+        "repo": "nmt",
+        "type": "gitlab"
+      }
+    },
     "nuschtosSearch": {
       "inputs": {
         "flake-utils": "flake-utils_3",
@@ -643,6 +722,7 @@
     },
     "root": {
       "inputs": {
+        "astronvim": "astronvim",
         "disko": "disko",
         "fjordlauncher": "fjordlauncher",
         "flake-utils": "flake-utils",
