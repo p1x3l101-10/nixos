@@ -5,4 +5,8 @@
     enable = true;
     defaultEditor = true;
   };
+  environment.shellAliases = {
+    vi = "nvim";
+    vim = "nvim";
+  };
 }
