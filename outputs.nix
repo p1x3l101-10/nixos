@@ -25,12 +25,16 @@ inputs.flake-utils.lib.eachDefaultSystem
       self.nixosModules.module
       { lib."${namespace}" = lib1; }
       (lib.internal.flake.genPkgOverlay { inherit namespace; packages = inputs.self.packages.${system}; })
+      (lib.internal.flake.importOverlays { overlays = with inputs.self.overlays; [ nixvim-pkg ]; })
     ];
   in
   {
     lib = lib1;
     nixosModules = lib.internal.flake.genModules {
       src = ./modules/nixos;
+    };
+    overlays = lib.internal.flake.genOverlays {
+      src = ./overlays;
     };
     nixosConfigurations = {
       pixels-pc = lib.nixosSystem {
