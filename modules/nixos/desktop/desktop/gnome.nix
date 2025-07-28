@@ -44,6 +44,7 @@
     nautilus
     gnome-software
     morewaita-icon-theme
+    wl-clipboard # Clipboard needed for wayland
   ];
   programs.ssh.enableAskPassword = false;
   documentation.nixos.enable = false;
