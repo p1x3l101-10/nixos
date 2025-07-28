@@ -4,5 +4,5 @@
 
 
 { ... }: {
-  nixpkgs = { inherit overlays };
+  nixpkgs = { inherit overlays; };
 }
