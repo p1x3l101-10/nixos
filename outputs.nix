@@ -14,6 +14,7 @@ in inputs.flake-utils.lib.eachDefaultSystem (system:
 ) // inputs.flake-utils.lib.eachDefaultSystemPassThrough (system: 
   let
     common-modules = with inputs; [
+      nixvim.nixosModules.nixvim
       lanzaboote.nixosModules.lanzaboote
       impermanence.nixosModules.impermanence
       disko.nixosModules.disko
