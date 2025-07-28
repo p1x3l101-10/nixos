@@ -9,28 +9,30 @@
     };
   };
   outputs = inputs: (
-    inputs.flake-utils.lib.eachDefaultSystem (system: 
-      let
-        pkgs = inputs.nixpkgs.legacyPackages.${system};
-        lib = inputs.nixpkgs.lib;
-      in {
-        apps = lib.fix (self: {
-          update = {
-            type = "app";
-            program = pkgs.writeShellApplication {
-              name = "subflake-updater";
-              runtimeInputs = with pkgs; [
-                nix
-              ];
-              text = ''
-                nix flake lock --inputs-from ${./..}
-              '';
+    inputs.flake-utils.lib.eachDefaultSystem
+      (system:
+        let
+          pkgs = inputs.nixpkgs.legacyPackages.${system};
+          lib = inputs.nixpkgs.lib;
+        in
+        {
+          apps = lib.fix (self: {
+            update = {
+              type = "app";
+              program = pkgs.writeShellApplication {
+                name = "subflake-updater";
+                runtimeInputs = with pkgs; [
+                  nix
+                ];
+                text = ''
+                  nix flake lock --inputs-from ${./..}
+                '';
+              };
             };
-          };
-          default = self.update;
-        });
-      }
-    )
+            default = self.update;
+          });
+        }
+      )
     // inputs.flake-utils.lib.eachDefaultSystemPassThrough (system: {
       lib = import ./. { lib = inputs.nixpkgs.lib; namespace = "internal"; inherit inputs; };
     })

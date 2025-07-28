@@ -1,17 +1,20 @@
-inputs: 
+inputs:
 let
   namespace = "internal";
   lib0 = inputs.nixpkgs.lib;
   lib1 = import ./lib { lib = lib0; inherit inputs namespace; };
   lib = lib0.extend (finalLib: prevLib: { "${namespace}" = lib1; });
-in inputs.flake-utils.lib.eachDefaultSystem (system:
-  let
-    pkgs = inputs.nixpkgs.legacyPackages.${system};
-  in {
-    formatter = pkgs.nixpkgs-fmt;
-    packages = lib1.flake.genPackages ./packages pkgs.newScope {};
-  }
-) // inputs.flake-utils.lib.eachDefaultSystemPassThrough (system: 
+in
+inputs.flake-utils.lib.eachDefaultSystem
+  (system:
+    let
+      pkgs = inputs.nixpkgs.legacyPackages.${system};
+    in
+    {
+      formatter = pkgs.nixpkgs-fmt;
+      packages = lib1.flake.genPackages ./packages pkgs.newScope { };
+    }
+  ) // inputs.flake-utils.lib.eachDefaultSystemPassThrough (system:
   let
     common-modules = with inputs; [
       nixvim.nixosModules.nixvim
@@ -23,7 +26,8 @@ in inputs.flake-utils.lib.eachDefaultSystem (system:
       { lib."${namespace}" = lib1; }
       (lib.internal.flake.genPkgOverlay { inherit namespace; packages = inputs.self.packages.${system}; })
     ];
-  in {
+  in
+  {
     lib = lib1;
     nixosModules = lib.internal.flake.genModules {
       src = ./modules/nixos;
