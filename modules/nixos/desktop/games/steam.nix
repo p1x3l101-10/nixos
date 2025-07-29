@@ -28,6 +28,9 @@
     enable = true;
     openFirewall = true;
   };
+  environment.systemPackages = with pkgs; [
+    r2modman
+  ];
   system.allowedUnfree.packages = [
     "steam"
     "steam-unwrapped"
