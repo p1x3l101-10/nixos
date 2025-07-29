@@ -10,4 +10,14 @@
     withPython3 = true;
     withNodeJs = true;
   };
+  fonts.packages = with pkgs; [
+    nerd-fonts.sauce-code-pro
+  ];
+  environment.systemPackages = with pkgs; [
+    tree-sitter
+    ripgrep
+    lazygit
+    gdu
+    bottom
+  ];
 }
