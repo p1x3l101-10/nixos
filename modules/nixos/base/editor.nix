@@ -6,5 +6,8 @@
     defaultEditor = true;
     vimAlias = true;
     viAlias = true;
+    withRuby = true;
+    withPython3 = true;
+    withNodeJs = true;
   };
 }
