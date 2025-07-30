@@ -31,6 +31,9 @@ inputs.flake-utils.lib.eachDefaultSystem
     nixosModules = lib.internal.flake.genModules {
       src = ./modules/nixos;
     };
+    homeModules = lib.internal.flake.genModules {
+      src = ./modules/home;
+    };
     nixosConfigurations = {
       pixels-pc = lib.nixosSystem {
         inherit system;
