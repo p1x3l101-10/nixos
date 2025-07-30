@@ -7,6 +7,7 @@
   };
   imports = [
     ./adb.nix
+    ./home.nix
     ./ipfs.nix
     ./kernel.nix
     ./modpack-working.nix
@@ -23,7 +24,6 @@
     ./samba.nix
     ./silence.nix
     ./sound.nix
-    ./systemd-homed.nix
     ./tablet.nix
     ./vCamera.nix
     #./vr-min.nix
