@@ -17,7 +17,10 @@
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
-    pixel = { osConfig, lib, ... }: (
+    extraSpecialArgs = {
+      inherit inputs;
+    };
+    users.pixel = { osConfig, lib, ... }: (
       lib.internal.lists.switch [
         {
           case = (osConfig.networking.hostName == "pixels-pc");
