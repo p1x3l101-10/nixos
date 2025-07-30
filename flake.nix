@@ -9,6 +9,9 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-bwrapper = {
+      url = "github:Naxdy/nix-bwrapper";
+    };
     simple-nixos-mailserver = {
       url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
