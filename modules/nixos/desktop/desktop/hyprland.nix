@@ -33,7 +33,7 @@ lib.fix (self: {
     enable = true;
      cursorTheme = {
       package = pkgs.bibata-cursors;
-      theme = "Bibata-Modern-Ice";
+      name = "Bibata-Modern-Ice";
     };
     settings = {
       commands = {
