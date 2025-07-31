@@ -28,7 +28,7 @@ inputs.flake-utils.lib.eachDefaultSystem
     specialArgs = lib.fix (self: {
       ext = {
         inherit inputs;
-        assets = (lib.internal.assets.mapDirTree ./assets);
+        assets = (lib.internal.attrsets.mapDirTree ./assets);
       };
       inherit (self.ext) inputs; # Backwards compat
     });
