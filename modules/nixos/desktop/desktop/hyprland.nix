@@ -41,6 +41,9 @@ lib.fix (self: {
       widget.clock.format = "%I:%M:%S %P";
     };
   };
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="usb", TEST=="power/control", ATTR{power/control}="on"
+  '';
   environment.persistence."/nix/host/state/System".directories = [
     "/var/lib/regreet"
   ];
