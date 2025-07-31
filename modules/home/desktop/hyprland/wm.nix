@@ -7,7 +7,7 @@ in
     enable = true;
     # Nixos manages these packages
     package = null;
-    portalpackage = null;
+    portalPackage = null;
     plugins = (with inputs.hyprland-plugins.packages.${system}; []);
     settings = import ./support/hyprland-config.nix lib;
     systemd.enable = true;
