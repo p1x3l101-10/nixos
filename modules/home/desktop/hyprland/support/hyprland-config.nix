@@ -122,13 +122,13 @@ in {
     (b "down" "movefocus" "d")
     # BEGIN: Numbered workspaces corrisponding to 1-0 on kbd
   ] ++ (map (value: (bind value "workspace" value))
-    ((builtins.genList (x: "${x + 1}") 9)) # 9 Workspaces
+    ((builtins.genList (x: (builtins.toString (x + 1))) 9)) # 9 Workspaces
   ) ++ [
     (bind "0" "workspace" "10") # And the 10th, because i cant truncate to 0 sadly
     # END: Numbered workspaces
     # BEGIN: Oh boy, this again but with shift...
   ] ++ (map (value: (bind' "SHIFT" value "movetoworkspace" value))
-    ((builtins.genList (x: "${x + 1}") 9)) # 9 Workspaces
+    ((builtins.genList (x: (builtins.toString (x + 1))) 9)) # 9 Workspaces
   ) ++ [
     (bind' "SHIFT" "0" "movetoworkspace" "10") # And the 10th, because i cant truncate to 0 sadly
     # END: Workspace moving
