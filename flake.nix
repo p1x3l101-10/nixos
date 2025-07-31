@@ -18,12 +18,10 @@
       inputs.hyprland.follows = "hyprland";
     };
     illogical-impulse = {
-      url = "github:xBLACKICEx/end-4-dots-hyprland-nixos";
+      url = "github:bigsaltyfishes/end-4-dots";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         systems.follows = "systems";
-        hyprland.follows = "hyprland";
-        hyprland-plugins.follows = "hyprland-plugins";
       };
     };
     simple-nixos-mailserver = {
