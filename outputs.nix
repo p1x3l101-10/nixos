@@ -25,6 +25,9 @@ inputs.flake-utils.lib.eachDefaultSystem
       { lib."${namespace}" = lib1; }
       (lib.internal.flake.genPkgOverlay { inherit namespace; packages = inputs.self.packages.${system}; })
     ];
+    specialArgs = {
+      inherit inputs;
+    };
   in
   {
     lib = lib1;
@@ -36,8 +39,7 @@ inputs.flake-utils.lib.eachDefaultSystem
     };
     nixosConfigurations = {
       pixels-pc = lib.nixosSystem {
-        inherit system;
-        specialArgs = { inherit inputs; };
+        inherit system specialArgs;
         modules = [
           ./systems/pixels-pc
         ] ++ (with inputs; [
@@ -51,8 +53,7 @@ inputs.flake-utils.lib.eachDefaultSystem
         ]) ++ common-modules;
       };
       pixels-server = lib.nixosSystem {
-        inherit system;
-        specialArgs = { inherit inputs; };
+        inherit system specialArgs;
         modules = [
           ./systems/pixels-server
           inputs.simple-nixos-mailserver.nixosModules.default
@@ -64,8 +65,7 @@ inputs.flake-utils.lib.eachDefaultSystem
         ]) ++ common-modules;
       };
       hetzner-vps = lib.nixosSystem {
-        inherit system;
-        specialArgs = { inherit inputs; };
+        inherit system specialArgs;
         modules = [
           ./systems/hetzner-vps
         ] ++ (with inputs; (with self.nixosModules; [
