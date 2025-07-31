@@ -11,5 +11,6 @@
     grep = "grep --color=auto";
     nrs = "rebuild switch";
     nrb = "rebuild boot";
+    nv = "nvim";
   };
 }
