@@ -14,7 +14,7 @@ let
     bind' = self.bind'' globals.modiferKey;
     bind = self.bind' null;
     # Short for "bind no mod", useful for volume keys and such
-    bnm = bind'' "" "";
+    bnm = self.bind'' "" "";
     # too much typing, `b` is shorthand for "bind" in `b` and `b'`
     b' = self.bind';
     b = self.bind;
