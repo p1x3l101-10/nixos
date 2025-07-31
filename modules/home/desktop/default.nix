@@ -4,7 +4,6 @@
   imports = [
     ./apps
     ./hyprland
-    ./modules.nix
     ./user-images.nix
   ];
   home = {
