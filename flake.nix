@@ -17,13 +17,6 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-    illogical-impulse = {
-      url = ./subflake/end-4-dots;
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
-      };
-    };
     simple-nixos-mailserver = {
       url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
