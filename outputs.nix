@@ -27,7 +27,7 @@ inputs.flake-utils.lib.eachDefaultSystem
     ];
     specialArgs = {
       inherit inputs;
-      filePath = ./files;
+      assets = ./assets;
     };
   in
   {

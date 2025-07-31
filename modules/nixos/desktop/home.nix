@@ -1,4 +1,4 @@
-{ inputs, filePath, ... }:
+{ inputs, assets, ... }:
 
 {
   imports = with inputs; [
@@ -19,7 +19,7 @@
     useUserPackages = true;
     useGlobalPkgs = true;
     extraSpecialArgs = {
-      inherit inputs filePath;
+      inherit inputs assets;
     };
     users.pixel = { osConfig, lib, ... }: (
       lib.internal.lists.switch [
