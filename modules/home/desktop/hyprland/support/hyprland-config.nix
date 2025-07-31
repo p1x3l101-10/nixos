@@ -23,7 +23,7 @@ in {
   monitor = ",preferred,auto,auto";
   env = lib.fix (self: {
     XCURSOR_SIZE = "24";
-    HYPRCURSOR_SIZE = self.XCURSOR_SIZE
+    HYPRCURSOR_SIZE = self.XCURSOR_SIZE;
   });
   general = {
     gaps_in = 5;
@@ -90,7 +90,7 @@ in {
   master.new_status = "master";
   misc = {
     force_default_wallpaper = -1;
-    disable_hyprland_logo = false
+    disable_hyprland_logo = false;
   };
   input = {
     kb_layout = "us";
