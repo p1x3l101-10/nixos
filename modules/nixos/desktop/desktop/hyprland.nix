@@ -15,7 +15,9 @@ lib.fix (self: {
     enable = true;
     settings = rec {
       initial_session = {
-        command = lib.getBin config.programs.regreet.package;
+        command = let
+          pkg = config.programs.regreet.package;
+        in "${pkg}/bin/${pkg.pname}";
         user = "greeter";
       };
       default_session = initial_session;
