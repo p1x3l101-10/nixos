@@ -24,13 +24,17 @@ lib.fix (self: {
       default_session = initial_session;
     };
   };
+  users.extraUsers.greeter = {
+    isSystemUser = true;
+    home = "/var/lib/greetd";
+    createHome = true;
+  };
   programs.regreet = {
     enable = true;
-    cageArgs = [
-      "-s"
-      "-m"
-      "last"
-    ];
+     cursorTheme = {
+      package = pkgs.bibata-cursors;
+      theme = "Bibata-Modern-Ice";
+    };
     settings = {
       commands = {
         reboot = [ "systemctl" "reboot" ];
