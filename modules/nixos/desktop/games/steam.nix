@@ -37,6 +37,6 @@
   ];
   hardware.graphics = {
     enable32Bit = true;
-    package32 = pkgs.pkgsi686Linux.mesa.drivers;
+    package32 = pkgs.pkgsi686Linux.mesa;
   };
 }
