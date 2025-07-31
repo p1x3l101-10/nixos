@@ -31,11 +31,12 @@
             ];
           };
         }
-      ] {
-        imports = with inputs.self.homeModules; [
-          desktop
-        ];
-      }
+      ]
+        {
+          imports = with inputs.self.homeModules; [
+            desktop
+          ];
+        }
     );
   };
 }

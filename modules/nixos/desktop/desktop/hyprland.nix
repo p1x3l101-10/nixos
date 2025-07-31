@@ -25,7 +25,8 @@ lib.fix (self: {
     enable = true;
     cageArgs = [
       "-s"
-      "-m" "last"
+      "-m"
+      "last"
     ];
     settings = {
       commands = {
