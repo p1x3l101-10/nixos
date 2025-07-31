@@ -34,6 +34,7 @@ inputs.flake-utils.lib.eachDefaultSystem
     });
   in
   {
+    inherit (specialArgs.ext) assets;
     lib = lib1;
     nixosModules = lib.internal.flake.genModules {
       src = ./modules/nixos;
