@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, ... }:
 
 lib.fix (self: {
   programs.hyprland = {
@@ -15,7 +15,7 @@ lib.fix (self: {
   # Greeter
   services.greetd = {
     enable = true;
-    settings = rec {
+    settings = {
       default_session = {
         # command = ""; # ReGreet provides a (basic) default here
         user = "greeter";
