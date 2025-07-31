@@ -29,6 +29,7 @@ inputs.flake-utils.lib.eachDefaultSystem
       ext = {
         inherit inputs;
         assets = (lib.internal.attrsets.mapDirTree ./assets);
+        inherit system;
       };
       inherit (self.ext) inputs; # Backwards compat
     });
