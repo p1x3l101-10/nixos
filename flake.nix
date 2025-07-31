@@ -18,7 +18,7 @@
       inputs.hyprland.follows = "hyprland";
     };
     illogical-impulse = {
-      url = "github:bigsaltyfishes/end-4-dots";
+      url = ./subflake/end-4-dots;
       inputs = {
         nixpkgs.follows = "nixpkgs";
         systems.follows = "systems";

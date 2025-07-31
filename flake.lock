@@ -776,18 +776,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1746635038,
-        "narHash": "sha256-/QlnHfvlDWlFbIrns+/hXFUegWTmnqAf8BwgUMOOzHk=",
-        "owner": "bigsaltyfishes",
-        "repo": "end-4-dots",
-        "rev": "42511738751f1663f489e0d4ba15d485ae297039",
-        "type": "github"
+        "path": "subflake/end-4-dots",
+        "type": "path"
       },
       "original": {
-        "owner": "bigsaltyfishes",
-        "repo": "end-4-dots",
-        "type": "github"
-      }
+        "path": "subflake/end-4-dots",
+        "type": "path"
+      },
+      "parent": []
     },
     "impermanence": {
       "locked": {
