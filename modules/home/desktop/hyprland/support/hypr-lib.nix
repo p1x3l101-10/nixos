@@ -1,13 +1,17 @@
 lib: (lib.fix (self: {
   bind'' = modifer: extMod: key: action: (
-    modifer +
-    (if (extMod == null) then "" else " " + extMod) + ", " +
-    key + ", " +
-    action + ", "
+    let
+      prestring = (
+        modifer +
+        (if (extMod == null) then "" else " " + extMod) + ", " +
+        key + ", " +
+        action + ", "
+      );
+    in
     # Basically this decides if there is a need for the 5th arg
     (lib.internal.lists.switch (let
-        out = actionArgs: (actionArgs);
-      in lib.lists.forEach (value: { case = value; inherit out; }) [
+        out = actionArgs: (prestring + actionArgs);
+      in lib.lists.forEach (value: { case = (value == action); inherit out; }) [
         # List of matches
         "exec"
         "togglespecialworkspace"
@@ -15,6 +19,8 @@ lib: (lib.fix (self: {
         "workspace"
         "movefocus"
       ])
+      # Default
+      prestring
     )
   );
 }))
