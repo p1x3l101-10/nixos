@@ -36,7 +36,7 @@
     "steam-unwrapped"
   ];
   hardware.graphics = {
-    driSupport32Bit = true;
+    enable32Bit = true;
     package32 = pkgs.pkgsi686Linux.mesa.drivers;
   };
 }
