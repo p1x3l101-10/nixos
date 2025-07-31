@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, ext, ... }:
 
 lib.fix (self: {
   programs.hyprland = {
@@ -30,6 +30,7 @@ lib.fix (self: {
   programs.regreet = {
     enable = true;
     settings = {
+      background.path = ext.assets.img."login.png";
       commands = {
         reboot = [ "systemctl" "reboot" ];
         poweroff = [ "systemctl" "poweroff" ];
