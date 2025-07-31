@@ -148,8 +148,10 @@ in {
 
   bindel = let inherit (bindScope) bnm; in (map (value: # I got lazy and made a function
     (lib.mapAttrs' (key: action:
-      ("out")
-      (bnm "XF86Audio${key}" "exec" "wpctl ${action}")
+      (lib.nameValuePair 
+        ("out")
+        (bnm "XF86Audio${key}" "exec" "wpctl ${action}")
+      )
     ) value).out
   ) [
     { RaiseVolume = "set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"; }
@@ -163,8 +165,10 @@ in {
 
   binl = let inherit (bindScope) bnm; in (map (value: # I got lazy and made a function
     (lib.mapAttrs' (key: action:
-      ("out")
-      (bnm "XF86Audio${key}" "exec" "playerctl ${action}")
+      (lib.nameValuePair 
+        ("out")
+        (bnm "XF86Audio${key}" "exec" "playerctl ${action}")
+      )
     ) value).out
   ) [
     { Next = "next"; }
