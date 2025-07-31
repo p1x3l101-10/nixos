@@ -25,7 +25,6 @@
 
   # Nix settings (and git for flakes)
   nix = {
-    package = pkgs.internal.only-nix3;
     settings = {
       auto-optimise-store = true;
       experimental-features = [ "nix-command" "flakes" ];
