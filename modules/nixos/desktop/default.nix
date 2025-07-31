@@ -29,9 +29,10 @@
     #./vr-min.nix
     ./vr.nix
 
-    ./desktop/flatpak.nix
-    ./desktop/fonts.nix
-    ./desktop/gnome.nix
+    #./desktop/flatpak.nix
+    #./desktop/fonts.nix
+    #./desktop/gnome.nix
+    ./desktop/hyprland.nix
     ./desktop/syncthing.nix
     ./desktop/waydroid.nix
 
