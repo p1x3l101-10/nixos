@@ -6,6 +6,7 @@
   ];
   users.users.pixel = {
     isNormalUser = true;
+    initialHashedPassword = "$6$oV5Ug.0o/PznQ3IX$D7.E83RZxPJ35MfLKdTgXxCWXi/Wyl3WFfOpzQinlL46puf8bgzbpL0usTFnOhyeUvHcrV30nnCGKprPFsuGM1";
     extraGroups = [
       "wheel"
       "ipfs"
