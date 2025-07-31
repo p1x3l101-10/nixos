@@ -25,10 +25,13 @@ inputs.flake-utils.lib.eachDefaultSystem
       { lib."${namespace}" = lib1; }
       (lib.internal.flake.genPkgOverlay { inherit namespace; packages = inputs.self.packages.${system}; })
     ];
-    specialArgs = {
-      inherit inputs;
-      assets = ./assets;
-    };
+    specialArgs = lib.fix (self: {
+      ext = {
+        inherit inputs;
+        assets = ./assets;
+      };
+      inherit (self.ext) inputs; # Backwards compat
+    });
   in
   {
     lib = lib1;
