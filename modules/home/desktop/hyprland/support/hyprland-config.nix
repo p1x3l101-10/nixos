@@ -111,7 +111,7 @@ in {
     (b "C" "killallactive")
     (b "M" "exit")
     (b "E" "exec" globals.fileManager)
-    (b "V" togglefloating)
+    (b "V" "togglefloating")
     (b "R" "exec" globals.spotlight)
     (b "P" "psudo") # dwindle
     (b "J" "togglesplit") # dwindle
