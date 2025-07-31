@@ -12,11 +12,18 @@
     nix-bwrapper = {
       url = "github:Naxdy/nix-bwrapper";
     };
+    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
     illogical-impulse = {
       url = "github:xBLACKICEx/end-4-dots-hyprland-nixos";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         systems.follows = "systems";
+        hyprland.follows = "hyprland";
+        hyprland-plugins.follows = "hyprland-plugins";
       };
     };
     simple-nixos-mailserver = {
