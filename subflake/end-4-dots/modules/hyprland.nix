@@ -211,9 +211,7 @@ in
         bind = [
             "Alt, Tab, bringactivetotop, "
             "Alt, Tab, cyclenext"
-            ''
-            Ctrl+Alt, Delete, exec, for ((i=0; i<$(hyprctl monitors -j | jq length); i++)); do ags -t "session""$i"; done
-            ''
+            ''Ctrl+Alt, Delete, exec, for ((i=0; i<$(hyprctl monitors -j | jq length); i++)); do ags -t "session""$i"; done''
             "Ctrl+Alt, R, exec, ~/.config/ags/scripts/record-script.sh --fullscreen"
             "Ctrl+Alt, Slash, exec, ags run-js 'cycleMode();'"
             "Ctrl+Shift+Alt, Delete, exec, pkill wlogout || wlogout -p layer-shell"
@@ -225,9 +223,7 @@ in
             "Ctrl+Super, BracketLeft, workspace, -1"
             "Ctrl+Super, BracketRight, workspace, +1"
             "Ctrl+Super, Down, workspace, r+5"
-            ''
-            Ctrl+Super, G, exec, for ((i=0; i<$(hyprctl monitors -j | jq length); i++)); do ags -t"crosshair""$i"; done
-            ''
+            ''Ctrl+Super, G, exec, for ((i=0; i<$(hyprctl monitors -j | jq length); i++)); do ags -t"crosshair""$i"; done''
             "Ctrl+Super, Left, workspace, r-1"
             "Ctrl+Super, L, exec, ags run-js 'lock.lock()'"
             "Ctrl+Super, mouse_down, workspace, r-1"
@@ -237,9 +233,7 @@ in
             "Ctrl+Super, Right, workspace, r+1"
             "Ctrl+Super+Shift, Left, movetoworkspace, r-1"
             "Ctrl+Super+Shift, Right, movetoworkspace, r+1"
-            ''
-            Ctrl+Super+Shift,S,exec,grim -g "$(slurp $SLURP_ARGS)" "tmp.png" && tesseract "tmp.png" - | wl-copy && rm "tmp.png"
-            ''
+            ''Ctrl+Super+Shift,S,exec,grim -g "$(slurp $SLURP_ARGS)" "tmp.png" && tesseract "tmp.png" - | wl-copy && rm "tmp.png"''
             "Ctrl+Super+Shift, Up, movetoworkspacesilent, special"
             "Ctrl+Super+Shift, V, exec, easyeffects"
             "Ctrl+Super, Slash, exec, pkill anyrun || anyrun"
@@ -247,7 +241,7 @@ in
             "Ctrl+Super, T, exec, ~/.config/ags/scripts/color_generation/switchwall.sh"
             "Ctrl+Super, Up, workspace, r-5"
             "Ctrl+Super, V, exec, pavucontrol"
-            "Ctrl+Super, W, exec, firefox"
+            "Ctrl+Super, W, exec, flatpak run app.zen_browser.zen"
             "Super, 0, exec, ~/.config/ags/scripts/hyprland/workspace_action.sh workspace 10"
             "Super, 1, exec, ~/.config/ags/scripts/hyprland/workspace_action.sh workspace 1"
             "Super, 2, exec, ~/.config/ags/scripts/hyprland/workspace_action.sh workspace 2"
@@ -270,12 +264,6 @@ in
             "Super+Alt, 8, exec, ~/.config/ags/scripts/hyprland/workspace_action.sh movetoworkspacesilent 8"
             "Super+Alt, 9, exec, ~/.config/ags/scripts/hyprland/workspace_action.sh movetoworkspacesilent 9"
             "Super+Alt, E, exec, thunar"
-            ''
-            Super+Alt, Equal, exec, notify-send "Urgent notification" "Ah hell no" -u critical -a 'Hyprland keybind'
-            ''
-            ''
-            Super+Alt, f12, exec, notify-send 'Test notification' "Here's a really long message to test truncation and wrapping\nYou can middle click or flick this notification to dismiss it!" -a 'Shell' -A "Test1=I got it!" -A "Test2=Another action" -t 5000
-            ''
             "Super+Alt, F, fullscreenstate, 0 3"
             "Super+Alt, mouse_down, movetoworkspace, -1"
             "Super+Alt, mouse_up, movetoworkspace, +1"
@@ -293,14 +281,9 @@ in
             "Super, D, fullscreen, 1"
             "Super, Down, movefocus, d"
             "Super, E, exec, nautilus --new-window"
-            ", Super, exec, true"
             "Super, F, fullscreen, 0"
-            ''
-            Super, I, exec, XDG_CURRENT_DESKTOP="gnome" gnome-control-center
-            ''
-            ''
-            Super, K, exec, for ((i=0; i<$(hyprctl monitors -j | jq length); i++)); do ags -t "osk""$i"; done
-            ''
+            ''Super, I, exec, XDG_CURRENT_DESKTOP="gnome" gnome-control-center''
+            ''Super, K, exec, for ((i=0; i<$(hyprctl monitors -j | jq length); i++)); do ags -t "osk""$i"; done''
             "Super, Left, movefocus, l"
             "Super, L, exec, loginctl lock-session"
             "Super, M, exec, ags run-js 'openMusicControls.value = (!mpris.getPlayer() ? false : !openMusicControls.value);'"
@@ -318,14 +301,10 @@ in
             "Super, Right, movefocus, r"
             "Super+Shift+Alt, mouse:273, exec, ~/.config/ags/scripts/ai/primary-buffer-query.sh"
             "Super+Shift+Alt, mouse:275, exec, playerctl previous"
-            ''
-            Super+Shift+Alt, mouse:276, exec, playerctl next || playerctl position `bc <<< "100 * $(playerctl metadata mpris:length) / 1000000 / 100"`
-            ''
+            ''Super+Shift+Alt, mouse:276, exec, playerctl next || playerctl position `bc <<< "100 * $(playerctl metadata mpris:length) / 1000000 / 100"`''
             "Super+Shift+Alt, Q, exec, hyprctl kill"
             "Super+Shift+Alt, R, exec, ~/.config/ags/scripts/record-script.sh --fullscreen-sound"
-            ''
-            Super+Shift+Alt, S, exec, grim -g "$(slurp)" - | swappy -f -
-            ''
+            ''Super+Shift+Alt, S, exec, grim -g "$(slurp)" - | swappy -f -''
             "Super+Shift, C, exec, hyprpicker -a"
             "Super+Shift, Down, movewindow, d"
             "Super+Shift, Left, movewindow, l"
@@ -336,14 +315,10 @@ in
             "Super+Shift, Page_Up, movetoworkspace, r-1 "
             "Super+Shift, Right, movewindow, r"
             "Super+Shift, S, exec, ~/.config/ags/scripts/grimblast.sh --freeze copy area"
-            ''
-            Super+Shift,T,exec,grim -g "$(slurp $SLURP_ARGS)" "tmp.png" && tesseract -l eng "tmp.png" - | wl-copy && rm "tmp.png"
-            ''
+            ''Super+Shift,T,exec,grim -g "$(slurp $SLURP_ARGS)" "tmp.png" && tesseract -l eng "tmp.png" - | wl-copy && rm "tmp.png"''
             "Super+Shift, Up, movewindow, u"
             "Super+Shift, W, exec, wps"
-            ''
-            Super, Slash, exec, for ((i=0; i<$(hyprctl monitors -j | jq length); i++)); do ags -t "cheatsheet""$i"; done
-            ''
+            ''Super, Slash, exec, for ((i=0; i<$(hyprctl monitors -j | jq length); i++)); do ags -t "cheatsheet""$i"; done''
             "Super, S, togglespecialworkspace, "
             "Super, Tab, exec, ags -t 'overview'"
             "Super, T, exec, "
