@@ -29,10 +29,6 @@ lib.fix (self: {
   };
   programs.regreet = {
     enable = true;
-     cursorTheme = {
-      package = pkgs.bibata-cursors;
-      name = "Bibata-Modern-Ice";
-    };
     settings = {
       commands = {
         reboot = [ "systemctl" "reboot" ];
