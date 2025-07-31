@@ -11,7 +11,7 @@ lib: (lib.fix (self: {
     # Basically this decides if there is a need for the 5th arg
     (lib.internal.lists.switch (let
         out = actionArgs: (prestring + actionArgs);
-      in lib.lists.forEach (value: { case = (value == action); inherit out; }) [
+      in map (value: { case = (value == action); inherit out; }) [
         # List of matches
         "exec"
         "togglespecialworkspace"
