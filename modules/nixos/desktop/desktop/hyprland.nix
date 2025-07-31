@@ -11,6 +11,7 @@ lib.fix (self: {
     extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
   };
   services.udisks2.enable = true;
+  programs.uwsm.enable = true;
   # Greeter
   services.greetd = {
     enable = true;

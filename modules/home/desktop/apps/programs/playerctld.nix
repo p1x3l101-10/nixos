@@ -1,0 +1,5 @@
+{ ... }:
+
+{
+  programs.playerctld.enable = true;
+}
