@@ -2,6 +2,7 @@
 
 let
   inherit (ext) assets;
-in {
+in
+{
   home.file.".face".source = assets + "/img/pfp.png";
 }
