@@ -30,7 +30,7 @@ lib.fix (self: {
     settings = {
       commands = {
         reboot = [ "systemctl" "reboot" ];
-        poweroff = [ "systemctl" "poweroff" ]
+        poweroff = [ "systemctl" "poweroff" ];
       };
       widget.clock.format = "%I:%M:%S %P";
     };
