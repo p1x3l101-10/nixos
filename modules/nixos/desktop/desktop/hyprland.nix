@@ -15,13 +15,10 @@ lib.fix (self: {
   services.greetd = {
     enable = true;
     settings = rec {
-      initial_session = {
-        command = let
-          pkg = config.programs.regreet.package;
-        in "${pkg}/bin/${pkg.pname}";
+      default_session = {
+        # command = ""; # ReGreet provides a (basic) default here
         user = "greeter";
       };
-      default_session = initial_session;
     };
   };
   users.extraUsers.greeter = {
