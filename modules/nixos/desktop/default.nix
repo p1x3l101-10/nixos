@@ -29,7 +29,7 @@
     #./vr-min.nix
     ./vr.nix
 
-    #./desktop/flatpak.nix
+    ./desktop/flatpak.nix
     #./desktop/fonts.nix
     #./desktop/gnome.nix
     ./desktop/hyprland.nix
