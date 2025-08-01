@@ -96,4 +96,13 @@ in {
       };
     };
   };
+  systemd.user.services.ashell = {
+    Unit = {
+      Description = "Hyprland shell";
+    };
+    Service = {
+      ExecStart = "${pkgs.ashell}/bin/ashell";
+    };
+    Install.WantedBy = [ "hyprland-session.target" ];
+  };
 }
