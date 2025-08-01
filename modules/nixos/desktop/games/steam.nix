@@ -7,6 +7,7 @@
       extraEnv = {
         STEAM_LAUNCH_WRAPPER_SCOPE = "1";
         PRESSURE_VESSEL_SYSTEMD_SCOPE = "1";
+        DRI_PRIME = "0";
       };
     };
     protontricks.enable = true;
