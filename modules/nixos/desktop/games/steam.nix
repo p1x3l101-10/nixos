@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   programs.steam = {
@@ -23,6 +23,8 @@
       gamescope
       adwaita-icon-theme
       morewaita-icon-theme
+    ] ++ [
+      config.home-manager.users.pixel.home.poinerCursor.package
     ];
   };
   programs.alvr = {
