@@ -26,12 +26,12 @@ lib.fix (self: {
           --cmd "uwsm start default" \
           --remember \
           --time \
-          --time-format "${clockFormat.full}" \
+          --time-format "${clockFormat.long}" \
           --power-shutdown "systemctl poweroff" \
           --power-reboot "systemctl reboot" \
           --asterisks \
           --power-no-setsid \
-          -kb-power 1
+          --kb-power 1
         '';
         user = "greeter";
       };
