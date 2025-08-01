@@ -36,9 +36,6 @@ inputs.flake-utils.lib.eachDefaultSystem
       { nixpkgs.overlays = with inputs; [
         nix-bwrapper.overlays.default
       ]; }
-      { nixpkgs.overlays = [
-        (import ./overlays/unstable specialArgs)
-      ];}
     ];
   in
   {
