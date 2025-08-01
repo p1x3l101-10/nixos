@@ -82,7 +82,7 @@ in {
     ];
   };
   dwindle = {
-    psudotile = true;
+    pseudotile = true;
     preserve_split = true;
   };
   master.new_status = "master";
@@ -106,12 +106,12 @@ in {
   bind = let inherit (bindScope) bind' bind b' b; in [
     # Main binds
     (b "Q" "exec" globals.terminal)
-    (b "C" "killallactive")
+    (b "C" "killactive")
     (b "E" "exec" globals.fileManager)
     (b "V" "togglefloating")
     (b "R" "exec" globals.spotlight)
     (b "L" "exec" "hyprlock")
-    (b "P" "psudo") # dwindle
+    (b "P" "pseudo") # dwindle
     (b "J" "togglesplit") # dwindle
     # Get some pesky games to work
     (b "F11" "fullscreen")
@@ -138,10 +138,10 @@ in {
     # Scroll through workspace
     (b "mouse_up" "workspace" "e+1")
     (b "mouse_down" "workspace" "e-1")
-    # Resize windows with mouse dragging
   ];
 
   bindm = let inherit (bindScope) b; in [
+    # Resize windows with mouse dragging
     (b "mouse:272" "movewindow")
     (b "mouse:273" "resizewindow")
   ];
