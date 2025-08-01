@@ -11,7 +11,7 @@ lib.fix (self: {
   };
   clockFormat = {
     date = "%a, %b %e %Y";
-    time = "$_I:%M:%S %P";
+    time = "$I:%M:%S %P";
     long = self.clockFormat.date + " -- " + self.clockFormat.time;
   };
   notifications = {
