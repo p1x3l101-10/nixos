@@ -22,7 +22,8 @@ in {
   };
   config = mkIf cfg.enable {
     home.packages = [ cfg.package ];
-    xdg.configFile."ashell/config.toml".source = (pkgs.formats.toml { }).generate "ashell-config" cfg.settings;
+    #xdg.configFile."ashell/config.toml".source = (pkgs.formats.toml { }).generate "ashell-config" cfg.settings; # 0.5.0
+    xdg.configFile."ashell.yaml".source = (pkgs.formats.yaml { }).generate "ashell-config" cfg.settings;
     systemd.user.services = mkIf cfg.systemd.enable {
       ashell = {
         Unit = {
