@@ -1,4 +1,4 @@
- { ... }:
+ { pkgs, ... }:
 
  {
    services.mako = {
@@ -6,4 +6,5 @@
      settings = {
      };
    };
+   home.packages = [ pkgs.inotify-tools ];
  }

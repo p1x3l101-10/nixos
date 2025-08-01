@@ -17,5 +17,29 @@ lib.fix (self: {
   clipboardMenu = (app [ pkgs.cliphist pkgs.wofi pkgs.wl-clipboard ] ''
     cliphist-wofi-img | wl-copy
   '');
-
+  updates = {
+    updater = (app [ pkgs.nix pkgs.nixos-rebuild pkgs.kitty ] ''
+      kitty "sudo nixos-rebuild boot"
+    '');
+  };
+  clockFormat = "%I:%M:%S %P";
+  notifications = {
+    checker = (app [ pkgs.mako ] ''
+      mako_mode=$(makoctl mode)
+      if [[ "$mako_mode" == "default" ]]; then
+        echo '${builtins.toJSON {
+          text = "active";
+          alt = "activated";
+          class = "activated";
+        }}'
+      else
+        echo '${builtins.toJSON {
+          text = "muted";
+          alt = "deactivated";
+          class = "deactivated";
+        }}'
+      fi
+    ''); 
+    daemon = "mako";
+  };
 })
