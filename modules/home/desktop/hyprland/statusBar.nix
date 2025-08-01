@@ -81,17 +81,8 @@ in {
         bluetooth_more_cmd = "None";
       };
       appearance = {
-        font_name = (builtins.elemAt config.fonts.fontconfig.defaultFonts.sansSerif 0);
         style = "Islands";
         opacity = 0.7;
-        background_color = "#1e1e2e";
-        primary_color = "#fab387";
-        secondary_color = "#11111b";
-        success_color = "#a6e3a1";
-        danger_color = "#f38ba8";
-        text_color = "#f38ba8";
-        workspace_colors = [ "#fab387" ];
-        special_workspace_colors = [ "#a6e3a1" ];
         menu = {
           opacity = 0.7;
           backdrop = 0.3;
