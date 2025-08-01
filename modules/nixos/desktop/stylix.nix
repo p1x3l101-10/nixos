@@ -3,7 +3,7 @@
 {
   stylix = {
     enable = true;
-    image = ext.assets.img."wallpaper.png";
+    image = ext.assets.img."wallpaper.jpg";
     polarity = "dark";
     targets = {
     };
