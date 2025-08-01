@@ -15,21 +15,20 @@ in {
       modules = {
         left = [
           "Workspaces"
+          "MediaPlayer"
         ];
         center = [
           "WindowTitle"
         ];
         right = [
           "SystemInfo" [
+            "Tray"
             "Clock"
             "Privacy"
             "Settings"
           ]
           "CustomNotifications"
         ];
-      };
-      updates = {
-        update_cmd = globals.updates.updater;
       };
       workspaces = {
         visibility_mode = "All";
