@@ -9,7 +9,7 @@ in
     package = null;
     portalPackage = null;
     plugins = (with inputs.hyprland-plugins.packages.${system}; []);
-    settings = import ./support/hyprland-config.nix lib;
+    settings = import ./support/hyprland-config.nix pkgs lib;
     systemd.enable = true;
     xwayland.enable = true;
   };

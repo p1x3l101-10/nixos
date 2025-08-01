@@ -1,7 +1,7 @@
 { pkgs, lib, config, ... }:
 
 let
-  globals = import ./hypr-globals pkgs lib;
+  globals = import ./support/hypr-globals.nix pkgs lib;
 in {
   home.packages = with pkgs; [ ashell ];
   xdg.configFile."ashell/config.toml".source = (pkgs.formats.toml { }).generate "ashell-config" {
