@@ -82,11 +82,7 @@ in {
       };
       appearance = {
         style = "Islands";
-        opacity = 0.7;
-        menu = {
-          opacity = 0.7;
-          backdrop = 0.3;
-        };
+        menu.backdrop = 0.3;
       };
     };
   };
