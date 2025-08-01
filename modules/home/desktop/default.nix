@@ -1,4 +1,4 @@
-{ osConfig, lib, ... }:
+{ osConfig, lib, ext, ... }:
 
 {
   imports = [
@@ -6,7 +6,9 @@
     ./hyprland
     ../module
     ../stylix
-  ] ++ (lib.internal.confTemplates.importList ./.);
+  ] ++ (with ext.inputs; [
+    nix-flatpak.homeManagerModules.nix-flatpak
+  ]) ++ (lib.internal.confTemplates.importList ./.);
   home = {
     stateVersion = osConfig.system.stateVersion;
   };

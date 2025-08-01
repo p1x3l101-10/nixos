@@ -39,4 +39,10 @@
         }
     );
   };
+  # Any unfree packages home manager uses
+  system.allowedUnfree.packages = [
+    "stremio-shell"
+    "stremio-server"
+    "parsec-bin"
+  ];
 }
