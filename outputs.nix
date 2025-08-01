@@ -24,6 +24,9 @@ inputs.flake-utils.lib.eachDefaultSystem
       self.nixosModules.module
       { lib."${namespace}" = lib1; }
       (lib.internal.flake.genPkgOverlay { inherit namespace; packages = inputs.self.packages.${system}; })
+      { nixpkgs.overlays = with inputs; [
+        nix-bwrapper.overlays.default
+      ]; }
     ];
     specialArgs = lib.fix (self: {
       ext = {
