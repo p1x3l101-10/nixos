@@ -109,17 +109,17 @@ in {
     # Main binds
     (b "Q" "exec" globals.terminal)
     (b "C" "killallactive")
-    (b "M" "exit")
     (b "E" "exec" globals.fileManager)
     (b "V" "togglefloating")
     (b "R" "exec" globals.spotlight)
+    (b "L" "exec" "hyprlock")
     (b "P" "psudo") # dwindle
     (b "J" "togglesplit") # dwindle
     # Move focus
     (b "left" "movefocus" "l")
-    (b "right" "movefocus" "r")
     (b "up" "movefocus" "u")
     (b "down" "movefocus" "d")
+    (b "right" "movefocus" "r")
     # BEGIN: Numbered workspaces corrisponding to 1-0 on kbd
   ] ++ (map (value: (bind value "workspace" value))
     ((builtins.genList (x: (builtins.toString (x + 1))) 9)) # 9 Workspaces
