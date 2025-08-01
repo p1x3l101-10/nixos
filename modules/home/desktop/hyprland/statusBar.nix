@@ -72,7 +72,7 @@ in {
         suspend_cmd = "systemctl suspend";
         reboot_cmd = "systemctl reboot";
         shutdown_cmd = "systemctl poweroff";
-        logout_cmd = "loginctl kill-user $(whoami)";
+        logout_cmd = "hyprctl dispatch exit";
         remove_airplane_btn = true;
         audio_sinks_more_cmd = "None";
         audio_sources_more_cmd = "None";
