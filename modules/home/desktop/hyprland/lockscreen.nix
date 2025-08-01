@@ -53,7 +53,7 @@
         # TIME
         {
           monitor = "";
-          text = "$TIME";
+          text = "$TIME12";
           font_size = "90";
           font_family = font;
           position = "-30, 0";

@@ -9,7 +9,11 @@ lib.fix (self: {
   updates = {
     updater = "kitty \"sudo nixos-rebuild boot\"";
   };
-  clockFormat = "%_I:%M:%S %P %a %b %e %Y";
+  clockFormat = {
+    date = "%a, %b %e %Y";
+    time = "$_I:%M:%S %P";
+    long = self.clockFormat.date + " -- " + self.clockFormat.time;
+  };
   notifications = {
     checker = builtins.toString (pkgs.writeShellScript "app" ''
       mako_mode=$(makoctl mode)

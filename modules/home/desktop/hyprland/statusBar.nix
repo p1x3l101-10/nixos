@@ -54,7 +54,7 @@ in {
         alert_threshold = 90;
       };
     });
-    clock.format = globals.clockFormat;
+    clock.format = globals.clockFormat.time;
     media_player.max_title_length = 100;
     CustomModule = [
       {
