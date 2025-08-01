@@ -13,4 +13,8 @@ in
     systemd.enable = true;
     xwayland.enable = true;
   };
+  home.packages = with pkgs; [
+    wl-clipboard
+    cliphist
+  ];
 }
