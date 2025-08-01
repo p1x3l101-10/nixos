@@ -67,7 +67,7 @@ in {
         }
       ];
       settings = {
-        lock_cmd = "hyprlock &";
+        lock_cmd = "loginctl lock-session $XDG_SESSION_ID";
         suspend_cmd = "systemctl suspend";
         reboot_cmd = "systemctl reboot";
         shutdown_cmd = "systemctl poweroff";
