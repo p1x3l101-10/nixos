@@ -12,5 +12,6 @@
     nrs = "rebuild switch";
     nrb = "rebuild boot";
     nv = "nvim";
+    userctl = "systemctl --user";
   };
 }
