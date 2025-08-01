@@ -116,10 +116,10 @@ in {
     (b "P" "psudo") # dwindle
     (b "J" "togglesplit") # dwindle
     # Move focus
-    (b "left" "movefocus" "l")
-    (b "up" "movefocus" "u")
-    (b "down" "movefocus" "d")
-    (b "right" "movefocus" "r")
+    (b' "SHIFT" "H" "movefocus" "l")
+    (b' "SHIFT" "J" "movefocus" "u")
+    (b' "SHIFT" "K" "movefocus" "d")
+    (b' "SHIFT" "L" "movefocus" "r")
     # BEGIN: Numbered workspaces corrisponding to 1-0 on kbd
   ] ++ (map (value: (bind value "workspace" value))
     ((builtins.genList (x: (builtins.toString (x + 1))) 9)) # 9 Workspaces
