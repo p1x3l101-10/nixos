@@ -1,5 +1,9 @@
 { pkgs, lib, ext, ... }:
 
+let
+  inherit (import ../../../home/desktop/hyprland/support/hypr-globals.nix pkgs lib) clockFormat;
+in
+
 lib.fix (self: {
   programs.hyprland = {
     enable = true;
@@ -17,7 +21,18 @@ lib.fix (self: {
     enable = true;
     settings = {
       default_session = {
-        # command = ""; # ReGreet provides a (basic) default here
+        command = pkgs.writeShellScript "greeter" ''
+          ${pkgs.greetd.tuigreet}/bin/tuigreet \
+          --cmd "uwsm start default" \
+          --remember \
+          --time \
+          --time-format "${clockFormat.full}" \
+          --power-shutdown "systemctl poweroff" \
+          --power-reboot "systemctl reboot" \
+          --asterisks \
+          --power-no-setsid \
+          -kb-power 1
+        '';
         user = "greeter";
       };
     };
@@ -26,16 +41,5 @@ lib.fix (self: {
     isSystemUser = true;
     home = "/var/lib/greetd";
     createHome = true;
-  };
-  programs.regreet = {
-    enable = true;
-    settings = {
-      background.path = ext.assets.img."login.png";
-      commands = {
-        reboot = [ "systemctl" "reboot" ];
-        poweroff = [ "systemctl" "poweroff" ];
-      };
-      widget.clock.format = "%I:%M:%S %P";
-    };
   };
 })
