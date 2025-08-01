@@ -16,6 +16,14 @@ inputs.flake-utils.lib.eachDefaultSystem
     }
   ) // inputs.flake-utils.lib.eachDefaultSystemPassThrough (system:
   let
+    specialArgs = lib.fix (self: {
+      ext = {
+        inherit inputs;
+        assets = (lib.internal.attrsets.mapDirTree ./assets);
+        inherit system;
+      };
+      inherit (self.ext) inputs; # Backwards compat
+    });
     common-modules = with inputs; [
       lanzaboote.nixosModules.lanzaboote
       impermanence.nixosModules.impermanence
@@ -28,15 +36,10 @@ inputs.flake-utils.lib.eachDefaultSystem
       { nixpkgs.overlays = with inputs; [
         nix-bwrapper.overlays.default
       ]; }
+      { nixpkgs.overlays = [
+        (import ./overlays/unstable specialArgs)
+      ];}
     ];
-    specialArgs = lib.fix (self: {
-      ext = {
-        inherit inputs;
-        assets = (lib.internal.attrsets.mapDirTree ./assets);
-        inherit system;
-      };
-      inherit (self.ext) inputs; # Backwards compat
-    });
   in
   {
     inherit (specialArgs.ext) assets;

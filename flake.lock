@@ -1048,6 +1048,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-unstable": {
+      "locked": {
+        "lastModified": 1753934836,
+        "narHash": "sha256-G06FmIBj0I5bMW1Q8hAEIl5N7IHMK7+Ta4KA+BmneDA=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "8679b16e11becd487b45d568358ddf9d5640d860",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1746904237,
@@ -1238,6 +1254,7 @@
         "nixpak": "nixpak",
         "nixpkgs": "nixpkgs_5",
         "nixpkgs-unfree": "nixpkgs-unfree",
+        "nixpkgs-unstable": "nixpkgs-unstable",
         "simple-nixos-mailserver": "simple-nixos-mailserver",
         "stylix": "stylix",
         "systems": "systems_3",
