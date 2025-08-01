@@ -21,8 +21,9 @@ in {
           "WindowTitle"
         ];
         right = [
-          "SystemInfo" [
-            "Tray"
+          "SystemInfo"
+          "Tray"
+          [
             "Clock"
             "Privacy"
             "Settings"
