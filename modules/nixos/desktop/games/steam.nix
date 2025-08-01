@@ -24,7 +24,7 @@
       adwaita-icon-theme
       morewaita-icon-theme
     ] ++ [
-      config.home-manager.users.pixel.home.poinerCursor.package
+      config.home-manager.users.pixel.home.pointerCursor.package
     ];
   };
   programs.alvr = {
