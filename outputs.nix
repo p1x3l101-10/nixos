@@ -20,6 +20,7 @@ inputs.flake-utils.lib.eachDefaultSystem
       lanzaboote.nixosModules.lanzaboote
       impermanence.nixosModules.impermanence
       disko.nixosModules.disko
+      stylix.nixosModules.stylix
       self.nixosModules.base
       self.nixosModules.module
       { lib."${namespace}" = lib1; }

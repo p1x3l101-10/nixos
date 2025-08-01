@@ -4,7 +4,6 @@
   boot = {
     plymouth = {
       enable = true;
-      theme = "bgrt";
     };
     consoleLogLevel = 0;
     initrd.verbose = false;

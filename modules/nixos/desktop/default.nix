@@ -24,6 +24,7 @@
     ./samba.nix
     ./silence.nix
     ./sound.nix
+    ./stylix.nix
     ./tablet.nix
     ./vCamera.nix
     #./vr-min.nix
