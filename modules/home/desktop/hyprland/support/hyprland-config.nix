@@ -165,7 +165,7 @@ in {
     (bnm "XF86MonBrightnessDown" "exec" "brightnessctl -e4 -n2 set 5%-")
   ];
 
-  binl = let inherit (bindScope) bnm; in (map (value: # I got lazy and made a function
+  bindl = let inherit (bindScope) bnm; in (map (value: # I got lazy and made a function
     (lib.mapAttrs' (key: action:
       (lib.nameValuePair 
         ("out")
