@@ -8,11 +8,13 @@ lib: (lib.fix (self: {
         action +
         # Check if the action HATES the trailing comma
         (lib.internal.lists.switch (let
-          out = ", ";
-        in map (value: { case = (value == action); inherit out; }) [
-          "resizewindow"
-          "movewindow"
-        ] ""))
+            out = ", ";
+          in map (value: { case = (value == action); inherit out; }) [
+            "resizewindow"
+            "movewindow"
+          ])
+          ""
+        )
       );
     in
     # Basically this decides if there is a need for the 5th arg
