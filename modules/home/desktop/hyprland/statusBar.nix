@@ -2,9 +2,6 @@
 
 let
   globals = import ./support/hypr-globals.nix pkgs lib;
-  colors = {
-
-  };
 in {
   programs.ashell = {
     enable = true;
