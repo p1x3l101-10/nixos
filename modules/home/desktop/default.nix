@@ -1,14 +1,12 @@
-{ osConfig, ... }:
+{ osConfig, lib, ... }:
 
 {
   imports = [
     ./apps
     ./hyprland
-    ./user-images.nix
-  ] ++ [
     ../module
     ../stylix
-  ];
+  ] ++ (lib.internal.confTemplates.importList ./.);
   home = {
     stateVersion = osConfig.system.stateVersion;
   };
