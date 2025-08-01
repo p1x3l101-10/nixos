@@ -7,4 +7,5 @@
       nixed = "pushd /etc/nixos && nvim; popd";
     };
   };
+  programs.bash.enable = true;
 }
