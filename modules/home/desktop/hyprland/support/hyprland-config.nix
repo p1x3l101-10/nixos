@@ -115,6 +115,8 @@ in {
     (b "L" "exec" "hyprlock")
     (b "P" "psudo") # dwindle
     (b "J" "togglesplit") # dwindle
+    # Get some pesky games to work
+    (b "F11" "fullscreen")
     # Move focus
     (b' "SHIFT" "H" "movefocus" "l")
     (b' "SHIFT" "J" "movefocus" "u")
