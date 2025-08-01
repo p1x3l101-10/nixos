@@ -1,4 +1,4 @@
-{ inputs, ext, ... }:
+{ config, inputs, ext, ... }:
 
 {
   imports = with inputs; [
@@ -40,9 +40,7 @@
     );
   };
   # Any unfree packages home manager uses
-  system.allowedUnfree.packages = [
-    "stremio-shell"
-    "stremio-server"
-    "parsec-bin"
-  ];
+  system.allowedUnfree = {
+    inherit (config.home-manager.users.pixel.system.allowedUnfree) licenses blockedLicenses packages;
+  };
 }
