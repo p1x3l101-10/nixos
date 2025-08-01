@@ -8,12 +8,12 @@ lib: (lib.fix (self: {
         action +
         # Check if the action HATES the trailing comma
         (lib.internal.lists.switch (let
-            out = ", ";
+            out = "";
           in map (value: { case = (value == action); inherit out; }) [
             "resizewindow"
             "movewindow"
           ])
-          ""
+          ", "
         )
       );
     in
