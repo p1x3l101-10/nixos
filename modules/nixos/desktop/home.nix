@@ -1,4 +1,4 @@
-{ config, inputs, ext, ... }:
+{ inputs, ext, ... }:
 
 {
   imports = with inputs; [
@@ -38,9 +38,5 @@
           ];
         }
     );
-  };
-  # Any unfree packages home manager uses
-  system.allowedUnfree = {
-    inherit (config.home-manager.users.pixel.system.allowedUnfree) licenses blockedLicenses packages;
   };
 }

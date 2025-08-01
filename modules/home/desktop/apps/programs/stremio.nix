@@ -2,7 +2,7 @@
 
 {
   home.packages = [ pkgs.stremio ];
-  system.allowedUnfree.packages = [
+  home.allowedUnfree.packages = [
     "stremio-client"
     "stremio-server"
   ];
