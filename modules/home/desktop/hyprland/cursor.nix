@@ -2,7 +2,6 @@
 
 {
   stylix.cursor = {
-    enable = true;
     name = "rose-pine-hyprcursor";
     size = 24;
     package = pkgs.rose-pine-hyprcursor;
