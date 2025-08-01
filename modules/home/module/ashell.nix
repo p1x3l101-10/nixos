@@ -8,12 +8,12 @@ in {
     enable = mkEnableOption "ashell";
     package = mkOption {
       description = "ashell package";
-      type = types.pkg;
+      type = types.package;
       default = pkgs.ashell;
     };
     settings = mkOption {
       description = "Setting for ashell";
-      type = with types; attrsOf any;
+      type = types.attrs;
       default = {};
     };
     systemd = {
