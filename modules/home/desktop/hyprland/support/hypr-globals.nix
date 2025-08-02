@@ -1,8 +1,10 @@
 pkgs: lib:
 lib.fix (self: {
   modiferKey = "SUPER";
-  terminal = "kitty";
-  fileManager = "dolphin";
+  apps = {
+    terminal = "kitty";
+    fileManager = "dolphin";
+  };
   spotlight = "wofi --show drun";
   appLauncher = self.spotlight;
   clipboardMenu = "cliphist-wofi-img | wl-copy";

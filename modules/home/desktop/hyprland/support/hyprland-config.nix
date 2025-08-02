@@ -97,9 +97,10 @@ in {
   gestures.workspace_swipe = false;
   bind = let inherit (bindScope) bind' bind bnm bind'' b' b; in [
     # Main binds
-    (b "Q" "exec" globals.terminal)
+    (b "Q" "exec" globals.apps.terminal)
+    (b "W" "exec" "zen")
     (b "C" "killactive")
-    (b "E" "exec" globals.fileManager)
+    (b "E" "exec" globals.apps.fileManager)
     (b "V" "togglefloating")
     (b "R" "exec" globals.spotlight)
     (b "L" "exec" "loginctl lock-session $XDG_SESSION")
