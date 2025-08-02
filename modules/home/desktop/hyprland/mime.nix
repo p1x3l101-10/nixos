@@ -4,18 +4,22 @@ let
   lib1 = import ./support/hypr-lib.nix lib;
   lib2 = lib.extend (_: _: { hypr = lib1; });
   globals = import ./support/hypr-globals.nix pkgs lib2;
-  fixMime = attrs: (lib.foldlAttrs
-    (acc: key: value: acc // ({
-      "${lib.strings.replaceStrings ["."] ["/"] key}" = value;
-    }))
-    { }
-    attrs);
+  fixMime = (prefix: attrs:
+    lib.concatMapAttrs
+      (k: v:
+        if lib.types.attrs.check v then
+          fixMime (prefix ++ [ k ]) v
+        else
+          { "${lib.strings.concatStringsSep "/" (prefix ++ [k])}" = v; }
+      )
+      attrs
+  );
 in
 
 {
   xdg.mime.enable = true;
   xdg.mimeApps.enable = true;
-  xdg.mimeApps.defaultApplications = fixMime (with globals.app; {
+  xdg.mimeApps.defaultApplications = fixMime [ ] (with globals.apps; {
     application = {
       json = textEditor.desktop;
       pdf = web.desktop;
@@ -27,7 +31,7 @@ in
       x-extension-xhtml = web.desktop;
       x-extension-xht = web.desktop;
     };
-    image = (builtins.listToAttrs (map (x: { name = x; value = imageViewer.desktop; } [
+    image = (builtins.listToAttrs (map (x: { name = x; value = imageViewer.desktop; }) [
       "bmp"
       "avif"
       "heic"
@@ -49,7 +53,7 @@ in
       "x-portable-pixmap"
       "x-qoi"
       "x-tga"
-    ])));
+    ]));
     inode = {
       directory = fileManager.desktop;
     };
