@@ -3,8 +3,8 @@ lib.fix (self: {
   modiferKey = "SUPER";
   apps = lib.processDesktop {
     terminal = "kitty";
-    fileManager = "dolphin";
-    web = "zen";
+    fileManager = "org.kde.dolphin";
+    web = "zen-twilight";
   };
   spotlight = "wofi --show drun";
   appLauncher = self.spotlight;
