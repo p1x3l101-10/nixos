@@ -1,0 +1,8 @@
+{ ... }:
+
+{
+  programs.feh = {
+    enable = true;
+  };
+}
+
