@@ -32,4 +32,13 @@ lib: (lib.fix (self: {
       prestring
     )
   );
+  mkDesktopExec = entry: (
+    {
+      desktop = entry;
+      exec = "gtk-launch ${entry}";
+    }
+  );
+  processDesktop = attrs: (
+    builtins.mapAttrs (_: value: self.mkDesktopExec value) attrs
+  );
 }))
