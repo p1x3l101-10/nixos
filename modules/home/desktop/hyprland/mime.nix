@@ -14,6 +14,7 @@ in
 
 {
   xdg.mime.enable = true;
+  xdg.mimeApps.enable = true;
   xdg.mimeApps.defaultApplications = fixMime (with globals.app; {
     application = {
       json = textEditor.desktop;
