@@ -31,10 +31,7 @@
           reddit-enhancement-suite
         ];
       };
-      settings = lib.internal.attrsets.compressAttrs "." {
-        svg.context-properties.content.enabled = true;
-		    browser.search.suggest.enabled = true;
-      };
+      settings = lib.internal.attrsets.compressAttrs "." (import ./support/firefox-config.nix);
       search = {
         force = true;
         default = "google";
