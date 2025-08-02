@@ -16,7 +16,7 @@ in
   xdg.mime.enable = true;
   xdg.mimeApps.defaultApplications = fixMime (with globals.app; {
     application = {
-      json = web.desktop;
+      json = textEditor.desktop;
       pdf = web.desktop;
       xhtml = web.desktop;
       xml = web.desktop;
@@ -54,8 +54,8 @@ in
     };
     text = {
       html = web.desktop;
-      markdown = web.desktop;
-      plain = web.desktop;
+      markdown = textEditor.desktop;
+      plain = textEditor.desktop;
     };
     video.mp4 = videoPlayer.desktop;
     x-scheme-handler = {

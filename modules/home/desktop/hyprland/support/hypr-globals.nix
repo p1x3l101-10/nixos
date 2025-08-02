@@ -7,6 +7,7 @@ lib.fix (self: {
     web = "zen-twilight";
     imageViewer = "feh";
     videoPlayer = "mpv";
+    textEditor = "nvim";
   };
   spotlight = "wofi --show drun";
   appLauncher = self.spotlight;
