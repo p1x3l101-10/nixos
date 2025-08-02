@@ -98,7 +98,7 @@ in {
   bind = let inherit (bindScope) bind' bind bnm bind'' b' b; in [
     # Main binds
     (b "Q" "exec" globals.apps.terminal.exec)
-    (b "W" "exec" "zen")
+    (b "W" "exec" globals.apps.web.exec)
     (b "C" "killactive")
     (b "E" "exec" globals.apps.fileManager.exec)
     (b "V" "togglefloating")

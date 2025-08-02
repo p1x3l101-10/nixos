@@ -4,6 +4,7 @@ lib.fix (self: {
   apps = lib.processDesktop {
     terminal = "kitty";
     fileManager = "dolphin";
+    web = "zen";
   };
   spotlight = "wofi --show drun";
   appLauncher = self.spotlight;
