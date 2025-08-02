@@ -16,5 +16,6 @@ in
   home.packages = with pkgs; [
     wl-clipboard
     cliphist
+    gtk3 # Desktop file runner
   ];
 }
