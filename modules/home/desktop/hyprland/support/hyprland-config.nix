@@ -95,7 +95,7 @@ in {
     touchpad.natural_scroll = true;
   };
   gestures.workspace_swipe = false;
-  bind = let inherit (bindScope) bind' bind b' b; in [
+  bind = let inherit (bindScope) bind' bind bnm bind'' b' b; in [
     # Main binds
     (b "Q" "exec" globals.terminal)
     (b "C" "killactive")
@@ -130,6 +130,12 @@ in {
     # Scroll through workspace
     (b "mouse_up" "workspace" "e+1")
     (b "mouse_down" "workspace" "e-1")
+    (b "Print" "exec" "grimblast save area")
+    (b' "SHIFT" "Print" "exec" "grimblast copy area")
+    (bnm "Print" "exec" "grimblast save screen")
+    (bind'' "" "SHIFT" "Print" "exec" "grimblast copy screen")
+    (b' "CTRL" "Print" "exec" "grimblast save active")
+    (b' "SHIFT+CTRL" "Print" "exec" "grimblast copy active")
   ];
 
   bindm = let inherit (bindScope) b; in [
