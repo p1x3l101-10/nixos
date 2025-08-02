@@ -21,6 +21,7 @@
     ./ollama.nix
     ./plymouth.nix
     ./powerManagement.nix
+    ./preload.nix
     ./printing.nix
     ./samba.nix
     ./silence.nix
