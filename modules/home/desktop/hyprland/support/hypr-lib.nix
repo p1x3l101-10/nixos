@@ -39,6 +39,6 @@ lib: (lib.fix (self: {
     }
   );
   processDesktop = attrs: (
-    builtins.mapAttrs (_: value: self.mkDesktopExec value) attrs
+    builtins.mapAttrs (_: value: self.mkDesktopExec "${value}.desktop") attrs
   );
 }))

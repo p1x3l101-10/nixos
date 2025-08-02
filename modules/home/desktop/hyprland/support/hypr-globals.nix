@@ -1,7 +1,7 @@
 pkgs: lib:
 lib.fix (self: {
   modiferKey = "SUPER";
-  apps = {
+  apps = lib.processDesktop {
     terminal = "kitty";
     fileManager = "dolphin";
   };
