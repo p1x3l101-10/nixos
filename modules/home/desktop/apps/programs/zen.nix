@@ -1,6 +1,9 @@
 { config, ext, ... }:
 
 {
+  stylix.targets.zen-browser.profileNames = [
+    "mlls93c4.Default (beta)"
+  ];
   programs.zen-browser = {
     enable = true;
     policies = {
@@ -20,7 +23,6 @@
       extensions = {
         force = true;
         packages = with ext.inputs.nur.legacyPackages.${ext.system}.repos.rycee.firefox-addons; [
-          firefox-color
           ublock-origin
           sponsorblock
           return-youtube-dislikes
@@ -28,64 +30,10 @@
           old-reddit-redirect
           reddit-enhancement-suite
         ];
-        settings."FirefoxColor@mozilla.com".settings = {
-          firstRunDone = true;
-          theme = {
-            title = "Stylix ${config.lib.stylix.colors.description}";
-            images.additional_backgrounds = [ "./bg-000.svg" ];
-            colors = let
-              inherit (config.lib.stylix) colors;
-              mkColor = color: {
-                r = colors."${color}-rgb-r";
-                g = colors."${color}-rgb-g";
-                b = colors."${color}-rgb-b";
-              };
-            in {
-              toolbar = mkColor "base00";
-              toolbar_text = mkColor "base05";
-              frame = mkColor "base01";
-              tab_background_text = mkColor "base05";
-              toolbar_field = mkColor "base02";
-              toolbar_field_text = mkColor "base05";
-              tab_line = mkColor "base0D";
-              popup = mkColor "base00";
-              popup_text = mkColor "base05";
-              button_background_active = mkColor "base04";
-              frame_inactive = mkColor "base00";
-              icons_attention = mkColor "base0D";
-              icons = mkColor "base05";
-              ntp_background = mkColor "base00";
-              ntp_text = mkColor "base05";
-              popup_border = mkColor "base0D";
-              popup_highlight_text = mkColor "base05";
-              popup_highlight = mkColor "base04";
-              sidebar_border = mkColor "base0D";
-              sidebar_highlight_text = mkColor "base05";
-              sidebar_highlight = mkColor "base0D";
-              sidebar_text = mkColor "base05";
-              sidebar = mkColor "base00";
-              tab_background_separator = mkColor "base0D";
-              tab_loading = mkColor "base05";
-              tab_selected = mkColor "base00";
-              tab_text = mkColor "base05";
-              toolbar_bottom_separator = mkColor "base00";
-              toolbar_field_border_focus = mkColor "base0D";
-              toolbar_field_border = mkColor "base00";
-              toolbar_field_focus = mkColor "base00";
-              toolbar_field_highlight_text = mkColor "base00";
-              toolbar_field_highlight = mkColor "base0D";
-              toolbar_field_separator = mkColor "base0D";
-              toolbar_vertical_separator = mkColor "base0D";
-            };
-          };
-        };
       };
-      settings = let inherit (config.stylix) fonts; in {
+      settings = {
         "svg.context-properties.content.enabled" = true;
 		    "browser.search.suggest.enabled" = true;
-		    "font.name.monospace.x-western" = fonts.monospace.name;
-        "font.name.sans-serif.x-western" = fonts.sansSerif.name;
-        "font.name.serif.x-western" = fonts.serif.name;
       };
       search = {
         force = true;
