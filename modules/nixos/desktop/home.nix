@@ -1,4 +1,4 @@
-{ inputs, ext, ... }:
+{ pkgs, inputs, ext, ... }:
 
 {
   imports = with inputs; [
@@ -39,4 +39,6 @@
         }
     );
   };
+  # Suboptimal, but fixes application menus
+  environment.etc."/xdg/menus/applications.menu".text = builtins.readFile "${pkgs.xfce.garcon}/etc/xdg/menus/xfce-applications.menu";
 }
