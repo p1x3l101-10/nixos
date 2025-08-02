@@ -5,7 +5,7 @@ let
   lib1 = import ./hypr-lib.nix lib0;
   lib = lib0.extend (finalLib: prevLib: { hypr = lib1; });
   # "Global" variables
-  globals = import ./hypr-globals.nix pkgs lib0;
+  globals = import ./hypr-globals.nix pkgs lib;
   # Bind helpers
   bindScope = lib.fix (self:{
     # Master function

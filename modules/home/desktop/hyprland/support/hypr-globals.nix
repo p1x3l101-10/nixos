@@ -1,7 +1,7 @@
 pkgs: lib:
 lib.fix (self: {
   modiferKey = "SUPER";
-  apps = lib.processDesktop {
+  apps = lib.hypr.processDesktop {
     terminal = "kitty";
     fileManager = "org.kde.dolphin";
     web = "zen-twilight";
