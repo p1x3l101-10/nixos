@@ -130,6 +130,7 @@ in {
     # Scroll through workspace
     (b "mouse_up" "workspace" "e+1")
     (b "mouse_down" "workspace" "e-1")
+    # Screenshot stuff
     (b "Print" "exec" "grimblast save area")
     (b' "SHIFT" "Print" "exec" "grimblast copy area")
     (bnm "Print" "exec" "grimblast save screen")
