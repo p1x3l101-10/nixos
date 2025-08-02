@@ -4,22 +4,12 @@ let
   lib1 = import ./support/hypr-lib.nix lib;
   lib2 = lib.extend (_: _: { hypr = lib1; });
   globals = import ./support/hypr-globals.nix pkgs lib2;
-  fixMime = (prefix: attrs:
-    lib.concatMapAttrs
-      (k: v:
-        if lib.types.attrs.check v then
-          fixMime (prefix ++ [ k ]) v
-        else
-          { "${lib.strings.concatStringsSep "/" (prefix ++ [k])}" = v; }
-      )
-      attrs
-  );
 in
 
 {
   xdg.mime.enable = true;
   xdg.mimeApps.enable = true;
-  xdg.mimeApps.defaultApplications = fixMime [ ] (with globals.apps; {
+  xdg.mimeApps.defaultApplications = lib.internal.attrsets.compressAttrs "/" (with globals.apps; {
     application = {
       json = textEditor.desktop;
       pdf = web.desktop;
