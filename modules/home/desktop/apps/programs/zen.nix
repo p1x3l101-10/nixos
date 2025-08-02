@@ -1,4 +1,4 @@
-{ config, ext, ... }:
+{ lib, ext, ... }:
 
 {
   stylix.targets.zen-browser.profileNames = [
@@ -31,9 +31,9 @@
           reddit-enhancement-suite
         ];
       };
-      settings = {
-        "svg.context-properties.content.enabled" = true;
-		    "browser.search.suggest.enabled" = true;
+      settings = lib.internal.attrsets.compressAttrs "." {
+        svg.context-properties.content.enabled = true;
+		    browser.search.suggest.enabled = true;
       };
       search = {
         force = true;
