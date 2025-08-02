@@ -2,7 +2,7 @@
 
 {
   stylix.cursor = {
-    name = "rose-pine-cursor";
+    name = "BreezeX-RosePine-Linux";
     size = 24;
     package = pkgs.buildEnv {
       name = "rose-pine-cursor-merged";
