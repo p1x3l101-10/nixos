@@ -51,7 +51,7 @@
     */
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
-      #inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     fjordlauncher = {
       url = "github:unmojang/FjordLauncher";
@@ -62,6 +62,10 @@
     flake-utils = {
       url = "github:numtide/flake-utils";
       inputs.systems.follows = "systems";
+    };
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
   outputs = inputs: import ./outputs.nix inputs;
