@@ -5,6 +5,8 @@ lib.fix (self: {
     terminal = "kitty";
     fileManager = "org.kde.dolphin";
     web = "zen-twilight";
+    imageViewer = "feh";
+    videoPlayer = "mpv";
   };
   spotlight = "wofi --show drun";
   appLauncher = self.spotlight;
