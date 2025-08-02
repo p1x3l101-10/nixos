@@ -3,7 +3,7 @@ lib.fix (self: {
   modiferKey = "SUPER";
   apps = lib.hypr.processDesktop {
     terminal = "kitty";
-    fileManager = "org.kde.dolphin";
+    fileManager = "thunar";
     web = "zen-twilight";
     imageViewer = "feh";
     videoPlayer = "mpv";
