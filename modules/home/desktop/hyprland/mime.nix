@@ -59,7 +59,7 @@ in
       chrome = web.desktop;
       ipfs = web.desktop;
       ipns = web.desktop;
-      discord = "vesktop.desktop";
+      discord = discord.desktop;
       ror2mm = "r2modman.desktop";
     };
   });

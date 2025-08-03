@@ -8,6 +8,9 @@ lib.fix (self: {
     imageViewer = "feh";
     videoPlayer = "mpv";
     textEditor = "nvim";
+    discord = "Vesktop";
+    steam = "steam";
+    roblox = "org.vinegarhq.Sober";
   };
   spotlight = "wofi --show drun";
   appLauncher = self.spotlight;
