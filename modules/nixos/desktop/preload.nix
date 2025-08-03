@@ -3,7 +3,7 @@
 {
   services.preload.enable = true;
   environment.persistence."/nix/host/state/System".directories = [
-    "/var/lib/private/preload"
+    { directory = "/var/lib/private/preload"; mode = "0700"; }
   ];
   systemd.services.preload.serviceConfig.EnvironmnentFile = lib.mkForce (builtins.toFile "preload.env" ''
     MIN_MEMORY="256"
