@@ -23,6 +23,7 @@
       extensions = {
         force = true;
         packages = with ext.inputs.nur.legacyPackages.${ext.system}.repos.rycee.firefox-addons; [
+          stylus
           ublock-origin
           sponsorblock
           return-youtube-dislikes
