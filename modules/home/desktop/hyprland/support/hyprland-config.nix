@@ -102,6 +102,7 @@ in {
     (b "C" "killactive")
     (b "E" "exec" globals.apps.fileManager.exec)
     (b "V" "togglefloating")
+    (b "A" "exec" "systemctl --user restart ashell.service")
     (b "R" "exec" globals.spotlight)
     (b "L" "exec" "loginctl lock-session $XDG_SESSION")
     (b "P" "pseudo") # dwindle
