@@ -75,14 +75,20 @@
     keymaps = [
       {
         mode = "n";
-        key = "<leader>e";
+        key = "<leader>ef";
         action = "<cmd>Neotree toggle<cr>";
-        options.desc = "Toggle explorer";
+        options.desc = "Toggle file explorer";
       }
       {
         mode = "n";
-        key = "<leader>o";
-        options.desc = "Toggle explorer focus";
+        key = "<leader>eb";
+        action = "<cmd>Neotree toggle buffers<cr>";
+        options.desc = "Toggle buffer explorer";
+      }
+      {
+        mode = "n";
+        key = "<leader>eo";
+        options.desc = "Toggle file explorer focus";
         action.__raw = ''
           function()
             if vim.bo.filetype == "neo-tree" then
@@ -110,6 +116,12 @@
         key = "<Leader>w";
         action = "<Cmd>write<CR>";
         options.desc = "Save";
+      }
+      {
+        mode = "n";
+        key = "<Leader>c";
+        action = "<Cmd>bdelete<CR>";
+        options.desc = "Close buffer";
       }
     ];
   };
