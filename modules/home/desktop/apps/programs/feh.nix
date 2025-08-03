@@ -17,6 +17,10 @@
                                --add-flags '--theme=feh --scale-down'
       '';
     });
+    buttons = {
+      zoom_in = "5";
+      zoom_out = "4";
+    };
   };
 }
 
