@@ -1,5 +1,8 @@
 { pkgs, ... }:
 
 {
-  home.packages = [ pkgs.xfce.thunar ];
+  home.packages = with pkgs.xfce; [
+    thunar
+    tumbler # Thumbnails
+  ];
 }
