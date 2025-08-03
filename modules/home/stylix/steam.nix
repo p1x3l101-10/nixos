@@ -1,5 +1,7 @@
 { pkgs, lib, config, osConfig, ... }:
 
+# NOTE: This will be removed when stylix#696 gets merged
+
 lib.optionalAttrs osConfig.programs.steam.enable {
   home.packages = [ pkgs.adwsteamgtk ];
 
@@ -44,7 +46,7 @@ lib.optionalAttrs osConfig.programs.steam.enable {
       --adw-warning-fg-a: 0.8;
       --adw-warning-rgb: ${base0E-rgb-r}, ${base0E-rgb-g}, ${base0E-rgb-b};
 
-      --adw-error-bg-rgb: ${base08-rgb-r}, ${base08-rgb-g}, ${base08-rgb-b};
+      --adw-error-bg-rgb: ${base08-rgb-r}, ${base08-rgb-g}, ${base08-rgb-b}
       --adw-error-fg-rgb: ${base00-rgb-r}, ${base00-rgb-g}, ${base00-rgb-b};
       --adw-error-rgb: ${base08-rgb-r}, ${base08-rgb-g}, ${base08-rgb-b};
 
