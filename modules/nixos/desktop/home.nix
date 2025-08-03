@@ -15,6 +15,11 @@
       "adbusers"
     ];
   };
+  systemd.tmpfiles.settings."10-sudo-lectures"."/var/db/sudo/lectured/1000".f = {
+    user = "root";
+    group = "root";
+    mode = "-";
+  };
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
