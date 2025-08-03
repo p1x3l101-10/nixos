@@ -63,7 +63,6 @@ inputs.flake-utils.lib.eachDefaultSystem
         inherit system specialArgs;
         modules = [
           ./systems/pixels-server
-          inputs.simple-nixos-mailserver.nixosModules.default
           inputs.self.nixosModules.server
         ] ++ (with inputs.nixos-hardware.nixosModules; [
           common-pc

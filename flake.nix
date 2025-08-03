@@ -30,14 +30,6 @@
       };
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
-    simple-nixos-mailserver = {
-      url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-compat.follows = "flake-compat";
-        flake-parts.follows = "flake-parts";
-      };
-    };
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
       inputs = {
