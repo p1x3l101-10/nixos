@@ -42,4 +42,5 @@ lib.fix (self: {
     home = "/var/lib/greetd";
     createHome = true;
   };
+  services.gvfs.enable = true;
 })
