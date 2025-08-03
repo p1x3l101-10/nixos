@@ -9,7 +9,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs = {
+        systems.follows = "systems";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
@@ -19,16 +25,26 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         systems.follows = "systems";
+        nur.follows = "nur";
+        flake-parts.follows = "flake-parts";
       };
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     simple-nixos-mailserver = {
       url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-compat.follows = "flake-compat";
+        flake-parts.follows = "flake-parts";
+      };
     };
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        flake-compat.follows = "flake-compat";
+      };
     };
     disko = {
       url = "github:nix-community/disko";
@@ -37,11 +53,17 @@
     impermanence.url = "github:nix-community/impermanence";
     nixpak = {
       url = "github:nixpak/nixpak";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
     };
     nix-autobahn = {
       url = "github:Lassulus/nix-autobahn";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+      };
     };
     /* # Breaks vr suprisingly
       nixpkgs-xr = {
@@ -51,7 +73,10 @@
     */
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
     };
     fjordlauncher = {
       url = "github:unmojang/FjordLauncher";
@@ -65,8 +90,17 @@
     };
     nur = {
       url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
     };
+    # The inputs have fallen, billions must instance nixpkgs
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+    flake-compat.url = "github:edolstra/flake-compat";
   };
   outputs = inputs: import ./outputs.nix inputs;
 }
