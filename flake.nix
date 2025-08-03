@@ -87,9 +87,13 @@
         flake-parts.follows = "flake-parts";
       };
     };
-    quickshell = {
-      url = "github:quickshell-mirror/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+        flake-parts.follows = "flake-parts";
+      };
     };
     # The inputs have fallen, billions must instance nixpkgs
     flake-parts = {
