@@ -8,6 +8,47 @@
 	    screen = "";
 	    complete = true;
 	  };
+    discovery.enabled = false;
+    contentblocking.category = "strict";
   };
+  widget = {
+    dmabuf.force-enabled = true;
+    use-xdg-desktop-portal.file-picker = 1;
+  };
+  gemera.smoothScroll = true;
+  app = {
+    update.auto = false;
+    shield.optoutstudies = false;
+  };
+  extensions = {
+    autoDisableScopes = 0;
+    getAddons.showPane = false;
+    htmlaboutaddons.recommendations.enabled = false;
+  };
+  cookiebanners = {
+    bannerClicking.enabled = true;
+    service = {
+      "mode.privateBrowsing" = 1;
+      mode = 1;
+    };
+  };
+  privacy = {
+    trackingprotection = {
+      enabled = true;
+      pbmode.enabled = true;
+      emailtracking.enabled = true;
+      socialtracking.enabled = true;
+      cryptomining.enabled = true;
+      fingerprinting.enabled = true;
+      fingerprintingProtection = true;
+      resistFingerprinting = true;
+      "resistFingerprinting.pbmode" = true;
+      query_stripping = {
+        enabled = true;
+        "enabled.pbmode" = true;
+      };
+    };
+  };
+  network.auth.subresource-http-auth-allow = 1;
   fission.autostart = true;
 }
