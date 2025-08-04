@@ -1,10 +1,10 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   home.packages = with pkgs; [ quickshell ];
   xdg.configFile.quickshell = {
-    source = ./shell;
-    recursive = true;
+    source = config.lib.file.mkOutOfStoreSymlink ./shell;
+    #recursive = true;
   };
   systemd.user.services.quickshell = {
     Unit = {
