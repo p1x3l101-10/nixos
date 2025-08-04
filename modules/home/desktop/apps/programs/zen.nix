@@ -56,9 +56,9 @@
 			      updateInterval = 24 * 60 * 60 * 1000;
 			      definedAliases = [ "!hs" ];
 			    };
-          "Amazon.com".metaData.hidden = true;
-          "Bing".metaData.hidden = true;
-          "eBay".metaData.hidden = true;
+          "amazondotcom-us".metaData.hidden = true;
+          "bing".metaData.hidden = true;
+          "ebay".metaData.hidden = true;
         };
       };
     };
