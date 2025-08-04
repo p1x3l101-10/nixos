@@ -1,11 +1,7 @@
-{ config, pkgs, ... }:
+{ config, pkgs, osConfig, ... }:
 
 {
   home.packages = with pkgs; [ quickshell ];
-  xdg.configFile.quickshell = {
-    source = config.lib.file.mkOutOfStoreSymlink ./shell;
-    #recursive = true;
-  };
   systemd.user.services.quickshell = {
     Unit = {
       Description = "Hyprland Shell";
@@ -16,4 +12,7 @@
     };
     Install.WantedBy = [ "hyprland-session.target" ];
   };
+  systemd.user.tmpfiles.rules = [
+    "L /home/pixel/.config/quickshell - - - - ${osConfig.environment.etc."nixos".source}/modules/home/desktop/hyprland/shell"
+  ];
 }
