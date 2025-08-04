@@ -25,6 +25,33 @@
       };
       cmp = {
         enable = true;
+        settings = {
+          snippet.expand = ''
+            function(args)
+              vim.fn["luasnip"].lsp_expand(args.body)
+            end
+          '';
+          mapping = {
+            "<CR>" =  ''
+              function(fallback)
+                local cmp = require("cmp")
+                if cmp.visible() then
+                  cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true })
+                else
+                  fallback()
+                end
+              end
+            '';
+            "<Tab>" = "cmp.mapping.select_next_item()";
+            "<S-Tab>" = "cmp.mapping.select_prev_item()";
+          };
+          sources = [
+            { name = "nvim_lsp"; }
+            { name = "luasnip"; }
+            { name = "buffer"; }
+            { name = "path"; }
+          ];
+        };
       };
       none-ls = {
         enable = true;
@@ -39,10 +66,23 @@
         };
         mockDevIcons = true;
       };
+      luasnip.enable = true;
+      lspkind.enable = true;
     };
     extraPlugins = with pkgs.vimPlugins; [
       heirline-nvim
+      nvim-autopairs
+      zoxide-vim
     ];
+    extraConfigLua = ''
+      local cmp = require('cmp')
+      cmp.setup = {
+        window = {
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
+        }
+      }
+    '';
     lsp = {
       servers = {
         qmlls.enable = true;
