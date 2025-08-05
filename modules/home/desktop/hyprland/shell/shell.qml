@@ -6,6 +6,7 @@ ShellRoot {
   Component.onCompleted: {
     Theme.loadFromJson("/etc/stylix/palette.json");
   }
+  Pipewire {}
   PanelWindow {
     anchors { top: true; left: true; right: true; }
     implicitHeight: 35
