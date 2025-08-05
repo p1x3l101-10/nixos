@@ -17,7 +17,7 @@ ShellRoot {
         leftMargin: 10
         rightMargin: 10
       }
-      color: Theme.base0D
+      color: Theme.base03
       radius: 10
       Rectangle {
         anchors {

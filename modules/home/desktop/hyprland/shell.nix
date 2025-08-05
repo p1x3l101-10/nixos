@@ -5,6 +5,14 @@
   systemd.user.services.quickshell = {
     Unit = {
       Description = "Hyprland Shell";
+      Wants = [
+        "systemd-tmpfiles-setup.service"
+        "systemd-tmpfiles-clean.service"
+      ];
+      After = [
+        "systemd-tmpfiles-setup.service"
+        "systemd-tmpfiles-clean.service"
+      ];
     };
     Service = {
       ExecStart = "${pkgs.quickshell}/bin/quickshell";
