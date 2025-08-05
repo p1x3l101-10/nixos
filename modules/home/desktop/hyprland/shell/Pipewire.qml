@@ -52,7 +52,7 @@ Scope {
       
       Rectangle {
         anchors.fill: parent
-        radius: height / 2
+        radius: 10
         color: Theme.base0D
 			  Rectangle {
           anchors {
@@ -62,7 +62,7 @@ Scope {
             leftMargin: 2
             rightMargin: 2
           }
-				  radius: height / 2
+				  radius: 9
 				  color: Theme.base00
   
 				  RowLayout {
