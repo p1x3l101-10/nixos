@@ -95,6 +95,10 @@
         flake-parts.follows = "flake-parts";
       };
     };
+    app2unit = {
+      url = "github:soramanew/app2unit";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # The inputs have fallen, billions must instance nixpkgs
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
