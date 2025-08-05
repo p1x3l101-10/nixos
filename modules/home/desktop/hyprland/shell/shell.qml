@@ -3,6 +3,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import Quickshell.Hyprland
+import Quickshell.Io
 
 ShellRoot {
   Component.onCompleted: {
@@ -86,5 +87,10 @@ ShellRoot {
         }
       }
     }
+  }
+  IpcHandler {
+    target: "launch"
+
+    function desktop(desktopFile: string) {}
   }
 }
