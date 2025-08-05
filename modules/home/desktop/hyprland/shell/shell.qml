@@ -33,12 +33,12 @@ ShellRoot {
         SystemClock { id: clock }
 
         Label {
-          property string hours: clock.hours.toString().padStart(2, '0')
-          property string minutes: clock.minutes.toString().padStart(2, '0')
-          property string seconds: clock.seconds.toString().padStart(2, '0')
+          readonly property string time: {
+            Qt.formatDateTime(clock.date, "h:mm:ss ap")
+          }
   
           anchors.centerIn: parent
-          text: `${hours}:${minutes}:${seconds}`
+          text: time
           color: Theme.base05
         }
       }
