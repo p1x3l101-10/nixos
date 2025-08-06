@@ -5,5 +5,6 @@
     thunar
     tumbler # Thumbnails
     xarchiver
+    xfmpc
   ];
 }
