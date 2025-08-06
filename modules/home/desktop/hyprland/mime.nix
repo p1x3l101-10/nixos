@@ -7,6 +7,7 @@ let
 in
 
 {
+  xdg.configFile."mimeapps.list".force = true;
   xdg.mime.enable = true;
   xdg.mimeApps.enable = true;
   xdg.mimeApps.defaultApplications = lib.internal.attrsets.compressAttrs "/" (with globals.apps; {
