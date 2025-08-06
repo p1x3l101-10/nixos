@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   services = {
@@ -24,4 +24,5 @@
       mpd.useLocal = true;
     };
   };
+  home.packages = [ pkgs.mpc ];
 }
