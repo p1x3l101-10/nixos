@@ -25,7 +25,7 @@ Singleton {
 
       property bool mousePsystem: false
       property bool reservedShell: false
-      property bool setWallpaper: true
+      property bool setWallpaper: false
       property bool wallFgLayer: false
       property string wallSrc: Quickshell.env("HOME") + "/.config/background"
     }
