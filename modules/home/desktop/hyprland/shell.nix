@@ -1,7 +1,10 @@
 { config, pkgs, osConfig, ... }:
 
 {
-  home.packages = with pkgs; [ quickshell ];
+  home.packages = with pkgs; [
+    quickshell
+    material-symbols
+  ];
   systemd.user.services.quickshell = {
     Unit = {
       Description = "Hyprland Shell";
