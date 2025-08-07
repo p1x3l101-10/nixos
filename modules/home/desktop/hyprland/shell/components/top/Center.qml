@@ -1,3 +1,4 @@
+//@ pragma Internal
 import Quickshell.Hyprland
 import QtQuick
 import QtQuick.Controls

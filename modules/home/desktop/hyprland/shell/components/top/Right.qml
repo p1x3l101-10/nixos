@@ -1,3 +1,4 @@
+//@ pragma Internal
 import QtQuick
 import Quickshell
 import QtQuick.Controls
