@@ -5,13 +5,11 @@ import QtQuick.Layouts
 import qs.globals
 
 RowLayout {
-  anchors {
-    left: parent.left
-    leftMargin: 8
-  }
+  Layout.alignment: Qt.AlignLeft
+  Layout.leftMargin: 8
+  Layout.fillWidth: true
   Label {
     id: workspace
-    anchors.left: parent.left
     readonly property int workspaceId: {
       Hyprland.focusedMonitor.activeWorkspace.id
     }

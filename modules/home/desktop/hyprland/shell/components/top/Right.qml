@@ -5,10 +5,9 @@ import QtQuick.Layouts
 import qs.globals
 
 RowLayout {
-  anchors {
-    right: parent.right
-    rightMargin: 8
-  }
+  Layout.alignment: Qt.AlignRight
+  Layout.rightMargin: 8
+  Layout.fillWidth: true
   SystemClock { id: sysClock }
 
   Label {
@@ -17,7 +16,6 @@ RowLayout {
       Qt.formatDateTime(sysClock.date, "h:mm:ss ap")
     }
   
-    anchors.right:parent.right
     text: time
     color: Theme.base05
   }

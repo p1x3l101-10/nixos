@@ -5,10 +5,10 @@ import QtQuick.Layouts
 import qs.globals
 
 RowLayout {
-  anchors.centerIn: parent
+  Layout.alignment: Qt.AlignHCenter
+  Layout.fillWidth: true
   Label {
     id: windowName
-    anchors.centerIn: parent
     function appNameFiltered() {
       return Hyprland.activeToplevel !== null ? Hyprland.activeToplevel.title : ""
     }
