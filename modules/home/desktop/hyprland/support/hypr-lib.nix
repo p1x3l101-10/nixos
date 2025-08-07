@@ -34,11 +34,11 @@ lib: (lib.fix (self: {
   );
   mkDesktopExec = entry: (
     {
-      desktop = "${entry}.desktop";
-      exec = "qs ipc call launch desktop ${entry}";
+      desktop = "${entry}";
+      exec = "app2unit ${entry}";
     }
   );
   processDesktop = attrs: (
-    builtins.mapAttrs (_: value: self.mkDesktopExec "${value}") attrs
+    builtins.mapAttrs (_: value: self.mkDesktopExec "${value}.desktop") attrs
   );
 }))
