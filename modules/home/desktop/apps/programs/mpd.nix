@@ -9,6 +9,12 @@
         port = 6600;
         startWhenNeeded = true;
       };
+      extraConfig = ''
+        audio_output {
+          type "pipewire"
+          name "PipeWire Sound Server"
+        }
+      '';
     };
     mpd-discord-rpc = {
       enable = true;
