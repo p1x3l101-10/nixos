@@ -1,8 +1,11 @@
 // Theme.qml
 pragma Singleton
-import QtQuick 2.15
+import QtQuick
+import Quickshell.Io
+import Quickshell
 
-QtObject {
+Singleton {
+  id: themeRoot
   // All base colors, initialized as "#000000"
   property color base00: "#000000"
   property color base01: "#000000"
@@ -21,24 +24,26 @@ QtObject {
   property color base0E: "#000000"
   property color base0F: "#000000"
 
-  function loadFromJson(jsonPath) {
-    let xhr = new XMLHttpRequest();
-    xhr.open("GET", jsonPath);
-    xhr.onreadystatechange = function() {
-      if (xhr.readyState === XMLHttpRequest.DONE) {
-        if (xhr.status === 200) {
-          let raw = JSON.parse(xhr.responseText);
-          for (let key in raw) {
-            if (raw.hasOwnProperty(key) && key.startsWith("base")) {
-              Theme[key] = "#" + raw[key];
-            }
-          }
-        } else {
-          console.warn("Failed to load palette:", xhr.status);
-        }
+  FileView {
+    id: file
+    path: "/etc/stylix/palette.json"
+    watchChanges: true
+    onFileChanged: parent.reload()
+    blockLoading: true
+    preload: true
+    Component.onCompleted: {
+      Theme.reload()
+    }
+  }
+
+  function reload() {
+    file.reload();
+    let raw = JSON.parse(file.text());
+    for (let key in raw) {
+      if (raw.hasOwnProperty(key) && key.startsWith("base")) {
+        Theme[key] = "#" + raw[key];
       }
     }
-    xhr.send();
   }
 }
 

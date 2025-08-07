@@ -6,9 +6,6 @@ import Quickshell.Hyprland
 import Quickshell.Io
 
 ShellRoot {
-  Component.onCompleted: {
-    Theme.loadFromJson("/etc/stylix/palette.json");
-  }
   Pipewire {}
   PanelWindow {
     anchors { top: true; left: true; right: true; }
