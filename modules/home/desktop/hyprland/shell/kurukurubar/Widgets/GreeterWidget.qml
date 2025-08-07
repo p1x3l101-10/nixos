@@ -72,7 +72,7 @@ RowLayout {
       anchors.centerIn: parent
       color: Dat.Colors.on_surface
       font.pointSize: 14
-      text: "Hello cutie"
+      text: "Hello"
     }
   }
 }
