@@ -1,4 +1,4 @@
-{ pkgs, inputs, ext, ... }:
+{ pkgs, inputs, ext, lib, ... }:
 
 {
   imports = with inputs; [
@@ -44,6 +44,13 @@
         }
     );
   };
+  networking.firewall = lib.fix (self: {
+    allowedTCPPorts = [
+      6600
+      8080
+    ];
+    allowedUDPPorts = self.allowedTCPPorts;
+  });
   # Suboptimal, but fixes application menus
   environment.etc."/xdg/menus/applications.menu".text = builtins.readFile "${pkgs.xfce.garcon}/etc/xdg/menus/xfce-applications.menu";
 }
