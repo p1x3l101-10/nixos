@@ -31,5 +31,10 @@
       mpd.useLocal = true;
     };
   };
-  home.packages = [ pkgs.mpc ];
+  home.packages = [
+    pkgs.mpc
+    (pkgs.ncmpcpp.override {
+      visualizerSupport = true;
+    })
+  ];
 }
