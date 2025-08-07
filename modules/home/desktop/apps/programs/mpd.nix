@@ -5,6 +5,7 @@
     mpd = {
       enable = true;
       network = {
+        listenAddress = "any";
         port = 6600;
         startWhenNeeded = true;
       };
