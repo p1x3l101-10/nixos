@@ -23,6 +23,7 @@
       gamescope
       adwaita-icon-theme
       morewaita-icon-theme
+      sgdboop
     ] ++ [
       config.home-manager.users.pixel.home.pointerCursor.package
     ];
@@ -33,6 +34,7 @@
   };
   environment.systemPackages = with pkgs; [
     r2modman
+    sgdboop
   ];
   system.allowedUnfree.packages = [
     "steam"
