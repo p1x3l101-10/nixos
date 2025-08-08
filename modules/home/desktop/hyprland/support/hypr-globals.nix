@@ -12,7 +12,7 @@ lib.fix (self: {
     steam = "steam";
     roblox = "org.vinegarhq.Sober";
   };
-  spotlight = "wofi --show drun";
+  spotlight = "fuzzel --launch-prefix='app2unit --fuzzel-compat --'";
   appLauncher = self.spotlight;
   clipboardMenu = "cliphist-wofi-img | wl-copy";
   updates = {

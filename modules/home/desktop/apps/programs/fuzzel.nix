@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  programs.wofi = {
+  programs.fuzzel = {
     enable = true;
   };
 }
