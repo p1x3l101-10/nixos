@@ -2,7 +2,7 @@
 
 {
   xdg.autostart = {
-    enabled = true;
+    enable = true;
     readOnly = true;
     entries = [
       ((builtins.toString (osConfig.programs.steam.package.override {
@@ -15,6 +15,9 @@
           '';
         });
       })) + "/share/applications/steam-autostart.desktop")
+      ((builtins.toString ((builtins.elemAt config.vesktop.package.desktopItems 0).override {
+        exec = "vesktop --start-minimized %U";
+      })) + "/share/applications/vesktop.desktop")
     ];
   };
 }
