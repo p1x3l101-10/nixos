@@ -1,0 +1,13 @@
+diff --git a/src/pages/Manager.vue b/src/pages/Manager.vue
+index e5c05c26..fb5ac804 100644
+--- a/src/pages/Manager.vue
++++ b/src/pages/Manager.vue
+@@ -381,7 +381,7 @@ function isManagerUpdateAvailable() {
+                 if (!foundMatch && !release.draft) {
+                     const releaseVersion = new VersionNumber(release.name);
+                     if (releaseVersion.isNewerThan(ManagerInformation.VERSION)) {
+-                        portableUpdateAvailable.value = true;
++                        portableUpdateAvailable.value = false;
+                         updateTagName.value = release.tag_name;
+                         foundMatch = true;
+                         return;
