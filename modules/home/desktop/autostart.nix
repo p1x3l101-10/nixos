@@ -11,7 +11,7 @@
             cp $out/share/applications/steam.desktop $out/share/applications/steam-autostart.desktop
             sed -i '/[Desktop Entry]/a \
             NoDisplay=true/' $out/share/applications/steam-autostart.desktop
-            sed -i 's/Exec=steam %U/Exec=steam -silent %U' $out/share/applications/steam-autostart.desktop
+            sed -i 's/Exec=steam %U/Exec=steam -silent %U/' $out/share/applications/steam-autostart.desktop
           '';
         });
       })) + "/share/applications/steam-autostart.desktop")
