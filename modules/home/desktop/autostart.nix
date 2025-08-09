@@ -15,7 +15,7 @@
           '';
         });
       })) + "/share/applications/steam-autostart.desktop")
-      ((builtins.toString ((builtins.elemAt config.vesktop.package.desktopItems 0).override {
+      ((builtins.toString ((builtins.elemAt config.programs.vesktop.package.desktopItems 0).override {
         exec = "vesktop --start-minimized %U";
       })) + "/share/applications/vesktop.desktop")
     ];
