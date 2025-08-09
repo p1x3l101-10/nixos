@@ -3,7 +3,6 @@
 {
   xdg.autostart = {
     enable = true;
-    readOnly = true;
     entries = [
       ((builtins.toString (osConfig.programs.steam.package.override {
         steam-unwrapped = pkgs.steam-unwrapped.overrideAttrs (old: {
