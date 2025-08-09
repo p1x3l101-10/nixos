@@ -33,7 +33,6 @@
     openFirewall = true;
   };
   environment.systemPackages = with pkgs; [
-    r2modman
     sgdboop
   ];
   system.allowedUnfree.packages = [
