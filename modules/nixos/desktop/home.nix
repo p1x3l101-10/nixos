@@ -51,6 +51,8 @@
     ];
     allowedUDPPorts = self.allowedTCPPorts;
   });
+  # Desktop portals
+  environment.pathsToLink = [ "/share/xdg-desktop-portal" "/share/applications" ];
   # Suboptimal, but fixes application menus
   environment.etc."/xdg/menus/applications.menu".text = builtins.readFile "${pkgs.xfce.garcon}/etc/xdg/menus/xfce-applications.menu";
 }
