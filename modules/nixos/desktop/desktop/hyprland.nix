@@ -22,7 +22,7 @@ lib.fix (self: {
     settings = {
       default_session = {
         command = pkgs.writeShellScript "greeter" ''
-          ${pkgs.greetd.tuigreet}/bin/tuigreet \
+          ${pkgs.tuigreet}/bin/tuigreet \
           --cmd "uwsm start default" \
           --remember \
           --time \
