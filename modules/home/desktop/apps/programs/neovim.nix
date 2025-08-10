@@ -166,4 +166,5 @@
     ];
   };
   home.shellAliases.nv = "nvim";
+  home.packages = with pkgs; [ zip unzip ];
 }
