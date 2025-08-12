@@ -2,7 +2,7 @@
 
 { disk-id
   # Actual disk
-, esp-size ? "500m"
+, esp-size ? "500M"
 , swap-size ? "20G"
   # tmpfs systems
 , root-size ? "4G"
