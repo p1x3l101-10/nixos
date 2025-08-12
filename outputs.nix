@@ -59,6 +59,18 @@ inputs.flake-utils.lib.eachDefaultSystem
           common-gpu-amd
         ]) ++ common-modules;
       };
+      pixels-laptop = lib.nixosSystem {
+        inherit system specialArgs;
+        modules = [
+          ./systems/pixels-laptop
+        ] ++ (with inputs; [
+          self.nixosModules.desktop
+        ]) ++ ( with inputs.nixos-hardware.nixosModules; [
+          common-pc-laptop
+          common-pc-laptop-ssd
+          common-cpu-intel
+        ]) ++ common-modules;
+      };
       pixels-server = lib.nixosSystem {
         inherit system specialArgs;
         modules = [
