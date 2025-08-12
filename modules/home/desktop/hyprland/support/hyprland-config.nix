@@ -103,6 +103,7 @@ in {
     (b "E" "exec" globals.apps.fileManager.exec)
     (b "V" "togglefloating")
     (b "R" "exec" globals.spotlight)
+    (b "T" "exec" "uuctl")
     (b "L" "exec" "loginctl lock-session $XDG_SESSION")
     (b "P" "pseudo") # dwindle
     (b "J" "togglesplit") # dwindle
