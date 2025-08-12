@@ -20,6 +20,16 @@ let
   );
 in {
   xdg.desktopEntries = steamGameTransformer [
-   { factorio = 427520; }
+   { Factorio = 427520; }
+   { "Deep Rock Galactic" = 548430; }
+   { Volcanoids = 951440; }
+   { "No Man's Sky" = 275850; }
+   { Satisfactory = 526870; }
+   { ULTRAKILL = 1229490; }
+   { Starbound = 211820; }
+   { Terraria = 105600; }
+   { tModLoader = 1281930; }
+   { Forts = 410900; }
+   # { Stellaris = 281990; } # Buying soon (tm)
   ];
 }
