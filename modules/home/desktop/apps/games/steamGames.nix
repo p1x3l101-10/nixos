@@ -22,8 +22,8 @@ in {
   xdg.desktopEntries = steamGameTransformer ([
    { Factorio = 427520; }
    { Terraria = 105600; }
-  ] ++ (lib.lists.optionals (osConfig.networking.hostName == "pixels-pc") [
    { tModLoader = 1281930; }
+  ] ++ (lib.lists.optionals (osConfig.networking.hostName == "pixels-pc") [
    { "Deep Rock Galactic" = 548430; }
    { Volcanoids = 951440; }
    { "No Man's Sky" = 275850; }
