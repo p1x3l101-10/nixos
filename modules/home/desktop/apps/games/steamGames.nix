@@ -19,10 +19,10 @@ let
     )
   );
 in {
-  xdg.desktopEntries = steamGameTransformer [
+  xdg.desktopEntries = steamGameTransformer ([
    { Factorio = 427520; }
    { Terraria = 105600; }
-   ] ++ (lib.lists.optionals (osConfig.networking.hostName == "pixels-pc") [
+  ] ++ (lib.lists.optionals (osConfig.networking.hostName == "pixels-pc") [
    { tModLoader = 1281930; }
    { "Deep Rock Galactic" = 548430; }
    { Volcanoids = 951440; }
@@ -32,5 +32,5 @@ in {
    { Starbound = 211820; }
    { Forts = 410900; }
    # { Stellaris = 281990; } # Buying soon (tm)
-  ]);
+  ]));
 }
