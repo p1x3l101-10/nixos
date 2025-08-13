@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, osConfig, ... }:
 
 let
   steamGameTransformer = (list:
@@ -21,15 +21,16 @@ let
 in {
   xdg.desktopEntries = steamGameTransformer [
    { Factorio = 427520; }
+   { Terraria = 105600; }
+   ] ++ (lib.lists.optionals (osConfig.networking.hostName == "pixels-pc") [
+   { tModLoader = 1281930; }
    { "Deep Rock Galactic" = 548430; }
    { Volcanoids = 951440; }
    { "No Man's Sky" = 275850; }
    { Satisfactory = 526870; }
    { ULTRAKILL = 1229490; }
    { Starbound = 211820; }
-   { Terraria = 105600; }
-   { tModLoader = 1281930; }
    { Forts = 410900; }
    # { Stellaris = 281990; } # Buying soon (tm)
-  ];
+  ]);
 }
