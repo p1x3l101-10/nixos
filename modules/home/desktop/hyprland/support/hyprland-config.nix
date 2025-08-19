@@ -7,7 +7,7 @@ let
   # "Global" variables
   globals = import ./hypr-globals.nix pkgs lib;
   # Bind helpers
-  bindScope = lib.fix (self:{
+  bindScope = lib.fix (self: {
     # Master function
     inherit (lib.hypr) bind'';
     # `bind'` lets you specify aditional modifers in addition to the normal one
@@ -19,7 +19,8 @@ let
     b' = self.bind';
     b = self.bind;
   });
-in {
+in
+{
   monitor = ",preferred,auto,auto";
   general = {
     gaps_in = 5;
@@ -85,10 +86,10 @@ in {
   input = {
     kb_layout = "us";
     /* the template had these, i dunno how to do this in nix, so just a comment block ig...
-    kb_variant =
-    kb_model =
-    kb_options =
-    kb_rules =
+      kb_variant =
+      kb_model =
+      kb_options =
+      kb_rules =
     */
     follow_mouse = false;
     sensitivity = 0;
@@ -146,14 +147,17 @@ in {
     (b "mouse:273" "resizewindow")
   ];
 
-  bindel = let inherit (bindScope) bnm; in (map (value: # I got lazy and made a function
-    (lib.mapAttrs' (key: action:
-      (lib.nameValuePair 
-        ("out")
-        (bnm "XF86Audio${key}" "exec" "wpctl ${action}")
-      )
-    ) value).out
-  ) [
+  bindel = let inherit (bindScope) bnm; in (map
+    (value: # I got lazy and made a function
+      (lib.mapAttrs'
+        (key: action:
+          (lib.nameValuePair
+            ("out")
+            (bnm "XF86Audio${key}" "exec" "wpctl ${action}")
+          )
+        )
+        value).out
+    ) [
     { RaiseVolume = "set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"; }
     { LowerVolume = "set-volume @DEFAULT_AUDIO_SINK@ 5%-"; }
     { Mute = "set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
@@ -163,14 +167,17 @@ in {
     (bnm "XF86MonBrightnessDown" "exec" "brightnessctl -e4 -n2 set 5%-")
   ];
 
-  bindl = let inherit (bindScope) bnm; in (map (value: # I got lazy and made a function
-    (lib.mapAttrs' (key: action:
-      (lib.nameValuePair 
-        ("out")
-        (bnm "XF86Audio${key}" "exec" "playerctl ${action}")
-      )
-    ) value).out
-  ) [
+  bindl = let inherit (bindScope) bnm; in (map
+    (value: # I got lazy and made a function
+      (lib.mapAttrs'
+        (key: action:
+          (lib.nameValuePair
+            ("out")
+            (bnm "XF86Audio${key}" "exec" "playerctl ${action}")
+          )
+        )
+        value).out
+    ) [
     { Next = "next"; }
     { Play = "play-pause"; }
     { Pause = "play-pause"; }

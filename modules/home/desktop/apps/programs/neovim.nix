@@ -32,7 +32,7 @@
             end
           '';
           mapping = {
-            "<CR>" =  ''
+            "<CR>" = ''
               function(fallback)
                 local cmp = require("cmp")
                 if cmp.visible() then

@@ -7,14 +7,14 @@
     enable = mkEnableOption "Better license management" // { default = true; };
     # NOTE: This breaks when merged into nixos config, hence why it is commented out. In a standalone version, it is perfectly safe to use these
     /*
-    licenses = mkOption {
+      licenses = mkOption {
       type = with types; listOf str;
       default = [ ];
-    };
-    blockedLicenses = mkOption {
+      };
+      blockedLicenses = mkOption {
       type = with types; listOf str;
       default = [ ];
-    };
+      };
     */
     packages = mkOption {
       type = with types; listOf str;

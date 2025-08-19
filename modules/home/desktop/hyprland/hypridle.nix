@@ -2,7 +2,8 @@
 
 let
   globals = import ./support/hypr-globals.nix pkgs lib;
-in {
+in
+{
   services.hypridle = {
     enable = true;
     settings = {

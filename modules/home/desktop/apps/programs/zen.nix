@@ -39,23 +39,23 @@
         engines = {
           google.metadata.alias = "@g";
           "NixOS Packages" = {
-			      urls = [{ template = "https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={searchTerms}"; }];
-			      icon = "https://nixos.org/favicon.png";
-			      updateInterval = 24 * 60 * 60 * 1000;
-			      definedAliases = [ "!ns" ];
-			    };
-			    "NixOS Options" = {
-			      urls = [{ template = "https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={searchTerms}"; }];
-			      icon = "https://nixos.org/favicon.png";
-			      updateInterval = 24 * 60 * 60 * 1000;
-			      definedAliases = [ "!no" ];
-			    };
-			    "HomeManager" = {
-			      urls = [{ template = "https://home-manager-options.extranix.com/?query={searchTerms}&release=master"; }];
-			      icon = "https://github.com/mipmip/home-manager-option-search/blob/main/images/favicon.png";
-			      updateInterval = 24 * 60 * 60 * 1000;
-			      definedAliases = [ "!hs" ];
-			    };
+            urls = [{ template = "https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={searchTerms}"; }];
+            icon = "https://nixos.org/favicon.png";
+            updateInterval = 24 * 60 * 60 * 1000;
+            definedAliases = [ "!ns" ];
+          };
+          "NixOS Options" = {
+            urls = [{ template = "https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={searchTerms}"; }];
+            icon = "https://nixos.org/favicon.png";
+            updateInterval = 24 * 60 * 60 * 1000;
+            definedAliases = [ "!no" ];
+          };
+          "HomeManager" = {
+            urls = [{ template = "https://home-manager-options.extranix.com/?query={searchTerms}&release=master"; }];
+            icon = "https://github.com/mipmip/home-manager-option-search/blob/main/images/favicon.png";
+            updateInterval = 24 * 60 * 60 * 1000;
+            definedAliases = [ "!hs" ];
+          };
           "amazondotcom-us".metaData.hidden = true;
           "bing".metaData.hidden = true;
           "ebay".metaData.hidden = true;

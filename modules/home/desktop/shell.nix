@@ -13,7 +13,8 @@
     enable = true;
     enableBashIntegration = true;
     options = [
-      "--cmd" "cd"
+      "--cmd"
+      "cd"
     ];
   };
 }

@@ -1,10 +1,9 @@
- { pkgs, ... }:
+{ pkgs, ... }:
 
- {
-   services.mako = {
-     enable = true;
-     settings = {
-     };
-   };
-   home.packages = [ pkgs.inotify-tools ];
- }
+{
+  services.mako = {
+    enable = true;
+    settings = { };
+  };
+  home.packages = [ pkgs.inotify-tools ];
+}

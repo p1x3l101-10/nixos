@@ -1,9 +1,8 @@
 # WARNING
 # this is a merely a configuration used to test the kurukuru greeter
-{
-  modulesPath,
-  pkgs,
-  ...
+{ modulesPath
+, pkgs
+, ...
 }: {
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
@@ -20,15 +19,15 @@
 
   security.sudo.wheelNeedsPassword = false;
   nixpkgs.config.allowUnfree = true;
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   users.users.rexies = {
     enable = true;
     initialPassword = "kokomi";
     createHome = true;
     isNormalUser = true;
-    extraGroups = ["wheel"];
-    packages = [];
+    extraGroups = [ "wheel" ];
+    packages = [ ];
   };
 
   users.users.kokomi = {
@@ -36,7 +35,7 @@
     initialPassword = "rexies";
     createHome = true;
     isNormalUser = true;
-    packages = [];
+    packages = [ ];
   };
 
   programs.hyprland = {

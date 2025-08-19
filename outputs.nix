@@ -65,7 +65,7 @@ inputs.flake-utils.lib.eachDefaultSystem
           ./systems/pixels-laptop
         ] ++ (with inputs; [
           self.nixosModules.desktop
-        ]) ++ ( with inputs.nixos-hardware.nixosModules; [
+        ]) ++ (with inputs.nixos-hardware.nixosModules; [
           common-pc-laptop
           common-pc-laptop-ssd
           common-cpu-intel

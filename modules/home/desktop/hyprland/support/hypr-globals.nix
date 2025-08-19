@@ -39,7 +39,7 @@ lib.fix (self: {
           class = "deactivated";
         }}'
       fi
-    ''); 
+    '');
     daemon = "mako";
   };
 })

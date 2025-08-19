@@ -31,17 +31,20 @@ let
       expunge = "maildir";
     };
     passwordCommand = "cat /nix/host/keys/mail/gmail/${otherAttrs.address}";
-  } otherAttrs]);
+  }
+    otherAttrs]);
   standardEmail = otherAttrs: (lib.internal.attrsets.mergeAttrs [{
     maildir.path = otherAttrs.userName;
     thunderbird = {
       enable = true;
-      profiles = [];
-      settings = id: (lib.internal.attrsets.compressAttrs "." {});
-      messageFilters = [];
+      profiles = [ ];
+      settings = id: (lib.internal.attrsets.compressAttrs "." { });
+      messageFilters = [ ];
     };
-  } otherAttrs]);
-in {
+  }
+    otherAttrs]);
+in
+{
   accounts = {
     email = {
       maildirBasePath = "${config.xdg.dataHome}/mail";
@@ -63,27 +66,29 @@ in {
     force = true;
     text = builtins.toJSON {
       nextId = 2;
-      logins = [(rec {
-        id = 1;
-        hostname = "https://imap.gmail.com";
-        httpRealm = hostname;
-        formSubmitUrl = null;
-        usernameField = "";
-        passwordField = "";
-        encryptedUsername = "MEoEEPgAAAAAAAAAAAAAAAAAAAEwFAYIKoZIhvcNAwcECHETn+3BXUAVBCAiNMa8VZjnbrECQBfjlikEolXwC6wU0/vecqV+ggh50g==";
-        encryptedPassword = "MEIEEPgAAAAAAAAAAAAAAAAAAAEwFAYIKoZIhvcNAwcECA82cuX7bLIWBBhcIoCXDuJNAn0N8Pl82Zhr4ifrz1Xnue4=";
-        guid = "{a8bd4dda-26d9-4bc5-8b85-8c25a8ef6a25}";
-        encType = 1;
-        timeCreated = 1754672084132;
-        timeLastUsed = 1754672084132;
-        timePasswordChanged = 1754672084132;
-        timesUsed = 1;
-        syncCounter = 1;
-        everSynced = false;
-        encryptedUnknownFields = "MDIEEPgAAAAAAAAAAAAAAAAAAAEwFAYIKoZIhvcNAwcECNaUsLNk+/5VBAhVMGOuScbpcQ==";
-      })];
-      potentiallyVulnerablePasswords = [];
-      dismissedBreachAlertsByLoginGUID = {};
+      logins = [
+        (rec {
+          id = 1;
+          hostname = "https://imap.gmail.com";
+          httpRealm = hostname;
+          formSubmitUrl = null;
+          usernameField = "";
+          passwordField = "";
+          encryptedUsername = "MEoEEPgAAAAAAAAAAAAAAAAAAAEwFAYIKoZIhvcNAwcECHETn+3BXUAVBCAiNMa8VZjnbrECQBfjlikEolXwC6wU0/vecqV+ggh50g==";
+          encryptedPassword = "MEIEEPgAAAAAAAAAAAAAAAAAAAEwFAYIKoZIhvcNAwcECA82cuX7bLIWBBhcIoCXDuJNAn0N8Pl82Zhr4ifrz1Xnue4=";
+          guid = "{a8bd4dda-26d9-4bc5-8b85-8c25a8ef6a25}";
+          encType = 1;
+          timeCreated = 1754672084132;
+          timeLastUsed = 1754672084132;
+          timePasswordChanged = 1754672084132;
+          timesUsed = 1;
+          syncCounter = 1;
+          everSynced = false;
+          encryptedUnknownFields = "MDIEEPgAAAAAAAAAAAAAAAAAAAEwFAYIKoZIhvcNAwcECNaUsLNk+/5VBAhVMGOuScbpcQ==";
+        })
+      ];
+      potentiallyVulnerablePasswords = [ ];
+      dismissedBreachAlertsByLoginGUID = { };
       version = 3;
     };
   };

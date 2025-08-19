@@ -12,7 +12,7 @@ in
 stdenvNoCC.mkDerivation (self: {
   pname = "MusicPlayerPlus";
   version = version + "r" + rc;
-  
+
   src = fetchurl {
     url = "https://github.com/doctorfree/MusicPlayerPlus/releases/download/v${version}r${rc}/MusicPlayerPlus_${version}-${rc}.zip";
     hash = "sha256-psIQ/uvWLS5KGI1GdHW6ag9+xoGESA6xjqIOVkcw76E=";

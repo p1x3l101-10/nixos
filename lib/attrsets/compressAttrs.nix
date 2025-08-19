@@ -15,4 +15,4 @@ let
   );
 in
 
-compressAttrs [] attrs' pathSep'
+compressAttrs [ ] attrs' pathSep'
