@@ -29,7 +29,6 @@ in
     { Terraria = 105600; }
     { tModLoader = 1281930; }
   ] ++ (lib.lists.optionals (osConfig.networking.hostName == "pixels-pc") [
-    { "Stellaris" = 281990; }
     { "Deep Rock Galactic" = 548430; }
     { Volcanoids = 951440; }
     { "No Man's Sky" = 275850; }
@@ -37,6 +36,6 @@ in
     { ULTRAKILL = 1229490; }
     { Starbound = 211820; }
     { Forts = 410900; }
-    # { Stellaris = 281990; } # Buying soon (tm)
+    { Stellaris = 281990; }
   ]));
 }
