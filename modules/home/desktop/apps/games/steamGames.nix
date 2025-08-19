@@ -29,6 +29,7 @@ in
     { Terraria = 105600; }
     { tModLoader = 1281930; }
   ] ++ (lib.lists.optionals (osConfig.networking.hostName == "pixels-pc") [
+    { "Portal 2" = 620; }
     { "Deep Rock Galactic" = 548430; }
     { Volcanoids = 951440; }
     { "No Man's Sky" = 275850; }
