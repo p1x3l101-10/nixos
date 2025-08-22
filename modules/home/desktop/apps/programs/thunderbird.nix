@@ -19,8 +19,7 @@
           svg.context-properties.content.enabled = true;
         }
       ]);
-      userChrome = builtins.readFile (config.programs.zen-browser.profiles."mlls93c4.Default (beta)".userChrome);
-      userContent = builtins.readFile (config.programs.zen-browser.profiles."mlls93c4.Default (beta)".userContent);
+      inherit (config.programs.zen-browser.profiles."mlls93c4.Default (beta)") userChrome userContent;
     };
   };
   home.sessionVariables.MOZ_ENABLE_WAYLAND = 1;
