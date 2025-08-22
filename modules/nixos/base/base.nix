@@ -29,6 +29,7 @@
       auto-optimise-store = true;
       experimental-features = [ "nix-command" "flakes" ];
     };
+    package = pkgs.nixVersions.nix_2_30;
   };
   environment.systemPackages = [
     pkgs.internal.rebuild
