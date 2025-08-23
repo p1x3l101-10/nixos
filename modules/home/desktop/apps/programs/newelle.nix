@@ -29,7 +29,11 @@ let
     requests
     pydub
     gtts
-    speechrecognition
+    (speechrecognition.override {
+      openai-whisper = openai-whisper.override {
+        triton = pkgs.rocmPackages.triton;
+      };
+    })
     numpy
     matplotlib
     newspaper3k
