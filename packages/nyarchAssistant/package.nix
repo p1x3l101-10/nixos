@@ -119,6 +119,7 @@ stdenv.mkDerivation rec {
     mainProgram = "nyarchassistant";
     license = licenses.gpl3;
     platforms = platforms.unix;
+    broken = true;
   };
 
 }
