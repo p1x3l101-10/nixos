@@ -13,5 +13,6 @@
   ];
   services.flatpak.overrides."moe.nyarchlinux.assistant" = {
     Context.filesystems = [ "home" ];
+    "Session Bus Policy"."org.freedesktop.Flatpak" = "talk";
   };
 }
