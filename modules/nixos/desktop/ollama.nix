@@ -8,4 +8,7 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
       "qwen2.5:32b" # 20 gigs, pretty dang large lol
     ];
   };
+  environment.persistence."/nix/host/state/AI".directories = [
+    { directory = "/var/lib/private/ollama"; mode = "0700"; }
+  ];
 }
