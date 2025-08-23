@@ -47,7 +47,6 @@ let
     llama-index-core
     llama-index-readers-file
     pip-install-test
-    python-livepng
   ];
 in {
   home.packages = [
@@ -58,7 +57,7 @@ in {
       ]);
       preFixup = ''
         glib-compile-schemas $out/share/gsettings-schemas/${oldAttrs.pname}-${oldAttrs.version}/glib-2.0/schemas
-        gappsWrapperArgs+=(--set PYTHONPATH "${pkgs.python3.pkgs.makePythonPath pythonDependencies}")
+        gappsWrapperArgs+=(--set PYTHONPATH "${pkgs.python3.pkgs.makePythonPath pythonDependencies}:${python-livepng}/lib/python3.12/site-packages")
         patchShebangs $out/bin
       '';
     }))
