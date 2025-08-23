@@ -31,7 +31,7 @@ let
       hash = "sha256-p5tF/oKzd2trrLk0TTLOXppT9maG4imXaemhAYTRkvU=";
     };
     pyproject = true;
-    build-system = with pythonPkgs; [ setuptools ];
+    build-system = with pythonPkgs; [ setuptools cython numpy setuptools-scm ];
     propagatedBuildInputs = with pythonPkgs; [
       numpy
       safetensors
