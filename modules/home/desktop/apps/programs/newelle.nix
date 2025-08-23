@@ -22,6 +22,30 @@ let
       license = licenses.gpl3;
     };
   }));
+  python-wordllama = pythonPkgs.buildPythonPackage (lib.fix (self: {
+    pname = "wordllama";
+    version = "0.3.9";
+    src = pkgs.fetchPypi {
+      pname = "wordllama";
+      inherit (self) version;
+      hash = "sha256-p5tF/oKzd2trrLk0TTLOXppT9maG4imXaemhAYTRkvU=";
+    };
+    pyproject = true;
+    build-system = with pythonPkgs; [ setuptools ];
+    propagatedBuildInputs = with pythonPkgs; [
+      numpy
+      safetensors
+      tokenizers
+      toml
+      pydantic
+      requests
+    ];
+    meta = with lib; {
+      homepage = "https://github.com/dleemiller/WordLlama";
+      description = "Things you can do with the token embeddings of an LLM";
+      license = licenses.mit;
+    };
+  }));
   # Copied from flake
   pythonDependencies = with pkgs.python3.pkgs; [
     pygobject3
@@ -57,7 +81,7 @@ in {
       ]);
       preFixup = ''
         glib-compile-schemas $out/share/gsettings-schemas/${oldAttrs.pname}-${oldAttrs.version}/glib-2.0/schemas
-        gappsWrapperArgs+=(--set PYTHONPATH "${pkgs.python3.pkgs.makePythonPath pythonDependencies}:${python-livepng}/lib/python3.12/site-packages")
+        gappsWrapperArgs+=(--set PYTHONPATH "${pkgs.python3.pkgs.makePythonPath pythonDependencies}:${pythonPkgs.makePythonPath [ python-livepng python-wordllama ]}")
         patchShebangs $out/bin
       '';
     }))
