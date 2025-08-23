@@ -33,6 +33,7 @@
           out = {
             imports = with inputs.self.homeModules; [
               desktop
+              vr
             ];
           };
         }
