@@ -56,11 +56,9 @@ in {
         webkitgtk_6_0
         ffmpeg
       ]);
-      gappsWrapperArgs = [
-        "--set" "PYTHONPATH" "${pkgs.python3.pkgs.makePythonPath pythonDependencies}"
-      ];
       preFixup = ''
         glib-compile-schemas $out/share/gsettings-schemas/${oldAttrs.pname}-${oldAttrs.version}/glib-2.0/schemas
+        gappsWrapperArgs+=(--set PYTHONPATH "${pkgs.python3.pkgs.makePythonPath pythonDependencies}")
         patchShebangs $out/bin
       '';
     }))
