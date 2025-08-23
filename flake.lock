@@ -972,6 +972,26 @@
         "type": "github"
       }
     },
+    "nyarchAssistant": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1753274493,
+        "narHash": "sha256-7LFECMMEHrZnfyRfUPTLyt7sa9/8n4K2Bfr2ZLFrmMQ=",
+        "owner": "NyarchLinux",
+        "repo": "NyarchAssistant",
+        "rev": "644e3df8399ba201367c707153fcd924ad5eeb6e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NyarchLinux",
+        "repo": "NyarchAssistant",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -1042,6 +1062,7 @@
         "nixpkgs-unfree": "nixpkgs-unfree",
         "nixvim": "nixvim",
         "nur": "nur",
+        "nyarchAssistant": "nyarchAssistant",
         "stylix": "stylix",
         "systems": "systems_2",
         "zen-browser": "zen-browser"
