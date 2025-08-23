@@ -32,12 +32,7 @@ let
     requests
     pydub
     gtts
-    (speechrecognition.override {
-      # Why is triton being dumb here? why must there be two versions that packages want at the same time???
-      openai-whisper = openai-whisper.override {
-        triton = rocmPackages.triton;
-      };
-    })
+    speechrecognition
     numpy
     matplotlib
     newspaper3k
