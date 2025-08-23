@@ -74,7 +74,7 @@ stdenv.mkDerivation rec {
       +++ b/src/dataset.py
       @@ -221,6 +221,6 @@ ollama pull hf.co/{username}/{repository}
       if is_flatpak():
-          dataset_path = "/app/data/smart-prompts/dataset.csv"
+           dataset_path = "/app/data/smart-prompts/dataset.csv"
       else:
       -    dataset_path = "/usr/share/nyarchassistant/dataset.csv"
       +    dataset_path = "${prompt-dataset}"
