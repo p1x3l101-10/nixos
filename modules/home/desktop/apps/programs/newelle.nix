@@ -1,7 +1,7 @@
 { ext, pkgs, lib, ... }:
 
 let
-  pythonPkgs = pkgs.python312Packages;
+  pythonPkgs = pkgs.python3.pkgs;
   python-livepng = pythonPkgs.buildPythonPackage (lib.fix (self: {
     pname = "livepng";
     version = "0.1.8";
@@ -47,7 +47,7 @@ let
     };
   }));
   # Copied from flake
-  pythonDependencies = with pkgs.python3.pkgs; [
+  pythonDependencies = with pythonPkgs; [
     pygobject3
     libxml2
     requests
@@ -71,6 +71,8 @@ let
     llama-index-core
     llama-index-readers-file
     pip-install-test
+    python-livepng
+    python-wordllama
   ];
 in {
   home.packages = [
@@ -81,7 +83,7 @@ in {
       ]);
       preFixup = ''
         glib-compile-schemas $out/share/gsettings-schemas/${oldAttrs.pname}-${oldAttrs.version}/glib-2.0/schemas
-        gappsWrapperArgs+=(--set PYTHONPATH "${pkgs.python3.pkgs.makePythonPath pythonDependencies}:${pythonPkgs.makePythonPath [ python-livepng python-wordllama ]}")
+        gappsWrapperArgs+=(--set PYTHONPATH "${pythonPkgs.makePythonPath pythonDependencies}")
         patchShebangs $out/bin
       '';
     }))
