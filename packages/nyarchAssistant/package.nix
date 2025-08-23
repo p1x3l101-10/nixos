@@ -2,9 +2,10 @@
 , pythonPkgs
 , python-livepng
 , python-wordllama
-, rocmPackages
 , webkitgtk_6_0
 , ffmpeg
+, prompt-dataset
+, writeText
 , fetchFromGitHub
 , stdenv
 , libadwaita
@@ -65,6 +66,22 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
+  patches = [
+    (writeText "fix-dataset-path.patch" ''
+      diff --git a/src/dataset.py b/src/dataset.py
+      index e9478f8..def0ea4 100644
+      --- a/src/dataset.py
+      +++ b/src/dataset.py
+      @@ -221,6 +221,6 @@ ollama pull hf.co/{username}/{repository}
+      if is_flatpak():
+          dataset_path = "/app/data/smart-prompts/dataset.csv"
+      else:
+      -    dataset_path = "/usr/share/nyarchassistant/dataset.csv"
+      +    dataset_path = "${prompt-dataset}"
+      DATASET = reconstruct_dataset_from_csv(dataset_path)
+    '')
+  ];
+
   nativeBuildInputs = [
     meson
     ninja
@@ -89,7 +106,7 @@ stdenv.mkDerivation rec {
     webkitgtk_6_0
     ffmpeg
   ];
-
+  
   preFixup = ''
     glib-compile-schemas $out/share/gsettings-schemas/${pname}-${version}/glib-2.0/schemas
     gappsWrapperArgs+=(--set PYTHONPATH "${pythonPkgs.makePythonPath pythonDependencies}")
