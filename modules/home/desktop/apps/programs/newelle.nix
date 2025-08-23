@@ -54,6 +54,7 @@ in {
     (ext.inputs.nyarchAssistant.packages.${ext.system}.newelle.overrideAttrs (oldAttrs: {
       buildInputs = oldAttrs.buildInputs ++ (with pkgs; [
         webkitgtk_6_0
+        ffmpeg
       ]);
       preFixup = ''
         glib-compile-schemas $out/share/gsettings-schemas/${oldAttrs.pname}-${oldAttrs.version}/glib-2.0/schemas
