@@ -5,5 +5,6 @@
     vrc-get
     alcom
     vrcx
+    unityhub
   ];
 }
