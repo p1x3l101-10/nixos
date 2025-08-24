@@ -45,6 +45,11 @@
         }
     );
   };
+  nixpkgs.config = {
+    permittedInsecurePackages = [
+      "libxml2-2.13.8" # Already updated, but apparantly the CVE list has not yet
+    ];
+  };
   networking.firewall = lib.fix (self: {
     allowedTCPPorts = [
       6600
