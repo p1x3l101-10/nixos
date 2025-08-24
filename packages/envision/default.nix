@@ -140,6 +140,7 @@ buildFHSEnv {
         systemd
         vulkan-loader
         x264
+        librsvg
       ])
       ++ (with pkgs; [
         android-tools # For adb installing WiVRn APKs
