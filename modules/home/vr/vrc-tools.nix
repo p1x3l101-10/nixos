@@ -9,5 +9,6 @@
   ];
   home.allowedUnfree.packages = [
     "unityhub"
+    "corefonts"
   ];
 }
