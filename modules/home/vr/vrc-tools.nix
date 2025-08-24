@@ -7,4 +7,7 @@
     vrcx
     unityhub
   ];
+  home.allowedUnfree.packages = [
+    "unityhub"
+  ];
 }
