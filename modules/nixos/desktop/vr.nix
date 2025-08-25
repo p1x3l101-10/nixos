@@ -1,10 +1,37 @@
 { config, pkgs, lib, ... }:
 lib.mkIf (config.networking.hostName == "pixels-pc") {
-  # Envision
-  programs.envision = {
+  # Main vr service
+  services.wivrn = {
     enable = true;
-    package = pkgs.internal.envision;
+    defaultRuntime = true;
+    autoStart = true;
     openFirewall = true;
+    config = {
+      enable = true;
+      json = {
+        scale = [
+          1.0
+          1.0
+        ];
+        bitrate = (
+          50 # Bitrate in Mb/s
+          * 1000000 # Scalor
+        );
+        encoders = [
+          {
+            encoder = "vaapi"; # TODO: Test vulkan later
+            codec = "av1"; # NOTE: vulkan does not support this codec right now
+            width = 1.0;
+            height = 1.0;
+            offset_x = 0.0;
+            offset_y = 0.0;
+          }
+        ];
+        application = [ pkgs.wlx-overlay-s ]; # Autolaunch my overlay
+        tcp-only = false;
+        openvr-compat-path = "${pkgs.opencomposite}/lib/opencomposite";
+      };
+    };
   };
   # GPU Userspace temp overclocking
   hardware.amdgpu.overdrive = {
@@ -28,7 +55,6 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
   # Others
   environment.systemPackages = with pkgs; [
     immersed
-    opencomposite
     xr-hardware
     internal.telescope
     libva
