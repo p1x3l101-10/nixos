@@ -27,7 +27,7 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
             offset_y = 0.0;
           }
         ];
-        application = [ pkgs.wlx-overlay-s ]; # Autolaunch my overlay
+        application = [ "${pkgs.wlx-overlay-s}/bin/wlx-overlay-s" ]; # Autolaunch my overlay
         tcp-only = false;
         openvr-compat-path = "${pkgs.opencomposite}/lib/opencomposite";
       };
