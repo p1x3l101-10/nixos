@@ -20,8 +20,7 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
         encoders = [
           {
             encoder = "vaapi"; # TODO: Test vulkan later
-            # Let WiVRn choose the codec
-            #codec = "av1"; # NOTE: vulkan does not support this codec right now
+            codec = "h264";
             width = 1.0;
             height = 1.0;
             offset_x = 0.0;
