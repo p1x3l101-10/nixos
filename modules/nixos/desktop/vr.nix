@@ -10,8 +10,8 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
       enable = true;
       json = {
         scale = [
-          1.0
-          1.0
+          0.5
+          0.5
         ];
         bitrate = (
           50 # Bitrate in Mb/s
