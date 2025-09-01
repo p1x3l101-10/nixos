@@ -114,7 +114,7 @@ rustPlatform.buildRustPackage (finalAttrs: {
     license = with lib.licenses; [
       gpl3Only
       # server.js is unfree
-      unfree
+      #unfree
     ];
     maintainers = with lib.maintainers; [
       griffi-gh
