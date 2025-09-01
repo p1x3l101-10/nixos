@@ -19,7 +19,7 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
         );
         encoders = [
           {
-            encoder = "vaapi"; # TODO: Test vulkan later
+            encoder = "vulkan";
             codec = "h264";
             width = 1.0;
             height = 1.0;
