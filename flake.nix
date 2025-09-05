@@ -105,6 +105,10 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
     flake-compat.url = "github:edolstra/flake-compat";
+    xStarbound = {
+      url = "github:xStarbound/xStarbound";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = inputs: import ./outputs.nix inputs;
 }

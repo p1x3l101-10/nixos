@@ -1043,6 +1043,7 @@
         "nur": "nur",
         "stylix": "stylix",
         "systems": "systems_2",
+        "xStarbound": "xStarbound",
         "zen-browser": "zen-browser"
       }
     },
@@ -1215,6 +1216,26 @@
       "original": {
         "owner": "tinted-theming",
         "repo": "base16-zed",
+        "type": "github"
+      }
+    },
+    "xStarbound": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1756900459,
+        "narHash": "sha256-LU3T6EjvNGrq8aFwl3wB0jQ0gfObcIX3/dKzhsmPDfk=",
+        "owner": "xStarbound",
+        "repo": "xStarbound",
+        "rev": "6e0c920bd99ae1e6b2d6802fc22559fb07cb036c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "xStarbound",
+        "repo": "xStarbound",
         "type": "github"
       }
     },
