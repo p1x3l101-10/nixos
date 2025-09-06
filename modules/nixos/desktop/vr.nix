@@ -148,7 +148,7 @@ in {
     serviceConfig.Type = "oneshot";
     script = ''
       echo "Attempting to connect..."
-      for i in $(seq 1 100); do
+      for i in $(seq 1 10); do
         echo "Try $i"
         if adb devices | grep -q "device$"; then # Test for connection
           echo "Device detected, starting streaming"
@@ -156,7 +156,7 @@ in {
           adb shell am start -a android.intent.action.VIEW -d "wivrn+tcp://localhost" org.meumeu.wivrn # Start the wivrn client
           exit 0
         else
-          sleep 1 # Wait 1 second before retry
+          sleep 5
         fi
       done
       echo "Max tries exceeded."
