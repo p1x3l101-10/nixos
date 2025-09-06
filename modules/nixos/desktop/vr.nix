@@ -117,7 +117,7 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
   '';
   # Write the systemd service
   systemd.user.services.wivrn-launch = {
-    requires = [ "default.target" ];
+    requires = [ "wivrn.service" ];
     path = with pkgs; [
       android-tools
     ];
