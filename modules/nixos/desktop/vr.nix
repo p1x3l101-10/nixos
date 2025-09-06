@@ -103,9 +103,19 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
   };
   # Autostart the VR client when connected
   # Match the device
-  services.udev.extraRules = ''
+  services.udev.extraRules = let
+    runCommand = lib.strings.concatStringsSep " " [
+      "${config.systemd.package}/bin/systemd-run"
+      "--uid=${builtins.toString config.users.users.pixel.uid}"
+      "--scope"
+      "${config.systemd.package}/bin/systemctl"
+      "--user"
+      "start"
+      "wivrn-launch.service"
+    ];
+  in ''
     # Autostart wired vr
-    ACTION=="add", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ENV{ID_VENDOR}=="Oculus", ENV{ID_USB_MODEL}=="Quest_3", RUN+="${config.systemd.package}/bin/systemctl --machine=%S/user@${builtins.toString config.users.users.pixel.uid}.service start wivrn-launch.service"
+    ACTION=="add", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ENV{ID_VENDOR}=="Oculus", ENV{ID_USB_MODEL}=="Quest_3", RUN+="${runCommand}"
   '';
   # Write the systemd service
   systemd.user.services.wivrn-launch = {
