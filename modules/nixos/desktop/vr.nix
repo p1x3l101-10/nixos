@@ -105,10 +105,8 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
   # Match the device
   services.udev.extraRules = let
     runCommand = lib.strings.concatStringsSep " " [
-      "${config.systemd.package}/bin/systemd-run"
-      "--uid=${builtins.toString config.users.users.pixel.uid}"
-      "--scope"
       "${config.systemd.package}/bin/systemctl"
+      "--machine=${config.users.users.pixel.name}@.host"
       "--user"
       "start"
       "wivrn-launch.service"
