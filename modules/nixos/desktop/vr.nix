@@ -147,9 +147,8 @@ in {
     enableStrictShellChecks = true;
     serviceConfig.Type = "oneshot";
     script = ''
-      # 10 Tries
       echo "Attempting to connect..."
-      for i in $(seq 1 10); do
+      for i in $(seq 1 100); do
         echo "Try $i"
         if adb devices | grep -q "device$"; then # Test for connection
           echo "Device detected, starting streaming"
