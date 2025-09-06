@@ -145,6 +145,7 @@ in {
       config.systemd.package
     ];
     enableStrictShellChecks = true;
+    serviceConfig.Type = "oneshot";
     script = ''
       sleep 2  # give adb a moment
 
