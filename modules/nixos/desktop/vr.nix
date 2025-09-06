@@ -1,5 +1,9 @@
 { config, pkgs, lib, ... }:
-lib.mkIf (config.networking.hostName == "pixels-pc") {
+lib.mkIf (config.networking.hostName == "pixels-pc") (let
+  systemctl = config.systemd.package.overrideAttrs (oldAttrs: {
+    meta.mainProgram = "systemctl";
+  });
+in {
   # Main vr service
   services.wivrn = {
     enable = true;
@@ -27,12 +31,21 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
             offset_y = 0.0;
           }
         ];
-        application = [ pkgs.wlx-overlay-s ]; # Autolaunch my overlay
+        application = [
+          systemctl "--user" "start" "virtualReality.target" # Start the vr target
+        ];
         tcp-only = false;
         openvr-compat-path = "${pkgs.opencomposite}/lib/opencomposite";
       };
     };
   };
+  # Vr target
+  systemd.user.targets.virtualReality = lib.fix (self: {
+    requires = [
+      "graphical-session.target"
+    ];
+    after = self.requires;
+  });
   # GPU Userspace temp overclocking
   hardware.amdgpu.overdrive = {
     enable = true;
@@ -129,6 +142,7 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
     requires = [ "wivrn.service" ];
     path = with pkgs; [
       android-tools
+      config.systemd.package
     ];
     enableStrictShellChecks = true;
     script = ''
@@ -137,11 +151,9 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
       adb reverse tcp:9757 tcp:9757 # Port forwarding over the cable
       adb shell am start -a android.intent.action.VIEW -d "wivrn+tcp://localhost" org.meumeu.wivrn # Start the wivrn client
     '';
-    serviceConfig.ExecStop = lib.strings.concatStringsSep " " [
-      "${config.systemd.package}/bin/systemctl"
-      "--user"
-      "stop"
-      "wivrn.service"
-    ];
+    postStop = ''
+      systemctl --user stop virtualReality.target
+      systemctl --user restart wivrn.service
+    '';
   };
-}
+})
