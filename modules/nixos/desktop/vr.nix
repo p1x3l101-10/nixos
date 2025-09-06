@@ -101,4 +101,25 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
     nssmdns6 = true;
     openFirewall = true;
   };
+  # Autostart the VR client when connected
+  # Match the device
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", \
+      ENV{ID_VENDOR}=="Oculus", ENV{ID_USB_MODEL}=="Quest_3", \
+      RUN+="${config.systemd.package}/bin/systemctl --machine=%S/user@${builtins.toString config.users.users.pixel.uid}.service start wivrn-launch.service"
+  '';
+  # Write the systemd service
+  systemd.user.services.wivrn-launch = {
+    requires = [ "default.target" ];
+    path = with pkgs; [
+      android-tools
+    ];
+    enableStrictShellChecks = true;
+    script = ''
+      sleep 2  # give adb a moment
+
+      adb reverse tcp:9757 tcp:9757 # Port forwarding over the cable
+      adb shell am start -a android.intent.action.VIEW -d "wivrn+tcp://localhost" org.meumeu.wivrn # Start the wivrn client
+    '';
+  };
 }
