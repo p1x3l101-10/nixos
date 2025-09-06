@@ -137,7 +137,7 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
       adb reverse tcp:9757 tcp:9757 # Port forwarding over the cable
       adb shell am start -a android.intent.action.VIEW -d "wivrn+tcp://localhost" org.meumeu.wivrn # Start the wivrn client
     '';
-    ExecStop="adb reverse --remove-all";
+    serviceConfig.ExecStop="adb reverse --remove-all";
   };
   # Restart wivrn when the helper stops
   systemd.user.services.wivrn = {
