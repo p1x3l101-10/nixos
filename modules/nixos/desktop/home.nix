@@ -14,6 +14,7 @@
       "tablet"
       "adbusers"
     ];
+    uid = 1000;
   };
   systemd.tmpfiles.settings."10-sudo-lectures"."/var/db/sudo/lectured/1000".f = {
     user = "root";
