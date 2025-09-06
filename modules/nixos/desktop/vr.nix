@@ -137,13 +137,11 @@ lib.mkIf (config.networking.hostName == "pixels-pc") {
       adb reverse tcp:9757 tcp:9757 # Port forwarding over the cable
       adb shell am start -a android.intent.action.VIEW -d "wivrn+tcp://localhost" org.meumeu.wivrn # Start the wivrn client
     '';
-    serviceConfig.ExecStop="adb reverse --remove-all";
-  };
-  # Restart wivrn when the helper stops
-  systemd.user.services.wivrn = {
-    partOf = [ "wivrn-launch.service" ]; # Restart when the HMD is disconnected
-    serviceConfig = {
-      Restart = "always"; # Stable enough, and does not hog resources when idling on first start
-    };
+    serviceConfig.ExecStop = lib.strings.concatStringsSep " " [
+      "${config.systemd.package}/bin/systemctl"
+      "--user"
+      "stop"
+      "wivrn.service"
+    ];
   };
 }
