@@ -131,7 +131,7 @@ in {
       "stop"
       "wivrn-launch.service"
     ];
-    questUdev = ''SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ENV{ID_VENDOR}=="Oculus", ENV{ID_USB_MODEL}=="Quest_3"'';
+    questUdev = ''SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ENV{ID_VENDOR}=="Oculus", ENV{ID_USB_MODEL}=="Quest_3", ENV{adb_user}=="yes"'';
   in ''
     # Autostart wired vr
     ACTION=="add", ${questUdev}, RUN+="${runCommand}"
