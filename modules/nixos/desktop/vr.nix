@@ -31,9 +31,6 @@ in {
             offset_y = 0.0;
           }
         ];
-        application = [
-          systemctl "--user" "start" "virtualReality.target" # Start the vr target
-        ];
         tcp-only = false;
         openvr-compat-path = "${pkgs.opencomposite}/lib/opencomposite";
       };
@@ -145,7 +142,13 @@ in {
       config.systemd.package
     ];
     enableStrictShellChecks = true;
-    serviceConfig.Type = "oneshot";
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStop = pkgs.writeShellScript "stopVR" ''
+        systemctl --user stop virtualReality.target
+        systemctl --user restart wivrn.service
+      '';
+    };
     script = ''
       echo "Attempting to connect..."
       adb start-server
@@ -155,6 +158,8 @@ in {
           echo "Device detected, starting streaming"
           adb reverse tcp:9757 tcp:9757 # Port forwarding over the cable
           adb shell am start -a android.intent.action.VIEW -d "wivrn+tcp://localhost" org.meumeu.wivrn # Start the wivrn client
+          sleep 2
+          systemctl --user start virtualReality.target
           exit 0
         else
           sleep 10
@@ -166,10 +171,6 @@ in {
       echo "Max tries exceeded."
       echo "Quest 3 is not set up to allow ADB!"
       exit 1
-    '';
-    postStop = ''
-      systemctl --user stop virtualReality.target
-      systemctl --user restart wivrn.service
     '';
   };
 })
