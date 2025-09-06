@@ -148,6 +148,7 @@ in {
     serviceConfig.Type = "oneshot";
     script = ''
       echo "Attempting to connect..."
+      adb start-server
       for i in $(seq 1 10); do
         echo "Try $i"
         if adb devices | grep -q "device$"; then # Test for connection
@@ -157,6 +158,9 @@ in {
           exit 0
         else
           sleep 10
+          # Restart adb to rescan
+          adb kill-server
+          adb start-server
         fi
       done
       echo "Max tries exceeded."
