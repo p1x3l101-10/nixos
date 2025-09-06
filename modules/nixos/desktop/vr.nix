@@ -156,7 +156,7 @@ in {
           adb shell am start -a android.intent.action.VIEW -d "wivrn+tcp://localhost" org.meumeu.wivrn # Start the wivrn client
           exit 0
         else
-          sleep 5
+          sleep 10
         fi
       done
       echo "Max tries exceeded."
