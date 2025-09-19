@@ -95,7 +95,6 @@ in
     sensitivity = 0;
     touchpad.natural_scroll = true;
   };
-  gestures.workspace_swipe = false;
   bind = let inherit (bindScope) bind' bind bnm bind'' b' b; in [
     # Main binds
     (b "Q" "exec" globals.apps.terminal.exec)
