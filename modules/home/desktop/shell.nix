@@ -8,7 +8,7 @@
       nrt = "sudo nixos-rebuild test";
     };
     sessionPath = [
-      "${config.home.homeDirectory}/.local/bin"
+      "$HOME/.local/bin"
     ];
   };
   programs.bash.enable = true;
