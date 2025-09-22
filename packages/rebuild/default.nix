@@ -1,10 +1,20 @@
 { lib
+, writeShellApplication
 , gitMinimal
-, writeShellScriptBin
+, nix
+, nixos-rebuild
 }:
 
-writeShellScriptBin "rebuild" (''
-  cd /etc/nixos
-  ${gitMinimal}/bin/git pull
-  sudo nix shell nixpkgs#nix --command nixos-rebuild $'' + ''{1:-"boot"}
-'')
+writeShellApplication {
+  name = "init";
+  runtimeInputs = [
+    gitMinimal
+    nix
+    nixos-rebuild
+  ];
+  text = ''
+    cd /etc/nixos
+    git pull
+    sudo nixos-rebuild $'' + ''{1:-"boot"}
+  '';
+}
