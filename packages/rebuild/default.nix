@@ -15,6 +15,6 @@ writeShellApplication {
   text = ''
     cd /etc/nixos
     git pull
-    sudo nixos-rebuild $'' + ''{1:-"boot"}
+    sudo nixos-rebuild "$'' + ''{1:-"boot"}"
   '';
 }
