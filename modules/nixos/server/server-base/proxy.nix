@@ -5,11 +5,11 @@
     isNormalUser = true;
     openssh.authorizedKeys.keys = userdata [ "proxyKey" ] [
       "scott"
-      "cayden"
-      "kenton"
-      "spradley"
-      "daniel"
-      "david"
+      #"cayden"
+      #"kenton"
+      #"spradley"
+      #"daniel"
+      #"david"
     ];
     shell = pkgs.shadow;
     home = "/var/empty";
