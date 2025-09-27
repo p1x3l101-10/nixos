@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ./dylan-bad-lol.nix
-    ./bluemap-nginx.nix
+    ./totallySkyblock.nix
+    #./bluemap-nginx.nix
     #./gtnh.nix
   ];
   networking.sshForwarding.ports = [
