@@ -234,6 +234,7 @@ in
         description = "List of players to op";
       };
       spawnProtection = mkMcIntOption "Spawn protection radius (0 is off)";
+      allowCommandBlocks = mkEnableOption "Allow command blocks";
     };
     autoPause = {
       enable = mkEnableOption "Autopause";
@@ -290,6 +291,7 @@ in
           (mkEnvRaw "PACKWIZ_URL" cfg.packwiz.url)
           (mkEnv "SPAWN_PROTECTION" cfg.settings.spawnProtection)
           (mkEnv "ALLOW_FLIGHT" (lib.trivial.boolToString cfg.settings.allowFlight))
+          (mkEnv "ENABLE_COMMAND_BLOCK" (lib.trivial.boolToString cfg.settings.allowCommandBlocks))
         ]
       ));
       ports = [

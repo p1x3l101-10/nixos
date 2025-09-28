@@ -20,4 +20,5 @@
       })
   );
   allowFlight = true;
+  allowCommandBlocks = true;
 }
