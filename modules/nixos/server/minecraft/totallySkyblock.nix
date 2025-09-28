@@ -13,6 +13,7 @@
         forgeVersion = "14.23.5.2860";
         version = "1.12.2";
         java.version = "8";
+        java.args = [ "-Dfml.queryResult=confirm" ];
       }
     ];
   };
