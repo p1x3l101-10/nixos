@@ -11,6 +11,7 @@ lib.fix (self: {
     discord = "Vesktop";
     steam = "steam";
     roblox = "org.vinegarhq.Sober";
+    archiveManager = "xarchiver";
   };
   spotlight = "fuzzel --launch-prefix='app2unit --fuzzel-compat --'";
   appLauncher = self.spotlight;

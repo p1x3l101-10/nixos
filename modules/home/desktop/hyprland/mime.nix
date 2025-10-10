@@ -21,6 +21,11 @@ in
       x-extension-shtml = web.desktop;
       x-extension-xhtml = web.desktop;
       x-extension-xht = web.desktop;
+      octet-stream = archiveManager.desktop;
+      x-zip-compressed = archiveManager.desktop;
+    };
+    multipart = {
+      x-zip = archiveManager.desktop;
     };
     image = (builtins.listToAttrs (map (x: { name = x; value = imageViewer.desktop; }) [
       "bmp"
