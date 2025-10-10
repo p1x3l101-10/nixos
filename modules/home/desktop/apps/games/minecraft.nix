@@ -2,6 +2,7 @@
 
 {
   home.packages = [
-    inputs.fjordlauncher.packages."${pkgs.system}".fjordlauncher
+    #inputs.fjordlauncher.packages."${pkgs.system}".fjordlauncher
+    pkgs.prismlauncher
   ];
 }
