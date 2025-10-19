@@ -8,7 +8,7 @@
         enable = true;
         filesystem = {
           filteredItems = {
-            alwaysShow = [
+            always_show = [
               ".gitignore"
             ];
           };
