@@ -6,7 +6,7 @@
     plugins = {
       neo-tree = {
         enable = true;
-        filesystem = {
+        settings.filesystem = {
           filtered_items = {
             always_show = [
               ".gitignore"
