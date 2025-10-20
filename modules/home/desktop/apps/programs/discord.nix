@@ -33,7 +33,25 @@ in {
         winCtrlQ = false;
         disableMinSize = false;
         winNativeTitleBar = false;
-        plugins = enabledPlugins [];
+        plugins = enabledPlugins [
+          "AccountPanelServerProfile"
+          "BetterGifAltText"
+          "BetterSessions"
+          "BetterSettings"
+          "BlurNSFW"
+          "CallTimer"
+          "ClearURLs"
+          "CopyFileContents"
+          "CustomRPC"
+          "FavoriteEmojiFirst"
+          "FavoriteGifSearch"
+          "FixYoutubeEmbeds"
+          "FriendsSince"
+          "LoadingQuotes"
+          "MentionAvatars"
+          "YoutubeAdblock"
+          "VolumeBooster"
+        ];
         notifications = {
           timeout = 5000;
           position = "bottom-right";
