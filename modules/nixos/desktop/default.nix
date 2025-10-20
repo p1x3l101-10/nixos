@@ -18,7 +18,7 @@
     ./nix-ld.nix
     ./nix.nix
     ./nss.nix
-    ./ollama.nix
+    #./ollama.nix
     ./plymouth.nix
     ./powerManagement.nix
     ./preload.nix
