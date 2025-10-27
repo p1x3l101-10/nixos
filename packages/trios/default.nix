@@ -1,41 +1,29 @@
 { lib
-, stdenv
 , fetchFromGitHub
 , openjdk8
 , openjdk17
-, pkgconf
-, libbz2
-, liblzma
-, libz
-, libzstd
-, gettext
-, libxml2
+, curlFull
+, flutter
 , jre8 ? openjdk8
 , jre17 ? openjdk17
 }:
 
-stdenv.mkDerivation (finalAttrs: {
+flutter.buildFlutterApplication (lib.fix (finalAttrs: {
   pname = "trios";
   version = "1.2.3";
 
   src = fetchFromGitHub {
     owner = "wispborne";
     repo = "TriOS";
-    tag = "v${finalAttrs.version}";
-    hash = lib.fakeHash;
+    tag = finalAttrs.version;
+    hash = "sha256-7ljCn6NMi1jifbCYUhiieNt/cMzl31U528o8aJLZR7c=";
   };
 
-  nativeBuildInputs = [
-    pkgconf
-  ];
+  # NOTE: need to redownload this file whenever I version bump
+  pubspecLock = builtins.fromJSON (builtins.readFile ./pubspec.lock.json);
 
   buildInputs = [
-    libbz2
-    liblzma
-    libz
-    libzstd
-    gettext
-    libxml2
+    curlFull
 
     # Java versions that starsector can be launched with
     jre8
@@ -55,4 +43,4 @@ stdenv.mkDerivation (finalAttrs: {
     ];
     platforms = platforms.linux;
   };
-})
+}))
