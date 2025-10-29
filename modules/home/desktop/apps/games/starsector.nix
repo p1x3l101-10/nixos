@@ -2,6 +2,6 @@
 
 {
   home.packages = [
-    pkgs.internal.trios
+    #pkgs.internal.trios
   ];
 }
