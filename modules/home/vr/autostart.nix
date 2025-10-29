@@ -1,13 +1,13 @@
 { pkgs, lib, ... }:
 
 let
-  makeSimpleService = name: package: {
+  makeSimpleService = name: binary: {
     Unit = {
       Description = name;
       PartOf = [ "virtualReality.target" ];
     };
     Service = {
-      ExecStart = lib.getBin package;
+      ExecStart = binary;
     };
     Install = {
       WantedBy = [ "virtualReality.target" ];
@@ -15,6 +15,6 @@ let
   };
 in {
   systemd.user.services = {
-    wlx-overlay-s = makeSimpleService "VR Overlay" pkgs.wlx-overlay-s;
+    wlx-overlay-s = makeSimpleService "VR Overlay" "${pkgs.wlx-overlay-s}/bin/wlx-overlay-s";
   };
 }
