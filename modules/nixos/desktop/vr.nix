@@ -66,7 +66,9 @@ in {
   environment.systemPackages = with pkgs; [
     immersed
     xr-hardware
-    internal.telescope
+    (internal.telescope.override {
+      init-script = internal.vr-init;
+    })
     libva
     opencomposite
   ];
