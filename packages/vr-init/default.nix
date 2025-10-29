@@ -35,9 +35,9 @@ writeShellApplication {
     export DISPLAY=:10 &
     sleep 0.1;
 
+    wlx-overlay-s &
     flatland &
     gravity -- 0 0.0 -0.5 hexagon_launcher &
     black-hole &
-    wlx-overlay-s &
   '';
 }
