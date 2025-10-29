@@ -33,7 +33,7 @@ writeShellApplication {
 
     xwayland-satellite :10 &
     export DISPLAY=:10 &
-    sleep 0.1;
+    sleep 0.5;
 
     wlx-overlay-s &
     flatland &
