@@ -57,12 +57,14 @@
         flake-utils.follows = "flake-utils";
       };
     };
-    /* # Breaks vr suprisingly
-      nixpkgs-xr = {
+    nixpkgs-xr = {
       url = "github:nix-community/nixpkgs-xr";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+        systems.follows = "systems";
       };
-    */
+    };
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs = {
