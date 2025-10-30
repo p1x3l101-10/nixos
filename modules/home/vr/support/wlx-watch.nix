@@ -90,12 +90,12 @@
     }
     {
       type = "Button";
-      rect = [ 32 162 48 36 ];
+      rect = [ 136 162 48 36 ];
       corner_radius = 4;
-      font_size = 10;
+      font_size = 13;
       fg_color = "#cad3f5";
       bg_color = "#5b6078";
-      text = "Switch Sink";
+      text = "SSink";
       click_down = [{
         type = "Exec";
         command = [ audioToggleBin ];
