@@ -1,8 +1,9 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, ext, ... }:
 lib.mkIf (config.networking.hostName == "pixels-pc") (let
   systemctl = config.systemd.package.overrideAttrs (oldAttrs: {
     meta.mainProgram = "systemctl";
   });
+  wivrnStable = ext.inputs.nixpkgs.legacyPackages."${pkgs.system}".wivrn;
 in {
   # Main vr service
   services.wivrn = {
@@ -10,6 +11,7 @@ in {
     defaultRuntime = true;
     autoStart = true;
     openFirewall = true;
+    package = wivrnStable;
     config = {
       enable = true;
       json = {
@@ -33,6 +35,7 @@ in {
         ];
         tcp-only = false;
         openvr-compat-path = "${pkgs.opencomposite}/lib/opencomposite";
+        application = [ pkgs.wlx-overlay-s ];
       };
     };
   };
@@ -71,6 +74,7 @@ in {
     })
     libva
     opencomposite
+    wlx-overlay-s
   ];
   hardware.graphics = {
     enable = true;
