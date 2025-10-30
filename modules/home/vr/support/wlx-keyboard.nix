@@ -22,7 +22,7 @@
     STT = [ "whisper_stt" "--lang" "en" ];
   };
   macros = {
-    KILL = [ "LSuper DOWN" "LCtrl DOWN" "Escape" "LCtrl UP" "LSuper UP" ];
+    KILL = [ "LSuper DOWN" "C" "LSuper UP" ];
     COPY = [ "LCtrl DOWN" "C" "LCtrl UP" ];
     PASTE = [ "LCtrl DOWN" "V" "LCtrl UP" ];
   };
