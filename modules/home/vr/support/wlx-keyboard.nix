@@ -17,7 +17,7 @@
     ["LShift"  "Oem102"  "Z"  "X"  "C"  "V"  "B"  "N"  "M"  "Comma"  "Period"  "Oem2"  "RShift" null "Up" null "KP_1"  "KP_2"  "KP_3"  "KP_Enter"]
     ["LCtrl"  "LSuper"  "LAlt"  "Space"  "Meta"  "RSuper"  "Menu"  "RCtrl" null "Left"  "Down"  "Right" null "KP_0"  "KP_Decimal" null]
   ];
-  alt_modifier = "None";
+  alt_modifier = "Super";
   exec_commands = {
     STT = [ "whisper_stt" "--lang" "en" ];
   };
