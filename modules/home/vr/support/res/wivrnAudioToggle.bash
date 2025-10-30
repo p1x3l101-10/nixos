@@ -41,7 +41,8 @@ headset_mic_id="$(getPWIDFromName "$(getPWNameFromNick "${HEADPHONES_MIC_NICKNAM
 hmd_id="$(getPWIDFromName "$(getPWNameFromNick "${HMD_NICKNAME}")")"
 hmd_mic_id="$(getPWIDFromName "$(getPWNameFromNick "${HMD_MIC_NICKNAME}")")"
 default_id="$(getPWIDFromName "$(getDefaultSinkName)")"
-default_mic_id="$(getPWIDFromName "$(getDefaultSourceName)")"
+# Unused, but keep for later
+#default_mic_id="$(getPWIDFromName "$(getDefaultSourceName)")"
 
 # Check if we are set to the HMD's output
 if [[ "${default_id}" -eq "${hmd_id}" ]]; then
