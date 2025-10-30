@@ -89,6 +89,19 @@
       }];
     }
     {
+      type = "Button";
+      rect = [ 32 162 48 36 ];
+      corner_radius = 4;
+      font_size = 10;
+      fg_color = "#cad3f5";
+      bg_color = "#5b6078";
+      text = "Switch Sink";
+      click_down = [{
+        type = "Exec";
+        command = [ audioToggleBin ];
+      }];
+    }
+    {
       type = "OverlayList";
       rect = [ 134 160 266 40 ];
       corner_radius = 4;
@@ -176,17 +189,5 @@
         command = [ "pactl" "set-sink-volume" "@DEFAULT_SINK@" "-5%" ];
       }];
     }
-    {
-      type = "Button";
-      rect = [ 315 116 70 32 ];
-      corner_radius = 4;
-      font_size = 13;
-      fg_color = "#cad3f5";
-      bg_color = "#5b6078";
-      text = "Switch Sink";
-      click_down = [{
-        type = "Exec";
-        command = [ audioToggleBin ];
-      }];
-    }];
+  ];
 }
