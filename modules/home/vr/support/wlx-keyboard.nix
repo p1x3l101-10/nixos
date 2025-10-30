@@ -21,7 +21,6 @@
   exec_commands = {
     STT = [ "whisper_stt" "--lang" "en" ];
   };
-  auto_labels = false;
   macros = {
     KILL = [ "LSuper DOWN" "C" "LSuper UP" ];
     COPY = [ "LCtrl DOWN" "C" "LCtrl UP" ];
