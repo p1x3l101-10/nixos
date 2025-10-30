@@ -90,7 +90,7 @@
     }
     {
       type = "Button";
-      rect = [ 136 162 48 36 ];
+      rect = [ 134 162 48 36 ];
       corner_radius = 4;
       font_size = 13;
       fg_color = "#cad3f5";
@@ -103,7 +103,7 @@
     }
     {
       type = "OverlayList";
-      rect = [ 134 160 266 40 ];
+      rect = [ 176 160 266 40 ];
       corner_radius = 4;
       font_size = 15;
       fg_color = "#cad3f5";
