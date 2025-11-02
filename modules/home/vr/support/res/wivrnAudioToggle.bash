@@ -36,10 +36,13 @@ function getDefaultSourceName() {
     awk '{print $3}'
 }
 
+echo "Getting pipewire IDs for headphones"
 headset_id="$(getPWIDFromName "${HEADPHONES_NAME}")"
 headset_mic_id="$(getPWIDFromName "${HEADPHONES_MIC_NAME}")"
+echo "Getting pipewire IDs for HMD"
 hmd_id="$(getPWIDFromName "$(getPWNameFromNick "${HMD_NICKNAME}")")"
 hmd_mic_id="$(getPWIDFromName "$(getPWNameFromNick "${HMD_MIC_NICKNAME}")")"
+echo "Getting pipewire IDs for defaults"
 default_id="$(getPWIDFromName "$(getDefaultSinkName)")"
 # Unused, but keep for later
 #default_mic_id="$(getPWIDFromName "$(getDefaultSourceName)")"
