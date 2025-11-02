@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# Unset the usually good checks
+set +o errexit
+set +o nounset
+set +o pipefail
 
 HEADPHONES_NAME="alsa_output.usb-C-Media_Electronics_Inc._USB_Audio_Device-00.iec958-stereo"
 HEADPHONES_MIC_NAME="alsa_input.usb-C-Media_Electronics_Inc._USB_Audio_Device-00.mono-fallback"
