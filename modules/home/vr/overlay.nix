@@ -10,4 +10,7 @@ in {
     "wlxoverlay/wayvr.conf.d/dashboard.yaml".source = (pkgs.formats.yaml { }).generate "dashboard.yaml" (import ./support/wayvr-dash.nix { mainProg = "${pkgs.wayvr-dashboard}/bin/wayvr-dashboard"; });
     "wlxoverlay/wayvr.conf.d/settings.yaml".source = (pkgs.formats.yaml { }).generate "dashboard.yaml" (import ./support/wayvr-settings.nix);
   };
+  home.packages = [
+    pkgs.cage # Needed for XWayland in the dashboard
+  ];
 }
