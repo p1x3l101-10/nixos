@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 
-HEADPHONES_NICKNAME="USB Audio Device"
-HEADPHONES_MIC_NICKNAME="${HEADPHONES_NICKNAME}"
+HEADPHONES_NAME="alsa_output.usb-C-Media_Electronics_Inc._USB_Audio_Device-00.iec958-stereo"
+HEADPHONES_MIC_NAME="alsa_input.usb-C-Media_Electronics_Inc._USB_Audio_Device-00.mono-fallback"
 HMD_NICKNAME="WiVRn"
-HMD_MIC_NICKNAME="WiVRn(microphone"
+HMD_MIC_NICKNAME="WiVRn(microphone)"
 
 function getPWNameFromNick() {
   local nodeNick="$1"
@@ -36,8 +36,8 @@ function getDefaultSourceName() {
     awk '{print $3}'
 }
 
-headset_id="$(getPWIDFromName "$(getPWNameFromNick "${HEADPHONES_NICKNAME}")")"
-headset_mic_id="$(getPWIDFromName "$(getPWNameFromNick "${HEADPHONES_MIC_NICKNAME}")")"
+headset_id="$(getPWIDFromName "${HEADPHONES_NAME}")"
+headset_mic_id="$(getPWIDFromName "${HEADPHONES_MIC_NAME}")"
 hmd_id="$(getPWIDFromName "$(getPWNameFromNick "${HMD_NICKNAME}")")"
 hmd_mic_id="$(getPWIDFromName "$(getPWNameFromNick "${HMD_MIC_NICKNAME}")")"
 default_id="$(getPWIDFromName "$(getDefaultSinkName)")"
