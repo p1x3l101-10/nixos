@@ -3,8 +3,8 @@
 
 HEADPHONES_NAME="alsa_output.usb-C-Media_Electronics_Inc._USB_Audio_Device-00.iec958-stereo"
 HEADPHONES_MIC_NAME="alsa_input.usb-C-Media_Electronics_Inc._USB_Audio_Device-00.mono-fallback"
-HMD_NICKNAME="WiVRn"
-HMD_MIC_NICKNAME="WiVRn(microphone)"
+HMD_NAME="wivrn.sink"
+HMD_MIC_NAME="wivrn.source"
 
 function getPWNameFromNick() {
   local nodeNick="$1"
@@ -25,14 +25,14 @@ function getPWIDFromName() {
 function getDefaultSinkName() {
   wpctl status -n | \
     tail -n 2 | \
-    grep "alsa_output" | \
+    grep "Audio/Sink" | \
     awk '{print $3}'
 }
 
 function getDefaultSourceName() {
   wpctl status -n | \
     tail -n 2 | \
-    grep "alsa_input" | \
+    grep "Audio/Source" | \
     awk '{print $3}'
 }
 
@@ -40,8 +40,8 @@ echo "Getting pipewire IDs for headphones"
 headset_id="$(getPWIDFromName "${HEADPHONES_NAME}")"
 headset_mic_id="$(getPWIDFromName "${HEADPHONES_MIC_NAME}")"
 echo "Getting pipewire IDs for HMD"
-hmd_id="$(getPWIDFromName "$(getPWNameFromNick "${HMD_NICKNAME}")")"
-hmd_mic_id="$(getPWIDFromName "$(getPWNameFromNick "${HMD_MIC_NICKNAME}")")"
+hmd_id="$(getPWIDFromName "${HMD_NAME}")"
+hmd_mic_id="$(getPWIDFromName "${HMD_MIC_NAME}")"
 echo "Getting pipewire IDs for defaults"
 default_id="$(getPWIDFromName "$(getDefaultSinkName)")"
 # Unused, but keep for later
