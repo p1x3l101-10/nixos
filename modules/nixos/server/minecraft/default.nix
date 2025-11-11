@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./totallySkyblock.nix
+    ./magical-meat.nix
     #./bluemap-nginx.nix
     #./gtnh.nix
   ];
