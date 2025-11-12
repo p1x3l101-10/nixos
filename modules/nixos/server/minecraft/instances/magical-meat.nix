@@ -4,7 +4,7 @@
   services.minecraft = {
     enable = true;
     settings = lib.internal.attrsets.mergeAttrs [
-      (import ./overrides/settings.nix {
+      (import ../overrides/settings.nix {
         inherit userdata;
         packId = "magical-meat";
       })

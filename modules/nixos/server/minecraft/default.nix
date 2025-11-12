@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./magical-meat.nix
+    ./instances/magical-meat.nix
     ./bluemap-nginx.nix
     #./gtnh.nix
   ];
