@@ -220,6 +220,7 @@ in
         default = [ ];
         description = "RCon commands to run on server startup";
       };
+      stopTimeout = mkMcIntOption "Duration of time for the server to wait before forcefully stopping";
       customServer = mkMcOption "Custom server jar";
       forgeVersion = mkMcOption "";
       fabricVersion = mkMcOption "";
@@ -292,6 +293,7 @@ in
           (mkEnv "SPAWN_PROTECTION" cfg.settings.spawnProtection)
           (mkEnv "ALLOW_FLIGHT" (lib.trivial.boolToString cfg.settings.allowFlight))
           (mkEnv "ENABLE_COMMAND_BLOCK" (lib.trivial.boolToString cfg.settings.allowCommandBlocks))
+          (mkEnvRaw "STOP_DURATION" (cfg.settings.stopTimeout))
         ]
       ));
       ports = [

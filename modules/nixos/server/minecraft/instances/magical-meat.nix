@@ -13,6 +13,7 @@
         forgeVersion = "0.18.0";
         version = "1.20.1";
         java.version = "17-alpine";
+        stopTimeout = 120;
       }
     ];
   };
