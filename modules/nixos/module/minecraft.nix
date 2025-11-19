@@ -63,7 +63,7 @@ let
         default = null;
       };
       protocol = mkOption {
-        type = with types.enum [
+        type = types.enum [
           "udp"
           "tcp"
         ];
