@@ -62,6 +62,13 @@ let
         type = with types; nullOr port;
         default = null;
       };
+      protocol = mkOption {
+        type = with types; nullOr (enum [
+          "udp"
+          "tcp"
+        ]);
+        default = null;
+      };
     };
   };
 in
@@ -301,7 +308,7 @@ in
         "${builtins.toString cfg.settings.port}:25565"
       ] ++ (lib.optionals (cfg.settings.extraPorts != [ ]) (lib.forEach cfg.settings.extraPorts
         (x:
-          (toString (if (x.from != null) then x.from else x.to)) + ":" + (toString x.to)
+          (toString (if (x.from != null) then x.from else x.to)) + ":" + (toString x.to) + (if (x.protocol != null) then ("/" + (toString x.protocol)) else "")
         )
       ));
       volumes = [

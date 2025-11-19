@@ -5,7 +5,7 @@ let
 in
 {
   services.minecraft.settings.extraPorts = [
-    svc_port
+    { to = svc_port; protocol = "udp"; }
   ];
   networking.sshForwarding.ports = [
     svc_port
