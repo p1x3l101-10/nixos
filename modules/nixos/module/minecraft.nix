@@ -156,6 +156,7 @@ in
             "17-graalvm"
             "21-alpine"
             "21-graalvm"
+            "25"
           ];
           default = "21-alpine";
           description = "Java version to select";
