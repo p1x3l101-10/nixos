@@ -63,11 +63,11 @@ let
         default = null;
       };
       protocol = mkOption {
-        type = with types; nullOr (enum [
+        type = with types.enum [
           "udp"
           "tcp"
-        ]);
-        default = null;
+        ];
+        default = "tcp";
       };
     };
   };
@@ -345,11 +345,18 @@ in
         mode = "1777";
       };
     };
-    networking.firewall.allowedTCPPorts = (
-      lib.lists.optional cfg.settings.openFirewall cfg.settings.port
-      ++
-      lib.lists.optionals (cfg.settings.extraPorts != [ ]) (lib.lists.forEach cfg.settings.extraPorts (x: x.to))
-    );
+    networking.firewall = {
+      allowedTCPPorts = (
+        lib.lists.optional cfg.settings.openFirewall cfg.settings.port
+        ++
+        lib.lists.optionals (cfg.settings.extraPorts != [ ]) (lib.lists.forEach (builtins.filter (x: x.protocol == "tcp") cfg.settings.extraPorts) (x: x.to))
+      );
+      allowedUDPPorts = (
+        lib.lists.optional cfg.settings.openFirewall cfg.settings.port
+        ++
+        lib.lists.optionals (cfg.settings.extraPorts != [ ]) (lib.lists.forEach (builtins.filter (x: x.protocol == "udp") cfg.settings.extraPorts) (x: x.to))
+      );
+    };
     assertions = [
       {
         assertion = cfg.settings.eula;
