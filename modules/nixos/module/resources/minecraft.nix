@@ -4,27 +4,27 @@
     "8" = {
       # java8
       imageDigest = "sha256:b70787a42a14867669d66c900b5c42bbaf9d2a21c7e0edd29b9c0e050c95b6ea";
-      sha256 = "sha256-r8s82sTR6xjs8M+oE2EgeOpCApYPlGIySGPH+1aFQ4Y=";
+      sha256 = "sha256-42u5FmTIKHpfQ2zZQXIrFkAN2/XvU0wWnCRrQkQzcNI=";
     };
     "17-alpine" = {
       # java17-alpine
       imageDigest = "sha256:c7f2bd3d6cc4836c2a14cab0d1e4776e891c1fc87772ed7bbc8f66d61300caab";
-      sha256 = "sha256-BDk/T7lKNlZLfRQ8HC50K3LqL3Hyx4VzRT+KrvUv+ds";
+      sha256 = "sha256-42u5FmTIKHpfQ2zZQXIrFkAN2/XvU0wWnCRrQkQzcNI=";
     };
     "17-graalvm" = {
       # java17-graalvm
       imageDigest = "sha256:e0c717f8f98beda233aeac35469527c9b112fc2a1f34d33960fc95be42c534b6";
-      sha256 = "sha256-i0IGXwcZoNKjsgWT/1CO2U9RJb/0pgm7rt5zB6M+ahE=";
+      sha256 = "sha256-42u5FmTIKHpfQ2zZQXIrFkAN2/XvU0wWnCRrQkQzcNI=";
     };
     "21-alpine" = {
       # java21-alpine
       imageDigest = "sha256:fd43d03de558b598401968f898b6976ef05875234153261e7772470dce834c11";
-      sha256 = "sha256-RNGNzXGQH0Hd5PRxRTh4ivR+7LrlvMLvwNd8oOdAiYc=";
+      sha256 = "sha256-42u5FmTIKHpfQ2zZQXIrFkAN2/XvU0wWnCRrQkQzcNI=";
     };
     "21-graalvm" = {
       # java21-graalvm
       imageDigest = "sha256:2533b1d0916508973e691bd34afa5c1c7b6ec59b6846d5a1ce6f3bb7afc7bd57";
-      sha256 = "sha256-SzPcv63yYOSx4cocGw/P+C6d+c7duGgIt+dLCe9dOkw=";
+      sha256 = "sha256-42u5FmTIKHpfQ2zZQXIrFkAN2/XvU0wWnCRrQkQzcNI=";
     };
     "25" = {
       # Java 25
