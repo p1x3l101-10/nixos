@@ -3,7 +3,7 @@
 {
   services.nextcloud = lib.fix (self: {
     enable = globals.server.dns.exists;
-    package = pkgs.nextcloud31;
+    package = pkgs.nextcloud32;
     hostName = "nextcloud.${globals.server.dns.basename}";
     configureRedis = true;
     https = true;
