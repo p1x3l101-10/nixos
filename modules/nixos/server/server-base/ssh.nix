@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ pkgs, lib, ... }:
 
 {
   services.openssh = {
@@ -18,4 +18,8 @@
       }
     ];
   };
+  # I use kitty to remote in, get the terminfo
+  environment.systemPackages = [
+    pkgs.kitty.terminfo
+  ];
 }
