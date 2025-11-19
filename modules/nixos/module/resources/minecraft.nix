@@ -13,7 +13,7 @@
     };
     "17-graalvm" = {
       # java17-graalvm
-      imageDigest = "sha256:049b68ac9d61e763f3d77185a8bcbd90563b2363959a34e38bd6105b086129a3";
+      imageDigest = "sha256:e0c717f8f98beda233aeac35469527c9b112fc2a1f34d33960fc95be42c534b6";
       sha256 = "sha256-i0IGXwcZoNKjsgWT/1CO2U9RJb/0pgm7rt5zB6M+ahE=";
     };
     "21-alpine" = {
@@ -23,8 +23,13 @@
     };
     "21-graalvm" = {
       # java21-graalvm
-      imageDigest = "sha256:f5d24da003026019ea54190a857af1371bccc5c9d7450c8d94c9c1af42fbdc55";
+      imageDigest = "sha256:2533b1d0916508973e691bd34afa5c1c7b6ec59b6846d5a1ce6f3bb7afc7bd57";
       sha256 = "sha256-SzPcv63yYOSx4cocGw/P+C6d+c7duGgIt+dLCe9dOkw=";
+    };
+    "25" = {
+      # Java 25
+      imageDigest = "sha256:584ce5b5d4f9cdd03abcb23424527b5436015a89033ab5d29ecd2e3755ccaf42";
+      sha256 = "sha256-42u5FmTIKHpfQ2zZQXIrFkAN2/XvU0wWnCRrQkQzcNI=";
     };
   };
 }
