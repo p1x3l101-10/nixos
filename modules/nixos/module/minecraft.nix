@@ -318,6 +318,9 @@ in
       autoStart = true;
       extraOptions = (lib.lists.optionals cfg.autoPause.enable [ "--cap-add=CAP_NET_RAW" "--network=slirp4netns:port_handler=slirp4netns" ]);
     };
+    systemd.services.minecraft = (mkIf (cfg.settings.stopTimeout != null) {
+      preStop = lib.mkForce "podman stop --ignore --cidfile=/run/minecraft/ctr-id -t ${toString cfg.settings.stopTimeout}";
+    });
     systemd.tmpfiles.settings."50-minecraft" = {
       "/var/lib/minecraft".d = {
         user = "root";
