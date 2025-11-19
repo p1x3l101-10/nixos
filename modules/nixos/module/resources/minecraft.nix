@@ -3,12 +3,12 @@
   versionList = {
     "8" = {
       # java8
-      imageDigest = "sha256:b70787a42a14867669d66c900b5c42bbaf9d2a21c7e0edd29b9c0e050c95b6ea";
+      imageDigest = "sha256:63b6aa8b742154cad6909bfc1c3a3093c067f2e07d81363b53293b50134ab6de";
       sha256 = "sha256-42u5FmTIKHpfQ2zZQXIrFkAN2/XvU0wWnCRrQkQzcNI=";
     };
     "17-alpine" = {
       # java17-alpine
-      imageDigest = "sha256:c7f2bd3d6cc4836c2a14cab0d1e4776e891c1fc87772ed7bbc8f66d61300caab";
+      imageDigest = "sha256:c9e70f7376c18b6cf0f9e6c4a2fd57892cc39b16e6b74fe30185d9ce2b214aa3";
       sha256 = "sha256-42u5FmTIKHpfQ2zZQXIrFkAN2/XvU0wWnCRrQkQzcNI=";
     };
     "17-graalvm" = {
@@ -18,7 +18,7 @@
     };
     "21-alpine" = {
       # java21-alpine
-      imageDigest = "sha256:fd43d03de558b598401968f898b6976ef05875234153261e7772470dce834c11";
+      imageDigest = "sha256:4748e48f7cd6922dbe9a18e9b2cf7e9e28c395b86d118ea9b21bdab232eb013a";
       sha256 = "sha256-42u5FmTIKHpfQ2zZQXIrFkAN2/XvU0wWnCRrQkQzcNI=";
     };
     "21-graalvm" = {
