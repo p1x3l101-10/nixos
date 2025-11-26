@@ -49,6 +49,7 @@
   nixpkgs.config = {
     permittedInsecurePackages = [
       "libxml2-2.13.8" # Already updated, but apparantly the CVE list has not yet
+      "qtwebengine-5.15.19" # Stremio needs qtwebengine, and the old workaround no longer works
     ];
   };
   networking.firewall = lib.fix (self: {
