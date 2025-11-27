@@ -5,6 +5,7 @@
     ./instances/magical-meat.nix
     ./bluemap-nginx.nix
     ./svc.nix
+    ./rcon.nix
     #./gtnh.nix
   ];
   networking.sshForwarding.ports = [
