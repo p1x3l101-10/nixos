@@ -14,7 +14,6 @@ in
     ./minecraft
     ./nextcloud
     ./nginx
-    ./sculptor
     ./server-base
     ./ssh-forward
     ./website
