@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./instances/magical-meat.nix
+    ./instances/botany.nix
     ./bluemap-nginx.nix
     ./svc.nix
     ./rcon.nix
