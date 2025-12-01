@@ -10,7 +10,7 @@
       })
       {
         type = "forge";
-        forgeVersion = "47.4.14";
+        forgeVersion = "47.4.12";
         version = "1.20.1";
         java.version = "17-alpine";
         extraPorts = [
