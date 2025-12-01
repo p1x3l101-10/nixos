@@ -14,7 +14,7 @@
     "17-graalvm" = {
       # java17-graalvm
       imageDigest = "sha256:e0c717f8f98beda233aeac35469527c9b112fc2a1f34d33960fc95be42c534b6";
-      sha256 = "sha256-42u5FmTIKHpfQ2zZQXIrFkAN2/XvU0wWnCRrQkQzcNI=";
+      sha256 = "sha256-TZE9S9zpQIOaNy75TaBeZU9GCm+lsCm7nI2TbuusIwQ=";
     };
     "21-alpine" = {
       # java21-alpine
