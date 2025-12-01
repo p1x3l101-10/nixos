@@ -10,7 +10,7 @@ in
   };
   imports = [
     ./cdn
-    ./minecraft
+    #./minecraft
     ./nextcloud
     ./nginx
     ./server-base
