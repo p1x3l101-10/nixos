@@ -1,13 +1,9 @@
-{ config, pkgs, osConfig, ... }:
+{ pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    quickshell
-    material-symbols
-  ];
   systemd.user.services.quickshell = {
     Unit = {
-      Description = "Hyprland Shell";
+      Description = "Quickshell";
       Wants = [
         "systemd-tmpfiles-setup.service"
         "systemd-tmpfiles-clean.service"
@@ -23,7 +19,4 @@
     };
     Install.WantedBy = [ "hyprland-session.target" ];
   };
-  systemd.user.tmpfiles.rules = [
-    "L /home/pixel/.config/quickshell - - - - ${osConfig.environment.etc."nixos".source}/modules/home/desktop/hyprland/shell/kurukurubar"
-  ];
 }
