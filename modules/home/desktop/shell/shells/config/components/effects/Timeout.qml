@@ -12,6 +12,7 @@ Scope {
   default property alias content: loader.children
 
   property bool shouldShowOsd: false
+  property var restartTimer: hideTimer.reset
 
   Timer {
     id: hideTimer

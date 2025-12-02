@@ -12,7 +12,7 @@ Scope {
 
     function onVolumeChanged() {
       root.shouldShowOsd = true;
-      root.timeout.hideTimer.restart();
+      root.restartTimer();
     }
   }
   FloatingFadeoutSlider {
