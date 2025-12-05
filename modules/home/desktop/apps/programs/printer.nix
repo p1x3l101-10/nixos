@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  home.package = [
+  home.packages = [
     pkgs.system-config-printer
   ];
 }
