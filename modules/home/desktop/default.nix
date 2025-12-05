@@ -4,6 +4,7 @@
   imports = [
     ./apps
     ./hyprland
+    ./shell
     ../module
     ../stylix
   ] ++ (with ext.inputs; [
