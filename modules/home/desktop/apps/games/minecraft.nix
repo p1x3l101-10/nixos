@@ -2,7 +2,7 @@
 
 {
   home.packages = [
-    #inputs.fjordlauncher.packages."${pkgs.system}".fjordlauncher
+    #inputs.fjordlauncher.packages."${pkgs.stdenv.hostPlatform.system}".fjordlauncher
     (pkgs.prismlauncher.override ({
       jdks = with pkgs; [
         jdk8

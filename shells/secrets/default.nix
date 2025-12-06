@@ -4,7 +4,7 @@
 , mkShell ? pkgs.mkShell
 , gnupg ? pkgs.gnupg
 , sops ? pkgs.sops
-, system ? pkgs.system
+, system ? pkgs.stdenv.hostPlatform.system
 , ssh-to-pgp ? pkgs.ssh-to-pgp
 }:
 let

@@ -13,7 +13,7 @@ in
   options.programs.xstarbound = {
 
     enable = lib.mkEnableOption "xstarbound";
-    package = lib.mkPackageOption self.packages.${pkgs.system} "xstarbound" { };
+    package = lib.mkPackageOption self.packages.${pkgs.stdenv.hostPlatform.system} "xstarbound" { };
     bootconfig.settings = lib.mkOption {
       default = { };
       type = settingsFormat.type;

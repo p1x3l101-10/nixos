@@ -3,7 +3,7 @@ lib.mkIf (config.networking.hostName == "pixels-pc") (let
   systemctl = config.systemd.package.overrideAttrs (oldAttrs: {
     meta.mainProgram = "systemctl";
   });
-  wivrnStable = ext.inputs.nixpkgs.legacyPackages."${pkgs.system}".wivrn;
+  wivrnStable = ext.inputs.nixpkgs.legacyPackages."${pkgs.stdenv.hostPlatform.system}".wivrn;
 in {
   # Main vr service
   services.wivrn = {
