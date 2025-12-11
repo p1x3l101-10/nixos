@@ -18,9 +18,6 @@ let
 in writeShellApplication {
   name = "mc-linker";
   text = ''
-    # Args
-    INST_ID="$1"
-
     # Vars
     GLOBALS_DIR="''${XDG_DATA_HOME:-"$HOME/.local/share"}/minecraftGlobals"
 
