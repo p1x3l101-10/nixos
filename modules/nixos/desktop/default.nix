@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 {
   _module.args = {
     globals = {
