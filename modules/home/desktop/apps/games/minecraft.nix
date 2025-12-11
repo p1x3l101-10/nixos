@@ -11,5 +11,12 @@
         jdk25
       ];
     }))
+    ((pkgs.callPackage ./support/linker.nix {}) {
+      pathsToLink = [
+        "options.txt"
+        "styles"
+        "everbook"
+      ];
+    })
   ];
 }
