@@ -22,8 +22,8 @@ in writeShellApplication {
     INST_ID="$1"
 
     # Vars
-    PRISMLAUNCHER_INST_DIR="''${XDG_DATA_HOME:-"$HOME/.local/share"}"/PrismLauncher/instances"
-    GLOBALS_DIR="''${XDG_DATA_HOME:-"$HOME/.local/share"}"/minecraftGlobals"
+    PRISMLAUNCHER_INST_DIR="''${XDG_DATA_HOME:-"$HOME/.local/share"}/PrismLauncher/instances"
+    GLOBALS_DIR="''${XDG_DATA_HOME:-"$HOME/.local/share"}/minecraftGlobals"
 
     # Run
     mkdir -p "$GLOBALS_DIR"
