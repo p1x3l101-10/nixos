@@ -7,5 +7,6 @@
   };
   imports = [
     ./desktop
+    ./games
   ] ++ (lib.internal.confTemplates.importList ./.);
 }
