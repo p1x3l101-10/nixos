@@ -22,13 +22,12 @@ in writeShellApplication {
     INST_ID="$1"
 
     # Vars
-    PRISMLAUNCHER_INST_DIR="''${XDG_DATA_HOME:-"$HOME/.local/share"}/PrismLauncher/instances"
     GLOBALS_DIR="''${XDG_DATA_HOME:-"$HOME/.local/share"}/minecraftGlobals"
 
     # Run
     mkdir -p "$GLOBALS_DIR"
     for dir in ${dirs}; do
-      INST_FILE="$PRISMLAUNCHER_INST_DIR/$INST_ID/$dir"
+      INST_FILE="$INST_MC_DIR/$dir"
       GLOBAL_FILE="$GLOBALS_DIR/$dir"
       if [[ -L "$INST_FILE" ]]; then
         # Skip if already a link
@@ -41,7 +40,7 @@ in writeShellApplication {
       fi
     done
     for dir in ${ddirs}; do
-      INST_FILE="$PRISMLAUNCHER_INST_DIR/$INST_ID/$dir"
+      INST_FILE="$INST_MC_DIR/$dir"
       GLOBAL_FILE="$GLOBALS_DIR/$dir"
       if [[ ! -e "$GLOBAL_FILE" ]]; then
         if [[ -e "$INST_FILE" ]]; then
