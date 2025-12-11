@@ -33,7 +33,7 @@ in writeShellApplication {
       if [[ -L "$INST_FILE" ]]; then
         # Skip if already a link
         true
-      elif [[ -e "$GLOBAL_FILE ]]; then
+      elif [[ -e "$GLOBAL_FILE" ]]; then
         ln -sfv "$GLOBAL_FILE" "$INST_FILE"
       else
         mv -v "$INST_FILE" "$GLOBAL_FILE"
