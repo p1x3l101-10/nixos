@@ -13,9 +13,15 @@
     }))
     ((pkgs.callPackage ./support/linker.nix {}) {
       pathsToLink = [
-        "options.txt"
         "styles"
         "everbook"
+        "tlm_custom_pack"
+      ];
+      defaults = [
+        "options.txt"
+        "resourcepacks"
+        "shaderpacks"
+        "servers.dat"
       ];
     })
   ];

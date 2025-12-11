@@ -2,12 +2,18 @@
 , writeShellApplication
 }:
 
-{ pathsToLink ? [] }:
+{ pathsToLink ? []
+, defaults ? []
+}:
 
 let
   dirs = builtins.concatStringsSep " " (map
     (x: "'${x}'")
     pathsToLink
+  );
+  ddirs = builtins.concatStringsSep " " (map
+    (x: "'${x}'")
+    defaults
   );
 in writeShellApplication {
   name = "mc-linker";
@@ -32,6 +38,20 @@ in writeShellApplication {
       else
         mv -v "$INST_FILE" "$GLOBAL_FILE"
         ln -sv "$GLOBAL_FILE" "$INST_FILE"
+      fi
+    done
+    for dir in ${ddirs}; do
+      INST_FILE="$PRISMLAUNCHER_INST_DIR/$INST_ID/$dir"
+      GLOBAL_FILE="$GLOBALS_DIR/$dir"
+      if [[ ! -e "$GLOBAL_FILE" ]]; then
+        if [[ -e "$INST_FILE" ]]; then
+          cp -vr "$INST_FILE" "$GLOBAL_FILE"
+        fi
+      fi
+      if [[ ! -e "$INST_FILE" ]]; then
+        if [[ -e "$GLOBAL_FILE" ]]; then
+          cp -vr "$GLOBAL_FILE" "$INST_FILE"
+        fi
       fi
     done
   '';
