@@ -7,7 +7,7 @@
 , libbass
 , libbass_fx
 , libbassmix
-, libbassopus
+#, libbassopus
 , libiconvReal
 , discord-rpc
 , libiconv
@@ -110,7 +110,7 @@ let
       libbass
       libbass_fx
       libbassmix
-      libbassopus
+      minacalc
       libiconv
       discord-rpc
       fftw
@@ -124,6 +124,7 @@ let
       # Remove provided natives (replace them with our own)
       cp bin/linux64/luamidi.so .
       cp bin/linux64/video.so .
+      cp bin/linux64/libbassopus.so .
       rm -rf bin
 
       # Link the new natives
@@ -131,6 +132,7 @@ let
       ${genNatives}
       mv luamidi.so bin/linux64
       mv luamidi.so bin/linux64
+      mv libbassopus.so bin/linux64
 
       # defaults to add for the user
       mkdir defaults
