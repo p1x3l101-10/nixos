@@ -15,11 +15,11 @@
 , sqlite
 , rtmidi
 , lua
+, minacalc ? callPackage ./minacalc.nix {}
 , writeShellApplication
 }:
 
 let
-  minacalc = callPackage ./minacalc.nix {};
   lua = lua.withPackages(ps: with ps; [
     luasocket
     luaossl
