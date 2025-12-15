@@ -10,6 +10,7 @@
 , libbassopus
 , libiconvReal
 , discord-rpc
+, libiconv
 , fftw
 , sqlite
 , rtmidi
