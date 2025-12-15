@@ -188,4 +188,4 @@ writeShellApplication {
     export LD_LIBARY_PATH="$LD_LIBRARY_PATH:$PWD/bin/linux64"
     exec "love ."
   '';
-};
+}
