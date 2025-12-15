@@ -50,8 +50,8 @@ let
       "7z" = "${p7zip.lib}/lib/p7zip/7z.so";
     };
     libMapRaw = {
-      "luamidi.so" = "";
-      "video.so" = "";
+      "luamidi.so" = "/dev/null";
+      "video.so" = "/dev/null";
     };
     libMapFinal = (
       ((builtins.listToAttrs
@@ -121,11 +121,15 @@ let
 
     buildPhase = ''
       # Remove provided natives (replace them with our own)
+      cp bin/linux64/luamidi.so .
+      cp bin/linux64/video.so .
       rm -rf bin
 
       # Link the new natives
       mkdir -p bin/linux64
       ${genNatives}
+      mv luamidi.so bin/linux64
+      mv luamidi.so bin/linux64
 
       # defaults to add for the user
       mkdir defaults
