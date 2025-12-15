@@ -93,7 +93,7 @@ let
     "storages"
   ];
 
-  risuBase = stdenv.mkDerivation (self: {
+  rizuBase = stdenv.mkDerivation (self: {
     name = "rizu";
     version = "28.07.2024";
 
