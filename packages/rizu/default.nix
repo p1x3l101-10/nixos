@@ -157,7 +157,7 @@ let
     meta = with lib; {
       description = "VSRG written in Lua";
       homepage = "https://rizu.su";
-      license = licenses.gpl3OrLater;
+      #license = licenses.gpl3OrLater;
       platforms = platforms.linux;
     };
   });
