@@ -157,7 +157,7 @@ let
       license = licenses.gpl3OrLater;
       platforms = platforms.linux;
     };
-  })
+  });
 in
 
 writeShellApplication {
