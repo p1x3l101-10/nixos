@@ -94,7 +94,7 @@ let
 
   risuBase = stdenv.mkDerivation (self: {
     name = "rizu";
-    version = "28.07.2024"
+    version = "28.07.2024";
 
     src = fetchFromGitHub {
       owner = "semyon422";
