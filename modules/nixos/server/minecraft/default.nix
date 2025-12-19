@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./instances/botany.nix
+    ./instances/gon.nix
     ./bluemap-nginx.nix
     ./svc.nix
     ./rcon.nix
