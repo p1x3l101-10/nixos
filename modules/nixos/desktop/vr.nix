@@ -3,7 +3,19 @@ lib.mkIf (config.networking.hostName == "pixels-pc") (let
   systemctl = config.systemd.package.overrideAttrs (oldAttrs: {
     meta.mainProgram = "systemctl";
   });
-  wivrnStable = ext.inputs.nixpkgs.legacyPackages."${pkgs.stdenv.hostPlatform.system}".wivrn;
+  wivrnStable = ext.inputs.nixpkgs.legacyPackages."${pkgs.stdenv.hostPlatform.system}".wivrn.overrideAttrs (oldAttrs: {
+    version = "25.12";
+    src = oldAttrs.src.override {
+      version = "v25.12";
+      hash = "sha256-gadfW3/PXi9SEztaHbi4U29Vj7ik/ia8BVDTy8P5aJE=";
+    };
+    monado = oldAttrs.monado.overrideAttrs (oldMonado: {
+      src = oldMonado.src.override (oldMSrc: {
+        rev = "20e0dacbdd2de863923790326beec76e848b056a";
+        hash = "sha256-wiXdMgp3bKW17KqLnSn6HHhz7xbQtjp4c3aU7qp+2BE=";
+      });
+    });
+  });
 in {
   # Main vr service
   services.wivrn = {
