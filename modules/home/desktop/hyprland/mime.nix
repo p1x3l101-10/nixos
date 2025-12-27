@@ -4,6 +4,7 @@ let
   lib1 = import ./support/hypr-lib.nix lib;
   lib2 = lib.extend (_: _: { hypr = lib1; });
   globals = import ./support/hypr-globals.nix pkgs lib2;
+  mkOkularApp = type: "okularApplication_${type}.desktop";
 in
 
 {
@@ -13,7 +14,7 @@ in
   xdg.mimeApps.defaultApplications = lib.internal.attrsets.compressAttrs "/" (with globals.apps; {
     application = {
       json = textEditor.desktop;
-      pdf = documentViewer.desktop;
+      pdf = mkOkularApp "pdf";
       xhtml = web.desktop;
       xml = web.desktop;
       x-extension-htm = web.desktop;
