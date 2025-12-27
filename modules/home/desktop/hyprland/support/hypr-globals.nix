@@ -5,6 +5,7 @@ lib.fix (self: {
     terminal = "kitty";
     fileManager = "thunar";
     web = "zen-twilight";
+    documentViewer = "okular";
     imageViewer = "feh";
     videoPlayer = "mpv";
     textEditor = "nvim";

@@ -13,7 +13,7 @@ in
   xdg.mimeApps.defaultApplications = lib.internal.attrsets.compressAttrs "/" (with globals.apps; {
     application = {
       json = textEditor.desktop;
-      pdf = web.desktop;
+      pdf = documentViewer.desktop;
       xhtml = web.desktop;
       xml = web.desktop;
       x-extension-htm = web.desktop;
