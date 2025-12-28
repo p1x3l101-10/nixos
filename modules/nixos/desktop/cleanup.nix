@@ -3,9 +3,9 @@
 {
   environment.cleanup = {
     enable = true;
-    baseDir = "/nix/host/state/UserData";
+    baseDir = "/nix/host/state/UserData/home/pixel";
     trashDir = "/nix/host/state/deletionSave";
-    allowedPaths = (map (x: "/home/pixel/${x}") (
+    allowedPaths = (map (x: "/${x}") (
       [
         "Audiobooks"
         "Camera"

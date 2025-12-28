@@ -34,7 +34,7 @@ in
         mkdir -p "${cfg.trashDir}"
 
         # Find undesired files
-        find "${cfg.baseDir}" \( ${pruneList} \) -prune -o -type d -print | sort | awk '
+        find "${cfg.baseDir}" -mindepth 1 \( ${pruneList} \) -prune -o -type d -print | sort | awk '
           NR == 1 { prev = $0; print; next }
           index($0, prev "/") != 1 {
             prev = $0
