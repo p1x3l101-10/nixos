@@ -24,7 +24,7 @@ in
     ];
     systemd.services.systemCleanup = {
       script = let
-        pruneList = builtins.concatStringsSep " " (map (x: "-path '${cfg.baseDir}/${x}' -path '${cfg.baseDir}/${x}/*' ") cfg.allowedPaths);
+        pruneList = builtins.concatStringsSep " " (map (x: "-path '${cfg.baseDir}${x}' -path '${cfg.baseDir}${x}/*' ") cfg.allowedPaths);
       in ''
         CONFIG="/etc/systemCleanup/allowedPaths.lst"
         NONMATCHING="/run/systemCleanup/nonMatches.lst"
