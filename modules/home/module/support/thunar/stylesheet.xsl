@@ -10,6 +10,7 @@
           <unique-id><xsl:value-of select='attr[@name="unique-id"]/string/@value'/></unique-id>
           <command><xsl:value-of select='attr[@name="command"]/string/@value'/></command>
           <description><xsl:value-of select='attr[@name="description"]/string/@value'/></description>
+          <range></range>
           <patterns><xsl:value-of select='attr[@name="patterns"]/string/@value'/></patterns>
           <xsl:if test='attr[@name="directories"]/bool/@value = "true"'><directories/></xsl:if>
           <xsl:if test='attr[@name="startup-notify"]/bool/@value = "true"'><startup-notify/></xsl:if>
