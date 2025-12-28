@@ -10,7 +10,9 @@ let
       unique-id = mkStrOption "";
       command = mkStrOption "";
       description = mkStrOption "";
-      patterns = mkStrOption "";
+      patterns = mkOption {
+        type = with types; listOf str;
+      };
       startup-notify = mkOption {
         type = types.bool;
         default = true;
@@ -47,7 +49,14 @@ in
     xdg.configFile = {
       "Thunar/uca.xml".source = toXMLSyled {
         name = "uca.xml";
-        input = cfg.config;
+        input = (cfg.config // {
+          actions = (map
+            (x: {
+              patterns = lib.concatStringsSep ";" x.patterns;
+            })
+            cfg.config.actions
+          );
+        });
         stylesheet = ./support/thunar/stylesheet.xsl;
       };
     };

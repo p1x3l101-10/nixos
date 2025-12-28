@@ -12,7 +12,7 @@
           unique-id = "1754173888245658-1";
           command = "exo-open --working-directory %f --launch TerminalEmulator";
           description = "Example for a custom action";
-          patterns = "*";
+          patterns = [ "*" ];
           startup-notify = true;
           directories = true;
         }
