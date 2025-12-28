@@ -29,6 +29,26 @@
       "Templates"
       "Videos"
     ]
+    ++ (map (x: ".${x}") [
+      "android"
+      "factorio"
+      "gnupg"
+      "gtklp"
+      "klei"
+      "minecraft"
+      "mozilla"
+      "parsec"
+      "parse-persistant"
+      "pki"
+      "renpy"
+      "ssh"
+      "SteamCloud"
+      "switch"
+      "thunderbird"
+      "var"
+      "vim"
+      "zen"
+    ])
     ++ (map (x: ".config/${x}") [
       "blender"
       "Blockbench"
