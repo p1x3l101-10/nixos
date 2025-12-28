@@ -19,9 +19,9 @@ in
       store_output = mkBool false;
       icon_size = mkInt 2;
       show_archive_comment = mkBool false;
-      show_sidebar = mkInt true;
-      show_location_bar = true;
-      show_toolbar = true;
+      show_sidebar = mkBool true;
+      show_location_bar = mkBool true;
+      show_toolbar = mkBool true;
       preferred_custom_cmd = mkStr "";
       preferred_temp_dir = mkPath "/tmp";
       preferred_extract_dir = mkPath "/tmp";
@@ -35,7 +35,7 @@ in
       update = mkBool false;
       store_path = mkBool false;
       updadd = mkBool true;
-      freshen = mkInt false;
+      freshen = mkBool false;
       recurse = mkBool true;
       solid_archive = mkBool false;
       remove_files = mkBool false;
