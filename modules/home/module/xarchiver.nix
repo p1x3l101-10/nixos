@@ -46,7 +46,7 @@ in
     home.packages = [ pkgs.xarchiver ];
 
     xdg.configFile = {
-      "xarchiver/xarchiverrc".source = (pkgs.formats.ini {}).generate {
+      "xarchiver/xarchiverrc".source = (pkgs.formats.ini {}).generate "xarchiverrc" {
         xarchiver = cfg.config;
       };
     };
