@@ -23,28 +23,24 @@ in
       "trashDir"
     ];
     systemd.services.systemCleanup = {
-      script = ''
+      script = let
+        pruneList = builtins.concatStringsSep " " (map (x: "-path '${cfg.baseDir}/${x}' -path '${cfg.baseDir}/${x}/*' ") cfg.allowedPaths);
+      in ''
         CONFIG="/etc/systemCleanup/allowedPaths.lst"
-        NONMATCHING_ALL="/run/systemCleanup/allNonMatches.lst"
         NONMATCHING="/run/systemCleanup/nonMatches.lst"
 
         # Create needed dirs
         mkdir -p "/run/systemCleanup"
         mkdir -p "${cfg.trashDir}"
-        if [[ -e "$NONMATCHING" ]]; then
-          rm -v "$NONMATCHING"
-        fi
 
         # Find undesired files
-        find "${cfg.baseDir}" -type d -print | grep -Fvf "$CONFIG" | sort > "$NONMATCHING_ALL"
-
-        # Trim the list
-        while read line; do
-          if [[ ! "''${#line}" -lt "''${#prev_path}" ]]; then
-            echo "$line" >> "$NONMATCHING"
-          fi
-          prev_line="$line"
-        done < "$NONMATCHING_ALL"
+        find "${cfg.baseDir}" \( ${pruneList} \) -prune -o -type d -print | sort | awk '
+          NR == 1 { prev = $0; print; next }
+          index($0, prev "/") != 1 {
+            prev = $0
+            print
+          }
+        ' > "$NONMATCHING"
 
         # Put them in purgatory
         while read line; do
