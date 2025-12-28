@@ -19,6 +19,23 @@
       ];
     };
   };
+  gtk.gtk3.bookmarks = (map
+    (x: "file:///home/pixel/${x}")
+    [
+      "Camera"
+      "Documents"
+      "Downloads"
+      "Games"
+      "Music"
+      "Oculus"
+      "Phone Misc"
+      "Pictures"
+      "Programs"
+      "Sync"
+      "Templates"
+      "Videos"
+    ]
+  );
   home.packages = with pkgs.xfce; [
     pkgs.xarchiver
     xfmpc

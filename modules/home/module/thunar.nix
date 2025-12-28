@@ -44,10 +44,12 @@ in
   config = mkIf cfg.enable {
     home.packages = [ pkgs.xfce.thunar ] ++ (optionals cfg.thumbnails [ pkgs.xfce.tumbler ]);
 
-    xdg.configFile."Thunar/uca.xml".source = toXMLSyled {
-      name = "uca.xml";
-      input = cfg.config;
-      stylesheet = ./support/thunar/stylesheet.xsl;
+    xdg.configFile = {
+      "Thunar/uca.xml".source = toXMLSyled {
+        name = "uca.xml";
+        input = cfg.config;
+        stylesheet = ./support/thunar/stylesheet.xsl;
+      };
     };
   };
 }
