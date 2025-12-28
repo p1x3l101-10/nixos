@@ -7,6 +7,7 @@
   };
   imports = [
     ./adb.nix
+    ./cleanup.nix
     ./home-licences.nix
     ./home.nix
     ./ipfs.nix

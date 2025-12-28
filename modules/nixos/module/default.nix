@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./cleanup.nix
     ./factorio.nix
     ./licenses.nix
     ./minecraft.nix
