@@ -25,19 +25,26 @@ in
     systemd.services.systemCleanup = {
       script = ''
         CONFIG="/etc/systemCleanup/allowedPaths.lst"
+        NONMATCHING_ALL="/run/systemCleanup/allNonMatches.lst"
         NONMATCHING="/run/systemCleanup/nonMatches.lst"
 
         # Create needed dirs
         mkdir -p "/run/systemCleanup"
         mkdir -p "${cfg.trashDir}"
+        if [[ -e "$NONMATCHING" ]]; then
+          rm -v "$NONMATCHING"
+        fi
 
         # Find undesired files
-        find "${cfg.baseDir}" -type d -print | grep -Fxvf "$CONFIG" | sort | awk '
-        NR==1 { prev=$0; print; next }
-        index($0, prev "/") != 1 {
-          prev=$0
-          print
-        }' > "$NONMATCHING"
+        find "${cfg.baseDir}" -type d -print | grep -Fvf "$CONFIG" | sort > "$NONMATCHING_ALL"
+
+        # Trim the list
+        while read line; do
+          if [[ ! "''${#line}" -lt "''${#prev_path}" ]]; then
+            echo "$line" >> "$NONMATCHING"
+          fi
+          prev_line="$line"
+        done < "$NONMATCHING_ALL"
 
         # Put them in purgatory
         while read line; do
