@@ -14,6 +14,11 @@
           <patterns><xsl:value-of select='attr[@name="patterns"]/string/@value'/></patterns>
           <xsl:if test='attr[@name="directories"]/bool/@value = "true"'><directories/></xsl:if>
           <xsl:if test='attr[@name="startup-notify"]/bool/@value = "true"'><startup-notify/></xsl:if>
+          <xsl:if test='attr[@name="other-files"]/bool/@value = "true"'><other-files/></xsl:if>
+          <xsl:if test='attr[@name="text-files"]/bool/@value = "true"'><text-files/></xsl:if>
+          <xsl:if test='attr[@name="image-files"]/bool/@value = "true"'><image-files/></xsl:if>
+          <xsl:if test='attr[@name="audio-files"]/bool/@value = "true"'><audio-files/></xsl:if>
+          <xsl:if test='attr[@name="video-files"]/bool/@value = "true"'><video-files/></xsl:if>
         </action>
       </xsl:for-each>
     </actions>

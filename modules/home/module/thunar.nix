@@ -18,6 +18,11 @@ let
         default = true;
       };
       directories = mkEnableOption "";
+      other-files = mkEnableOption "";
+      text-files = mkEnableOption "";
+      image-files = mkEnableOption "";
+      audio-files = mkEnableOption "";
+      video-files = mkEnableOption "";
     };
     config = {};
   };
