@@ -6,6 +6,7 @@
   environment.persistence."/nix/host/state/Hamachi".directories = [
     "/var/lib/logmein-hamachi"
   ];
+  environment.persistence."/nix/host/state/UserData".hideMounts = true;
   environment.persistence."/nix/host/state/UserData".directories = (map (x: { directory = "/home/pixel/${x}"; user = "pixel"; group = "pixel"; } ) (
     [
       "Audiobooks"
