@@ -21,6 +21,7 @@
     group = "root";
     mode = "-";
   };
+  nix.settings.trusted-users = [ "@wheel" ];
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
