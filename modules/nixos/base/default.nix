@@ -8,6 +8,7 @@
     ./cache.nix
     ./content-addressed.nix
     ./editor.nix
+    ./experimental.nix
     ./git.nix
     ./hideGetty.nix
     ./impermanence.nix
