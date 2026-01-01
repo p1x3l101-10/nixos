@@ -33,7 +33,7 @@
       "Games"
       "Music"
       "Oculus"
-      "Phone Misc"
+      "Phone\\ Misc"
       "Pictures"
       "Programs"
       "Sync"
@@ -41,6 +41,7 @@
       "Videos"
     ]
   );
+  xdg.configFile."Thunar/uca.xml".force = true;
   home.packages = with pkgs.xfce; [
     pkgs.xarchiver
     xfmpc
