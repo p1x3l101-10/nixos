@@ -12,13 +12,7 @@ let
 in {
   programs.vesktop = {
     enable = true;
-    package = pkgs.vesktop.overrideAttrs (oldAttrs: {
-      desktopItems = [
-        ((builtins.elemAt oldAttrs.desktopItems 0).override {
-          exec = "vesktop --ozone-platform-hint=auto %U";
-        })
-      ];
-    });
+    package = pkgs.vesktop;
     vencord = {
       useSystem = true;
       settings = {
