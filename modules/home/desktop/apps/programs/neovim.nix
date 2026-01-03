@@ -75,6 +75,7 @@
       zoxide-vim
     ];
     extraLuaConfig = builtins.readFile ./support/neovim/config.lua;
+    extraConfig = builtins.readFile ./support/neovim/config.vim;
     lsp = {
       servers = {
         qmlls.enable = true;
