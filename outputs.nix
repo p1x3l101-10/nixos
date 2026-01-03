@@ -20,8 +20,17 @@ inputs.flake-utils.lib.eachDefaultSystem
     specialArgs = lib.fix (final: {
       ext = lib.fix (finalExt: {
         inherit inputs system;
-        stableLib = inputs.nixpkgs-stable.lib;
-        stablePkgs = inputs.nixpkgs-stable.legacyPackages."${system}";
+        stable = {
+          inherit (inputs.nixpkgs-stable) lib;
+          pkgs = inputs.nixpkgs-stable.legacyPackages."${system}";
+          unfreePkgs = inputs.nixpkgs-unfree-stable.legacyPackages."${system}";
+        };
+        unstable = {
+          inherit (inputs.nixpkgs) lib;
+          pkgs = inputs.nixpkgs.legacyPackages."${system}";
+          unfreePkgs = inputs.nixpkgs-unfree.legacyPackages."${system}";
+        };
+        stablePkgs = finalExt.stable.pkgs;
         assets = (lib.internal.attrsets.mapDirTree ./assets);
         lib = inputs.self.lib;
       });
