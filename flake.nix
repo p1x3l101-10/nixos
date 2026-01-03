@@ -5,6 +5,7 @@
       url = "github:numtide/nixpkgs-unfree";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixpkgs-25_11.url = "github:NixOS/nixpkgs/nixos-25.11";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";

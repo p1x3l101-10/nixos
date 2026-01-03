@@ -919,6 +919,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-25_11": {
+      "locked": {
+        "lastModified": 1767325753,
+        "narHash": "sha256-yA/CuWyqm+AQo2ivGy6PlYrjZBQm7jfbe461+4HF2fo=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "64049ca74d63e971b627b5f3178d95642e61cedd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-25.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-unfree": {
       "inputs": {
         "nixpkgs": [
@@ -1111,6 +1127,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpak": "nixpak",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-25_11": "nixpkgs-25_11",
         "nixpkgs-unfree": "nixpkgs-unfree",
         "nixpkgs-xr": "nixpkgs-xr",
         "nixvim": "nixvim",
