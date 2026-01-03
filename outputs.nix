@@ -1,6 +1,7 @@
 inputs:
 let
   namespace = "internal";
+  # TODO: Avoid lib pollution
   lib0 = inputs.nixpkgs.lib;
   lib1 = import ./lib { lib = lib0; inherit inputs namespace; };
   lib = lib0.extend (finalLib: prevLib: { "${namespace}" = lib1; });
@@ -22,7 +23,9 @@ inputs.flake-utils.lib.eachDefaultSystem
         stableLib = inputs.nixpkgs-stable.lib;
         stablePkgs = inputs.nixpkgs-stable.legacyPackages."${system}";
         assets = (lib.internal.attrsets.mapDirTree ./assets);
+        lib = inputs.self.lib;
       });
+      eLib = final.ext.lib; # Conveniance
       inherit (final.ext) inputs; # Backwards compat
     });
     common-modules = with inputs; [
