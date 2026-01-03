@@ -30,7 +30,6 @@ inputs.flake-utils.lib.eachDefaultSystem
           pkgs = inputs.nixpkgs.legacyPackages."${system}";
           unfreePkgs = inputs.nixpkgs-unfree.legacyPackages."${system}";
         };
-        stablePkgs = finalExt.stable.pkgs;
         assets = (lib.internal.attrsets.mapDirTree ./assets);
         lib = inputs.self.lib;
       });
