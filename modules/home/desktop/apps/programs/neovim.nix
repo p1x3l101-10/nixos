@@ -170,9 +170,11 @@
       }
     ];
   };
-  home.shellAliases.nv = "nvim";
-  home.packages = with pkgs; [
-    zip
-    unzip
-  ];
+  home = {
+    shellAliases.nv = "nvim";
+    packages = with pkgs; [
+      zip
+      unzip
+    ];
+  };
 }
