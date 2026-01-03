@@ -30,7 +30,8 @@
     ];
   };
   environment.systemPackages = with pkgs; [
-    sgdboop
+    # BUILD FAILURE
+    #sgdboop
   ];
   system.allowedUnfree.packages = [
     "steam"
