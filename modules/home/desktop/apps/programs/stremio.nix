@@ -1,7 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, ext, ... }:
+
+let
+  inherit (ext) stablePkgs;
+in
 
 {
-  home.packages = [ pkgs.stremio ];
+  home.packages = [ stablePkgs.stremio ];
   home.allowedUnfree.packages = [
     "stremio-shell"
     "stremio-server"
