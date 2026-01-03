@@ -17,12 +17,12 @@ inputs.flake-utils.lib.eachDefaultSystem
   ) // inputs.flake-utils.lib.eachDefaultSystemPassThrough (system:
   let
     specialArgs = lib.fix (final: {
-      ext = {
+      ext = lib.fix (finalExt: {
         inherit inputs system;
         stableLib = inputs.nixpkgs-stable.lib;
         stablePkgs = inputs.nixpkgs-stable.legacyPackages."${system}";
         assets = (lib.internal.attrsets.mapDirTree ./assets);
-      };
+      });
       inherit (final.ext) inputs; # Backwards compat
     });
     common-modules = with inputs; [
