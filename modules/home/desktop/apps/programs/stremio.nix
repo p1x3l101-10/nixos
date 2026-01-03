@@ -1,7 +1,15 @@
 { ext, ... }:
 
 let
-  pkgs = ext.stable.unfreePkgs;
+  pkgs = ext.rawPkgs {
+    nixpkgs = ext.stable.input;
+    config = {
+      allowUnfree = true;
+      permittedInsecurePackages = [
+        "qtwebengine-5.15.19"
+      ];
+    };
+  };
 in
 
 {
