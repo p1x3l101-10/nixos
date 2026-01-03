@@ -78,6 +78,10 @@
     extraConfig = ''
       let g:Hardcopy_paperType = "Letter"
     '' + builtins.readFile ./support/neovim/config.vim;
+    extraPackages = with pkgs; [
+      # Hardcopy
+      html2pdf
+    ];
     lsp = {
       servers = {
         qmlls.enable = true;
@@ -170,8 +174,5 @@
   home.packages = with pkgs; [
     zip
     unzip
-    # Function deps
-    # Hardcopy
-    html2pdf
   ];
 }
