@@ -1128,6 +1128,9 @@
         "nixpak": "nixpak",
         "nixpkgs": "nixpkgs",
         "nixpkgs-25_11": "nixpkgs-25_11",
+        "nixpkgs-stable": [
+          "nixpkgs-25_11"
+        ],
         "nixpkgs-unfree": "nixpkgs-unfree",
         "nixpkgs-xr": "nixpkgs-xr",
         "nixvim": "nixvim",

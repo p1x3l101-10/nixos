@@ -18,11 +18,10 @@ inputs.flake-utils.lib.eachDefaultSystem
   let
     specialArgs = lib.fix (self: {
       ext = {
-        nixpkgs-stable = inputs.nixpkgs-25_11;
+        inherit inputs system;
+        inherit (inputs) nixpkgs-stable;
         stablePkgs = self.ext.nixpkgs-stable.legacyPackages."${system}";
-        inherit inputs;
         assets = (lib.internal.attrsets.mapDirTree ./assets);
-        inherit system;
       };
       inherit (self.ext) inputs; # Backwards compat
     });
