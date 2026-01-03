@@ -161,5 +161,11 @@
     ];
   };
   home.shellAliases.nv = "nvim";
-  home.packages = with pkgs; [ zip unzip ];
+  home.packages = with pkgs; [
+    zip
+    unzip
+    # Function deps
+    # Hardcopy
+    html2pdf
+  ];
 }

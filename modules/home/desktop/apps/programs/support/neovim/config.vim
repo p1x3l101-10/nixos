@@ -1,6 +1,10 @@
 " Print current working file to default printer
 " Depends on the following variables:
 " - g:Hardcopy_paperType
+" Depends on the following binaries:
+" - html2pdf
+" - lp
+" - rm
 command Hardcopy call s:Print()
 command Hc call s:Print()
 command HC call s:Print()
