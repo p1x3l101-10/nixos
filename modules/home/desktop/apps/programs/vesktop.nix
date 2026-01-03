@@ -1,6 +1,7 @@
-{ pkgs, ext, ... }:
+{ ext, ... }:
 
 let
+  pkgs = ext.stable.pkgs;
   enabledPlugins = list: (
     builtins.listToAttrs (builtins.map (x:
       {
@@ -12,7 +13,7 @@ let
 in {
   programs.vesktop = {
     enable = true;
-    package = ext.stablePkgs.vesktop;
+    package = pkgs.vesktop;
     vencord = {
       useSystem = true;
       settings = {
