@@ -29,10 +29,6 @@
       config.home-manager.users.pixel.home.pointerCursor.package
     ];
   };
-  programs.alvr = {
-    enable = true;
-    openFirewall = true;
-  };
   environment.systemPackages = with pkgs; [
     sgdboop
   ];
