@@ -74,15 +74,7 @@
       nvim-autopairs
       zoxide-vim
     ];
-    extraConfigLua = ''
-      local cmp = require('cmp')
-      cmp.setup = {
-        window = {
-          completion = cmp.config.window.bordered(),
-          documentation = cmp.config.window.bordered(),
-        }
-      }
-    '';
+    extraConfigLua = builtins.readFile ./support/neovim/config.lua;
     lsp = {
       servers = {
         qmlls.enable = true;
