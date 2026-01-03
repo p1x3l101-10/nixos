@@ -45,5 +45,6 @@
   home.packages = with pkgs; [
     xarchiver
     xfmpc
+    xfconf
   ];
 }
