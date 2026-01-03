@@ -16,14 +16,14 @@ inputs.flake-utils.lib.eachDefaultSystem
     }
   ) // inputs.flake-utils.lib.eachDefaultSystemPassThrough (system:
   let
-    specialArgs = lib.fix (self: {
+    specialArgs = lib.fix (final: {
       ext = {
         inherit inputs system;
         stableLib = inputs.nixpkgs-stable.lib;
         stablePkgs = inputs.nixpkgs-stable.legacyPackages."${system}";
         assets = (lib.internal.attrsets.mapDirTree ./assets);
       };
-      inherit (self.ext) inputs; # Backwards compat
+      inherit (final.ext) inputs; # Backwards compat
     });
     common-modules = with inputs; [
       lanzaboote.nixosModules.lanzaboote
