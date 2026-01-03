@@ -42,8 +42,8 @@
     ]
   );
   xdg.configFile."Thunar/uca.xml".force = true;
-  home.packages = with pkgs.xfce; [
-    pkgs.xarchiver
+  home.packages = with pkgs; [
+    xarchiver
     xfmpc
   ];
 }

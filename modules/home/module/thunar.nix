@@ -49,7 +49,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    home.packages = [ pkgs.xfce.thunar ] ++ (optionals cfg.thumbnails [ pkgs.xfce.tumbler ]);
+    home.packages = [ pkgs.thunar ] ++ (optionals cfg.thumbnails [ pkgs.tumbler ]);
 
     xdg.configFile = {
       "Thunar/uca.xml".source = toXMLSyled {
