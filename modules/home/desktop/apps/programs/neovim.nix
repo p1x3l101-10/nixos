@@ -158,6 +158,12 @@
         action = "<Cmd>bdelete<CR>";
         options.desc = "Close buffer";
       }
+      {
+        mode = "n";
+        key = "<Leader>p";
+        action = "<Cmd>Hardcopy<CR>";
+        options.desc = "Print buffer to default printer";
+      }
     ];
   };
   home.shellAliases.nv = "nvim";
