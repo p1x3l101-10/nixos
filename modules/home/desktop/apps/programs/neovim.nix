@@ -74,7 +74,7 @@
       nvim-autopairs
       zoxide-vim
     ];
-    extraConfigLua = builtins.readFile ./support/neovim/config.lua;
+    extraLuaConfig = builtins.readFile ./support/neovim/config.lua;
     lsp = {
       servers = {
         qmlls.enable = true;
