@@ -24,7 +24,8 @@
       gamescope
       adwaita-icon-theme
       morewaita-icon-theme
-      sgdboop
+      # BUILD FAILURE
+      #sgdboop
     ] ++ [
       config.home-manager.users.pixel.home.pointerCursor.package
     ];
