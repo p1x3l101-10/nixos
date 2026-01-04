@@ -19,6 +19,8 @@
     extraCompatPackages = with pkgs; [
       proton-ge-bin
       steam-play-none
+      vkd3d-proton
+      thcrap-steam-proton-wrapper
     ];
     extraPackages = with pkgs; [
       gamescope
