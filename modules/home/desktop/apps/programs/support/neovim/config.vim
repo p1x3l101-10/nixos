@@ -15,7 +15,7 @@ function s:Print()
   quit
   let l:destFile = l:file .. ".pdf"
   silent
-  execute("!html2pdf" .. " --output " .. l:destFile .. " --paper ".. g:Hardcopy_paperType .. " " .. s:file)
+  execute("!html2pdf" .. " --output " .. l:destFile .. " --paper ".. g:Hardcopy_paperType .. " " .. l:file)
   silent
   execute("!lp " .. l:destFile)
   silent
