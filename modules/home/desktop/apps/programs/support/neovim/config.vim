@@ -11,6 +11,7 @@ command HC call s:Print()
 function s:Print()
   TOhtml
   let l:file = expand("%")
+  write
   quit
   let l:destFile = l:file .. ".pdf"
   silent
