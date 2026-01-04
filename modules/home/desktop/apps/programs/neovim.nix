@@ -185,5 +185,5 @@
       unzip
     ];
   };
-  xdg.configFile."nvim/vimrc.vim".text = config.programs.neovim.generatedConfigViml;
+  xdg.configFile."nvim/vimrc.vim".text = config.programs.neovim.extraConfig;
 }
