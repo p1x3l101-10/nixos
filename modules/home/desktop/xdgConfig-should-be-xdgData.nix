@@ -9,6 +9,12 @@
       "vesktop/sessionData"
       "r2modman"
       "unity3d"
+      "SideQuest"
+      "tetrio-desktop"
+      "VRCX"
+      "unityhub"
+      "Blockbench"
+      "blender"
     ]
   );
 }
