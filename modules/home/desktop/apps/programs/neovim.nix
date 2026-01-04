@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 
 {
   programs.nixvim = {
@@ -76,6 +76,9 @@
     ];
     extraLuaConfig = builtins.concatStringsSep "\n" [
       (lib.strings.fileContents ./support/neovim/config.lua)
+      ''
+        local vimrc = vim.fn.stdpath("config") .. "/vimrc.vim" vim.cmd.source(vimrc)
+      ''
     ];
     extraConfig = builtins.concatStringsSep "\n" [
       ''
@@ -182,4 +185,5 @@
       unzip
     ];
   };
+  xdg.configFile."nvim/vimrc.vim".text = config.programs.neovim.generatedConfigViml;
 }
