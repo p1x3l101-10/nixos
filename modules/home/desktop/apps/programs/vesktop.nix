@@ -58,4 +58,26 @@ in {
       };
     };
   };
+  xdg.configFile = {
+    "vesktop/settings.json".text = builtins.toJSON {
+      discordBranch = "stable";
+      minimizeToTray = true;
+      arRPC = true;
+      splashColor = "rgb(223, 224, 226)";
+      splashBackground = "rgb(29, 32, 33)";
+      tray = true;
+      openLinksWithElectron = false;
+      hardwareVideoAcceleration = true;
+      spellCheckLanguages = [
+        "en-US"
+        "en"
+      ];
+    };
+    "vesktop/state.json" = {
+      force = true;
+      text = builtins.toJSON {
+        firstLaunch = false;
+      };
+    };
+  };
 }
