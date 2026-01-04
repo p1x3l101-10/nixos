@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, ... }:
 
 {
   programs.nixvim = {
@@ -45,7 +45,7 @@
             "<Tab>" = "cmp.mapping.select_next_item()";
             "<S-Tab>" = "cmp.mapping.select_prev_item()";
           };
-          sources = [
+          sources = 
             { name = "nvim_lsp"; }
             { name = "luasnip"; }
             { name = "buffer"; }
@@ -74,13 +74,10 @@
       nvim-autopairs
       zoxide-vim
     ];
-    extraLuaConfig = builtins.concatStringsSep "\n" [
+    extraConfigLua = builtins.concatStringsSep "\n" [
       (lib.strings.fileContents ./support/neovim/config.lua)
-      ''
-        local vimrc = vim.fn.stdpath("config") .. "/vimrc.vim" vim.cmd.source(vimrc)
-      ''
     ];
-    extraConfig = builtins.concatStringsSep "\n" [
+    extraConfigVim = builtins.concatStringsSep "\n" [
       ''
         let g:Hardcopy_paperType = "Letter"
       '' 
@@ -185,5 +182,4 @@
       unzip
     ];
   };
-  xdg.configFile."nvim/vimrc.vim".text = config.programs.neovim.extraConfig;
 }
