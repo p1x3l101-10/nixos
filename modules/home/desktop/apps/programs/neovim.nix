@@ -1,5 +1,9 @@
 { pkgs, lib, ... }:
 
+### README!!!
+## This config is managed by NIXvim, not home manager
+## DO NOT LOOK AT THE HOME MANAGER OPTIONS FOR MORE STUFF, IT IS WRONG!!!
+## Save yourself a day of confusion and just read the readme on github, moron
 {
   programs.nixvim = {
     enable = true;
