@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   programs.nixvim = {
@@ -74,10 +74,15 @@
       nvim-autopairs
       zoxide-vim
     ];
-    extraLuaConfig = builtins.readFile ./support/neovim/config.lua;
-    extraConfig = ''
-      let g:Hardcopy_paperType = "Letter"
-    '' + builtins.readFile ./support/neovim/config.vim;
+    extraLuaConfig = builtins.concatStringsSep "\n" [
+      (lib.strings.fileContents ./support/neovim/config.lua)
+    ];
+    extraConfig = builtins.concatStringsSep "\n" [
+      ''
+        let g:Hardcopy_paperType = "Letter"
+      '' 
+      (lib.strings.fileContents ./support/neovim/config.vim)
+    ];
     extraPackages = with pkgs; [
       # Hardcopy
       html2pdf
