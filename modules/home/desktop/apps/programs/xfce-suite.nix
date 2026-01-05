@@ -33,7 +33,7 @@
       "Games"
       "Music"
       "Oculus"
-      "Phone\\ Misc"
+      "Phone%20Misc"
       "Pictures"
       "Programs"
       "Sync"
