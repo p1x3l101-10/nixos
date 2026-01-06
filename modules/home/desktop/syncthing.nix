@@ -38,6 +38,62 @@ let
     phone
     pixels-pc
   ];
+  folders = {
+    Audiobooks = {
+      devices = getIds allPublicDevices;
+      path = "~/Audiobooks";
+      id = "4xkrg-i9dj1";
+      ignore = '''';
+    };
+    Camera = {
+      devices = getIds allPublicDevices;
+      path = "~/Camera";
+      id = "pixel_6_kjap-photos";
+      ignore = '''';
+    };
+    "Default Folder" = {
+      devices = getIds allPublicDevices;
+      path = "~/Sync";
+      id = "sn1nr-pcw8m";
+      ignore = '''';
+    };
+    Documents = {
+      devices = getIds allPublicDevices;
+      path = "~/Documents";
+      id = "7t10j-5frar";
+      ignore = '''';
+    };
+    Downloads = {
+      devices = getIds allPublicDevices;
+      path = "~/Downloads";
+      id = "rsejh-jym7t";
+      ignore = '''';
+    };
+    Music = {
+      devices = getIds allPublicDevices;
+      path = "~/Music";
+      id = "ly0bl-r2iqi";
+      ignore = '''';
+    };
+    Oculus = {
+      devices = getIds allPublicDevices;
+      path = "~/Oculus";
+      id = "t5tkm-cvnpk";
+      ignore = '''';
+    };
+    Pictures = {
+      devices = getIds allPublicDevices;
+      path = "~/Pictures";
+      id = "omyo0-dp5p0";
+      ignore = '''';
+    };
+    Videos = {
+      devices = getIds allPublicDevices;
+      path = "~/Videos";
+      id = "qoy8g-azv4o";
+      ignore = '''';
+    };
+  };
 in {
   services.syncthing = {
     enable = true;
@@ -45,53 +101,7 @@ in {
     key = "/nix/host/keys/syncthing/key.pem";
     settings = {
       inherit devices;
-      folders = {
-        Audiobooks = {
-          devices = getIds allPublicDevices;
-          path = "~/Audiobooks";
-          id = "4xkrg-i9dj1";
-        };
-        Camera = {
-          devices = getIds allPublicDevices;
-          path = "~/Camera";
-          id = "pixel_6_kjap-photos";
-        };
-        "Default Folder" = {
-          devices = getIds allPublicDevices;
-          path = "~/Sync";
-          id = "sn1nr-pcw8m";
-        };
-        Documents = {
-          devices = getIds allPublicDevices;
-          path = "~/Documents";
-          id = "7t10j-5frar";
-        };
-        Downloads = {
-          devices = getIds allPublicDevices;
-          path = "~/Downloads";
-          id = "rsejh-jym7t";
-        };
-        Music = {
-          devices = getIds allPublicDevices;
-          path = "~/Music";
-          id = "ly0bl-r2iqi";
-        };
-        Oculus = {
-          devices = getIds allPublicDevices;
-          path = "~/Oculus";
-          id = "t5tkm-cvnpk";
-        };
-        Pictures = {
-          devices = getIds allPublicDevices;
-          path = "~/Pictures";
-          id = "omyo0-dp5p0";
-        };
-        Videos = {
-          devices = getIds allPublicDevices;
-          path = "~/Videos";
-          id = "qoy8g-azv4o";
-        };
-      };
+      folders = (builtins.mapAttrs (n: v: { inherit (v) devices path id; }));
       options = {
         localAnnounceEnabled = true;
         relaysEnabled = true;
