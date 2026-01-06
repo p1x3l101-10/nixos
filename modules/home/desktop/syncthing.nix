@@ -1,4 +1,4 @@
-{ osConfig, lib, ... }:
+{ osConfig, lib, config, ... }:
 
 let
   inherit (osConfig.networking) hostName;
@@ -33,6 +33,7 @@ let
       devices
     )
   );
+  trimFirstTwo = str: (builtins.substring 2 (builtins.stringLength str - 2) str);
   allPublicDevices = with devices [
     macbook
     phone
@@ -101,7 +102,7 @@ in {
     key = "/nix/host/keys/syncthing/key.pem";
     settings = {
       inherit devices;
-      folders = (builtins.mapAttrs (n: v: { inherit (v) devices path id; }));
+      folders = (builtins.mapAttrs (n: v: { inherit (v) devices path id; }) folders);
       options = {
         localAnnounceEnabled = true;
         relaysEnabled = true;
@@ -109,4 +110,17 @@ in {
       };
     };
   };
+  home.file = (lib.mapAttrs'
+    (n: v: {
+      name = (trimFirstTwo v.path) + "/.stignore";
+      value = {
+        text = v.ignore;
+      };
+    })
+    folders
+  );
+  systemd.user.tmpfiles.rules = (lib.mapAttrsToList
+    (n: v: "d ${config.home.homeDirectory}/${trimFirstTwo v.path}/.stfolder 0755 ${config.home.user} users - -")
+    folders
+  );
 }
