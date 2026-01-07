@@ -140,7 +140,7 @@ in
     (b' "SHIFT+CTRL" "Print" "exec" "grimblast copy active")
   ] ++ (let  # EDCopilot passthru binds
     EDCopilot_Class = "steam_app_0";
-    eb = modKey: key: "${modKey}, ${key}, pass, class:^(${EDCopilot_Class})$";
+    eb = modKey: key: "${modKey}, ${key}, pass, class:${EDCopilot_Class}";
     eba = (eb "ALT");
   in (map (key: (eba key)) [
     "d"
