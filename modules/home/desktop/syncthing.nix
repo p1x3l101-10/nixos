@@ -34,7 +34,7 @@ let
     )
   );
   trimFirstTwo = str: (builtins.substring 2 (builtins.stringLength str - 2) str);
-  allPublicDevices = with devices [
+  allPublicDevices = with devices; [
     macbook
     phone
     pixels-pc
