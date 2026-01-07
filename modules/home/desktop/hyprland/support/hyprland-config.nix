@@ -138,7 +138,36 @@ in
     (bind'' "" "SHIFT" "Print" "exec" "grimblast copy screen")
     (b' "CTRL" "Print" "exec" "grimblast save active")
     (b' "SHIFT+CTRL" "Print" "exec" "grimblast copy active")
-  ];
+  ] ++ (let  # EDCopilot passthru binds
+    EDCopilot_Class = "steam_app_0";
+    eb = modKey: key: "${modKey}, ${key}, pass, class:^(${EDCopilot_Class})$";
+    eba = (eb "ALT");
+  in (map (key: (eba key)) [
+    "d"
+    "m"
+    "r"
+    "a"
+    "1"
+    "2"
+    "3"
+    "4"
+    "5"
+    "f"
+    "h"
+    "o"
+    "p"
+    "n"
+    ","
+    "."
+    "s"
+    "g"
+    "t"
+    "n"
+    "i"
+    "p"
+    "l"
+    "x"
+  ]));
 
   bindm = let inherit (bindScope) b; in [
     # Resize windows with mouse dragging
