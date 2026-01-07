@@ -39,6 +39,13 @@ let
     phone
     pixels-pc
   ];
+  globalIgnorePatterns = ''
+    (?d).DS_Store
+    (?d).Spotlight-V100
+    (?d).Trashes
+    (?d)desktop.ini
+    (?d)Thumbs.db
+  '';
   folders = {
     Audiobooks = {
       devices = getIds allPublicDevices;
@@ -114,7 +121,7 @@ in {
     (n: v: {
       name = (trimFirstTwo v.path) + "/.stignore";
       value = {
-        text = v.ignore;
+        text = builtins.concatStringsSep "\n" [ globalIgnorePatterns v.ignore ];
       };
     })
     folders
