@@ -205,7 +205,7 @@ in {
     folders
   );
   systemd.user.tmpfiles.rules = (lib.mapAttrsToList
-    (n: v: "d ${config.home.homeDirectory}/${trimFirstTwo v.path}/.stfolder 0755 ${config.home.user} users - -")
+    (n: v: "d ${config.home.homeDirectory}/${trimFirstTwo v.path}/.stfolder 0755 ${config.home.username} users - -")
     folders
   );
 }
