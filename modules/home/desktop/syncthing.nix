@@ -146,7 +146,7 @@ let
         pixels-pc 
         phone 
         quest
-      ])
+      ]);
     };
     Pictures = {
       devices = getIds (with devices; [
