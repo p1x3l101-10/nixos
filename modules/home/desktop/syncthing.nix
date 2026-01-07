@@ -15,7 +15,7 @@ let
   nixosDevices = {
     pixels-pc = {
       name = "Pixels PC";
-      id = "";
+      id = "6OPLJZY-4QTL6OH-PNY27WN-B45TWZ7-R44GROO-SW5KWXP-5MW6DHL-4BHODQQ";
     };
   };
   otherNixosDevices = (lib.filterAttrs
