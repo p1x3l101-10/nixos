@@ -6,7 +6,7 @@
     settings = {
       input = {
         method = "pipewire";
-        source = "audo";
+        source = "auto";
       };
     };
   };
