@@ -4,6 +4,12 @@
   programs.cava = {
     enable = true;
     settings = {
+      general = {
+        bars = 0;
+        bar_width = 1;
+        bar_spacing = 0;
+        sleep_timer = 30;
+      };
       input = {
         method = "pipewire";
         source = "auto";
@@ -11,6 +17,7 @@
       output = {
         method = "noncurses";
         orientation = "horizontal";
+        horizontal_stereo = 1;
         channels = "stereo";
         disable_blanking = 1;
       };
