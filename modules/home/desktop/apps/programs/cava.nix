@@ -4,7 +4,10 @@
   programs.cava = {
     enable = true;
     settings = {
-      method = "pipewire";
+      input = {
+        method = "pipewire";
+        source = "audo";
+      };
     };
   };
 }
