@@ -56,6 +56,7 @@
       use-single-toolbar = false;
     };
     workspaces.seperate-essentials = false;
+    window-sync.enabled = false;
   };
   network.auth.subresource-http-auth-allow = 1;
   fission.autostart = true;
