@@ -15,6 +15,6 @@ let
   };
 in {
   systemd.user.services = {
-    wlx-overlay-s = makeSimpleService "VR Overlay" "${pkgs.wlx-overlay-s}/bin/wlx-overlay-s";
+    #wlx-overlay-s = makeSimpleService "VR Overlay" "${pkgs.wlx-overlay-s}/bin/wlx-overlay-s";
   };
 }

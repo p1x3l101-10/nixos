@@ -8,7 +8,7 @@
 , stardust-xr-sphereland
 , stardust-xr-atmosphere
 , stardust-xr-kiara
-, wlx-overlay-s
+, wayvr
 }:
 
 writeShellApplication {
@@ -22,7 +22,7 @@ writeShellApplication {
     stardust-xr-sphereland
     stardust-xr-atmosphere
     stardust-xr-kiara
-    wlx-overlay-s
+    wayvr
   ];
   text = ''
     unset LD_LIBRARY_PATH
@@ -35,7 +35,7 @@ writeShellApplication {
     export DISPLAY=:10 &
     sleep 0.5;
 
-    wlx-overlay-s &
+    wayvr &
     flatland &
     gravity -- 0 0.0 -0.5 hexagon_launcher &
     black-hole &

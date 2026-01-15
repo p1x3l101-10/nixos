@@ -47,7 +47,6 @@ in {
         ];
         tcp-only = false;
         openvr-compat-path = "${pkgs.opencomposite}/lib/opencomposite";
-        application = [ pkgs.wlx-overlay-s ];
       };
     };
   };
@@ -86,7 +85,7 @@ in {
     })
     libva
     opencomposite
-    wlx-overlay-s
+    wayvr
   ];
   hardware.graphics = {
     enable = true;
