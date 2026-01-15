@@ -2,6 +2,6 @@
 
 {
   home.packages = [
-    pkgs.blender-hip
+    pkgs.pkgsRocm.blender
   ];
 }
