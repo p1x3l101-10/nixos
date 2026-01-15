@@ -56,7 +56,11 @@
       use-single-toolbar = false;
     };
     workspaces.seperate-essentials = false;
-    window-sync.enabled = false;
+    # I dont like window sync, windows are new sessions damnit
+    window-sync = {
+      enabled = false;
+      prefer-unsynced-windows = true;
+    };
   };
   network.auth.subresource-http-auth-allow = 1;
   fission.autostart = true;
