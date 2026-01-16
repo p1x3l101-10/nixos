@@ -18,7 +18,7 @@ lib.fix (self: {
   programs.uwsm.enable = true;
   services.gvfs.enable = true;
   # Greeter
-  services.regreet = {
+  programs.regreet = {
     enable = true;
     settings = {
       GTK.cursor_blink = true;
