@@ -30,11 +30,11 @@ lib.fix (self: {
     };
   };
   systemd.tmpfiles.settings."99-regreet-defaults" = {
-    "/var/lib/regreet/state.toml".f = {
+    "/var/lib/regreet/state.toml".C = {
       user = "greeter";
       group = "greeter";
       mode = "0644";
-      argument = (pkgs.formats.toml { }).generate {
+      argument = (pkgs.formats.toml { }).generate "state.toml" {
         last_user = "pixel";
         user_to_lest_sess.pixel = "Hyprland (uwsm-managed)";
       };
