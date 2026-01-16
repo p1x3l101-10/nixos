@@ -34,10 +34,10 @@ lib.fix (self: {
       user = "greeter";
       group = "greeter";
       mode = "0644";
-      argument = (pkgs.formats.toml { }).generate "state.toml" {
+      argument = builtins.toString ((pkgs.formats.toml { }).generate "state.toml" {
         last_user = "pixel";
         user_to_lest_sess.pixel = "Hyprland (uwsm-managed)";
-      };
+      });
     };
   };
 })
