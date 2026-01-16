@@ -29,4 +29,15 @@ lib.fix (self: {
       widget.clock.format = clockFormat.long;
     };
   };
+  systemd.tmpfiles.settings."99-regreet-defaults" = {
+    "/var/lib/regreet/state.toml".f = {
+      user = "greeter";
+      group = "greeter";
+      mode = "0644";
+      argument = (pkgs.formats.toml { }).generate {
+        last_user = "pixel";
+        user_to_lest_sess.pixel = "Hyprland (uwsm-managed)";
+      };
+    };
+  };
 })
