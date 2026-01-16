@@ -7,26 +7,6 @@
       enable = true;
       target = "hyprland-session.target";
     };
-    settings = {
-      modules = {
-        center = [
-          "Window Title"
-        ];
-        left = [
-          "Workspaces"
-        ];
-        right = [
-          "SystemInfo"
-          [
-            "Clock"
-            "Privacy"
-            "Settings"
-          ]
-        ];
-      };
-      workspaces = {
-        visibilityMode = "MonitorSpecific";
-      };
-    };
+    settings = import ./ashell.config.nix;
   };
 }
