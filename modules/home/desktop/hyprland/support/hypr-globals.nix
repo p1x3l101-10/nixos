@@ -21,9 +21,9 @@ lib.fix (self: {
     updater = "kitty \"sudo nixos-rebuild boot\"";
   };
   clockFormat = {
-    date = "%a, %b %e %Y";
+    date = "%a, %d %b";
     time = "%I:%M:%S %P";
-    long = self.clockFormat.date + " -- " + self.clockFormat.time;
+    long = self.clockFormat.date + ", " + self.clockFormat.time;
   };
   notifications = {
     checker = builtins.toString (pkgs.writeShellScript "app" ''

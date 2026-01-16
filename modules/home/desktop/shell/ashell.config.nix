@@ -1,3 +1,5 @@
+{ clockFormat }:
+
 {
   modules = {
     center = [
@@ -16,6 +18,7 @@
       ]
     ];
   };
+  clock.format = clockFormat.long;
   workspaces = {
     visibility_mode = "MonitorSpecific";
   };
