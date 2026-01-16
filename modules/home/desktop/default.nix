@@ -11,6 +11,7 @@
     nix-flatpak.homeManagerModules.nix-flatpak
     zen-browser.homeModules.twilight
     nixvim.homeModules.nixvim
+    nixcord.homeModules.nixcord
   ]) ++ (lib.internal.confTemplates.importList ./.);
   home = {
     allowedUnfree.enable = true;
