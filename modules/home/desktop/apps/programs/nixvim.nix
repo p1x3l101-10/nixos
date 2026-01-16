@@ -79,13 +79,13 @@
       zoxide-vim
     ];
     extraConfigLua = builtins.concatStringsSep "\n" [
-      (lib.strings.fileContents ./support/neovim/config.lua)
+      (lib.strings.fileContents ./support/nixvim/config.lua)
     ];
     extraConfigVim = builtins.concatStringsSep "\n" [
       ''
         let g:Hardcopy_paperType = "Letter"
       '' 
-      (lib.strings.fileContents ./support/neovim/config.vim)
+      (lib.strings.fileContents ./support/nixvim/config.vim)
     ];
     extraPackages = with pkgs; [
       # Hardcopy
