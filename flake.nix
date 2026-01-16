@@ -93,6 +93,14 @@
         flake-parts.follows = "flake-parts";
       };
     };
+    nixcord = {
+      url = "github:FlameFlag/nixcord";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        flake-compat.follows = "flake-compat";
+      };
+    };
     app2unit = {
       url = "github:soramanew/app2unit";
       inputs.nixpkgs.follows = "nixpkgs";
