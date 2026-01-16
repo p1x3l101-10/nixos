@@ -28,6 +28,11 @@ lib.fix (self: {
       };
       widget.clock.format = clockFormat.long;
     };
+    cageArgs = [
+      "-s" # DO NOT REMOVE, IT WILL LOCK YOU INTO CAGE WITHOUT THIS
+      "-d" # No decorations
+      "-m" "last" # Display on last connected screen
+    ];
   };
   systemd.tmpfiles.settings."99-regreet-defaults" = {
     "/var/lib/regreet/state.toml".C = {
