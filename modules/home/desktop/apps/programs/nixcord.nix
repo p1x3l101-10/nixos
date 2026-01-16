@@ -37,11 +37,11 @@ in
         betterGifAltText.enable = true;
         betterSessions.enable = true;
         betterSettings.enable = true;
-        blurNSFW.enable = true;
+        BlurNSFW.enable = true;
         callTimer.enable = true;
-        clearURLs.enable = true;
+        ClearURLs.enable = true;
         copyFileContents.enable = true;
-        customRPC.enable = true;
+        CustomRPC.enable = true;
         favoriteEmojiFirst.enable = true;
         favoriteGifSearch.enable = true;
         fixYoutubeEmbeds.enable = true;
