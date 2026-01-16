@@ -21,7 +21,7 @@
   };
   system_info = {
     indicators = [
-      "CPU"
+      "Cpu"
       "Memory"
       "MemorySwap"
       { Disk = "/nix"; }
