@@ -41,7 +41,7 @@ lib.fix (self: {
       mode = "0644";
       argument = builtins.toString ((pkgs.formats.toml { }).generate "state.toml" {
         last_user = "pixel";
-        user_to_lest_sess.pixel = "Hyprland (uwsm-managed)";
+        user_to_last_sess.pixel = "Hyprland (uwsm-managed)";
       });
     };
   };
