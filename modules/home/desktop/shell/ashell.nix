@@ -1,7 +1,8 @@
 { config, ... }:
 
 let
-  inherit (config.lib.stylix) colors opacity;
+  inherit (config.lib.stylix) colors;
+  inherit (config.stylix) opacity;
 in {
   programs.ashell = {
     enable = true;
