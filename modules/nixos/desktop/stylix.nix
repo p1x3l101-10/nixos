@@ -4,6 +4,7 @@
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/tarot.yaml";
+    #base16Scheme = "${pkgs.base16-schemes}/share/themes/grayscale-dark.yaml"; # Ooo spooky
     image = with config.lib.stylix.colors.withHashtag;
       pkgs.runCommand "cat.png" { } ''
                 pastel=${pkgs.pastel}/bin/pastel
