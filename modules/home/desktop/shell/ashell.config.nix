@@ -5,9 +5,9 @@
     ];
     left = [
       "Workspaces"
+      "MediaPlayer"
     ];
     right = [
-      "MediaPlayer"
       "SystemInfo"
       [
         "Tray"
