@@ -16,6 +16,7 @@ lib.fix (self: {
   };
   services.udisks2.enable = true;
   programs.uwsm.enable = true;
+  services.gvfs.enable = true;
   # Greeter
   services.greetd = {
     enable = true;
@@ -42,5 +43,4 @@ lib.fix (self: {
     home = "/var/lib/greetd";
     createHome = true;
   };
-  services.gvfs.enable = true;
 })
