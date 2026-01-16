@@ -18,29 +18,15 @@ lib.fix (self: {
   programs.uwsm.enable = true;
   services.gvfs.enable = true;
   # Greeter
-  services.greetd = {
+  services.regreet = {
     enable = true;
     settings = {
-      default_session = {
-        command = pkgs.writeShellScript "greeter" ''
-          ${pkgs.tuigreet}/bin/tuigreet \
-          --cmd "uwsm start default" \
-          --remember \
-          --time \
-          --time-format "${clockFormat.long}" \
-          --power-shutdown "systemctl poweroff" \
-          --power-reboot "systemctl reboot" \
-          --asterisks \
-          --power-no-setsid \
-          --kb-power 1
-        '';
-        user = "greeter";
+      GTK.cursor_blink = true;
+      commands = {
+        reboot = [ "systemctl" "reboot" ];
+        poweroff = [ "systemctl" "poweroff" ];
       };
+      widget.clock.format = clockFormat.long;
     };
-  };
-  users.extraUsers.greeter = {
-    isSystemUser = true;
-    home = "/var/lib/greetd";
-    createHome = true;
   };
 })
