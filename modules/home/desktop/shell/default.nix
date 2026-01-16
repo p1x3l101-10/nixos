@@ -1,5 +1,6 @@
 { ... }:
 
 {
-  imports = [ ./quickshell.nix ];
+  #imports = [ ./quickshell.nix ];
+  imports = [ ./ashell.nix ];
 }
