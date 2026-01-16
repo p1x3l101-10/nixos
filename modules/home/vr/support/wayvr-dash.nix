@@ -1,7 +1,6 @@
-{ mainProg, ... }:
 {
   dashboard = {
-    exec = mainProg;
+    exec = "";
     args = "";
     env = [];
   };
