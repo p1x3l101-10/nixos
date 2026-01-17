@@ -22,7 +22,6 @@
         	        -fill $TAIL -opaque green \
         	        -fill $HIGHLIGHTS -opaque brown \
         	        $out'';
-    polarity = "dark";
     targets = { };
   };
 }
