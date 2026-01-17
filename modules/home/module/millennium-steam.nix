@@ -1,9 +1,10 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   inherit (lib) mkEnableOption mkOption mkIf types;
   cfg = config.programs.millennium-steam;
   bool2Str = bool: if (bool) then "yes" else "no";
+  themeList = import ./support/millennium-steam/themes.nix { inherit (pkgs) fetchZip fetchFromGitHub; };
 in {
   options.programs.millennium-steam = {
     enable = mkEnableOption "millenium steam user config";
@@ -53,6 +54,10 @@ in {
     themes = {
       NEVKO-UI = {
         enable = mkEnableOption "NEVKO-UI";
+        package = mkOption {
+          type = types.package;
+          default = themeList.NEVKO-UI;
+        };
         settings = {
           altOnlineIndicator = mkOption {
             type = types.bool;
@@ -244,5 +249,12 @@ in {
         } else {})
       ]);
     };
+    home.file = let
+      skinpath = ".local/share/Steam/steamui/skins";
+    in (lib.mkMerge [
+      (if (cfg.themes.NEVKO-UI.enable == true) then {
+        "${skinpath}/NEVKO-UI".source = cfg.themes.NEVKO-UI.package;
+      } else {})
+    ]);
   };
 }
