@@ -6,6 +6,16 @@ let
 in {
   programs.millennium-steam = {
     enable = true;
+    quickCss = ''
+      /* Change header name */
+      .bSKGlAJG2UVWTsntEJY2v::after {
+        content: "Steam" !important;
+        color: "rgb(var(--st-accent-1))" !important;
+      }
+      ._2UyOBeiSdBayaFdRa39N2O:nth-of-type(1)::after {
+        font-size: 0;
+      }
+    '';
     settings = {
       general = {
         shouldShowThemePluginUpdateNotifications = false;
@@ -32,7 +42,7 @@ in {
         colorOverrides = let
           mkColor = colorID: "${colors."base${colorID}-rgb-r"}, ${colors."base${colorID}-rgb-g"}, ${colors."base${colorID}-rgb-b"}";
         in {
-          "--st-accent-1" = mkColor "0E";
+          "--st-accent-1" = mkColor "0B";
           "--st-accent-2" = mkColor "09";
           "--st-color-1" = mkColor "01";
           "--st-color-2" = mkColor "01";
