@@ -6,11 +6,13 @@ let
 in {
   programs.millennium-steam = {
     enable = true;
-    quickCss = ''
+    quickCss = let
+      mkColor = colorID: "${colors."base${colorID}-rgb-r"}, ${colors."base${colorID}-rgb-g"}, ${colors."base${colorID}-rgb-b"}";
+    in ''
       /* Change header name */
       div .bSKGlAJG2UVWTsntEJY2v::after {
         content: "Steam" !important;
-        color: "rgb(var(--st-accent-1))" !important;
+        color: "rgb(${mkColor "0B"})" !important;
       }
       ._2UyOBeiSdBayaFdRa39N2O:nth-of-type(1)::after {
         font-size: 0;
