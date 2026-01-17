@@ -7,6 +7,11 @@ in {
   programs.millennium-steam = {
     enable = true;
     settings = {
+      general = {
+        shouldShowThemePluginUpdateNotifications = false;
+        checkForMillenniumUpdates = false;
+        checkForPluginAndThemeUpdates = false;
+      };
       misc.hasShownWelcomeModal = true;
     };
     themes.NEVKO-UI = {
