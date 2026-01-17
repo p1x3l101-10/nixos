@@ -145,7 +145,7 @@ in {
       };
     };
     colorOverrides = mkOption {
-      description = "Colors to override in the preset, uses the same format as settings.themes.themeColors.NEVKO-UI";
+      description = "Colors to override in the preset";
       type = with types; attrsOf str;
     };
   };
