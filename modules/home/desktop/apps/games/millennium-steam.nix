@@ -1,10 +1,14 @@
 { config, lib, ... }:
 
 let
-  inherit (config.lib.stylix) colors mkHexColor;
+  inherit (config.lib.stylix) colors;
+  mkHexColor = color: "#${color}";
 in {
   programs.millenium-steam = {
     enable = true;
+    settings = {
+      misc.hasShownWelcomeModal = true;
+    };
     themes.NEVKO-UI = {
       enable = true;
       colorOverrides = with colors; {
