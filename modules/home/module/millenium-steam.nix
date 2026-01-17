@@ -200,6 +200,7 @@ in {
         cfg.settings
         (mkIf (cfg.themes.NEVKO-UI.enable) {
           themes = {
+            activeTheme = "NEVKO-UI";
             conditions.NEVKO-UI = with cfg.themes.NEVKO-UI.settings; {
               "Alternative Online Indicator" = bool2Str altOnlineIndicator;
               "Avatar Decoration" = bool2Str avatarDecoration;
