@@ -1,5 +1,5 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
-  home.packages = [ pkgs.yt-dlp ];
+  programs.yt-dlp.enable = true;
 }

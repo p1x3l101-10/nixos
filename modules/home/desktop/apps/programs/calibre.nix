@@ -1,5 +1,5 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
-  home.packages = [ pkgs.calibre ];
+  programs.calibre.enable = true;
 }
