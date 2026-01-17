@@ -11,6 +11,9 @@ in {
     };
     themes.NEVKO-UI = {
       enable = true;
+      settings = {
+        removeWindowButtons = "All";
+      };
       colorOverrides = with colors; {
         "--custom-accent" = mkHexColor base0B;
         "--green-color" = mkHexColor green;
