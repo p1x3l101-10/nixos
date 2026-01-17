@@ -24,4 +24,5 @@ in {
       };
     };
   };
+  xdg.configFile."millennium/config.json".force = true;
 }
