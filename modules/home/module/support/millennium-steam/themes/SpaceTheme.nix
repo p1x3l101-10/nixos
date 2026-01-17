@@ -24,14 +24,16 @@ in {
       # NOTE: any spelling errors here reflect the mistakes of upstream
       # I am trying to match the option location to the upstream locations as much as possible
       general = {
-        titlebar.windowControls = mkOption {
-          description = "Hide the Window Controls (Minimize, Maximize, Close) from the titlebar";
-          type = types.enum [
-            "Show"
-            "Show only on hover"
-            "Hide"
-          ];
-          default = "Show";
+        titlebar = {
+          windowControls = mkOption {
+            description = "Hide the Window Controls (Minimize, Maximize, Close) from the titlebar";
+            type = types.enum [
+              "Show"
+              "Show only on hover"
+              "Hide"
+            ];
+            default = "Show";
+          };
         };
         sidebar = {
           navigationButtons = mkSimpleBool "Hide Navigation buttons";
