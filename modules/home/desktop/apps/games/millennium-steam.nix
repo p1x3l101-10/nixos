@@ -10,7 +10,7 @@ in {
       /* Change header name */
       div .bSKGlAJG2UVWTsntEJY2v::after {
         content: "Steam" !important;
-        color: "rgb(var(--st-accent-1))" !important;
+        color: "#${colors.base0B}" !important;
       }
       ._2UyOBeiSdBayaFdRa39N2O:nth-of-type(1)::after {
         font-size: 0;
