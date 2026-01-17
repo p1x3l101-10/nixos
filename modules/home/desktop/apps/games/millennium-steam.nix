@@ -15,8 +15,23 @@ in {
       misc.hasShownWelcomeModal = true;
     };
     themes = {
-      NEVKO-UI = {
+      SpaceTheme = {
         enable = true;
+        settings = {
+          general.titlebar.windowControls = "Hide";
+          store = {
+            gamepage.hideBroadcast = true;
+            cart.hideDigitalProduct = true;
+          };
+          library = {
+            home.hideAddShelf = true;
+            gamepage.biggerBanner = true;
+          };
+        };
+        colorOverrides = {};
+      };
+      NEVKO-UI = {
+        #enable = true;
         settings = {
           removeWindowButtons = "All";
         };
