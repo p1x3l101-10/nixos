@@ -176,7 +176,7 @@ in {
         "General - News button" = bool2Str general.userpannel.hideNews;
         "General - Notification button" = bool2Str general.userpannel.hideNotificationButton;
         "General - Friend list button" = bool2Str general.userpannel.hideFriendsList;
-        "General - Font" = mkDefaultStr general.other.font;
+        "General - Font" = mkDefaultStr general.other.font "Be Vietnam Pro";
         "General - System accent colors" = bool2Str false;
         "General - Mica & Acrylic plugin support" = bool2Str general.other.acrylicSupport;
         "General - Achievement Notification" = bool2Str general.other.achievementNotification;
@@ -203,8 +203,8 @@ in {
         "Library - Game info box artwork" = bool2Str library.gamepage.hideInfoArt;
         "Library - Sidebar on left" = bool2Str library.gamepage.sidebarOnLeft;
         "Community - VAC-Ban visibility" = community.profile.hideVACBans;
-        "Community - Profile pages header" = community.other.hideProfilePageHeader;
-     };
+        "Community - Profile pages header" = bool2Str community.other.hideProfilePageHeader;
+      };
       themeColors.SpaceTheme = {
         "--st-accent-1" = "102, 108, 255";
         "--st-accent-2" = "135, 140, 255";
