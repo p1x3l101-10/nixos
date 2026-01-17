@@ -1,9 +1,11 @@
-{ pkgs, config, ... }:
+{ pkgs, config, ext, ... }:
 
-{
+let
+  inherit (ext) system inputs;
+in {
   programs.steam = {
     enable = true;
-    package = pkgs.steam.override {
+    package = inputs.millennium.packages."${system}".millennium-steam.override {
       extraEnv = {
         STEAM_LAUNCH_WRAPPER_SCOPE = "1";
         PRESSURE_VESSEL_SYSTEMD_SCOPE = "1";
