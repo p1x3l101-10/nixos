@@ -8,7 +8,7 @@ in {
     enable = true;
     quickCss = ''
       /* Change header name */
-      .bSKGlAJG2UVWTsntEJY2v::after {
+      div .bSKGlAJG2UVWTsntEJY2v::after {
         content: "Steam" !important;
         color: "rgb(var(--st-accent-1))" !important;
       }
