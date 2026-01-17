@@ -22,6 +22,7 @@ in {
           store = {
             gamepage.hideBroadcast = true;
             cart.hideDigitalProduct = true;
+            other.hideFooter = true;
           };
           library = {
             home.hideAddShelf = true;
