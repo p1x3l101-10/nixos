@@ -4,7 +4,7 @@ let
   inherit (config.lib.stylix) colors;
   mkHexColor = color: "#${color}";
 in {
-  programs.millenium-steam = {
+  programs.millennium-steam = {
     enable = true;
     settings = {
       misc.hasShownWelcomeModal = true;
