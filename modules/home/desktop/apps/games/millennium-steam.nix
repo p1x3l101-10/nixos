@@ -28,24 +28,26 @@ in {
             gamepage.biggerBanner = true;
           };
         };
-        colorOverrides = with colors; {
-          "--st-accent-1" = mkHexColor base0E;
-          "--st-accent-2" = mkHexColor base09;
-          "--st-color-1" = mkHexColor base01;
-          "--st-color-2" = mkHexColor base03;
-          "--st-color-3" = mkHexColor base02;
-          "--st-color-4" = mkHexColor base02;
-          "--st-color-5" = mkHexColor base03;
-          "--st-color-6" = mkHexColor base03;
-          "--st-background" = mkHexColor base00;
-          "--st-red" = mkHexColor red;
-          "--st-red-hover" = mkHexColor bright-red;
-          "--st-green" = mkHexColor green;
-          "--st-green-hover" = mkHexColor bright-green;
-          "--st-blue" = mkHexColor blue;
-          "--st-blue-hover" = mkHexColor bright-blue;
-          "--st-yellow" = mkHexColor yellow;
-          "--st-yellow-hover" = mkHexColor bright-yellow;
+        colorOverrides = let
+          mkColor = colorID: "${colors."base${colorID}-rgb-r"}, ${colors."base${colorID}-rgb-g"}, ${colors."base${colorID}-rgb-b"}";
+        in {
+          "--st-accent-1" = mkColor "0E";
+          "--st-accent-2" = mkColor "09";
+          "--st-color-1" = mkColor "01";
+          "--st-color-2" = mkColor "03";
+          "--st-color-3" = mkColor "02";
+          "--st-color-4" = mkColor "02";
+          "--st-color-5" = mkColor "03";
+          "--st-color-6" = mkColor "03";
+          "--st-background" = mkColor "00";
+          "--st-red" = mkColor "08";
+          "--st-red-hover" = mkColor "08";
+          "--st-green" = mkColor "0B";
+          "--st-green-hover" = mkColor "0B";
+          "--st-blue" = mkColor "0D";
+          "--st-blue-hover" = mkColor "0D";
+          "--st-yellow" = mkColor "0A";
+          "--st-yellow-hover" = mkColor "0A";
         };
       };
       NEVKO-UI = {
