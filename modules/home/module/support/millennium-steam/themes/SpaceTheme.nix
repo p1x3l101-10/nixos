@@ -82,7 +82,7 @@ in {
       };
       store = {
         gamepage = {
-          broadcast = mkSimpleBool "Hide broadcasts on the store gamepage";
+          hideBroadcast = mkSimpleBool "Hide broadcasts on the store gamepage";
           infoSidebarOnRight = mkSimpleBool "Changes the info sidebar from right to left";
           hideReviewWrite = mkSimpleBool "Hide the Write a Review section";
         };
@@ -182,7 +182,7 @@ in {
         "General - Achievement Notification" = bool2Str general.other.achievementNotification;
         "General - Userpannel" = bool2Str general.experimental.userpannel;
         "General - Game Overlay" = bool2Str general.experimental.gameOverlay;
-        "Store - Broadcast" = bool2Str store.gamepage.broadcast;
+        "Store - Broadcast" = bool2Str store.gamepage.hideBroadcast;
         "Store - Info sidebar on right" = bool2Str store.gamepage.infoSidebarOnRight;
         "Store - Write a Review" = bool2Str store.gamepage.hideReviewWrite;
         "Store - Recommendations" = bool2Str store.cart.hideRecommendations;
