@@ -3,7 +3,7 @@
 {
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/oxocarbon-dark.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/oxocarbon-light.yaml";
     #base16Scheme = ./support/stylix/base16/dark-rose.yaml;
     #base16Scheme = "${pkgs.base16-schemes}/share/themes/grayscale-dark.yaml"; # Ooo spooky
     image = with config.lib.stylix.colors.withHashtag;
