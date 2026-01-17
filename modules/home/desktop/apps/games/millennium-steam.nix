@@ -31,12 +31,12 @@ in {
         colorOverrides = with colors; {
           "--st-accent-1" = mkHexColor base0E;
           "--st-accent-2" = mkHexColor base09;
-          "--st-color-1" = mkHexColor base03;
-          "--st-color-2" = mkHexColor base01;
+          "--st-color-1" = mkHexColor base01;
+          "--st-color-2" = mkHexColor base03;
           "--st-color-3" = mkHexColor base02;
           "--st-color-4" = mkHexColor base02;
-          "--st-color-5" = mkHexColor base01;
-          "--st-color-6" = mkHexColor base01;
+          "--st-color-5" = mkHexColor base03;
+          "--st-color-6" = mkHexColor base03;
           "--st-background" = mkHexColor base00;
           "--st-red" = mkHexColor red;
           "--st-red-hover" = mkHexColor bright-red;
