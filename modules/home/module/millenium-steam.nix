@@ -109,7 +109,7 @@ in {
             ];
             default = "Left Side";
           };
-          hideBalance = mkOptions {
+          hideBalance = mkOption {
             type = types.bool;
             default = true;
           };
