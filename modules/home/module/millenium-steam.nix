@@ -72,7 +72,7 @@ in {
           };
           blurAccountName = mkOption {
             type = types.bool;
-            defailt = false;
+            default = false;
           };
           blurBalance = mkOption {
             type = types.bool;
@@ -162,11 +162,11 @@ in {
             ];
             default = "None";
           };
-          reorderMainButtons = {
+          reorderMainButtons = mkOption {
             type = types.bool;
             default = true;
           };
-          resizeLibraryList = {
+          resizeLibraryList = mkOption {
             type = types.enum [
               "Default"
               "Small"
@@ -175,12 +175,13 @@ in {
             ];
             default = "Default";
           };
-          menuStyle = {
+          menuStyle = mkOption {
             type = types.enum [
               "Legacy"
               "Spacious"
               "Compact"
             ];
+            default = "Spacious";
           };
         };
         colorOverrides = mkOption {
@@ -222,7 +223,7 @@ in {
               "Refresh Friends & Chat" = if (refreshFriends) then "Enabled" else "Disabled";
               "Refresh Settings" = if (refreshSettings) then "Enabled" else "Disabled";
               "Remove Window Buttons" = removeWindowButtons;
-              "Reorder Main Buttons" = bool2Str reorderMainButtons;
+              "Reorder Main Buttons" = reorderMainButtons;
               "Resize Library List" = resizeLibraryList;
               "Rounding Avatars" = avatarRounding;
               "Style Menu" = menuStyle;

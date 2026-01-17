@@ -1,7 +1,7 @@
 { config, lib, ... }:
 
 let
-  inherit (config.lib.stylix.colors) colors mkHexColor;
+  inherit (config.lib.stylix) colors mkHexColor;
 in {
   programs.millenium-steam = {
     enable = true;
@@ -16,7 +16,7 @@ in {
         "--main-background" = mkHexColor base00;
         "--offline-status" = mkHexColor base03;
         "--online-status" = mkHexColor cyan;
-        "--purple-color" = mkHexColor purple;
+        "--purple-color" = mkHexColor base0E;
       };
     };
   };
