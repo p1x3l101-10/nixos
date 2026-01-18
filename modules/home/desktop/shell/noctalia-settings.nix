@@ -30,8 +30,6 @@
     volumeStep = 5;
   };
   bar = {
-    backgroundOpacity = 0.93;
-    capsuleOpacity = 1;
     density = "compact";
     exclusive = true;
     floating = false;
@@ -243,7 +241,6 @@
   };
   dock = {
     animationSpeed = 1;
-    backgroundOpacity = 1;
     colorizeIcons = false;
     deadOpacity = 0.6;
     displayMode = "auto_hide";
@@ -301,8 +298,8 @@
     showCalendarEvents = true;
     showCalendarWeather = true;
     showWeekNumberInCalendar = false;
-    use12hourFormat = false;
-    useFahrenheit = false;
+    use12hourFormat = true;
+    useFahrenheit = true;
     weatherEnabled = true;
     weatherShowEffects = true;
   };
@@ -324,7 +321,6 @@
     nightTemp = "4000";
   };
   notifications = {
-    backgroundOpacity = 1;
     criticalUrgencyDuration = 15;
     enableKeyboardLayoutToast = true;
     enableMediaToast = false;
@@ -364,7 +360,6 @@
   };
   osd = {
     autoHideMs = 2000;
-    backgroundOpacity = 1;
     enabled = true;
     enabledTypes = [
       0
@@ -445,12 +440,7 @@
     bluetoothDetailsViewMode = "grid";
     bluetoothHideUnnamedDevices = false;
     boxBorderEnabled = false;
-    fontDefault = "DejaVu Sans";
-    fontDefaultScale = 1;
-    fontFixed = "monospace";
-    fontFixedScale = 1;
     networkPanelView = "wifi";
-    panelBackgroundOpacity = 0.93;
     panelsAttachedToBar = true;
     settingsPanelMode = "attached";
     tooltipsEnabled = true;
