@@ -17,6 +17,9 @@ lib.fix (self: {
   services.udisks2.enable = true;
   programs.uwsm.enable = true;
   services.gvfs.enable = true;
+  hardware.bluetooth.enable = true;
+  services.tuned.enable = true;
+  services.upower.enable = true;
   # Greeter
   programs.regreet = {
     enable = true;
