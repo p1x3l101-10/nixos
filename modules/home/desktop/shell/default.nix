@@ -1,6 +1,5 @@
 { ... }:
 
 {
-  #imports = [ ./quickshell.nix ];
-  imports = [ ./ashell.nix ];
+  imports = [ ./noctalia.nix ];
 }
