@@ -7,7 +7,8 @@
     settings = {
       bar = {
         density = "compact";
-        position = "right";
+        position = "top";
+        floating = true;
         showCapsule = false;
         left = [
           {
@@ -46,6 +47,9 @@
       general = {
         avatarImage = "${config.home.homeDirectory}/.face";
         radiusRatio = 0.2;
+      };
+      location = {
+        name = "Oklahoma City OK";
       };
     };
   };
