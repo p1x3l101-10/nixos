@@ -1,8 +1,8 @@
-{ ... }:
+{ lib, ... }:
 
 {
   services.hyprpaper = {
-    enable = false;
+    enable = lib.mkForce false;
     settings = {
       splash = false;
     };
