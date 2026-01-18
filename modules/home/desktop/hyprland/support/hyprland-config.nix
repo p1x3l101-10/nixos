@@ -105,14 +105,19 @@ in
     (b "R" "exec" globals.spotlight)
     (b "L" "exec" "loginctl lock-session $XDG_SESSION")
     (b "P" "pseudo") # dwindle
-    (b "J" "togglesplit") # dwindle
+    (b ";" "togglesplit") # dwindle
     # Get some pesky games to work
     (b "F11" "fullscreen")
     # Move focus
-    (b' "SHIFT" "H" "movefocus" "l")
-    (b' "SHIFT" "J" "movefocus" "u")
-    (b' "SHIFT" "K" "movefocus" "d")
-    (b' "SHIFT" "L" "movefocus" "r")
+    (b "H" "movefocus" "l")
+    (b "J" "movefocus" "u")
+    (b "K" "movefocus" "d")
+    (b "L" "movefocus" "r")
+    # Move windows
+    (b' "SHIFT" "H" "movewindow" "l")
+    (b' "SHIFT" "J" "movewindow" "u")
+    (b' "SHIFT" "K" "movewindow" "d")
+    (b' "SHIFT" "L" "movewindow" "r")
     # BEGIN: Numbered workspaces corrisponding to 1-0 on kbd
   ] ++ (map (value: (bind value "workspace" value))
     ((builtins.genList (x: (builtins.toString (x + 1))) 9)) # 9 Workspaces
