@@ -34,6 +34,7 @@ lib: (lib.fix (self: {
           "movetoworkspace"
           "workspace"
           "movefocus"
+          "movewindow"
         ]
       )
       # Default
