@@ -114,10 +114,10 @@ in
     (b "K" "movefocus" "d")
     (b "L" "movefocus" "r")
     # Move windows
-    (b' "SHIFT" "H" "movewindow, l")
-    (b' "SHIFT" "J" "movewindow, u")
-    (b' "SHIFT" "K" "movewindow, d")
-    (b' "SHIFT" "L" "movewindow, r")
+    ((b' "SHIFT" "H" "movewindow") + "l")
+    ((b' "SHIFT" "J" "movewindow") + "u")
+    ((b' "SHIFT" "K" "movewindow") + "d")
+    ((b' "SHIFT" "L" "movewindow") + "r")
     # BEGIN: Numbered workspaces corrisponding to 1-0 on kbd
   ] ++ (map (value: (bind value "workspace" value))
     ((builtins.genList (x: (builtins.toString (x + 1))) 9)) # 9 Workspaces
