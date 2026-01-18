@@ -1,8 +1,9 @@
-{ ... }:
+{ config, ... }:
 
 {
   programs.noctalia-shell = {
     enable = true;
+    systemd.enable = true;
     settings = {
       bar = {
         density = "compact";
@@ -43,7 +44,7 @@
         ];
       };
       general = {
-        avatarImage = "/home/drfoobar/.face";
+        avatarImage = "${config.home.homeDirectory}/.face";
         radiusRatio = 0.2;
       };
     };
