@@ -14,9 +14,9 @@ lib.fix (self: {
     roblox = "org.vinegarhq.Sober";
     archiveManager = "xarchiver";
   };
-  spotlight = "fuzzel --launch-prefix='app2unit --fuzzel-compat --'";
+  spotlight = "noctalia-shell ipc call launcher toggle";
   appLauncher = self.spotlight;
-  clipboardMenu = "cliphist-wofi-img | wl-copy";
+  clipboardMenu = "noctalia-shell ipc call launcher clipboard";
   updates = {
     updater = "kitty \"sudo nixos-rebuild boot\"";
   };

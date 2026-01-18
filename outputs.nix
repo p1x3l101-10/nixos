@@ -76,6 +76,7 @@ inputs.flake-utils.lib.eachDefaultSystem
           ./systems/pixels-pc
         ] ++ (with inputs; [
           self.nixosModules.desktop
+          noctalia.nixosModules.default
           nixpkgs-xr.nixosModules.nixpkgs-xr
         ]) ++ (with inputs.nixos-hardware.nixosModules; [
           common-pc
@@ -90,6 +91,7 @@ inputs.flake-utils.lib.eachDefaultSystem
           ./systems/pixels-laptop
         ] ++ (with inputs; [
           self.nixosModules.desktop
+          noctalia.nixosModules.default
         ]) ++ (with inputs.nixos-hardware.nixosModules; [
           common-pc-laptop
           common-pc-laptop-ssd
