@@ -103,7 +103,7 @@ in
     (b "E" "exec" globals.apps.fileManager.exec)
     (b "V" "togglefloating")
     (b "R" "exec" globals.spotlight)
-    (b' "SHIFT" ";" "exec" "loginctl lock-session $XDG_SESSION")
+    (b ";" "exec" "loginctl lock-session $XDG_SESSION")
     (b "P" "pseudo") # dwindle
     (b ";" "togglesplit") # dwindle
     # Get some pesky games to work
