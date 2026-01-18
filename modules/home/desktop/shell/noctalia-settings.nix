@@ -16,8 +16,8 @@
     showCategories = true;
     showIconBackground = false;
     sortByMostUsed = true;
-    terminalCommand = "xterm -e";
-    useApp2Unit = false;
+    terminalCommand = "kitty";
+    useApp2Unit = true;
     viewMode = "list";
   };
   audio = {
