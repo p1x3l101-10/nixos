@@ -13,6 +13,7 @@ in
     vesktop = {
       enable = true;
       settings = {
+        MINIMIZE_TO_TRAY = true;
         discordBranch = "stable";
         minimizeToTray = true;
         arRPC = true;
