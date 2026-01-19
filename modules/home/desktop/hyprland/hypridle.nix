@@ -24,7 +24,7 @@ in
         {
           # Lock screen after idling for too long
           timeout = 300; # 5 min
-          on-timeout = "loginctl lock-session";
+          on-timeout = globals.lockCmd;
         }
         {
           # Blank screen
