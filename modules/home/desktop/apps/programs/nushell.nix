@@ -3,6 +3,10 @@
 {
   programs.nushell = {
     enable = true;
+    plugins = {};
+    settings = {
+      use_kitty_protocol = true;
+    };
   };
   # Integrations
   services.ssh-agent.enableNushellIntegration = true;
