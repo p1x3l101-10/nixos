@@ -15,6 +15,6 @@ in {
     };
   };
   systemd.user.services.noctalia-shell.Service.Environment = [
-    "QS_ICON_THEME = ${config.stylix.icons."${config.stylix.polarity}"}"
+    "QS_ICON_THEME=\"${config.stylix.icons."${config.stylix.polarity}"}\""
   ];
 }
