@@ -3,19 +3,6 @@
 {
   programs.nushell = {
     enable = true;
-    plugins = with pkgs.nushellPlugins; [
-      hcl
-      skim
-      dbus
-      units
-      query
-      gstat
-      semver
-      polars
-      formats
-      highlight
-      desktop_notifications
-    ];
     settings = {
       use_kitty_protocol = true;
     };
