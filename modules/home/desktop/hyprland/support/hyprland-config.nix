@@ -105,7 +105,7 @@ in
     (b "R" "exec" globals.spotlight)
     (b' "ALT" "l" "exec" globals.lockCmd)
     (b "P" "pseudo") # dwindle
-    (b ";" "togglesplit") # dwindle
+    (b "O" "togglesplit") # dwindle
     # Get some pesky games to work
     (b "F11" "fullscreen")
     # Move focus
