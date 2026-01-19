@@ -1,9 +1,12 @@
-{ ... }:
+{ pkgs, lib, ... }:
 
 {
   programs.nushell = {
     enable = true;
-    plugins = {};
+    plugins = (map
+      ({ name, value }: value)
+      (lib.attrsToList pkgs.nushellPlugins)
+    );
     settings = {
       use_kitty_protocol = true;
     };
