@@ -24,5 +24,11 @@
         	        $out'';
     polarity = "dark";
     targets = { };
+    icons = {
+      enable = true;
+      light = "Adwaita";
+      dark = "Adwaita";
+      package = pkgs.adwaita-icon-theme;
+    };
   };
 }

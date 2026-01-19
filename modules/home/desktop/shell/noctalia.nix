@@ -14,4 +14,5 @@ in {
       mTertiary = mkForce base0D;
     };
   };
+  systemd.user.services.noctalia-shell.Unit.Environment.QS_ICON_THEME = config.stylix.icons."${config.stylix.polarity}";
 }
