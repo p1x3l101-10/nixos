@@ -63,7 +63,7 @@
         {
           icon = "rocket";
           id = "Launcher";
-          usePrimaryColor = false;
+          usePrimaryColor = true;
         }
         {
           customFont = "";
@@ -76,7 +76,7 @@
         }
         {
           compactMode = true;
-          diskPath = "/";
+          diskPath = "/nix";
           id = "SystemMonitor";
           showCpuTemp = true;
           showCpuUsage = true;
@@ -88,7 +88,7 @@
           showNetworkStats = false;
           showSwapUsage = false;
           useMonospaceFont = true;
-          usePrimaryColor = false;
+          usePrimaryColor = true;
         }
         {
           colorizeIcons = false;
