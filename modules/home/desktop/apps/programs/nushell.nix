@@ -5,6 +5,7 @@
     enable = true;
     settings = {
       use_kitty_protocol = true;
+      show_banner = false;
     };
   };
   # Integrations
