@@ -1,6 +1,8 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 
-{
+let
+  inherit (config.lib.nushell) mkNushellInline;
+in {
   programs.nushell = {
     enable = true;
     settings = {
@@ -9,7 +11,7 @@
       completions.external = {
         enable = true;
         max_results = 100;
-        completer = "{|spans| carapace $spans.0 nushell ...$spans | from json }";
+        completer = mkNushellInline "{|spans| carapace $spans.0 nushell ...$spans | from json }";
       };
     };
   };
