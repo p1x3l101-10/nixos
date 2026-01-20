@@ -16,7 +16,6 @@ in {
       "aerospace"
       "ani-cli"
       "as"
-      "auto-generate"
       "aws"
       "bat"
       "bend"
