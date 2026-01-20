@@ -1,6 +1,9 @@
 { ... }:
 
 {
+  imports = [
+    ./support/starship/nerdfonts.nix
+  ];
   programs.starship = {
     enable = true;
     settings = {
