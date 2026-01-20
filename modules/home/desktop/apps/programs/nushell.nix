@@ -1,6 +1,9 @@
 { pkgs, lib, ... }:
 
 {
+  imports = [
+    ./support/nu/autocomplete.nix
+  ];
   programs.nushell = {
     enable = true;
     settings = {
