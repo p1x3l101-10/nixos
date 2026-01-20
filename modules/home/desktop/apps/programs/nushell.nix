@@ -1,15 +1,17 @@
 { pkgs, lib, ... }:
 
 {
-  imports = [
-    ./support/nu/autocomplete.nix
-  ];
   programs.nushell = {
     enable = true;
     settings = {
       use_kitty_protocol = true;
       show_banner = false;
     };
+  };
+  # Autoload
+  xdg.configFile."nushell/autoload" = {
+    source = ./support/nu/autoload;
+    recursive = true;
   };
   # Integrations
   services.ssh-agent.enableNushellIntegration = true;
