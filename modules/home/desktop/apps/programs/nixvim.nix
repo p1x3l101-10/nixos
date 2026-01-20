@@ -98,6 +98,7 @@
         nil_ls.enable = true;
         bashls.enable = true;
         fsautocomplete.enable = true;
+        nushell.enable = true;
       };
     };
     clipboard = {
