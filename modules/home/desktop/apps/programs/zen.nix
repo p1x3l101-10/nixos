@@ -30,6 +30,7 @@
           ipfs-companion
           old-reddit-redirect
           reddit-enhancement-suite
+          keepassxc-browser
         ];
       };
       settings = lib.internal.attrsets.compressAttrs "." (import ./support/firefox-config.nix);
