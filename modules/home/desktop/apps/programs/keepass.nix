@@ -5,8 +5,15 @@
     enable = true;
     autostart = true;
     settings = {
-      Browser.Enabled = true;
-      SSHAgent.Enabled = true;
+      General.ConfigVersion = 2;
+      Browser = {
+        Enabled = true;
+        CustomProxyLocation = "";
+      };
+      FdoSecrets.Enabled = true;
+      GUI.TrayIconAppearance = "monochrome-light";
+      SSHAgent.Enabled = false;
+      Security.IconDownloadFallback = true;
     };
   };
   home.packages = with pkgs; [
