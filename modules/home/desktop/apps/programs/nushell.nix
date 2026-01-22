@@ -14,10 +14,25 @@ in {
         completer = mkNushellInline "{|spans| carapace $spans.0 nushell ...$spans | from json }";
       };
     };
+    extraConfig = ''
+      const NU_LIB_DIRS = [
+        ($nu.default-config-dir | path join 'modules')
+        ($nu.default-config-dir | path join 'scripts')
+        ($nu.data-dir | path join 'completions')
+      ]
+    '';
   };
   # Autoload
   xdg.configFile."nushell/autoload" = {
     source = ./support/nu/autoload;
+    recursive = true;
+  };
+  xdg.configFile."nushell/modules" = {
+    source = ./support/nu/modules;
+    recursive = true;
+  };
+  xdg.configFile."nushell/scripts" = {
+    source = ./support/nu/scripts;
     recursive = true;
   };
   # External completions
