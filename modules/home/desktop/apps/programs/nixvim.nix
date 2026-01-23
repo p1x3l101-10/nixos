@@ -54,6 +54,7 @@
             { name = "luasnip"; }
             { name = "buffer"; }
             { name = "path"; }
+            { name = "nushell"; }
           ];
         };
       };
@@ -72,6 +73,82 @@
       };
       luasnip.enable = true;
       lspkind.enable = true;
+      treesitter = {
+        enable = true;
+        nixvimInjections = true;
+        nixGrammars = true;
+        grammarPackages = with pkgs.vimPlugins.nvim-treesitter-parsers; [
+          zsh
+          yaml
+          xml
+          xresources
+          xcompose
+          wit
+          vimdoc
+          vim
+          udev
+          toml
+          todotxt
+          tcl
+          scss
+          rust
+          ruby
+          robots_txt
+          regex
+          qmljs
+          qmldir
+          python
+          printf
+          perl
+          nu
+          nix
+          ninja
+          nickel
+          nginx
+          nasm
+          meson
+          markdown
+          markdown_inline
+          matlab
+          make
+          luau
+          luap
+          luadoc
+          lua
+          llvm
+          linkerscript
+          latex
+          kitty
+          json
+          json5
+          jq
+          javascript
+          java
+          ini
+          hyprlang
+          hurl
+          http
+          html
+          hjson
+          groovy
+          gpg
+          doxygen
+          dockerfile
+          disassembly
+          diff
+          css
+          cpp
+          commonlisp
+          cmake
+          c
+          bash
+          awk
+          astro
+          asm
+          arduino
+          c3
+        ];
+      };
     };
     extraPlugins = with pkgs.vimPlugins; [
       heirline-nvim
