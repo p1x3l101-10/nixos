@@ -77,6 +77,9 @@
         enable = true;
         nixvimInjections = true;
         nixGrammars = true;
+        settings = {
+          highlight.enable = true;
+        };
         grammarPackages = with pkgs.vimPlugins.nvim-treesitter-parsers; [
           zsh
           yaml
