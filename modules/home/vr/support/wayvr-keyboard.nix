@@ -1,5 +1,4 @@
 {
-  name = "en-us_full";
   row_size = 23;
   key_sizes = [ # Damn, thats a full sized keyboard
     [1.5 0.5  1  1  1  1 0.5 1  1  1  1 0.5 1  1  1  1  0.5  1  1  1  0.5  1  1  1  1]

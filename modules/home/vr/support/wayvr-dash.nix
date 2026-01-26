@@ -1,7 +1,0 @@
-{
-  dashboard = {
-    exec = "";
-    args = "";
-    env = [];
-  };
-}
