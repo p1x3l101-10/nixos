@@ -22,11 +22,11 @@ in {
       ]
 
       # Import modules
-      use filesystem/bm
-      use filesystem/expand
+      use filesystem/bm.nu
+      use filesystem/expand.nu
       use jc
-      use nix/nix
-      use nix/nufetch
+      use nix/nix.nu
+      use nix/nufetch.nu
     '';
   };
   # Autoload
