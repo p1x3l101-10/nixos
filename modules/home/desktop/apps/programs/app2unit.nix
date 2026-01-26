@@ -11,5 +11,5 @@ in
       APP2UNIT_SLICES = "a=app-graphical.slice b=background-graphical.slice s=session-graphical.slice";
     };
   };
-  programs.noctalia-shell.app2unit.package = app2unit;
+  #programs.noctalia-shell.app2unit.package = app2unit;
 }
