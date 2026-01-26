@@ -47,4 +47,7 @@ in {
   programs.zoxide.enableNushellIntegration = true;
   programs.nix-index.enableNushellIntegration = true;
   programs.lazygit.enableNushellIntegration = true;
+  home.packages = [
+    pkgs.jc
+  ];
 }
