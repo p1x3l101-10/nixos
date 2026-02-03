@@ -9,8 +9,8 @@ in {
     systemd.enable = true;
     settings = import ./noctalia-settings.nix params;
     colors = with colors.withHashtag; {
-      mPrimary = mkForce base0D;
-      mSecondary = mkForce base0C;
+      mPrimary = mkForce base0C;
+      mSecondary = mkForce base0D;
       mTertiary = mkForce base0B;
     };
   };
