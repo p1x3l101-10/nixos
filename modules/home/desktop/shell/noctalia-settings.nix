@@ -152,6 +152,9 @@
           id = "Brightness";
         }
         {
+          id = "plugin:privacy-indictor";
+        }
+        {
           colorizeDistroLogo = false;
           colorizeSystemIcon = "none";
           customIconPath = "";
