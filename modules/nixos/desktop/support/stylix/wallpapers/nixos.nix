@@ -11,7 +11,7 @@ pkgs.stdenv.mkDerivation (with config.lib.stylix.colors; {
       }" version="1.1" xmlns="http://www.w3.org/2000/svg">
         <rect width="${toString width}" height="${
           toString height
-        }" fill="#${base01}"/>
+        }" fill="#${base00}"/>
         <svg x="${toString (width / 2 - (logoScale * 50))}" y="${
           toString (height / 2 - (logoScale * 50))
         }" version="1.1" xmlns="http://www.w3.org/2000/svg">
