@@ -187,8 +187,4 @@ in
     { Pause = "play-pause"; }
     { Prev = "previous"; }
   ]);
-
-  windowrulev2 = [
-    "suppressevent maximize, class:.*" # Ignore maximize requests from apps.
-  ];
 }
