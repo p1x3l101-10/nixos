@@ -19,14 +19,11 @@
     enable = true;
   };
   hardware.gpgSmartcards.enable = true;
-  /*
   services.udev.extraRules = ''
-    ACTION=="remove",\
-      ENV{ID_BUS}=="usb",\
-      ENV{ID_MODEL_ID}=="0407",\
-      ENV{ID_VENDOR_ID}=="1050",\
-      ENV{ID_VENDOR}=="Yubico",\
+    ACTION=="unbind",\
+      ENV{ID_VENDOR_FROM_DATABASE}=="Yubico.com",\
+      ENV{ID_MODEL_FROM_DATABASE}=="Yubikey 4/5 OTP+U2F+CCID",\
+      ENV{SUBSYSTEM}=="usb",\
       RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
   '';
-  */
 }
