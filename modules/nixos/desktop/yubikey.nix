@@ -19,6 +19,7 @@
     enable = true;
   };
   hardware.gpgSmartcards.enable = true;
+  /*
   services.udev.extraRules = ''
     ACTION=="remove",\
       ENV{ID_BUS}=="usb",\
@@ -27,4 +28,5 @@
       ENV{ID_VENDOR}=="Yubico",\
       RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
   '';
+  */
 }
