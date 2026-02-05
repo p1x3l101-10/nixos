@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
   programs.gpg = {
@@ -7,5 +7,12 @@
     mutableKeys = true;
     mutableTrust = true;
     publicKeys = [];
+  };
+  services.gpg-agent = {
+    enable = true;
+    pinentry = {
+      program = "pinentry-curses";
+      package = pkgs.pinentry-all;
+    };
   };
 }
