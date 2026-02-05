@@ -15,10 +15,13 @@
       cue = true;
     };
   };
-  security.pam.services = {
-    # Fixes for things that default to password
-    polkit-1.allowNullPassword = true;
-  };
+  # Turn off unixAuth to rely on the smartcard (for services that dont play nice with it)
+  security.pam.services = (builtins.listToAttrs (map
+    (name: { inherit name; value = { unixAuth = false; }; })
+    [
+      "polkit-1"
+    ]
+  ));
   services.pcscd = {
     enable = true;
   };
