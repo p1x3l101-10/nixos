@@ -7,5 +7,6 @@
     yubikey-personalization
     age-plugin-yubikey
     yubico-piv-tool
+    yubioath-flutter
   ];
 }
