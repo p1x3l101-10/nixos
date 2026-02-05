@@ -21,11 +21,13 @@ in
           on-timeout = "brightnessctl -s set 10";
           on-resume = "brightnessctl -r";
         }
+        /*
         {
           # Lock screen after idling for too long
           timeout = 300; # 5 min
           on-timeout = globals.lockCmd;
         }
+        */
         {
           # Blank screen
           timeout = 330; # 5.5 min
