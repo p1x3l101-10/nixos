@@ -23,7 +23,7 @@ export def "ls" [
   group?: string
 ] {
   mut args = []
-  if $group {
+  if ($group != null) {
     $args ++= [ $group ]
   }
   if $recursive {
