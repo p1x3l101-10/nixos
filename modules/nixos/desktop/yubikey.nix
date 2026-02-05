@@ -20,10 +20,9 @@
   };
   hardware.gpgSmartcards.enable = true;
   services.udev.extraRules = ''
-    ACTION=="unbind",\
-      ENV{ID_VENDOR_FROM_DATABASE}=="Yubico.com",\
-      ENV{ID_MODEL_FROM_DATABASE}=="Yubikey 4/5 OTP+U2F+CCID",\
-      ENV{SUBSYSTEM}=="usb",\
+    ACTION=="remove",\
+      ENV{HID_ID}=="0003:00001050:00000407",\
+      ENV{HID_NAME}=="Yubico YubiKey OTP+FIDO+CCID",\
       RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
   '';
 }
