@@ -7,11 +7,12 @@
     enable = true;
     libnotify = true;
   };
-  security.pam = {
-    yubico = {
-      enable = true;
-      mode = "challenge-response";
-      control = "sufficient";
+  security.pam.u2f = {
+    enable = true;
+    control = "sufficient";
+    settings = {
+      userpresence = 1;
+      cue = true;
     };
   };
 }
