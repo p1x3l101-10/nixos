@@ -33,6 +33,7 @@
     ./vCamera.nix
     #./vr-min.nix
     ./vr.nix
+    ./yubikey.nix
     ./run0.nix
 
     ./desktop/flatpak.nix
