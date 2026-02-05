@@ -12,7 +12,10 @@
       };
       FdoSecrets.Enabled = true;
       GUI = {
+        ColorPasswords = true;
+        MinimizeOnClose = true;
         MinimizeToTray = true;
+        MonospaceNotes = true;
         ShowTrayIcon = true;
         TrayIconAppearance = "monochrome-${config.stylix.polarity}";
       };
