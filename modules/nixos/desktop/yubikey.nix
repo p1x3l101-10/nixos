@@ -15,13 +15,6 @@
       cue = true;
     };
   };
-  # Turn off unixAuth to rely on the smartcard (for services that dont play nice with it)
-  security.pam.services = (builtins.listToAttrs (map
-    (name: { inherit name; value = { unixAuth = false; }; })
-    [
-      "polkit-1"
-    ]
-  ));
   services.pcscd = {
     enable = true;
   };
