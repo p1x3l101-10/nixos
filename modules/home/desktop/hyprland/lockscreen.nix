@@ -36,7 +36,7 @@
           rounding = 15;
 
           font_family = font;
-          placeholder_text = "Input password...";
+          placeholder_text = "Press enter and touch the FIDO authenticator.";
           fail_text = "$PAMFAIL";
 
           dots_text_format = "*";
