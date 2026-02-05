@@ -27,6 +27,7 @@ in {
       use jc
       use nix/nix.nu
       use nix/nufetch.nu
+      use kp
     '';
   };
   # Autoload
