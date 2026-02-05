@@ -3,10 +3,6 @@
 {
   services.yubikey-agent.enable = true;
   programs.yubikey-manager.enable = true;
-  programs.yubikey-touch-detector = {
-    enable = true;
-    libnotify = true;
-  };
   security.pam.u2f = {
     enable = true;
     control = "sufficient";
