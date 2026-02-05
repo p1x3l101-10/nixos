@@ -2,7 +2,7 @@
 
 {
   programs.hyprlock = {
-    enable = false;
+    enable = true;
     settings =
       let
         font = "Monospace";
