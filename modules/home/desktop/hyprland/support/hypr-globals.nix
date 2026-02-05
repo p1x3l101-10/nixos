@@ -14,8 +14,8 @@ lib.fix (self: {
     roblox = "org.vinegarhq.Sober";
     archiveManager = "xarchiver";
   };
-  #lockCmd = "loginctl lock-session";
-  lockCmd = "noctalia-shell ipc call lockScreen lock";
+  lockCmd = "loginctl lock-session";
+  #lockCmd = "noctalia-shell ipc call lockScreen lock";
   spotlight = "noctalia-shell ipc call launcher toggle";
   appLauncher = self.spotlight;
   clipboardMenu = "noctalia-shell ipc call launcher clipboard";
