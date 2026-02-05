@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   programs.keepassxc = {
@@ -11,7 +11,11 @@
         CustomProxyLocation = "";
       };
       FdoSecrets.Enabled = true;
-      GUI.TrayIconAppearance = "monochrome-light";
+      GUI = {
+        MinimizeToTray = true;
+        ShowTrayIcon = true;
+        TrayIconAppearance = "monochrome-${config.stylix.polarity}";
+      };
       SSHAgent.Enabled = false;
       Security.IconDownloadFallback = true;
     };
