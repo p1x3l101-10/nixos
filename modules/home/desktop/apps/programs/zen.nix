@@ -33,7 +33,7 @@
           keepassxc-browser
           redirect-to-wiki-gg
           unpaywall
-          tampermonkey
+          #tampermonkey
           stylus
           steam-database
           indie-wiki-buddy
