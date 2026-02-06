@@ -23,13 +23,13 @@ def "simple-ls" [] {
 
 export def "nu-complete keepassxc entries" [] {
   simple-ls
-  | where { |x| $x == "Entry" }
+  | where { |x| $x.type == "Entry" }
   | each { |x| $x.name }
 }
 
 export def "nu-complete keepassxc groups" [] {
   simple-ls
-  | where { |x| $x == "Group" }
+  | where { |x| $x.type == "Group" }
   | each { |x| $x.name }
 }
 
