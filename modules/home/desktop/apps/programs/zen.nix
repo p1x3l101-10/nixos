@@ -16,6 +16,7 @@
       DisableTelemetry = true;
       DontCheckDefaultBrowser = true;
       NoDefaultBookmarks = true;
+      OfferToSaveLogins = false;
     };
     profiles."mlls93c4.Default (beta)" = {
       isDefault = true;

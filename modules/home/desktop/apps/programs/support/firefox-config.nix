@@ -28,6 +28,7 @@
     autoDisableScopes = 0;
     getAddons.showPane = false;
     htmlaboutaddons.recommendations.enabled = false;
+    update.enabled = false;
   };
   cookiebanners = {
     bannerClicking.enabled = true;
