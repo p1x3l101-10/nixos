@@ -13,7 +13,7 @@
                 };
               }
             )
-            (deplist ++ (if (addNixpkgs) then ["nixpkgs"] else []))
+            (deps ++ (if (addNixpkgs) then ["nixpkgs"] else []))
           ));
         }
       );
