@@ -17,7 +17,7 @@ def "simple-ls" [] {
     }
   }
   | where { |x|
-    not ($x | str contains '[empty]')
+    not ($x.name | str contains '[empty]')
   }
 }
 

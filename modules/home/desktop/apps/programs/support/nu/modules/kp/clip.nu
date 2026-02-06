@@ -1,4 +1,5 @@
 use base.nu *
+use completions/item.nu *
 
 export def "main" [
   entry: string@"nu-complete keepassxc entries"

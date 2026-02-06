@@ -1,4 +1,5 @@
 use base.nu *
+use completions/item.nu *
 use clip.nu
 
 def "await-input" [msg: string] {
