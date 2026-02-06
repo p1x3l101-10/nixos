@@ -6,10 +6,12 @@
           inherit url;
           inputs = (builtins.builtins.listToAttrs (map
             (x:
-              name = x;
-              value = {
-                follows = "${x}";
-              };
+              {
+                name = x;
+                value = {
+                  follows = "${x}";
+                };
+              }
             )
             (deplist ++ (if (addNixpkgs) then ["nixpkgs"] else []))
           ));
