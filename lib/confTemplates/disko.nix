@@ -12,7 +12,7 @@
 
 let
   # Warning wrapper until I am ready to use this
-  useLuks = (
+  luksWarning = (
     if (useLuks) then (
       builtins.warn "lib.confTemplates.disko: luks support is not yet finished, use at your own peril" true
     ) else (
@@ -27,7 +27,7 @@ let
     )
   );
   inherit (lib) mkIf;
-  luksIf = pred: (mkIf (luks) pred)
+  luksIf = pred: (mkIf (useLuks) pred);
   defaultFS = {
     type = "filesystem";
     format = "ext4";
