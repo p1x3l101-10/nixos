@@ -18,13 +18,6 @@ export def "main" [
   if $show_attachments {
     $args ++= [ --show-attachments ]
   }
-  if ($attributes != null) {
-    $args ++= (
-      $attributes
-      | each { |x| [ --attributes $x ] }
-      | flatten
-    )
-  }
   if $totp {
     $args ++= [ --totp ]
   }
