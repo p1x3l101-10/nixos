@@ -1,9 +1,9 @@
 use base.nu *
+use completions/item.nu *
 
 export def "main" [
-  entry:string
+  entry: string@"nu-complete keepassxc entries"
   --show-protected (-s)
-  --attributes (-a): list<string>
   --all
   --show-attachments
   --totp (-t)

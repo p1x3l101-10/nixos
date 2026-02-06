@@ -9,7 +9,7 @@ def "await-input" [msg: string] {
 }
 
 export def "main" [
-  entry: string
+  entry: string@"nu-complete keepassxc entries"
   --timeout (-T): int
   --totp (-t)
   --no-username (-u)

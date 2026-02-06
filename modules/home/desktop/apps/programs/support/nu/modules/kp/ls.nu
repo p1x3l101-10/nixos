@@ -1,8 +1,9 @@
 use base.nu *
+use completions/item.nu *
 
 export def "main" [
+  group?: string@"nu-complete keepassxc groups"
   --recursive (-R)
-  group?: string
 ] {
   mut args = []
   if ($group != null) {

@@ -1,7 +1,7 @@
 use base.nu *
 
 export def "main" [
-  entry: string
+  entry: string@"nu-complete keepassxc entries"
   timeout?: int
   --best-match (-b)
   --totp (-t)
