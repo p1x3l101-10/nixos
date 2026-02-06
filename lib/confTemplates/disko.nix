@@ -6,7 +6,27 @@
 , swap-size ? "20G"
   # tmpfs systems
 , root-size ? "4G"
+, useLuks ? false
+, luksYubikeys ? []
 }:
+
+let
+  useLuks = builtins.warn "lib.confTemplates.disko: luks support is not yet finished, use at your own peril" useLuks;
+  luksOpt = normal: luks: (
+    if (useLuks) then (
+      luks
+    ) else (
+      normal
+    )
+  );
+  inherit (lib) mkIf;
+  luksIf = pred: (mkIf (luks) pred)
+  defaultFS = {
+    type = "filesystem";
+    format = "ext4";
+    mountpoint = "/nix";
+  };
+in
 
 {
   disko.devices = {
@@ -33,10 +53,12 @@
             };
             nix = {
               size = "100%";
-              content = {
-                type = "filesystem";
-                format = "ext4";
-                mountpoint = "/nix";
+              content = luksOpt defaultFS {
+                type = "luks";
+                name = "nix";
+                settings.allowDiscards = true;
+                passwordFile = "/tmp/secret.key";
+                content = defaultFS;
               };
             };
           };
@@ -47,6 +69,13 @@
     nodev."/" = {
       fsType = "tmpfs";
       mountOptions = [ "defaults" "size=${root-size}" "mode=755" ];
+    };
+  };
+
+  boot.initrd.luks = luksIf {
+    fido2Support = true;
+    devices.nix = {
+      fallbackToPassword = true;
     };
   };
 }
