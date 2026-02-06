@@ -1,4 +1,9 @@
 const kpxcDatabaseArgs = [ -y 1 --no-password ]
+const entryColors = {
+  Group: (ansi blue)
+  Entry: (ansi white)
+  reset: (ansi reset)
+}
 
 def "kpRaw" [operation:string ...args] {
   let dbPath = $'($env.HOME)/Sync/Keepass/keepass.kdbx'
@@ -19,7 +24,6 @@ export def "mv" [source:string destination:string] {
 
 export def "ls" [
   --recursive (-R)
-  --flatten (-f)
   group?: string
 ] {
   mut args = []
@@ -27,12 +31,28 @@ export def "ls" [
     $args ++= [ $group ]
   }
   if $recursive {
-    $args ++= [ --recursive ]
-  }
-  if $flatten {
-    $args ++= [ --flatten ]
+    $args ++= [ --recursive --flatten ]
   }
   kpRaw ls ...$args
+  | lines
+  | each { |x|
+    mut name = ($x | str trim)
+    let lastChar = ($name | split chars | last 1).0
+    mut type = "Entry"
+    mut color = $entryColors.Entry
+    if ($lastChar == "/") {
+      $name = ($name | str substring 0..-2)
+      $type = "Group"
+      $color = $entryColors.Group
+    }
+    {
+      name: $'($color)($name)($entryColors.reset)'
+      type: $type
+    }
+  }
+  | where { |x|
+    not ($x.name | str contains '[empty]')
+  }
 }
 
 export def "generate" [
