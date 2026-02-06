@@ -1,7 +1,7 @@
 export const kpxcDatabaseArgs = [ -y 1 --no-password ]
 export const entryColors = {
   Group: (ansi blue)
-  Entry: (ansi white)
+  Entry: (ansi green)
   reset: (ansi reset)
 }
 
