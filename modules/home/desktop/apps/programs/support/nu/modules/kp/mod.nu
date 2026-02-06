@@ -136,6 +136,8 @@ export def "clip" [
   entry: string
   timeout?: int
   --best-match (-b)
+  --totp (-t)
+  --attribute (-a): string
 ] {
   mut args = []
   if ($timeout != null) {
@@ -144,7 +146,42 @@ export def "clip" [
   if $best_match {
     $args ++= [ --best-match ]
   }
+  if $totp {
+    $args ++= [ --totp ]
+  }
+  if ($attribute != null) {
+    $args ++= [ --attribute $attribute ]
+  }
   kpRaw clip $entry ...$args
+}
+
+def "await-input" [msg: string] {
+  print $msg
+  let key = (input listen --types [key])
+  # Clear last line
+  tput cuu1; tput el
+}
+
+export def "clip-all" [
+  entry: string
+  --timeout (-T): int
+  --totp (-t)
+  --no-username (-u)
+] {
+  mut expireTime = 10
+  if ($timeout != null) {
+    $expireTime = $timeout
+  }
+  if (not $no_username) {
+    await-input "Press any key to copy UserName"
+    clip $entry $expireTime --attribute UserName
+  }
+  await-input "Press any key to copy Password"
+  clip $entry $expireTime --attribute Password
+  if $totp {
+    await-input "Press any key to copy totp (Verification Code)"
+    clip $entry $expireTime --totp
+  }
 }
 
 export def "search" [term: string] {
