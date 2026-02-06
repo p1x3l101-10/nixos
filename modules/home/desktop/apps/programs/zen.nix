@@ -31,6 +31,13 @@
           old-reddit-redirect
           reddit-enhancement-suite
           keepassxc-browser
+          redirect-to-wiki-gg
+          unpaywall
+          tampermonkey
+          stylus
+          steam-database
+          indie-wiki-buddy
+          darkreader
         ];
       };
       settings = lib.internal.attrsets.compressAttrs "." (import ./support/firefox-config.nix);
