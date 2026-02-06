@@ -61,7 +61,7 @@ in {
       '';
     }
     (mkIf cfg.keyManagement {
-      security.pam.u2f.settings.authfile = "/etc/u2f-mappings";
+      security.pam.u2f.settings.authfile = lib.mkForce "/etc/u2f-mappings";
       environment.etc.u2f-mappings.text = builtins.concatStringsSep "\n" (map
         ({ name, value }: if (value.enable) then (builtins.concatStringsSep ":" (
           [ name ] ++
