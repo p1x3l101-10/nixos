@@ -1,6 +1,7 @@
 {
   svg.context-properties.content.enabled = true;
   browser = {
+    contextual-password-manager.enabled = false;
     search.suggest.enabled = true;
     startup.page = 0;
     firefox-view.feature-tour = builtins.toJSON {
@@ -10,6 +11,9 @@
     };
     discovery.enabled = false;
     contentblocking.category = "strict";
+  };
+  services = {
+    passwordSavingEnabled = false;
   };
   widget = {
     dmabuf.force-enabled = true;
