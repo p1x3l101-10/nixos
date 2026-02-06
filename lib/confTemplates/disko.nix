@@ -11,7 +11,14 @@
 }:
 
 let
-  useLuks = builtins.warn "lib.confTemplates.disko: luks support is not yet finished, use at your own peril" useLuks;
+  # Warning wrapper until I am ready to use this
+  useLuks = (
+    if (useLuks) then (
+      builtins.warn "lib.confTemplates.disko: luks support is not yet finished, use at your own peril" true
+    ) else (
+      false
+    )
+  );
   luksOpt = normal: luks: (
     if (useLuks) then (
       luks
