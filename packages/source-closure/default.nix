@@ -3,6 +3,7 @@
 , nix
 , jq
 , coreutils
+, ...
 }:
 
 writeShellScriptBin "rebuild" ''

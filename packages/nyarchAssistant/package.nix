@@ -24,6 +24,7 @@
 , gtksourceview5
 , desktop-file-utils
 , lsb-release
+, ...
 }:
 
 let

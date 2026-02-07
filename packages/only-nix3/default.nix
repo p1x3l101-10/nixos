@@ -1,5 +1,6 @@
 { symlinkJoin
 , nix
+, ...
 }:
 
 symlinkJoin {

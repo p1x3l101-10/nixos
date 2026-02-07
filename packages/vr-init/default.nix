@@ -9,6 +9,7 @@
 , stardust-xr-atmosphere
 , stardust-xr-kiara
 , wayvr
+, ...
 }:
 
 writeShellApplication {

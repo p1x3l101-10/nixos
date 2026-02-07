@@ -3,6 +3,7 @@
 , stardust-xr-server
 , callPackage
 , init-script ? callPackage ./init.nix { }
+, ...
 }:
 
 writeShellApplication {

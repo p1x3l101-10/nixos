@@ -1,6 +1,7 @@
 { lib
 , writeShellApplication
 , nixVersions
+, ...
 }:
 
 writeShellApplication {

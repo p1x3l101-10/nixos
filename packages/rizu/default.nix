@@ -17,6 +17,7 @@
 , lua
 , minacalc ? callPackage ./minacalc.nix {}
 , writeShellApplication
+, ...
 }:
 
 let

@@ -3,6 +3,7 @@
 , gitMinimal
 , nix
 , nixos-rebuild
+, ...
 }:
 
 writeShellApplication {

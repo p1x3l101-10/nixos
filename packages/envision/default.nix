@@ -2,6 +2,7 @@
 , buildFHSEnv
 , callPackage
 , testers
+, ...
 }:
 
 let

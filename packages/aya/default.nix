@@ -3,6 +3,7 @@
 , fetchgit
 , aya
 , stdenv
+, ...
 }:
 
 buildGoModule {

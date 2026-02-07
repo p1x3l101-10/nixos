@@ -28,7 +28,7 @@
 , versionCheckHook
 , wrapGAppsHook4
 , zlib
-,
+, ...
 }:
 
 stdenv.mkDerivation (finalAttrs: {

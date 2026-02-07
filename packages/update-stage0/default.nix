@@ -1,5 +1,6 @@
 { lib
 , writeShellScriptBin
+, ...
 }:
 
 writeShellScriptBin "update-stage0" ''

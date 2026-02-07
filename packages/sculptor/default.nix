@@ -6,6 +6,7 @@
 , makeWrapper
 , pkg-config
 , openssl
+, ...
 }:
 
 let

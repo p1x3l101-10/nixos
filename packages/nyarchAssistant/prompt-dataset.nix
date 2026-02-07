@@ -3,6 +3,7 @@
 , fetchFromGitHub 
 , jq
 , extraPrompts ? [] # Array of { prompt = ""; label = ""; }
+, ...
 }:
 
 stdenv.mkDerivation {

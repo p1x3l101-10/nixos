@@ -8,6 +8,7 @@
 , stardust-xr-sphereland
 , stardust-xr-atmosphere
 , stardust-xr-kiara
+, ...
 }:
 
 writeShellApplication {

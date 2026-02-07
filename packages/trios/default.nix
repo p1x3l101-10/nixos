@@ -6,6 +6,7 @@
 , flutter
 , jre8 ? openjdk8
 , jre17 ? openjdk17
+, ...
 }:
 
 flutter.buildFlutterApplication (lib.fix (finalAttrs: {

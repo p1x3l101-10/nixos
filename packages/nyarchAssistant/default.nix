@@ -3,6 +3,7 @@
 , fetchPypi
 , lib
 , extraPrompts ? [] # Array of { prompt = ""; label = ""; }
+, ...
 }:
 
 let
