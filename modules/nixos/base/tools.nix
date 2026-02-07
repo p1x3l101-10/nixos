@@ -4,7 +4,7 @@
   services.nixos-cli = {
     enable = true;
     useActivationInterface = true;
-    settings = {
+    config = {
       aliases = {
         genlist = [ "generation" "list" ];
         switch = [ "generation" "activate" ];
