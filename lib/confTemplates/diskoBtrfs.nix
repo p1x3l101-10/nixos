@@ -138,5 +138,5 @@ in
       "/nix/host/state/UserData"
       "/.swapvol"
     ]
-  ))
+  ));
 }
