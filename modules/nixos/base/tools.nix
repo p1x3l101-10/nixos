@@ -7,5 +7,8 @@
   };
   environment.systemPackages = with pkgs; [
     optnix
+    nix-fast-build
+    nix-output-monitor
+    nix-eval-jobs
   ];
 }
