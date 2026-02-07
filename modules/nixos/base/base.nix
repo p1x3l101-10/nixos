@@ -31,9 +31,6 @@
     };
     package = pkgs.nixVersions.latest;
   };
-  environment.systemPackages = [
-    pkgs.internal.rebuild
-  ];
   programs.git = {
     enable = true;
     package = lib.mkDefault pkgs.gitMinimal;
