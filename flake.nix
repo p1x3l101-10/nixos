@@ -123,6 +123,14 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-cli = {
+      url = "github:nix-community/nixos-cli";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-compat.follows = "flake-compat";
+        flake-parts.follows = "flake-parts";
+      };
+    };
   };
   outputs = inputs: import ./outputs.nix inputs;
 }

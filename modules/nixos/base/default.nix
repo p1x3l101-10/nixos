@@ -16,6 +16,7 @@
     ./locale.nix
     ./secureBoot.nix
     ./ssh.nix
+    ./tools.nix
   ];
   nix.registry = lib.internal.confTemplates.registry inputs;
 }

@@ -47,6 +47,7 @@
       xStarbound = dep { url = "github:xStarbound/xStarbound"; };
       millennium = dep { url = "github:SteamClientHomebrew/Millennium?dir=packages/nix"; };
       noctalia = dep { url = "github:noctalia-dev/noctalia-shell"; };
+      nixos-cli = dep { url = "github:nix-community/nixos-cli"; deps = [ "flake-parts" "flake-compat" ]; };
       # Other used flakes
       systems.url = "github:nix-systems/x86_64-linux";
       flake-utils = dep { url = "github:numtide/flake-utils"; deps = [ "systems" ]; addNixpkgs = false; };
