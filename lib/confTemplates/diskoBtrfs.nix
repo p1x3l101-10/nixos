@@ -121,7 +121,7 @@ in
     };
   };
 
-  filesystems = (builtins.listToAttrs (map
+  fileSystems = (builtins.listToAttrs (map
     (x:
       {
         name = x;
