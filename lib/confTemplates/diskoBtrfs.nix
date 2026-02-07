@@ -120,4 +120,23 @@ in
       };
     };
   };
+
+  filesystems = (builtins.listToAttrs (map
+    (x:
+      {
+        name = x;
+        value = {
+          neededForBoot = true;
+        };
+      }
+    )
+    [
+      "/nix"
+      "/nix/store"
+      "/nix/host/keys"
+      "/nix/host/state"
+      "/nix/host/state/UserData"
+      "/.swapvol"
+    ]
+  ))
 }
