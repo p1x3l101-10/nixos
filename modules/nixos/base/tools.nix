@@ -20,5 +20,6 @@
     nix-fast-build
     nix-output-monitor
     nix-eval-jobs
+    nvd
   ];
 }
