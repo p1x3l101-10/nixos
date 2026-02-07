@@ -106,9 +106,7 @@ in
   boot.initrd = luksIf {
     systemd.fido2.enable = true;
     luks = {
-      fido2Support = true;
       devices.nix = {
-        fallbackToPassword = true;
         crypttabExtraOpts = ["fido2-device=auto"];
         fido2 = {
           passwordLess = true;
