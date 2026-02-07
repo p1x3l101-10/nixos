@@ -1,9 +1,8 @@
-{ pkgs, ext, ... }:
+{ ... }:
 
-let
-  inherit (ext) inputs system;
-in {
-  environment.systemPackages = with pkgs; [
-    inputs.nixos-cli.packages."${system}".nixos
-  ];
+{
+  services.nixos-cli = {
+    enable = true;
+    useActivationInterface = true;
+  };
 }

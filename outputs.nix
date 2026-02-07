@@ -50,6 +50,7 @@ inputs.flake-utils.lib.eachDefaultSystem
       inherit (final.ext) inputs; # Backwards compat
     });
     common-modules = with inputs; [
+      nixos-cli.nixosModules.nixos-cli
       lanzaboote.nixosModules.lanzaboote
       impermanence.nixosModules.impermanence
       disko.nixosModules.disko
