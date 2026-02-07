@@ -14,11 +14,13 @@
   };
   services.resolved = {
     enable = true;
-    dnssec = "true";
-    domains = [ "~." ];
-    fallbackDns = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
-    llmnr = "true";
-    dnsovertls = "true";
+    settings.Resolve = {
+      DNSOverTLS = "true";
+      DNSSEC = "true";
+      LLMNR = "true";
+      Domains = [ "~." ];
+      FallbackDNS = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
+    };
   };
   # Disable alterantives
   networking = {
