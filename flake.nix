@@ -7,17 +7,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-      inputs = {
-        systems.follows = "systems";
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
     stylix = {
       url = "github:nix-community/stylix";
       inputs = {
@@ -124,7 +113,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-cli = {
-      url = "github:nix-community/nixos-cli";
+      # Note to self, remember to update this
+      url = "github:nix-community/nixos-cli/0.15.0";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-compat.follows = "flake-compat";
