@@ -22,8 +22,8 @@ let
   inherit (lib) mkIf;
   luksIf = pred: (mkIf (useLuks) pred);
   defaultFS = {
-    type = "filesystem";
-    format = "btrfs";
+    type = "btrfs";
+    extraArgs = [ "-f" ];
     subvolumes = {
       "/nix" = {
         mountpoint = "/nix";
