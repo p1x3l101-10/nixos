@@ -10,6 +10,7 @@ in {
     # Only pull the base parts we actually need
     "${base}/cachix.nix"
     "${base}/locale.nix"
+    "${base}/tools.nix"
   ];
   # Seperate it from the upstream ISO
   networking.hostName = "pixels-nixos-iso";
@@ -23,14 +24,7 @@ in {
   ];
   # Fav shell
   environment.shells = [ pkgs.nushell ];
-  users.users = {
-    nixos.shell = pkgs.nushell;
-    root.shell = pkgs.nushell;
-  };
-  # New CLI for nixos
-  services.nixos-cli = {
-    enable = true;
-  };
+  users.defaultUserShell = "${pkgs.nushell}/bin/nu";
   # Flake stuff
   nix = {
     settings.experimental-features = [ "nix-command" "flakes" ];
