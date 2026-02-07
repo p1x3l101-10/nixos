@@ -50,7 +50,7 @@ in
 {
   options = with lib; {
     services.factorio.modList = mkOption {
-      type = with types; nullOr attrSet;
+      type = with types; nullOr attrs;
       default = null;
     };
   };
