@@ -7,7 +7,7 @@
   # tmpfs systems
 , root-size ? "4G"
 , useLuks ? false
-, luksYubikeys ? []
+, luksYubikeys ? [] # TODO: Use this instead of hardcoding it
 }:
 
 let
