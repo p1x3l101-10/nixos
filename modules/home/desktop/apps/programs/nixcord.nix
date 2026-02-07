@@ -50,6 +50,7 @@ in
         friendsSince.enable = true;
         loadingQuotes.enable = true;
         mentionAvatars.enable = true;
+        OpenInApp.enable = true;
         youtubeAdblock.enable = true;
         volumeBooster.enable = true;
         webRichPresence.enable = true;
