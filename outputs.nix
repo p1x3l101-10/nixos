@@ -13,7 +13,11 @@ inputs.flake-utils.lib.eachDefaultSystem
     in
     {
       formatter = pkgs.nixpkgs-fmt;
-      packages = lib1.flake.genPackages ./packages pkgs.newScope { };
+      packages = lib1.flake.genPackages ./packages pkgs.newScope {
+        ext = {
+          inherit inputs;
+        };
+      };
     }
   ) // inputs.flake-utils.lib.eachDefaultSystemPassThrough (system:
   let
@@ -117,6 +121,12 @@ inputs.flake-utils.lib.eachDefaultSystem
         ] ++ (with inputs; (with self.nixosModules; [
           vps
         ]) ++ [ ]) ++ common-modules;
+      };
+      iso = lib.nixosSystem {
+        inherit system specialArgs;
+        modules = [
+          ./systems/hetzner-vps
+        ] ++ common-modules;
       };
     };
   }
