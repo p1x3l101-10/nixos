@@ -17,6 +17,10 @@
   users.mutableUsers = false;
   services.openssh.settings.AllowUsers = [ "pixel" "root" ];
   environment.etc.nixos.source = "/home/pixel/nixos";
+  environment.shells = with pkgs; [
+    nushell
+  ];
+  users.defaultUserShell = "${pkgs.nushell}/bin/nu";
   environment.persistence."/nix/host/state/UserData".users.pixel.directories = [
     ".ssh"
     "nixos"
