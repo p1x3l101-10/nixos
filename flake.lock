@@ -1114,7 +1114,6 @@
         "nur": "nur",
         "stylix": "stylix",
         "systems": "systems_2",
-        "xStarbound": "xStarbound",
         "zen-browser": "zen-browser"
       }
     },
@@ -1347,26 +1346,6 @@
         "owner": "zaphoyd",
         "ref": "0.8.2",
         "repo": "websocketpp",
-        "type": "github"
-      }
-    },
-    "xStarbound": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1770327492,
-        "narHash": "sha256-kQ7BGEm31xP7n01Vf2OBMac1Gzz2Psg5qZs92hXwhHU=",
-        "owner": "xStarbound",
-        "repo": "xStarbound",
-        "rev": "28bfd254d9873e215bb0b6341ae12c8022eab3db",
-        "type": "github"
-      },
-      "original": {
-        "owner": "xStarbound",
-        "repo": "xStarbound",
         "type": "github"
       }
     },

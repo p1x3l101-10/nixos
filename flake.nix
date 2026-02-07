@@ -100,10 +100,6 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
     flake-compat.url = "github:edolstra/flake-compat";
-    xStarbound = {
-      url = "github:xStarbound/xStarbound";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     millennium = {
       url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
       inputs.nixpkgs.follows = "nixpkgs";
