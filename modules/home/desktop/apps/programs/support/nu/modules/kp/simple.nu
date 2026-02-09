@@ -6,14 +6,6 @@ export def "open" [] {
   kpRaw open
 }
 
-# Add a new entry to a database.
-export def "add" [
-  entry: string@"nu-complete keepassxc entries" # Path of the entry to add.
-  ...args
-] {
-  kpRaw add ...$args
-}
-
 # Moves an entry to a new group.
 export def "mv" [
   source: string@"nu-complete keepassxc entries" # Path of the entry to move.

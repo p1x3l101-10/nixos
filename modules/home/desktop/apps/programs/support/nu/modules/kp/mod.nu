@@ -4,6 +4,7 @@ export-env {
   $env.KEEPASSXC_DATABASE_PATH = ($env.HOME | path join "Sync/Keepass/keepass.kdbx")
 }
 
+export use add.nu
 export use analyze.nu
 export use clip-all.nu
 export use clip.nu
