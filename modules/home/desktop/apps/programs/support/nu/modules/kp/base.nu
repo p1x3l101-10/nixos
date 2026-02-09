@@ -6,6 +6,6 @@ export const entryColors = {
 }
 
 export def "kpRaw" [operation:string ...args] {
-  let dbPath = $'($env.HOME)/Sync/Keepass/keepass.kdbx'
+  let dbPath = $env.KEEPASSXC_DATABASE_PATH
   ^keepassxc-cli $operation ...$kpxcDatabaseArgs $dbPath ...$args
 }
