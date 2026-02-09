@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./forjo.nix
+    ./forgejo.nix
     ./nginx.nix
   ];
 }
