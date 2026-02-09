@@ -1,6 +1,7 @@
 export use analyze.nu
 export use clip-all.nu
 export use clip.nu
+export use db.nu
 export use diceware.nu
 export alias dw = diceware
 export use generate.nu
