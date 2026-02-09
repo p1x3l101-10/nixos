@@ -8,7 +8,7 @@ export def "open" [] {
 
 # Add a new entry to a database.
 export def "add" [
-  entry: string@"nu-complete keepassxc entries"
+  entry: string@"nu-complete keepassxc entries" # Path of the entry to add.
   ...args
 ] {
   kpRaw add ...$args
@@ -16,15 +16,15 @@ export def "add" [
 
 # Moves an entry to a new group.
 export def "mv" [
-  source: string@"nu-complete keepassxc entries"
-  destination: string@"nu-complete keepassxc items"
+  source: string@"nu-complete keepassxc entries" # Path of the entry to move.
+  destination: string@"nu-complete keepassxc items" # Path of the destination group.
 ] {
   kpRaw mv $source $destination
 }
 
 # Adds a new group to a database.
 export def "mkdir" [
-  group: string@"nu-complete keepassxc groups"
+  group: string@"nu-complete keepassxc groups" # Path of the group to add.
 ] {
   kpRaw $group
 }
@@ -36,7 +36,7 @@ export def "search" [term: string] {
 
 # Removes a group from a database.
 export def "rmdir" [
-  group: string@"nu-complete keepassxc groups"
+  group: string@"nu-complete keepassxc groups" # Search term.
 ] {
   kpRaw rmdir $group
 }

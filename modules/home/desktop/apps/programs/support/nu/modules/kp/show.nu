@@ -3,11 +3,11 @@ use completions/item.nu *
 
 # Show an entry's information.
 export def "main" [
-  entry: string@"nu-complete keepassxc entries"
-  --show-protected (-s)
-  --all
-  --show-attachments
-  --totp (-t)
+  entry: string@"nu-complete keepassxc entries" # Name of the entry to show.
+  --show-protected (-s) # Show the protected attributes in clear text.
+  --all # Show all the attributes of the entry.
+  --show-attachments # Show the attachments of the entry.
+  --totp (-t) # Show the entry's current TOTP.
 ] {
   mut args = []
   if $show_protected {

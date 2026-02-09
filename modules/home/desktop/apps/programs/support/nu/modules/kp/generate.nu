@@ -2,16 +2,16 @@ use base.nu *
 
 # Generate a new random password.
 export def "main" [
-  --length (-L): int
-  --lower (-l)
-  --upper (-U)
-  --numeric (-n)
-  --special (-s)
-  --extended (-e)
-  --exclude (-x): string
-  --exclude-similar
-  --every-group
-  --custom (-c): string
+  --length (-L): int # Length of the generated password
+  --lower (-l) # Use lowercase characters
+  --upper (-U) # Use uppercase characters
+  --numeric (-n) # Use numbers
+  --special (-s) # Use special characters
+  --extended (-e) # Use extended ASCII
+  --exclude (-x): string # Exclude character set
+  --exclude-similar # Exclude similar looking characters
+  --every-group # Include characters from every selected group
+  --custom (-c): string # Use custom character set
 ] {
   mut args = []
   if ($length != null)   {

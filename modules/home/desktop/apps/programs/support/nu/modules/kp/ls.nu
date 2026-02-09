@@ -3,8 +3,8 @@ use completions/item.nu *
 
 # List database entries.
 export def "main" [
-  group?: string@"nu-complete keepassxc groups"
-  --recursive (-R)
+  group?: string@"nu-complete keepassxc groups" # Path of the group to list. Default is /
+  --recursive (-R) # Recursively list the elements of the group.
 ] {
   mut args = []
   if ($group != null) {

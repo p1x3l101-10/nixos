@@ -2,8 +2,8 @@ use base.nu *
 
 # Generate a new random diceware passphrase.
 export def "main" [
-  --words (-W): int
-  --word-list (-w): string
+  --words (-W): int # Word count for the diceware passphrase.
+  --word-list (-w): string # Wordlist for the diceware generator. [Default: EFF English]
 ] {
   mut args = []
   if ($words != null) {

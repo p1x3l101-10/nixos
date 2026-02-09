@@ -10,12 +10,12 @@ def "await-input" [msg: string] {
 }
 
 # Copy an entry's attributes to the clipboard in order.
-# The order is UserName, Password, TOTP
+# The order is UserName, Password, TOTP (if active)
 export def "main" [
-  entry: string@"nu-complete keepassxc entries"
-  --timeout (-T): int
-  --totp (-t)
-  --no-username (-u)
+  entry: string@"nu-complete keepassxc entries" # Path of the entry to clip.
+  --timeout (-T): int # Timeout before clearing the clipboard (default is 10 seconds, set to 0 for unlimited).
+  --totp (-t) # Adds copying the TOTP to the end of the series.
+  --no-username (-u) # Disables copying the UserName.
 ] {
   mut expireTime = 10
   if ($timeout != null) {
