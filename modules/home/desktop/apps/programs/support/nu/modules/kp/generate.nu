@@ -14,7 +14,7 @@ export def "main" [
   --custom (-c): string # Use custom character set
 ] {
   mut args = []
-  if ($length != null)   {
+  if ($length != null) {
     $args ++= [ --length $length ]
   }
   if $lower {
