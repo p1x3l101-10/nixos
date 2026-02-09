@@ -1,6 +1,7 @@
 use base.nu *
 use completions/item.nu *
 
+# List database entries.
 export def "main" [
   group?: string@"nu-complete keepassxc groups"
   --recursive (-R)

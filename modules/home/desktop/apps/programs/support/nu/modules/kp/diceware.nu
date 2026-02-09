@@ -1,5 +1,6 @@
 use base.nu *
 
+# Generate a new random diceware passphrase.
 export def "main" [
   --words (-W): int
   --word-list (-w): string

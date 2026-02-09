@@ -9,6 +9,8 @@ def "await-input" [msg: string] {
   tput cuu1; tput el
 }
 
+# Copy an entry's attributes to the clipboard in order.
+# The order is UserName, Password, TOTP
 export def "main" [
   entry: string@"nu-complete keepassxc entries"
   --timeout (-T): int

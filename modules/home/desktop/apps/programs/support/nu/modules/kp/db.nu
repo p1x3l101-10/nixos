@@ -1,5 +1,6 @@
 use base.nu *
 
+# Show a database's information.
 export def "info" [] {
   kpRaw db-info
 }

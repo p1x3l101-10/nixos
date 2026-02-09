@@ -1,3 +1,5 @@
+# keepassxc-cli wrapper that requires a yubikey and no password
+
 export-env {
   $env.KEEPASSXC_DATABASE_PATH = ($env.HOME | path join "Sync/Keepass/keepass.kdbx")
 }

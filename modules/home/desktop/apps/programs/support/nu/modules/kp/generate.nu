@@ -1,5 +1,6 @@
 use base.nu *
 
+# Generate a new random password.
 export def "main" [
   --length (-L): int
   --lower (-l)

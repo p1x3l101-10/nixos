@@ -1,5 +1,6 @@
 use base.nu
 
+# Analyze passwords for weaknesses and problems.
 export def "main" [
   --hibp (-H): string
 ] {

@@ -1,6 +1,7 @@
 use base.nu *
 use completions/item.nu *
 
+# Copy an entry's attribute to the clipboard.
 export def "main" [
   entry: string@"nu-complete keepassxc entries"
   timeout?: int

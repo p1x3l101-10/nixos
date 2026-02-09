@@ -1,6 +1,7 @@
 use base.nu *
 use completions/item.nu *
 
+# Show an entry's information.
 export def "main" [
   entry: string@"nu-complete keepassxc entries"
   --show-protected (-s)
