@@ -40,3 +40,10 @@ export def "rmdir" [
 ] {
   kpRaw rmdir $group
 }
+
+# Remove an entry from the database.
+export def "rm" [
+  entry: string@"nu-complete keepassxc entries" # Path of the entry to remove.
+] {
+  kpRaw rm $entry
+}
