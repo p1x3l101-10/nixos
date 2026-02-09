@@ -11,6 +11,8 @@ export use db.nu
 export use diceware.nu
 export alias dw = diceware
 export use edit.nu
+export use estimate-entry.nu
+export use estimate.nu
 export use generate.nu
 export alias gen = generate
 export use ls.nu
