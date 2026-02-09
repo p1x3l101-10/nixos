@@ -19,3 +19,8 @@ export alias gen = generate
 export use ls.nu
 export use show.nu
 export use simple.nu *
+
+# Simple wrapper that runs `help modules kp`
+export def main [] {
+  help modules kp
+}
