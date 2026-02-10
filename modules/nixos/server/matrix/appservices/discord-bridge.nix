@@ -13,6 +13,7 @@ in {
     # chown matrix-synapse:matrix-synapse \
     #   /var/lib/matrix-synapse/discord-registration.yaml
     #"/var/lib/matrix-synapse/discord-registration.yaml"
+    "/var/lib/matrix-appservice-discord/discord-registration.yaml"
   ];
 
   services.matrix-appservice-discord = {
