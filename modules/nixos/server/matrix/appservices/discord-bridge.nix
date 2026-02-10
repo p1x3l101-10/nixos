@@ -24,6 +24,7 @@ in {
       bridge = {
         domain = dns;
         homeserverUrl = "https://${dns}";
+        adminMxid = "pixel@${dns}";
       };
       auth = {
         clientID = "1470849103565951077";
