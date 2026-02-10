@@ -29,6 +29,9 @@ in {
   };
   services.matrix-synapse = {
     enable = exists;
+    extraConfigFiles = [
+      "${globals.dirs.keys}/Matrix/keys.yaml"
+    ];
     settings = {
       server_name = config.networking.domain;
       public_baseurl = baseUrl;
