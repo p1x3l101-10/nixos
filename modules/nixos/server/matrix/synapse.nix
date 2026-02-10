@@ -29,6 +29,7 @@ in {
       "${globals.dirs.keys}/Matrix/keys.yaml"
     ];
     settings = {
+      logging.level = "DEBUG";
       server_name = config.networking.domain;
       public_baseurl = baseUrl;
       presence.enabled = true;
