@@ -32,6 +32,8 @@ in {
     settings = {
       server_name = config.networking.domain;
       public_baseurl = baseUrl;
+      presence.enabled = true;
+      allow_public_rooms_over_federation = true;
       listeners = [
         {
           port = 8008;
