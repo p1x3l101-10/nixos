@@ -16,7 +16,6 @@ in {
     };
     "${fqdn}" = {
       enableACME = true;
-      forceSSL = true;
       locations."/".extraConfig = ''
         return 404;
       '';

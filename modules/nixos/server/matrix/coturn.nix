@@ -11,7 +11,6 @@ in {
     min-port = 49000;
     max-port = 50000;
     use-auth-secret = true;
-    static-auth-secret = "will be world readable for local users :(";
     realm = "turn.${basename}";
     cert = "${config.security.acme.certs.${realm}.directory}/full.pem";
     pkey = "${config.security.acme.certs.${realm}.directory}/key.pem";
@@ -57,8 +56,13 @@ in {
     allowedTCPPorts = [ 3478 5349 ];
   };
   # get a certificate
+  services.nginx.virtualHosts."${config.services.coturn.realm}" = {
+    enableACME = true;
+    locations."/".extraConfig = ''
+      return 404;
+    '';
+  };
   security.acme.certs.${config.services.coturn.realm} = {
-    /* insert here the right configuration to obtain a certificate */
     postRun = "systemctl restart coturn.service";
     group = "turnserver";
     webroot = "/var/lib/acme/acme-challenge";
