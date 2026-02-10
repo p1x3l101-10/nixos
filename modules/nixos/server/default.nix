@@ -17,4 +17,8 @@ in
     ./ssh-forward
     ./website
   ];
+  networking = {
+    domain = globals.server.dns.basename;
+    fqdn = "srv02.${globals.server.dns.basename}";
+  };
 }
