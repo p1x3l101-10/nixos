@@ -61,6 +61,7 @@ in {
     /* insert here the right configuration to obtain a certificate */
     postRun = "systemctl restart coturn.service";
     group = "turnserver";
+    webroot = "/var/lib/acme/acme-challenge";
   };
   # configure synapse to point users to coturn
   services.matrix-synapse.settings = with config.services.coturn; {
