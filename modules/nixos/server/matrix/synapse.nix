@@ -16,6 +16,7 @@ in {
     };
     "${fqdn}" = {
       enableACME = true;
+      onlySSL = true;
       # Forward all Matrix API calls to the synapse Matrix homeserver. A trailing slash
       # *must not* be used here.
       locations."/_matrix".proxyPass = "http://[::1]:8008";
