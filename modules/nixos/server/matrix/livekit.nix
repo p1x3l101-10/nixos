@@ -16,6 +16,7 @@ in {
     enable = exists;
     # can be on the same virtualHost as synapse
     livekitUrl = "wss://${dns}/livekit/sfu";
+    port = 8787;
     inherit keyFile;
   };
   # generate the key when needed
@@ -26,7 +27,7 @@ in {
     script = ''
         echo "Key missing, generating key"
         mkdir -p "$(dirname '${keyFile}')"
-        echo "lk-jwt-service: $(livekit-server generate-keys | tail -1 | awk '{print $3}')" > "${keyFile}"
+        echo "lk-jwt-service: $(livekit-server generate-keys | tail -1/nix/store/0sqr1dw9n4wisrvra6lgfwwkjmvkxgiw-lk-jwt-service-0.4.1/bin/lk-jwt-service | awk '{print $3}')" > "${keyFile}"
     '';
     serviceConfig.Type = "oneshot";
     unitConfig.ConditionPathExists = "!${keyFile}";
