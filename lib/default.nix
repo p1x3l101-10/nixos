@@ -20,6 +20,7 @@ genLib ./. [
   "environment" # Depends on `(attrsets) createAttr`
   "minecraft"
   "sss"
+  "webserver"
 
   # Last
   "flake"
