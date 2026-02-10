@@ -10,6 +10,7 @@ in
   };
   imports = [
     ./cdn
+    ./matrix
     #./minecraft
     ./nextcloud
     ./nginx
