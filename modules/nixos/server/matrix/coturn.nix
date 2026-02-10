@@ -69,7 +69,6 @@ in {
   # configure synapse to point users to coturn
   services.matrix-synapse.settings = with config.services.coturn; {
     turn_uris = ["turn:${realm}:3478?transport=udp" "turn:${realm}:3478?transport=tcp"];
-    turn_shared_secret = static-auth-secret;
     turn_user_lifetime = "1h";
   };
 }
