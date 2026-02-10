@@ -23,7 +23,7 @@ in {
     settings = {
       bridge = {
         domain = dns;
-        homeserverUrl = "https://${dns}";
+        homeserverUrl = "https://matrix.${dns}";
         adminMxid = "pixel@${dns}";
       };
       auth = {
