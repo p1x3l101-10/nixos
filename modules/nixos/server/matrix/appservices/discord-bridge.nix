@@ -3,7 +3,7 @@
 let
   inherit (globals.server.dns) exists basename;
   tokens = "${globals.dirs.keys}/Matrix/Appservices/Discord/tokens.env";
-  dns = "matrix.${basename}";
+  dns = "${basename}";
 in {
   services.matrix-synapse.settings.app_service_config_files = [
     # The registration file is automatically generated after starting the
