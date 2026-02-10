@@ -11,7 +11,7 @@ in {
     forceSSL = true;
     serverAliases = [ "element.${matrix_fqdn}" ];
 
-    locations."/"root = pkgs.element-web.override {
+    locations."/".root = pkgs.element-web.override {
       conf = {
         default_server_config = clientConfig;
       };
