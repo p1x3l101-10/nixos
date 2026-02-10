@@ -1,4 +1,4 @@
-{ globals, config, lib, ... }:
+{ globals, config, lib, pkgs, ... }:
 
 let
   inherit (globals.server.dns) exists basename;
@@ -55,4 +55,8 @@ in {
       ];
     };
   };
+  # Add tool
+  users.users."matrix-synapse".packages = with pkgs; [
+    synadm
+  ];
 }
