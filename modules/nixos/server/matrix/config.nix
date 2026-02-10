@@ -1,6 +1,8 @@
-{ lib, ... }:
+{ lib, matrix_fqdn, ... }:
 
-{
+let
+  baseUrl = "https://${matrix_fqdn}";
+in {
   clientConfig = {
     "m.homeserver".base_url = baseUrl;
     "m.identity_server".base_url = "https://vector.im";
@@ -13,6 +15,6 @@
     ];
   };
   serverConfig = {
-    "m.server" = "${fqdn}:443";
+    "m.server" = "${matrix_fqdn}:443";
   };
 }

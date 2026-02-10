@@ -4,7 +4,7 @@ let
   matrix_fqdn = "matrix.${config.networking.domain}";
   fqdn = "element.${config.networking.domain}";
   baseUrl = "https://${fqdn}";
-  inherit (import ./config.nix { inherit lib; }) clientConfig;
+  inherit (import ./config.nix { inherit lib matrix_fqdn; }) clientConfig;
 in {
   services.nginx.virtualHosts."${fqdn}" = {
     enableACME = true;

@@ -5,7 +5,7 @@ let
   inherit (lib.internal.webserver) mkWellKnown;
   fqdn = "matrix.${config.networking.domain}";
   baseUrl = "https://${fqdn}";
-  inherit (import ./config.nix { inherit lib; }) serverConfig clientConfig;
+  inherit (import ./config.nix { inherit lib; matrix_fqdn = fqdn; }) serverConfig clientConfig;
 in {
   services.postgresql.enable = true;
   services.nginx.virtualHosts = {
