@@ -9,7 +9,9 @@ in {
   services.livekit = {
     enable = exists;
     openFirewall = true;
-    settings.room.auto_create = false;
+    settings = {
+      room.auto_create = true;
+    };
     inherit keyFile;
   };
   services.lk-jwt-service = {
