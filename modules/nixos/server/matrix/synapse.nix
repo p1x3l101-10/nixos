@@ -11,14 +11,11 @@ in {
   services.nginx.virtualHosts = {
     # Add /.well-known entry
     "${basename}" = {
-      locations."= /.well-known/matrix/server".extraConfig = mkWellKnown serverConfig;
-      locations."= /.well-known/matrix/client".extraConfig = mkWellKnown clientConfig;
+      locations."/.well-known/matrix/server".extraConfig = mkWellKnown serverConfig;
+      locations."/.well-known/matrix/client".extraConfig = mkWellKnown clientConfig;
     };
     "${fqdn}" = {
       enableACME = true;
-      locations."/".extraConfig = ''
-        return 404;
-      '';
       # Forward all Matrix API calls to the synapse Matrix homeserver. A trailing slash
       # *must not* be used here.
       locations."/_matrix".proxyPass = "http://[::1]:8008";
