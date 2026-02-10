@@ -1,4 +1,4 @@
-{ ... }:
+{ globals, ... }:
 
 {
   imports = [
@@ -8,5 +8,8 @@
     ./synapse.nix
 
     ./appservices/discord-bridge.nix
+  ];
+  environment.persistance."${globals.dirs.state}/Servers/Matrix".directories = [
+    { directory = "/var/lib/matrix-synapse"; user = "matrix-synapse"; group = "matrix-synapse"; }
   ];
 }
