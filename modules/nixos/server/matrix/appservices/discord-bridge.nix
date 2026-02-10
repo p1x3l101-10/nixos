@@ -5,18 +5,15 @@ let
   tokens = "${globals.dirs.keys}/Matrix/Appservices/Discord/tokens.env";
   dns = "matrix.${basename}";
 in {
-  services.matrix-synapse = {
-    app_service_config_files = [
-      # The registration file is automatically generated after starting the
-      # appservice for the first time.
-      # cp /var/lib/matrix-appservice-discord/discord-registration.yaml \
-      #   /var/lib/matrix-synapse/
-      # chown matrix-synapse:matrix-synapse \
-      #   /var/lib/matrix-synapse/discord-registration.yaml
-      "/var/lib/matrix-synapse/discord-registration.yaml"
-    ];
-    # ...
-  };
+  services.matrix-synapse.settings.app_service_config_files = [
+    # The registration file is automatically generated after starting the
+    # appservice for the first time.
+    # cp /var/lib/matrix-appservice-discord/discord-registration.yaml \
+    #   /var/lib/matrix-synapse/
+    # chown matrix-synapse:matrix-synapse \
+    #   /var/lib/matrix-synapse/discord-registration.yaml
+    "/var/lib/matrix-synapse/discord-registration.yaml"
+  ];
 
   services.matrix-appservice-discord = {
     enable = exists;
