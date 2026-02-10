@@ -23,4 +23,9 @@ lib.fix (self: {
         self.vps.ip
     );
   };
+  dirs = {
+    state = "/nix/host/state";
+    cache = "/nix/host/cache";
+    keys = "/nix/host/keys";
+  };
 })
