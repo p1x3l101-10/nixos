@@ -64,7 +64,6 @@ in {
   };
   security.acme.certs.${config.services.coturn.realm} = {
     postRun = "systemctl restart coturn.service";
-    group = "turnserver";
     webroot = "/var/lib/acme/acme-challenge";
   };
   # configure synapse to point users to coturn
