@@ -35,7 +35,7 @@ in {
     unitConfig.ConditionPathExists = "!${keyFile}";
   };
   # restrict access to livekit room creation to a homeserver
-  systemd.services.lk-jwt-service.environment.LIVEKIT_FULL_ACCESS_HOMESERVERS = "${dns}";
+  systemd.services.lk-jwt-service.environment.LIVEKIT_FULL_ACCESS_HOMESERVERS = "${basename}";
   services.nginx.virtualHosts."${dns}".locations = {
     "^~ /livekit/jwt/" = {
       priority = 400;
