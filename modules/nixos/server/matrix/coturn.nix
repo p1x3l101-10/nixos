@@ -11,6 +11,7 @@ in {
     min-port = 49000;
     max-port = 50000;
     use-auth-secret = true;
+    static-auth-secret-file = "${globals.dirs.keys}/coturn/secret";
     realm = "turn.${basename}";
     cert = "${config.security.acme.certs.${realm}.directory}/full.pem";
     pkey = "${config.security.acme.certs.${realm}.directory}/key.pem";
