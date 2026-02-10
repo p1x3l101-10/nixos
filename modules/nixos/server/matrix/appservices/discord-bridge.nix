@@ -26,6 +26,10 @@ in {
         domain = dns;
         homeserverUrl = "https://${dns}";
       };
+      auth = {
+        clientID = "1470849103565951077";
+        usePrivilegedIntents = true;
+      };
 
       # The service uses SQLite by default, but it's also possible to use
       # PostgreSQL instead:
