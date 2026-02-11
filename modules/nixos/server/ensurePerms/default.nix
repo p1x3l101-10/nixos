@@ -7,35 +7,35 @@ in {
   systemd.tmpfiles.settings = {
     "10-nextcloud-permissions" = mkIf config.services.nextcloud.enable {
       "${state}/Servers/Nextcloud/var/lib/nextcloud/*".e = {
-        owner = "nextcloud";
+        user = "nextcloud";
         group = "nextcloud";
       };
       "${keys}/nextcloud/*".e = {
-        owner = "nextcloud";
+        user = "nextcloud";
         group = "nextcloud";
       };
     };
     "10-matrix-permissions" = mkIf config.services.matrix-synapse.enable {
       "${state}/Servers/Matrix/var/lib/matrix-synapse/*".e = {
-        owner = "matrix-synapse";
+        user = "matrix-synapse";
         group = "matrix-synapse";
       };
       "${keys}/Matrix/keys.yaml".e = {
-        owner = "matrix-synapse";
+        user = "matrix-synapse";
         group = "matrix-synapse";
       };
     };
     "10-email-permissions" = mkIf config.services.maddy.enable {
       "${state}/Servers/EMail/var/lib/maddy/*".e = {
-        owner = "maddy";
+        user = "maddy";
         group = "maddy";
       };
       "${state}/Servers/EMail/var/lib/rspamd/*".e = {
-        owner = "rspamd";
+        user = "rspamd";
         group = "rspamd";
       };
       "${keys}/email/*".e = {
-        owner = "maddy";
+        user = "maddy";
         group = "maddy";
       };
     };
