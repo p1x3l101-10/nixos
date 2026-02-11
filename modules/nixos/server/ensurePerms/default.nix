@@ -34,7 +34,7 @@ in {
         user = "rspamd";
         group = "rspamd";
       };
-      "${keys}/email/*".Z = {
+      "${keys}/email".Z = {
         user = "maddy";
         group = "maddy";
       };
