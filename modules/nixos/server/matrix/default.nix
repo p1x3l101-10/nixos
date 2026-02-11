@@ -11,5 +11,6 @@
   ];
   environment.persistence."${globals.dirs.state}/Servers/Matrix".directories = [
     { directory = "/var/lib/matrix-synapse"; user = "matrix-synapse"; group = "matrix-synapse"; }
+    { directory = "/var/lib/private/matrix-appservice-discord"; mode = "0700"; }
   ];
 }
