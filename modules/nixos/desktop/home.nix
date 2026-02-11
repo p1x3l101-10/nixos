@@ -51,6 +51,7 @@
     permittedInsecurePackages = [
       "libxml2-2.13.8" # Already updated, but apparantly the CVE list has not yet
       "qtwebengine-5.15.19" # Stremio needs qtwebengine, and the old workaround no longer works
+      "olm-3.2.16" # Every matrix client under the damn sun :(
     ];
   };
   networking.firewall = lib.fix (self: {
