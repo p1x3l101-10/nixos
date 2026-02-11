@@ -24,6 +24,7 @@ in {
     { host = 25; remote = 2555; }
     { host = 143; remote = 1430; }
     { host = 587; remote = 5870; }
+    { host = 993; remote = 9930; }
   ]);
   imports = [
     ./mta-sts.nix
