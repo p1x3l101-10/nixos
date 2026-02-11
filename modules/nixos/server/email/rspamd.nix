@@ -1,4 +1,4 @@
-{ options, ... }:
+{ options, globals, ... }:
 
 {
   services.maddy.config = builtins.replaceStrings ["msgpipeline local_routing {"] [''msgpipeline local_routing {
@@ -17,7 +17,7 @@
     '';
   };
   systemd.services.rspamd.serviceConfig.SupplementaryGroups = [ "maddy" ];
-  environment.persistence."${state}/Servers/EMail".directories = [
+  environment.persistence."${globals.dirs.state}/Servers/EMail".directories = [
     "/var/lib/rspamd"
   ];
 }
