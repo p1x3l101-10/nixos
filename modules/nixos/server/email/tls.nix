@@ -9,6 +9,7 @@ in {
       extraConfig = ''
         email scott.blatt.0b10@gmail.com
         agreed
+        hostname ${config.services.maddy.primaryDomain}
         challenge dns-01
         dns cloudflare {
           api_token "{env:CLOUDFLARE_DNS_API_KEY}"
