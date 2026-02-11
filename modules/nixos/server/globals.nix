@@ -14,8 +14,8 @@ lib.fix (self: {
   vps = {
     enabled = true;
     ip = "";
-    dns = self.server.dns.basename;
-    validDomain = (if self.vps.dns != "" then true else false);
+    dns = "srv01.${self.server.dns.basename}";
+    validDomain = (if self.vps.dns != "srv01." then true else false);
     get = (
       if self.vps.validDomain then
         self.vps.dns
