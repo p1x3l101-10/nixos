@@ -1,4 +1,4 @@
-{ config, globals, ... }:
+{ config, globals, options, ... }:
 
 let
   inherit (globals.dirs) keys;

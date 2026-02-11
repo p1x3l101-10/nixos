@@ -1,4 +1,4 @@
-{ ... }:
+{ options, ... }:
 
 {
   services.maddy.config = builtins.replaceStrings ["msgpipeline local_routing {"] [''msgpipeline local_routing {
@@ -7,7 +7,7 @@
         api_path http://localhost:11334
       }
     }
-  }''];
+  }''] options.services.maddy.config.default;
   services.rspamd = {
     enable = true;
     locals."dkim_signing.conf".text = ''
