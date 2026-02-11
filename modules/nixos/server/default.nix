@@ -10,6 +10,7 @@ in
   };
   imports = [
     ./cdn
+    ./cloudflare-tunnel
     ./matrix
     #./minecraft
     ./nextcloud
