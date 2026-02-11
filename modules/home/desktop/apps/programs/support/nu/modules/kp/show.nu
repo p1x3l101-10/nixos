@@ -8,6 +8,7 @@ export def "main" [
   --all # Show all the attributes of the entry.
   --show-attachments # Show the attachments of the entry.
   --totp (-t) # Show the entry's current TOTP.
+  --raw # Show unprocessed output
 ] {
   mut args = []
   if $show_protected {
@@ -23,6 +24,10 @@ export def "main" [
     $args ++= [ --totp ]
   }
   let rawRawOutput = (kpRaw show $entry ...$args)
+  if $raw {
+    $rawRawOutput
+    return
+  }
   let linedOutput = ($rawRawOutput | lines)
   mut rawOutput = ""
   # Get keys
