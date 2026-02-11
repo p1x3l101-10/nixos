@@ -12,6 +12,7 @@ in
     ./cdn
     ./cloudflare-tunnel
     ./email
+    ./ensurePerms
     ./matrix
     #./minecraft
     ./nextcloud
