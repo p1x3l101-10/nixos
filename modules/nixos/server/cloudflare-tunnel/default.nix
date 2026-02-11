@@ -9,7 +9,7 @@
         certificateFile = "${globals.dirs.keys}/cloudflared/d164644e64b86d50dd065ef63f334c99.pem";
         default = "http_status:404";
         ingress = {
-          "*.${globals.server.dns.basename}" = "http://localhost:443"
+          "*.${globals.server.dns.basename}" = "http://localhost:443";
         };
       };
     };
