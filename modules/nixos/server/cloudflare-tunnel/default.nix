@@ -1,12 +1,14 @@
 { globals, config, ... }:
 
-{
+let
+  tunnelId = "17af68d2-548a-4428-9e42-fcfd85a452c1";
+in {
   services.cloudflared = {
     enable = globals.server.dns.exists;
     certificateFile = "${globals.dirs.keys}/cloudflared/cert.pem";
     tunnels = {
-      "17af68d2-548a-4428-9e42-fcfd85a452c1" = {
-        credentialsFile = "${globals.dirs.keys}/cloudflared/17af68d2-548a-4428-9e42-fcfd85a452c1.json";
+      "${tunnelId}" = {
+        credentialsFile = "${globals.dirs.keys}/cloudflared/${tunnelId}.json";
         default = "http_status:404";
         ingress = {
           "*.${globals.server.dns.basename}" = "http://localhost:443";
