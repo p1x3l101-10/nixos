@@ -17,4 +17,7 @@
     '';
   };
   systemd.services.rspamd.serviceConfig.SupplementaryGroups = [ "maddy" ];
+  environment.persistence."${state}/Servers/EMail".directories = [
+    "/var/lib/rspamd"
+  ];
 }
