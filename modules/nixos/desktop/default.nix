@@ -3,6 +3,11 @@
   _module.args = {
     globals = {
       type = "desktop";
+      dirs = {
+        state = "/nix/host/state";
+        cache = "/nix/host/cache";
+        keys = "/nix/host/keys";
+      };
     };
   };
   imports = [
