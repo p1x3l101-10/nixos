@@ -8,7 +8,7 @@ in {
       loader = "acme";
       extraConfig = ''
         email scott.blatt.0b10@gmail.com
-        agreed # I agree to Let's Encrypt's TOS
+        agreed
         host ${config.services.maddy.primaryDomain}
         challenge dns-01
         dns cloudflare {
