@@ -18,14 +18,38 @@ in {
     };
     # Enable TLS listeners. Configuring this via the module is not yet
     # implemented, see https://github.com/NixOS/nixpkgs/pull/153372
-    config = builtins.replaceStrings [
-      "imap tcp://0.0.0.0:143"
-      "submission tcp://0.0.0.0:587"
-    ] [
-      "imap tls://0.0.0.0:993 tcp://0.0.0.0:143"
-      "submission tls://0.0.0.0:465 tcp://0.0.0.0:587"
-    ] options.services.maddy.config.default;
-
+    config = ''
+      imap tls://0.0.0.0:993 tcp://0.0.0.0:143 {
+        auth &local_authdb
+        storage &local_mailboxes
+      }
+      submission tls://0.0.0.0:465 tcp://0.0.0.0:587 {
+        limits {
+          all rate 50 1s
+        }
+        auth &local_authdb
+        source $(local_domains) {
+          check {
+              authorize_sender {
+                  prepare_email &local_rewrites
+                  user_to_email identity
+              }
+          }
+          destination postmaster $(local_domains) {
+              deliver_to &local_routing
+          }
+          default_destination {
+              modify {
+                  dkim $(primary_domain) $(local_domains) default
+              }
+              deliver_to &remote_queue
+          }
+        }
+        default_source {
+          reject 501 5.1.8 "Non-local sender domain"
+        }
+      }
+    '';
     # Where to load the dns api token from
     secrets = [
       "${keys}/email/tls_tokens.env"

@@ -27,6 +27,7 @@ in {
   ]);
   imports = [
     ./mta-sts.nix
+    ./restOfDefaults.nix
     ./rspamd.nix
     ./tls.nix
   ];
