@@ -11,6 +11,7 @@ in
   imports = [
     ./cdn
     ./cloudflare-tunnel
+    ./email
     ./matrix
     #./minecraft
     ./nextcloud
