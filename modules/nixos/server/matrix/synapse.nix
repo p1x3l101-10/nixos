@@ -53,6 +53,21 @@ in {
           ];
         }
       ];
+      experimental_features = {
+        # Room summary API
+        msc3266_enabled = true;
+        # syncv2 state after, allows better room state tracking
+        msc4442_enabled = true;
+      };
+      max_event_delay_duration = "24h";
+      rc_message = {
+        per_second = 0.5;
+        burst_count = 30;
+      };
+      rc_delayed_event_mgmt = {
+        per_second = 1;
+        burst_count = 20;
+      };
     };
   };
   # Add tool
