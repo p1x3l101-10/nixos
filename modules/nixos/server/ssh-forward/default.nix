@@ -3,6 +3,7 @@
 {
   imports = [
     ./module.nix
+    ./portRange.nix
   ];
   networking.sshForwarding = {
     enable = true;

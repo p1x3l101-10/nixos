@@ -125,23 +125,6 @@ in
     };
   };
   config = lib.mkIf cfg.enable (lib.mkIf globals.vps.enabled {
-    # Convert ranges into ports
-    networking.sshForwarding.ports = (lib.lists.flatten
-      (map
-        ({ host, remote }: let
-          range = host.end - host.start;
-        in map
-          (x:
-            {
-              host = x + host.start;
-              remote = x + remote.start;
-            }
-          )
-          (builtins.genList (x: x + 1) range)
-        )
-        cfg.portRanges
-      )
-    );
     # Enable when the module is requested and when the vps exists
     systemd.services.ssh-tunnel = {
       description = "Expose local ports on remote server";
