@@ -11,6 +11,7 @@ in {
     openFirewall = true;
     settings = {
       room.auto_create = true;
+      rtc.use_external_ip = true;
     };
     inherit keyFile;
   };
@@ -56,4 +57,16 @@ in {
       proxyWebsockets = true;
     };
   };
+  networking.sshForwarding.portRanges = [
+    {
+      host = {
+        start = config.services.livekit.settings.rtc.port_range_start;
+        end = config.services.livekit.settings.rtc.port_range_end;
+      };
+      remote = {
+        start = config.services.livekit.settings.rtc.port_range_start;
+        end = config.services.livekit.settings.rtc.port_range_end;
+      };
+    }
+  ];
 }
