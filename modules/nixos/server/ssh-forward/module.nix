@@ -38,6 +38,31 @@ let
       };
     };
   };
+  rangeFormat = _: {
+    options = with lib; {
+      host = {
+        start = mkOption {
+          description = "First port to bind in range";
+          type = types.port;
+        };
+        end = mkOption {
+          description = "Last port to bind in range";
+          type = types.port;
+        };
+      };
+      remote = {
+        start = mkOption {
+          description = "First port to bind in range";
+          type = types.port;
+        };
+        end = mkOption {
+          description = "Last port to bind in range";
+          type = types.port;
+        };
+      };
+    };
+    config = {};
+  };
   subMod = _: {
     options = with lib; {
 
@@ -93,8 +118,30 @@ in
       description = "List of ports to forward";
       default = [ ];
     };
+    portRanges = mkOption {
+      type = with types; listOf (submodule portRange);
+      description = "Ranges to forward";
+      default = [ ];
+    };
   };
   config = lib.mkIf cfg.enable (lib.mkIf globals.vps.enabled {
+    # Convert ranges into ports
+    networking.sshForwarding.ports = (lib.lists.flatten
+      (map
+        ({ host, remote }: let
+          range = host.end - host.begin;
+        in map
+          (x:
+            {
+              host = x + host.begin;
+              remote = x + remote.begin;
+            }
+          )
+          builtins.genList (x: x + 1) range
+        )
+        cfg.portRanges
+      )
+    );
     # Enable when the module is requested and when the vps exists
     systemd.services.ssh-tunnel = {
       description = "Expose local ports on remote server";
