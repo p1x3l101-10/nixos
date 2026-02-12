@@ -30,11 +30,39 @@ in {
       "${globals.dirs.keys}/Matrix/keys.yaml"
     ];
     settings = {
-      logging.level = "DEBUG";
+      logging.level = "INFO";
       server_name = config.networking.domain;
+      default_identity_server = config.services.matter-synapse.settings.server_name;
       public_baseurl = baseUrl;
       presence.enabled = true;
       allow_public_rooms_over_federation = true;
+      enable_search = true;
+      allow_per_room_profiles = true;
+      allowed_avatar_mimetypes = [
+        "image/png"
+        "image/jpeg"
+        "image/gif"
+      ];
+      auto_join_rooms = [];
+      user_directory = {
+        enabled = true;
+        prefer_local_users = true;
+        search_all_users = true;
+      };
+      server_notices = {
+        system_mxid_localpart = "notices";
+        system_mxid_display_name = "Server Notices";
+        room_name = "Server Notices";
+        auto_join = true;
+      };
+      enable_room_list_search = true;
+      # Enable registration, but require a token to do so
+      enable_registration = true;
+      registration_requires_token = true;
+      # https://matrix-org.github.io/synapse/latest/usage/configuration/config_documentation.html#prevent_media_downloads_from
+      prevent_media_downloads_from = [];
+      # https://matrix-org.github.io/synapse/latest/usage/configuration/config_documentation.html#url_preview_url_blacklist
+      url_preview_url_blacklist = [];
       listeners = [
         {
           port = 8008;
@@ -47,6 +75,9 @@ in {
               names = [
                 "client"
                 "federation"
+                "keys"
+                "media"
+                "health"
               ];
               compress = true;
             }
