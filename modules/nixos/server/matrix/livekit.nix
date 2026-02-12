@@ -12,6 +12,7 @@ in {
     settings = {
       room.auto_create = true;
       rtc.use_external_ip = true;
+      rtc.port_range_end = 50500;
     };
     inherit keyFile;
   };
