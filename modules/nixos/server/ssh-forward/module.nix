@@ -137,7 +137,7 @@ in
               remote = x + remote.begin;
             }
           )
-          builtins.genList (x: x + 1) range
+          (builtins.genList (x: x + 1) range)
         )
         cfg.portRanges
       )
