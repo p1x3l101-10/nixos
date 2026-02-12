@@ -10,7 +10,7 @@ in {
     "org.matrix.msc4143.rtc_foci" = [
       {
         type = "livekit";
-        livekit_service_url = "${baseUrl}/livekit/jwt";
+        livekit_service_url = "https://livekit-jwt.call.matrix.org";
       }
     ];
   };
