@@ -69,4 +69,6 @@ in {
       };
     }
   ];
+  # Lower port range for RPC use
+  boot.kernel.sysctl."net.ipv4.ip_local_port_range" = "32768 49999";
 }
