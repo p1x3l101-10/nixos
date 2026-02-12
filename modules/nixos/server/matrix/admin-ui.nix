@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 
 {
-  services.nginx.virtualHosts."admin.${config.services.matrix-synapse.settings.public_baseurl}" = {
+  services.nginx.virtualHosts."admin.matrix.${config.networking.domain}" = {
     enableACME = true;
     forceSSL = true;
     locations."/".root = pkgs.synapse-admin-etkecc;
