@@ -21,7 +21,7 @@ in {
       # *must not* be used here.
       locations."/_matrix".proxyPass = "http://[::1]:8008";
       # Forward requests for e.g. SSO and password-resets.
-      locations."/_synapse/client".proxyPass = "http://[::1]:8008";
+      locations."/_synapse".proxyPass = "http://[::1]:8008";
     };
   };
   services.matrix-synapse = {
