@@ -38,7 +38,7 @@ let
       };
     };
   };
-  rangeFormat = _: {
+  portRange = _: {
     options = with lib; {
       host = {
         start = mkOption {
