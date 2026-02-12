@@ -32,7 +32,7 @@ in {
     settings = {
       logging.level = "INFO";
       server_name = config.networking.domain;
-      default_identity_server = config.services.matter-synapse.settings.server_name;
+      default_identity_server = config.services.matrix-synapse.settings.server_name;
       public_baseurl = baseUrl;
       presence.enabled = true;
       allow_public_rooms_over_federation = true;
