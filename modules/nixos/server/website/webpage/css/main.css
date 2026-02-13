@@ -6,8 +6,9 @@ body {
   max-width: 650px;
   line-height: 1.6;
   font-size: 18px;
-  color: #444444;
-  padding: 0 10px
+  color: var(--base07);
+  padding: 0 10px;
+  font-family: Courier;
 }
 
 h1, h2, h3 {
@@ -18,10 +19,12 @@ a {
   color: var(--base0B)
 }
 
-p, li {
-  color: var(--base07)
-}
-
 pre {
   color: var(--base0A)
-}1
+}
+
+.ascii {
+   color: var(--base07);
+   font-size:10;
+   font-weight: bold;
+}
