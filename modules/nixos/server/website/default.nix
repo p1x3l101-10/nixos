@@ -4,6 +4,8 @@
   services.nginx.virtualHosts."${globals.server.dns.basename}" = globals.server.dns.required {
     addSSL = true;
     enableACME = true;
-    locations."/".root = pkgs.callPackage ./webpage.nix { inherit globals; };
+    locations."/" = {
+      root = ./webpage;
+    };
   };
 }
