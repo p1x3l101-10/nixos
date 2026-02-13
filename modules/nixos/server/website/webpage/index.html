@@ -6,9 +6,14 @@
     <title>Ex(space)Machina</title>
     <link rel="stylesheet" href="/css/main.css?v=2" type="text/css"/>
   </head>
-  <body>
+  <body onLoad="quoteOfTheSession()">
     <center>
-      <h1>HOW'D I GET IN HERE?</h1>
+      <details>
+        <summary>
+          <h3>And who said backend people can't create frontend stuff?</h3>
+        </summary>
+        <p>Me, I said that about myself</p>
+      </details>
       <br/>
       <table border="0">
         <tbody>
@@ -25,6 +30,40 @@
       </table>
       <br/>
       <br/>
+      <details>
+        <summary>
+          <p>Quote of the Day (session)</p>
+        </summary>
+        <div class="quoteOfTheSession">
+          <p id="quote">Sadly, I use javascript for this to work. Please enable it for more useless features such as this one. (I guess this is your quote)</p>
+          <p>- <span id="author">Me</span></p>
+        </div>
+        <script>
+          function quoteOfTheSession() {
+            fetch(window.location.href + "/quotes.json")
+              .then(responce => {
+                if (!responce.ok) {
+                  throw new Error("Network error");
+                }
+                return responce.json();
+              })
+              .then(quoteList => {
+                console.log(quoteList);
+                var entry = Math.floor(Math.random() * quoteList.length);
+                var quoteBody = document.querySelector(".quoteOfTheSession");
+                quoteBody.querySelector("#quote").innerHTML = quoteList[entry].quote;
+                quoteBody.querySelector("#author").innerHTML = quoteList[entry].author;
+              })
+              .catch(error => {
+                console.error(error);
+                var quoteBody = document.querySelector(".quoteOfTheSession");
+                quoteBody.querySelector("#quote").innerHTML = error.message;
+                quoteBody.querySelector("#author").innerHTML = "This website's javascript";
+              })
+            ;
+          }
+        </script>
+      </details>
     </center>
   </body>
 </html>
