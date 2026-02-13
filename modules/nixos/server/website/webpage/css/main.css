@@ -13,3 +13,15 @@ body {
 h1, h2, h3 {
   line-height: 1.2
 }
+
+a {
+  color: var(--base0B)
+}
+
+p, li {
+  color: var(--base07)
+}
+
+pre {
+  color: var(--base0A)
+}1
