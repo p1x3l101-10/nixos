@@ -59,7 +59,7 @@ in
     };
   };
   services.arrpc = {
-    enable = true;
+    enable = false;
     systemdTarget = "hyprland-session.target";
   };
 }
