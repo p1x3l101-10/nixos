@@ -30,4 +30,7 @@
     keepass-otpkeyprov
     kpcli
   ];
+  programs.zen-browser.nativeMessagingHosts = [
+    config.programs.keepassxc.package
+  ];
 }
