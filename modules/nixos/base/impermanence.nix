@@ -17,6 +17,7 @@ in
       "/var/lib/bluetooth"
       "/var/log" # Keep logs for later review
       "/var/lib/systemd"
+      "/var/lib/userborn" # Prevent stupid uid changes from daring to alter a service
       { directory = "/var/lib/colord"; user = "colord"; group = "colord"; mode = "u=rwx,g=rx,o="; }
       "/root/.local/share/nix"
     ];
