@@ -2,11 +2,10 @@
 
 {
   imports = [
-    ./instances/gon.nix
-    ./bluemap-nginx.nix
+    ./instances/firma-prima.nix
+    #./bluemap-nginx.nix
     ./svc.nix
-    ./rcon.nix
-    #./gtnh.nix
+    #./rcon.nix
   ];
   networking.sshForwarding.ports = [
     25565
