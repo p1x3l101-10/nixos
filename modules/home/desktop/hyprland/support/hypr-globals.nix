@@ -24,7 +24,7 @@ lib.fix (self: {
   };
   clockFormat = {
     date = "%a, %d %b";
-    time = "%I:%M:%S %P";
+    time = "%H:%M:%S";
     long = self.clockFormat.date + ", " + self.clockFormat.time;
   };
   notifications = {
