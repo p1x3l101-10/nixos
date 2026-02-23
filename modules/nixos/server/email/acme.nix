@@ -8,7 +8,7 @@ in {
     enableACME = true;
     globalRedirect = config.networking.domain;
   };
-  services.opensmtpd.serverConfigurations = ''
+  services.opensmtpd.serverConfiguration = ''
     pki ${domain} cert "${sslCertificate}"
     pki ${domain} key "${sslCertificateKey}"
   '';
