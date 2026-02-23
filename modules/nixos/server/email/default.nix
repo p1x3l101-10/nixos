@@ -19,6 +19,7 @@ in {
         "/share"
         "/libexec"
         "/etc"
+        "/sbin"
       ];
     };
     serverConfiguration = ''
