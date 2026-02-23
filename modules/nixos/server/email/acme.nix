@@ -8,7 +8,7 @@ in {
     globalRedirect = config.networking.domain;
   };
   services.opensmtpd.serverConfiguration = let
-    creds = "/run/credentials/opensmtpd.service"
+    creds = "/run/credentials/opensmtpd.service";
   in ''
     pki ${domain} cert "${creds}/cert.pem"
     pki ${domain} key "${creds}/key.pem"
