@@ -4,7 +4,7 @@ let
   host = config.networking.domain;
   domain = "mail.${config.networking.domain}";
   inherit (globals.dirs) keys state;
-  mkProc = name: "${config.systemd.services.opensmtpd.environment.OPENSMTPD_PROC_PATH}/${name}"
+  mkProc = name: "${config.systemd.services.opensmtpd.environment.OPENSMTPD_PROC_PATH}/${name}";
 in {
   services.opensmtpd = {
     enable = true;
