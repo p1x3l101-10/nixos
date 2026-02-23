@@ -1,7 +1,7 @@
 { config, ... }:
 
 let
-  domain = "mail" + config.networking.domain;
+  domain = config.networking.domain;
 in {
   services.go-autoconfig = {
     enable = config.services.opensmtpd.enable;
