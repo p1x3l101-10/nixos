@@ -4,7 +4,6 @@ let
   host = config.networking.domain;
   domain = "mail.${config.networking.domain}";
   inherit (globals.dirs) keys state;
-  inherit (config.services.nginx.virtualHosts."${domain}") sslCertificateKey sslCertificate;
 in {
   services.opensmtpd = {
     enable = true;
