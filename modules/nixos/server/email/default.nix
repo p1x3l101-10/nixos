@@ -3,20 +3,35 @@
 let
   host = config.networking.domain;
   inherit (globals.dirs) keys state;
+  inherit (config.services.nginx.virtualHosts."${domain}") sslCertificateKey sslCertificate;
+  domain = "mail.${config.networking.domain}";
 in {
-  services.maddy = {
-    enable = globals.server.dns.exists;
-    primaryDomain = host;
-    openFirewall = true;
-    ensureAccounts = [
-      "postmaster@${host}"
-      "pixel@${host}"
-    ];
-    ensureCredentials = {
-      "postmaster@${host}".passwordFile = "${keys}/email/login/postmaster";
-      "pixel@${host}".passwordFile = "${keys}/email/login/pixel";
-    };
+  services.opensmtpd = {
+    enable = true;
+    setSendmail = true;
+    serverConfiguration = ''
+      filter check_dyndns phase connect match rdns regex { '.*\.dyn\..*', '.*\.dsl\..*' } disconnect "550 no residential connections"
+      filter check_rdns phase connect match !rdns disconnect "550 no rDNS is so 80s"
+      filter check_fcrdns phase connect match !fcrdns disconnect "550 no FCrDNS is so 80s"
+      filter senderscore proc-exec "filter-senderscore -blockBelow 10 -junkBelow 70 -slowFactor 5000"
+      filter rspamd proc-exec "filter-rspamd"
+
+      table aliases file:/etc/mail/aliases
+
+      listen on all tls pki ${domain} filter { check_dyndns, check_rdns, check_fcrdns, senderscore, rspamd }
+      listen on all port submission tls-require pki ${domain} auth filter rspamd
+
+      action "local_mail" maildir junk alias <aliases>
+      action "outbound" relay helo ${domain}
+
+      match from any for domain "${host}" action "local_mail"
+      match for local action "local_mail"
+
+      match from any auth for any action "outbound"
+      match for any action "outbound"
+    '';
   };
+  environment.etc."mail/aliases".text = "";
   environment.persistence."${state}/Servers/EMail".directories = [
     "/var/lib/maddy"
   ];
@@ -27,9 +42,8 @@ in {
     { host = 993; remote = 9930; }
   ]);
   imports = [
-    ./mta-sts.nix
-    ./restOfDefaults.nix
+    ./acme.nix
+    ./autoconfig.nix
     ./rspamd.nix
-    ./tls.nix
   ];
 }
