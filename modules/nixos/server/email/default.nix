@@ -8,20 +8,9 @@ in {
   services.opensmtpd = {
     enable = true;
     setSendmail = true;
-    package = pkgs.buildEnv {
-      name = "opensmtpd-merged";
-      paths = with pkgs; [
-        opensmtpd
-        opensmtpd-filter-rspamd
-      ];
-      pathsToLink = [
-        "/bin"
-        "/share"
-        "/libexec"
-        "/etc"
-        "/sbin"
-      ];
-    };
+    procPackages = with pkgs; [
+      opensmtpd-filter-rspamd
+    ];
     serverConfiguration = ''
       filter check_dyndns phase connect match rdns regex { '.*\.dyn\..*', '.*\.dsl\..*' } disconnect "550 no residential connections"
       filter check_rdns phase connect match !rdns disconnect "550 no rDNS is so 80s"
