@@ -37,7 +37,7 @@ in {
     };
     services = {
       copy-smtpd-keys = {
-        unitConfig.RequiresMountsFor = "${certs."${domain}".directory} /var/lib/smtpd"
+        unitConfig.RequiresMountsFor = "${certs."${domain}".directory} /var/lib/smtpd";
         # Need tempdir
         requires = [ "systemd-tmpfiles-setup.service" ];
         after = [ "systemd-tmpfiles-setup.service" ];
