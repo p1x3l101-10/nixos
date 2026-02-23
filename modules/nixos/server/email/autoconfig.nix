@@ -9,11 +9,11 @@ in {
       service_addr = ":1323";
       domain = "autoconfig.${domain}";
       imap = {
-        server = domain;
+        server = "imap." + domain;
         port = 993;
       };
       smtp = {
-        server = domain;
+        server = "smtp." + domain;
         port = 587;
       };
     };
