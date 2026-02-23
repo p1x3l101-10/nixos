@@ -19,7 +19,7 @@ in {
       table aliases file:/etc/mail/aliases
 
       listen on 0.0.0.0 tls pki ${domain} filter { check_dyndns, check_rdns, check_fcrdns }
-      listen on 0.0.0.0 port submission tls-require pki ${domain} auth filter rspamd
+      listen on 0.0.0.0 port submission tls-require pki ${domain} auth filter
 
       action "local_mail" maildir junk alias <aliases>
       action "outbound" relay helo ${domain}
