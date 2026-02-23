@@ -25,7 +25,7 @@ in {
       argument = "0700";
     };
     paths = {
-      copySmtpdKeys = {
+      copy-smtpd-keys = {
         # Wait for acme to alter the keys
         requiredBy = [ "acme-renew-${domain}.timer" "opensmtpd.service" ];
         before = [ "opensmtpd.service" ];
@@ -36,7 +36,7 @@ in {
       };
     };
     services = {
-      copySmtpdKeys = {
+      copy-smtpd-keys = {
         # Need tempdir
         requires = [ "systemd-tmpfiles-setup.service" ];
         after = [ "systemd-tmpfiles-setup.service" ];
