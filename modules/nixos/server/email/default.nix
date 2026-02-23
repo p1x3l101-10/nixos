@@ -32,7 +32,7 @@ in {
   };
   environment.etc."mail/aliases".text = "";
   environment.persistence."${state}/Servers/EMail".directories = [
-    "/var/spool/opensmtpd"
+    "/var/spool/smtpd"
   ];
   networking.sshForwarding.ports = (lib.optionals globals.server.dns.exists [
     { host = 25; remote = 2555; }
