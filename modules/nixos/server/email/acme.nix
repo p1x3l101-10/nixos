@@ -22,7 +22,7 @@ in {
     tmpfiles.settings."50-smtpd"."/var/lib/smtpd".d = {
       user = "root";
       group = "root";
-      argument = "0700";
+      mode = "0700";
     };
     paths = {
       copy-smtpd-keys = {
