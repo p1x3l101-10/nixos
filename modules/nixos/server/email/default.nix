@@ -15,11 +15,12 @@ in {
       filter check_dyndns phase connect match rdns regex { '.*\.dyn\..*', '.*\.dsl\..*' } disconnect "550 no residential connections"
       filter check_rdns phase connect match !rdns disconnect "550 no rDNS is so 80s"
       filter check_fcrdns phase connect match !fcrdns disconnect "550 no FCrDNS is so 80s"
+      filter rspamd proc-exec "filter-rspamd"
 
       table aliases file:/etc/mail/aliases
 
-      listen on 0.0.0.0 tls pki ${domain} filter { check_dyndns, check_rdns, check_fcrdns }
-      listen on 0.0.0.0 port submission tls-require pki ${domain} auth filter
+      listen on 0.0.0.0 tls pki ${domain} filter { check_dyndns, check_rdns, check_fcrdns, rspamd }
+      listen on 0.0.0.0 port submission tls-require pki ${domain} auth filter rspamd
 
       action "local_mail" maildir junk alias <aliases>
       action "outbound" relay helo ${domain}
@@ -45,6 +46,6 @@ in {
   imports = [
     ./acme.nix
     ./autoconfig.nix
-    #./rspamd.nix
+    ./rspamd.nix
   ];
 }
