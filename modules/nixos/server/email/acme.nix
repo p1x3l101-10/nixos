@@ -22,7 +22,7 @@ in {
     tmpfiles.settings."50-smtpd"."/var/lib/smtpd".d = {
       user = "root";
       group = "root";
-      mode = "0700";
+      mode = "0755";
     };
     paths = {
       copy-smtpd-keys = {
@@ -37,6 +37,7 @@ in {
     };
     services = {
       copy-smtpd-keys = {
+        unitConfig.RequiresMountsFor = "${certs."${domain}".directory} /var/lib/smtpd"
         # Need tempdir
         requires = [ "systemd-tmpfiles-setup.service" ];
         after = [ "systemd-tmpfiles-setup.service" ];
