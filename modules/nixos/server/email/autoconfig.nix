@@ -20,6 +20,6 @@ in {
   };
   services.nginx.virtualHosts."autoconfig.${domain}" = {
     enableACME = true;
-    locations."/".proxyPass = "http://[::1]${config.services.go-autoconfig.service_addr}";
+    locations."/".proxyPass = "http://[::1]:1323";
   };
 }
