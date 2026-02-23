@@ -1,10 +1,10 @@
 { config, ... }:
 
 let
-  domain = config.services.maddy.primaryDomain;
+  domain = "mail" + config.networking.domain;
 in {
   services.go-autoconfig = {
-  enable = config.services.maddy.enable;
+    enable = config.services.opensmtpd.enable;
     settings = {
       service_addr = ":1323";
       domain = "autoconfig.${domain}";
