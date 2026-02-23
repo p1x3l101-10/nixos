@@ -4,19 +4,15 @@ let
   host = config.networking.domain;
   domain = "mail.${config.networking.domain}";
   inherit (globals.dirs) keys state;
-  mkProc = name: "${config.systemd.services.opensmtpd.environment.OPENSMTPD_PROC_PATH}/${name}";
 in {
   services.opensmtpd = {
     enable = true;
     setSendmail = true;
-    procPackages = with pkgs; [
-      opensmtpd-filter-rspamd
-    ];
     serverConfiguration = ''
       filter check_dyndns phase connect match rdns regex { '.*\.dyn\..*', '.*\.dsl\..*' } disconnect "550 no residential connections"
       filter check_rdns phase connect match !rdns disconnect "550 no rDNS is so 80s"
       filter check_fcrdns phase connect match !fcrdns disconnect "550 no FCrDNS is so 80s"
-      filter rspamd proc-exec "${mkProc "filter-rspamd"}"
+      filter rspamd proc-exec "${pkgs.opensmtpd-filter-rspamd}/bin/filter-rspamd"
 
       table aliases file:/etc/mail/aliases
 
