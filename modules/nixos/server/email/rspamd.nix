@@ -9,7 +9,7 @@
       path = "/var/lib/maddy/dkim_keys/$domain_$selector.key";
     '';
   };
-  systemd.services.rspamd.serviceConfig.SupplementaryGroups = [ "maddy" ];
+  systemd.services.rspamd.serviceConfig.SupplementaryGroups = [ "opensmtpd" ];
   environment.persistence."${globals.dirs.state}/Servers/EMail".directories = [
     "/var/lib/rspamd"
   ];
