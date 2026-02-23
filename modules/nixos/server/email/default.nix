@@ -45,6 +45,6 @@ in {
   imports = [
     ./acme.nix
     ./autoconfig.nix
-    ./rspamd.nix
+    #./rspamd.nix
   ];
 }
