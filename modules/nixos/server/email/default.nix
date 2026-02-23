@@ -1,4 +1,4 @@
-{ globals, config, lib, ... }:
+{ globals, config, lib, pkgs, ... }:
 
 let
   host = config.networking.domain;
@@ -8,6 +8,9 @@ in {
   services.opensmtpd = {
     enable = true;
     setSendmail = true;
+    procPackages = with pkgs; [
+      opensmtpd-filter-rspamd
+    ];
     serverConfiguration = ''
       filter check_dyndns phase connect match rdns regex { '.*\.dyn\..*', '.*\.dsl\..*' } disconnect "550 no residential connections"
       filter check_rdns phase connect match !rdns disconnect "550 no rDNS is so 80s"
