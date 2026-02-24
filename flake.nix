@@ -117,6 +117,13 @@
         #flake-parts.follows = "flake-parts";
       };
     };
+    nixos-mailserver = {
+      url = "gitlab:simple-nixos-mailserver/nixos-mailserver/master";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-compat.follows = "flake-compat";
+      };
+    };
   };
   outputs = inputs: import ./outputs.nix inputs;
 }
