@@ -17,6 +17,7 @@
     ./secureBoot.nix
     ./ssh.nix
     ./tools.nix
+    ./yggdrasil.nix
   ];
   #nix.registry = lib.internal.confTemplates.registry inputs;
 }
