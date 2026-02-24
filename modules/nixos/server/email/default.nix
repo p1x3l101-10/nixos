@@ -1,48 +1,29 @@
-{ globals, config, lib, pkgs, ... }:
+{ ext, globals, config, pkgs, ... }:
 
 let
-  host = config.networking.domain;
-  domain = "mail.${config.networking.domain}";
-  inherit (globals.dirs) keys state;
+  inherit (config.networking) domain;
 in {
-  services.opensmtpd = {
-    enable = true;
-    setSendmail = true;
-    serverConfiguration = ''
-      filter check_dyndns phase connect match rdns regex { '.*\.dyn\..*', '.*\.dsl\..*' } disconnect "550 no residential connections"
-      filter check_rdns phase connect match !rdns disconnect "550 no rDNS is so 80s"
-      filter check_fcrdns phase connect match !fcrdns disconnect "550 no FCrDNS is so 80s"
-      filter rspamd proc-exec "${pkgs.opensmtpd-filter-rspamd}/bin/filter-rspamd"
-
-      table aliases file:/etc/mail/aliases
-
-      listen on 0.0.0.0 tls pki ${domain} filter { check_dyndns, check_rdns, check_fcrdns, rspamd }
-      listen on 0.0.0.0 port submission tls-require pki ${domain} auth filter rspamd
-
-      action "local_mail" maildir junk alias <aliases>
-      action "outbound" relay helo ${domain}
-
-      match from any for domain "${host}" action "local_mail"
-      match for local action "local_mail"
-
-      match from any auth for any action "outbound"
-      match for any action "outbound"
-    '';
-  };
-  environment.etc."mail/aliases".text = "";
-  environment.persistence."${state}/Servers/EMail".directories = [
-    "/var/spool/smtpd"
-    "/var/lib/smtpd"
-  ];
-  networking.sshForwarding.ports = (lib.optionals globals.server.dns.exists [
-    { host = 25; remote = 2555; }
-    { host = 143; remote = 1430; }
-    { host = 587; remote = 5870; }
-    { host = 993; remote = 9930; }
-  ]);
   imports = [
-    ./acme.nix
-    ./autoconfig.nix
-    ./rspamd.nix
+    ext.inputs.nixos-mailserver.nixosModules.mailserver
   ];
+  mailserver = {
+    enable = true;
+    stateversion = 3;
+    fqdn = "mail.${domain}";
+    domains = [ domain ];
+    x509.useACMEHost = config.mailserver.fqdn;
+    loginAccounts = {
+      "postmaster@${domain}" = {
+        hashedPassword = "$y$j9T$xIqsbrS7kn13DWVH06nf11$ewQiB0.UkYcVSCIU5XqfuV9Ej4ss5.m1ATkks7YSU/9";
+      };
+      "pixel@${domain}" = {
+        hashedPassword = "$y$j9T$ChefBxNe7LttV2jeKpeo00$DZJxTcIlROpaFyfUV109btSMI9khiDxDvugU/dUnLD3";
+      };
+    };
+  };
+  # Let NGINX handle ACME certs
+  services.nginx.virtualHosts."${domain}" = {
+    enableACME = true;
+    globalRedirect = config.networking.domain;
+  };
 }
