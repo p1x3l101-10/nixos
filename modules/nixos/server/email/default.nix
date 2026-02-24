@@ -2,6 +2,13 @@
 
 let
   inherit (config.networking) domain;
+  ssl = let
+    inherit (config.security.acme.certs."${config.mailserver.fqdn}") directory;
+  in {
+    key = "${directory}/key.pem";
+    cert = "${directory}/cert.pem";
+    fullchain = "${directory}/fullchain.pem";
+  };
 in {
   imports = [
     ext.inputs.nixos-mailserver.nixosModules.mailserver
@@ -11,7 +18,10 @@ in {
     stateVersion = 3;
     fqdn = "mail.${domain}";
     domains = [ domain ];
-    x509.useACMEHost = config.mailserver.fqdn;
+    x509 = {
+      privateKeyFile = ssl.key;
+      certificateFile = ssl.fullchain;
+    };
     loginAccounts = {
       "postmaster@${domain}" = {
         hashedPassword = "$y$j9T$xIqsbrS7kn13DWVH06nf11$ewQiB0.UkYcVSCIU5XqfuV9Ej4ss5.m1ATkks7YSU/9";
@@ -22,7 +32,7 @@ in {
     };
   };
   # Let NGINX handle ACME certs
-  services.nginx.virtualHosts."${domain}" = {
+  services.nginx.virtualHosts."${config.mailserver.fqdn}" = {
     enableACME = true;
     globalRedirect = config.networking.domain;
   };
