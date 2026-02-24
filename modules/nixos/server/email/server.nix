@@ -5,7 +5,7 @@ let
 in {
   mailserver = {
     enable = true;
-    fqdn = "mail.${domain}";
+    fqdn = "srv01.${domain}";
     domains = [ domain ];
     loginAccounts = {
       "postmaster@${domain}" = {
