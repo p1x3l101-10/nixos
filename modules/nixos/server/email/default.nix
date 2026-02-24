@@ -8,7 +8,7 @@ in {
   ];
   mailserver = {
     enable = true;
-    stateversion = 3;
+    stateVersion = 3;
     fqdn = "mail.${domain}";
     domains = [ domain ];
     x509.useACMEHost = config.mailserver.fqdn;
