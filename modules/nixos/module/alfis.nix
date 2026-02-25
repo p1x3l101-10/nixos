@@ -39,7 +39,7 @@ in {
       };
       check_blocks = mkOption {
         description = "How many last blocks to check on start";
-        type = types.uint;
+        type = types.ints.u16;
         default = 8;
       };
       net = {
@@ -76,7 +76,7 @@ in {
         };
         threads = mkOption {
           description = "How many threads to spawn by DNS server";
-          type = types.uint;
+          type = types.ints.u16;
           default = 10;
         };
         forwarders = mkOption {
@@ -117,7 +117,7 @@ in {
       mining = {
         threads = mkOption {
           description = "How many CPU threads to spawn for mining, zero = number of CPU cores";
-          type = types.uint;
+          type = types.ints.u16;
           default = 0;
         };
         lower = mkOption {
