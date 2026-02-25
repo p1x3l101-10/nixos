@@ -20,6 +20,7 @@ in
     ./server-base
     ./ssh-forward
     ./website
+    ./wks
   ];
   networking = {
     domain = globals.server.dns.basename;
