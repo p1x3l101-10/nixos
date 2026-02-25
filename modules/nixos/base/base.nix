@@ -46,7 +46,7 @@
   system.stateVersion = "24.11";
 
   # Ensure that the private state directory has acceptable permissions for systemd
-  systemd.tmpfiles."00-fix-private-dir"."/var/lib/private".d = {
+  systemd.tmpfiles.rules."00-fix-private-dir"."/var/lib/private".d = {
     user = "root";
     group = "root";
     mode = "0700";
