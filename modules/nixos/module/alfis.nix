@@ -1,7 +1,7 @@
 { config, options, lib, pkgs, ... }:
 
 let
-  cfg = config.alfis;
+  cfg = config.networking.alfis;
   inherit (lib) mkOption mkEnableOption mkIf types mkMerge;
   mkResInteg = name: mkOption {
     description = "Whether to hook into ${name} for name resolution";
@@ -9,7 +9,7 @@ let
     default = false;
   };
 in {
-  options.alfis = {
+  options.networking.alfis = {
     enable = mkEnableOption "alfis";
     package = mkOption {
       description = "Alfis package to use. If you want a gui, change to pkgs.alfis";
