@@ -167,7 +167,7 @@ in {
             };
           };
         };
-        tmpfiles.settings."10-alfis"."/var/lib/alfis" = {
+        tmpfiles.settings."10-alfis"."/var/lib/alfis".d = {
           user = "alfis";
           group = "alfis";
           mode = "0700";
