@@ -93,6 +93,10 @@
   };
   networking.alfis = {
     enable = true;
+    integrations = {
+      resolved = "primary";
+      networkmanager = "prepend";
+    };
   };
   environment.persistence."/nix/host/state/Yggdrasil".directories = [
     "/var/lib/yggdrasil"
