@@ -178,7 +178,7 @@ in {
               AmbientCapabilities = "CAP_NET_BIND_SERVICE";
               SyslogIdentifier = "alfis";
               WorkingDirectory = "/var/lib/alfis";
-              ExecStart = "${cfg.package}/bin/alfis -n";
+              ExecStart = "${cfg.package}/bin/alfis -n -c /etc/alfis.toml";
               Restart = "always";
               TimeoutStopSec = 5;
             };
