@@ -46,6 +46,10 @@
       NodeInfo = {};
     };
   };
+  # Speed up connections
+  services.yggdrasil-jumper = {
+    enable = true;
+  };
   # It puts the keys in the incorrect location
   systemd.services.yggdrasil-persistent-keys = let
     keysPath = "/var/lib/private/yggdrasil"; # The notable part
