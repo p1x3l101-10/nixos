@@ -1,4 +1,4 @@
-{ ... }:
+{ config, pkgs, lib, ... }:
 
 {
   services.yggdrasil = {
@@ -90,6 +90,22 @@
       # to the whole network on request.
       NodeInfo = {};
     };
+  };
+  # It puts the keys in the incorrect location
+  systemd.services.yggdrasil-persistent-keys = let
+    keysPath = "/var/lib/private/yggdrasil"; # The notable part
+    binYggdrasil = "${config.yggdrasil.package}/bin/yggdrasil";
+  in {
+    script = lib.mkForce ''
+      if [ ! -e ${keysPath} ]
+      then
+        mkdir --mode=700 -p ${dirOf keysPath}
+        ${binYggdrasil} -genconf -json \
+          | ${pkgs.jq}/bin/jq \
+              'to_entries|map(select(.key|endswith("Key")))|from_entries' \
+          > ${keysPath}
+      fi
+    '';
   };
   networking.alfis = {
     enable = true;
