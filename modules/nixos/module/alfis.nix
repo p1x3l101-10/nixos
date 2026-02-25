@@ -190,7 +190,7 @@ in {
           mode = "0700";
         };
       };
-      environment.etc."alfis.conf".source = (pkgs.formats.toml { }).generate "alfis.conf" cfg.settings;
+      environment.etc."alfis.toml".source = (pkgs.formats.toml { }).generate "alfis.toml" cfg.settings;
       security.wrappers.alfis = {
         source = "${cfg.package}/bin/alfis";
         capabilities = "cap_net_bind_service=+ep";
