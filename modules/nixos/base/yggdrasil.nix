@@ -96,5 +96,6 @@
   };
   environment.persistence."/nix/host/state/Yggdrasil".directories = [
     "/var/lib/yggdrasil"
+    { directory = "/var/lib/alfis"; owner = "alfis"; group = "alfis"; mode = "0700"; }
   ];
 }
