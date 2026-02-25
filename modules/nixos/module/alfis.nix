@@ -71,7 +71,7 @@ in {
       dns = {
         listen = mkOption {
           description = "Your DNS resolver will be listening on this address and port (Usual port is 53)";
-          type = types.string;
+          type = types.str;
           default = "127.0.0.3:53";
         };
         threads = mkOption {
