@@ -173,9 +173,7 @@ in {
               AmbientCapabilities = "CAP_NET_BIND_SERVICE";
               SyslogIdentifier = "alfis";
               WorkingDirectory = "/var/lib/alfis";
-              ExecStart = let
-                configFile = (pkgs.formats.toml { }).generate "alfis.conf" cfg.settings;
-              in "${cfg.package}/bin/alfis -n -c ${configFile}";
+              ExecStart = "${cfg.package}/bin/alfis -n";
               Restart = "always";
               TimeoutStopSec = 5;
             };
@@ -190,6 +188,7 @@ in {
       networking.nameservers = [
         cfg.settings.dns.listen
       ];
+      environment.etc."alfis.conf".source = (pkgs.formats.toml { }).generate "alfis.conf" cfg.settings;
       security.wrappers.alfis = {
         source = "${cfg.package}/bin/alfis";
         capabilities = "CAP_NET_BIND_SERVICE";
