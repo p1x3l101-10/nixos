@@ -200,10 +200,10 @@ in {
       ];
     })
     (mkIf (cfg.integrations.networkmanager != "off") {
-      networking.networkmanager.appendNameservers = (cfg.integrations.networkmanager == "append") [
+      networking.networkmanager.appendNameservers = mkIf (cfg.integrations.networkmanager == "append") [
         cfg.settings.dns.listen
       ];
-      networking.networkmanager.insertNameservers = (cfg.integrations.networkmanager == "prepend") [
+      networking.networkmanager.insertNameservers = mkIf (cfg.integrations.networkmanager == "prepend") [
         cfg.settings.dns.listen
       ];
     })
