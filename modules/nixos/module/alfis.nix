@@ -190,6 +190,10 @@ in {
       networking.nameservers = [
         cfg.settings.dns.listen
       ];
+      security.wrappers.alfis = {
+        source = "${cfg.package}/bin/alfis";
+        capabilities = "CAP_NET_BIND_SERVICE";
+      };
     }
     (mkIf (cfg.integrations.resolved != "off") {
       services.resolved.settings.Resolve.DNS = mkIf (cfg.integrations.resolved == "primary") [
