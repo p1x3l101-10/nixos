@@ -192,6 +192,8 @@ in {
       security.wrappers.alfis = {
         source = "${cfg.package}/bin/alfis";
         capabilities = "CAP_NET_BIND_SERVICE";
+        owner = "alfis";
+        group = "alfis";
       };
     }
     (mkIf (cfg.integrations.resolved != "off") {
