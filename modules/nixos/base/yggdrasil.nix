@@ -98,6 +98,11 @@
       networkmanager = "prepend";
     };
   };
+  # Setting one NS breaks everything
+  networking.nameservers = [
+    "1.1.1.1"
+    "8.8.8.8"
+  ];
   environment.persistence."/nix/host/state/Yggdrasil".directories = [
     "/var/lib/yggdrasil"
     { directory = "/var/lib/alfis"; user = "alfis"; group = "alfis"; mode = "0700"; }
