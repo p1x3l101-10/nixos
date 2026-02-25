@@ -22,7 +22,7 @@ in {
           "fallback"
           "primary"
         ];
-        default = "primary";
+        default = "fallback";
       };
       networkmanager = mkOption {
         description = mkDescription "Network Manager";
@@ -31,7 +31,12 @@ in {
           "prepend"
           "append"
         ];
-        default = "prepend";
+        default = "append";
+      };
+      resolvconf = mkOption {
+        description = mkDescription "resolv.conf";
+        type = types.bool;
+        default = false;
       };
     };
     # This attrset was pulled from the generated config on 02/24/2026
@@ -185,9 +190,6 @@ in {
           mode = "0700";
         };
       };
-      networking.nameservers = [
-        cfg.settings.dns.listen
-      ];
       environment.etc."alfis.conf".source = (pkgs.formats.toml { }).generate "alfis.conf" cfg.settings;
       security.wrappers.alfis = {
         source = "${cfg.package}/bin/alfis";
@@ -209,6 +211,11 @@ in {
         cfg.settings.dns.listen
       ];
       networking.networkmanager.insertNameservers = mkIf (cfg.integrations.networkmanager == "prepend") [
+        cfg.settings.dns.listen
+      ];
+    })
+    (mkIf cfg.integrations.resolvconf {
+      networking.nameservers = [
         cfg.settings.dns.listen
       ];
     })
