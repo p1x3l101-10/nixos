@@ -6,7 +6,7 @@ let
   mkResInteg = name: mkOption {
     description = "Whether to hook into ${name} for name resolution";
     type = types.bool;
-    default = false;
+    default = true;
   };
 in {
   options.networking.alfis = {

@@ -91,6 +91,9 @@
       NodeInfo = {};
     };
   };
+  networking.alfis = {
+    enable = true;
+  };
   environment.persistence."/nix/host/state/Yggdrasil".directories = [
     "/var/lib/yggdrasil"
   ];
