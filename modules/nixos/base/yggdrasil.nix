@@ -42,19 +42,19 @@
       # for more supported options.
       MulticastInterfaces = [
         {
-          Regex = en.*;
+          Regex = "en.*";
           Beacon = true;
           Listen = true;
           Password = "";
         }
         {
-          Regex = bridge.*;
+          Regex = "bridge.*";
           Beacon = true;
           Listen = true;
           Password = "";
         }
         {
-          Regex = awdl0;
+          Regex = "awdl0";
           Beacon = false;
           Listen = false;
           Password = "";
@@ -71,7 +71,7 @@
     
       # Local network interface name for TUN adapter, or "auto" to select
       # an interface automatically, or "none" to run without TUN.
-      IfName = auto;
+      IfName = "auto";
     
       # Maximum Transmission Unit (MTU) size for your local TUN interface.
       # Default is the largest supported size for your platform. The lowest
