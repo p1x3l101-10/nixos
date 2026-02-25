@@ -193,7 +193,7 @@ in {
       environment.etc."alfis.conf".source = (pkgs.formats.toml { }).generate "alfis.conf" cfg.settings;
       security.wrappers.alfis = {
         source = "${cfg.package}/bin/alfis";
-        capabilities = "CAP_NET_BIND_SERVICE";
+        capabilities = "cap_net_bind_service=+ep";
         owner = "alfis";
         group = "alfis";
       };
