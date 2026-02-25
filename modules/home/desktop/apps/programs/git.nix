@@ -11,6 +11,7 @@
         signingkey = "ACD0910C3FD1322FCE8F73A63C2D22F9DE687571";
       };
       commit.gpgsign = true;
+      init.defaultBranch = "main";
     };
   };
 }
