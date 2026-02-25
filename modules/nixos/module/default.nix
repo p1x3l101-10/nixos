@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./alfis.nix
     ./cleanup.nix
     ./factorio.nix
     ./licenses.nix
