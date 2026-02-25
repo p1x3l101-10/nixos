@@ -19,7 +19,7 @@ in {
     };
   };
   networking.sshForwarding.ports = [
-    { host = 587; remote = 5870; }
+    { host = 465; remote = 4650; }
     { host = 993; remote = 9930; }
   ];
 }
