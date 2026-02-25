@@ -12,6 +12,7 @@
   };
   imports = [
     ./adb.nix
+    ./alfis.nix
     ./cleanup.nix
     ./home-licences.nix
     ./home.nix
