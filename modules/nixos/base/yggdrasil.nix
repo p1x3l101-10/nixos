@@ -94,7 +94,7 @@
   # It puts the keys in the incorrect location
   systemd.services.yggdrasil-persistent-keys = let
     keysPath = "/var/lib/private/yggdrasil"; # The notable part
-    binYggdrasil = "${config.yggdrasil.package}/bin/yggdrasil";
+    binYggdrasil = "${config.services.yggdrasil.package}/bin/yggdrasil";
   in {
     script = lib.mkForce ''
       if [ ! -e ${keysPath} ]
