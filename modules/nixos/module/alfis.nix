@@ -3,11 +3,6 @@
 let
   cfg = config.networking.alfis;
   inherit (lib) mkOption mkEnableOption mkIf types mkMerge;
-  mkResInteg = name: mkOption {
-    description = "Whether to hook into ${name} for name resolution";
-    type = types.bool;
-    default = true;
-  };
 in {
   options.networking.alfis = {
     enable = mkEnableOption "alfis";
@@ -17,9 +12,27 @@ in {
       default = pkgs.alfis-nogui;
       example = pkgs.alfis;
     };
-    integrations = {
-      resolved = mkResInteg "systemd-resolved";
-      networkmanager = mkResInteg "Network Manager";
+    integrations = let
+      mkDescription = name: "Whether to hook into ${name} for name resolution";
+    in {
+      resolved = mkOption {
+        description = mkDescription "systemd-resolved";
+        type = types.enum [
+          "off"
+          "fallback"
+          "primary"
+        ];
+        default = "primary";
+      };
+      networkmanager = mkOption {
+        description = mkDescription "Network Manager";
+        type = types.enum [
+          "off"
+          "prepend"
+          "append"
+        ];
+        default = "prepend";
+      };
     };
     # This attrset was pulled from the generated config on 02/24/2026
     settings = {
@@ -82,7 +95,8 @@ in {
         forwarders = mkOption {
           description = "Servers to forward DNS Queries to";
           type = with types; listOf str;
-          default = [
+          default = [];
+          example = [
             # AdGuard DNS servers to filter ads and trackers
             "https://dns.adguard.com/dns-query"
             "94.140.14.14:53" "94.140.15.15:53"
@@ -177,13 +191,19 @@ in {
         cfg.settings.dns.listen
       ];
     }
-    (mkIf cfg.integrations.resolved {
-      services.resolved.fallbackDns = [
+    (mkIf (cfg.integrations.resolved != "off") {
+      services.resolved.settings.Resolve.DNS = mkIf (cfg.integrations.resolved == "primary") [
+        cfg.settings.dns.listen
+      ];
+      services.resolved.settings.Resolve.FallbackDNS = mkIf (cfg.integrations.resolved == "fallback") [
         cfg.settings.dns.listen
       ];
     })
-    (mkIf cfg.integrations.networkmanager {
-      networking.networkmanager.appendNameservers = [
+    (mkIf (cfg.integrations.networkmanager != "off") {
+      networking.networkmanager.appendNameservers = (cfg.integrations.networkmanager == "append") [
+        cfg.settings.dns.listen
+      ];
+      networking.networkmanager.insertNameservers = (cfg.integrations.networkmanager == "prepend") [
         cfg.settings.dns.listen
       ];
     })
