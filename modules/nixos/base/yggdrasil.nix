@@ -94,8 +94,9 @@
   networking.alfis = {
     enable = true;
     integrations = {
-      resolved = "primary";
-      networkmanager = "prepend";
+      resolved = "fallback";
+      networkmanager = "append";
+      resolvconf = false;
     };
   };
   # Setting one NS breaks everything
