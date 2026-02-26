@@ -7,7 +7,6 @@
     networks = {
       "10-wan" = {
         name = "enp1s0";
-        DHCP = "yes";
         linkConfig.RequiredForOnline = "routable";
       };
     };
