@@ -3,13 +3,11 @@
 {
   programs.proxychains = {
     enable = true;
-    proxies = [
-      {
-        type = "socks5";
-        host = "127.0.0.1";
-        port = 1081;
-      }
-    ];
+    proxies.sshVps = {
+      type = "socks5";
+      host = "127.0.0.1";
+      port = 1081;
+    }
   };
   systemd.services."ssh-proxy" = {
     wantedBy = [ "network.target" ];
@@ -27,7 +25,7 @@
         })} \
         -o ServerAliveInterval=60 \
         -o ExitOnForwardFailure=yes \
-        -D 1081
+        -D ${config.programs.proxyChains.proxies.sshVps.port}
         ${config.networking.sshForwarding.proxyUser}@${globals.vps.get}
     '';
   };
