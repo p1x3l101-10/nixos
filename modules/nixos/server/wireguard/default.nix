@@ -59,7 +59,7 @@ in {
       };
       wireguardPeers = [
         {
-          PublicKey = "MG1l9Y/+lxfhtDQtfq/QepzQYCyiFEEPyRuNZq7mUiM=";
+          PublicKey = "4rPW8i34RxX6l2Pql2JuBVVHupPqdbeTtJN0v/o9k0w=";
           AllowedIPs = [
             "0.0.0.0/0"
             "::/0"
