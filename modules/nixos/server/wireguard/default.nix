@@ -76,4 +76,6 @@ in {
     owner = "systemd-network";
     group = "systemd-network";
   };
+  # NixOS firewall will block wg traffic because of rpfilter
+  networking.firewall.checkReversePath = "loose";
 }
