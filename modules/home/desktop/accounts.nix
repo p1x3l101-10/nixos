@@ -50,11 +50,49 @@ in
       maildirBasePath = "${config.xdg.dataHome}/mail";
       certificatesFile = "/etc/ssl/certs/ca-certificates.crt";
       accounts = {
-        personal-google = standardEmail (mkGmail {
+        exsmachina = {
           primary = true;
-          address = "scott.blatt.0b10@gmail.com";
+          userName = "pixel@exsmachina.org";
           realName = "Pixel";
-        });
+          address = "pixel@exsmachina.org";
+          imap = {
+            authentication = "plain";
+            host = "srv01.exsmachina.org";
+            port = 993;
+            tls = {
+              enable = true;
+              useStartTls = false;
+            };
+          };
+          smtp = {
+            authentication = "plain";
+            host = "srv01.exsmachina.org";
+            port = 465;
+            tls = {
+              enable = true;
+              useStartTls = false;
+            };
+          };
+          signature = "";
+          folders = {
+            drafts = "Drafts";
+            inbox = "Inbox";
+            sent= "Sent";
+            trash = "Trash";
+          };
+          gpg = {
+            key = "ACD0910C3FD1322FCE8F73A63C2D22F9DE687571";
+            signByDefault = true;
+            encryptByDefault = false;
+          };
+          thunderbird = {
+            enable = true;
+            profiles = [ ];
+            messageFilters = [ ];
+            settings = (lib.internal.attrsets.compressAttrs "." {});
+          };
+          passwordCommand = "keepassxc-cli show -y 1 --no-password /home/pixel/Sync/Keepass/keepass.kdbx Logins/ExsMachina -a Password";
+        };
       };
     };
   };
@@ -62,38 +100,5 @@ in
     mbsync.enable = true;
     msmtp.enable = true;
   };
-  home.file.".thunderbird/default/logins.json" = {
-    force = true;
-    text = builtins.toJSON {
-      nextId = 2;
-      logins = [
-        (rec {
-          id = 1;
-          hostname = "https://imap.gmail.com";
-          httpRealm = hostname;
-          formSubmitUrl = null;
-          usernameField = "";
-          passwordField = "";
-          encryptedUsername = "MEoEEPgAAAAAAAAAAAAAAAAAAAEwFAYIKoZIhvcNAwcECHETn+3BXUAVBCAiNMa8VZjnbrECQBfjlikEolXwC6wU0/vecqV+ggh50g==";
-          encryptedPassword = "MEIEEPgAAAAAAAAAAAAAAAAAAAEwFAYIKoZIhvcNAwcECA82cuX7bLIWBBhcIoCXDuJNAn0N8Pl82Zhr4ifrz1Xnue4=";
-          guid = "{a8bd4dda-26d9-4bc5-8b85-8c25a8ef6a25}";
-          encType = 1;
-          timeCreated = 1754672084132;
-          timeLastUsed = 1754672084132;
-          timePasswordChanged = 1754672084132;
-          timesUsed = 1;
-          syncCounter = 1;
-          everSynced = false;
-          encryptedUnknownFields = "MDIEEPgAAAAAAAAAAAAAAAAAAAEwFAYIKoZIhvcNAwcECNaUsLNk+/5VBAhVMGOuScbpcQ==";
-        })
-      ];
-      potentiallyVulnerablePasswords = [ ];
-      dismissedBreachAlertsByLoginGUID = { };
-      version = 3;
-    };
-  };
-  systemd.user.tmpfiles.rules = [
-    "L /home/pixel/.thunderbird/default/key4.db - - - - /nix/host/keys/mail/key4.db"
-  ];
   services.mbsync.enable = true;
 }
