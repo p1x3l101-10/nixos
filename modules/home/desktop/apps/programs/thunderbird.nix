@@ -21,6 +21,7 @@
           mail.openpgp = {
             alternative_gpg_path = "${config.programs.gpg.package}/bin/gpg";
             allow_external_gnupg = true;
+            fetch_pubkeys_from_gnupg = true;
           };
         }
       ]);
