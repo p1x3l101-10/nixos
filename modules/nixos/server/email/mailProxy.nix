@@ -27,9 +27,8 @@
         })} \
         -o ServerAliveInterval=60 \
         -o ExitOnForwardFailure=yes \
-        ${lib.concatStringsSep " " portArgs} \
-        ${config.networking.sshForwarding.proxyUser}@${globals.vps.get}
         -D 1081
+        ${config.networking.sshForwarding.proxyUser}@${globals.vps.get}
     '';
   };
   services.postfix.package = pkgs.symlinkJoin {
