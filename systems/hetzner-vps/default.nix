@@ -7,9 +7,9 @@
 
   system.useSecureBoot = false;
   boot.loader.systemd-boot.enable = lib.mkForce false;
-  boot.loader.efi.canTouchEfiVariables = false;
+  boot.loader.efi.canTouchEfiVariables = lib.mkForce false;
   boot.loader.grub = {
-    enable = true;
+    enable = lib.mkForce true;
     efiSupport = false;
     copyKernels = false;
     storePath = "/store";
