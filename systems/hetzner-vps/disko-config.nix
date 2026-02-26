@@ -13,6 +13,10 @@
               type = "EF02";
               size = "1M";
             };
+            swap = {
+              size = "10G";
+              content.type = "swap";
+            };
             nix = {
               size = "100%";
               content = {
@@ -28,7 +32,7 @@
 
     nodev."/" = {
       fsType = "tmpfs";
-      mountOptions = [ "defaults" "size=${root-size}" "mode=755" ];
+      mountOptions = [ "defaults" "size=1G" "mode=755" ];
     };
   };
 }
