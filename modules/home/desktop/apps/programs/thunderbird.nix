@@ -1,6 +1,7 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 {
+  home.packages = [ pkgs.gpgme ];
   programs.thunderbird = {
     enable = true;
     nativeMessagingHosts = [ ];
