@@ -20,7 +20,7 @@ in
     ./server-base
     ./ssh-forward
     ./website
-    #./wireguard
+    ./wireguard
     ./wks
   ];
   networking = {
