@@ -17,6 +17,7 @@ in {
   };
   imports = [
     ./server-base
+    ./ssh-tunnel
     ./wireguard
   ];
   networking = {
