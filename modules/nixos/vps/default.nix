@@ -1,9 +1,15 @@
 { config, lib, ... }:
 
 let
+  srvGlobals = import ../server/globals.nix { inherit lib; };
   globals = {
     type = "vps";
-    inherit (import ../server/globals.nix) dirs wireguard;
+    wireguard = {
+      inherit (srvGlobals.wireguard) firewallMark table;
+      ipv4 = "";
+      ipv6 = "";
+    };
+    inherit (srvGlobals) dirs;
   };
 
   userdata = key: names: (import ../server/userdata.nix { inherit lib globals; }).getdata key names;

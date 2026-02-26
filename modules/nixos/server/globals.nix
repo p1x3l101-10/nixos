@@ -31,5 +31,8 @@ lib.fix (self: {
   wireguard = {
     firewallMark = 4242;
     table = 4000;
+    # Assigned wireguard ips
+    ipv4 = "";
+    ipv6 = "";
   };
 })
