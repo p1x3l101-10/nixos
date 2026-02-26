@@ -10,7 +10,7 @@ let
     };
   };
 
-  userdata = import ../server/userdata.nix { inherit lib globals; };
+  userdata = key: names: (import ../server/userdata.nix { inherit lib globals; }).getdata key names;
 in {
   _module.args = {
     inherit globals userdata;
