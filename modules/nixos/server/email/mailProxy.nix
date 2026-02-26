@@ -30,13 +30,13 @@
     '';
   };
   services.postfix.package = pkgs.postfix.overrideAttrs (oldAttrs: {
-    buildInputs = oldAttrs.buildInputs ++ [
-      ext.inputs.self
-    ];
+    src = null;
+    srcs = [ oldAttrs.src ./support ];
+    sourceRoot = "postfix-3.10.7";
     postInstall = oldAttrs.postInstall + ''
       # Add a proxy handler
       mv $out/libexec/postfix/smtp $out/libexec/postfix/smtp.old
-      cp ${builtins.toString ./support/smtp.pl} $out/libexec/postfix/smtp
+      cp ../support/smtp.pl $out/libexec/postfix/smtp
       chmod +x $out/libexec/postfix/smtp
     '';
   });
