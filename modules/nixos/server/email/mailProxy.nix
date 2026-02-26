@@ -30,7 +30,7 @@
     '';
   };
   services.postfix.package = pkgs.postfix.overrideAttrs (oldAttrs: {
-    installPhase = oldAttrs.installPhase + ''
+    postInstall = oldAttrs.postInstall + ''
       # Add a proxy handler
       mv $out/libexec/postfix/smtp $out/libexec/postfix/smtp.old
       cp ${builtins.toString ./support/smtp.pl} $out/libexec/postfix/smtp
