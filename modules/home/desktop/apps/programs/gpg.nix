@@ -21,4 +21,6 @@
       package = pkgs.pinentry-all;
     };
   };
+  # GPG module does not set this itself and completly breaks itself when used :(
+  home.sessionVariables.GNUPG_HOME = "${config.programs.gpg.homedir}";
 }
