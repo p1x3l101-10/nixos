@@ -57,7 +57,7 @@ in {
   # Ensure the keys are readable by the correct users
   systemd.tmpfiles.settings."10-wireguard-keys"."${keydir}".Z = {
     mode = "0750";
-    owner = "systemd-network";
+    user = "systemd-network";
     group = "systemd-network";
   };
 }
