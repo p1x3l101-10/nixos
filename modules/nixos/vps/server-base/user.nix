@@ -31,7 +31,7 @@
     };
     init.defaultBranch = "main";
   };
-  systemd.tmpfiles.settings."10-sudo-lectures"."/var/db/sudo/lectured/${config.users.users.pixel.uid}".f = {
+  systemd.tmpfiles.settings."10-sudo-lectures"."/var/db/sudo/lectured/1000".f = {
     user = "root";
     group = "root";
     mode = "-";
