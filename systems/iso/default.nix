@@ -21,6 +21,7 @@ in {
     fido2luks
     rsync
     disko
+    nushell
   ];
   # Fav shell
   environment.shells = [ pkgs.nushell ];
@@ -32,6 +33,6 @@ in {
   };
   programs.git = {
     enable = true;
-    package = pkgs.gitMinimal;
+    package = lib.mkForce pkgs.gitMinimal;
   };
 }
