@@ -13,7 +13,7 @@ lib.fix (self: {
   };
   vps = {
     enabled = true;
-    ip = "";
+    ip = "5.78.134.177";
     dns = "srv01.${self.server.dns.basename}";
     validDomain = (if self.vps.dns != "srv01." then true else false);
     get = (
