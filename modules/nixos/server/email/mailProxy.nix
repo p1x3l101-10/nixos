@@ -7,7 +7,7 @@
       type = "socks5";
       host = "127.0.0.1";
       port = 1081;
-    }
+    };
   };
   systemd.services."ssh-proxy" = {
     wantedBy = [ "network.target" ];
