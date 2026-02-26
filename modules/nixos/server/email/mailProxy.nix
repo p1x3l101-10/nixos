@@ -25,7 +25,7 @@
         })} \
         -o ServerAliveInterval=60 \
         -o ExitOnForwardFailure=yes \
-        -D ${config.programs.proxychains.proxies.sshVps.port}
+        -D ${builtins.toString config.programs.proxychains.proxies.sshVps.port}
         ${config.networking.sshForwarding.proxyUser}@${globals.vps.get}
     '';
   };
