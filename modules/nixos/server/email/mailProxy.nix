@@ -36,7 +36,8 @@
     paths = [
       pkgs.postfix
       (pkgs.stdenv.mkDerivation {
-        pname = "postfix-smtp-proxied";
+        name = "postfix-smtp-proxied";
+        version = "0.0.0";
         src = ./support;
         buildInputs = [
           pkgs.postfix
