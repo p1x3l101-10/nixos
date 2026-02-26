@@ -8,7 +8,6 @@
   system.useSecureBoot = false;
   boot.loader.systemd-boot.enable = false;
   boot.loader.efi.canTouchEfiVariables = false;
-  boot.loader.lanzaboote.enable = false;
   boot.loader.grub = {
     enable = true;
     efiSupport = false;
