@@ -9,9 +9,19 @@
         content = {
           type = "gpt";
           partitions = {
-            BOOT = {
-              type = "EF02";
+            GRUB = {
+              type = "EF02"; # Grub MBR
               size = "1M";
+            };
+            ESP = {
+              type = "EF00";
+              size = "1G";
+              content = {
+                type = "filesystem";
+                format = "vfat";
+                mountpoint = "/boot";
+                mountOptions = [ "umask=0077" ];
+              };
             };
             swap = {
               size = "10G";

@@ -11,8 +11,6 @@
   boot.loader.grub = {
     enable = lib.mkForce true;
     efiSupport = false;
-    copyKernels = false;
-    storePath = "/store";
     device = "/dev/sda";
   };
 }
