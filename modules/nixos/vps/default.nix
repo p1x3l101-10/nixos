@@ -3,11 +3,7 @@
 let
   globals = {
     type = "vps";
-    dirs = {
-      state = "/nix/host/state";
-      cache = "/nix/host/cache";
-      keys = "/nix/host/keys";
-    };
+    inherit (import ../server/globals.nix) dirs wireguard;
   };
 
   userdata = key: names: (import ../server/userdata.nix { inherit lib globals; }).getdata key names;

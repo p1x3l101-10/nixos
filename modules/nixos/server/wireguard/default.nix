@@ -2,7 +2,7 @@
 
 let
   keydir = "${globals.dirs.keys}/wireguard";
-  addrFamily = "32";
+  wg = globals.wireguard;
 in {
   networking.firewall.allowedUDPPorts = [ 51820 ];
   networking.wireguard = {
@@ -25,9 +25,9 @@ in {
           Family = "both";
           # For all packets marked with 42
           InvertRule = false;
-          FirewallMark = 42;
+          FirewallMark = wg.firewallMark;
           # Specify that the wireguard's routing table must be used
-          Table = 1000;
+          Table = wg.table;
           # Set priority to allow overriding
           Priority = 10;
         }
@@ -54,10 +54,10 @@ in {
         PrivateKeyFile = "${keydir}/wg.key";
         # To automatically create routes for everything in AllowedIPs,
         # add RouteTable=main
-        RouteTable = 1000;
+        RouteTable = wg.table;
         # FirewallMark marks all packets send and received by wg0
         # with the number 42, which can be used to define policy rules on these packets.
-        FirewallMark = 42;
+        FirewallMark = wg.firewallMark;
       };
       wireguardPeers = [
         {

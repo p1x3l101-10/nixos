@@ -28,4 +28,8 @@ lib.fix (self: {
     cache = "/nix/host/cache";
     keys = "/nix/host/keys";
   };
+  wireguard = {
+    firewallMark = 4242;
+    table = 4000;
+  };
 })

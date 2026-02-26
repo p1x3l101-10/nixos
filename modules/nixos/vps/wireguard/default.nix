@@ -2,6 +2,7 @@
 
 let
   keydir = "${globals.dirs.keys}/wireguard";
+  wg = globals.wireguard;
 in {
   networking.nat = {
     enable = true;
@@ -46,8 +47,8 @@ in {
       wireguardConfig = {
         ListenPort = 51820;
         PrivateKeyFile = "${keydir}/wg.key";
-        RouteTable = 1000;
-        FirewallMark = 42;
+        RouteTable = wg.table;
+        FirewallMark = wg.firewallMark;
       };
       wireguardPeers = [
         {
