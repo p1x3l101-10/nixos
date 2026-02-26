@@ -35,7 +35,7 @@
     name = "postfix-override-smtp";
     paths = [
       pkgs.postfix
-      (pkgs.mkDerivation {
+      (pkgs.stdenv.mkDerivation {
         pname = "postfix-smtp-proxied";
         src = ./support;
         buildInputs = [
