@@ -55,6 +55,10 @@ in
           userName = "pixel@exsmachina.org";
           realName = "Pixel";
           address = "pixel@exsmachina.org";
+          signature = {
+            showSignature = "none";
+            text = "";
+          };
           imap = {
             authentication = "plain";
             host = "srv01.exsmachina.org";
@@ -73,7 +77,6 @@ in
               useStartTls = false;
             };
           };
-          signature = "";
           folders = {
             drafts = "Drafts";
             inbox = "Inbox";
