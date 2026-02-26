@@ -89,7 +89,7 @@ in
             enable = true;
             profiles = [ ];
             messageFilters = [ ];
-            settings = (lib.internal.attrsets.compressAttrs "." {});
+            settings = id: (lib.internal.attrsets.compressAttrs "." {});
           };
           passwordCommand = "keepassxc-cli show -y 1 --no-password /home/pixel/Sync/Keepass/keepass.kdbx Logins/ExsMachina -a Password";
         };
