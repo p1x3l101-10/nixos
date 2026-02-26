@@ -1,4 +1,4 @@
-{ globals, pkgs, config, ... }:
+{ globals, pkgs, config, lib, ... }:
 
 {
   programs.proxychains = {
