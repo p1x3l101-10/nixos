@@ -19,9 +19,9 @@
       "2a01:4ff:1f0:c947::/64"
     ];
     routes = [
-      { routeConfig.Gateway = "fe80::1"; }
-      { routeConfig = { Destination = "172.31.1.1"; }; }
-      { routeConfig = { Gateway = "172.31.1.1"; GatewayOnLink = true; }; }
+      { Gateway = "fe80::1"; }
+      { Destination = "172.31.1.1"; }
+      { Gateway = "172.31.1.1"; GatewayOnLink = true; }
     ];
   };
 }

@@ -5,7 +5,7 @@
     enable = true;
     wait-online.enable = true;
     networks = {
-      "10-wired" = {
+      "10-wan" = {
         name = "enp1s0";
         DHCP = "yes";
         linkConfig.RequiredForOnline = "routable";
