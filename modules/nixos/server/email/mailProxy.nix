@@ -30,7 +30,7 @@
     '';
   };
   services.postfix.package = pkgs.postfix.overrideAttrs (oldAttrs: {
-    nativeBuildInputs = oldAttrs ++ [
+    buildInputs = oldAttrs ++ [
       ext.inputs.self
     ];
     postInstall = oldAttrs.postInstall + ''
