@@ -14,7 +14,7 @@
   systemd.services."ssh-proxy" = {
     wantedBy = [ "network.target" ];
     after = [ "network.target" ];
-    type = "oneshot";
+    serviceConfig.Type = "oneshot";
     script = ''
       ${pkgs.openssh}/bin/ssh \
         -NTC \
