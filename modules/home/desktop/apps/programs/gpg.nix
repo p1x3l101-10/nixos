@@ -25,5 +25,6 @@
     };
   };
   # GPG module does not set this itself and completly breaks itself when used :(
-  home.sessionVariables.GNUPG_HOME = "${config.programs.gpg.homedir}";
+  home.sessionVariables.GNUPGHOME = "${config.programs.gpg.homedir}";
+  systemd.user.sessionVariables.GNUPGHOME = "${config.home.sessionVariables.GNUPGHOME}";
 }
