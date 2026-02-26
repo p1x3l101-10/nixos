@@ -6,7 +6,7 @@ in {
   networking.nat = {
     enable = true;
     enableIPv6 = true;
-    externalInterface = config.systemd.network.networks."10-wired".name;
+    externalInterface = config.systemd.network.networks."10-wan".name;
     internalInterfaces = [ "wg0" ];
   };
 
