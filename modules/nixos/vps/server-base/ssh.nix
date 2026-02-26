@@ -13,6 +13,7 @@ in {
         "diffie-hellman-group-exchange-sha256"
       ];
     };
+    ports = [ 2222 ];
     hostKeys = [
       {
         path = "${keys}/ssh/ed25519.key";

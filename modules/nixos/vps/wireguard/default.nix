@@ -23,6 +23,12 @@
         IPv4Forwarding = true;
         IPv6Forwarding = true;
       };
+      routingPolicyRules = [
+        {
+          Family = "both";
+          DestinationPort = 2222;
+        }
+      ];
     };
     netdevs."50-wg0" = {
       netdevConfig = {
