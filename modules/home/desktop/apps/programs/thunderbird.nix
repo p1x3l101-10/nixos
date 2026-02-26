@@ -17,6 +17,10 @@
           };
           toolkit.legacyUserProfileCustomizations.stylesheets = true;
           svg.context-properties.content.enabled = true;
+          mail.openpgp = {
+            alternative_gpg_path = "${config.programs.gpg.package}/bin/gpg";
+            allow_external_gnupg = true;
+          };
         }
       ]);
       inherit (config.programs.zen-browser.profiles."mlls93c4.Default (beta)") userChrome userContent;
