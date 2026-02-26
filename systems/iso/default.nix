@@ -1,4 +1,4 @@
-{ pkgs, ext, ... }:
+{ pkgs, ext, lib, ... }:
 
 let
   inherit (ext) inputs system;
@@ -28,7 +28,7 @@ in {
   # Flake stuff
   nix = {
     settings.experimental-features = [ "nix-command" "flakes" ];
-    package = pkgs.nixVersions.latest;
+    package = lib.mkForce pkgs.nixVersions.latest;
   };
   programs.git = {
     enable = true;
