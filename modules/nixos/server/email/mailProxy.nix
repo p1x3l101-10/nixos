@@ -27,7 +27,7 @@
         -o ExitOnForwardFailure=yes \
         -D ${builtins.toString config.programs.proxychains.proxies.sshVps.port} \
         ${config.networking.sshForwarding.proxyUser}@${globals.vps.get} \
-        -p ${toString cfg.sshPort}
+        -p ${toString config.networking.sshForwarding.sshPort}
     '';
   };
   services.postfix.package = pkgs.postfix.overrideAttrs (oldAttrs: {
