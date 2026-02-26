@@ -7,6 +7,7 @@
     profiles.default = {
       isDefault = true;
       extensions = [ ];
+      withExternalGnupg = true;
       settings = lib.internal.attrsets.compressAttrs "." (lib.internal.attrsets.mergeAttrs [
         (import ./support/firefox-config.nix)
         {
