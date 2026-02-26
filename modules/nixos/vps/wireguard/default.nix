@@ -1,6 +1,8 @@
 { config, globals, ... }:
 
-{
+let
+  keydir = "${globals.dirs.keys}/wireguard";
+in {
   networking.nat = {
     enable = true;
     enableIPv6 = true;
@@ -37,7 +39,7 @@
       };
       wireguardConfig = {
         ListenPort = 51820;
-        PrivateKeyFile = "${globals.dirs.keys}/wireguard/wg.key";
+        PrivateKeyFile = "${keydir}/wg.key";
         RouteTable = 1000;
         FirewallMark = 42;
       };
