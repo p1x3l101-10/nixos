@@ -7,6 +7,7 @@ in {
   imports = [
     ext.inputs.nixos-mailserver.nixosModules.mailserver
     ./dkim.nix
+    ./mailProxy.nix
     ./server.nix
     ./ssl.nix
   ];
