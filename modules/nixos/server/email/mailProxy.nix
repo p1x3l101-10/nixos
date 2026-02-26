@@ -1,4 +1,4 @@
-{ globals, pkgs, config, lib, ... }:
+{ globals, pkgs, config, lib, ext, ... }:
 
 {
   programs.proxychains = {
@@ -30,6 +30,9 @@
     '';
   };
   services.postfix.package = pkgs.postfix.overrideAttrs (oldAttrs: {
+    nativeBuildInputs = oldAttrs ++ [
+      ext.inputs.self
+    ];
     postInstall = oldAttrs.postInstall + ''
       # Add a proxy handler
       mv $out/libexec/postfix/smtp $out/libexec/postfix/smtp.old
