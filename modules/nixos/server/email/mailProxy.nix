@@ -26,7 +26,8 @@
         -o ServerAliveInterval=60 \
         -o ExitOnForwardFailure=yes \
         -D ${builtins.toString config.programs.proxychains.proxies.sshVps.port} \
-        ${config.networking.sshForwarding.proxyUser}@${globals.vps.get}
+        ${config.networking.sshForwarding.proxyUser}@${globals.vps.get} \
+        -p ${toString cfg.sshPort}
     '';
   };
   services.postfix.package = pkgs.postfix.overrideAttrs (oldAttrs: {
