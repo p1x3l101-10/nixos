@@ -125,7 +125,7 @@ inputs.flake-utils.lib.eachDefaultSystem
       iso = lib.nixosSystem {
         inherit system specialArgs;
         modules = [
-          ./systems/hetzner-vps
+          ./systems/iso
         ] ++ common-modules;
       };
     };
