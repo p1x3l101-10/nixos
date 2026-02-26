@@ -5,8 +5,10 @@ let
   addrFamily = "32";
 in {
   networking.firewall.allowedUDPPorts = [ 51820 ];
-
-  networking.useNetworkd = true;
+  networking.wireguard = {
+    enable = true;
+    useNetworkd = true;
+  };
 
   systemd.network = {
     networks."50-wg0" = {

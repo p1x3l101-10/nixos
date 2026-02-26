@@ -10,6 +10,12 @@ in {
     internalInterfaces = [ "wg0" ];
   };
 
+  networking.firewall.allowedUDPPorts = [ 51820 ];
+  networking.wireguard = {
+    enable = true;
+    useNetworkd = true;
+  };
+
   systemd.network = {
     enable = true;
     networks."50-wg0" = {
