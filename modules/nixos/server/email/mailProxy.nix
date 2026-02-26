@@ -29,26 +29,12 @@
         ${config.networking.sshForwarding.proxyUser}@${globals.vps.get}
     '';
   };
-  services.postfix.package = pkgs.symlinkJoin {
-    name = "postfix-override-smtp";
-    inherit (pkgs.postfix) version;
-    paths = [
-      pkgs.postfix
-      (pkgs.stdenv.mkDerivation {
-        name = "postfix-smtp-proxied";
-        src = ./support;
-        buildInputs = [
-          pkgs.postfix
-          pkgs.perl
-          config.programs.proxychains.package
-        ];
-        installPhase = ''
-          mkdir -p $out/libexec/postfix
-          mv ./smtp.pl $out/libexec/postfix/smtp
-          chmod 755 $out/libexec/postfix/smtp
-          ln -s ${pkgs.postfix}/libexec/postfix/smtp $out/libexec/postfix/smtp.orig
-        '';
-      })
-    ];
-  };
+  services.postfix.package = pkgs.postfix.overrideAttrs (oldAttrs: {
+    installPhase = oldAttrs.installPhase + ''
+      # Add a proxy handler
+      mv $out/libexec/postfix/smtp $out/libexec/postfix/smtp.old
+      cp ${builtins.toString ./support/smtp.pl} $out/libexec/postfix/smtp
+      chmod +x $out/libexec/postfix/smtp
+    '';
+  });
 }
