@@ -33,11 +33,11 @@
   };
   services.postfix.package = pkgs.symlinkJoin {
     name = "postfix-override-smtp";
+    inherit (pkgs.postfix) version;
     paths = [
       pkgs.postfix
       (pkgs.stdenv.mkDerivation {
         name = "postfix-smtp-proxied";
-        version = "0.0.0";
         src = ./support;
         buildInputs = [
           pkgs.postfix
