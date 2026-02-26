@@ -3,6 +3,7 @@
 let
   keydir = "${globals.dirs.keys}/wireguard";
   wg = globals.wireguard;
+  addrFamily = "32";
 in {
   networking.firewall.allowedUDPPorts = [ 51820 ];
   networking.wireguard = {
