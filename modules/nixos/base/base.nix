@@ -37,7 +37,30 @@
   };
 
   # Networking
-  networking.networkmanager.enable = true;
+  systemd.network = {
+    enable = true;
+    wait-online.enable = true;
+  };
+
+  # DNS
+  services.resolved = {
+    enable = true;
+    settings.Resolve = {
+      DNSOverTLS = "true";
+      DNSSEC = "true";
+      LLMNR = "true";
+      Domains = [ "~." ];
+      FallbackDNS = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
+    };
+  };
+
+  # Disable Networking conflicts
+  networking = {
+    dhcpcd.enable = false;
+    networkmanager.enable = false;
+    useDHCP = false;
+    useNetworkd = true;
+  };
 
   # Clutter
   programs.nano.enable = lib.mkDefault false;
