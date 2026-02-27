@@ -49,7 +49,11 @@ in {
       wireguardPeers = [
         {
           PublicKey = "5QTA4QV0CpNiTWpbKXGHjyszU48e2xfhBwdiH9B0Aic=";
-          AllowedIPs = [];
+          AllowedIPs = [
+            # Server internal IP
+            "10.64.186.60/32"
+            "fd31:8b54:ccba::ccba/64"
+          ];
         }
       ];
     };
