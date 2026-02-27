@@ -49,6 +49,7 @@ inputs.flake-utils.lib.eachDefaultSystem
         );
         assets = (lib.internal.attrsets.mapDirTree ./assets);
         lib = inputs.self.lib;
+        hostInfo = import ./hostInfo.nix { inherit lib; };
       });
       eLib = final.ext.lib; # Conveniance
       inherit (final.ext) inputs; # Backwards compat
