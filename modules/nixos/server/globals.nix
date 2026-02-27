@@ -28,6 +28,7 @@ lib.fix (self: {
     cache = "/nix/host/cache";
     keys = "/nix/host/keys";
   };
+  badips = import ./badips.nix;
   wireguard = {
     firewallMark = 4242;
     table = 4000;

@@ -9,7 +9,7 @@ let
       ipv4 = "";
       ipv6 = "";
     };
-    inherit (srvGlobals) dirs;
+    inherit (srvGlobals) dirs badips;
   };
 
   userdata = key: names: (import ../server/userdata.nix { inherit lib globals; }).getdata key names;
