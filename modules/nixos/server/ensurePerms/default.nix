@@ -25,19 +25,5 @@ in {
         group = "matrix-synapse";
       };
     };
-    "10-email-permissions" = mkIf config.services.maddy.enable {
-      "${state}/Servers/EMail/var/lib/maddy".Z = {
-        user = "maddy";
-        group = "maddy";
-      };
-      "${state}/Servers/EMail/var/lib/rspamd".Z = {
-        user = "rspamd";
-        group = "rspamd";
-      };
-      "${keys}/email".Z = {
-        user = "maddy";
-        group = "maddy";
-      };
-    };
   };
 }

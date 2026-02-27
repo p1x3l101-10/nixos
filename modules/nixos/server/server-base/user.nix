@@ -22,9 +22,9 @@
   ];
   users.defaultUserShell = "${pkgs.nushell}/bin/nu";
   environment.persistence."/nix/host/state/UserData".users.pixel.directories = [
-    ".ssh"
-    "nixos"
-    "dump"
+    { directory = ".ssh"; user = "pixel"; group = "users"; }
+    { directory = "nixos"; user = "pixel"; group = "users"; }
+    { directory = "dump"; user = "pixel"; group = "users"; }
   ];
   programs.git.config = {
     user = {
@@ -37,5 +37,10 @@
     user = "root";
     group = "root";
     mode = "-";
+  };
+  systemd.tmpfiles.settings."10-user-home"."/home/pixel".Z = {
+    mode = "0700";
+    user = "pixel";
+    group = "users";
   };
 }
