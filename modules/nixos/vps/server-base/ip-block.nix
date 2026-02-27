@@ -26,6 +26,10 @@
       };
     };
   };
+  # Make punishments persist over reboot
+  environment.persistence."/nix/host/state/Fail2Ban".directories = [
+    "/var/lib/fail2ban"
+  ];
   # For manual ip bans
   networking.firewall.extraCommands = builtins.concatStringsSep "\n" [
     (builtins.concatStringsSep "\n" (map (ip: "iptables -I nixos-fw -s ${ip} -j DROP") globals.badips.v4))
