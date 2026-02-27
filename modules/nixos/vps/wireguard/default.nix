@@ -21,10 +21,6 @@ in {
     enable = true;
     networks."50-wg0" = {
       matchConfig.Name = "wg0";
-      address = [
-        "0.0.0.0/0"
-        "::/0"
-      ];
       # Allow forwarding
       networkConfig = {
         # do not use IPMasquerade,
@@ -53,10 +49,7 @@ in {
       wireguardPeers = [
         {
           PublicKey = "5QTA4QV0CpNiTWpbKXGHjyszU48e2xfhBwdiH9B0Aic=";
-          AllowedIPs = [
-            "0.0.0.0/0"
-            "::/0"
-          ];
+          AllowedIPs = [];
         }
       ];
     };

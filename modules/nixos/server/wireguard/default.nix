@@ -14,11 +14,6 @@ in {
   systemd.network = {
     networks."50-wg0" = {
       matchConfig.Name = "wg0";
-      address = [
-        # This is a proxy, I want everything through here
-        "0.0.0.0/0"
-        "::/0"
-      ];
       routingPolicyRules = [
         # Redirect Traffic
         {
@@ -64,6 +59,7 @@ in {
         {
           PublicKey = "4rPW8i34RxX6l2Pql2JuBVVHupPqdbeTtJN0v/o9k0w=";
           AllowedIPs = [
+            # This is a proxy, I want everything through here
             "0.0.0.0/0"
             "::/0"
           ];
