@@ -45,6 +45,7 @@ in {
         PrivateKeyFile = "${keydir}/wg.key";
         RouteTable = wg.table;
         FirewallMark = wg.firewallMark;
+        PersistentKeepalive = 25;
       };
       wireguardPeers = [
         {
