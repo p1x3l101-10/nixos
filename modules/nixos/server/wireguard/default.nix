@@ -54,7 +54,6 @@ in {
         # FirewallMark marks all packets send and received by wg0
         # with the number 42, which can be used to define policy rules on these packets.
         FirewallMark = wg.firewallMark;
-        PersistentKeepalive = 25;
       };
       wireguardPeers = [
         {
@@ -65,6 +64,7 @@ in {
             "::/0"
           ];
           Endpoint = "${globals.vps.ip}:51820";
+          PersistentKeepalive = 25;
         }
       ];
     };
