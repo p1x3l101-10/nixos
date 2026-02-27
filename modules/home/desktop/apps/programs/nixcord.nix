@@ -57,6 +57,16 @@ in
         webScreenShareFixes.enable = true;
       };
     };
+    quickCss = builtins.concatStringsSep "\n" [
+      # Hide the annoying profile effects
+      ''
+        div[class^="profileEffects_"], div[class*=" profileEffects_"] {
+          display: none;
+          visibility: hidden;
+        }
+
+      ''
+    ];
   };
   services.arrpc = {
     enable = true;
