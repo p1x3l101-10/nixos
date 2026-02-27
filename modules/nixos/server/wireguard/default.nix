@@ -1,4 +1,4 @@
-{ globals, ... }:
+{ globals, pkgs, ... }:
 
 let
   keydir = "${globals.dirs.keys}/wireguard";
@@ -78,4 +78,5 @@ in {
   };
   # NixOS firewall will block wg traffic because of rpfilter
   networking.firewall.checkReversePath = "loose";
+  environment.systemPackages = [ pkgs.wireguard-tools ];
 }

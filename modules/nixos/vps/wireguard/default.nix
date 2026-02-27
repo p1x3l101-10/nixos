@@ -1,4 +1,4 @@
-{ config, globals, ... }:
+{ config, globals, pkgs, ... }:
 
 let
   keydir = "${globals.dirs.keys}/wireguard";
@@ -65,4 +65,5 @@ in {
     user = "systemd-network";
     group = "systemd-network";
   };
+  environment.systemPackages = [ pkgs.wireguard-tools ];
 }
