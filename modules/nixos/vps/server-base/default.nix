@@ -3,7 +3,7 @@
 {
   imports = [
     ./container.nix
-    ./ip-block.nix
+    ../../server/server-base/ip-block.nix
     ./network.nix
     ./nix.nix
     #./proxy.nix
