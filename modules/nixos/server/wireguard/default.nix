@@ -14,6 +14,9 @@ in {
   systemd.network = {
     networks."50-wg0" = {
       matchConfig.Name = "wg0";
+      networkConfig = {
+        Gateway = "fd31:8b54:ccba::acb9";
+      };
       routingPolicyRules = [
         # Redirect Traffic
         {
