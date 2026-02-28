@@ -31,8 +31,8 @@ def rssi-to-glyphs [ dbm: int ] {
     [-100 "󰤮"]
   ]
   $rssiQualities
-  | where { |x| $x.minVal > $dbm }
-  | last
+  | where { |x| $x.minVal < $dbm }
+  | first
   | get glyph
 }
 
@@ -41,35 +41,35 @@ export def list-networks [
   --raw
 ] {
   scan $station
-  let rawData = (
-    iwctl station $station get-networks rssi-dbms
-    | ansi strip
-    | lines
-    | skip 4
-    | drop 1
-    | str trim
-    | par-each { |x|
-      $x
-      | sed -E -r 's/(.+)\b\s\s+([a-Z]+)\s+(-[0-9]+)/\1@@\2@@\3/'
-    }
-    | split column '@@'
-    | each { |x| {
-      name: $x.column0
-      security: $x.column1
-      strength: ($x.column2 | into int)
-    } }
-    | sort-by strength -r
-  )
-  if $raw {
-    $rawData
-  } else {
-    $rawData
-    | { |x| {
-      name: $x.name
-      security: $x.security
-      strength: (rssi-to-glyphs ($x.strength / 100))
-    } }
+  iwctl station $station get-networks rssi-dbms
+  | ansi strip
+  | lines
+  | skip 4
+  | drop 1
+  | str trim
+  | par-each { |x|
+    $x
+    | sed -E -r 's/(.+)\b\s\s+([a-Z]+)\s+(-[0-9]+)/\1@@\2@@\3/'
   }
+  | split column '@@'
+  | each { |x| {
+    name: $x.column0
+    security: $x.column1
+    strength: ($x.column2 | into int)
+  } }
+  | sort-by strength -r
+  | (
+    if $raw {
+      $in
+    } else {
+      each { |x| {
+        name: $x.name
+        security: $x.security
+        # Ungodly processing to turn a float into an int
+        strength: (rssi-to-glyphs (($x.strength / 100 + 0.25) | into string | split words | get 0 | $'-($in)' | into int))
+      } }
+    }
+  )
 }
 export alias list = list-networks
 
