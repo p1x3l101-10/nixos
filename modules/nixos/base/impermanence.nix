@@ -33,7 +33,6 @@ in
   services.userborn.enable = true;
   environment.etc = {
     "containers/networks/.keep".source = (pkgs.runCommand "empty-file" { } "touch $out");
-    "NetworkManager/system-connections/.keep".source = (pkgs.runCommand "empty-file" { } "touch $out");
     "avahi/.keep".source = (pkgs.runCommand "empty-file" { } "touch $out");
   };
 }
