@@ -15,24 +15,54 @@ def "nu-complete iwd stations" [] {
   | get station
 }
 
+def rssi-to-glyphs [ dbm: int ] {
+  const rssiQualities = [
+    [minVal, glyph];
+    [-50  "󰤨"]
+    [-60  "󰤥"]
+    [-70  "󰤢"]
+    [-80  "󰤟"]
+    [-90  "󰤠"]
+    [-100 "󰤮"]
+  ]
+  $rssiQualities
+  | where { |x| $x.minVal > $dbm }
+  | last
+  | get glyph
+}
+
 export def list-networks [
   station: string@"nu-complete iwd stations"
+  --raw
 ] {
-  iwctl station $station get-networks rssi-dbms
-  | ansi strip
-  | lines
-  | skip 4
-  | drop 1
-  | str trim
-  | par-each { |x|
-    $x
-    | sed -E -r 's/(.+)\b\s\s+([a-Z]+)\s+(-[0-9]+)/\1@@\2@@\3/'
+  let rawData = (
+    iwctl station $station get-networks rssi-dbms
+    | ansi strip
+    | lines
+    | skip 4
+    | drop 1
+    | str trim
+    | par-each { |x|
+      $x
+      | sed -E -r 's/(.+)\b\s\s+([a-Z]+)\s+(-[0-9]+)/\1@@\2@@\3/'
+    }
+    | split column '@@'
+    | each { |x| {
+      name: $x.column0
+      security: $x.column1
+      strength: ($x.column2 | into int)
+    } }
+    | sort-by strength -r
+  )
+  if $raw {
+    $rawData
+    return
   }
-  | split column '@@'
-  | each { |x| {
-    name: $x.column0
-    security: $x.column1
-    strength: ($x.column2 | into int)
+  $rawData
+  | { |x| {
+    name: $x.name
+    security: $x.security
+    strength: (rssi-to-glyphs ($x.strength / 100))
   } }
 }
 export alias list = list-networks
