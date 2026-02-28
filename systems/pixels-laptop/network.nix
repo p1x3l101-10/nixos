@@ -30,6 +30,6 @@
     };
   };
   environment.persistence."/nix/host/state/System".directories = [
-    "/var/lib/iwd"
+    { directory = "/var/lib/private/iwd"; mode = "0700"; }
   ];
 }
