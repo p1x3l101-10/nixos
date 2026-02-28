@@ -13,7 +13,6 @@ in {
   };
   config = mkIf cfg.enable {
     systemd.services = {
-      # Dont start IWD until there is a valid credential
       iwd = {
         unitConfig.ConditionPathExists = "/var/lib/systemd/credential.secret";
         serviceConfig.LoadCredentialEncrypted = "iwd-secret:/var/lib/systemd/credential.secret";
