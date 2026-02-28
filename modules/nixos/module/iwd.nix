@@ -33,7 +33,7 @@ in {
           if [[ ! -d /run/credstore.encrypted ]]; then
             mkdir -p /run/credstore.encrypted
           fi
-          ln -s "${cfg.keyLocation}" /run/credstore.encrypted/iwd-secret
+          ln -sf "${cfg.keyLocation}" /run/credstore.encrypted/iwd-secret
           [[ -e "${cfg.keyLocation}" ]] && exit 0
           mkdir -p "$(dirname "${cfg.keyLocation}")"
           cd "$(dirname "${cfg.keyLocation}")"
