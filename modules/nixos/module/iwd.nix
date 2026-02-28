@@ -6,7 +6,7 @@ let
 in {
   options.networking.wireless.iwd.encryptDB = {
     enable = mkOption {
-      description = "Uses systemd-creds with the tpm chip to encrypt iwd's passwords";
+      description = "Uses systemd-creds to encrypt iwd's passwords";
       type = types.bool;
       default = false;
     };
@@ -34,7 +34,7 @@ in {
           mkdir -p "$(dirname "${cfg.keyLocation}")"
           cd "$(dirname "${cfg.keyLocation}")"
           umask 377
-          cat /dev/urandom | tr -dc 'A-Za-z0-9!@#$%^&*_-' | head -c 512 | systemd-creds --tpm2-device=auto --name=iwd-secret encrypt - "${cfg.keyLocation}"
+          cat /dev/urandom | tr -dc 'A-Za-z0-9!@#$%^&*_-' | head -c 512 | systemd-creds --name=iwd-secret encrypt - "${cfg.keyLocation}"
           chmod 0400 "${cfg.keyLocation}"
         '';
       };
