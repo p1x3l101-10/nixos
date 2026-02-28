@@ -40,7 +40,7 @@ export def list-networks [
   station: string@"nu-complete iwd stations"
   --raw
 ] {
-  scan
+  scan $station
   let rawData = (
     iwctl station $station get-networks rssi-dbms
     | ansi strip
