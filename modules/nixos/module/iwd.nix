@@ -20,7 +20,7 @@ in {
     systemd.services = {
       iwd = {
         unitConfig.ConditionPathExists = "${cfg.keyLocation}";
-        serviceConfig.LoadCredentialEncrypted = "iwd-secret:/${cfg.keyLocation}";
+        serviceConfig.LoadCredentialEncrypted = "iwd-secret";
       };
       iwd-ensure-credentials = {
         description = "Generate IWD credentials";
