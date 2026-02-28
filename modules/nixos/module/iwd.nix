@@ -30,10 +30,6 @@ in {
         # Generate a random encryption password for iwd to work with
         script = ''
           set -euxo pipefail
-          if [[ ! -d /run/credstore.encrypted ]]; then
-            mkdir -p /run/credstore.encrypted
-          fi
-          ln -sf "${cfg.keyLocation}" /run/credstore.encrypted/iwd-secret
           [[ -e "${cfg.keyLocation}" ]] && exit 0
           mkdir -p "$(dirname "${cfg.keyLocation}")"
           cd "$(dirname "${cfg.keyLocation}")"
@@ -42,5 +38,6 @@ in {
         '';
       };
     };
+    environment.etc."credstore.encrypted/iwd-secret".source = cfg.keyLocation;
   };
 }
