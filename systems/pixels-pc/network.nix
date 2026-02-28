@@ -13,7 +13,7 @@
       linkConfig.RequiredForOnline = "routable";
     };
   };
-  networking.iwd = {
+  networking.wireless.iwd = {
     enable = true;
     settings = {
       General = {
@@ -26,7 +26,7 @@
     };
   };
   systemd.services = let
-    keydir = "${keydir}";
+    keydir = "${globals.dirs.keys}/iwd";
   in {
     # Dont start IWD until there is a valid credential
     iwd = {
