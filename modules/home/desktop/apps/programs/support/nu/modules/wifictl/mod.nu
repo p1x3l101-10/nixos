@@ -1,16 +1,21 @@
 # Wrapper around iwctl to fix my grievances
 
-def "nu-complete iwd stations" [] {
+export def list-devices [] {
   iwctl station list
   | ansi strip
   | lines
   | skip 4
   | str trim
   | split column ' ' --collapse-empty station status
+}
+export alias devices = list-devices
+
+def "nu-complete iwd stations" [] {
+  list-devices
   | get station
 }
 
-export def get-networks [
+export def list-networks [
   station: string@"nu-complete iwd stations"
 ] {
   iwctl station $station get-networks rssi-dbms
@@ -30,6 +35,7 @@ export def get-networks [
     strength: ($x.column2 | into int)
   } }
 }
+export alias list = list-networks
 
 export def connect [
   station: string@"nu-complete iwd stations"
