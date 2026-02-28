@@ -15,7 +15,10 @@
   };
   networking.wireless.iwd = {
     enable = true;
-    encryptDB.enable = true;
+    encryptDB = {
+      enable = true;
+      keyLocation = "${globals.dirs.keys}/iwd/iwd-secret.cred";
+    };
     settings = {
       General = {
         EnableNetworkConfiguration = false; # NetworkD is handling that instead.
