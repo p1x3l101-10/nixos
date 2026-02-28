@@ -38,10 +38,10 @@
       serviceConfig.Type = "oneshot";
       wantedBy = [ "iwd.service" ];
       before = [ "iwd.service" ];
-      unitConfig.ConditionPathExists = [ "!${keydir}/iwd-secret.cred" ];
       # Generate a random encryption password for iwd to work with
       script = ''
         set -euxo pipefail
+        [[ -e "${keydir}/iwd-secret.cred" ]] && exit 0
         mkdir -p "${keydir}"
         cd "${keydir}"
         umask 377
