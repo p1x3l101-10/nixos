@@ -28,6 +28,7 @@ in {
       use nix/nix.nu
       use nix/nufetch.nu
       use kp
+      use wifictl
     '';
   };
   # Autoload
