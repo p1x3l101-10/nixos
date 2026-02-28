@@ -10,34 +10,13 @@ in {
       type = types.bool;
       default = false;
     };
-    keyLocation = mkOption {
-      description = "Where to store the credential file";
-      type = types.externalPath;
-      default = "/var/lib/iwd/iwd-secret.cred";
-    };
   };
   config = mkIf cfg.enable {
     systemd.services = {
       # Dont start IWD until there is a valid credential
       iwd = {
-        unitConfig.ConditionPathExists = "${cfg.keyLocation}";
-        serviceConfig.LoadCredentialEncrypted = "iwd-secret:/${cfg.keyLocation}";
-      };
-      iwd-ensure-credentials = {
-        description = "Generate IWD credentials";
-        serviceConfig.Type = "oneshot";
-        wantedBy = [ "iwd.service" ];
-        before = [ "iwd.service" ];
-        # Generate a random encryption password for iwd to work with
-        script = ''
-          set -euxo pipefail
-          [[ -e "${cfg.keyLocation}" ]] && exit 0
-          mkdir -p "$(dirname "${cfg.keyLocation}")"
-          cd "$(dirname "${cfg.keyLocation}")"
-          umask 377
-          cat /dev/urandom | tr -dc 'A-Za-z0-9!@#$%^&*_-' | head -c 512 | systemd-creds --tpm2-device=auto --name=iwd-secret encrypt - "${cfg.keyLocation}"
-          chmod 0400 "${cfg.keyLocation}"
-        '';
+        unitConfig.ConditionPathExists = "/var/lib/systemd/credential.secret";
+        serviceConfig.LoadCredentialEncrypted = "iwd-secret:/var/lib/systemd/credential.secret";
       };
     };
   };
