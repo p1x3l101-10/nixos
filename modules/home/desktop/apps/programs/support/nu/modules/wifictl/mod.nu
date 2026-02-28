@@ -15,6 +15,11 @@ def "nu-complete iwd stations" [] {
   | get station
 }
 
+export def scan [ station: string@"nu-complete iwd stations" ] {
+  iwctl station $station scan
+}
+
+
 def rssi-to-glyphs [ dbm: int ] {
   const rssiQualities = [
     [minVal, glyph];
@@ -35,6 +40,7 @@ export def list-networks [
   station: string@"nu-complete iwd stations"
   --raw
 ] {
+  scan
   let rawData = (
     iwctl station $station get-networks rssi-dbms
     | ansi strip
