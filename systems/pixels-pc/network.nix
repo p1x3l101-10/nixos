@@ -30,7 +30,7 @@
   in {
     # Dont start IWD until there is a valid credential
     iwd = {
-      unitConfig.ConditionPathExists "${keydir}/iwd-secret.cred";
+      unitConfig.ConditionPathExists = "${keydir}/iwd-secret.cred";
       serviceConfig.LoadCredentialEncrypted = "iwd-secret:/${keydir}/iwd-secret.cred";
     };
     iwd-ensure-credentials = {
