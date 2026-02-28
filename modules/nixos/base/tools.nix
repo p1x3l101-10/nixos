@@ -28,7 +28,5 @@
     nix-output-monitor
     nix-eval-jobs
     nvd
-  ] ++ (lib.optional config.networking.wireless.iwd.enable (with pkgs; [
-    iwqr
-  ]));
+  ];
 }
