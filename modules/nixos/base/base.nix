@@ -39,7 +39,11 @@
   # Networking
   systemd.network = {
     enable = true;
-    wait-online.enable = true;
+    wait-online = {
+      enable = true;
+      anyInterface = true;
+      ignoredInterfaces = [ "lo" ];
+    };
   };
 
   # DNS

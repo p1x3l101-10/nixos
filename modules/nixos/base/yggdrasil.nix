@@ -74,6 +74,7 @@
       resolvconf = false;
     };
   };
+  systemd.network.wait-online.ignoredInterfaces = [ "tun0" ];
   # Setting one NS breaks everything
   networking.nameservers = [
     "1.1.1.1"

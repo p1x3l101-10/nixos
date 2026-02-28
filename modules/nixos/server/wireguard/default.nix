@@ -73,6 +73,9 @@ in {
     };
   };
 
+  # This is not an internet network interface, dont count it as one
+  systemd.network.wait-online.ignoredInterfaces = [ "wg0" ];
+
   # Ensure the keys are readable by the correct users
   systemd.tmpfiles.settings."10-wireguard-keys"."${keydir}".Z = {
     mode = "0750";
