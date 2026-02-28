@@ -62,14 +62,14 @@ export def list-networks [
   )
   if $raw {
     $rawData
-    return
+  } else {
+    $rawData
+    | { |x| {
+      name: $x.name
+      security: $x.security
+      strength: (rssi-to-glyphs ($x.strength / 100))
+    } }
   }
-  $rawData
-  | { |x| {
-    name: $x.name
-    security: $x.security
-    strength: (rssi-to-glyphs ($x.strength / 100))
-  } }
 }
 export alias list = list-networks
 
