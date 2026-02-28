@@ -30,3 +30,11 @@ export def get-networks [
     strength: ($x.column2 | into int)
   } }
 }
+
+export def connect [
+  station: string@"nu-complete iwd stations"
+  network: string
+] {
+  systemd-ask-password  --id="iwctl:network-connection-password" $'Password for "($network)"'
+  | iwctl station $station connect $network
+}
