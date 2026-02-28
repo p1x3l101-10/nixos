@@ -37,9 +37,8 @@ in {
           [[ -e "${cfg.keyLocation}" ]] && exit 0
           mkdir -p "$(dirname "${cfg.keyLocation}")"
           cd "$(dirname "${cfg.keyLocation}")"
-          umask 377
           cat /dev/urandom | tr -dc 'A-Za-z0-9!@#$%^&*_-' | head -c 512 | systemd-creds --name=iwd-secret encrypt - "${cfg.keyLocation}"
-          chmod 0400 "${cfg.keyLocation}"
+          chmod 0444 "${cfg.keyLocation}"
         '';
       };
     };
