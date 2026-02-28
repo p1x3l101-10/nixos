@@ -37,9 +37,15 @@ export def list-networks [
 }
 export alias list = list-networks
 
+def "nu-complete iwd networks" [context: string] {
+  let station = $context | split row " " | get 3
+  list-networks $station
+  | get name
+}
+
 export def connect [
   station: string@"nu-complete iwd stations"
-  network: string
+  network: string@"nu-complete iwd networks"
 ] {
   systemd-ask-password  --id="iwctl:network-connection-password" $'Password for "($network)"'
   | iwctl station $station connect $network
