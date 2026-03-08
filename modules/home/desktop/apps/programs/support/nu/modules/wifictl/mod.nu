@@ -1,5 +1,24 @@
 # Wrapper around iwctl to fix my grievances
 
+def cacheData [type: string, specifiers?: string] {
+  let pipelineIn = $in
+  let basePath = $env.XDG_CACHE_HOME | path join "wifictl"
+  mkdir $basePath
+  let cachePath = (
+    $basePath | path join (if ($specifiers != null) {
+      $'($type)-($specifiers).nuon'
+    } else {
+      $'($type).nuon'
+    })
+  )
+  if ($cachePath | path exists) {
+    if ((ls $cachePath | get modified | get 0) >= ((date now) - 1min)) {
+      rm $cachePath
+      $pipelineIn | to nuon | save $cachePath
+    } else {}
+  }
+}
+
 export def list-devices [] {
   iwctl station list
   | ansi strip
@@ -74,9 +93,9 @@ export def list-networks [
 export alias list = list-networks
 
 def "nu-complete iwd networks" [context: string] {
-  let station = $context | split row " " | get 3
-  list-networks $station
-  | get name
+  let station = $context | split row " " | get 2
+  list-networks $station --raw
+  | each { |x| $'`($x.name)`' }
 }
 
 export def connect [
