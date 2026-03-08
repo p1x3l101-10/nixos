@@ -28,6 +28,7 @@ in {
       gamescope
       adwaita-icon-theme
       morewaita-icon-theme
+      harfbuzz # L4D2 patch https://github.com/Yi3d/l4d2-linux-patches
       # BUILD FAILURE
       #sgdboop
     ] ++ [
