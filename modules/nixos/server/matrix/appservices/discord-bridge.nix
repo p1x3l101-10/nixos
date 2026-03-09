@@ -1,4 +1,4 @@
-{ config, globals, ... }:
+{ config, globals, ext, ... }:
 
 let
   inherit (globals.server.dns) exists basename;
@@ -38,5 +38,13 @@ in {
       #  connString = "socket:/run/postgresql?db=matrix-appservice-discord";
       #};
     };
+    # FIXME
+    ## Why: Build Failure
+    ## Description: Upstream has removed `passthru.nodeAppDir` in the unstable package without updating the module
+    ## Action: revert to current stable version of package
+    ## Resolution: Upstream module update
+    ## Resolution (Extended):
+    ### Monitor <nixpkgs>/nixos/modules/services/matrix/appservice-discord.nix:147:46 For updated module not needing passthru.nodeAppDir
+    package = ext.stable.pkgs.matrix-appservice-discord;
   };
 }
