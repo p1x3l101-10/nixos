@@ -1,7 +1,7 @@
-{ lib, ... }:
+{ eLib, ... }:
 
 {
-  nix.settings = lib.internal.attrsets.mergeAttrs [
+  nix.settings = eLib.attrsets.mergeAttrs [
     {
       substituters = [ "https://unmojang.cachix.org" ];
       trusted-public-keys = [ "unmojang.cachix.org-1:OfHnbBNduZ6Smx9oNbLFbYyvOWSoxb2uPcnXPj4EDQY=" ];

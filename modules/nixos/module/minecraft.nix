@@ -1,6 +1,6 @@
 # NOTE: THIS IS UNFINISHED
 # TODO: expand the list of options exposed without relying on cfg.settings.extraEnv
-{ config, options, pkgs, lib, ... }:
+{ config, options, pkgs, lib, eLib, ... }:
 let
   cfg = config.services.minecraft;
   inherit (lib.options) mkOption mkEnableOption;
@@ -258,12 +258,12 @@ in
   config = mkIf cfg.enable {
     virtualisation.oci-containers.containers.minecraft = {
       serviceName = "minecraft";
-      environment = (lib.internal.attrsets.mergeAttrs (
-        let inherit (lib.internal.environment) mkEnv mkEnvRawList mkEnvRaw; in [
+      environment = (eLib.attrsets.mergeAttrs (
+        let inherit (eLib.environment) mkEnv mkEnvRawList mkEnvRaw; in [
           cfg.settings.extraEnv
           (mkEnv "EULA" (lib.trivial.boolToString cfg.settings.eula))
           # Modrinth mod list
-          (mkEnvRawList "MODRINTH_PROJECTS" (lib.forEach cfg.modrinth.mods.projects (x: lib.internal.minecraft.translateModName x "modrinth")) "\n")
+          (mkEnvRawList "MODRINTH_PROJECTS" (lib.forEach cfg.modrinth.mods.projects (x: eLib.minecraft.translateModName x "modrinth")) "\n")
           (mkEnvRaw "MODRINTH_ALLOWED_VERSION_TYPE" cfg.modrinth.mods.allowedVersionType)
           (mkEnvRaw "MODRINTH_DOWNLOAD_DEPENDENCIES" cfg.modrinth.mods.downloadDependancies)
           # Type and version
@@ -296,7 +296,7 @@ in
           (mkEnvRawList "JVM_OPTS" cfg.settings.java.args " ")
           (mkEnvRawList "JVM_XX_OPTS" cfg.settings.java.XXargs " ")
           (mkEnvRawList "JVM_DD_OPTS" cfg.settings.java.DDargs " ")
-          (mkEnvRawList "CURSEFORGE_FILES" (lib.forEach cfg.curseforge.mods (x: lib.internal.minecraft.translateModName x "curseforge")) "\n")
+          (mkEnvRawList "CURSEFORGE_FILES" (lib.forEach cfg.curseforge.mods (x: eLib.minecraft.translateModName x "curseforge")) "\n")
           (mkEnvRaw "PACKWIZ_URL" cfg.packwiz.url)
           (mkEnv "SPAWN_PROTECTION" cfg.settings.spawnProtection)
           (mkEnv "ALLOW_FLIGHT" (lib.trivial.boolToString cfg.settings.allowFlight))

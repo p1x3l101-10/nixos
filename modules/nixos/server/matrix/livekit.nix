@@ -1,8 +1,8 @@
-{ config, lib, pkgs, globals, ... }: 
+{ config, lib, pkgs, globals, eLib, ... }: 
 
 let
   inherit (globals.server.dns) exists basename;
-  inherit (lib.internal.webserver) mkWellKnown;
+  inherit (eLib.webserver) mkWellKnown;
   keyFile = "${globals.dirs.keys}/Livekit/Livekit.key";
   dns = "matrix.${basename}";
 in {

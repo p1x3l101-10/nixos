@@ -1,4 +1,4 @@
-{ osConfig, lib, ext, ... }:
+{ osConfig, eLib, ext, ... }:
 
 {
   imports = [
@@ -13,7 +13,7 @@
     nixvim.homeModules.nixvim
     nixcord.homeModules.nixcord
     noctalia.homeModules.default
-  ]) ++ (lib.internal.confTemplates.importList ./.);
+  ]) ++ (eLib.confTemplates.importList ./.);
   home = {
     allowedUnfree.enable = true;
     stateVersion = osConfig.system.stateVersion;

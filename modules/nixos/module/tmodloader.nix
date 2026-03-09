@@ -1,4 +1,4 @@
-{ config, options, pkgs, lib, ... }:
+{ config, options, pkgs, lib, eLib, ... }:
 let
   cfg = config.services.tmodloader;
   inherit (lib.options) mkOption mkEnableOption;
@@ -144,8 +144,8 @@ in
   config = mkIf cfg.enable {
     virtualisation.oci-containers.containers.tmodloader = {
       serviceName = "tmodloader";
-      environment = (lib.internal.attrsets.mergeAttrs (
-        let inherit (lib.internal.environment) mkEnv mkEnvList mkEnvRaw; in [
+      environment = (eLib.attrsets.mergeAttrs (
+        let inherit (eLib.environment) mkEnv mkEnvList mkEnvRaw; in [
           cfg.extraConfig
           (mkEnvRaw "tmod_pass" cfg.password)
           (mkEnvRaw "tmod_worldname" cfg.world.name)

@@ -1,4 +1,4 @@
-{ pkgs, lib, userdata, ... }:
+{ pkgs, lib, userdata, eLib, ... }:
 
 let
   genEmc = set: (
@@ -23,7 +23,7 @@ in
 {
   services.minecraft = {
     enable = true;
-    generic.pack = builtins.toString (lib.internal.builders.genericPack {
+    generic.pack = builtins.toString (eLib.builders.genericPack {
       packList = [
         ./overrides/fafoPack
         (genEmc {

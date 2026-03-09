@@ -1,4 +1,4 @@
-{ pkgs, lib, userdata, ... }:
+{ pkgs, lib, userdata, eLib, ... }:
 
 let
   fetchGHRelease = { owner, repo, version, fileName, hash }: pkgs.fetchurl {
@@ -10,7 +10,7 @@ let
     fileName = "${name}-${version}.jar";
     inherit repo version hash;
   };
-  GTNHGenericMod = { repo, name, version, hash }: lib.internal.builders.genericMod {
+  GTNHGenericMod = { repo, name, version, hash }: eLib.builders.genericMod {
     inherit name version;
     file = fetchGTNHMod { inherit repo name version hash; };
   };
@@ -34,11 +34,11 @@ in
 {
   services.minecraft = {
     enable = true;
-    generic.pack = builtins.toString (lib.internal.builders.genericPack {
+    generic.pack = builtins.toString (eLib.builders.genericPack {
       packList = [
         ./overrides/ntm-space-age
         lwjgl3ify-forgePatches
-        (lib.internal.builders.genericMod rec {
+        (eLib.builders.genericMod rec {
           name = "Thistle";
           version = "1.7.10-1.1.0";
           file = fetchGHRelease {
@@ -49,7 +49,7 @@ in
             hash = "sha256-cRKuDNNDaEHDFQPNPHeIs/SySpKdoLgzv2ojl5fFqQs=";
           };
         })
-        (lib.internal.builders.genericMod rec {
+        (eLib.builders.genericMod rec {
           name = "ocwasm";
           version = "1.7.10-0.5.2";
           file = fetchGHRelease {

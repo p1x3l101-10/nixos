@@ -1,4 +1,4 @@
-{ lib, inputs, ... }:
+{ eLib, inputs, ... }:
 {
   imports = [
     ./autoUpgrade.nix
@@ -19,5 +19,5 @@
     ./tools.nix
     ./yggdrasil.nix
   ];
-  #nix.registry = lib.internal.confTemplates.registry inputs;
+  #nix.registry = eLib.confTemplates.registry inputs;
 }

@@ -1,8 +1,8 @@
-{ lib, osConfig, ... }:
+{ eLib, osConfig, ... }:
 
 let
   steamGameTransformer = (list:
-    (lib.internal.attrsets.mergeAttrs
+    (eLib.attrsets.mergeAttrs
       (builtins.map
         (x:
           (builtins.mapAttrs

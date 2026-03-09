@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, eLib, pkgs, ... }:
 
 {
   home.packages = [ pkgs.gpgme ];
@@ -9,7 +9,7 @@
       isDefault = true;
       extensions = [ ];
       withExternalGnupg = true;
-      settings = lib.internal.attrsets.compressAttrs "." (lib.internal.attrsets.mergeAttrs [
+      settings = eLib.attrsets.compressAttrs "." (eLib.attrsets.mergeAttrs [
         (import ./support/firefox-config.nix)
         {
           font.name = {

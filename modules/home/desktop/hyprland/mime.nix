@@ -1,9 +1,8 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, ext, ... }:
 
 let
-  lib1 = import ./support/hypr-lib.nix lib;
-  lib2 = lib.extend (_: _: { hypr = lib1; });
-  globals = import ./support/hypr-globals.nix pkgs lib2;
+  hyprLib = import ./support/hypr-lib.nix { inherit lib ext; };
+  globals = import ./support/hypr-globals.nix { inherit pkgs lib ext hyprLib; };
   mkOkularApp = type: "okularApplication_${type}.desktop";
 in
 
@@ -11,7 +10,7 @@ in
   xdg.configFile."mimeapps.list".force = true;
   xdg.mime.enable = true;
   xdg.mimeApps.enable = true;
-  xdg.mimeApps.defaultApplications = lib.internal.attrsets.compressAttrs "/" (with globals.apps; {
+  xdg.mimeApps.defaultApplications = ext.lib.attrsets.compressAttrs "/" (with globals.apps; {
     application = {
       json = textEditor.desktop;
       pdf = mkOkularApp "pdf";

@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, eLib, ... }:
 
 # This is the only file that configures the actual host, the rest is for the container
 
@@ -7,7 +7,7 @@ let
   cfg.enable = false;
 in
 {
-  config = lib.modules.mkIf cfg.enable (lib.internal.attrsets.mergeAttrs [
+  config = lib.modules.mkIf cfg.enable (eLib.attrsets.mergeAttrs [
     {
       containers.s3 = {
         autoStart = true;
@@ -28,7 +28,7 @@ in
     {
       systemd.tmpfiles.settings."50-host-state"."/nix/host/state/Servers/Minio".d = { mode = "0755"; };
     }
-    (lib.internal.sss.makeTmpFiles [
+    (eLib.sss.makeTmpFiles [
       "nextcloud"
     ])
   ]);

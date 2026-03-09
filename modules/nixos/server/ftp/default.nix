@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, eLib, ... }:
 
 # This is the only file that configures the actual host, the rest is for the container
 
@@ -7,7 +7,7 @@ let
   cfg.enable = false;
 in
 {
-  config = lib.modules.mkIf cfg.enable (lib.internal.attrsets.mergeAttrs [
+  config = lib.modules.mkIf cfg.enable (eLib.attrsets.mergeAttrs [
     {
       containers.ftp = {
         autoStart = true;

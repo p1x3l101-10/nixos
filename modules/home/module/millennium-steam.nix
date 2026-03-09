@@ -1,10 +1,10 @@
-{ config, lib, ... }:
+{ config, lib, eLib, ... }:
 
 let
   inherit (lib) mkEnableOption mkOption mkIf types;
   cfg = config.programs.millennium-steam;
 in {
-  imports = (lib.internal.confTemplates.importList ./support/millennium-steam/themes);
+  imports = (eLib.confTemplates.importList ./support/millennium-steam/themes);
   options.programs.millennium-steam = {
     enable = mkEnableOption "millenium steam user config";
     quickCss = mkOption {

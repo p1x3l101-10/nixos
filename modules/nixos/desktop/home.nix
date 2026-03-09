@@ -29,7 +29,7 @@
       inherit inputs ext;
     };
     users.pixel = { osConfig, lib, ... }: (
-      lib.internal.lists.switch [
+      ext.lib.lists.switch [
         {
           case = (osConfig.networking.hostName == "pixels-pc");
           out = {

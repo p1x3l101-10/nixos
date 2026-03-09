@@ -1,9 +1,9 @@
-{ pkgs, lib, userdata, ... }:
+{ pkgs, eLib, userdata, ... }:
 
 {
   services.minecraft = {
     enable = true;
-    settings = lib.internal.attrsets.mergeAttrs [
+    settings = eLib.attrsets.mergeAttrs [
       (import ../overrides/settings.nix {
         inherit userdata;
         packId = "magical-meat";

@@ -1,4 +1,6 @@
-lib: (lib.fix (self: {
+{ lib, ext }:
+
+(lib.fix (self: {
   bind'' = modifer: extMod: key: action: (
     let
       prestring = (
@@ -7,7 +9,7 @@ lib: (lib.fix (self: {
         key + ", " +
         action +
         # Check if the action HATES the trailing comma
-        (lib.internal.lists.switch
+        (ext.lib.lists.switch
           (
             let
               out = "";
@@ -22,7 +24,7 @@ lib: (lib.fix (self: {
       );
     in
     # Basically this decides if there is a need for the 5th arg
-    (lib.internal.lists.switch
+    (ext.lib.lists.switch
       (
         let
           out = actionArgs: (prestring + actionArgs);

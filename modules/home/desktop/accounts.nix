@@ -1,7 +1,7 @@
-{ config, lib, ... }:
+{ config, lib, eLib, ... }:
 
 let
-  mkGmail = otherAttrs: (lib.internal.attrsets.mergeAttrs [{
+  mkGmail = otherAttrs: (eLib.attrsets.mergeAttrs [{
     lieer = {
       enable = true;
       settings = {
@@ -33,12 +33,12 @@ let
     passwordCommand = "cat /nix/host/keys/mail/gmail/${otherAttrs.address}";
   }
     otherAttrs]);
-  standardEmail = otherAttrs: (lib.internal.attrsets.mergeAttrs [{
+  standardEmail = otherAttrs: (eLib.attrsets.mergeAttrs [{
     maildir.path = otherAttrs.userName;
     thunderbird = {
       enable = true;
       profiles = [ ];
-      settings = id: (lib.internal.attrsets.compressAttrs "." { });
+      settings = id: (eLib.attrsets.compressAttrs "." { });
       messageFilters = [ ];
     };
   }
@@ -92,7 +92,7 @@ in
             enable = true;
             profiles = [ ];
             messageFilters = [ ];
-            settings = id: (lib.internal.attrsets.compressAttrs "." {});
+            settings = id: (eLib.attrsets.compressAttrs "." {});
           };
           passwordCommand = "keepassxc-cli show -y 1 --no-password /home/pixel/Sync/Keepass/keepass.kdbx Logins/ExsMachina -a Password";
         };

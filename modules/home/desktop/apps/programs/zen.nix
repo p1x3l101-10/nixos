@@ -40,7 +40,7 @@
           #darkreader
         ];
       };
-      settings = lib.internal.attrsets.compressAttrs "." (import ./support/firefox-config.nix);
+      settings = ext.lib.attrsets.compressAttrs "." (import ./support/firefox-config.nix);
       search = {
         force = true;
         default = "google";

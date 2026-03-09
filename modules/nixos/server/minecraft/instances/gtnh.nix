@@ -1,4 +1,4 @@
-{ pkgs, lib, userdata, ... }:
+{ pkgs, eLib, userdata, ... }:
 
 let
   fetchGHRelease = { owner, repo, version, fileName, hash }: pkgs.fetchurl {
@@ -11,10 +11,10 @@ in
     enable = true;
     generic = {
       forceUpdate = true;
-      pack = builtins.toString (lib.internal.builders.genericPack {
+      pack = builtins.toString (eLib.builders.genericPack {
         packList = [
           ./overrides/gtnh
-          (lib.internal.builders.genericMod rec {
+          (eLib.builders.genericMod rec {
             name = "ocwasm";
             version = "1.7.10-0.5.2";
             file = fetchGHRelease {

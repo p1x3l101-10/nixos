@@ -1,8 +1,8 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, ext, ... }:
 
 let
-  hyprLib = lib.extend (final: prev: { hypr = import ./hyprland/support/hypr-lib.nix lib; });
-  hypr-globals = import ./hyprland/support/hypr-globals.nix pkgs hyprLib;
+  hyprLib = import ./hyprland/support/hypr-lib.nix { inherit lib ext; };
+  hypr-globals = import ./hyprland/support/hypr-globals.nix { inherit pkgs lib ext hyprLib; };
 in {
   xdg = {
     userDirs.enable = true;

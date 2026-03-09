@@ -1,7 +1,8 @@
-pkgs: lib:
+{ pkgs, lib, ext, hyprLib }:
+
 lib.fix (self: {
   modiferKey = "SUPER";
-  apps = lib.hypr.processDesktop {
+  apps = hyprLib.processDesktop {
     terminal = "kitty";
     fileManager = "thunar";
     web = "zen-twilight";

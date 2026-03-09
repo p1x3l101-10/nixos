@@ -1,15 +1,15 @@
 # See https://wiki.hyprland.org/Configuring
-pkgs: lib0:
+{ pkgs, lib, ext }:
+
 let
   # Layer on an additional lib namespace (why do i do this to myself)
-  lib1 = import ./hypr-lib.nix lib0;
-  lib = lib0.extend (finalLib: prevLib: { hypr = lib1; });
+  hyprLib = import ./hypr-lib.nix { inherit lib ext; };
   # "Global" variables
-  globals = import ./hypr-globals.nix pkgs lib;
+  globals = import ./hypr-globals.nix { inherit pkgs lib ext hyprLib; };
   # Bind helpers
   bindScope = lib.fix (self: {
     # Master function
-    inherit (lib.hypr) bind'';
+    inherit (hyprLib) bind'';
     # `bind'` lets you specify aditional modifers in addition to the normal one
     bind' = self.bind'' globals.modiferKey;
     bind = self.bind' null;

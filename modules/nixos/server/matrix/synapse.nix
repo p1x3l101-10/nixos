@@ -1,8 +1,8 @@
-{ globals, config, lib, pkgs, ... }:
+{ globals, config, lib, pkgs, eLib, ... }:
 
 let
   inherit (globals.server.dns) exists basename;
-  inherit (lib.internal.webserver) mkWellKnown;
+  inherit (eLib.webserver) mkWellKnown;
   fqdn = "matrix.${config.networking.domain}";
   baseUrl = "https://${fqdn}";
   inherit (import ./config.nix { inherit lib; matrix_fqdn = fqdn; }) serverConfig clientConfig;

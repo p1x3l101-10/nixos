@@ -2,7 +2,7 @@
 
 let
   genWallpaper = name: import (./. + "/support/stylix/wallpapers/${name}.nix") { inherit pkgs config ext; };
-  aspectRatio = (lib.internal.lists.switch [
+  aspectRatio = (ext.lib.lists.switch [
     { case = (config.networking.hostName == "pixels-pc"); out = [ 1920 1080 ]; }
   ] [ null null ]
   );

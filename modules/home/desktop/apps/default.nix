@@ -1,8 +1,8 @@
-{ lib, ... }:
+{ eLib, ... }:
 
 {
   imports = (
-    (lib.internal.confTemplates.importList ./programs) ++
-    (lib.internal.confTemplates.importList ./games)
+    (eLib.confTemplates.importList ./programs) ++
+    (eLib.confTemplates.importList ./games)
   );
 }

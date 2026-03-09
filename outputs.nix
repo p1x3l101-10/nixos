@@ -2,9 +2,8 @@ inputs:
 let
   namespace = "internal";
   # TODO: Avoid lib pollution
-  lib0 = inputs.nixpkgs.lib;
-  lib1 = import ./lib { lib = lib0; inherit inputs namespace; };
-  lib = lib0.extend (finalLib: prevLib: { "${namespace}" = lib1; });
+  inherit (inputs.nixpkgs) lib;
+  eLib = import ./lib { inherit inputs namespace lib; };
 in
 inputs.flake-utils.lib.eachDefaultSystem
   (system:
@@ -13,7 +12,7 @@ inputs.flake-utils.lib.eachDefaultSystem
     in
     {
       formatter = pkgs.nixpkgs-fmt;
-      packages = lib1.flake.genPackages ./packages pkgs.newScope {
+      packages = eLib.flake.genPackages ./packages pkgs.newScope {
         ext = {
           inherit inputs;
         };
@@ -47,7 +46,7 @@ inputs.flake-utils.lib.eachDefaultSystem
             inherit system config;
           }
         );
-        assets = (lib.internal.attrsets.mapDirTree ./assets);
+        assets = (eLib.attrsets.mapDirTree ./assets);
         lib = inputs.self.lib;
         hostInfo = import ./hostInfo.nix { inherit lib; };
       });
@@ -62,17 +61,17 @@ inputs.flake-utils.lib.eachDefaultSystem
       stylix.nixosModules.stylix
       self.nixosModules.base
       self.nixosModules.module
-      { lib."${namespace}" = lib1; }
-      (lib.internal.flake.genPkgOverlay { inherit namespace; packages = inputs.self.packages.${system}; })
+      { lib."${namespace}" = eLib; }
+      (eLib.flake.genPkgOverlay { inherit namespace; packages = inputs.self.packages.${system}; })
     ];
   in
   {
     inherit (specialArgs.ext) assets;
-    lib = lib1;
-    nixosModules = lib.internal.flake.genModules {
+    lib = eLib;
+    nixosModules = eLib.flake.genModules {
       src = ./modules/nixos;
     };
-    homeModules = lib.internal.flake.genModules {
+    homeModules = eLib.flake.genModules {
       src = ./modules/home;
     };
     nixosConfigurations = {

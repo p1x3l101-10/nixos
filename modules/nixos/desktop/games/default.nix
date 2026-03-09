@@ -1,5 +1,5 @@
-{ lib, ... }:
+{ eLib, ... }:
 
 {
-  imports = (lib.internal.confTemplates.importList ./.);
+  imports = (eLib.confTemplates.importList ./.);
 }
