@@ -1,4 +1,4 @@
-{ pkgs, inputs, ext, lib, ... }:
+{ pkgs, ext, lib, ... }:
 
 {
   imports = with inputs; [
@@ -25,9 +25,11 @@
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
-    extraSpecialArgs = {
-      inherit inputs ext;
-    };
+    extraSpecialArgs = lib.fix (final: {
+      inherit ext;
+      inherit (final.ext) inputs;
+      eLib = final.ext.lib;
+    })
     users.pixel = { osConfig, lib, ... }: (
       ext.lib.lists.switch [
         {
