@@ -1,7 +1,9 @@
 { pkgs, lib, ext, ... }:
 
 let
-  inherit (import ../../../home/desktop/hyprland/support/hypr-globals.nix pkgs lib) clockFormat;
+  hyprLib = import ../../../home/desktop/hyprland/support/hypr-lib.nix { inherit lib ext; };
+  hyprGlobals = import ../../../home/desktop/hyprland/support/hypr-globals.nix { inherit pkgs lib ext hyprLib; };
+  inherit (hyprGlobals) clockFormat;
 in
 
 lib.fix (self: {

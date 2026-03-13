@@ -1,6 +1,8 @@
 { pkgs, ext, lib, ... }:
 
-{
+let
+  inherit (ext) inputs;
+in {
   imports = with inputs; [
     home-manager.nixosModules.home-manager
   ];
@@ -29,7 +31,7 @@
       inherit ext;
       inherit (final.ext) inputs;
       eLib = final.ext.lib;
-    })
+    });
     users.pixel = { osConfig, lib, ... }: (
       ext.lib.lists.switch [
         {

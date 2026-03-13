@@ -8,7 +8,7 @@ in
     # Nixos manages these packages
     package = null;
     portalPackage = null;
-    settings = import ./support/hyprland-config.nix pkgs lib;
+    settings = import ./support/hyprland-config.nix { inherit pkgs lib ext; };
     systemd.enable = true;
     xwayland.enable = true;
   };

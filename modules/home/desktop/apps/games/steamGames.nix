@@ -1,4 +1,4 @@
-{ eLib, osConfig, ... }:
+{ lib, eLib, osConfig, ... }:
 
 let
   steamGameTransformer = (list:
