@@ -1,0 +1,4 @@
+// Compost colors for eyesoficeandfire. You may add your own colors, change existing ones, or remove colors that aren't needed.
+eye_of_fire_dragon, #be653d
+eye_of_ice_dragon, #7ad2ff
+eye_of_lightning_dragon, #d726ff

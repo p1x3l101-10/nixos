@@ -1,0 +1,16 @@
+filename = 'emi_loot-0.7.9+1.20.1+forge.jar'
+name = 'EMI Loot'
+side = 'both'
+x-prismlauncher-loaders = [ 'neoforge', 'forge' ]
+x-prismlauncher-mc-versions = [ '1.20.1' ]
+x-prismlauncher-release-type = 'release'
+
+[download]
+hash = 'e3f6289abd4de8ebbbb0ffc162b35346c3acd54f'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 7417249
+project-id = 681783

@@ -1,0 +1,16 @@
+filename = 'Film-1.0.3.jar'
+name = 'Origins of Cybertron'
+side = 'server'
+x-prismlauncher-loaders = [ 'forge' ]
+x-prismlauncher-mc-versions = [ '1.20.1' ]
+x-prismlauncher-release-type = 'release'
+
+[download]
+hash = '03b70461ae627c9dddef597233f8fd6c106b617b'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 7737831
+project-id = 1457031

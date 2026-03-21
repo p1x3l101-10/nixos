@@ -1,0 +1,16 @@
+filename = 'immersive-portals-3.0.7-all.jar'
+name = 'Immersive Portals (for Forge)'
+side = 'both'
+x-prismlauncher-loaders = [ 'forge' ]
+x-prismlauncher-mc-versions = [ '1.20.1' ]
+x-prismlauncher-release-type = 'release'
+
+[download]
+hash = 'b4a6d71ca7dc07a1da33e7272befabc6ce95057b'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 6368524
+project-id = 355440

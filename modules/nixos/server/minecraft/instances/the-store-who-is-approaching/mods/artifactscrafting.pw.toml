@@ -1,0 +1,16 @@
+filename = 'artifactscrafting-1.0.1-forge-1.20.1.jar'
+name = 'Artifacts Crafting'
+side = 'both'
+x-prismlauncher-loaders = [ 'forge' ]
+x-prismlauncher-mc-versions = [ '1.20.1' ]
+x-prismlauncher-release-type = 'release'
+
+[download]
+hash = 'cc1076ae6681cc362b094454802aae9f4b81be1d'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 7628091
+project-id = 1244616

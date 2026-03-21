@@ -1,0 +1,16 @@
+filename = 'Luigi Origin 1.1.jar'
+name = 'Luigi Origin'
+side = 'both'
+x-prismlauncher-loaders = [ 'forge' ]
+x-prismlauncher-mc-versions = [ '1.20.1' ]
+x-prismlauncher-release-type = 'release'
+
+[download]
+hash = '4f80eeaa946eb6859baad98f849fd49e6fab29fd'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 6486142
+project-id = 1253646

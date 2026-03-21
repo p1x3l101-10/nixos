@@ -1,0 +1,3 @@
+// Compost colors for transfem_origin. You may add your own colors, change existing ones, or remove colors that aren't needed.
+estrogen, #8dded6
+horse_urine_bucket, #c3bb9a

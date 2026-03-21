@@ -1,0 +1,16 @@
+filename = 'foxy_jumpscare-0.1-1.20.1.jar'
+name = 'Withered Foxy Jumpscare'
+side = 'client'
+x-prismlauncher-loaders = [ 'forge' ]
+x-prismlauncher-mc-versions = [ '1.20.1' ]
+x-prismlauncher-release-type = 'release'
+
+[download]
+hash = '7695605c232eb05dee0f013bd64700a00ed3ca61'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 6739925
+project-id = 1301881

@@ -14,7 +14,7 @@ in
     ./email
     ./ensurePerms
     ./matrix
-    #./minecraft
+    ./minecraft
     ./nextcloud
     ./nginx
     ./server-base

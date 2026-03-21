@@ -1,0 +1,16 @@
+filename = 'witherstormmod-1.20.1-4.2.1-all.jar'
+name = "Cracker's Wither Storm Mod"
+side = 'both'
+x-prismlauncher-loaders = [ 'neoforge', 'forge' ]
+x-prismlauncher-mc-versions = [ '1.20.1' ]
+x-prismlauncher-release-type = 'release'
+
+[download]
+hash = 'bd32ea3f44812b6b1744739633ea25d32197f4b8'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 5619741
+project-id = 621405

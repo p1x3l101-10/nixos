@@ -1,0 +1,105 @@
+
+[general]
+	#The amount of times the heavy sieve should roll for compressed entries. For example, a value of 7 means for every compressed gravel you only get the equivalent drops of 7 sifted gravel blocks (2 loss). A value of 9 would therefore mean no loss.
+	heavySieveDefaultRolls = 7
+
+[automation]
+	#The energy cost of the auto hammer per tick.
+	autoHammerEnergy = 40
+	#The speed at which the auto hammer will smash stuff.
+	autoHammerSpeed = 0.00800000037997961
+	#The chance for the upgrade hammers in an auto hammer to lose durability (per operation)
+	autoHammerDecay = 0.5
+	#The energy cost of the auto compressed hammer per tick.
+	autoCompressedHammerEnergy = 120
+	#The speed at which the auto compressed hammer will smash stuff.
+	autoCompressedHammerSpeed = 0.003800000064074993
+	#The energy cost of the auto sieve per tick.
+	autoSieveEnergy = 40
+	#The energy cost of the auto heavy sieve per tick.
+	autoHeavySieveEnergy = 120
+	#The speed at which the auto heavy sieve will sift stuff.
+	autoHeavySieveSpeed = 0.0037499999161809683
+	#The speed at which the auto sieve will sift stuff.
+	autoSieveSpeed = 0.007499999832361937
+	#The energy cost of the auto compressor per tick.
+	autoCompressorEnergy = 5
+	#The speed at which the auto compressor will compress stuff.
+	autoCompressorSpeed = 0.10000000149011612
+	#Set this to true if you want to allow automation of the heavy sieve through fake players (i.e. Autonomous Activator)
+	allowHeavySieveAutomation = false
+	#The maximum amount of clicks per second on a heavy sieve. Clicks above this will be ignored.
+	heavySieveClicksPerSecond = 6
+	#The rate at which the wooden crucible extracts water. Measured in liquid per second.
+	woodenCrucibleSpeed = 8
+	#Set this to true if you want to allow right-clicking Auto Sieves with Food to give them speed boosts
+	allowAutoSieveFoodSpeedBoosts = true
+
+[compressedMobs]
+	#The chance for mobs to spawn as Compressed Mobs. Set to 0 to disable.
+	compressedMobChance = 0.009999999776482582
+	#The amount of mobs that will spawn upon death of a compressed mob.
+	compressedMobSize = 9
+	#Should the allowed mobs list be treated as a blacklist instead of a whitelist?
+	compressedMobAllowedMobsIsBlacklist = false
+	#A list of entity registry names that can spawn as compressed entities.
+	compressedMobAllowedMobs = ["minecraft:zombie", "minecraft:creeper", "minecraft:skeleton", "minecraft:spider", "minecraft:cave_spider", "minecraft:silverfish", "minecraft:witch", "minecraft:enderman", "minecraft:pig_zombie", "minecraft:blaze", "minecraft:bee", "minecraft:chicken", "minecraft:sheep", "minecraft:cow", "minecraft:mooshroom", "minecraft:pig", "minecraft:ghast", "minecraft:drowned", "minecraft:elder_guardian", "minecraft:endermite", "minecraft:cat", "minecraft:evoker", "minecraft:husk", "minecraft:hoglin", "minecraft:guardian", "minecraft:piglin", "minecraft:piglin_brute", "minecraft:pillager", "minecraft:shulker", "minecraft:stray", "minecraft:vindicator", "minecraft:wither_skeleton", "minecraft:zoglin", "minecraft:zombie_villager", "minecraft:zombified_piglin"]
+
+[client]
+	#Set this to true to disable the loading of auto sieve skins from a remote server.
+	skipAutoSieveSkins = false
+	#Setting this to true will disable particles from the Sieves and Auto Hammers from Ex Compressum.
+	disableParticles = false
+
+[baits]
+	#The chance (per second) that a wolf bait will result in a spawn.
+	wolfBaitChance = 0.009999999776482582
+	#The chance (per second) that a ocelot bait will result in a spawn.
+	ocelotBaitChance = 0.009999999776482582
+	#The chance (per second) that a cow bait will result in a spawn.
+	cowBaitChance = 0.009999999776482582
+	#The chance (per second) that a pig bait will result in a spawn.
+	pigBaitChance = 0.009999999776482582
+	#The chance (per second) that a chicken bait will result in a spawn.
+	chickenBaitChance = 0.009999999776482582
+	#The chance (per second) that a sheep bait will result in a spawn.
+	sheepBaitChance = 0.009999999776482582
+	#The chance (per second) that a squid bait will result in a spawn.
+	squidBaitChance = 0.009999999776482582
+	#The chance (per second) that a rabbit bait will result in a spawn.
+	rabbitBaitChance = 0.009999999776482582
+	#The chance (per second) that a mooshroom bait will result in a spawn.
+	horseBaitChance = 0.009999999776482582
+	#The chance (per second) that a donkey bait will result in a spawn.
+	donkeyBaitChance = 0.009999999776482582
+	#The chance (per second) that a parrot bait will result in a spawn.
+	parrotBaitChance = 0.009999999776482582
+	#The chance (per second) that a polar bear bait will result in a spawn.
+	polarBearBaitChance = 0.009999999776482582
+	#The chance (per second) that a llama bait will result in a spawn.
+	llamaBaitChance = 0.009999999776482582
+	#The chance (per second) that a cat bait will result in a spawn.
+	catBaitChance = 0.009999999776482582
+	#The chance (per second) that a fox bait will result in a spawn.
+	foxBaitChance = 0.009999999776482582
+	#The chance (per second) that a turtle bait will result in a spawn.
+	turtleBaitChance = 0.009999999776482582
+	#The chance (per second) that a mooshroom bait will result in a spawn.
+	mooshroomBaitChance = 0.009999999776482582
+	#The chance (per second) that an animal spawned from a bait will result in a child.
+	childBaitChance = 0.5
+
+[tools]
+	#If true, hitting a chicken with a stick will turn it into an Angry Chicken, which will drop a Chicken Stick when killed.
+	allowChickenStickCreation = true
+	#The chance for the chicken stick to make sounds when breaking blocks. Set to 0 to disable.
+	chickenStickSoundChance = 0.20000000298023224
+	#The chance for the chicken stick to spawn a chicken. Set to 0 to disable.
+	chickenStickSpawnChance = 0.00800000037997961
+	#The sound names the chicken stick will randomly play.
+	chickenStickSounds = ["entity.chicken.ambient", "entity.chicken.hurt", "entity.chicken.egg", "entity.chicken.step"]
+	#The multiplier applied to the Compressed Crook's durability (based on the normal wooden crook)
+	compressedCrookDurabilityMultiplier = 2.0
+	#The multiplier applied to the Compressed Crook's speed (based on the normal wooden crook)
+	compressedCrookSpeedMultiplier = 4.0
+

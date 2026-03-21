@@ -1,0 +1,33 @@
+filename = 'origins-mario-1.0.jar'
+name = 'Origins: Mario'
+side = 'server'
+x-prismlauncher-loaders = [ 'forge', 'quilt', 'fabric' ]
+x-prismlauncher-mc-versions = [
+    '1.18',
+    '1.18.1',
+    '1.18.2',
+    '1.19',
+    '1.19.1',
+    '1.19.2',
+    '1.19.3',
+    '1.19.4',
+    '1.20',
+    '1.20.1',
+    '1.20.2',
+    '1.20.3',
+    '1.20.4',
+    '1.20.5',
+    '1.20.6',
+    '1.21'
+]
+x-prismlauncher-release-type = 'release'
+
+[download]
+hash = '436ae338f314c36434eac73800861af819e5b50bcccb53c9f073ff7f7ed92ab108876c3b3e8ee7b55519c733e81266a900acdf6e70fa7168cdafee554689dd01'
+hash-format = 'sha512'
+mode = 'url'
+url = 'https://cdn.modrinth.com/data/xLJ9cWHh/versions/X73AYA9h/origins-mario-1.0.jar'
+
+[update.modrinth]
+mod-id = 'xLJ9cWHh'
+version = 'X73AYA9h'

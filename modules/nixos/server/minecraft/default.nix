@@ -2,9 +2,9 @@
 
 {
   imports = [
-    ./instances/firma-prima.nix
+    ./instances/the-store-who-is-approaching.nix
     #./bluemap-nginx.nix
-    ./svc.nix
+    #./svc.nix
     #./rcon.nix
   ];
   networking.sshForwarding.ports = [

@@ -1,0 +1,14 @@
+// Compost colors for dreadsteel. You may add your own colors, change existing ones, or remove colors that aren't needed.
+dreadsteel_boots, #2f262c
+dreadsteel_chestplate, #30262f
+dreadsteel_helmet, #2a232a
+dreadsteel_ingot, #cc5b7f
+dreadsteel_leggings, #2d262c
+dreadsteel_scythe_projectile_black, #7cff04
+dreadsteel_scythe_projectile_bronze, #ff002d
+dreadsteel_scythe_projectile_default, #ff4dff
+dreadsteel_scythe_projectile_white, #ffff
+kit_black, #4e734d
+kit_bronze, #b6573a
+kit_default, #936891
+kit_white, #a1acb9

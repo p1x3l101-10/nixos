@@ -1,0 +1,16 @@
+filename = 'origins-classes-forge-1.2.1.jar'
+name = 'Origins: Classes (Forge)'
+side = 'both'
+x-prismlauncher-loaders = [ 'neoforge', 'forge' ]
+x-prismlauncher-mc-versions = [ '1.20.1' ]
+x-prismlauncher-release-type = 'release'
+
+[download]
+hash = '63e099d2faf0785e667b17b1d9db7a4648805ed3'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 4965453
+project-id = 610127

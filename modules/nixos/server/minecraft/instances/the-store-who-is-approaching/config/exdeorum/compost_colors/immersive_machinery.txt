@@ -1,0 +1,9 @@
+// Compost colors for immersive_machinery. You may add your own colors, change existing ones, or remove colors that aren't needed.
+bamboo_bee, #bc9e52
+copperfin, #ac8a80
+diamond_drill, #299b9b
+iron_drill, #c0c0c0
+netherite_drill, #373737
+redstone_mechanism, #9a5c44
+redstone_sheep, #82837f
+tunnel_digger, #574b3e
