@@ -21,13 +21,15 @@
             sha256 = "sha256:1386wka7bar1cdd5v7gi0x3pf177phvz3d449m5ybmzza49mmjir";
           }}"
           "-Dunsup.disableReconciliation=true"
-          "-Dunsup.bootstrapUrl=file://${(pkgs.formats.ini {}).generate "unsup.ini" {
-            version = 1;
-            source = "file://${./the-store-who-is-approaching}/pack.toml";
-            source_format = "packwiz";
-            preset = "minecraft";
-            behavior = "auto";
-          }}"
+          "-Dunsup.bootstrapUrl=file://${pkgs.writeText "unsup.ini" (lib.generators.toINIWithGlobalSection {} {
+            globalSection = {
+              version = 1;
+              source = "file://${./the-store-who-is-approaching}/pack.toml";
+              source_format = "packwiz";
+              preset = "minecraft";
+              behavior = "auto";
+            };
+          })}"
         ];
       };
     };
