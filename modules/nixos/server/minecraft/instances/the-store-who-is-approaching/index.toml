@@ -1105,11 +1105,6 @@ hash = "2ff62e8ab50c9b9acf2c6579619b15afa9b3ad248b74f2237ef4994f55e90cc5"
 metafile = true
 
 [[files]]
-file = "mods/even-more-origins-keybinds.pw.toml"
-hash = "af575d6a1e141fc51b5eb2d491f2e0e728ce2bf9634b402fb1503394dde854b3"
-metafile = true
-
-[[files]]
 file = "mods/ex-compressum.pw.toml"
 hash = "6036ce75013dd683e221f0487e80c93eb8b8141325152e671387a7b9eff6827e"
 metafile = true
