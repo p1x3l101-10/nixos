@@ -965,11 +965,6 @@ hash = "aca4740af823dcb80e23e125dc8a31d9b1de412b7850e14c16c33b0a619fc921"
 metafile = true
 
 [[files]]
-file = "mods/arphex.pw.toml"
-hash = "2c90c655dc57a8059fe28976a8a36c9814c62eae2b24f6ff6dc226306083ad3a"
-metafile = true
-
-[[files]]
 file = "mods/artifacts.pw.toml"
 hash = "e38a4429cd9dc3b41e683b20afc689353040a6e3c409d034c35590145001eca0"
 metafile = true
