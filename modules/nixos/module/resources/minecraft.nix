@@ -14,7 +14,7 @@
     "17" = {
       # java17
       imageDigest = "sha256:1efcfbe78e96e99672f63c8517b7b933b3e1f9df8236bd069e3e8d5a481f66a2";
-      sha256 = "sha256-PkUfIqS/MsGYizfBHmGGPwuRvCy1918xAKCQ8WQTibY=";
+      sha256 = "sha256-61pN0bBdxN/uqo1d/wvM0W/ZhJee/Bsx4mgZLx5i89A=";
     };
     "17-graalvm" = {
       # java17-graalvm
