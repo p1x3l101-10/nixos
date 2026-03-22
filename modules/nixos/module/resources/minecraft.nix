@@ -11,10 +11,15 @@
       imageDigest = "sha256:c9e70f7376c18b6cf0f9e6c4a2fd57892cc39b16e6b74fe30185d9ce2b214aa3";
       sha256 = "sha256-PkUfIqS/MsGYizfBHmGGPwuRvCy1918xAKCQ8WQT+bY=";
     };
+    "17" = {
+      # java17
+      imageDigest = "sha256:1efcfbe78e96e99672f63c8517b7b933b3e1f9df8236bd069e3e8d5a481f66a2";
+      sha256 = "sha256-PkUfIqS/MsGYizfBHmGGPwuRvCy1918xAKCQ8WQTibY=";
+    };
     "17-graalvm" = {
       # java17-graalvm
       imageDigest = "sha256:e0c717f8f98beda233aeac35469527c9b112fc2a1f34d33960fc95be42c534b6";
-      sha256 = "sha256-TZE9S9zpQIOaNy75TaBeZU9GCm+lsCm7nI2TbuusIwQ=";
+      sha256 = "sha256-TZE9S9zpQIOaNy75TaBeZU9GCm+lsCm7nI2TbuusiwQ=";
     };
     "21-alpine" = {
       # java21-alpine

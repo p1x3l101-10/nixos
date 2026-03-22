@@ -159,6 +159,7 @@ in
         version = mkOption {
           type = types.enum [
             "8"
+            "17"
             "17-alpine"
             "17-graalvm"
             "21-alpine"
