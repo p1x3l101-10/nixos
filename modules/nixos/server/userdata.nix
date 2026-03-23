@@ -47,6 +47,9 @@ lib.fix (self: {
     eqquise = {
       mcUsername = "eqquise";
     };
+    robyn = {
+      mcUsername = "Mus1KL0v3";
+    };
   };
   getdata = key: names: (lib.lists.flatten (lib.lists.forEach names (x:
     lib.attrsets.getAttrFromPath ([ x ] ++ (lib.lists.flatten [ key ])) self.data
