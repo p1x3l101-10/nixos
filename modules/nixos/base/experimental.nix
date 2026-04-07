@@ -5,8 +5,11 @@
     "ca-derivations"
     "dynamic-derivations"
     "git-hashing"
-    "no-url-literals"
     "parse-toml-timestamps"
     "pipe-operators"
   ];
+  # Stabilized, yet still used
+  nix.settings = {
+    lint-url-literals = true;
+  };
 }
