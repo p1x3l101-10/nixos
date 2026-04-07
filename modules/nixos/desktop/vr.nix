@@ -20,7 +20,6 @@ in {
   # Main vr service
   services.wivrn = {
     enable = true;
-    defaultRuntime = true;
     autoStart = true;
     openFirewall = true;
     package = wivrnStable;

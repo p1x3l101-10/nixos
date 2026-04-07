@@ -50,7 +50,6 @@ in {
     enableNushellIntegration = true;
   };
   # Integrations
-  services.ssh-agent.enableNushellIntegration = true;
   services.gpg-agent.enableNushellIntegration = true;
   programs.starship.enableNushellIntegration = true;
   programs.zoxide.enableNushellIntegration = true;
