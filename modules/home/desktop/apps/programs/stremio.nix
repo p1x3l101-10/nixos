@@ -1,21 +1,9 @@
-{ ext, ... }:
-
-let
-  pkgs = ext.rawPkgs {
-    nixpkgs = ext.stable.input;
-    config = {
-      allowUnfree = true;
-      permittedInsecurePackages = [
-        "qtwebengine-5.15.19"
-      ];
-    };
-  };
-in
+{ pkgs, ... }:
 
 {
-  home.packages = [ pkgs.stremio ];
+  home.packages = [ pkgs.stremio-linux-shell ];
   home.allowedUnfree.packages = [
-    "stremio-shell"
+    "stremio-linux-shell"
     "stremio-server"
   ];
   /*
