@@ -8,7 +8,6 @@
     "dynamic-derivations"
     "fetch-closure"
     "impure-derivations"
-    "no-url-literals"
     "parse-toml-timestamps"
     "read-only-local-store"
     "recursive-nix"
