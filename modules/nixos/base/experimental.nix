@@ -10,6 +10,6 @@
   ];
   # Stabilized, yet still used
   nix.settings = {
-    lint-url-literals = true;
+    lint-url-literals = "warn";
   };
 }
