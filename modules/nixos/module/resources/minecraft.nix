@@ -29,7 +29,7 @@
     "21-graalvm" = {
       # java21-graalvm
       imageDigest = "sha256:2533b1d0916508973e691bd34afa5c1c7b6ec59b6846d5a1ce6f3bb7afc7bd57";
-      sha256 = "sha256-42u5FmTIKHpfQ2zZQXIrFkAN2/XvU0wWnCRrQkQzcNI=";
+      sha256 = "sha256-4EzE2SROs4TDM61gNQSijwlCnp8hoeUc3C/NO0+Rirw=";
     };
     "25" = {
       # Java 25
