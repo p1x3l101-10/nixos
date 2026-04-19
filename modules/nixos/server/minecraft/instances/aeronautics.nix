@@ -12,7 +12,7 @@
         type = "neoforge";
         forgeVersion = "21.1.225";
         version = "1.21.1";
-        java.version = "21";
+        java.version = "21-graalvm";
       }
     ];
   };
