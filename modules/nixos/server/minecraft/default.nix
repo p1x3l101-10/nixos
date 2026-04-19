@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./instances/the-store-who-is-approaching.nix
+    ./instances/aeronautics.nix
     #./bluemap-nginx.nix
     #./svc.nix
     #./rcon.nix
