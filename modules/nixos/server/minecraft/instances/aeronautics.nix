@@ -14,17 +14,20 @@
         version = "1.21.1";
         java.version = "21-graalvm";
       }
-      # Make chunky work during off hours
+      # Make pregenerators work during off-hours
       {
         rcon = {
           startup = [
             "chunky continue"
+            "dh pregen start"
           ];
           firstConnect = [
             "chunky pause"
+            "dh pregen stop"
           ];
           lastDisconnect = [
             "chunky continue"
+            "dh pregen start"
           ];
         };
       }
