@@ -46,7 +46,7 @@ in
       version = "1.7.10";
       memory = 10;
       port = 25565;
-      rconStartup = [
+      rcon.startup = [
         "bq_admin default load" # Reload for updates
         "bq_admin hardcore true"
         "difficulty hard"
