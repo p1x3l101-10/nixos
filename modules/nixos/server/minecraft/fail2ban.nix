@@ -22,10 +22,9 @@
   # Custom filter
   environment.etc."fail2ban/filter.d/minecraft-whitelist.conf".text = lib.generators.toINI {} {
     Definition = {
-      failregex = builtins.concatStringsSep "\n          " [
-        ''^.*com\.mojang\.authlib\.GameProfile\@\.\+\[.*name\=<USER>.*\] \(\/<ADDR>\:[0-9]*\) lost connection\: You are not whitelisted on this server\!.*$''
-        ''^.*<USER> lost connection: You are not whitelisted on this server\!.*$''
-      ];
+      failregex = ''
+        ^.*com\.mojang\.authlib\.GameProfile\@\.\+\[.*name\=<USER>.*\] \(\/<ADDR>\:[0-9]*\) lost connection\: You are not whitelisted on this server\!.*$
+      '';
       ignoreregex = "";
     };
   };
