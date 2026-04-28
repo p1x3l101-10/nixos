@@ -19,15 +19,12 @@
         rcon = {
           startup = [
             "chunky continue"
-            "dh pregen start"
           ];
           firstConnect = [
             "chunky pause"
-            "dh pregen stop"
           ];
           lastDisconnect = [
             "chunky continue"
-            "dh pregen start"
           ];
         };
       }
