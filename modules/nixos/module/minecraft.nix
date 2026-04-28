@@ -6,6 +6,7 @@ let
   inherit (lib.options) mkOption mkEnableOption;
   inherit (lib.modules) mkIf;
   inherit (lib) types;
+  mcBool = option: default: (if (builtins.isBool option) then (option) else (default));
   mkMcOption = description: mkOption {
     type = with types; nullOr str;
     default = null;
@@ -82,7 +83,7 @@ in
     enable = mkEnableOption "Minecraft Server";
     generic = {
       pack = mkMcOption "Generic Pack URL";
-      forceUpdate = mkEnableOption "force update";
+      forceUpdate = mkMcEnableOption "force update";
     };
     curseforge = {
       apiKey = mkOption {
@@ -153,7 +154,7 @@ in
       url = mkMcOption "PackWiz pack.toml url";
     };
     settings = {
-      eula = mkEnableOption "Agree to EULA";
+      eula = mkMcEnableOption "Agree to EULA";
       openFirewall = mkEnableOption "Open firewall ports";
       memory = mkOption {
         type = types.int;
@@ -214,7 +215,7 @@ in
         description = "Server type to use";
       };
       version = mkMcOption "";
-      allowFlight = mkEnableOption "flying";
+      allowFlight = mkMcEnableOption "flying";
       port = mkOption {
         type = types.port;
         default = 25565;
@@ -249,11 +250,11 @@ in
         description = "List of players to op";
       };
       spawnProtection = mkMcIntOption "Spawn protection radius (0 is off)";
-      allowCommandBlocks = mkEnableOption "Allow command blocks";
-      broadcastRconToOps = (mkEnableOption "broadcasting RCON to server operators") // { default = true; }; # Follow default mc options
+      allowCommandBlocks = mkMcEnableOption "Allow command blocks";
+      broadcastRconToOps = mkMcEnableOption "broadcasting RCON to server operators";
     };
     autoPause = {
-      enable = mkEnableOption "Autopause";
+      enable = mkMcEnableOption "Autopause";
       timeout = {
         established = mkMcIntOption "time between the last client disconnect and the pausing of the process";
         init = mkMcIntOption "time between server start and the pausing of the process";
@@ -331,7 +332,7 @@ in
         finalImageTag = (toString cfg.settings.java.version);
       };
       autoStart = true;
-      extraOptions = (lib.lists.optionals cfg.autoPause.enable [ "--cap-add=CAP_NET_RAW" "--network=slirp4netns:port_handler=slirp4netns" ]);
+      extraOptions = (lib.lists.optionals (mcBool cfg.autoPause.enable false) [ "--cap-add=CAP_NET_RAW" "--network=slirp4netns:port_handler=slirp4netns" ]);
     };
     systemd.services.minecraft = (mkIf (cfg.settings.stopTimeout != null) {
       preStop = lib.mkForce "podman stop --ignore --cidfile=/run/minecraft/ctr-id -t ${toString cfg.settings.stopTimeout}";
@@ -367,7 +368,7 @@ in
     };
     assertions = [
       {
-        assertion = cfg.settings.eula;
+        assertion = (mcBool cfg.settings.eula false);
         message = ''
           You need to agree to the Minecraft EULA in order to run the Minecraft Server
           You can read the EULA at https://www.minecraft.net/en-us/eula
