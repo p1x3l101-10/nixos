@@ -9,7 +9,7 @@ in {
     domains = [ domain ];
     enableSubmissionSsl = true;
     enableImapSsl = true;
-    loginAccounts = {
+    accounts = {
       "postmaster@${domain}" = {
         hashedPassword = "$y$j9T$xIqsbrS7kn13DWVH06nf11$ewQiB0.UkYcVSCIU5XqfuV9Ej4ss5.m1ATkks7YSU/9";
       };
