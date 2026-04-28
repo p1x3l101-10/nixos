@@ -27,4 +27,6 @@ in
     domain = globals.server.dns.basename;
     fqdn = "srv02.${globals.server.dns.basename}";
   };
+  # Disable acme because the server is kinda borked
+  security.acme.defaults.enable = false;
 }
