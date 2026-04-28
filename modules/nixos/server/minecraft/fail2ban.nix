@@ -7,6 +7,7 @@
       logpath = "/var/lib/minecraft/data/logs/latest.log";
       maxretry = "3";
       bantime = "1h";
+      jounalmatch = "minecraft.service";
     };
   };
   # Custom filter
