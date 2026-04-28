@@ -9,24 +9,23 @@ in
     inherit globals userdata;
   };
   imports = [
-    ./cdn
+    # The VPS is borked atm, need to disable stuff that depends on that
+    #./cdn
     ./cloudflare-tunnel
-    ./email
+    #./email
     ./ensurePerms
     #./matrix
     ./minecraft
-    ./nextcloud
-    ./nginx
+    #./nextcloud
+    #./nginx
     ./server-base
     ./ssh-forward
-    ./website
+    #./website
     ./wireguard
-    ./wks
+    #./wks
   ];
   networking = {
     domain = globals.server.dns.basename;
     fqdn = "srv02.${globals.server.dns.basename}";
   };
-  # Disable acme because the server is kinda borked
-  security.acme.defaults.enable = false;
 }
