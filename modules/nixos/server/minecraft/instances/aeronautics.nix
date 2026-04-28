@@ -14,6 +14,20 @@
         version = "1.21.1";
         java.version = "21-graalvm";
       }
+      # Make chunky work during off hours
+      {
+        rcon = {
+          startup = [
+            "chunky continue"
+          ];
+          firstConnect = [
+            "chunky pause"
+          ];
+          lastDisconnect = [
+            "chunky continue"
+          ];
+        };
+      }
     ];
   };
   # Persist server
