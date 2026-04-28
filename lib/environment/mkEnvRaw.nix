@@ -2,9 +2,13 @@
 
 name: value:
 
+let
+  inherit (self.environment) mkEnvString;
+in
+
 if (value != null) then
   (
-    self.attrsets.createAttr (lib.strings.toUpper name) (builtins.toString value)
+    self.attrsets.createAttr (mkEnvString name) (mkEnvString value)
   ) else
   (
     { }

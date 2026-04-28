@@ -16,6 +16,11 @@ let
     default = null;
     inherit description;
   };
+  mkMcEnableOption = description: mkOption {
+    type = with types; nullOr bool;
+    default = null;
+    inherit description;
+  };
   curseforgeMod = _: with lib; {
     options = {
       modId = mkOption {
@@ -245,6 +250,7 @@ in
       };
       spawnProtection = mkMcIntOption "Spawn protection radius (0 is off)";
       allowCommandBlocks = mkEnableOption "Allow command blocks";
+      broadcastRconToOps = (mkEnableOption "broadcasting RCON to server operators") // { default = true; }; # Follow default mc options
     };
     autoPause = {
       enable = mkEnableOption "Autopause";
@@ -277,7 +283,7 @@ in
           (mkEnv "CF_FILE_ID" cfg.curseforge.pack.fileId)
           # Settings
           (mkEnv "MEMORY" ((builtins.toString cfg.settings.memory) + "G"))
-          (mkEnvRaw "RCON_CMDS_STARTUP" (lib.strings.concatStringsSep "\n" cfg.settings.rconStartup))
+          (mkEnvRawList "RCON_CMDS_STARTUP"  cfg.settings.rconStartup "\n")
           #(mkEnvRaw "GENERIC_PACK" ( if cfg.settings.extraFiles == null then null else (toString (pkgs.callPackage ./resources/genericPack.nix { src = cfg.settings.extraFiles; }))))
           (mkEnvRaw "GENERIC_PACK" cfg.generic.pack)
           (mkEnvRaw "forge_version" cfg.settings.forgeVersion)
@@ -286,23 +292,24 @@ in
           (mkEnvRaw "MODRINTH_LOADER" cfg.modrinth.pack.loader)
           (mkEnvRaw "MODRINTH_VERSION" cfg.modrinth.pack.version)
           (mkEnvRaw "CUSTOM_SERVER" cfg.settings.customServer)
-          (mkEnv "ENABLE_AUTOPAUSE" (lib.trivial.boolToString cfg.autoPause.enable))
+          (mkEnv "ENABLE_AUTOPAUSE" cfg.autoPause.enable)
           (mkEnv "AUTOPAUSE_TIMEOUT_EST" cfg.autoPause.timeout.established)
           (mkEnv "AUTOPAUSE_TIMEOUT_INIT" cfg.autoPause.timeout.init)
           (mkEnv "AUTOPAUSE_TIMEOUT_KN" cfg.autoPause.timeout.knock)
           (mkEnv "AUTOPAUSE_PERIOD" cfg.autoPause.period)
           (mkEnvRawList "WHITELIST" cfg.settings.whitelist "\n")
           (mkEnvRawList "OPS" cfg.settings.ops "\n")
-          (mkEnv "FORCE_GENERIC_PACK_UPDATE" (lib.trivial.boolToString cfg.generic.forceUpdate))
+          (mkEnv "FORCE_GENERIC_PACK_UPDATE" cfg.generic.forceUpdate)
           (mkEnvRawList "JVM_OPTS" cfg.settings.java.args " ")
           (mkEnvRawList "JVM_XX_OPTS" cfg.settings.java.XXargs " ")
           (mkEnvRawList "JVM_DD_OPTS" cfg.settings.java.DDargs " ")
           (mkEnvRawList "CURSEFORGE_FILES" (lib.forEach cfg.curseforge.mods (x: eLib.minecraft.translateModName x "curseforge")) "\n")
           (mkEnvRaw "PACKWIZ_URL" cfg.packwiz.url)
           (mkEnv "SPAWN_PROTECTION" cfg.settings.spawnProtection)
-          (mkEnv "ALLOW_FLIGHT" (lib.trivial.boolToString cfg.settings.allowFlight))
-          (mkEnv "ENABLE_COMMAND_BLOCK" (lib.trivial.boolToString cfg.settings.allowCommandBlocks))
-          (mkEnvRaw "STOP_DURATION" (cfg.settings.stopTimeout))
+          (mkEnv "ALLOW_FLIGHT" cfg.settings.allowFlight))
+          (mkEnv "ENABLE_COMMAND_BLOCK" cfg.settings.allowCommandBlocks)
+          (mkEnvRaw "STOP_DURATION" cfg.settings.stopTimeout)
+          (mkEnv "BROADCAST_RCON_TO_OPS" cfg.settings.broadcastRconToOps
         ]
       ));
       ports = [

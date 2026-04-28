@@ -2,10 +2,4 @@
 
 name: value:
 
-if (value != null) then
-  (
-    self.attrsets.createAttr (lib.strings.toUpper name) (lib.strings.toUpper (builtins.toString value))
-  ) else
-  (
-    { }
-  )
+self.environment.mkEnvRaw (lib.strings.toUpper name) (lib.strings.toUpper (builtins.toString value))

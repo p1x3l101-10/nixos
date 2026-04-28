@@ -21,4 +21,6 @@
   );
   allowFlight = true;
   allowCommandBlocks = true;
+  broadcastRconToOps = false;
+  spawnProtection = 0;
 }
