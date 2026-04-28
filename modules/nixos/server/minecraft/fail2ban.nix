@@ -3,7 +3,7 @@
 {
   services.fail2ban.jails.minecraft = {
     settings = {
-      filter = "minecraft-whitelist";
+      filter = "minecraft";
       logpath = "/var/lib/minecraft/data/logs/latest.log";
       maxretry = "3";
       bantime = "1h";
