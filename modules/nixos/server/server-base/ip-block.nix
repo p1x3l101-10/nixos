@@ -15,16 +15,6 @@
       maxtime = "168h"; # Do not ban for more than 1 week
       overalljails = true; # Calculate the bantime based on all the violations
     };
-    jails = {
-      dovecot = {
-        settings = {
-          # block IPs which failed to log-in
-          # aggressive mode add blocking for aborted connections
-          filter = "dovecot[mode=aggressive]";
-          maxretry = 3;
-        };
-      };
-    };
   };
   # Make punishments persist over reboot
   environment.persistence."/nix/host/state/Fail2Ban".directories = [

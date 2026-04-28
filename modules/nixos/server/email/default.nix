@@ -17,4 +17,12 @@ in {
     { directory = dkim.keyDirectory; user = "rspamd"; group = "rspamd"; mode = "0755"; }
     backup.snapshotRoot
   ];
+  services.fail2ban.jails.dovecot = {
+    settings = {
+      # block IPs which failed to log-in
+      # aggressive mode add blocking for aborted connections
+      filter = "dovecot[mode=aggressive]";
+      maxretry = 3;
+    };
+  };
 }
