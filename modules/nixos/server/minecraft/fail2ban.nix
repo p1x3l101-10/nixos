@@ -23,8 +23,8 @@
   environment.etc."fail2ban/filter.d/minecraft-whitelist.conf".text = lib.generators.toINI {} {
     Definition = {
       failregex = builtins.concatStringsSep "\n          " [
-        ''^.*com.mojang.authlib.GameProfile@.+\[.*id\=<F-UUID>.*name\=<USER>.*\] \(\/<ADDR>\:[0-9]*\) lost connection\: You are not whitelisted on this server\!.*$''
-        ''^.*com.mojang.authlib.GameProfile@.+\[.*name\=<USER>.*id\=<F-UUID>.*\] \(\/<ADDR>\:[0-9]*\) lost connection\: You are not whitelisted on this server\!.*$''
+        ''^.*com\.mojang\.authlib\.GameProfile\@\.\+\[.*id\=<F-UUID>.*name\=<USER>.*\] \(\/<ADDR>\:[0-9]*\) lost connection\: You are not whitelisted on this server\!.*$''
+        ''^.*com\.mojang\.authlib\.GameProfile\@\.\+\[.*name\=<USER>.*id\=<F-UUID>.*\] \(\/<ADDR>\:[0-9]*\) lost connection\: You are not whitelisted on this server\!.*$''
         ''^.*<USER> lost connection: You are not whitelisted on this server\!.*$''
       ];
       ignoreregex = "";
