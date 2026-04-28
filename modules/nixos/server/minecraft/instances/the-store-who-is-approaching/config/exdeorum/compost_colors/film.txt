@@ -1,5 +1,0 @@
-// Compost colors for film. You may add your own colors, change existing ones, or remove colors that aren't needed.
-autobot_boots, #eb4351
-autobot_chestplate, #eb4351
-autobot_helmet, #eb4351
-autobot_leggings, #eb4351
