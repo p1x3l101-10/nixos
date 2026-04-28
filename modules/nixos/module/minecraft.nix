@@ -230,10 +230,32 @@ in
         default = [ ];
         description = "Extra ports to map";
       };
-      rconStartup = mkOption {
-        type = with types; listOf str;
-        default = [ ];
-        description = "RCon commands to run on server startup";
+      rcon = {
+        startup = mkOption {
+          type = with types; listOf str;
+          default = [ ];
+          description = "RCON commands to run on server startup";
+        };
+        onConnect = mkOption {
+          type = with types; listOf str;
+          default = [ ];
+          description = "RCON commands to run on server startup";
+        };
+        firstConnect = mkOption {
+          type = with types; listOf str;
+          default = [ ];
+          description = "RCON commands to run on server startup";
+        };
+        onDisconnect = mkOption {
+          type = with types; listOf str;
+          default = [ ];
+          description = "RCON commands to run on server startup";
+        };
+        lastDisconnect = mkOption {
+          type = with types; listOf str;
+          default = [ ];
+          description = "RCON commands to run on server startup";
+        };
       };
       stopTimeout = mkMcIntOption "Duration of time for the server to wait before forcefully stopping";
       customServer = mkMcOption "Custom server jar";
@@ -284,7 +306,11 @@ in
           (mkEnv "CF_FILE_ID" cfg.curseforge.pack.fileId)
           # Settings
           (mkEnv "MEMORY" ((builtins.toString cfg.settings.memory) + "G"))
-          (mkEnvRawList "RCON_CMDS_STARTUP"  cfg.settings.rconStartup "\n")
+          (mkEnvRawList "RCON_CMDS_STARTUP"  cfg.settings.rcon.startup "\n")
+          (mkEnvRawList "RCON_CMDS_ON_CONNECT"  cfg.settings.rcon.onConnect "\n")
+          (mkEnvRawList "RCON_CMDS_FIRST_CONNECT"  cfg.settings.rcon.firstConnect "\n")
+          (mkEnvRawList "RCON_CMDS_ON_DISCONNECT"  cfg.settings.rcon.onDisconnect "\n")
+          (mkEnvRawList "RCON_CMDS_LAST_DISCONNECT"  cfg.settings.rcon.lastDisconnect "\n")
           #(mkEnvRaw "GENERIC_PACK" ( if cfg.settings.extraFiles == null then null else (toString (pkgs.callPackage ./resources/genericPack.nix { src = cfg.settings.extraFiles; }))))
           (mkEnvRaw "GENERIC_PACK" cfg.generic.pack)
           (mkEnvRaw "FORGE_VERSION" cfg.settings.forgeVersion)

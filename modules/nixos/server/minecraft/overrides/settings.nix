@@ -6,7 +6,7 @@
 {
   eula = true;
   whitelist = (userdata [ "mcUsername" ] (import ./whitelist.nix)) ++ (import ./whitelist-raw.nix);
-  rconStartup = [
+  rcon.startup = [
     "gamerule playersSleepingPercentage 10"
   ];
   memory = 8;
