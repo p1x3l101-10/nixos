@@ -269,7 +269,7 @@ in
       environment = (eLib.attrsets.mergeAttrs (
         let inherit (eLib.environment) mkEnv mkEnvRawList mkEnvRaw; in [
           cfg.settings.extraEnv
-          (mkEnv "EULA" (lib.trivial.boolToString cfg.settings.eula))
+          (mkEnv "EULA" cfg.settings.eula)
           # Modrinth mod list
           (mkEnvRawList "MODRINTH_PROJECTS" (lib.forEach cfg.modrinth.mods.projects (x: eLib.minecraft.translateModName x "modrinth")) "\n")
           (mkEnvRaw "MODRINTH_ALLOWED_VERSION_TYPE" cfg.modrinth.mods.allowedVersionType)
@@ -287,7 +287,7 @@ in
           (mkEnvRawList "RCON_CMDS_STARTUP"  cfg.settings.rconStartup "\n")
           #(mkEnvRaw "GENERIC_PACK" ( if cfg.settings.extraFiles == null then null else (toString (pkgs.callPackage ./resources/genericPack.nix { src = cfg.settings.extraFiles; }))))
           (mkEnvRaw "GENERIC_PACK" cfg.generic.pack)
-          (mkEnvRaw "forge_version" cfg.settings.forgeVersion)
+          (mkEnvRaw "FORGE_VERSION" cfg.settings.forgeVersion)
           (mkEnvRaw "FABRIC_LOADER_VERSION" cfg.settings.fabricVersion)
           (mkEnvRaw "MODRINTH_MODPACK" cfg.modrinth.pack.project)
           (mkEnvRaw "MODRINTH_LOADER" cfg.modrinth.pack.loader)
@@ -307,10 +307,10 @@ in
           (mkEnvRawList "CURSEFORGE_FILES" (lib.forEach cfg.curseforge.mods (x: eLib.minecraft.translateModName x "curseforge")) "\n")
           (mkEnvRaw "PACKWIZ_URL" cfg.packwiz.url)
           (mkEnv "SPAWN_PROTECTION" cfg.settings.spawnProtection)
-          (mkEnv "ALLOW_FLIGHT" cfg.settings.allowFlight))
+          (mkEnv "ALLOW_FLIGHT" cfg.settings.allowFlight)
           (mkEnv "ENABLE_COMMAND_BLOCK" cfg.settings.allowCommandBlocks)
           (mkEnvRaw "STOP_DURATION" cfg.settings.stopTimeout)
-          (mkEnv "BROADCAST_RCON_TO_OPS" cfg.settings.broadcastRconToOps
+          (mkEnv "BROADCAST_RCON_TO_OPS" cfg.settings.broadcastRconToOps)
         ]
       ));
       ports = [
