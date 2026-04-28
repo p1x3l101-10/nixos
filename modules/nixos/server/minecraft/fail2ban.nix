@@ -33,7 +33,7 @@
   environment.etc."fail2ban/filter.d/minecraft-connection-spam.conf".text = lib.generators.toINI {} {
     Definition = {
       failregex = ''
-        ^.*\[minecraft/ServerLoginPacketListenerImpl\]\: <USER> lost connection\: Disconnected.*$
+        ^.*\[minecraft/ServerLoginPacketListenerImpl\]\: <USER> \(\/<ADDR>\:[0-9]*\) lost connection\: Disconnected.*$
       '';
       ignoreregex = "";
     };
