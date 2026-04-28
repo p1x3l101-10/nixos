@@ -13,7 +13,7 @@ in
     ./cloudflare-tunnel
     ./email
     ./ensurePerms
-    ./matrix
+    #./matrix
     ./minecraft
     ./nextcloud
     ./nginx
