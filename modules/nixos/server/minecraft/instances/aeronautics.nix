@@ -1,12 +1,21 @@
 { pkgs, eLib, userdata, ... }:
 
-{
+let
+  worldBorderRadius = 10000;
+in {
   services.minecraft = {
     enable = true;
     settings = eLib.attrsets.mergeAttrs [
       (import ../overrides/settings.nix {
         inherit userdata;
         packId = "aeronautics";
+        gamerules = {
+          playersSleepingPercentage = 101;
+          disableElytraMovementCheck = true;
+          doImmediateRespawn = true;
+          spawnRadius = worldBorderRadius;
+          spawnChunkRadius = 0;
+        };
       })
       {
         type = "neoforge";
@@ -27,6 +36,18 @@
             "chunky continue"
           ];
         };
+      }
+      # Ensure world borders
+      {
+        rcon.startup = (let
+          wbDiameter = worldBorderRadius * 2;
+        in [
+          "dwb minecraft:overworld ${wbDiameter}"
+          "dwb minecraft:the_nether ${wbDiameter / 8}" # Ensure portal scaling works and that someone doesnt get sent outside of the border in the overworld (1:8 scale)
+          "dwb minecraft:the_end ${wbDiameter}"
+          "dwb iceandfire:dread_land ${wbDiameter}"
+          "dwb mahoutsukai:reality_marble ${wbDiameter}"
+        ]);
       }
     ];
   };
