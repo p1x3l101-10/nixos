@@ -40,10 +40,11 @@ in {
       # Ensure world borders
       {
         rcon.startup = (let
-          wbDiameter = worldBorderRadius * 2;
+          wbDiameter = builtins.toString (worldBorderRadius * 2);
+          wbNetherDiameter = builtins.toString ((worldBorderRadius * 2) / 8);
         in [
           "dwb minecraft:overworld ${wbDiameter}"
-          "dwb minecraft:the_nether ${wbDiameter / 8}" # Ensure portal scaling works and that someone doesnt get sent outside of the border in the overworld (1:8 scale)
+          "dwb minecraft:the_nether ${wbNetherDiameter}"
           "dwb minecraft:the_end ${wbDiameter}"
           "dwb iceandfire:dread_land ${wbDiameter}"
           "dwb mahoutsukai:reality_marble ${wbDiameter}"
