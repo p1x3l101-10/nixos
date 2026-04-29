@@ -105,6 +105,14 @@ in
         '';
       };
     };
+    log4j2.customConfig = {
+      enable = (mkEnableOption "using custom Log4j2 logging format file") // { default = true; };
+      file = mkOption {
+        description = "Path to custom config";
+        type = types.pathInStore;
+        default = ./resources/log4j2-config-minecraft.xml;
+      };
+    };
     modrinth = {
       pack = {
         project = mkMcOption "";
@@ -286,6 +294,7 @@ in
     };
   };
   config = mkIf cfg.enable {
+    services.minecraft.settings.java.args = lib.optional cfg.log4j2.customConfig.enable "-Dlog4j.configurationFile=${cfg.log4j2.customConfig.file}";
     virtualisation.oci-containers.containers.minecraft = {
       serviceName = "minecraft";
       environment = (eLib.attrsets.mergeAttrs (
