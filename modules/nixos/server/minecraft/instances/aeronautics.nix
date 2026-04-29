@@ -43,11 +43,11 @@ in {
           wbDiameter = builtins.toString (worldBorderRadius * 2);
           wbNetherDiameter = builtins.toString ((worldBorderRadius * 2) / 8);
         in [
-          "dwb minecraft:overworld ${wbDiameter}"
-          "dwb minecraft:the_nether ${wbNetherDiameter}"
-          "dwb minecraft:the_end ${wbDiameter}"
-          "dwb iceandfire:dread_land ${wbDiameter}"
-          "dwb mahoutsukai:reality_marble ${wbDiameter}"
+          "dwb minecraft:overworld set ${wbDiameter}"
+          "dwb minecraft:the_nether set ${wbNetherDiameter}"
+          "dwb minecraft:the_end set ${wbDiameter}"
+          "dwb iceandfire:dread_land set ${wbDiameter}"
+          "dwb mahoutsukai:reality_marble set ${wbDiameter}"
         ]);
       }
     ];
