@@ -23,7 +23,7 @@ in {
         version = "1.21.1";
         java = {
           version = "21-graalvm";
-          XXArgs = [
+          XXargs = [
             "+UseZGC"
             "+ZGenerational"
           ];
