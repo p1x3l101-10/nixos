@@ -24,8 +24,8 @@ in {
         java = {
           version = "21-graalvm";
           XXargs = [
-            "+UseZGC"
-            "+ZGenerational"
+            "-XX:+UseZGC"
+            "-XX:+ZGenerational"
           ];
         };
       }
