@@ -294,7 +294,10 @@ in
     };
   };
   config = mkIf cfg.enable {
-    services.minecraft.settings.java.args = lib.optional cfg.log4j2.customConfig.enable "-Dlog4j.configurationFile=${cfg.log4j2.customConfig.file}";
+    services.minecraft.settings.java.args = lib.optionals cfg.log4j2.customConfig.enable [
+      "-Dlog4j.configurationFile=${cfg.log4j2.customConfig.file}"
+      "-Dlog4j2.skipJansi=true" # Dont let it use a fallback after I put so much effort into my log format
+    ];
     virtualisation.oci-containers.containers.minecraft = {
       serviceName = "minecraft";
       environment = (eLib.attrsets.mergeAttrs (
