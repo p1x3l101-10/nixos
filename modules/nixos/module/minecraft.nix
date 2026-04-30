@@ -397,7 +397,7 @@ in
         user = "1000";
         group = "1000";
         mode = "0644";
-        argument = cfg.log4j2.customConfig.file;
+        argument = builtins.toString cfg.log4j2.customConfig.file;
       };
     };
     networking.firewall = {
