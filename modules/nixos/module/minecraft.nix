@@ -393,6 +393,12 @@ in
         group = "1000";
         mode = "1777";
       };
+      "/var/lib/minecraft/data/log4j2.xml".C = {
+        user = "1000";
+        group = "1000";
+        mode = "0644";
+        argument = cfg.log4j2.customConfig.file;
+      };
     };
     networking.firewall = {
       allowedTCPPorts = (
