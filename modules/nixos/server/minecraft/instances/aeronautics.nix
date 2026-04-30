@@ -21,7 +21,13 @@ in {
         type = "neoforge";
         forgeVersion = "21.1.225";
         version = "1.21.1";
-        java.version = "21-graalvm";
+        java = {
+          version = "21-graalvm";
+          XXArgs = [
+            "+UseZGC"
+            "+ZGenerational"
+          ];
+        };
       }
       # Make pregenerators work during off-hours
       {
