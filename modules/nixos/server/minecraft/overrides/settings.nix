@@ -17,7 +17,7 @@ in {
   ) ++ [
     "difficulty ${difficulty}"
   ]);
-  memory = 8;
+  memory = 20;
   java.args = (
     if (packId == "") then
       jvmArgs
