@@ -16,6 +16,7 @@
         "styles"
         "everbook"
         "tlm_custom_pack"
+        "figura"
       ];
       defaults = [
         "options.txt"
