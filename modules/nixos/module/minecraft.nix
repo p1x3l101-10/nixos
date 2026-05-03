@@ -199,6 +199,15 @@ in
           description = "JVM XX arguments (shorthand list)";
         };
       };
+      regionFileCompression = mkOption {
+        type = types.enum [
+          "deflate"
+          "lz4"
+          "none"
+        ];
+        default = "deflate";
+        description = "Algorithm used to compress region files, files are not automatically recompressed on change";
+      };
       type = mkOption {
         type = types.enum [
           "vanilla"
@@ -349,6 +358,7 @@ in
           (mkEnv "ENABLE_COMMAND_BLOCK" cfg.settings.allowCommandBlocks)
           (mkEnvRaw "STOP_DURATION" cfg.settings.stopTimeout)
           (mkEnv "BROADCAST_RCON_TO_OPS" cfg.settings.broadcastRconToOps)
+          (mkEnv "REGION_FILE_COMPRESSION" cfg.settings.regionFileCompression)
         ]
       ));
       ports = [

@@ -31,4 +31,5 @@ in {
   allowCommandBlocks = true;
   broadcastRconToOps = false;
   spawnProtection = 0;
+  regionFileCompression = "lz4";
 }
