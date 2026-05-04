@@ -52,8 +52,6 @@ in {
           "dwb minecraft:overworld set ${wbDiameter}"
           "dwb minecraft:the_nether set ${wbNetherDiameter}"
           "dwb minecraft:the_end set ${wbDiameter}"
-          "dwb iceandfire:dread_land set ${wbDiameter}"
-          "dwb mahoutsukai:reality_marble set ${wbDiameter}"
         ]);
       }
     ];
