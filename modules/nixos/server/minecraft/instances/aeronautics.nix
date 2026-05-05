@@ -13,7 +13,7 @@ in {
           playersSleepingPercentage = 101;
           disableElytraMovementCheck = true;
           doImmediateRespawn = true;
-          spawnRadius = worldBorderRadius;
+          spawnRadius = worldBorderRadius / 10;
           spawnChunkRadius = 0;
         };
       })
@@ -48,10 +48,19 @@ in {
         rcon.startup = (let
           wbDiameter = builtins.toString (worldBorderRadius * 2);
           wbNetherDiameter = builtins.toString ((worldBorderRadius * 2) / 8);
-        in [
-          "dwb minecraft:overworld set ${wbDiameter}"
+        in (map
+          (x: "dwb ${x} set ${wbDiameter}")
+          [
+            "minecraft:overworld"
+            "minecraft:the_end"
+            "northstar:earth_orbit"
+            "northstar:mercury"
+            "northstar:venus"
+            "northstar:mars"
+            "northstar:moon"
+          ]
+        ) ++ [
           "dwb minecraft:the_nether set ${wbNetherDiameter}"
-          "dwb minecraft:the_end set ${wbDiameter}"
         ]);
       }
     ];
