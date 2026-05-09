@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   # Needed for decryption keys
   services.openssh = {
@@ -19,4 +19,8 @@
     allowSFTP = true;
     openFirewall = true;
   };
+  # Fix terminfo errors on all systems
+  environment.systemPackages = with pkgs; [
+    kitty.terminfo
+  ];
 }
