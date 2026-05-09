@@ -1,11 +1,26 @@
 { pkgs, config, ext, ... }:
 
 let
-  inherit (ext) system inputs;
+  msPkgs = ext.inputs.millennium.packages."${ext.system}";
+  # Need to patch millennium because upstream uses an input that it forgot to pass in
+  millenniumFixed = msPkgs.millennium.overrideAttrs (oldAttrs: {
+    buildInputs = with ext.stable.pkgs; [
+      # Copied from https://github.com/SteamClientHomebrew/Millennium/blob/fa9d1ac5bd11fb22f5a5f696f15eff82a08049ee/packages/nix/millennium.nix#L23
+      pkgsi686Linux.gtk3
+      pkgsi686Linux.libpsl
+      pkgsi686Linux.openssl
+      pkgsi686Linux.libxtst
+      cacert
+      msPkgs.millennium-python # Updated line because it is a millennium package, not from nixpkgs
+    ];
+  });
+  steamPkg = msPkgs.millennium-steam.override {
+    millennium = millenniumFixed;
+  };
 in {
   programs.steam = {
     enable = true;
-    package = inputs.millennium.packages."${system}".millennium-steam.override {
+    package = steamPkg.override {
       extraEnv = {
         STEAM_LAUNCH_WRAPPER_SCOPE = "1";
         PRESSURE_VESSEL_SYSTEMD_SCOPE = "1";
