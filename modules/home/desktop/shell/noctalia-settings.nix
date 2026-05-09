@@ -276,7 +276,7 @@
     shadowDirection = "bottom_right";
     shadowOffsetX = 2;
     shadowOffsetY = 3;
-    showChangelogOnStartup = true;
+    showChangelogOnStartup = false;
     showHibernateOnLockScreen = false;
     showScreenCorners = false;
     showSessionButtonsOnLockScreen = true;
@@ -342,7 +342,7 @@
     sounds = {
       criticalSoundFile = "";
       enabled = false;
-      excludedApps = lib.concatStringsSep "," (let wrapped = app: ".${app}-wrapped"; in [
+      excludedApps = lib.concatStringsSep "," (let wrapped = app: [ app ".${app}-wrapped"]; in lib.flatten [
         # Defaults
         "discord"
         "firefox"
@@ -351,7 +351,6 @@
         "edge"
         # Me
         (wrapped "zen-twilight")
-        "zen-twilight"
         "electron"
         "vesktop"
       ]);
@@ -480,5 +479,9 @@
     wallhavenResolutionWidth = "";
     wallhavenSorting = "relevance";
     wallpaperChangeMode = "random";
+  };
+  plugins = {
+    autoUpdate = true;
+    notifyUpdates = false;
   };
 }
