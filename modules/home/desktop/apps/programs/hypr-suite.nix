@@ -3,7 +3,7 @@
 {
   home.packages = with pkgs; [
     hyprprop
-    hyprfreeze
+    wl-freeze
     hyprpwcenter
     hyprsysteminfo
   ];
