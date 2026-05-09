@@ -64,5 +64,6 @@ in {
         "QS_ICON_THEME=\"${config.stylix.icons."${config.stylix.polarity}"}\""
       ];
     };
+    Install.WantedBy = [ "graphical-session.target" ];
   };
 }
