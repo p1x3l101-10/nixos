@@ -51,7 +51,10 @@
       };
     };
     zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
+      # FIXME: This is a temporary version lock to avoid a bug with vertically centered tabs
+      # FIXME: Remove in a week or so
+      #url = "github:0xc000022070/zen-browser-flake";
+      url = "github:0xc000022070/zen-browser-flake/d93443c0f6fdb3b179bed68856f322dba4842612";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         home-manager.follows = "home-manager";
