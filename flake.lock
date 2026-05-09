@@ -601,7 +601,7 @@
         "millennium-src": "millennium-src",
         "minizip-src": "minizip-src",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-stable"
         ],
         "re2-src": "re2-src",
         "websocketpp-src": "websocketpp-src",

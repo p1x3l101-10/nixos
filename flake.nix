@@ -102,7 +102,7 @@
     flake-compat.url = "github:edolstra/flake-compat";
     millennium = {
       url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
