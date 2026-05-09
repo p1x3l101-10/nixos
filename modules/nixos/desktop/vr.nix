@@ -77,7 +77,6 @@ in {
   '';
   # Others
   environment.systemPackages = with pkgs; [
-    immersed
     xr-hardware
     (internal.telescope.override {
       init-script = internal.vr-init;
@@ -91,8 +90,6 @@ in {
     enable32Bit = true;
   };
   system.allowedUnfree.packages = [
-    # Needed for an app
-    "immersed"
     # Agree only to these packages, not the "CUDA Toolkit End User License Agreement (EULA)" as a whole
     "cuda-merged"
     "cuda_cccl"
