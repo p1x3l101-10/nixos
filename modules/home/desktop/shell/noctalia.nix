@@ -6,7 +6,6 @@ let
 in {
   programs.noctalia-shell = {
     enable = true;
-    systemd.enable = true;
     settings = import ./noctalia-settings.nix params;
     colors = with colors.withHashtag; {
       mPrimary = mkForce base0C;
@@ -37,7 +36,33 @@ in {
       };
     };
   };
-  systemd.user.services.noctalia-shell.Service.Environment = [
-    "QS_ICON_THEME=\"${config.stylix.icons."${config.stylix.polarity}"}\""
-  ];
+  # Screw upstream depricating systemd starting, I'm making a better service! With blackjack and hookers!
+  systemd.user.services.noctalia-shell = {
+    Unit = {
+      Description = "Noctalia Shell - Wayland desktop shell";
+      Documentation = "https://docs.noctalia.dev";
+      PartOf = [ config.wayland.systemd.target ];
+      After = [ config.wayland.systemd.target ];
+      X-Restart-Triggers = (map
+        (x: config.xdg.configFile."${x}".source)
+        ([
+          "noctalia/settings.json"
+          "noctalia/colors.json"
+          "noctalia/plugins.json"
+        ] ++ (map
+          (x: "noctalia/plugins/${x}/settings.json")
+          [
+            "privacy-indicator"
+          ]
+        ))
+      );
+    };
+    Service = {
+      ExecStart = lib.getExe config.programs.noctalia-shell.package;
+      Restart = "on-failure";
+      Environment = [
+        "QS_ICON_THEME=\"${config.stylix.icons."${config.stylix.polarity}"}\""
+      ];
+    };
+  };
 }
