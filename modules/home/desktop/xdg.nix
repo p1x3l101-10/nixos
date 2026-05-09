@@ -5,7 +5,10 @@ let
   hypr-globals = import ./hyprland/support/hypr-globals.nix { inherit pkgs lib ext hyprLib; };
 in {
   xdg = {
-    userDirs.enable = true;
+    userDirs = {
+      enable = true;
+      setSessionVariables = true;
+    };
     terminal-exec = {
       enable = true;
       settings = {
