@@ -4,6 +4,21 @@ let
   hyprLib = import ./support/hypr-lib.nix { inherit lib ext; };
   globals = import ./support/hypr-globals.nix { inherit pkgs lib ext hyprLib; };
   mkOkularApp = type: "okularApplication_${type}.desktop";
+  libreOffice = builtins.listToAttrs (map 
+    (x: {
+      name = x;
+      value = "${x}.desktop";
+    })
+    [
+      "base"
+      "calc"
+      "draw"
+      "impress"
+      "math"
+      "startcenter"
+      "writer"
+    ]
+  );
 in
 
 {
@@ -23,6 +38,9 @@ in
       x-extension-xht = web.desktop;
       octet-stream = archiveManager.desktop;
       x-zip-compressed = archiveManager.desktop;
+      "x-vnd.oasis.opendocument.text" = libreOffice.writer;
+      "vnd.oasis.opendocument.spreadsheet" = libreOffice.calc;
+      "vnd.oasis.opendocument.presentation" = libreOffice.impress;
     };
     multipart = {
       x-zip = archiveManager.desktop;
