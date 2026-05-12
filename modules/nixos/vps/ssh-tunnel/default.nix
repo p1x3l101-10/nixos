@@ -18,8 +18,7 @@
   '';
   # Firewall rules to make services work again
   networking = {
-    nftables.enable = true;
-    nftables.portRedirections = [
+    portRedirections = [
       {
         sourcePort = 80;
         sinkPort = 8080;

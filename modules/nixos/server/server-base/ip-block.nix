@@ -21,10 +21,8 @@
     "/var/lib/fail2ban"
   ];
   # For manual ip bans
-  /*
   networking.firewall.extraCommands = builtins.concatStringsSep "\n" [
     (builtins.concatStringsSep "\n" (map (ip: "iptables -I nixos-fw -s ${ip} -j DROP") globals.badips.v4))
     (builtins.concatStringsSep "\n" (map (ip: "ip6tables -I nixos-fw -s ${ip} -j DROP") globals.badips.v6))
   ];
-  */
 }
