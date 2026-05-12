@@ -24,7 +24,7 @@ in {
   };
   config = lib.mkIf (cfg != []) {
     networking.firewall.extraCommands = builtins.concatStringsSep "\n" (map
-      (x: "iptables -I nixos-fw -A PREROUTING -t nat -p tcp --dport ${builtins.toString x.sourcePort} -j REDIRECT --to-port ${builtins.toString x.sinkPort}")
+      (x: "iptables -A PREROUTING -t nat -p tcp --dport ${builtins.toString x.sourcePort} -j REDIRECT --to-port ${builtins.toString x.sinkPort}")
       cfg
     );
     # SSH only forwards TCP connections
