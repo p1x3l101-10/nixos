@@ -28,7 +28,7 @@
         sinkPort = 4443;
       }
     ];
-    allowedTCPPorts = [
+    firewall.allowedTCPPorts = [
     ];
   };
 }
