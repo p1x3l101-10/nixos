@@ -28,8 +28,8 @@ in {
       cfg
     );
     # SSH only forwards TCP connections
-    networking.firewall.allowedTCPPorts = (map
-      (x: x.sourcePort)
+    networking.firewall.allowedTCPPorts = lib.flatten (map
+      (x: [x.sourcePort x.sinkPort])
       cfg
     );
   };
