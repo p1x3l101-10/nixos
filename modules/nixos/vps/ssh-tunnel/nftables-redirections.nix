@@ -29,7 +29,7 @@ in {
           table nat {
             chain prerouting {
               type nat hook prerouting priority 0;
-              tcp dport ${x.sourcePort} dnat :${x.sinkPort}
+              tcp dport ${builtins.toString x.sourcePort} dnat :${builtins.toString x.sinkPort}
             }
           }
         ''
