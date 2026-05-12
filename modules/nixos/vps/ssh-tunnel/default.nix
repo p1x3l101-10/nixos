@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
 {
+  imports = [ ./nftables-redirections.nix ];
   users.users.proxy = {
     isNormalUser = true;
     openssh.authorizedKeys.keys = [
@@ -15,4 +16,19 @@
     Match User proxy
       ForceCommand nologin
   '';
+  # Firewall rules to make services work again
+  networking = {
+    nftables.portRedirections = [
+      {
+        sourcePort = 80;
+        sinkPort = 8080;
+      }
+      {
+        sourcePort = 443;
+        sinkPort = 4443;
+      }
+    ];
+    allowedTCPPorts = [
+    ];
+  };
 }
