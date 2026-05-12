@@ -9,20 +9,19 @@ in
     inherit globals userdata;
   };
   imports = [
-    # The VPS is borked atm, need to disable stuff that depends on that
-    #./cdn
+    ./cdn
     ./cloudflare-tunnel
     #./email
     ./ensurePerms
     #./matrix
     ./minecraft
-    #./nextcloud
-    #./nginx
+    ./nextcloud
+    ./nginx
     ./server-base
     ./ssh-forward
-    #./website
+    ./website
     ./wireguard
-    #./wks
+    ./wks
   ];
   networking = {
     domain = globals.server.dns.basename;
