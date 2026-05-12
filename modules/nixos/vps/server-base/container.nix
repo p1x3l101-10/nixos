@@ -27,8 +27,8 @@
       firewall = {
       trustedInterfaces = [ "ve-*" "vb-*" "ve-+" "vb-+" "br0" ];
       };
-      nftables.enable = true;
     */
+      nftables.enable = true;
   };
   environment.persistence."/nix/host/cache".directories = [
     { directory = "/var/lib/machines"; mode = "0700"; }
