@@ -15,13 +15,13 @@ in
     ./ensurePerms
     #./matrix
     ./minecraft
-    ./nextcloud
+    #./nextcloud
     ./nginx
     ./server-base
     ./ssh-forward
-    ./website
+    #./website
     ./wireguard
-    ./wks
+    #./wks
   ];
   networking = {
     domain = globals.server.dns.basename;
