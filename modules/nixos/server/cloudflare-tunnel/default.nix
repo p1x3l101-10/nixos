@@ -15,6 +15,7 @@ in {
             (x: { name = "${x}.${globals.server.dns.basename}"; value = "https://localhost:443"; })
             [
               # subdomains to map to the internal nginx rproxy
+              "srv03"
               "cdn"
             ]
           ) ++ (
