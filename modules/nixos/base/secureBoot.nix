@@ -17,6 +17,7 @@ in
     default = true;
   };
   config = lib.mkIf config.system.useSecureBoot {
+    services.fwupd.enable = true;
     boot = {
       loader.systemd-boot = {
         enable = lib.mkForce false;
