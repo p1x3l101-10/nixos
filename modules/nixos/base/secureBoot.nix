@@ -8,7 +8,7 @@ let
     efi = "${package}/libexec/fwupd/efi/fwupdx64.efi";
     espDir = "${bootDir}/EFI/fwupd";
   };
-  sbsign = input: output: "${pkgs.sbsigntool}/bin/sbsign --key ${keydir}/db/db.key --cert ${keydir}/db/db.cer --output ${output} ${input}";
+  sbsign = input: output: "${pkgs.sbsigntool}/bin/sbsign --key ${keydir}/db/db.key --cert ${keydir}/db/db.pem --output ${output} ${input}";
 in
 {
   options.system.useSecureBoot = lib.mkOption {
@@ -66,7 +66,7 @@ in
       fwupd-efi.text = lib.mkIf allowedEFI ''
         ## Sign, and copy the fwupd efi binary to ${bootDir}
         mkdir -p "${fwupd.espDir}"
-        if ([ -f "${fwupd.espDir}/fwupd.hash" ] && [ $(basename "${fwupd.package}" | cut -d- -f1) != $(cat "${fwupd.espDir}/fwupd.hash")]); then
+        if ([[ -f "${fwupd.espDir}/fwupd.hash" ]] && [[ $(basename "${fwupd.package}" | cut -d- -f1) != $(cat "${fwupd.espDir}/fwupd.hash")]]); then
           # Package differs, copy the binary
           echo "Updating fwupd"
           rm -f "${fwupd.espDir}/fwupd.efi"
