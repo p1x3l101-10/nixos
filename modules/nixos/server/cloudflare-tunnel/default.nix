@@ -14,7 +14,6 @@ in {
     tunnels = {
       "${tunnelId}" = {
         credentialsFile = "${globals.dirs.keys}/cloudflared/${tunnelId}.json";
-        default = "http_status:404";
         ingress = (lib.mapAttrs'
           (k: v: lib.nameValuePair ("${k}.${globals.server.dns.basename}") ("${getProto v}://localhost:${builtins.toString v}"))
           {
