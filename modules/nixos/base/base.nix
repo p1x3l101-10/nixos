@@ -4,7 +4,6 @@
   environment.binsh = "${pkgs.dash}/bin/dash";
 
   # Bootloader
-  services.fwupd.enable = true;
   boot = {
     loader = {
       timeout = lib.mkDefault 0;
