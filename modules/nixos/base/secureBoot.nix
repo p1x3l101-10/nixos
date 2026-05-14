@@ -16,7 +16,7 @@ in
     type = lib.types.bool;
     default = true;
   };
-  config = if config.system.useSecureBoot then {
+  config = lib.mkIf config.system.useSecureBoot {
     boot = {
       loader.systemd-boot = {
         enable = lib.mkForce false;
@@ -79,31 +79,5 @@ in
         basename "${fwupd.package}" | cut -d- -f1 > "${fwupd.espDir}/fwupd.hash"
       '';
     };
-  } else {
-    boot.loader.systemd-boot.extraEntries = {
-      "fwupd.conf" = ''
-        title Firmware Updater
-        efi /EFI/fwupd/fwupd.efi
-        sort-key z_fwupd
-      '';
-    };
-    system.activationScripts = {
-      fwupd-efi.text = lib.mkIf allowedEFI ''
-        ## Copy the fwupd efi binary to ${bootDir}
-        mkdir -p "${fwupd.espDir}"
-        if ([ -f "${fwupd.espDir}/fwupd.hash" ] && [ $(basename "${fwupd.package}" | cut -d- -f1) != $(cat "${fwupd.espDir}/fwupd.hash")]); then
-          # Package differs, copy the binary
-          echo "Updating fwupd"
-          rm -f "${fwupd.espDir}/fwupd.efi"
-          cp "${fwupd.efi}" "${fwupd.espDir}/fwupd.efi"
-        fi
-        if [ ! -f "${fwupd.espDir}/fwupd.efi" ]; then
-          # Not installed
-          echo "Installing fwupd to the ESP"
-          cp "${fwupd.efi}" "${fwupd.espDir}/fwupd.efi"
-        fi
-        basename "${fwupd.package}" | cut -d- -f1 > "${fwupd.espDir}/fwupd.hash"
-      '';
-    };
-  };
+  }
 }
