@@ -1,4 +1,4 @@
-{ globals, config, ... }:
+{ globals, config, lib, ... }:
 
 let
   tunnelId = "17af68d2-548a-4428-9e42-fcfd85a452c1";
@@ -10,20 +10,16 @@ in {
       "${tunnelId}" = {
         credentialsFile = "${globals.dirs.keys}/cloudflared/${tunnelId}.json";
         default = "http_status:404";
-        ingress = builtins.listToAttrs (
-          (map
-            (x: { name = "${x}.${globals.server.dns.basename}"; value = "https://localhost:443"; })
-            [
-              # subdomains to map to the internal nginx rproxy
-              "srv03"
-              "cdn"
-            ]
-          ) ++ (
-            [
-              { name = "${globals.server.dns.basename}"; value = "https://localhost:443"; } # Base url
-            ]
-          )
-        );
+        ingress = (lib.mapAttrs' (
+          (k: v: lib.nameValuePair ("${k}.${globals.server.dns.basename}") ("https://localhost:${builtins.toString v}"))
+          {
+            srv03 = 443;
+            cdn = 443;
+            nextcloud = 443;
+          }
+        ) // {
+          "${globals.server.dns.basename}" = "https://localhost:443";
+        });
       };
     };
   };
