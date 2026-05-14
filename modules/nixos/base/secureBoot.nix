@@ -80,5 +80,5 @@ in
         basename "${fwupd.package}" | cut -d- -f1 > "${fwupd.espDir}/fwupd.hash"
       '';
     };
-  }
+  };
 }
