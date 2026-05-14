@@ -381,6 +381,7 @@ in
       };
       autoStart = true;
       extraOptions = (lib.lists.optionals (mcBool cfg.autoPause.enable false) [ "--cap-add=CAP_NET_RAW" "--network=slirp4netns:port_handler=slirp4netns" ]);
+      podman.sdnotify = "healthy";
     };
     systemd.services.minecraft = eLib.attrsets.mergeAttrs [
       {
