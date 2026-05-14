@@ -19,7 +19,7 @@ in
     ./nginx
     ./server-base
     ./ssh-forward
-    #./website
+    ./website
     ./wireguard
     #./wks
   ];
