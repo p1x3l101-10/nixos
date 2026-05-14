@@ -3,9 +3,9 @@
 let
   tunnelId = "17af68d2-548a-4428-9e42-fcfd85a452c1";
   getProto = port: eLib.lists.switch [
-    { case = 80; out = "http"; }
-    { case = 443; out = "https"; }
-    { case = 22; out = "ssh"; }
+    { case = port == 80; out = "http"; }
+    { case = port == 443; out = "https"; }
+    { case = port == 22; out = "ssh"; }
   ] "tcp";
 in {
   services.cloudflared = {
