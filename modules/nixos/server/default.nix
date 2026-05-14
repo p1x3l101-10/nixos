@@ -9,7 +9,7 @@ in
     inherit globals userdata;
   };
   imports = [
-    ./cdn
+    #./cdn
     ./cloudflare-tunnel
     #./email
     ./ensurePerms
