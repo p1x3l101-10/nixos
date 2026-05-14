@@ -10,14 +10,14 @@ in {
       "${tunnelId}" = {
         credentialsFile = "${globals.dirs.keys}/cloudflared/${tunnelId}.json";
         default = "http_status:404";
-        ingress = (lib.mapAttrs' (
+        ingress = ((lib.mapAttrs' (
           (k: v: lib.nameValuePair ("${k}.${globals.server.dns.basename}") ("https://localhost:${builtins.toString v}"))
           {
             srv03 = 443;
             cdn = 443;
             nextcloud = 443;
           }
-        ) // {
+        )) // {
           "${globals.server.dns.basename}" = "https://localhost:443";
         });
       };
