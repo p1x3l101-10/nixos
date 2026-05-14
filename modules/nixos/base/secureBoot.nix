@@ -8,7 +8,7 @@ let
     efi = "${package}/libexec/fwupd/efi/fwupdx64.efi";
     espDir = "${bootDir}/EFI/fwupd";
   };
-  sbsign = input: output: "${pkgs.sbsigntool}/bin/sbsign --key ${keydir}/db/db.key --cert ${keydir}/db/db.crt --output ${output} ${input}";
+  sbsign = input: output: "${pkgs.sbsigntool}/bin/sbsign --key ${keydir}/db/db.key --cert ${keydir}/db/db.cer --output ${output} ${input}";
 in
 {
   options.system.useSecureBoot = lib.mkOption {
