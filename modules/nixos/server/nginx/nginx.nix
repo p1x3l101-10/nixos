@@ -28,4 +28,8 @@
     # Only open https when we can actually use it
     { host = 443; remote = 4443; }
   ]);
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+  ];
 }
