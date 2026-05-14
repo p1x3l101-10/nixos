@@ -10,9 +10,19 @@ in {
       "${tunnelId}" = {
         credentialsFile = "${globals.dirs.keys}/cloudflared/${tunnelId}.json";
         default = "http_status:404";
-        ingress = {
-          "*.${globals.server.dns.basename}" = "http://localhost:443";
-        };
+        ingress = builtins.listToAttrs (
+          (map
+            (x: { name = "${x}.${globals.server.dns.basename}"; value = "https://localhost:443"; })
+            [
+              # subdomains to map to the internal nginx rproxy
+              "cdn"
+            ]
+          ) ++ (
+            [
+              { name = "${globals.server.dns.basename}"; value = "https://localhost:443"; } # Base url
+            ]
+          )
+        );
       };
     };
   };
