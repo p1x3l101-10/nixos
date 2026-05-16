@@ -233,6 +233,12 @@ in
       };
       version = mkMcOption "";
       allowFlight = mkMcEnableOption "flying";
+      levelType = mkMcOption "Type of level";
+      applyExtraFiles = mkOption {
+        description = "Extra files to download and apply";
+        type = with types; nullOr (attrsOf str);
+        default = null;
+      };
       port = mkOption {
         type = types.port;
         default = 25565;
@@ -359,6 +365,8 @@ in
           (mkEnvRaw "STOP_DURATION" cfg.settings.stopTimeout)
           (mkEnv "BROADCAST_RCON_TO_OPS" cfg.settings.broadcastRconToOps)
           (mkEnv "REGION_FILE_COMPRESSION" cfg.settings.regionFileCompression)
+          (mkEnvRaw "LEVEL_TYPE" cfg.settings.levelType)
+          (mkEnvRawList "APPLY_EXTRA_FILES" (lib.mapAttrsToList (k: v: "${k}<${v}" cfg.settings.applyExtraFiles) ",")
         ]
       ));
       ports = [

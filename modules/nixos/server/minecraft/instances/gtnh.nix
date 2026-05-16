@@ -1,58 +1,37 @@
-{ pkgs, eLib, userdata, ... }:
+{ eLib, userdata, ... }:
 
-let
-  fetchGHRelease = { owner, repo, version, fileName, hash }: pkgs.fetchurl {
-    url = "https://github.com/${owner}/${repo}/releases/download/${version}/${fileName}";
-    inherit hash;
-  };
-in
 {
   services.minecraft = {
     enable = true;
-    generic = {
-      forceUpdate = true;
-      pack = builtins.toString (eLib.builders.genericPack {
-        packList = [
-          ./overrides/gtnh
-          (eLib.builders.genericMod rec {
-            name = "ocwasm";
-            version = "1.7.10-0.5.2";
-            file = fetchGHRelease {
-              fileName = "${name}-${version}.jar";
-              inherit version;
-              owner = "DCNick3";
-              repo = "OC-Wasm-GTNH";
-              hash = "sha256-sMMdWxKBQCqtijxLos7GYjlxHtrsFfh+XzTjTcabnek=";
-            };
-          })
-          (pkgs.fetchzip {
-            url = "https://downloads.gtnewhorizons.com/ServerPacks/GT_New_Horizons_2.7.4_Server_Java_17-21.zip";
-            hash = "sha256-wWGDbVwVe6989SyPjS0d/82oXTu//rHkDbjIVzFAVgY=";
-            stripRoot = false;
-          })
+    settings = eLib.attrsets.mergeAttrs [
+      (import ../overrides/settings.nix { inherit userdata; })
+      {
+        java.args = (import ../overrides/unsup.nix {
+          url = "https://p1x3l101-10.github.io/gtnh2packwiz-ng/patched/unsup.ini";
+        });
+      }
+      {
+        type = "custom";
+        java = {
+          version = "21-graalvm";
+          args = [
+            "-Dfml.readTimeout=180"
+            "@java9args.txt"
+          ];
+        };
+        version = "1.7.10";
+        memory = 20;
+        port = 25565;
+        rcon.startup = [
+          "bq_admin default load" # Reload for updates
+          "difficulty hard"
         ];
-      });
-    };
-    settings = {
-      eula = true;
-      type = "custom";
-      java = {
-        version = "21-graalvm";
-        args = [
-          "-Dfml.readTimeout=180"
-          "@java9args.txt"
-        ];
-      };
-      version = "1.7.10";
-      memory = 10;
-      port = 25565;
-      rcon.startup = [
-        "bq_admin default load" # Reload for updates
-        "bq_admin hardcore true"
-        "difficulty hard"
-      ];
-      customServer = "lwjgl3ify-forgePatches.jar";
-      whitelist = userdata [ "mcUsername" ] (import ./overrides/whitelist.nix);
+        customServer = "lwjgl3ify-forgePatches.jar";
+        levelType = "rwg";
+      }
+    ];
+    applyExtraFiles = (builtins.fromJSON ./support/gtnh-serverFiles.json) // {
+      "lwjgl3ify-forgePatches.jar" = "https://github.com/GTNewHorizons/lwjgl3ify/releases/download/3.0.16/lwjgl3ify-3.0.16-forgePatches.jar";
     };
   };
   virtualisation.oci-containers.containers.minecraft.volumes = [
