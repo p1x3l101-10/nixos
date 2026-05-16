@@ -366,7 +366,7 @@ in
           (mkEnv "BROADCAST_RCON_TO_OPS" cfg.settings.broadcastRconToOps)
           (mkEnv "REGION_FILE_COMPRESSION" cfg.settings.regionFileCompression)
           (mkEnvRaw "LEVEL_TYPE" cfg.settings.levelType)
-          (mkEnvRawList "APPLY_EXTRA_FILES" (lib.mapAttrsToList (k: v: "${k}<${v}" cfg.settings.applyExtraFiles) ",")
+          (mkEnvRawList "APPLY_EXTRA_FILES" (lib.mapAttrsToList (k: v: "${k}<${v}" cfg.settings.applyExtraFiles) ","))
         ]
       ));
       ports = [
