@@ -58,11 +58,11 @@
       if [[ ! -f "${destDir}/java9args.txt" ]]; then
     '' + (builtins.concatStringsSep
       "\n"
-      (lib.mapAttrsToList
+      ((lib.mapAttrsToList
         (k: v: downloadFile k v)
         serverFiles
       )
-      ++ [ "fi" ]
+      ++ [ "fi" ])
     );
   };
   # Persist server
