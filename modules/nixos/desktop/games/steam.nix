@@ -31,15 +31,17 @@ in {
       adwaita-icon-theme
       morewaita-icon-theme
       harfbuzz # L4D2 patch https://github.com/Yi3d/l4d2-linux-patches
-      # BUILD FAILURE
-      #sgdboop
+      sgdboop
+      mangohud
+      gamemode
     ] ++ [
       config.home-manager.users.pixel.home.pointerCursor.package
     ];
   };
   environment.systemPackages = with pkgs; [
-    # BUILD FAILURE
-    #sgdboop
+    sgdboop
+    mangohud
+    gamemode
   ];
   system.allowedUnfree.packages = [
     "steam"
