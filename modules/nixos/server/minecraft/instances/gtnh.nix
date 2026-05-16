@@ -1,4 +1,4 @@
-{ eLib, userdata, lib, ... }:
+{ eLib, userdata, lib, pkgs, ... }:
 
 {
   services.minecraft = {
@@ -50,6 +50,9 @@
   systemd.services."gtnh-setup" = {
     before = [ "minecraft.service" ];
     requiredBy = [ "minecraft.service" ];
+    path = with pkgs; [
+      curl
+    ];
     script = let
       destDir = "/var/lib/minecraft/data";
       serverFiles = builtins.fromJSON (builtins.readFile ./support/gtnh-serverFiles.json);
