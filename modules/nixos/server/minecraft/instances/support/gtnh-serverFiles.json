@@ -30,5 +30,6 @@
   "startserver-java9.bat": "https://raw.githubusercontent.com/GTNewHorizons/DreamAssemblerXXL/refs/heads/master/server_assets/forge/startserver-java9.bat",
   "startserver-java9.sh": "https://raw.githubusercontent.com/GTNewHorizons/DreamAssemblerXXL/refs/heads/master/server_assets/forge/startserver-java9.sh",
   "startserver.bat": "https://raw.githubusercontent.com/GTNewHorizons/DreamAssemblerXXL/refs/heads/master/server_assets/forge/startserver.bat",
-  "startserver.sh": "https://raw.githubusercontent.com/GTNewHorizons/DreamAssemblerXXL/refs/heads/master/server_assets/forge/startserver.sh"
+  "startserver.sh": "https://raw.githubusercontent.com/GTNewHorizons/DreamAssemblerXXL/refs/heads/master/server_assets/forge/startserver.sh",
+  "unsup.ini": "https://p1x3l101-10.github.io/gtnh2packwiz-ng/patched/unsup.ini"
 }
