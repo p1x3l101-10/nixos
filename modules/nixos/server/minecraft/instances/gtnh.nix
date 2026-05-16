@@ -4,7 +4,18 @@
   services.minecraft = {
     enable = true;
     settings = eLib.attrsets.mergeAttrs [
-      (import ../overrides/settings.nix { inherit userdata; })
+      {
+        eula = true;
+        whitelist = (userdata [ "mcUsername" ] (import ../overrides/whitelist.nix)) ++ (import ../overrides/whitelist-raw.nix);
+        rcon.startup = [
+          "difficulty hard"
+        ];
+        memory = 20;
+        allowFlight = true;
+        allowCommandBlocks = true;
+        broadcastRconToOps = false;
+        spawnProtection = 0;
+      }
       {
         java.args = (import ../overrides/unsup.nix {
           url = "https://p1x3l101-10.github.io/gtnh2packwiz-ng/patched/unsup.ini";
@@ -20,7 +31,6 @@
           ];
         };
         version = "1.7.10";
-        memory = 20;
         port = 25565;
         rcon.startup = [
           "bq_admin default load" # Reload for updates
@@ -56,7 +66,10 @@
     script = let
       destDir = "/var/lib/minecraft/data";
       serverFiles = builtins.fromJSON (builtins.readFile ./support/gtnh-serverFiles.json);
-      downloadFile = dest: url: ''curl "${url}" > "${destDir}/${dest}"'';
+      downloadFile = dest: url: ''
+        mkdir -p "$(dirname "${destDir}/${dest}")"
+        curl "${url}" > "${destDir}/${dest}"
+      '';
     in ''
       if [[ ! -f "${destDir}/java9args.txt" ]]; then
     '' + (builtins.concatStringsSep
