@@ -2,10 +2,10 @@
 
 {
   imports = [
-    ./instances/aeronautics.nix
+    ./instances/gtnh.nix
     ./fail2ban.nix
     #./bluemap-nginx.nix
-    ./svc.nix
+    #./svc.nix
     #./rcon.nix
   ];
   networking.sshForwarding.ports = [
