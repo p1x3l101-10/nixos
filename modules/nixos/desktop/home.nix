@@ -69,10 +69,4 @@ in {
   environment.pathsToLink = [ "/share/xdg-desktop-portal" "/share/applications" ];
   # Suboptimal, but fixes application menus
   environment.etc."/xdg/menus/applications.menu".text = builtins.readFile "${pkgs.garcon}/etc/xdg/menus/xfce-applications.menu";
-  # Allow keydir for syncthing
-  systemd.tmpfiles.settings."50-home-keydirs"."/nix/host/keys/syncthing".d = {
-    user = "pixel";
-    group = "users";
-    mode = "0700";
-  };
 }
