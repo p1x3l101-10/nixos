@@ -1,4 +1,4 @@
-{ eLib, userdata, ... }:
+{ eLib, userdata, lib, ... }:
 
 {
   services.minecraft = {
@@ -28,7 +28,6 @@
         ];
         customServer = "https://github.com/GTNewHorizons/lwjgl3ify/releases/download/3.0.16/lwjgl3ify-3.0.16-forgePatches.jar";
         levelType = "rwg";
-        applyExtraFiles = (builtins.fromJSON (builtins.readFile ./support/gtnh-serverFiles.json));
       }
     ];
   };
@@ -47,6 +46,25 @@
       group = "1000";
       mode = "0755";
     };
+  };
+  systemd.services."gtnh-setup" = {
+    before = [ "minecraft.service" ];
+    requiredBy = [ "minecraft.service" ];
+    script = let
+      destDir = "/var/lib/minecraft/data";
+      serverFiles = builtins.fromJSON (builtins.readFile ./support/gtnh-serverFiles.json);
+      downloadFile = dest: url: ''curl "${url}" > "${destDir}/${dest}"'';
+    in ''
+      if [[ ! -f "${destDir}/java9args.txt" ]]; then
+    '' + (builtins.concatStringsSep
+      "\n"
+      (lib.mapAttrsToList
+        (k: v: downloadFile k v)
+        serverFiles
+      )
+    ) + ''
+      fi
+    '';
   };
   # Persist server
   environment.persistence."/nix/host/state/Servers/Minecraft/GTNH".directories = [

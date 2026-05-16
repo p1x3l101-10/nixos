@@ -27,7 +27,6 @@
   "libraries/org/scala-lang/scala-swing_2.11/1.0.1/scala-swing_2.11-1.0.1.jar": "https://raw.githubusercontent.com/GTNewHorizons/DreamAssemblerXXL/refs/heads/master/server_assets/forge/libraries/org/scala-lang/scala-swing_2.11/1.0.1/scala-swing_2.11-1.0.1.jar",
   "libraries/org/scala-lang/scala-xml_2.11/1.0.2/scala-xml_2.11-1.0.2.jar": "https://raw.githubusercontent.com/GTNewHorizons/DreamAssemblerXXL/refs/heads/master/server_assets/forge/libraries/org/scala-lang/scala-xml_2.11/1.0.2/scala-xml_2.11-1.0.2.jar",
   "minecraft_server.1.7.10.jar": "https://raw.githubusercontent.com/GTNewHorizons/DreamAssemblerXXL/refs/heads/master/server_assets/forge/minecraft_server.1.7.10.jar",
-  "ops.json": "https://raw.githubusercontent.com/GTNewHorizons/DreamAssemblerXXL/refs/heads/master/server_assets/forge/ops.json",
   "startserver-java9.bat": "https://raw.githubusercontent.com/GTNewHorizons/DreamAssemblerXXL/refs/heads/master/server_assets/forge/startserver-java9.bat",
   "startserver-java9.sh": "https://raw.githubusercontent.com/GTNewHorizons/DreamAssemblerXXL/refs/heads/master/server_assets/forge/startserver-java9.sh",
   "startserver.bat": "https://raw.githubusercontent.com/GTNewHorizons/DreamAssemblerXXL/refs/heads/master/server_assets/forge/startserver.bat",
