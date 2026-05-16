@@ -26,11 +26,9 @@
           "bq_admin default load" # Reload for updates
           "difficulty hard"
         ];
-        customServer = "lwjgl3ify-forgePatches.jar";
+        customServer = "https://github.com/GTNewHorizons/lwjgl3ify/releases/download/3.0.16/lwjgl3ify-3.0.16-forgePatches.jar";
         levelType = "rwg";
-        applyExtraFiles = (builtins.fromJSON (builtins.readFile ./support/gtnh-serverFiles.json)) // {
-          "lwjgl3ify-forgePatches.jar" = "https://github.com/GTNewHorizons/lwjgl3ify/releases/download/3.0.16/lwjgl3ify-3.0.16-forgePatches.jar";
-        };
+        applyExtraFiles = (builtins.fromJSON (builtins.readFile ./support/gtnh-serverFiles.json));
       }
     ];
   };
