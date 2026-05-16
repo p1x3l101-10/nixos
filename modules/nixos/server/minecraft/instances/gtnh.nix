@@ -62,9 +62,8 @@
         (k: v: downloadFile k v)
         serverFiles
       )
-    ) + ''
-      fi
-    '';
+      ++ [ "fi" ]
+    );
   };
   # Persist server
   environment.persistence."/nix/host/state/Servers/Minecraft/GTNH".directories = [
