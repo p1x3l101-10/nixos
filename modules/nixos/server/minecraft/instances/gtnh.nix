@@ -34,9 +34,14 @@
       "lwjgl3ify-forgePatches.jar" = "https://github.com/GTNewHorizons/lwjgl3ify/releases/download/3.0.16/lwjgl3ify-3.0.16-forgePatches.jar";
     };
   };
-  virtualisation.oci-containers.containers.minecraft.volumes = [
-    "/var/lib/minecraft/backups:/backups:rw" # Serverutilities backups
-  ];
+  virtualisation.oci-containers.containers.minecraft = {
+    cmd = [
+      "--stop-timeout" "-1" # Prevent container from being killed when stopping
+    ];
+    volumes = [
+      "/var/lib/minecraft/backups:/backups:rw" # Serverutilities backups
+    ];
+  };
   # Make a data folder to mount to
   systemd.tmpfiles.settings."50-minecraft" = {
     "/var/lib/minecraft/backups".d = {
