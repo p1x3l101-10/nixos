@@ -36,4 +36,6 @@ in {
     enable = true;
     package = lib.mkForce pkgs.gitMinimal;
   };
+  # Track state changes that normally are not applicable to me
+  boot.zfs.forceImportRoot = false;
 }
