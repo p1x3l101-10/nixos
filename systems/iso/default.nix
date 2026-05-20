@@ -15,6 +15,7 @@ in {
   # Seperate it from the upstream ISO
   networking.hostName = "pixels-nixos-iso";
   networking.hostId = "adf379c2";
+  networking.networkmanager.enable = lib.mkForce false;
   environment.etc.machine-id.text = "adf379c23feb4fa381f1fc7b137de815";
   # Packages used during install
   environment.systemPackages = with pkgs; [
