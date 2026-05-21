@@ -98,9 +98,7 @@ inputs.flake-utils.lib.eachDefaultSystem
           self.nixosModules.desktop
           noctalia.nixosModules.default
         ]) ++ (with inputs.nixos-hardware.nixosModules; [
-          common-pc-laptop
-          common-pc-laptop-ssd
-          common-cpu-intel
+          framework-16-7040-amd
         ]) ++ common-modules;
       };
       pixels-server = lib.nixosSystem {

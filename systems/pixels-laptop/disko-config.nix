@@ -1,5 +1,8 @@
 { eLib, ... }:
 
-eLib.confTemplates.disko {
-  disk-id = "ata-PNY_CS900_500GB_SSD_PNY2413240329010043D";
+eLib.confTemplates.diskoBtrfs {
+  disk-id = "nvme-WD_BLACK_SN7100_1TB_255144806416";
+  esp-size = "1G";
+  swap-size = "50G";
+  useLuks = true;
 }
