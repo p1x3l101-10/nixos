@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -10,4 +10,11 @@
   networking.hostName = "pixels-laptop";
   networking.hostId = "dd1c170a";
   environment.etc.machine-id.text = "dd1c170ad32148e09e7014adf076f233";
+
+  system.allowedUnfree = [
+    "corefonts"
+  ];
+  environment.systemPackages = with pkgs; [
+    framework-tool-tui
+  ];
 }
