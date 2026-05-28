@@ -3,12 +3,12 @@
 {
   systemd.network.networks = {
     "10-wired" = {
-      name = "enp2s0";
+      name = "enp*";
       DHCP = "yes";
       linkConfig.RequiredForOnline = "routable";
     };
     "10-wireless" = {
-      name = "wlp0s20f3";
+      name = "wlan0";
       DHCP = "yes";
       linkConfig.RequiredForOnline = "routable";
     };
