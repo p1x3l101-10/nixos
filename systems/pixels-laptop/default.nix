@@ -11,7 +11,7 @@
   networking.hostId = "dd1c170a";
   environment.etc.machine-id.text = "dd1c170ad32148e09e7014adf076f233";
 
-  system.allowedUnfree = [
+  system.allowedUnfree.packages = [
     "corefonts"
   ];
   environment.systemPackages = with pkgs; [
