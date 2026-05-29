@@ -106,6 +106,5 @@ export def connect [
   station: string@"nu-complete iwd stations"
   network: string@"nu-complete iwd networks"
 ] {
-  systemd-ask-password  --id="iwctl:network-connection-password" $'Password for "($network)"'
-  | iwctl station $station connect $network
+  iwctl station $station connect $network
 }
