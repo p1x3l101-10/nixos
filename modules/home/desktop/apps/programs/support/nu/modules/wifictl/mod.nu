@@ -34,6 +34,10 @@ def "nu-complete iwd stations" [] {
   | get station
 }
 
+export def main [] {
+  help modules wifictl
+}
+
 export def scan [ station: string@"nu-complete iwd stations" ] {
   iwctl station $station scan
 }
