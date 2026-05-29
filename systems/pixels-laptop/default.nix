@@ -16,6 +16,7 @@
   ];
   environment.systemPackages = with pkgs; [
     framework-tool-tui
+    brightnessctl
   ];
   environment.persistance."/nix/host/state/System".directories = [
     "/var/lib/fprint"
