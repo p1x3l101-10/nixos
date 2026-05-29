@@ -1,6 +1,7 @@
 { osConfig, ... }:
 
 {
+  systemd.user.services.flatpak-managed-install.Unit.After = [ "default.target" ];
   services.flatpak = {
     enable = osConfig.services.flatpak.enable;
     #uninstallUnmanaged = true;
