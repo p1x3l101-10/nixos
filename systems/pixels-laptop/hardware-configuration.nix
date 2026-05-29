@@ -13,4 +13,9 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   hardware.framework.enableKmod = true;
+  # Start iwd AFTER the wifi device comes online
+  systemd.services.iwd = {
+    wants = [ "sys-devices-pci0000:00-0000:00:02.2-0000:01:00.0-net-wlan0.device" ];
+    after = [ "sys-devices-pci0000:00-0000:00:02.2-0000:01:00.0-net-wlan0.device" ];
+  };
 }
