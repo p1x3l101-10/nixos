@@ -17,4 +17,8 @@
   environment.systemPackages = with pkgs; [
     framework-tool-tui
   ];
+  environment.persistance."/nix/host/state/System".directories = [
+    "/var/lib/fprint"
+    "/var/lib/fwupd"
+  ];
 }
