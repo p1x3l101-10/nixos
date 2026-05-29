@@ -18,7 +18,7 @@
     framework-tool-tui
     brightnessctl
   ];
-  environment.persistance."/nix/host/state/System".directories = [
+  environment.persistence."/nix/host/state/System".directories = [
     "/var/lib/fprint"
     "/var/lib/fwupd"
   ];
