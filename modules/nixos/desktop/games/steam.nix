@@ -2,9 +2,12 @@
 
 let
   msPkgs = ext.inputs.millennium.packages."${ext.system}";
+  /*
   steamPkg = msPkgs.millennium-steam.override {
     inherit (ext.stable.pkgs) pkgsi686Linux;
   };
+  */
+  steamPkg = pkgs.steam;
 in {
   programs.steam = {
     enable = true;
