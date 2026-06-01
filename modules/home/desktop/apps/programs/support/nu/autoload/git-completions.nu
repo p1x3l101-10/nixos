@@ -675,6 +675,17 @@ export extern "git log" [
   --grep: string                                      # show log entries matching supplied regular expression
 ]
 
+export def "git logn" [] {
+  ^git log --pretty=%h»¦«%aN»¦«%s»¦«%aD
+  | lines
+  | split column "»¦«" sha1 committer desc commited_at
+  | each { |x|
+    $x
+    | update commited_at ($x.commited_at | into datetime)
+  }
+  | reverse
+}
+
 # Show or change the reflog
 export extern "git reflog" [
 ]
