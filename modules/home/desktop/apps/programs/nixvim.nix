@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, ext, ... }:
 
 ### README!!!
 ## This config is managed by NIXvim, not home manager
@@ -7,6 +7,8 @@
 {
   programs.nixvim = {
     enable = true;
+    version.enableNixpkgsReleaseCheck = false;
+    nixpkgs.source = ext.inputs.nixpkgs.outPath;
     plugins = {
       neo-tree = {
         enable = true;
