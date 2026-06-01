@@ -7,7 +7,6 @@
 {
   programs.nixvim = {
     enable = true;
-    version.enableNixpkgsReleaseCheck = false;
     nixpkgs.source = ext.inputs.nixpkgs.outPath;
     plugins = {
       neo-tree = {
