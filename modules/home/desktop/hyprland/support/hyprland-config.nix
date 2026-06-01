@@ -76,7 +76,6 @@ in
     ];
   };
   dwindle = {
-    pseudotile = true;
     preserve_split = true;
   };
   master.new_status = "master";
@@ -105,7 +104,6 @@ in
     (b "R" "exec" globals.spotlight)
     (b' "ALT" "l" "exec" globals.lockCmd)
     (b "P" "pseudo") # dwindle
-    (b "O" "togglesplit") # dwindle
     # Get some pesky games to work
     (b "F11" "fullscreen")
     # Move focus
