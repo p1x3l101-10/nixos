@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, ext, pkgs, ... }:
 
 let
   inherit (config.lib.stylix) colors;
@@ -38,6 +38,10 @@ in
       plugins = {
         accountPanelServerProfile.enable = true;
         betterGifAltText.enable = true;
+        betterGifPicker = {
+          enable = true;
+          keepOpen = true;
+        };
         betterSessions.enable = true;
         betterSettings.enable = true;
         BlurNSFW.enable = true;
@@ -51,7 +55,36 @@ in
         friendsSince.enable = true;
         loadingQuotes.enable = true;
         mentionAvatars.enable = true;
-        openInApp.enable = true;
+        messageLogger = {
+          enable = true;
+          collapseDeleted = true;
+          deleteStyle = "overlay";
+          ignoreBots = true;
+          ignoreSelf = false;
+          ignoreSelfEdits = false;
+          inlineEdits = false;
+          logDeletes = true;
+          logEdits = true;
+        };
+        noF1.enable = true;
+        openInApp = {
+          enable = true;
+          steam = true;
+          vrcx = true;
+        };
+        shikiCodeblocks = {
+          enable = true;
+          customTheme = (let
+            stylixBasePath = ext.inputs.stylix.outPath;
+            vsCodeTemplatePath = "${stylixBasePath}/modules/vscode/templates/theme.nix";
+            vsCodeTheme = import vsCodeTemplatePath config.lib.stylix.colors;
+            vsCodeThemeFile = pkgs.writers.writeJSON "shiki-theme-stylix.json" vsCodeTheme;
+          in "file://${vsCodeThemeFile}");
+          tryHljs = "SECONDARY";
+          useDevIcon = "COLOR";
+        };
+        streamerModeOnStream.enable = true;
+        spotifyCrack.enable = true;
         youtubeAdblock.enable = true;
         volumeBooster.enable = true;
         webRichPresence.enable = true;
