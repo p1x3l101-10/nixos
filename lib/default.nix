@@ -11,6 +11,7 @@ genLib ./. [
   "internal" # Always first
 
   # No deps (other than internal)
+  "trivial"
   "attrsets"
   "builders"
   "confTemplates"

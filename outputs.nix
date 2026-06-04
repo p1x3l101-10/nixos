@@ -14,6 +14,7 @@ inputs.flake-utils.lib.eachDefaultSystem
       formatter = pkgs.nixpkgs-fmt;
       packages = eLib.flake.genPackages ./packages pkgs.newScope {
         ext = {
+          lib = eLib;
           inherit inputs;
         };
       };
