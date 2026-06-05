@@ -2,7 +2,7 @@
 
 {
   programs.lutris = {
-    enable = false;
+    enable = true;
     steamPackage = osConfig.programs.steam.package;
   };
 }
