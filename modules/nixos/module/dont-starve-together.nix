@@ -2,6 +2,7 @@
 
 let
   cfg = config.services.dontStarveTogether;
+  inherit (lib) mkIf;
 in {
   options.services.dontStarveTogether = (
     let
@@ -15,4 +16,6 @@ in {
       };
     }
   );
+  config = mkIf cfg.enable {
+  };
 }
