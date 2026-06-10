@@ -20,6 +20,7 @@
         reexec_as_root = true;
         use_git_commit_msg = true;
       };
+      rollback.enable = false;
     };
   };
   environment.systemPackages = with pkgs; [
