@@ -83,7 +83,6 @@ in
           tryHljs = "SECONDARY";
           useDevIcon = "COLOR";
         };
-        streamerModeOnStream.enable = true;
         spotifyCrack.enable = true;
         youtubeAdblock.enable = true;
         volumeBooster.enable = true;
