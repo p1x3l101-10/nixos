@@ -1,8 +1,9 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.follows = "nixpkgs-25_11";
+    nixpkgs-stable.follows = "nixpkgs-26_05";
     nixpkgs-25_11.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs-26_05.url = "github:NixOS/nixpkgs/nixos-26.05";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -126,6 +127,10 @@
         nixpkgs.follows = "nixpkgs";
         flake-compat.follows = "flake-compat";
       };
+    };
+    steam-fetcher = {
+      url = "github:nix-community/steam-fetcher";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
   outputs = inputs: import ./outputs.nix inputs;
