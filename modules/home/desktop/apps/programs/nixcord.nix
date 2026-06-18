@@ -44,11 +44,11 @@ in
         };
         betterSessions.enable = true;
         betterSettings.enable = true;
-        BlurNSFW.enable = true;
+        blurNsfw.enable = true;
         callTimer.enable = true;
-        ClearURLs.enable = true;
+        clearUrls.enable = true;
         copyFileContents.enable = true;
-        CustomRPC.enable = true;
+        customRpc.enable = true;
         favoriteEmojiFirst.enable = true;
         favoriteGifSearch.enable = true;
         fixYoutubeEmbeds.enable = true;
