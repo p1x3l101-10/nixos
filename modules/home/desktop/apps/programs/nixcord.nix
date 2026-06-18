@@ -93,11 +93,9 @@ in
     quickCss = builtins.concatStringsSep "\n" [
       # Hide the annoying profile effects
       ''
-        div[class^="profileEffects_"], div[class*=" profileEffects_"] {
+        [class^="profileEffects"] {
           display: none;
-          visibility: hidden;
         }
-
       ''
     ];
   };
