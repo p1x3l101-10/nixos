@@ -27,7 +27,7 @@
     ./nix.nix
     ./nss.nix
     #./ollama.nix
-    ./plymouth.nix
+    #./plymouth.nix
     ./powerManagement.nix
     ./printing.nix
     ./samba.nix
