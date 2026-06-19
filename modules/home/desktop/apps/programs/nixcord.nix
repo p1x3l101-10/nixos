@@ -94,7 +94,7 @@ in
     quickCss = builtins.concatStringsSep "\n" [
       # Hide the annoying profile effects
       ''
-        video[class*="channel_"],
+        video[class*="img_"],
         [class*="avatarDecoration_"],
         [class^="profileEffects_"] {
           display: none !important;
