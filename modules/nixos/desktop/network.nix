@@ -6,7 +6,8 @@
     secretsFile = "/nix/host/keys/wpa_supplicant/secrets.conf";
     networks = {
       "NSA Surveillance Hub5" = {
-        psk = "ext:psk_home_main";
+        pskRaw = "ext:psk_home_main";
+        authProtocols = [ "SAE" ];
         priority = 10;
       };
     };
