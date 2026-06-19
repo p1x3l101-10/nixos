@@ -67,6 +67,7 @@ in
           logEdits = true;
         };
         noF1.enable = true;
+        noProfileThemes.enable = true;
         openInApp = {
           enable = true;
           steam = true;
@@ -90,14 +91,6 @@ in
         webScreenShareFixes.enable = true;
       };
     };
-    quickCss = builtins.concatStringsSep "\n" [
-      # Hide the annoying profile effects
-      ''
-        [class^="profileEffects"] {
-          display: none;
-        }
-      ''
-    ];
   };
   services.arrpc = {
     enable = true;
