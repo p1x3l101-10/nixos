@@ -3,6 +3,7 @@
   environment.persistence."/nix/host/cache".directories = [
     "/var/tmp"
     "/var/cache"
+    "/var/empty"
     "/tmp"
   ];
   # Clear cache on reboot
