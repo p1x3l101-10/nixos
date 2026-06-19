@@ -7,7 +7,7 @@
     networks = {
       "NSA Surveillance Hub5" = {
         pskRaw = "ext:psk_home_main";
-        authProtocols = [ "SAE" ];
+        authProtocols = [ "SAE" "WPA-PSK" ];
         priority = 10;
       };
     };
