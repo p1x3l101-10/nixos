@@ -91,6 +91,15 @@ in
         webScreenShareFixes.enable = true;
       };
     };
+    quickCss = builtins.concatStringsSep "\n" [
+      # Hide the annoying profile effects
+      ''
+        [class*="avatarDecoration_"],
+        [class^="profileEffects_"] {
+          display: none !important;
+        }
+      ''
+    ];
   };
   services.arrpc = {
     enable = true;
