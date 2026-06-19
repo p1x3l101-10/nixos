@@ -8,10 +8,10 @@
       linkConfig.RequiredForOnline = "routable";
     };
     "10-wireless" = {
-      name = "wlan0";
+      name = "wlp1s0";
       DHCP = "yes";
       linkConfig.RequiredForOnline = "routable";
     };
   };
-  networking.wireless.interfaces = [ "wlan0" ];
+  networking.wireless.interfaces = [ "wlp1s0" ];
 }
