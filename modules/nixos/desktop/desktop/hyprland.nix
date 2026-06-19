@@ -22,32 +22,9 @@ lib.fix (self: {
   hardware.bluetooth.enable = true;
   services.tuned.enable = true;
   services.upower.enable = true;
-  # Greeter
-  programs.regreet = {
-    enable = true;
-    settings = {
-      GTK.cursor_blink = true;
-      commands = {
-        reboot = [ "systemctl" "reboot" ];
-        poweroff = [ "systemctl" "poweroff" ];
-      };
-      widget.clock.format = clockFormat.long;
-    };
-    cageArgs = [
-      "-s" # DO NOT REMOVE, IT WILL LOCK YOU INTO CAGE WITHOUT THIS
-      "-d" # No decorations
-      "-m" "last" # Display on last connected screen
-    ];
-  };
-  systemd.tmpfiles.settings."99-regreet-defaults" = {
-    "/var/lib/regreet/state.toml".C = {
-      user = "greeter";
-      group = "greeter";
-      mode = "0644";
-      argument = builtins.toString ((pkgs.formats.toml { }).generate "state.toml" {
-        last_user = "pixel";
-        user_to_last_sess.pixel = "Hyprland (uwsm-managed)";
-      });
-    };
+  # Autologin on boot
+  services.getty = {
+    autologinOnce = true;
+    autologinUser = "pixel";
   };
 })

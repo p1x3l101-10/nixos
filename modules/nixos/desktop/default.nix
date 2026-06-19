@@ -18,7 +18,6 @@
     ./home.nix
     ./ipfs.nix
     ./kernel.nix
-    ./kmscon.nix
     ./modpack-working.nix
     ./impermanence.nix
     ./nebula.nix

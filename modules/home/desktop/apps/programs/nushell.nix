@@ -30,6 +30,7 @@ in {
       use kp
       use wifictl
     '';
+    loginFile.source = ./support/nu/login.nu;
   };
   # Autoload
   xdg.configFile."nushell/autoload" = {
