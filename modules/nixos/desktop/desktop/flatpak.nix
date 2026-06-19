@@ -8,7 +8,7 @@ let
   );
 in
 {
-  services.flatpak.enable = true;
+  services.flatpak.enable = false;
   hardware.steam-hardware.enable = true;
   system.allowedUnfree.packages = [ "steam-unwrapped" ];
   # Fix dir permissions
