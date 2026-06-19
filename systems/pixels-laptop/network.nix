@@ -13,23 +13,5 @@
       linkConfig.RequiredForOnline = "routable";
     };
   };
-  networking.wireless.iwd = {
-    enable = true;
-    encryptDB = {
-      enable = true;
-      keyLocation = "${globals.dirs.keys}/iwd/iwd-secret.cred";
-    };
-    settings = {
-      General = {
-        EnableNetworkConfiguration = false; # NetworkD is handling that instead.
-        AddressRandomization = "network";
-        AddressRandomizationRange = "full";
-        SystemdEncrypt = "iwd-secret";
-        Country = "us";
-      };
-    };
-  };
-  environment.persistence."/nix/host/state/System".directories = [
-    { directory = "/var/lib/private/iwd"; mode = "0700"; }
-  ];
+  networking.wireless.interfaces = [ "wlan0" ];
 }

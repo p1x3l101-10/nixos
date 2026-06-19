@@ -21,6 +21,7 @@
     ./modpack-working.nix
     ./impermanence.nix
     ./nebula.nix
+    ./network.nix
     ./nushell.nix
     ./nix-exper.nix
     ./nix-ld.nix
