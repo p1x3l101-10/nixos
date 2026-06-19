@@ -3,11 +3,10 @@
   environment.persistence."/nix/host/cache".directories = [
     "/var/tmp"
     "/var/cache"
-    "/var/empty"
     "/tmp"
   ];
   # Clear cache on reboot
-  boot.initrd.systemd.services.moveSystemCache = {
+  boot.initrd.systemd.services.move-system-cache = {
     description = "Clean system disk cache (Stage 1)";
     script = ''
       ${pkgs.coreutils}/bin/mv -v /sysroot/nix/host/cache /sysroot/nix/host/.cache.old && \
@@ -21,7 +20,7 @@
       Type = "Oneshot"; # Ensure this task is completed before system boot
     };
   };
-  systemd.services.clearOldCache = {
+  systemd.services.clear-old-cache = {
     description = "Clean system disk cache (Stage 2)";
     script = ''
       ${pkgs.coreutils}/bin/rm -rfv /nix/host/.cache.old && \
