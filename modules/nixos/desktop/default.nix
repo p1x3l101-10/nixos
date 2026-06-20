@@ -31,7 +31,7 @@
     ./powerManagement.nix
     ./printing.nix
     ./samba.nix
-    ./silence.nix
+    #./silence.nix
     ./sound.nix
     ./startupAnim.nix
     ./stylix.nix
