@@ -28,12 +28,12 @@
     ./nix.nix
     ./nss.nix
     #./ollama.nix
-    #./plymouth.nix
     ./powerManagement.nix
     ./printing.nix
     ./samba.nix
     ./silence.nix
     ./sound.nix
+    ./startupAnim.nix
     ./stylix.nix
     ./tablet.nix
     ./vCamera.nix
