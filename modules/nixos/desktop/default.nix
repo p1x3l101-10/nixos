@@ -16,6 +16,7 @@
     ./cleanup.nix
     ./home-licences.nix
     ./home.nix
+    ./input-remapper.nix
     ./ipfs.nix
     ./kernel.nix
     ./modpack-working.nix
