@@ -163,8 +163,8 @@ in {
   };
   config = mkIf (cfg.enable) {
     programs.millennium-steam.settings.themes = {
-      activeTheme = "SpaceTheme";
-      conditions.SpaceTheme = with cfg.settings; {
+      activeTheme = "Steam";
+      conditions.Steam = with cfg.settings; {
         "General - Window Controls" = general.titlebar.windowControls;
         "General - Navigation buttons" = bool2Str general.sidebar.navigationButtons;
         "General - Always show sidebar" = bool2StrED general.sidebar.alwaysShowSidebar;
@@ -205,7 +205,7 @@ in {
         "Community - VAC-Ban visibility" = community.profile.hideVACBans;
         "Community - Profile pages header" = bool2Str community.other.hideProfilePageHeader;
       };
-      themeColors.SpaceTheme = {
+      themeColors.Steam = {
         "--st-accent-1" = "102, 108, 255";
         "--st-accent-2" = "135, 140, 255";
         "--st-color-1" = "17, 17, 17";
