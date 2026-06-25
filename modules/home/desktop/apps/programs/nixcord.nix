@@ -13,9 +13,9 @@ in
     vesktop = {
       enable = true;
       settings = {
-        MINIMIZE_TO_TRAY = true;
+        MINIMIZE_TO_TRAY = false;
         discordBranch = "stable";
-        minimizeToTray = true;
+        minimizeToTray = false;
         arRPC = true;
         splashColor = genRGB "0D";
         splashBackground = genRGB "00";
