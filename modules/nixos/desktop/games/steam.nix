@@ -7,7 +7,7 @@ let
     inherit (ext.stable.pkgs) pkgsi686Linux;
   };
   */
-  steamPkg = pkgs.steam;
+  steamPkg = msPkgs.millennium-steam;
 in {
   programs.steam = {
     enable = true;
