@@ -1,6 +1,7 @@
 { lib, ... }:
 
 let
+  hostArch = "znver4";
   gccArches = [
     "i386"
     "i486"
@@ -111,15 +112,18 @@ let
   ];
 in
 {
-  /* Make builds the same again
-    nixpkgs.system = lib.mkForce {
-    features = [ "gccarch-skylake" ];
+  nixpkgs.system = lib.mkForce {
+    features = [ "gccarch-${hostArch}" ];
     system = "x86_64-linux";
     gcc = {
-      arch = "skylake";
-      tune = "skylake";
+      arch = hostArch;
+      tune = hostArch;
     };
-    };
-  */
+  };
+  # Add all supported compile targets
   nixpkgs.buildPlatform.systemFeatures = lib.forEach (x: "gccarch-" + x) gccArches;
+  hardware = {
+    cpu.amd.ryzen-smu.enable = true;
+    hardware.amdgpu.initrd.enable = true;
+  };
 }
