@@ -8,3 +8,7 @@ export def "from vdf" []: string -> record {
   | $"{($in)}" 
   | from json
 }
+
+export def "from acf" []: string -> record {
+  from vdf
+}
