@@ -198,8 +198,8 @@ in
     # Bind even workspaces to secondary monitor
     ++
     (map
-      (x: "${builtins.toString x}, monitor:${monitors.primary}")
-      (builtins.genList (x: (x * 2)) 5)
+      (x: "${builtins.toString x}, monitor:${monitors.secondary}")
+      (builtins.genList (x: (x * 2) + 2) 5)
     )
   ) else [];
   monitor = if (monitors.applies) then [
