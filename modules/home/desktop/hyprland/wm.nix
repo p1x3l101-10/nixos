@@ -1,4 +1,4 @@
-{ ext, pkgs, lib, ... }:
+{ ext, pkgs, lib, osConfig, ... }:
 let
   inherit (ext) inputs system;
 in
@@ -9,7 +9,7 @@ in
     package = null;
     portalPackage = null;
     configType = "hyprlang";
-    settings = import ./support/hyprland-config.nix { inherit pkgs lib ext; };
+    settings = import ./support/hyprland-config.nix { inherit pkgs lib ext osConfig; };
     systemd.enable = true;
     xwayland.enable = true;
   };

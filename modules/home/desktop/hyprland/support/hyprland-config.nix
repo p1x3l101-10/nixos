@@ -1,5 +1,5 @@
 # See https://wiki.hyprland.org/Configuring
-{ pkgs, lib, ext }:
+{ pkgs, lib, ext, osConfig ? {} }:
 
 let
   # Layer on an additional lib namespace (why do i do this to myself)
@@ -185,4 +185,23 @@ in
     { Pause = "play-pause"; }
     { Prev = "previous"; }
   ]);
+  workspace = if (osConfig.networking.hostName == "pixels-pc") then (
+    let
+      monitors = {
+        primary = "DP-1";
+        secondary = "DP-2";
+      };
+    in
+    # Bind workspaces 1-5 to primary monitor
+    (map
+      (x: "${builtins.toString x}, monitor:${monitors.primary}")
+      (builtins.genList (x: x + 1) 5)
+    )
+    # Bind workspaces 6-10 to secondary monitor
+    ++
+    (map
+      (x: "${builtins.toString x}, monitor:${monitors.primary}")
+      (builtins.genList (x: x + 1 + 5) 5)
+    )
+  ) else [];
 }
