@@ -120,10 +120,12 @@ in
       tune = hostArch;
     };
   };
-  # Add all supported compile targets
   nix.settings.system-features = lib.forEach (x: "gccarch-" + x) gccArches;
   hardware = {
     cpu.amd.ryzen-smu.enable = true;
-    hardware.amdgpu.initrd.enable = true;
+    amdgpu = {
+      initrd.enable = true;
+      overdrive.enable = true;
+    };
   };
 }

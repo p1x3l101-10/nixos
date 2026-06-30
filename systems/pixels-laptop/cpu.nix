@@ -124,6 +124,5 @@ in
   nix.settings.system-features = lib.forEach (x: "gccarch-" + x) gccArches;
   hardware = {
     cpu.amd.ryzen-smu.enable = true;
-    hardware.amdgpu.initrd.enable = true;
   };
 }
