@@ -19,9 +19,13 @@ let
     b' = self.bind';
     b = self.bind;
   });
+  monitors = {
+    applies = (osConfig.networking.hostName == "pixels-pc");
+    primary = "DP-1";
+    secondary = "DP-2";
+  };
 in
 {
-  monitor = ",preferred,auto,auto";
   general = {
     gaps_in = 5;
     gaps_out = 10;
@@ -185,13 +189,7 @@ in
     { Pause = "play-pause"; }
     { Prev = "previous"; }
   ]);
-  workspace = if (osConfig.networking.hostName == "pixels-pc") then (
-    let
-      monitors = {
-        primary = "DP-1";
-        secondary = "DP-2";
-      };
-    in
+  workspace = if (monitors.applies) then (
     # Bind workspaces 1-5 to primary monitor
     (map
       (x: "${builtins.toString x}, monitor:${monitors.primary}")
@@ -204,4 +202,8 @@ in
       (builtins.genList (x: x + 1 + 5) 5)
     )
   ) else [];
+  monitor = if (monitors.applies) then [
+    "${monitors.primary},preferred,auto,auto"
+    "${monitors.secondary},preferred,auto-left,auto"
+  ] else ",preferred,auto,auto";
 }
