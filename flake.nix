@@ -130,6 +130,10 @@
       url = "github:nix-community/steam-fetcher";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ipfs-nix = {
+      url = "github:obsidiansystems/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = inputs: import ./outputs.nix inputs;
 }
