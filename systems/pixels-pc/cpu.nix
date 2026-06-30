@@ -128,4 +128,9 @@ in
       overdrive.enable = true;
     };
   };
+  # Leave 4 cores free for other use
+  nix.settings = {
+    cores = 2;
+    max-jobs = 6;
+  };
 }
