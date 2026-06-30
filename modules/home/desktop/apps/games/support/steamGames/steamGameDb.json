@@ -1,0 +1,594 @@
+[
+  {
+    "appid": "400",
+    "name": "Portal"
+  },
+  {
+    "appid": "440",
+    "name": "Team Fortress 2"
+  },
+  {
+    "appid": "550",
+    "name": "Left 4 Dead 2"
+  },
+  {
+    "appid": "620",
+    "name": "Portal 2"
+  },
+  {
+    "appid": "3480",
+    "name": "Peggle Deluxe"
+  },
+  {
+    "appid": "105600",
+    "name": "Terraria"
+  },
+  {
+    "appid": "211820",
+    "name": "Starbound"
+  },
+  {
+    "appid": "212680",
+    "name": "FTL: Faster Than Light"
+  },
+  {
+    "appid": "218620",
+    "name": "PAYDAY 2"
+  },
+  {
+    "appid": "219740",
+    "name": "Don't Starve"
+  },
+  {
+    "appid": "228980",
+    "name": "Steamworks Common Redistributables"
+  },
+  {
+    "appid": "233150",
+    "name": "LUFTRAUSERS"
+  },
+  {
+    "appid": "239030",
+    "name": "Papers, Please"
+  },
+  {
+    "appid": "240720",
+    "name": "Getting Over It with Bennett Foddy"
+  },
+  {
+    "appid": "244450",
+    "name": "Men of War: Assault Squad 2"
+  },
+  {
+    "appid": "246620",
+    "name": "Plague Inc: Evolved"
+  },
+  {
+    "appid": "250820",
+    "name": "SteamVR"
+  },
+  {
+    "appid": "264710",
+    "name": "Subnautica"
+  },
+  {
+    "appid": "275850",
+    "name": "No Man's Sky"
+  },
+  {
+    "appid": "277890",
+    "name": "Shantae: Risky's Revenge - Director's Cut"
+  },
+  {
+    "appid": "281990",
+    "name": "Stellaris"
+  },
+  {
+    "appid": "285920",
+    "name": "TerraTech"
+  },
+  {
+    "appid": "286160",
+    "name": "Tabletop Simulator"
+  },
+  {
+    "appid": "311690",
+    "name": "Enter the Gungeon"
+  },
+  {
+    "appid": "312280",
+    "name": "Simply Chess"
+  },
+  {
+    "appid": "317400",
+    "name": "Portal Stories: Mel"
+  },
+  {
+    "appid": "322330",
+    "name": "Don't Starve Together"
+  },
+  {
+    "appid": "323190",
+    "name": "Frostpunk"
+  },
+  {
+    "appid": "341800",
+    "name": "Keep Talking and Nobody Explodes"
+  },
+  {
+    "appid": "345820",
+    "name": "Shantae and the Pirate's Curse"
+  },
+  {
+    "appid": "359320",
+    "name": "Elite Dangerous"
+  },
+  {
+    "appid": "361280",
+    "name": "Turmoil"
+  },
+  {
+    "appid": "361420",
+    "name": "ASTRONEER"
+  },
+  {
+    "appid": "362890",
+    "name": "Black Mesa"
+  },
+  {
+    "appid": "367520",
+    "name": "Hollow Knight"
+  },
+  {
+    "appid": "368340",
+    "name": "CrossCode"
+  },
+  {
+    "appid": "370360",
+    "name": "TIS-100"
+  },
+  {
+    "appid": "410900",
+    "name": "Forts"
+  },
+  {
+    "appid": "427520",
+    "name": "Factorio"
+  },
+  {
+    "appid": "438100",
+    "name": "VRChat"
+  },
+  {
+    "appid": "447530",
+    "name": "VA-11 Hall-A: Cyberpunk Bartender Action"
+  },
+  {
+    "appid": "448280",
+    "name": "Job Simulator"
+  },
+  {
+    "appid": "450390",
+    "name": "The Lab"
+  },
+  {
+    "appid": "457140",
+    "name": "Oxygen Not Included"
+  },
+  {
+    "appid": "526870",
+    "name": "Satisfactory"
+  },
+  {
+    "appid": "546560",
+    "name": "Half-Life: Alyx"
+  },
+  {
+    "appid": "548430",
+    "name": "Deep Rock Galactic"
+  },
+  {
+    "appid": "552100",
+    "name": "Brick Rigs"
+  },
+  {
+    "appid": "570940",
+    "name": "DARK SOULS™: REMASTERED"
+  },
+  {
+    "appid": "597170",
+    "name": "Clone Drone in the Danger Zone"
+  },
+  {
+    "appid": "629730",
+    "name": "Blade & Sorcery"
+  },
+  {
+    "appid": "632360",
+    "name": "Risk of Rain 2"
+  },
+  {
+    "appid": "641990",
+    "name": "The Escapists 2"
+  },
+  {
+    "appid": "657200",
+    "name": "Hand Simulator"
+  },
+  {
+    "appid": "674940",
+    "name": "Stick Fight: The Game"
+  },
+  {
+    "appid": "700330",
+    "name": "SCP: Secret Laboratory"
+  },
+  {
+    "appid": "738520",
+    "name": "Breathedge"
+  },
+  {
+    "appid": "751780",
+    "name": "Forager"
+  },
+  {
+    "appid": "753640",
+    "name": "Outer Wilds"
+  },
+  {
+    "appid": "761910",
+    "name": "Worbital"
+  },
+  {
+    "appid": "848450",
+    "name": "Subnautica: Below Zero"
+  },
+  {
+    "appid": "851100",
+    "name": "Touhou Luna Nights"
+  },
+  {
+    "appid": "858280",
+    "name": "Proton 3.7"
+  },
+  {
+    "appid": "868020",
+    "name": "Aperture Hand Lab"
+  },
+  {
+    "appid": "916190",
+    "name": "CrossCode Soundtrack"
+  },
+  {
+    "appid": "945360",
+    "name": "Among Us"
+  },
+  {
+    "appid": "951440",
+    "name": "Volcanoids"
+  },
+  {
+    "appid": "960090",
+    "name": "Bloons TD 6"
+  },
+  {
+    "appid": "961940",
+    "name": "Proton 3.16"
+  },
+  {
+    "appid": "1030300",
+    "name": "Hollow Knight: Silksong"
+  },
+  {
+    "appid": "1054830",
+    "name": "Proton 4.2"
+  },
+  {
+    "appid": "1070560",
+    "name": "Steam Linux Runtime 1.0 (scout)"
+  },
+  {
+    "appid": "1113280",
+    "name": "Proton 4.11"
+  },
+  {
+    "appid": "1115050",
+    "name": "Will You Snail?"
+  },
+  {
+    "appid": "1122050",
+    "name": "Gensokyo Night Festival"
+  },
+  {
+    "appid": "1124830",
+    "name": "东方华彩乱战 ~ Touhou Blooming Chaos"
+  },
+  {
+    "appid": "1140150",
+    "name": "东方光耀夜 ~ Lost Branch of Legend"
+  },
+  {
+    "appid": "1161040",
+    "name": "Proton BattlEye Runtime"
+  },
+  {
+    "appid": "1167630",
+    "name": "Teardown"
+  },
+  {
+    "appid": "1206560",
+    "name": "WorldBox - God Simulator"
+  },
+  {
+    "appid": "1229490",
+    "name": "ULTRAKILL"
+  },
+  {
+    "appid": "1245040",
+    "name": "Proton 5.0"
+  },
+  {
+    "appid": "1255980",
+    "name": "Portal Reloaded"
+  },
+  {
+    "appid": "1281930",
+    "name": "tModLoader"
+  },
+  {
+    "appid": "1289310",
+    "name": "Helltaker"
+  },
+  {
+    "appid": "1306630",
+    "name": "Lost Ruins"
+  },
+  {
+    "appid": "1318690",
+    "name": "shapez"
+  },
+  {
+    "appid": "1325860",
+    "name": "VTube Studio"
+  },
+  {
+    "appid": "1349230",
+    "name": "5D Chess With Multiverse Time Travel"
+  },
+  {
+    "appid": "1378290",
+    "name": "The Citadel"
+  },
+  {
+    "appid": "1388880",
+    "name": "Doki Doki Literature Club Plus!"
+  },
+  {
+    "appid": "1391110",
+    "name": "Steam Linux Runtime 2.0 (soldier)"
+  },
+  {
+    "appid": "1420170",
+    "name": "Proton 5.13"
+  },
+  {
+    "appid": "1454400",
+    "name": "Cookie Clicker"
+  },
+  {
+    "appid": "1473350",
+    "name": "(the) Gnorp Apologue"
+  },
+  {
+    "appid": "1485080",
+    "name": "Just Act Natural"
+  },
+  {
+    "appid": "1486350",
+    "name": "VRoid Studio"
+  },
+  {
+    "appid": "1493710",
+    "name": "Proton Experimental"
+  },
+  {
+    "appid": "1517040",
+    "name": "CrossCode Original Soundtrack EX"
+  },
+  {
+    "appid": "1517240",
+    "name": "CHESS with LASERS"
+  },
+  {
+    "appid": "1580130",
+    "name": "Proton 6.3"
+  },
+  {
+    "appid": "1584090",
+    "name": "东方夜雀食堂 - Touhou Mystia's Izakaya"
+  },
+  {
+    "appid": "1592190",
+    "name": "BONELAB"
+  },
+  {
+    "appid": "1628350",
+    "name": "Steam Linux Runtime 3.0 (sniper)"
+  },
+  {
+    "appid": "1671210",
+    "name": "DELTARUNE"
+  },
+  {
+    "appid": "1703340",
+    "name": "The Stanley Parable: Ultra Deluxe"
+  },
+  {
+    "appid": "1782380",
+    "name": "SCP: Containment Breach Multiplayer"
+  },
+  {
+    "appid": "1796470",
+    "name": "Haste"
+  },
+  {
+    "appid": "1826330",
+    "name": "Proton EasyAntiCheat Runtime"
+  },
+  {
+    "appid": "1887720",
+    "name": "Proton 7.0"
+  },
+  {
+    "appid": "1914970",
+    "name": "たすけて！おつかれさとり様"
+  },
+  {
+    "appid": "1962700",
+    "name": "Subnautica 2"
+  },
+  {
+    "appid": "1972440",
+    "name": "Shotgun King: The Final Checkmate"
+  },
+  {
+    "appid": "2021910",
+    "name": "FPS Chess"
+  },
+  {
+    "appid": "2079120",
+    "name": "Warudo"
+  },
+  {
+    "appid": "2168680",
+    "name": "Nuclear Option"
+  },
+  {
+    "appid": "2180100",
+    "name": "Proton Hotfix"
+  },
+  {
+    "appid": "2212330",
+    "name": "Your Only Move Is HUSTLE"
+  },
+  {
+    "appid": "2230260",
+    "name": "Proton Next"
+  },
+  {
+    "appid": "2231450",
+    "name": "Pizza Tower"
+  },
+  {
+    "appid": "2348590",
+    "name": "Proton 8.0"
+  },
+  {
+    "appid": "2349830",
+    "name": "Touhou: Gensokyo Survivors"
+  },
+  {
+    "appid": "2375160",
+    "name": "I Am Sakuya VR: Touhou FPS Game"
+  },
+  {
+    "appid": "2519830",
+    "name": "Resonite"
+  },
+  {
+    "appid": "2805730",
+    "name": "Proton 9.0"
+  },
+  {
+    "appid": "2835570",
+    "name": "Buckshot Roulette"
+  },
+  {
+    "appid": "2873080",
+    "name": "The NOexistenceN of you AND me"
+  },
+  {
+    "appid": "2878100",
+    "name": "Planetka"
+  },
+  {
+    "appid": "2881650",
+    "name": "Content Warning"
+  },
+  {
+    "appid": "3086180",
+    "name": "Proton Voice Files"
+  },
+  {
+    "appid": "3176850",
+    "name": "Second Stellar"
+  },
+  {
+    "appid": "3241660",
+    "name": "R.E.P.O."
+  },
+  {
+    "appid": "3258790",
+    "name": "Stuff to do Demo"
+  },
+  {
+    "appid": "3265060",
+    "name": "东方异域见闻 ~ Touhou Dystopian"
+  },
+  {
+    "appid": "3270680",
+    "name": "Kota`s New Journey"
+  },
+  {
+    "appid": "3274300",
+    "name": "Awaria"
+  },
+  {
+    "appid": "3520250",
+    "name": "MR DONALD: DEMO"
+  },
+  {
+    "appid": "3658110",
+    "name": "Proton 10.0"
+  },
+  {
+    "appid": "3716600",
+    "name": "Mage Arena"
+  },
+  {
+    "appid": "3774440",
+    "name": "帝国幻想乡~TOHOTOPIA"
+  },
+  {
+    "appid": "3809440",
+    "name": "Cheese Rolling"
+  },
+  {
+    "appid": "3830210",
+    "name": "Hyper Chess"
+  },
+  {
+    "appid": "3900710",
+    "name": "Alabaster Dawn Demo"
+  },
+  {
+    "appid": "3970580",
+    "name": "All Our Broken Parts Playtest"
+  },
+  {
+    "appid": "4183110",
+    "name": "Steam Linux Runtime 4.0"
+  },
+  {
+    "appid": "4628710",
+    "name": "Proton 11.0"
+  },
+  {
+    "appid": "4791300",
+    "name": "XenoFeels Demo"
+  },
+  {
+    "appid": "4791640",
+    "name": "KOTAMON: My Sis Found A Super-Rare Card In Her Cereal Box, So I Became A Garbage Man To Find The Entire Collection And Earn $1,000,000 Demo"
+  }
+]
