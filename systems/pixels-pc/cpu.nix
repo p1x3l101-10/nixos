@@ -120,7 +120,7 @@ in
       tune = hostArch;
     };
   };
-  nix.settings.system-features = lib.forEach (x: "gccarch-" + x) gccArches;
+  nix.settings.system-features = (map (x: "gccarch-" + x) gccArches);
   hardware = {
     cpu.amd.ryzen-smu.enable = true;
     amdgpu = {
