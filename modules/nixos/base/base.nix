@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, ext, ... }:
 {
   # Posix shell
   environment.binsh = "${pkgs.dash}/bin/dash";
@@ -29,6 +29,10 @@
       experimental-features = [ "nix-command" "flakes" ];
     };
     package = pkgs.nixVersions.latest;
+    registry = (builtins.mapAttrs
+      (_: flake: { inherit flake; })
+      ext.inputs
+    );
   };
   programs.git = {
     enable = true;
