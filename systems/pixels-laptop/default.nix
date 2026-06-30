@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 {
   imports = [
+    ./cpu.nix
     ./hardware-configuration.nix
     ./kvm.nix
     ./disko-config.nix
