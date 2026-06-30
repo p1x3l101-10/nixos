@@ -190,16 +190,16 @@ in
     { Prev = "previous"; }
   ]);
   workspace = if (monitors.applies) then (
-    # Bind workspaces 1-5 to primary monitor
+    # Bind odd workspaces to primary monitor
     (map
       (x: "${builtins.toString x}, monitor:${monitors.primary}")
-      (builtins.genList (x: x + 1) 5)
+      (builtins.genList (x: (x * 2) + 1) 5)
     )
-    # Bind workspaces 6-10 to secondary monitor
+    # Bind even workspaces to secondary monitor
     ++
     (map
       (x: "${builtins.toString x}, monitor:${monitors.primary}")
-      (builtins.genList (x: x + 1 + 5) 5)
+      (builtins.genList (x: (x * 2)) 5)
     )
   ) else [];
   monitor = if (monitors.applies) then [
