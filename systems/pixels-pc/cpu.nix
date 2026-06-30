@@ -112,7 +112,7 @@ let
   ];
 in
 {
-  nixpkgs.system = lib.mkForce {
+  nixpkgs.hostPlatform = lib.mkForce {
     features = [ "gccarch-${hostArch}" ];
     system = "x86_64-linux";
     gcc = {
@@ -121,7 +121,7 @@ in
     };
   };
   # Add all supported compile targets
-  nixpkgs.buildPlatform.systemFeatures = lib.forEach (x: "gccarch-" + x) gccArches;
+  nix.settings.system-features = lib.forEach (x: "gccarch-" + x) gccArches;
   hardware = {
     cpu.amd.ryzen-smu.enable = true;
     hardware.amdgpu.initrd.enable = true;
