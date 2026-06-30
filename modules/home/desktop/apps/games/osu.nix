@@ -1,5 +1,5 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
-  services.flatpak.packages = [ "sh.ppy.osu" ];
+  home.packages = [ pkgs.osu-lazer-bin ];
 }
