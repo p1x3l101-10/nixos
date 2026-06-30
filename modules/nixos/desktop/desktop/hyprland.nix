@@ -27,4 +27,9 @@ lib.fix (self: {
     autologinOnce = true;
     autologinUser = "pixel";
   };
+  # Speed up graphical session by not waiting on absolutely everything to finish
+  systemd.services."getty@tty1" = {
+    overrideStrategy = "asDropin";
+    serviceConfig.Type = "simple";
+  };
 })
