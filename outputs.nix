@@ -24,22 +24,31 @@ inputs.flake-utils.lib.eachDefaultSystem
     specialArgs = lib.fix (final: {
       ext = lib.fix (finalExt: {
         inherit inputs system;
+        defaultNixpkgsConfig = {
+          contentAddressedByDefault = true;
+        };
         stable = lib.fix (finalPkgs: {
           input = inputs.nixpkgs-stable;
           inherit (finalPkgs.input) lib;
-          pkgs = finalPkgs.input.legacyPackages."${system}";
+          pkgs = finalExt.rawPkgs {
+            nixpkgs = finalPkgs.input;
+            config = finalExt.defaultNixpkgsConfig;
+          };
           unfreePkgs = finalExt.rawPkgs {
             nixpkgs = finalPkgs.input;
-            config = { allowUnfree = true; };
+            config = (finalExt.defaultNixpkgsConfig // { allowUnfree = true; });
           };
         });
         unstable = lib.fix (finalPkgs: {
           input = inputs.nixpkgs;
           inherit (finalPkgs.input) lib;
-          pkgs = finalPkgs.input.legacyPackages."${system}";
+          pkgs = finalExt.rawPkgs {
+            nixpkgs = finalPkgs.input;
+            config = finalExt.defaultNixpkgsConfig;
+          };
           unfreePkgs = finalExt.rawPkgs {
             nixpkgs = finalPkgs.input;
-            config = { allowUnfree = true; };
+            config = (finalExt.defaultNixpkgsConfig // { allowUnfree = true; });
           };
         });
         rawPkgs = { nixpkgs ? finalExt.unstable.input, config }: (
