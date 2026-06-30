@@ -30,6 +30,6 @@
         cue = true;
       };
     };
-    lockOnUnplug = true;
+    lockOnUnplug = false;
   };
 }
