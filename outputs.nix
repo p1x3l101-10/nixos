@@ -72,6 +72,11 @@ inputs.flake-utils.lib.eachDefaultSystem
       self.nixosModules.module
       { lib."${namespace}" = eLib; }
       (eLib.flake.genPkgOverlay { inherit namespace; packages = inputs.self.packages.${system}; })
+      {
+        nixpkgs.overlays = with inputs.self.overlays; [
+          build-fixes
+        ];
+      }
     ];
   in
   {
@@ -79,6 +84,7 @@ inputs.flake-utils.lib.eachDefaultSystem
     lib = eLib;
     overlays = {
       fix-ca-conflicts = import ./overlays/fix-ca-conflicts;
+      build-fixes = import ./overlays/build-fixes;
     };
     nixosModules = eLib.flake.genModules {
       src = ./modules/nixos;
