@@ -70,6 +70,7 @@ inputs.flake-utils.lib.eachDefaultSystem
       stylix.nixosModules.stylix
       self.nixosModules.base
       self.nixosModules.module
+      nix-citizen.nixosModules.default
       { lib."${namespace}" = eLib; }
       (eLib.flake.genPkgOverlay { inherit namespace; packages = inputs.self.packages.${system}; })
       {
