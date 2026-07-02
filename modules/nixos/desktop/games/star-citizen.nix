@@ -1,4 +1,4 @@
-{ config, ext, ... }:
+{ config, ext, pkgs, ... }:
 
 {
   programs.rsi-launcher = {
@@ -16,6 +16,9 @@
   services.nixos-cli.prebuildOptionCache = false; # FIXME: Upstream for rsi has bugged default options and this cannot gracefully handle that
   nixpkgs.overlays = [
     ext.inputs.nix-citizen.overlays.default
+  ];
+  environment.systemPackages = with pkgs; [
+    lug-helper
   ];
   system.allowedUnfree.packages = [
     "rsi-launcher"
