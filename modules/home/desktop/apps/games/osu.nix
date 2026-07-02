@@ -7,7 +7,7 @@ in {
     (gamePkgs.osu-lazer-bin.override {
       releaseStream = "lazer";
       gmrun_enable = true;
-      pipewire_latency = "1024/44100";
+      pipewire_latency = "16/44000";
     })
   ];
   home.allowedUnfree.packages = [ "osu-lazer-bin" ];
