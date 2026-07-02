@@ -51,5 +51,6 @@
     ./desktop/waydroid.nix
 
     ./games/steam.nix
+    ./games/star-citizen.nix
   ];
 }

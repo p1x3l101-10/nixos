@@ -6,15 +6,19 @@
     patchXwayland = true;
     launchCommand = "%command%";
     gamescope = {
-      ebabke = true;
+      enable = true;
       args = [];
     };
     location = "$XDG_DATA_HOME/star-citizen";
     setLimits = true;
-    enableNTSync = true;
     enforceWaylandDrv = true;
   };
+  services.nixos-cli.prebuildOptionCache = false; # FIXME: Upstream for rsi has bugged default options and this cannot gracefully handle that
   nixpkgs.overlays = [
     ext.inputs.nix-citizen.overlays.default
+  ];
+  system.allowedUnfree.packages = [
+    "rsi-launcher"
+    "rsi-installer"
   ];
 }
