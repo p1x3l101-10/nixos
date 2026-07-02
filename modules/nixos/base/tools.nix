@@ -29,5 +29,9 @@
     nix-output-monitor
     nix-eval-jobs
     nvd
+    # Override run0 to not have a stupid color background
+    ((writeShellScriptBin "run0" ''
+      exec ${config.systemd.package}/bin/run0 --background="" "$@"
+    '') // { meta.priority = 1; })
   ];
 }
