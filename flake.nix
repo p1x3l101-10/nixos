@@ -142,6 +142,14 @@
         flake-compat.follows = "flake-compat";
       };
     };
+    nix-citizen = {
+      url = "github:LovingMelody/nix-citizen";
+      inputs = {
+        nix-gaming.follows = "nix-gaming";
+        nixpkgs.follows = "nixpkgs";
+        flake-compat.follows = "flake-compat";
+      };
+    };
   };
   outputs = inputs: import ./outputs.nix inputs;
 }
