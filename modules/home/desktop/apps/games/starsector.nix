@@ -1,7 +1,9 @@
 { inputs, pkgs, ... }:
 
 {
-  home.packages = [
-    #pkgs.internal.trios
+  home.packages = with pkgs; [
+    #internal.trios
+    starsector
   ];
+  home.allowedUnfree.packages = [ "starsector" ];
 }
