@@ -2,6 +2,7 @@
 
 let
   hostArch = "znver4";
+  forceCompileForHost = false;
   gccArches = [
     "i386"
     "i486"
@@ -112,14 +113,14 @@ let
   ];
 in
 {
-  nixpkgs.hostPlatform = lib.mkForce {
+  nixpkgs.hostPlatform = lib.mkIf (forceCompileForHost) (lib.mkForce {
     features = [ "gccarch-${hostArch}" ];
     system = "x86_64-linux";
     gcc = {
       arch = hostArch;
       tune = hostArch;
     };
-  };
+  });
   # Add all supported compile targets
   nix.settings.system-features = (map (x: "gccarch-" + x) gccArches);
   hardware = {
