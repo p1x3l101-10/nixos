@@ -74,7 +74,6 @@ inputs.flake-utils.lib.eachDefaultSystem
       (eLib.flake.genPkgOverlay { inherit namespace; packages = inputs.self.packages.${system}; })
       {
         nixpkgs.overlays = with inputs.self.overlays; [
-          build-fixes
         ];
       }
     ];
