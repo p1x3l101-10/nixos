@@ -67,6 +67,9 @@
       prefer-unsynced-windows = true;
     };
   };
-  network.auth.subresource-http-auth-allow = 1;
+  network = {
+    auth.subresource-http-auth-allow = 1;
+    protocol-handler.expose-all = true;
+  };
   fission.autostart = true;
 }
