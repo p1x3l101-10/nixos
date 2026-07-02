@@ -3,7 +3,7 @@
 let
   gamePkgs = ext.inputs.nix-citizen.packages."${ext.system}";
 in {
-  config = lib.mkIf (osConfig.networking.hostName == "pixels-pc") {
+  config = lib.mkIf (false) {
     home.packages = [
       (gamePkgs.rsi-launcher.override {
         location = "$HOME/.local/share/star-citizen";
