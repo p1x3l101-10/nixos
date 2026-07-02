@@ -3,7 +3,7 @@
 { packages, namespace }:
 
 { ... }: {
-  nixpkgs.overlays = [
+  nixpkgs.overlays = lib.mkAfter [
     (final: prev: {
       "${namespace}" = packages;
     })
