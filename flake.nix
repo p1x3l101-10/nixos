@@ -134,6 +134,14 @@
       url = "github:obsidiansystems/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-gaming = {
+      url = "github:fufexan/nix-gaming";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        flake-compat.follows = "flake-compat";
+      };
+    };
   };
   outputs = inputs: import ./outputs.nix inputs;
 }
