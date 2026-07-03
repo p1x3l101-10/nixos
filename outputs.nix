@@ -18,6 +18,17 @@ inputs.flake-utils.lib.eachDefaultSystem
           inherit inputs;
         };
       };
+      devShells = {
+        # A devShell that contains the currently specified kernel with the needed extra deps to run `make menuconfig`
+        desktopKernel = inputs.self.nixosConfigurations.pixels-pc.config.boot.kernelPackages.kernel.overrideAttrs (oldAttrs: {
+          nativeBuildInputs = oldAttrs.nativeBuildInputs ++ (with pkgs; [
+            gnumake
+            pkg-config
+            ncurses
+            qt5.qtbase
+          ]);
+        });
+      };
     }
   ) // inputs.flake-utils.lib.eachDefaultSystemPassThrough (system:
   let
