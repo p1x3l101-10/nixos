@@ -20,6 +20,9 @@
     preCommands = ''
       export PROTON_ENABLE_WAYLAND=1
       export WAYLANDDRV_PRIMARY_MONITOR="DP-1"
+      mkdir -p "$XDG_CACHE_HOME/star-citizen/shaders"
+      export MESA_SHADER_CACHE_DIR="$XDG_CACHE_HOME/star-citizen/shaders"
+      export MESA_SHADER_CACHE_MAX_SIZE=20G
     '';
   };
   services.nixos-cli.prebuildOptionCache = false; # FIXME: Upstream for rsi has bugged default options and this cannot gracefully handle that
