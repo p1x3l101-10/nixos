@@ -7,7 +7,9 @@
     launchCommand = "%command%";
     gamescope = {
       enable = true;
-      args = [];
+      args = [
+        "--force-grab-cursor"
+      ];
     };
     location = "$XDG_DATA_HOME/star-citizen";
     setLimits = true;
