@@ -15,6 +15,12 @@
     location = "$XDG_DATA_HOME/star-citizen";
     setLimits = true;
     enforceWaylandDrv = true;
+    enableNTsync = true;
+    umu.enable = true;
+    preCommands = ''
+      export PROTON_ENABLE_WAYLAND=1
+      export WAYLANDDRV_PRIMARY_MONITOR="DP-1"
+    '';
   };
   services.nixos-cli.prebuildOptionCache = false; # FIXME: Upstream for rsi has bugged default options and this cannot gracefully handle that
   nixpkgs.overlays = [
