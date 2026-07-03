@@ -71,6 +71,6 @@ let
 in {
   boot = {
     kernelPatches = cfg.patches;
-    kernelPackages = pkgs.linuxPackagesFor (kernel.kernel.override cfg.overrides);
+    kernelPackages = lib.mkForce (pkgs.linuxPackagesFor (kernel.kernel.override cfg.overrides));
   };
 }
