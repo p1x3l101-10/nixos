@@ -70,6 +70,6 @@ let
 in {
   boot = {
     kernelPatches = cfg.patches;
-    kernelPackages = pkgs.linuxPackagesFor (kernel.override cfg.overrides);
+    kernelPackages = pkgs.linuxPackagesFor (kernel.kernel.override cfg.overrides);
   };
 }
