@@ -7,7 +7,7 @@
     ./disko-config.nix
     ./lighting.nix
     ./network.nix
-    #./kernel.nix
+    ./kernel.nix
   ];
   networking.hostName = "pixels-pc";
   environment.etc.machine-id.text = "c2b9de128d004668baadd6bd861149ad";
