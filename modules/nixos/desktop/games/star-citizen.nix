@@ -4,7 +4,7 @@
   programs.rsi-launcher = {
     enable = (config.networking.hostName == "pixels-pc");
     patchXwayland = true;
-    launchCommand = "%command%";
+    launchCommand = "gamemoderun %command%";
     gamescope = {
       enable = true;
       args = [

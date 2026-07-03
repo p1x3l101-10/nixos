@@ -14,6 +14,7 @@
     ./adb.nix
     ./alfis.nix
     ./cleanup.nix
+    ./gamemode.nix
     ./home-licences.nix
     ./home.nix
     ./ipfs.nix
