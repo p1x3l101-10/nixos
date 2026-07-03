@@ -8,6 +8,7 @@
     gamescope = {
       enable = true;
       args = [
+        "-W" "1980" "-H" "1080"
         "--force-grab-cursor"
       ];
     };
