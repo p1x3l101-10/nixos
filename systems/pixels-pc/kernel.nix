@@ -23,12 +23,13 @@ let
   in eLib.attrsets.mergeAttrs (map
     (x:
       {
-        inherit (x) overrides;
-        patches = x.patches ++ (lib.mapAttrsToList
+        overrides = if (builtins.hasAttr "overrides" x) then x.overrides else {};
+        patches = (if (builtins.hasAttr "patches" x) then x.patches else []) ++ (lib.mapAttrsToList
           (name: structuredExtraConfig: {
             inherit name structuredExtraConfig;
             patch = null;
           })
+          (if (builtins.hasAttr "config" x) then x.config else {})
         );
       }
     )
