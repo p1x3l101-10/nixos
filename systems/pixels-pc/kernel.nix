@@ -64,6 +64,7 @@ let
           DEBUG_KERNEL = n;
           PROFILING = n;
           AUDIT = n;
+          AUDITSYSCALL = n;
         };
       }
     ]
