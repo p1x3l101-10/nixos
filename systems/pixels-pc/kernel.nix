@@ -116,7 +116,15 @@ let
 in {
   boot = {
     kernelPatches = cfg.patches;
-    kernelPackages = lib.mkForce (pkgs.linuxPackagesFor (kernel.kernel.override cfg.overrides));
+    kernelPackages = lib.mkForce ((pkgs.linuxPackagesFor (kernel.kernel.override cfg.overrides)).extend (final: prev: {
+      # KMod overlays
+      ryzen-smu = prev.ryzen-smu.overrideAttrs (oldAttrs: {
+        makeFlags = (oldAttrs.makeFlags or []) ++ [
+          "KCFLAGS+=-Wno-unused-command-line-argument"
+          "LLVM=1"
+        ];
+      });
+    }));
   };
   # Disable services that are borked by kconfig
   security.audit.enable = false;
