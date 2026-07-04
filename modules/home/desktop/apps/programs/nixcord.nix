@@ -52,7 +52,6 @@ in
         favoriteEmojiFirst.enable = true;
         favoriteGifSearch.enable = true;
         fixYoutubeEmbeds.enable = true;
-        friendsSince.enable = true;
         loadingQuotes.enable = true;
         mentionAvatars.enable = true;
         messageLogger = {
