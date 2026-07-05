@@ -15,7 +15,7 @@ inputs.flake-utils.lib.eachDefaultSystem
       packages = eLib.flake.genPackages ./packages pkgs.newScope {
         ext = {
           lib = eLib;
-          inherit inputs;
+          inherit inputs system;
         };
       };
       devShells = {
