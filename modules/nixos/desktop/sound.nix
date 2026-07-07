@@ -19,9 +19,10 @@ in {
       "99-fix-crackling" = {
         "context.properties" = pwCfg {
           default.clock = {
-            rate = 44100;
+            rate = 48000;
             allowed-rates = [ 44100 48000 88200 96000 ];
-            min-quantum = 512;
+            min-quantum = 32;
+            max-quantum = 2048;
           };
         };
       };
