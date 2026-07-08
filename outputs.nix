@@ -86,6 +86,7 @@ inputs.flake-utils.lib.eachDefaultSystem
       (eLib.flake.genPkgOverlay { inherit namespace; packages = inputs.self.packages.${system}; })
       {
         nixpkgs.overlays = with inputs.self.overlays; [
+          wifi-fixes
         ];
       }
     ];
@@ -96,6 +97,7 @@ inputs.flake-utils.lib.eachDefaultSystem
     overlays = {
       fix-ca-conflicts = import ./overlays/fix-ca-conflicts;
       build-fixes = import ./overlays/build-fixes;
+      wifi-fixes = import ./overlays/wifi-fixes;
     };
     nixosModules = eLib.flake.genModules {
       src = ./modules/nixos;
