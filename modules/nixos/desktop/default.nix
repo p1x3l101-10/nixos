@@ -14,6 +14,7 @@
     ./adb.nix
     ./alfis.nix
     ./cleanup.nix
+    ./bluetooth.nix
     ./gamemode.nix
     ./home-licences.nix
     ./home.nix
