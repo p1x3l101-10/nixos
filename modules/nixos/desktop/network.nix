@@ -26,4 +26,6 @@
   # Prevent wait-online from killing my boot speed when offline
   boot.initrd.systemd.network.wait-online.timeout = 5;
   systemd.network.wait-online.timeout = 5;
+  # Add user to group for wifi info
+  users.users.pixel.extraGroups = [ "wpa_supplicant" ];
 }
