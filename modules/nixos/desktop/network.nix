@@ -15,10 +15,12 @@
       };
       "Blatt Wifi" = {
         pskRaw = "ext:psk_paps";
+        authProtocols = [ "WPA-PSK" ];
         priority = 5;
       };
       "Bar of Ytterbium" = {
         pskRaw = "ext:hotspot";
+        authProtocols = [ "WPA-PSK" ];
         priority = -1;
       };
     };
