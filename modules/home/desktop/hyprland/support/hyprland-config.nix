@@ -96,7 +96,10 @@ in
     */
     follow_mouse = false;
     sensitivity = 0;
-    touchpad.natural_scroll = true;
+    touchpad = {
+      natural_scroll = true;
+      disable_while_typing = false;
+    };
   };
   bind = let inherit (bindScope) bind' bind bnm bind'' b' b; in [
     # Main binds
