@@ -11,6 +11,11 @@
         authProtocols = [ "WPA-PSK" ];
         priority = 10;
       };
+      "Blatt Wifi" = {
+        pskRaw = "ext:psk_paps";
+        authProtocols = [ "WPA-PSK" ];
+        priority = 5;
+      };
     };
   };
 }
