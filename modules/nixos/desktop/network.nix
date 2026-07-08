@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   hardware.enableRedistributableFirmware = true;
@@ -25,6 +25,7 @@
       };
     };
   };
+  environment.systemPackages = [ pkgs.wpa_supplicant_gui ];
   # Prevent wait-online from killing my boot speed when offline
   boot.initrd.systemd.network.wait-online.timeout = 5;
   systemd.network.wait-online.timeout = 5;
