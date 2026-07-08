@@ -4,6 +4,7 @@
   hardware.enableRedistributableFirmware = true;
   networking.wireless = {
     enable = true;
+    dbusControlled = false;
     secretsFile = "/nix/host/keys/wpa_supplicant/secrets.conf";
     networks = {
       "NSA Surveillance Hub5" = {
@@ -13,8 +14,11 @@
       };
       "Blatt Wifi" = {
         pskRaw = "ext:psk_paps";
-        authProtocols = [ "WPA-PSK" ];
         priority = 5;
+      };
+      "Bar of Ytterbium" = {
+        pskRaw = "ext:hotspot";
+        priority = -1;
       };
     };
   };
