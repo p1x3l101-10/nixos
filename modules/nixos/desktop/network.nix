@@ -6,23 +6,33 @@
     enable = true;
     userControlled = true;
     secretsFile = "/nix/host/keys/wpa_supplicant/secrets.conf";
+    extraConfig = ''
+      country=us
+      sae_pwe=1
+    '';
     networks = {
       "NSA Surveillance Hub5" = {
         pskRaw = "ext:psk_home_main";
-        authProtocols = [ "WPA-PSK" ];
+        authProtocols = [ "WPA-PSK" "SAE" ];
+        extraConfig = ''
+          ieee80211w=1
+        '';
         priority = 10;
       };
       "Blatt Wifi" = {
         pskRaw = "ext:psk_paps";
-        authProtocols = [ "SAE"  ];
+        authProtocols = [ "WPA-PSK" "SAE" ];
         extraConfig = ''
-          ieee80211w=2
+          ieee80211w=1
         '';
         priority = 5;
       };
       "Bar of Ytterbium" = {
         pskRaw = "ext:hotspot";
-        authProtocols = [ "WPA-PSK" ];
+        authProtocols = [ "WPA-PSK" "SAE" ];
+        extraConfig = ''
+          ieee80211w=1
+        '';
         priority = -1;
       };
     };
