@@ -14,7 +14,10 @@
       };
       "Blatt Wifi" = {
         pskRaw = "ext:psk_paps";
-        authProtocols = [ "WPA-PSK" ];
+        authProtocols = [ "SAE"  ];
+        extraConfig = ''
+          ieee80211w=2
+        '';
         priority = 5;
       };
       "Bar of Ytterbium" = {
