@@ -5,7 +5,6 @@
   networking.wireless = {
     enable = true;
     userControlled = true;
-    dbusControlled = false;
     secretsFile = "/nix/host/keys/wpa_supplicant/secrets.conf";
     networks = {
       "NSA Surveillance Hub5" = {
