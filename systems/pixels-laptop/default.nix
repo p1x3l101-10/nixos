@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   imports = [
     ./cpu.nix
@@ -23,4 +23,7 @@
     "/var/lib/fprint"
     "/var/lib/fwupd"
   ];
+
+  # Laptop can move, timezone override
+  time.timeZone = lib.mkForce "EST";
 }
