@@ -13,26 +13,17 @@
     networks = {
       "NSA Surveillance Hub5" = {
         pskRaw = "ext:psk_home_main";
-        authProtocols = [ "WPA-PSK" "SAE" ];
-        extraConfig = ''
-          ieee80211w=1
-        '';
+        authProtocols = [ "WPA-PSK" ];
         priority = 10;
       };
       "Blatt Wifi" = {
         pskRaw = "ext:psk_paps";
-        authProtocols = [ "WPA-PSK" "SAE" ];
-        extraConfig = ''
-          ieee80211w=1
-        '';
+        authProtocols = [ "WPA-PSK" ];
         priority = 5;
       };
       "Bar of Ytterbium" = {
         pskRaw = "ext:hotspot";
-        authProtocols = [ "WPA-PSK" "SAE" ];
-        extraConfig = ''
-          ieee80211w=1
-        '';
+        authProtocols = [ "WPA-PSK" ];
         priority = -1;
       };
     };
