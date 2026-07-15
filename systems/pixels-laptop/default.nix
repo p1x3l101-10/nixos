@@ -25,5 +25,5 @@
   ];
 
   # Laptop can move, timezone override
-  time.timeZone = lib.mkForce "US/Eastern";
+  time.timeZone = lib.mkForce "US/Central";
 }
