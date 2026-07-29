@@ -25,5 +25,5 @@
   ];
 
   # Laptop can move, timezone override
-  time.timeZone = lib.mkForce "US/Mountain";
+  #time.timeZone = lib.mkForce "US/Mountain";
 }
