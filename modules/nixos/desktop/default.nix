@@ -43,7 +43,6 @@
     ./vr.nix
     ./yubikey.nix
     ./run0.nix
-    ./meshtastic.nix
 
     ./desktop/flatpak.nix
     #./desktop/fonts.nix
