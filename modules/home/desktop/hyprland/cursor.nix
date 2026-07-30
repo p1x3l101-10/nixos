@@ -13,5 +13,10 @@
     };
   };
   home.sessionVariables.HYPRCURSOR_THEME = lib.mkForce "rose-pine-hyprcursor";
-  home.pointerCursor.hyprcursor.enable = true;
+  home.pointerCursor = {
+    enable = true;
+    hyprcursor.enable = true;
+    gtk.enable = true;
+    x11.enable = true;
+  };
 }
