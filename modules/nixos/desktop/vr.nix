@@ -63,9 +63,6 @@ in {
   # Others
   environment.systemPackages = with pkgs; [
     xr-hardware
-    (internal.telescope.override {
-      init-script = internal.vr-init;
-    })
     libva
     opencomposite
     wayvr
