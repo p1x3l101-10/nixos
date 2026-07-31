@@ -59,8 +59,8 @@ stdenv.mkDerivation rec {
     qt5.qtwayland
     qt5.qtx11extras
     qt5.qt3d
+    qt5.wrapQtAppsHook
   ];
-  dontWrapQtApps = true;
   unpackPhase = "dpkg-deb -x $src .";
   postUnpack = ''
     patchelf --ignore-missing libpng16.so.16 $sourceRoot/opt/HelpWire/Operator/lib/libQt5Gui.so.5
@@ -74,9 +74,6 @@ stdenv.mkDerivation rec {
     mv etc $out/etc
     mv opt $out/opt
     rm -v $out/opt/HelpWire/Operator/lib/libQt5{Core,DBus,Gui,Widgets,X11Extras,XcbQpa}.so.5
-    for lib in "${qt5.qtwayland}/lib/libQt5WaylandClient.so.5" "${qt5.qt3d}/lib/libQt5XcbQpa.so.5"; do
-      ln -vs $lib $out/opt/HelpWire/Operator/lib
-    done
     ln -s $out/opt/HelpWire/Operator/bin $out/bin
 
     runHook postInstall
