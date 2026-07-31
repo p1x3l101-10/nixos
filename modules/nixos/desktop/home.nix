@@ -16,6 +16,8 @@ in {
       "tablet"
       "adbusers"
     ];
+    home = "/home/pixel";
+    description = "Nova";
     uid = 1000;
   };
   systemd.tmpfiles.settings."10-sudo-lectures"."/var/db/sudo/lectured/1000".f = {
