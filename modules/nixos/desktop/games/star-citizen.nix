@@ -2,7 +2,7 @@
 
 {
   programs.rsi-launcher = {
-    enable = (config.networking.hostName == "pixels-pc");
+    enable = (config.networking.hostName == "stellar-pc");
     patchXwayland = true;
     launchCommand = "gamemoderun %command%";
     gamescope = {

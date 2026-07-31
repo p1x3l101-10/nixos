@@ -20,7 +20,7 @@ inputs.flake-utils.lib.eachDefaultSystem
       };
       devShells = {
         # A devShell that contains the currently specified kernel with the needed extra deps to run `make menuconfig`
-        desktopKernel = inputs.self.nixosConfigurations.pixels-pc.config.boot.kernelPackages.kernel.overrideAttrs (oldAttrs: {
+        desktopKernel = inputs.self.nixosConfigurations.stellar-pc.config.boot.kernelPackages.kernel.overrideAttrs (oldAttrs: {
           nativeBuildInputs = oldAttrs.nativeBuildInputs ++ (with pkgs; [
             gnumake
             pkg-config
@@ -106,10 +106,10 @@ inputs.flake-utils.lib.eachDefaultSystem
       src = ./modules/home;
     };
     nixosConfigurations = {
-      pixels-pc = lib.nixosSystem {
+      stellar-pc = lib.nixosSystem {
         inherit system specialArgs;
         modules = [
-          ./systems/pixels-pc
+          ./systems/stellar-pc
         ] ++ (with inputs; [
           self.nixosModules.desktop
           noctalia.nixosModules.default
@@ -121,10 +121,10 @@ inputs.flake-utils.lib.eachDefaultSystem
           common-gpu-amd
         ]) ++ common-modules;
       };
-      pixels-laptop = lib.nixosSystem {
+      stellar-laptop = lib.nixosSystem {
         inherit system specialArgs;
         modules = [
-          ./systems/pixels-laptop
+          ./systems/stellar-laptop
         ] ++ (with inputs; [
           self.nixosModules.desktop
           noctalia.nixosModules.default
@@ -132,10 +132,10 @@ inputs.flake-utils.lib.eachDefaultSystem
           framework-16-7040-amd
         ]) ++ common-modules;
       };
-      pixels-server = lib.nixosSystem {
+      stellar-server = lib.nixosSystem {
         inherit system specialArgs;
         modules = [
-          ./systems/pixels-server
+          ./systems/stellar-server
           inputs.self.nixosModules.server
         ] ++ (with inputs.nixos-hardware.nixosModules; [
           common-pc

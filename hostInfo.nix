@@ -16,7 +16,7 @@ lib.fix (final: {
     };
   };
   hosts = {
-    pixels-server = lib.fix (hostFinal: {
+    stellar-server = lib.fix (hostFinal: {
       fqdn = "${hostFinal.subdomain}.${final.globals.domain}";
       subdomain = "srv02";
       addrs = {
@@ -72,7 +72,7 @@ lib.fix (final: {
         addr = "200:6705:ae87:cdd1:cbff:66c8:a717:663";
       };
     });
-    pixels-pc = lib.fix (hostFinal: {
+    stellar-pc = lib.fix (hostFinal: {
       fqdn = null;
       subdomain = null;
       addrs = {

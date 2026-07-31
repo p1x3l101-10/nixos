@@ -35,7 +35,7 @@ in {
     users.pixel = { osConfig, lib, ... }: (
       ext.lib.lists.switch [
         {
-          case = (osConfig.networking.hostName == "pixels-pc");
+          case = (osConfig.networking.hostName == "stellar-pc");
           out = {
             imports = with inputs.self.homeModules; [
               desktop

@@ -20,7 +20,7 @@ let
     b = self.bind;
   });
   monitors = {
-    applies = (osConfig.networking.hostName == "pixels-pc");
+    applies = (osConfig.networking.hostName == "stellar-pc");
     primary = "DP-1";
     secondary = "DP-2";
   };

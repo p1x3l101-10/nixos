@@ -1,5 +1,5 @@
 { config, pkgs, lib, ... }:
-lib.mkIf (config.networking.hostName == "pixels-pc") (let
+lib.mkIf (config.networking.hostName == "stellar-pc") (let
   wivrn = pkgs.internal.wivrn-force-update;
 in {
   # Main vr service

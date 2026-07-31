@@ -1,6 +1,6 @@
 { config, lib, ... }:
 
-lib.mkIf (config.networking.hostName == "pixels-pc") {
+lib.mkIf (config.networking.hostName == "stellar-pc") {
   services.ollama = {
     enable = true;
     acceleration = "rocm";

@@ -8,7 +8,7 @@
     ./network.nix
     ./power-saving.nix
   ];
-  networking.hostName = "pixels-laptop";
+  networking.hostName = "stellar-laptop";
   networking.hostId = "dd1c170a";
   environment.etc.machine-id.text = "dd1c170ad32148e09e7014adf076f233";
 

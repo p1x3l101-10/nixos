@@ -39,7 +39,6 @@
     ./stylix.nix
     ./tablet.nix
     ./vCamera.nix
-    #./vr-min.nix
     ./vr.nix
     ./yubikey.nix
     ./run0.nix
