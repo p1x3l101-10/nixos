@@ -3,7 +3,6 @@
   fetchurl,
   dpkg,
   autoPatchelfHook,
-  xorg,
   libgcc,
   libGLU,
   glib,
@@ -13,6 +12,9 @@
   freetype,
   fontconfig,
   lib,
+  libx11,
+  libxfixes,
+  libxtst
 }:
 stdenv.mkDerivation rec {
   name = "helpwire-operator";
@@ -38,11 +40,11 @@ stdenv.mkDerivation rec {
     autoPatchelfHook
   ];
   buildInputs = [
-    xorg.libX11
+    libx11
     stdenv.cc.cc.lib
     libgcc
-    xorg.libXfixes
-    xorg.libXtst
+    libxfixes
+    libxtst
     libGLU
     glib
     libXinerama
