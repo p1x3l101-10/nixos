@@ -17,7 +17,7 @@
 stdenv.mkDerivation rec {
   name = "helpwire-operator";
   pname = name;
-  version = "2.1.6.127";
+  version = "2.2";
   meta = with lib; {
     description = "A remote desktop access app to be used with the HelpWire web app.";
     homepage = "https://helpwire.app";
@@ -30,7 +30,7 @@ stdenv.mkDerivation rec {
   };
   src = fetchurl {
     url = "https://www.helpwire.app/downloads/operator/linux/helpwire-operator.deb";
-    sha256 = "04zkz90k279w8y1k0d4lz9xywjf0k2bccyj7l5rpaq53mvwvx6l8";
+    sha256 = "sha256-Ga5yPXti0kuujJSggtMDxZhJAglU3UbV9hOP8Qs33W0=";
   };
 
   nativeBuildInputs = [
