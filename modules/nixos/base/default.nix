@@ -17,6 +17,7 @@
     ./secureBoot.nix
     ./ssh.nix
     ./tools.nix
+    ./userMigration.nix
     ./yggdrasil.nix
   ];
   #nix.registry = eLib.confTemplates.registry inputs;
