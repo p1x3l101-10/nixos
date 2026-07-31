@@ -80,4 +80,8 @@ stdenv.mkDerivation rec {
 
     runHook postInstall
   '';
+
+  preFixup = ''
+    wrapQtApp "$out/opt/HelpWire/Operator/bin/helpwire-operator"
+  '';
 }
