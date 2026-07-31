@@ -78,6 +78,13 @@ stdenv.mkDerivation rec {
     done
     ln -s $out/opt/HelpWire/Operator/bin $out/bin
 
+    mkdir -p $out/share/applications
+    ln -vs $out/opt/HelpWire/Operator/desktop/helpwire-operator.desktop $out/share/applications/helpwire-operator.desktop
+    for size in 16 24 32 48 64 96 128 256; do
+      mkdir -p $out/share/icons/hicolor/''${size}x''${size}/apps
+      ln -vs $out/opt/HelpWire/Operator/desktop/helpwire-operator_''${size}.png $out/share/icons/hicolor/''${size}x''${size}/apps/helpwire-operator.png
+    done
+
     runHook postInstall
   '';
 
