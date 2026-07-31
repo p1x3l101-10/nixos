@@ -1,4 +1,4 @@
-{
+{ ext,
   stdenv,
   fetchurl,
   dpkg,
