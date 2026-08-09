@@ -23,6 +23,8 @@
       mkdir -p "$XDG_CACHE_HOME/star-citizen/shaders"
       export MESA_SHADER_CACHE_DIR="$XDG_CACHE_HOME/star-citizen/shaders"
       export MESA_SHADER_CACHE_MAX_SIZE=20G
+      export PIPEWIRE_LATENCY="64/44100"
+      export PIPEWIRE_QUANTUM="64/44100"
     '';
   };
   services.nixos-cli.prebuildOptionCache = false; # FIXME: Upstream for rsi has bugged default options and this cannot gracefully handle that
