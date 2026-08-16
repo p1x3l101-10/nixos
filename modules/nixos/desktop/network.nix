@@ -1,36 +1,32 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
-{
+let
+  f = lib.mkForce;
+in {
   hardware.enableRedistributableFirmware = true;
-  networking.wireless = {
-    enable = true;
-    userControlled = true;
-    secretsFile = "/nix/host/keys/wpa_supplicant/secrets.conf";
-    extraConfig = ''
-      country=us
-      sae_pwe=1
-    '';
-    networks = {
-      "NSA Surveillance Hub5" = {
-        pskRaw = "ext:psk_home_main";
-        authProtocols = [ "WPA-PSK" ];
-        priority = 10;
-      };
-      "Blatt Wifi" = {
-        pskRaw = "ext:psk_paps";
-        authProtocols = [ "WPA-PSK" ];
-        priority = 5;
-      };
-      "Bar of Ytterbium" = {
-        pskRaw = "ext:hotspot";
-        authProtocols = [ "WPA-PSK" ];
-        priority = -1;
-      };
+  networking = {
+    networkmanager = {
+      enable = f true;
     };
+    dhcpcd.enable = f true;
+    useDHCP = f true;
+    useNetworkd = f false;
   };
-  # Prevent wait-online from killing my boot speed when offline
-  boot.initrd.systemd.network.wait-online.timeout = 5;
-  systemd.network.wait-online.timeout = 5;
-  # Add user to group for wifi info
-  users.users.pixel.extraGroups = [ "wpa_supplicant" ];
+  services.resolved.enable = f false;
+  systemd.network.enable = f false;
+  environment.etc."NetworkManager/system-connections/.keep".source = (pkgs.runCommand "empty-file" {} "touch $out");
+  systemd.mounts = (
+    let
+      mountUnit = what: where: {
+        inherit what where;
+        type = "none";
+        options = "bind";
+        wantedBy = [ "local-fs.target" ];
+      };
+      imperSubst = dir: (mountUnit "/nix/host/state/System/${dir}" dir);
+    in [
+      (imperSubst "/etc/NetworkManager/system-connections")
+    ]
+  );
+  users.users.pixel.extraGroups = [ "networkmanager" ];
 }
