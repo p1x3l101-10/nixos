@@ -73,7 +73,7 @@
             definedAliases = [ "@no" "@nixos" ];
           };
           "Home Manager Options" = {
-            urls = [{ template = "https://search.nixos.org/options?channel=unstable&type=home_manager&query={searchTerms}"; }];
+            urls = [{ template = "https://search.nixos.org/options?channel=unstable&source=home_manager&query={searchTerms}"; }];
             params = [
               { name = "query"; value = "{searchTerms}"; }
               { name = "channel"; value = "unstable"; }
