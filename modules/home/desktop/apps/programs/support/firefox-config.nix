@@ -12,7 +12,7 @@
     discovery.enabled = false;
     contentblocking.category = "strict";
     bookmarks.addedImportButton = false;
-    toolbars.bookmarks.visibility = "newtab";
+    toolbars.bookmarks.visibility = "always";
   };
   services = {
     passwordSavingEnabled = false;
