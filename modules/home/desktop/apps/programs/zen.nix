@@ -110,7 +110,7 @@
                   bookmarks = [
                     (mkBookmark "LMS" "https://occc.mrooms3.net")
                     (mkBookmark "Student Services" "https://experience.elluciancloud.com/occc151")
-                    (mkBookmark "EMail" "https://outlook.com")
+                    (mkBookmark "EMail" "https://outlook.cloud.microsoft/mail")
                     (mkBookmark "Homepage" "https://occc.edu")
                   ];
                 }
