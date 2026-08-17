@@ -11,6 +11,7 @@
     };
     discovery.enabled = false;
     contentblocking.category = "strict";
+    bookmarks.addedImportButton = false;
   };
   services = {
     passwordSavingEnabled = false;

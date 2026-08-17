@@ -16,6 +16,7 @@
       DisableFirefoxStudies = true;
       DisablePocket = true;
       DisableTelemetry = true;
+      DisplayBookmarksToolbar = "newtab";
       DontCheckDefaultBrowser = true;
       OfferToSaveLogins = false;
     };
