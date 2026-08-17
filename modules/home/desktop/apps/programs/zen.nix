@@ -1,4 +1,4 @@
-{ config, lib, ext, ... }:
+{ config, pkgs, ext, lib, ... }:
 
 {
   stylix.targets.zen-browser.profileNames = [
@@ -17,7 +17,6 @@
       DisablePocket = true;
       DisableTelemetry = true;
       DontCheckDefaultBrowser = true;
-      NoDefaultBookmarks = true;
       OfferToSaveLogins = false;
     };
     profiles."mlls93c4.Default (beta)" = {
@@ -57,12 +56,31 @@
             urls = [{ template = "https://search.nixos.org/packages?channel=unstable&query={searchTerms}"; }];
             params = [
               { name = "query"; value = "{searchTerms}"; }
-              { name = "type"; value = "packages"; }
               { name = "channel"; value = "unstable"; }
             ];
-            icon = "https://nixos.org/favicon.png";
+            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             updateInterval = 24 * 60 * 60 * 1000;
-            definedAliases = [ "@ns" "@nixpkgs" ];
+            definedAliases = [ "@np" "@nixpkgs" ];
+          };
+          "NixOS Options" = {
+            urls = [{ template = "https://search.nixos.org/options?channel=unstable&query={searchTerms}"; }];
+            params = [
+              { name = "query"; value = "{searchTerms}"; }
+              { name = "channel"; value = "unstable"; }
+            ];
+            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+            updateInterval = 24 * 60 * 60 * 1000;
+            definedAliases = [ "@no" "@nixos" ];
+          };
+          "Home Manager Options" = {
+            urls = [{ template = "https://search.nixos.org/options?channel=unstable&type=home_manager&query={searchTerms}"; }];
+            params = [
+              { name = "query"; value = "{searchTerms}"; }
+              { name = "channel"; value = "unstable"; }
+            ];
+            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+            updateInterval = 24 * 60 * 60 * 1000;
+            definedAliases = [ "@nh" "@hm" "@homemanager" ];
           };
           "NixOS Wiki" = {
             name = "NixOS Wiki";
@@ -75,6 +93,25 @@
           "bing".metaData.hidden = true;
           "ebay".metaData.hidden = true;
         };
+      };
+      bookmarks = {
+        force = true;
+        settings = (
+          let
+            mkBookmark = name: url: { inherit name url; };
+          in [
+            {
+              name = "College";
+              toolbar = true;
+              bookmarks = [
+                (mkBookmark "LMS" "https://occc.mrooms3.net")
+                (mkBookmark "Student Services" "https://experience.elluciancloud.com/occc151")
+                (mkBookmark "EMail" "https://outlook.com")
+                (mkBookmark "Homepage" "https://occc.edu")
+              ];
+            }
+          ]
+        );
       };
     };
   };
