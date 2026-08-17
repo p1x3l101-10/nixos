@@ -101,13 +101,18 @@
             mkBookmark = name: url: { inherit name url; };
           in [
             {
-              name = "College";
+              name = "Toolbar";
               toolbar = true;
               bookmarks = [
-                (mkBookmark "LMS" "https://occc.mrooms3.net")
-                (mkBookmark "Student Services" "https://experience.elluciancloud.com/occc151")
-                (mkBookmark "EMail" "https://outlook.com")
-                (mkBookmark "Homepage" "https://occc.edu")
+                {
+                  name = "College";
+                  bookmarks = [
+                    (mkBookmark "LMS" "https://occc.mrooms3.net")
+                    (mkBookmark "Student Services" "https://experience.elluciancloud.com/occc151")
+                    (mkBookmark "EMail" "https://outlook.com")
+                    (mkBookmark "Homepage" "https://occc.edu")
+                  ];
+                }
               ];
             }
           ]
