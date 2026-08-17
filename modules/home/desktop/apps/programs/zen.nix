@@ -1,4 +1,4 @@
-{ lib, ext, ... }:
+{ config, lib, ext, ... }:
 
 {
   stylix.targets.zen-browser.profileNames = [
@@ -7,8 +7,10 @@
   programs.zen-browser = {
     enable = true;
     policies = {
+      AIControls = "blocked";
       AutofillAddressEnabled = false;
       AutofillCreditCardEnabled = false;
+      DefaultDownloadDirectory = "${config.home.homeDirectory}/Downloads";
       DisableAppUpdate = true;
       DisableFeedbackCommands = true;
       DisableFirefoxStudies = true;
@@ -43,27 +45,32 @@
       settings = ext.lib.attrsets.compressAttrs "." (import ./support/firefox-config.nix);
       search = {
         force = true;
-        default = "google";
+        default = "startpage";
         engines = {
-          google.metadata.alias = "@g";
-          "NixOS Packages" = {
-            urls = [{ template = "https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={searchTerms}"; }];
+          startpage = {
+            urls = [{ template = "https://www.startpage.com/sp/search?query={searchTerms}"; }];
+            iconMapObj."16" = "https://www.startpage.com/favicon.ico";
+            updateInterval = 24 * 60 * 60 * 1000;
+            definedAliases = [ "@s" "@startpage" ];
+          };
+          "Nixpkgs Search" = {
+            urls = [{ template = "https://search.nixos.org/packages?channel=unstable&query={searchTerms}"; }];
+            params = [
+              { name = "query"; value = "{searchTerms}"; }
+              { name = "type"; value = "packages"; }
+              { name = "channel"; value = "unstable"; }
+            ];
             icon = "https://nixos.org/favicon.png";
             updateInterval = 24 * 60 * 60 * 1000;
-            definedAliases = [ "!ns" ];
+            definedAliases = [ "@ns" "@nixpkgs" ];
           };
-          "NixOS Options" = {
-            urls = [{ template = "https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={searchTerms}"; }];
-            icon = "https://nixos.org/favicon.png";
-            updateInterval = 24 * 60 * 60 * 1000;
-            definedAliases = [ "!no" ];
+          "NixOS Wiki" = {
+            name = "NixOS Wiki";
+            urls = [{ template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; }];
+            iconMapObj."16" = "https://wiki.nixos.org/favicon.ico";
+            definedAliases = [ "@nw" "@nixwiki" ];
           };
-          "HomeManager" = {
-            urls = [{ template = "https://home-manager-options.extranix.com/?query={searchTerms}&release=master"; }];
-            icon = "https://github.com/mipmip/home-manager-option-search/blob/main/images/favicon.png";
-            updateInterval = 24 * 60 * 60 * 1000;
-            definedAliases = [ "!hs" ];
-          };
+          google.metaData.hidden = true;
           "amazondotcom-us".metaData.hidden = true;
           "bing".metaData.hidden = true;
           "ebay".metaData.hidden = true;
