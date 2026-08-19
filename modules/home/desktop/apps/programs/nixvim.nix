@@ -221,6 +221,22 @@
         };
       }
       {
+        mode = [ "" "i" ];
+        key = "<left>";
+        action = "<nop>";
+        options = {
+          noremap = true;
+        };
+      }
+      {
+        mode = [ "" "i" ];
+        key = "<right>";
+        action = "<nop>";
+        options = {
+          noremap = true;
+        };
+      }
+      {
         mode = "n";
         key = "<leader>ef";
         action = "<cmd>Neotree toggle<cr>";
