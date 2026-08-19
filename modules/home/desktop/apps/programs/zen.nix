@@ -45,9 +45,20 @@
       settings = ext.lib.attrsets.compressAttrs "." (import ./support/firefox-config.nix);
       search = {
         force = true;
-        default = "{20fc2e06-e3e4-4b2b-812b-ab431220cada}default"; # Startpage extension
+        default = "startpage";
         engines = {
-          "{20fc2e06-e3e4-4b2b-812b-ab431220cada}default".alias = "@s"; # Startpage extension
+          startpage = {
+            urls = [
+              { template = "https://www.startpage.com/do/dsearch?q={searchTerms}&cat=web&language=english"; }
+              {
+                template = "https://www.startpage.com/suggestions?q={searchTerms}&format=opensearch&segment=startpage.defaultffx&lui=english";
+                type = "application/x-suggestions+json";
+              }
+            ];
+            iconMapObj."16" = "https://www.startpage.com/favicon.ico";
+            updateInterval = 24 * 60 * 60 * 1000;
+            definedAliases = [ "@s" "@startpage" ];
+          };
           "Nixpkgs Search" = {
             urls = [{ template = "https://search.nixos.org/packages?channel=unstable&query={searchTerms}"; }];
             params = [
