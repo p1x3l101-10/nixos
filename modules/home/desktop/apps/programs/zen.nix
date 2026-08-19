@@ -47,7 +47,7 @@
         force = true;
         default = "Startpage - English";
         engines = {
-          "Startpage - English".definedAliases = [ "@s" "@startpage" ];
+          "Startpage - English".alias = "@s";
           "Nixpkgs Search" = {
             urls = [{ template = "https://search.nixos.org/packages?channel=unstable&query={searchTerms}"; }];
             params = [
