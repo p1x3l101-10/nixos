@@ -39,6 +39,7 @@
           steam-database
           indie-wiki-buddy
           darkreader
+          startpage-private-search
         ];
       };
       settings = ext.lib.attrsets.compressAttrs "." (import ./support/firefox-config.nix);
