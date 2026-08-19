@@ -127,6 +127,7 @@
                     (mkBookmark "EMail" "https://mail.google.com")
                   ];
                 }
+                (mkBookmark "Graphing Calculator" "https://desmos.com/calculator")
               ];
             }
           ]
