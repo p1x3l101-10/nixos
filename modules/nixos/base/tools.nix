@@ -18,8 +18,11 @@
         build = [ "apply" "--no-boot" "--no-activate" "--output" "./result" ];
       };
       confirmation.empty = "default-yes";
-      use_nvd = true;
-      root_command = "run0";
+      differ.command = [ "nvd" "diff" ];
+      root = {
+        command = "run0";
+        password_method = "tty";
+      };
       apply = {
         use_nom = true;
         reexec_as_root = true;
