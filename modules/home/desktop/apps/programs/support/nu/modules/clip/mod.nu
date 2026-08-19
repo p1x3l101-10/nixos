@@ -43,3 +43,8 @@ export def paste []: nothing -> string {
   }
   do $sysClip
 }
+
+# Simple wrapper that runs `help modules clip`
+export def main [] {
+  help modules clip
+}
