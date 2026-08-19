@@ -198,11 +198,28 @@
       wrap = false;
       writebackup = false;
       smartcase = true;
+      mouse = "";
     };
     globals.mapleader = " ";
     viAlias = true;
     vimAlias = true;
     keymaps = [
+      {
+        mode = [ "" "i" ];
+        key = "<up>";
+        action = "<nop>";
+        options = {
+          noremap = true;
+        };
+      }
+      {
+        mode = [ "" "i" ];
+        key = "<down>";
+        action = "<nop>";
+        options = {
+          noremap = true;
+        };
+      }
       {
         mode = "n";
         key = "<leader>ef";
