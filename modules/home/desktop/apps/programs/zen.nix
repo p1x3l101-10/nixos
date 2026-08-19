@@ -45,14 +45,9 @@
       settings = ext.lib.attrsets.compressAttrs "." (import ./support/firefox-config.nix);
       search = {
         force = true;
-        default = "startpage";
+        default = "Startpage - English";
         engines = {
-          startpage = {
-            urls = [{ template = "https://www.startpage.com/sp/search?query={searchTerms}"; }];
-            iconMapObj."16" = "https://www.startpage.com/favicon.ico";
-            updateInterval = 24 * 60 * 60 * 1000;
-            definedAliases = [ "@s" "@startpage" ];
-          };
+          "Startpage - English".definedAliases = [ "@s" "@startpage" ];
           "Nixpkgs Search" = {
             urls = [{ template = "https://search.nixos.org/packages?channel=unstable&query={searchTerms}"; }];
             params = [
