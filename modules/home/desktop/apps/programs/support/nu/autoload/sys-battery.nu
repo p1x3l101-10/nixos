@@ -13,7 +13,7 @@ def processTime [] {
   | str replace " day" "day"
 }
 
-# Get information on attached batteries
+# View information on system battery
 export def "sys battery" [ --all ] {
   upower -e | lines
   | where { str contains BAT }
