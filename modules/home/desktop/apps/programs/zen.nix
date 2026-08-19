@@ -45,9 +45,9 @@
       settings = ext.lib.attrsets.compressAttrs "." (import ./support/firefox-config.nix);
       search = {
         force = true;
-        default = "startpage";
+        default = "Startpage";
         engines = {
-          startpage = {
+          Startpage = {
             urls = [
               { template = "https://www.startpage.com/do/dsearch?q={searchTerms}&cat=web&language=english"; }
               {
