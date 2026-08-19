@@ -109,6 +109,13 @@
                     (mkBookmark "Homepage" "https://occc.edu")
                   ];
                 }
+                {
+                  name = "GSuite";
+                  bookmarks = [
+                    (mkBookmark "Calendar" "https://calendar.google.com")
+                    (mkBookmark "EMail" "https://mail.google.com")
+                  ];
+                }
               ];
             }
           ]
