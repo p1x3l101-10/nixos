@@ -45,9 +45,9 @@
       settings = ext.lib.attrsets.compressAttrs "." (import ./support/firefox-config.nix);
       search = {
         force = true;
-        default = "Startpage - English";
+        default = "{20fc2e06-e3e4-4b2b-812b-ab431220cada}default"; # Startpage extension
         engines = {
-          "Startpage - English".alias = "@s";
+          "{20fc2e06-e3e4-4b2b-812b-ab431220cada}default".alias = "@s"; # Startpage extension
           "Nixpkgs Search" = {
             urls = [{ template = "https://search.nixos.org/packages?channel=unstable&query={searchTerms}"; }];
             params = [
