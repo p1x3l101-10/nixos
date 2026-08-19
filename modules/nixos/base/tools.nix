@@ -5,7 +5,7 @@
     enable = true;
     activation-interface.enable = true;
     option-cache = {
-      enable = true;
+      enable = lib.mkForce true;
       exclude = [
       ];
     };
