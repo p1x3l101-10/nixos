@@ -27,7 +27,6 @@
       export PIPEWIRE_QUANTUM="64/44100"
     '';
   };
-  services.nixos-cli.prebuildOptionCache = false; # FIXME: Upstream for rsi has bugged default options and this cannot gracefully handle that
   nixpkgs.overlays = [
     ext.inputs.nix-citizen.overlays.default
   ];
