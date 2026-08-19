@@ -1,10 +1,15 @@
 { pkgs, config, lib, ... }:
 
 {
-  services.nixos-cli = {
+  programs.nixos-cli = {
     enable = true;
-    useActivationInterface = true;
-    config = {
+    activation-interface.enable = true;
+    option-cache = {
+      enable = true;
+      exclude = [
+      ];
+    };
+    settings = {
       aliases = {
         genlist = [ "generation" "list" ];
         switch = [ "generation" "activate" ];
