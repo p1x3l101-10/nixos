@@ -5,7 +5,7 @@
     enable = true;
     activation-interface.enable = true;
     option-cache = {
-      enable = lib.mkForce true;
+      enable = if (config.networking.hostName != "stellar-server") then (lib.mkForce true) else false;
       exclude = [
       ];
     };
