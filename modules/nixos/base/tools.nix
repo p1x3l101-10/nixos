@@ -7,9 +7,6 @@
     option-cache = {
       enable = lib.mkForce true;
       exclude = [
-        # The legacy interface for an input is kinda broken due to legacy cruft building up
-        # Normally, it evaluates fine, but traversing the option tree is not done safely, so just avoid it
-        "nix-citizen" 
       ];
     };
     settings = {
