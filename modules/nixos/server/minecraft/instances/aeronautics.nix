@@ -19,13 +19,15 @@ in {
       })
       {
         type = "neoforge";
-        forgeVersion = "21.1.225";
+        forgeVersion = "21.1.248";
         version = "1.21.1";
         java = {
           version = "21-graalvm";
           XXargs = [
             "-XX:+UseZGC"
             "-XX:+ZGenerational"
+            "-XX:+UseCompactObjectHeaders"
+            "-Dchunky.maxWorkingCount=76"
           ];
         };
       }
