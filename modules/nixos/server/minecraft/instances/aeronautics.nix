@@ -43,26 +43,6 @@ in {
           ];
         };
       }
-      # Ensure world borders
-      {
-        rcon.startup = (let
-          wbDiameter = builtins.toString (worldBorderRadius * 2);
-          wbNetherDiameter = builtins.toString ((worldBorderRadius * 2) / 8);
-        in (map
-          (x: "dwb ${x} set ${wbDiameter}")
-          [
-            "minecraft:overworld"
-            "minecraft:the_end"
-            "northstar:earth_orbit"
-            "northstar:mercury"
-            "northstar:venus"
-            "northstar:mars"
-            "northstar:moon"
-          ]
-        ) ++ [
-          "dwb minecraft:the_nether set ${wbNetherDiameter}"
-        ]);
-      }
     ];
   };
   # Persist server
