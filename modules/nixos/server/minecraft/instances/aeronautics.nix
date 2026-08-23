@@ -26,7 +26,6 @@ in {
           XXargs = [
             "-XX:+UseZGC"
             "-XX:+ZGenerational"
-            "-XX:+UseCompactObjectHeaders"
             "-Dchunky.maxWorkingCount=76"
           ];
         };
