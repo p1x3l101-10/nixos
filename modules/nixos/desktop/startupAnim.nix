@@ -3,17 +3,12 @@
 {
   boot = {
     plymouth = {
-      enable = false;
+      enable = true;
     };
-    #consoleLogLevel = 0;
-    consoleLogLevel = 4;
-    initrd.verbose = true;
+    consoleLogLevel = 0;
     kernelParams = [
-      #"quiet"
-      #"splash"
-      "boot.shell_on_fail"
-      "rd.udev.log_level=3"
-      "udev.log_priority=3"
+      "quiet"
+      "splash"
     ];
     loader.timeout = 0;
   };
