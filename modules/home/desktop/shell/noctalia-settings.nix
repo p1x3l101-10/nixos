@@ -277,7 +277,7 @@
     shadowOffsetX = 2;
     shadowOffsetY = 3;
     showChangelogOnStartup = false;
-    showHibernateOnLockScreen = false;
+    showHibernateOnLockScreen = true;
     showScreenCorners = false;
     showSessionButtonsOnLockScreen = true;
     telemetryEnabled = false;
@@ -389,7 +389,7 @@
       }
       {
         action = "hibernate";
-        enabled = false;
+        enabled = true;
       }
       {
         action = "reboot";
