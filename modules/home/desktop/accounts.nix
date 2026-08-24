@@ -50,6 +50,46 @@ in
       maildirBasePath = "${config.xdg.dataHome}/mail";
       certificatesFile = "/etc/ssl/certs/ca-certificates.crt";
       accounts = {
+        school = {
+          userName = "scott.j.blatt@my.occc.edu";
+          realName = "Scott Blatt";
+          address = "scott.j.blatt@my.occc.edu";
+          signature = {
+            showSignature = "none";
+            text = "";
+          };
+          imap = {
+            authentication = "xoauth2";
+            host = "outlook.office365.com";
+            port = 993;
+            tls = {
+              enable = true;
+              useStartTls = false;
+            };
+          };
+          smtp = {
+            authentication = "xoauth2";
+            host = "smtp-mail.outlook.com";
+            port = 587;
+            tls = {
+              enable = true;
+              useStartTls = true;
+            };
+          };
+          passwordCommand = "keepassxc-cli show -y 1 --no-password /home/pixel/Sync/Keepass/keepass.kdbx 'Logins/OCCC Microsoft' -a Password";
+          folders = {
+            drafts = "Drafts";
+            inbox = "Inbox";
+            sent= "Sent";
+            trash = "Trash";
+          };
+          thunderbird = {
+            enable = true;
+            profiles = [ ];
+            messageFilters = [ ];
+            settings = id: (eLib.attrsets.compressAttrs "." {});
+          };
+        };
         exsmachina = {
           primary = true;
           userName = "pixel@exsmachina.org";
@@ -89,7 +129,7 @@ in
             encryptByDefault = false;
           };
           thunderbird = {
-            enable = true;
+            enable = false;
             profiles = [ ];
             messageFilters = [ ];
             settings = id: (eLib.attrsets.compressAttrs "." {});
