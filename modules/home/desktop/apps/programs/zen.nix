@@ -118,6 +118,7 @@
                     (mkBookmark "Student Services" "https://experience.elluciancloud.com/occc151")
                     (mkBookmark "EMail" "https://outlook.cloud.microsoft/mail")
                     (mkBookmark "Homepage" "https://occc.edu")
+                    (mkBookmark "Kahoot" "https://www.kahoot.it")
                   ];
                 }
                 {
