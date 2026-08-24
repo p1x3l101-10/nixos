@@ -1,5 +1,8 @@
 { pkgs, ... }:
 
 {
-  home.packages = [ pkgs.speedtest ];
+  home.packages = with pkgs; [
+    speedtest
+    fast
+  ];
 }
