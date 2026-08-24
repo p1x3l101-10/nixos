@@ -1,6 +1,5 @@
-# Start hyprland on tty1 automatically
-if ((tty) | str contains tty1) {
+# Autostart desktop
+if (uwsm check may-start) {
   clear
-  exec uwsm start -e -D Hyprland hyprland.desktop -g -1
-  | ignore
+  exec systemd-cat -t uwsm_start uwsm start -e -D Hyprland hyprland.desktop -g -1
 }
