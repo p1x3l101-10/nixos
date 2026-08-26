@@ -10,8 +10,8 @@
       borgbackup
       vim
     ];
-    subUidRanges = [{ count = 65536; startuid = 100000; }];
-    subGidRanges = [{ count = 65536; startuid = 100000; }];
+    subUidRanges = [{ count = 65536; startUid = 100000; }];
+    subGidRanges = [{ count = 65536; startGid = 100000; }];
   };
   users.users.root.openssh.authorizedKeys.keys = userdata "sshKeys" [ "scott" ];
   users.mutableUsers = false;
