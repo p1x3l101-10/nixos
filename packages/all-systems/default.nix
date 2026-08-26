@@ -9,7 +9,7 @@ linkFarm "all-systems" (map
       path = system.config.system.build.toplevel;
     }
   )
-  (with ext.inputs.self.nixosSystems; [
+  (with ext.inputs.self.nixosConfigurations; [
     stellar-pc
     stellar-laptop
     stellar-server
