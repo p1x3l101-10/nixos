@@ -5,9 +5,8 @@
     enable = true;
     activation-interface.enable = true;
     option-cache = {
-      enable = lib.mkForce true;
+      enable = false;
       exclude = [
-        "nix-citizen"
       ];
     };
     settings = {
