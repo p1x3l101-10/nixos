@@ -5,8 +5,9 @@
     enable = true;
     activation-interface.enable = true;
     option-cache = {
-      enable = if (config.networking.hostName != "stellar-server") then (lib.mkForce true) else false;
+      enable = lib.mkForce true;
       exclude = [
+        "nix-citizen"
       ];
     };
     settings = {
