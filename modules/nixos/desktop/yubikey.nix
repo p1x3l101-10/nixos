@@ -10,15 +10,18 @@
   services.u2f = {
     enable = true;
     users.pixel.keys = [
+      # Primary Key
+      ## Desktop
       {
-        keyHandle = "8ER/XIeoSDlZQ7khXXWD88eLGoYNA5+hGfDFhMMUPyRVY2MkOoAPFjZgUJbwkVM/JanPg3BLu3+dfgRQBC9MHA==";
-        userKey = "bbjgMveX0874lnzi2i5PY5eT4fTAm6KJvATQE4YZM8eSF44kp1b4c3N1Z/tBI7cgT2JIINkYRjqz67OJSyyenw==";
+        keyHandle = "jzTlDo4MglXnwCs6AMnkeIF8pbbiLMSyutf0urcWVyr3r3iY9h1LDx82wEy8CZZXRbxAtjobCaXJ+Tz/1+WhfA==";
+        userKey = "V+nPm8JBW81UijvWR9tSTQbrOpkNtFIdFR+kSVKdm4XqBf//g5nlGYRfsTy12FieIoyN0c8RpuAPInBAJzwU/w==";
         coseType = "es256";
         options = "+presence";
       }
+      ## Laptop
       {
-        keyHandle = "C0QSwSmxjoSH9N5Y9RXEg8pLTp4a5q2zLId3FeWXVvsahqEr1h0wLzkTP+lhPawYgX33cwgFdM9iUdgh3cNj6w==";
-        userKey = "9s0vPcznb8jWKoosXBwaiJPbqzIE1a95o9+04fkb1QtlZ+KJxT7uywWg61GDYaAboZxpx+mmCg9+86bhAWeoeA==";
+        keyHandle = "E91mk3O5T07shOPsYUA9/c4KjxLVjRm1CbBvy4EpwwmukAdnt+0boMkQH1Kd0hiW/wwnimcYJfZ55Iok0L8haQ==";
+        userKey = "Yrc/yrmO9pPiffZyRJnDkVSTGcXo662fibfqIIDD9tcZ6aTK/ivWbkyXhGPMBG4b76USXvGOQenR2TAg9Di0EQ==";
         coseType = "es256";
         options = "+presence";
       }
