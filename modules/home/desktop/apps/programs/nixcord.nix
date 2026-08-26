@@ -38,10 +38,7 @@ in
       plugins = {
         accountPanelServerProfile.enable = true;
         betterGifAltText.enable = true;
-        betterGifPicker = {
-          enable = true;
-          keepOpen = true;
-        };
+        betterGifPicker.enable = true;
         betterSessions.enable = true;
         betterSettings.enable = true;
         blurNsfw.enable = true;
@@ -50,7 +47,6 @@ in
         copyFileContents.enable = true;
         customRpc.enable = true;
         favoriteEmojiFirst.enable = true;
-        favoriteGifSearch.enable = true;
         fixYoutubeEmbeds.enable = true;
         loadingQuotes.enable = true;
         mentionAvatars.enable = true;
