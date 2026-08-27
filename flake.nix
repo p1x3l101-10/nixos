@@ -2,6 +2,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.follows = "nixpkgs-26_05";
+    nixpkgs-hyprland-pinned.url = "github:NixOS/nixpkgs/0954f7ee2f6bb3dc7d4e3d0d8bcb8fd4bde4cfc5";
     nixpkgs-25_11.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-26_05.url = "github:NixOS/nixpkgs/nixos-26.05";
     home-manager = {

@@ -1,7 +1,7 @@
 { lib, ext, ... }:
 
 let
-  hyprPkgs = (builtins.getFlake "github:NixOS/nixpkgs/0954f7ee2f6bb3dc7d4e3d0d8bcb8fd4bde4cfc5?narHash=sha256-dN6Ou5x").packages."${ext.system}";
+  hyprPkgs = ext.rawPkgs { nixpkgs = ext.inputs.nixpkgs-hyprland-pinned; config = ext.defaultNixpkgsConfig; };
 in
 
 lib.fix (self: {
