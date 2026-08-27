@@ -10,10 +10,10 @@ in {
         inherit userdata;
         packId = "aeronautics";
         gamerules = {
-          playersSleepingPercentage = 101;
+          playersSleepingPercentage = 50;
           disableElytraMovementCheck = true;
           doImmediateRespawn = true;
-          spawnRadius = worldBorderRadius / 10;
+          spawnRadius = 100;
           spawnChunkRadius = 0;
         };
       })
