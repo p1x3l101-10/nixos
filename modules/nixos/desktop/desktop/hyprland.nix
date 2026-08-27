@@ -12,6 +12,7 @@ lib.fix (self: {
     withUWSM = true;
     xwayland.enable = true;
   };
+  programs.uwsm.package = ext.stable.pkgs.uwsm;
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
