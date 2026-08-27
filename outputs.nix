@@ -61,6 +61,18 @@ inputs.flake-utils.lib.eachDefaultSystem
             config = (finalExt.defaultNixpkgsConfig // { allowUnfree = true; });
           };
         });
+        hyprPin = lib.fix (finalPkgs: {
+          input = inputs.nixpkgs-hyprland-pinned;
+          inherit (finalPkgs.input) lib;
+          pkgs = finalExt.rawPkgs {
+            nixpkgs = finalPkgs.input;
+            config = finalExt.defaultNixpkgsConfig;
+          };
+          unfreePkgs = finalExt.rawPkgs {
+            nixpkgs = finalPkgs.input;
+            config = (finalExt.defaultNixpkgsConfig // { allowUnfree = true; });
+          };
+        });
         rawPkgs = { nixpkgs ? finalExt.unstable.input, config }: (
           import nixpkgs {
             inherit system config;

@@ -1,7 +1,7 @@
 { lib, ext, ... }:
 
 let
-  hyprPkgs = ext.rawPkgs { nixpkgs = ext.inputs.nixpkgs-hyprland-pinned; config = ext.defaultNixpkgsConfig; };
+  hyprPkgs = ext.hyprPin.pkgs;
 in
 
 lib.fix (self: {
