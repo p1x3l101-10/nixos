@@ -11,12 +11,15 @@ in {
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/helios.yaml";
+    image = ext.assets.img.hyprpapers."legacy1.png";
+    /*
     #image = genWallpaper "cat";
     image = genWallpaper "nixos" {
       width = builtins.elemAt aspectRatio 0;
       height = builtins.elemAt aspectRatio 1;
       logoScale = 4.0;
     };
+    */
     polarity = "dark";
     targets = { };
     icons = {
