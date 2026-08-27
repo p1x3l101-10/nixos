@@ -13,7 +13,7 @@ lib.fix (self: {
   };
   xdg.portal = {
     enable = true;
-    extraPortals = with hyprPkgs; [ xdg-desktop-portal-hyprland ];
+    #extraPortals = with hyprPkgs; [ xdg-desktop-portal-hyprland ];
   };
   services.udisks2.enable = true;
   programs.uwsm.enable = true;
