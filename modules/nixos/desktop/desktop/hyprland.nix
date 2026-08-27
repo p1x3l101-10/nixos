@@ -1,21 +1,19 @@
-{ pkgs, lib, ext, ... }:
+{ lib, ext, ... }:
 
 let
-  hyprLib = import ../../../home/desktop/hyprland/support/hypr-lib.nix { inherit lib ext; };
-  hyprGlobals = import ../../../home/desktop/hyprland/support/hypr-globals.nix { inherit pkgs lib ext hyprLib; };
-  inherit (hyprGlobals) clockFormat;
+  hyprPkgs = (builtins.getFlake "github:NixOS/nixpkgs/0954f7ee2f6bb3dc7d4e3d0d8bcb8fd4bde4cfc5?narHash=sha256-dN6Ou5x").packages."${ext.system}";
 in
 
 lib.fix (self: {
   programs.hyprland = {
     enable = true;
+    package = hyprPkgs.hyprland;
     withUWSM = true;
     xwayland.enable = true;
   };
-  programs.uwsm.package = ext.stable.pkgs.uwsm;
   xdg.portal = {
     enable = true;
-    extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
+    extraPortals = with hyprPkgs; [ xdg-desktop-portal-hyprland ];
   };
   services.udisks2.enable = true;
   programs.uwsm.enable = true;
