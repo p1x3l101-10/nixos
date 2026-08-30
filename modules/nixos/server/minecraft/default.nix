@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -11,5 +11,8 @@
   networking.sshForwarding.ports = [
     25565
     24454
+  ];
+  environment.systemPackages = [
+    pkgs.internal.minecraft-helper
   ];
 }
