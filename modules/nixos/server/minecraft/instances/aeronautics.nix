@@ -1,8 +1,6 @@
 { pkgs, eLib, userdata, ... }:
 
-let
-  worldBorderRadius = 10000;
-in {
+{
   services.minecraft = {
     enable = true;
     settings = eLib.attrsets.mergeAttrs [
