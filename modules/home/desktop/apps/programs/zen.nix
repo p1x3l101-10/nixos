@@ -95,6 +95,12 @@
             iconMapObj."16" = "https://wiki.nixos.org/favicon.ico";
             definedAliases = [ "@nw" "@nixwiki" ];
           };
+          Noogle = {
+            name = "Noogle";
+            urls = [{ template = "https://noogle.dev/q/?term={searchTerms}"; }];
+            iconMapObj."16" = "https://noogle.dev/favicon.ico";
+            definedAliases = [ "@ng" "@noogle" ];
+          };
           google.metaData.hidden = true;
           "amazondotcom-us".metaData.hidden = true;
           "bing".metaData.hidden = true;
