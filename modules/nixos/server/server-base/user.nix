@@ -13,6 +13,7 @@
     subUidRanges = [{ count = 65536; startUid = 100000; }];
     subGidRanges = [{ count = 65536; startGid = 100000; }];
   };
+  nix.settings.trusted-users = [ "@wheel" ];
   users.users.root.openssh.authorizedKeys.keys = userdata "sshKeys" [ "scott" ];
   users.mutableUsers = false;
   services.openssh.settings.AllowUsers = [ "pixel" "root" ];
