@@ -19,7 +19,7 @@
       ];
       text = ''
         if [[ $UID != 1000 ]]; then
-          systemd-run --uid=1000 "$(realpath $0)"
+          systemd-run --uid=1000 "$(realpath "$0")"
         else
           git -C /etc/nixos reset --hard
           git -C /etc/nixos pull
