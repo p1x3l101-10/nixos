@@ -242,7 +242,7 @@
         key = "<leader>q";
         action.__raw = ''
           function()
-            if vim.opt.number == true then
+            if vim.opt.number:get() then
               vim.opt.number = false
               vim.opt.relativenumber = true
             else
