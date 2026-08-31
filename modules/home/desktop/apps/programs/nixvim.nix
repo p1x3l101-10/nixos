@@ -189,8 +189,6 @@
     opts = {
       modeline = true;
       number = true;
-      relativenumber = true;
-      statuscolumn = "%s %{v:relnum} %{v:lnum}";
       shiftwidth = 2;
       expandtab = true;
       cursorline = true;
@@ -238,6 +236,22 @@
         options = {
           noremap = true;
         };
+      }
+      {
+        mode = [ "" ];
+        key = "<leader>q";
+        action.__raw = ''
+          function()
+            if vim.opt.number == true then
+              vim.opt.number = false
+              vim.opt.relativenumber = true
+            else
+              vim.opt.number = true
+              vim.opt.relativenumber = false
+            end
+          end
+        '';
+        options.desc = "Toggle relative line numbering";
       }
       {
         mode = "n";
