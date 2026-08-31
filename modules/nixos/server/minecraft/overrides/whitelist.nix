@@ -4,7 +4,6 @@
   "scott"
   "dylan"
   "kenton"
-  "kirby"
   "isaiah"
   "landen"
   "eqquise"

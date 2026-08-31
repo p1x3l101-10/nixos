@@ -48,7 +48,7 @@ lib.fix (self: {
       mcUsername = "eqquise";
     };
     robyn = {
-      mcUsername = "Mus1KL0v3";
+      mcUsername = "Mu51KL0v3";
     };
   };
   getdata = key: names: (lib.lists.flatten (lib.lists.forEach names (x:
