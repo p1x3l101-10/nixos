@@ -106,7 +106,7 @@
                     ++ (map
                       ({ ext, ... }@x: {
                         template = "${urlBase}/${ext}";
-                      } // (builtins.removeAttrs ["ext"] x))
+                      } // (builtins.removeAttrs x ["ext"]))
                       additionalUrlExtensions
                     )
                     ++ additionalUrls
