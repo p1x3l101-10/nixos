@@ -40,6 +40,12 @@ def processRconCommand []: list<string> -> string {
   | wrapString
 }
 
+def --wrapped "main log" [
+  ...args
+] {
+  journalctl -Wxeu minecraft ...$args
+}
+
 def "main start" [
   --at: datetime
   --after: duration
