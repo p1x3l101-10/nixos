@@ -15,4 +15,6 @@ let
   );
 in
 
-compressAttrs [ ] attrs' pathSep'
+builtins.addErrorContext "While flattening an attribute set" (
+  compressAttrs [ ] attrs' pathSep'
+)

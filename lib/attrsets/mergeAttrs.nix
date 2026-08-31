@@ -14,4 +14,6 @@ let
       else lib.lists.last values
     );
 in
-f [ ] attrList
+builtins.addErrorContext "While merging a list of attributes" (
+  f [ ] attrList
+)

@@ -47,20 +47,20 @@
         force = true;
         default = "Startpage";
         engines = let
-          svgToPng = fileName: input: pkgs.runCommand fileName { } ''
+          svgToPng = fileName: input: builtins.addErrorContext "While converting an SVG to a PNG" (pkgs.runCommand fileName { } ''
             ${pkgs.imageMagick}/bin/magick ${input} $out
-          '';
+          '');
           icons = {
             nixSnowflake = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             nixvim = svgToPng "nixvim.png" "${ext.inputs.nixvim.outPath}/assets/nixvim_logo.svg";
           };
-          procParameters = parameters: (builtins.concatStringsSep "&"
+          procParameters = parameters: builtins.addErrorContext "While processing url parameters" (builtins.concatStringsSep "&"
             (map
               ({ name, value }: "${name}=${value}")
               (builtins.attrsToList parameters)
             )
           );
-          mkSE = (
+          mkSE = builtins.addErrorContext "While defining the rest of a search URL" (
             { prefix
             , parameters ? {}
             , queryParam ? "q"
@@ -81,7 +81,7 @@
             };
             queryParam = "query";
           };
-          mkSearch = (
+          mkSearch = builtins.addErrorContext "While defining a search engine" (
             { name
             , searchExtension
             , urlBase
@@ -245,7 +245,7 @@
             mkBookmark = name: url: { inherit name url; };
             mkFolder = name: bookmarks: { inherit name bookmarks; };
             mkToolbar = b: (mkFolder "Toolbar" b) // { toolbar = true; };
-            trimSemanticPatch = version: maxPlaces: (builtins.concatStringsSep "."
+            trimSemanticPatch = version: maxPlaces: builtins.addErrorContext "While trimming SemVer" (builtins.concatStringsSep "."
               (lib.lists.take
                 maxPlaces
                 (builtins.splitVersion version)

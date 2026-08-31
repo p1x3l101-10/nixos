@@ -27,4 +27,6 @@ let
       result // { _path = path; };
   }));
 in
-out.mapDirTree path path
+builtins.addErrorContext "While mapping a directory into an attribute set" (
+  out.mapDirTree path path
+)
