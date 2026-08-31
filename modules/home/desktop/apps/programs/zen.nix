@@ -46,66 +46,133 @@
       search = {
         force = true;
         default = "Startpage";
-        engines = {
-          Startpage = {
-            urls = [
-              { template = "https://www.startpage.com/do/dsearch?q={searchTerms}&cat=web&language=english"; }
-              {
-                template = "https://www.startpage.com/suggestions?q={searchTerms}&format=opensearch&segment=startpage.defaultffx&lui=english";
-                type = "application/x-suggestions+json";
-              }
-            ];
-            iconMapObj."16" = "https://www.startpage.com/favicon.ico";
-            updateInterval = 24 * 60 * 60 * 1000;
-            definedAliases = [ "@s" "@startpage" ];
+        engines = let
+          svgToPng = fileName: input: pkgs.runCommand fileName { } ''
+            ${pkgs.imageMagick}/bin/magick ${input} $out
+          '';
+          icons = {
+            nixSnowflake = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+            nixvim = svgToPng "nixvim.png" "${ext.inputs.nixvim.outPath}/assets/nixvim_logo.svg";
           };
-          "Nixpkgs Search" = {
-            urls = [{ template = "https://search.nixos.org/packages?channel=unstable&query={searchTerms}"; }];
-            params = [
-              { name = "query"; value = "{searchTerms}"; }
-              { name = "channel"; value = "unstable"; }
-            ];
-            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            updateInterval = 24 * 60 * 60 * 1000;
-            definedAliases = [ "@np" "@nixpkgs" ];
-          };
-          "NixOS Options" = {
-            urls = [{ template = "https://search.nixos.org/options?channel=unstable&query={searchTerms}"; }];
-            params = [
-              { name = "query"; value = "{searchTerms}"; }
-              { name = "channel"; value = "unstable"; }
-            ];
-            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            updateInterval = 24 * 60 * 60 * 1000;
-            definedAliases = [ "@no" "@nixos" ];
-          };
-          "Home Manager Options" = {
-            urls = [{ template = "https://search.nixos.org/options?channel=unstable&source=home_manager&query={searchTerms}"; }];
-            params = [
-              { name = "query"; value = "{searchTerms}"; }
-              { name = "channel"; value = "unstable"; }
-            ];
-            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            updateInterval = 24 * 60 * 60 * 1000;
-            definedAliases = [ "@nh" "@hm" "@homemanager" ];
-          };
-          "NixOS Wiki" = {
+          mkSimpleSearch = (
+            { name
+            , searchExtension
+            , urlBase
+            , noIcon ? false
+            , iconFile ? null
+            , alias ? null
+            , aliases ? []
+            , dontPrefixAlias ? false
+            , aliasPrefix ? "@"
+            }:
+            {
+              "${name}" = ext.lib.attrsets.mergeAttrs [
+                {
+                  inherit name;
+                  urls = [{ template = "${urlBase}/${searchExtension}{searchTerms}"; }];
+                  updateInterval = 24 * 60 * 60 * 1000;
+                }
+                (
+                  if (builtins.isNull iconFile) then (
+                    if (!noIcon) then {
+                      iconMapObj."16" = "${urlBase}/favicon.ico";
+                    } else {}
+                  ) else {
+                    icon = iconFile;
+                  }
+                )
+                (
+                  let
+                    prefix = if (dontPrefixAlias) then "" else aliasPrefix;
+                  in if (builtins.isNull alias) then (
+                    if (aliases != []) then {
+                      definedAliases = (map
+                        (x: "${prefix}${alias}")
+                        aliases
+                      );
+                    } else {}
+                  ) else {
+                    definedAliases = [ "${prefix}${alias}" ];
+                  }
+                )
+              ];
+            }
+          );
+        in ext.lib.attrsets.mergeAttrs [
+          # Complex engines
+          {
+            Startpage = {
+              urls = [
+                { template = "https://www.startpage.com/do/dsearch?q={searchTerms}&cat=web&language=english"; }
+                {
+                  template = "https://www.startpage.com/suggestions?q={searchTerms}&format=opensearch&segment=startpage.defaultffx&lui=english";
+                  type = "application/x-suggestions+json";
+                }
+              ];
+              iconMapObj."16" = "https://www.startpage.com/favicon.ico";
+              updateInterval = 24 * 60 * 60 * 1000;
+              definedAliases = [ "@s" "@startpage" ];
+            };
+            "Nixpkgs Search" = {
+              urls = [{ template = "https://search.nixos.org/packages?channel=unstable&query={searchTerms}"; }];
+              params = [
+                { name = "query"; value = "{searchTerms}"; }
+                { name = "channel"; value = "unstable"; }
+              ];
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              updateInterval = 24 * 60 * 60 * 1000;
+              definedAliases = [ "@np" "@nixpkgs" ];
+            };
+            "NixOS Options" = {
+              urls = [{ template = "https://search.nixos.org/options?channel=unstable&query={searchTerms}"; }];
+              params = [
+                { name = "query"; value = "{searchTerms}"; }
+                { name = "channel"; value = "unstable"; }
+              ];
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              updateInterval = 24 * 60 * 60 * 1000;
+              definedAliases = [ "@no" "@nixos" ];
+            };
+            "Home Manager Options" = {
+              urls = [{ template = "https://search.nixos.org/options?channel=unstable&source=home_manager&query={searchTerms}"; }];
+              params = [
+                { name = "query"; value = "{searchTerms}"; }
+                { name = "channel"; value = "unstable"; }
+              ];
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              updateInterval = 24 * 60 * 60 * 1000;
+              definedAliases = [ "@nh" "@hm" "@homemanager" ];
+            };
+          }
+          # Simple engines
+          (mkSimpleSearch {
             name = "NixOS Wiki";
-            urls = [{ template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; }];
-            iconMapObj."16" = "https://wiki.nixos.org/favicon.ico";
-            definedAliases = [ "@nw" "@nixwiki" ];
-          };
-          Noogle = {
+            urlBase = "https://wiki.nixos.org";
+            searchExtension = "w/index.php?search=";
+            aliases = [ "nw" "nixwiki" "nixoswiki" ];
+          })
+          (mkSimpleSearch {
+            name = "Nixvim Option Search";
+            urlBase = "https://nix-community.github.io/nixvim";
+            searchExtension = "search/options?query=";
+            alias = "nixvim";
+            iconFile = icons.nixvim;
+          })
+          (mkSimpleSearch {
             name = "Noogle";
-            urls = [{ template = "https://noogle.dev/q/?term={searchTerms}"; }];
-            iconMapObj."16" = "https://noogle.dev/favicon.ico";
-            definedAliases = [ "@ng" "@noogle" ];
-          };
-          google.metaData.hidden = true;
-          "amazondotcom-us".metaData.hidden = true;
-          "bing".metaData.hidden = true;
-          "ebay".metaData.hidden = true;
-        };
+            urlBase = "https://noogle.dev";
+            searchExtension = "q?term=";
+            aliases = [ "ng" "noogle" ];
+            iconFile = icons.nixSnowflake;
+          })
+          # Remove unwanted search engines
+          {
+            google.metaData.hidden = true;
+            "amazondotcom-us".metaData.hidden = true;
+            "bing".metaData.hidden = true;
+            "ebay".metaData.hidden = true;
+          }
+        ];
       };
       bookmarks = {
         force = true;
