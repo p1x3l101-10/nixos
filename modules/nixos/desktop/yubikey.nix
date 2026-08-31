@@ -35,4 +35,17 @@
     };
     lockOnUnplug = false;
   };
+  security.polkit.extraConfig = ''
+    // Allow wheel group to restart pcscd without password
+    // Needed because gpg signing with smartcards and pcscd conflict sometimes :(
+    polkit.addRule(function(action, subject) {
+      if (
+        action.id == "org.freedesktop.systemd1.manage-units" &&
+        action.lookup("unit") == "pcscd.service" &&
+        subject.isInGroup("wheel")
+      ) {
+        return polkit.Result.YES;
+      }
+    });
+  '';
 }
