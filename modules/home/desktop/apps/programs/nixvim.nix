@@ -162,12 +162,21 @@
     extraConfigLua = builtins.concatStringsSep "\n" [
       (lib.strings.fileContents ./support/nixvim/config.lua)
     ];
-    extraConfigVim = builtins.concatStringsSep "\n" [
-      ''
-        let g:Hardcopy_paperType = "Letter"
-      '' 
+    extraConfigVim = builtins.concatStringsSep "\n" (let
+      mkVars = namespace: configAttrs: (builtins.concatStringsSep "\n"
+        (
+          [ "\" Variables generated from mkVars" ] ++ (map
+            ({ name, value }: "let ${namespace}:${name} = \"${value}\"")
+            (lib.attrsToList configAttrs)
+          ) ++ [ "" ]
+        )
+      );
+    in [
+      (mkVars "g" {
+        Hardcopy_paperType = "Letter";
+      })
       (lib.strings.fileContents ./support/nixvim/config.vim)
-    ];
+    ]);
     extraPackages = with pkgs; [
       # Hardcopy
       html2pdf
