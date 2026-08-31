@@ -187,7 +187,10 @@
       providers.wl-copy.enable = true;
     };
     opts = {
+      modeline = true;
       number = true;
+      relativenumber = true;
+      statuscolumn = "%s %{v:relnum} %{v:lnum}";
       shiftwidth = 2;
       expandtab = true;
       cursorline = true;
