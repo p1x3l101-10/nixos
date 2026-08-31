@@ -243,31 +243,25 @@
         settings = (
           let
             mkBookmark = name: url: { inherit name url; };
+            mkFolder = name: bookmarks: { inherit name bookmarks; };
+            mkToolbar = b: (mkFolder "Toolbar" b) // { toolbar = true; };
           in [
-            {
-              name = "Toolbar";
-              toolbar = true;
-              bookmarks = [
-                {
-                  name = "College";
-                  bookmarks = [
-                    (mkBookmark "LMS" "https://occc.mrooms3.net")
-                    (mkBookmark "Student Services" "https://experience.elluciancloud.com/occc151")
-                    (mkBookmark "EMail" "https://outlook.cloud.microsoft/mail")
-                    (mkBookmark "Homepage" "https://occc.edu")
-                    (mkBookmark "Kahoot" "https://www.kahoot.it")
-                  ];
-                }
-                {
-                  name = "GSuite";
-                  bookmarks = [
-                    (mkBookmark "Calendar" "https://calendar.google.com")
-                    (mkBookmark "EMail" "https://mail.google.com")
-                  ];
-                }
+            (mkToolbar [
+              (mkFolder "College" [
+                (mkBookmark "LMS" "https://occc.mrooms3.net")
+                (mkBookmark "Student Services" "https://experience.elluciancloud.com/occc151")
+                (mkBookmark "EMail" "https://outlook.cloud.microsoft/mail")
+                (mkBookmark "Homepage" "https://occc.edu")
+                (mkBookmark "Kahoot" "https://www.kahoot.it")
+              ])
+              (mkFolder "GSuite" [
+                (mkBookmark "Calendar" "https://calendar.google.com")
+                (mkBookmark "EMail" "https://mail.google.com")
+              ])
+              (mkFolder "Tools" [
                 (mkBookmark "Graphing Calculator" "https://desmos.com/calculator")
-              ];
-            }
+              ])
+            ])
           ]
         );
       };
