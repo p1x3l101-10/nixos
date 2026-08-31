@@ -245,19 +245,11 @@
             mkBookmark = name: url: { inherit name url; };
             mkFolder = name: bookmarks: { inherit name bookmarks; };
             mkToolbar = b: (mkFolder "Toolbar" b) // { toolbar = true; };
-            trimSemanticPatch = version: maxPlaces: (
-              let
-                # i ~~FREAKING HATE~~ love recursion
-                main = splitVer: maxPlaces: (
-                  if ((lib.lists.count splitVer) >= maxPlaces) then (
-                    # Keep removing last element until we hit the target amount
-                    main (lib.lists.remove (lib.count splitVer) splitVer) maxPlaces
-                  ) else (
-                    # Reassemble and return the now trimmed version
-                    builtins.concatStringsSep "." splitVer
-                  )
-                );
-              in main (builtins.splitVersion version) maxPlaces
+            trimSemanticPatch = version: maxPlaces: (builtins.concatStringsSep "."
+              (lib.lists.take
+                maxPlaces
+                (builtins.splitVersion version)
+              )
             );
           in [
             (mkToolbar [
