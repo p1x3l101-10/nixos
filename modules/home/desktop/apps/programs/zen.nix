@@ -112,9 +112,7 @@
                     ++ additionalUrls
                   );
                   params = lib.attrsToList (
-                    ext.lib.attrsets.mergeAttrs (
-                      { query = "{searchTerms}"; } // extraParams
-                    )
+                    { query = "{searchTerms}"; } // extraParams
                   );
                 }
                 (
