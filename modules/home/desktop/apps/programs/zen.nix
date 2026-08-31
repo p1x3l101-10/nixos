@@ -130,7 +130,7 @@
                   in if (builtins.isNull alias) then (
                     if (aliases != []) then {
                       definedAliases = (map
-                        (x: "${prefix}${alias}")
+                        (x: "${prefix}${x}")
                         aliases
                       );
                     } else {}
