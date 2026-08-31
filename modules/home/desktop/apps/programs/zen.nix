@@ -54,23 +54,68 @@
             nixSnowflake = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             nixvim = svgToPng "nixvim.png" "${ext.inputs.nixvim.outPath}/assets/nixvim_logo.svg";
           };
-          mkSimpleSearch = (
+          procParameters = parameters: (builtins.concatStringsSep "&"
+            (map
+              ({ name, value }: "${name}=${value}")
+              (builtins.attrsToList parameters)
+            )
+          );
+          mkSE = (
+            { prefix
+            , parameters ? {}
+            , queryParam ? "q"
+            , noQuery ? false
+            }: builtins.concatStringsSep "" [
+              prefix
+              "?"
+              (procParameters parameters)
+              (if ((builtins.length (builtins.attrsToList parameters)) > 0) then "&" else "")
+              (if noQuery then "" else "${queryParam}=")
+            ]
+          );
+          mkSimpleSE = prefix: queryParam: mkSE { inherit prefix queryParam; }; # Clunky calling syntax not needed if there are no url parameters
+          mkNixosSE = source: channel: mkSE {
+            prefix = "options";
+            parameters = {
+              inherit channel source;
+            };
+            queryParam = "query";
+          };
+          mkSearch = (
             { name
             , searchExtension
             , urlBase
+            , updateInterval ? 24 * 60 * 60 * 1000 # In seconds
             , noIcon ? false
             , iconFile ? null
             , alias ? null
             , aliases ? []
             , dontPrefixAlias ? false
             , aliasPrefix ? "@"
+            , extraParams ? {}
+            , extraOptions ? {}
+            , additionalUrlExtensions ? [] # Instead of `template`, use `ext`
+            , additionalUrls ? []
             }:
             {
               "${name}" = ext.lib.attrsets.mergeAttrs [
                 {
-                  inherit name;
-                  urls = [{ template = "${urlBase}/${searchExtension}{searchTerms}"; }];
-                  updateInterval = 24 * 60 * 60 * 1000;
+                  inherit name updateInterval;
+                  urls = (
+                    [{ template = "${urlBase}/${searchExtension}{searchTerms}"; }]
+                    ++ (map
+                      ({ ext, ... }@x: {
+                        template = "${urlBase}/${ext}";
+                      } // (builtins.removeAttrs ["ext"] x))
+                      additionalUrlExtensions
+                    )
+                    ++ additionalUrls
+                  );
+                  params = lib.attrsToList (
+                    ext.lib.attrsets.mergeAttrs (
+                      { query = "{searchTerms}"; } // extraParams
+                    )
+                  );
                 }
                 (
                   if (builtins.isNull iconFile) then (
@@ -95,73 +140,92 @@
                     definedAliases = [ "${prefix}${alias}" ];
                   }
                 )
+                extraOptions
               ];
             }
           );
         in ext.lib.attrsets.mergeAttrs [
-          # Complex engines
-          {
-            Startpage = {
-              urls = [
-                { template = "https://www.startpage.com/do/dsearch?q={searchTerms}&cat=web&language=english"; }
-                {
-                  template = "https://www.startpage.com/suggestions?q={searchTerms}&format=opensearch&segment=startpage.defaultffx&lui=english";
-                  type = "application/x-suggestions+json";
-                }
-              ];
-              iconMapObj."16" = "https://www.startpage.com/favicon.ico";
-              updateInterval = 24 * 60 * 60 * 1000;
-              definedAliases = [ "@s" "@startpage" ];
+          (mkSearch {
+            name = "Startpage";
+            urlBase = "https://www.startpage.com";
+            searchExtension = mkSE {
+              prefix = "do/dsearch";
+              parameters = {
+                cat = "web";
+                language = "english";
+              };
             };
-            "Nixpkgs Search" = {
-              urls = [{ template = "https://search.nixos.org/packages?channel=unstable&query={searchTerms}"; }];
-              params = [
-                { name = "query"; value = "{searchTerms}"; }
-                { name = "channel"; value = "unstable"; }
-              ];
-              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-              updateInterval = 24 * 60 * 60 * 1000;
-              definedAliases = [ "@np" "@nixpkgs" ];
+            additionalUrlExtensions = [
+              # Search suggestions
+              {
+                ext = mkSE {
+                  prefix = "suggestions";
+                  parameters = {
+                    q = "{searchTerms}";
+                    format = "opensearch";
+                    segment = "startpage.defaultffx";
+                    lui = "english";
+                  };
+                  noQuery = true;
+                };
+                type = "application/x-suggestions+json";
+              }
+            ];
+            aliases = [ "s" "startpage" ];
+          })
+          (mkSearch {
+            name = "Nixpkgs Search";
+            urlBase = "https://search.nixos.org";
+            searchExtension = mkSE {
+              prefix = "packages";
+              parameters = {
+                channel = "unstable";
+              };
+              queryParam = "query";
             };
-            "NixOS Options" = {
-              urls = [{ template = "https://search.nixos.org/options?channel=unstable&query={searchTerms}"; }];
-              params = [
-                { name = "query"; value = "{searchTerms}"; }
-                { name = "channel"; value = "unstable"; }
-              ];
-              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-              updateInterval = 24 * 60 * 60 * 1000;
-              definedAliases = [ "@no" "@nixos" ];
+            extraParams = {
+              channel = "unstable";
             };
-            "Home Manager Options" = {
-              urls = [{ template = "https://search.nixos.org/options?channel=unstable&source=home_manager&query={searchTerms}"; }];
-              params = [
-                { name = "query"; value = "{searchTerms}"; }
-                { name = "channel"; value = "unstable"; }
-              ];
-              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-              updateInterval = 24 * 60 * 60 * 1000;
-              definedAliases = [ "@nh" "@hm" "@homemanager" ];
+            iconFile = icons.nixSnowflake;
+            aliases = [ "np" "nixpkgs" ];
+          })
+          (mkSearch {
+            name = "NixOS Options";
+            urlBase = "https://search.nixos.org";
+            searchExtension = mkNixosSE "nixos" "unstable";
+            extraParams = {
+              channel = "unstable";
             };
-          }
-          # Simple engines
-          (mkSimpleSearch {
+            iconFile = icons.nixSnowflake;
+            aliases = [ "no" "nixos" ];
+          })
+          (mkSearch {
+            name = "Home Manager Options";
+            urlBase = "https://search.nixos.org";
+            searchExtension = mkNixosSE "home_manager" "unstable";
+            extraParams = {
+              channel = "unstable";
+            };
+            iconFile = icons.nixSnowflake;
+            aliases = [ "nh" "hm" "homemanager" ];
+          })
+          (mkSearch {
             name = "NixOS Wiki";
             urlBase = "https://wiki.nixos.org";
-            searchExtension = "w/index.php?search=";
+            searchExtension = mkSimpleSE "w/index.php" "search";
             aliases = [ "nw" "nixwiki" "nixoswiki" ];
           })
-          (mkSimpleSearch {
+          (mkSearch {
             name = "Nixvim Option Search";
             urlBase = "https://nix-community.github.io/nixvim";
-            searchExtension = "search/options?query=";
+            searchExtension = mkSimpleSE "search/options" "query";
             alias = "nixvim";
             iconFile = icons.nixvim;
           })
-          (mkSimpleSearch {
+          (mkSearch {
             name = "Noogle";
             urlBase = "https://noogle.dev";
-            searchExtension = "q?term=";
+            searchExtension = mkSimpleSE "q" "term";
             aliases = [ "ng" "noogle" ];
             iconFile = icons.nixSnowflake;
           })
