@@ -48,7 +48,7 @@
         default = "Startpage";
         engines = let
           svgToPng = fileName: input: builtins.addErrorContext "While converting an SVG to a PNG" (pkgs.runCommand fileName { } ''
-            ${pkgs.imageMagick}/bin/magick ${input} $out
+            ${pkgs.imagemagick}/bin/magick ${input} $out
           '');
           icons = {
             nixSnowflake = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
@@ -57,7 +57,7 @@
           procParameters = parameters: builtins.addErrorContext "While processing url parameters" (builtins.concatStringsSep "&"
             (map
               ({ name, value }: "${name}=${value}")
-              (builtins.attrsToList parameters)
+              (lib.attrsets.attrsToList parameters)
             )
           );
           mkSE = builtins.addErrorContext "While defining the rest of a search URL" (
@@ -69,7 +69,7 @@
               prefix
               "?"
               (procParameters parameters)
-              (if ((builtins.length (builtins.attrsToList parameters)) > 0) then "&" else "")
+              (if ((builtins.length (lib.attrsets.attrsToList parameters)) > 0) then "&" else "")
               (if noQuery then "" else "${queryParam}=")
             ]
           );
@@ -111,7 +111,7 @@
                     )
                     ++ additionalUrls
                   );
-                  params = lib.attrsToList (
+                  params = lib.attrsets.attrsToList (
                     { query = "{searchTerms}"; } // extraParams
                   );
                 }
