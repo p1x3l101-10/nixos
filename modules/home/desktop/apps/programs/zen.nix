@@ -1,4 +1,4 @@
-{ config, pkgs, ext, lib, ... }:
+{ config, pkgs, ext, lib, osConfig, ... }:
 
 {
   stylix.targets.zen-browser.profileNames = [
@@ -245,6 +245,20 @@
             mkBookmark = name: url: { inherit name url; };
             mkFolder = name: bookmarks: { inherit name bookmarks; };
             mkToolbar = b: (mkFolder "Toolbar" b) // { toolbar = true; };
+            trimSemanticPatch = version: maxPlaces: (
+              let
+                # i ~~FREAKING HATE~~ love recursion
+                main = splitVer: maxPlaces: (
+                  if ((lib.lists.count splitVer) >= maxPlaces) then (
+                    # Keep removing last element until we hit the target amount
+                    main (lib.lists.remove (lib.count splitVer) splitVer) maxPlaces
+                  ) else (
+                    # Reassemble and return the now trimmed version
+                    builtins.concatStringsSep "." splitVer
+                  )
+                );
+              in main (builtins.splitVersion version) maxPlaces
+            );
           in [
             (mkToolbar [
               (mkFolder "College" [
@@ -260,6 +274,19 @@
               ])
               (mkFolder "Tools" [
                 (mkBookmark "Graphing Calculator" "https://desmos.com/calculator")
+              ])
+              (mkFolder "Manuals" [
+                (mkFolder "NixOS Modules" [
+                  (mkBookmark "NixOS" "file://${osConfig.system.build.manual.manualHTML}/share/doc/nixos/index.html")
+                  (mkBookmark "nixos-cli" "https://nix-community.github.io/nixos-cli/")
+                  (mkBookmark "Home Manager" "https://nix-community.github.io/home-manager/")
+                  (mkBookmark "Stylix" "https://nix-community.github.io/stylix/")
+                  (mkBookmark "Nixvim" "https://nix-community.github.io/nixvim/")
+                  (mkBookmark "Nixcord" "https://4evy.github.io/nixcord/")
+                ])
+                (mkBookmark "Nix" "https://nix.dev/manual/nix/${trimSemanticPatch osConfig.nix.package.version 2}")
+                (mkBookmark "Nix.Dev" "https://nix.dev/")
+                (mkBookmark "Nix Builtins and Nixpkgs Lib" "https://teu5us.github.io/nix-lib.html")
               ])
             ])
           ]
