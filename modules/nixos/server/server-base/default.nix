@@ -24,7 +24,7 @@
           git -C /etc/nixos reset --hard
           git -C /etc/nixos pull
         fi
-        if [[ $1 == "switch" ]]; then
+        if [[ "''${1:-""}" == "switch" ]]; then
           nixos apply -y
         fi
       '';
