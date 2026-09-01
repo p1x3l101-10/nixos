@@ -20,9 +20,8 @@ in {
   programs.prismlauncher = {
     enable = true;
     settings = {
-      ConfigVersion = "1.3"; # Effectivly a config state marker
       ApplicationTheme = "system";
-      AutoCloseConsole = true;
+      AutoCloseConsole = false;
       AutomaticJavaDownload = false;
       AutomaticJavaSwitch = true;
       CloseAfterLaunch = false;
@@ -61,7 +60,7 @@ in {
       {
         "${name}" = {
           inherit name;
-          exec = "${config.programs.prismlauncher.package}/bin/prismlauncher --launch '${name}'";
+          exec = "${config.programs.prismlauncher.package}/bin/prismlauncher --launch \"${name}\"";
           categories = [ "Game" "ActionGame" "AdventureGame" "Simulation" ];
           icon = "${config.xdg.dataHome}/PrismLauncher/instances/${name}/icon.png";
         };
