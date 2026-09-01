@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, eLib, ... }:
 
 let
   mcLinker = (pkgs.callPackage ./support/linker.nix {}) {
@@ -56,4 +56,19 @@ in {
       WrapperCommand = "gamemoderun";
     };
   };
+  xdg.desktopEntries = eLib.attrsets.mergeAttrs (map
+    (name:
+      {
+        "${name}" = {
+          inherit name;
+          exec = "${config.programs.prismlauncher.package}/bin/prismlauncher --launch '${name}'";
+          categories = [ "Game" "ActionGame" "AdventureGame" "Simulation" ];
+          icon = "${config.xdg.dataHome}/PrismLauncher/instances/${name}/icon.png";
+        };
+      }
+    )
+    [
+      "Aeronautics"
+    ]
+  );
 }
