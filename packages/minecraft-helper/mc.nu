@@ -55,13 +55,13 @@ def "main start" [
   --after: duration
 ] {
   if (($at == null) and ($after == null)) {
-    elevate systemctl start minecraft --no-block
+    systemctl start minecraft --no-block
   } else {
     if ($after != null) {
       let at = (date now) + $after
-      elevate systemctl start minecraft --when ($at | systemdTimestamp) --no-block
+      systemctl start minecraft --when ($at | systemdTimestamp) --no-block
     } else {
-      elevate systemctl start minecraft --when ($at | systemdTimestamp) --no-block
+      systemctl start minecraft --when ($at | systemdTimestamp) --no-block
     }
   }
 }
@@ -71,7 +71,7 @@ def "main stop" [
   --after: duration
 ] {
   if (($at == null) and ($after == null)) {
-    elevate systemctl stop minecraft --no-block
+    systemctl stop minecraft --no-block
   } else {
     if ($after != null) {
       let at = (date now) + $after
@@ -80,14 +80,14 @@ def "main stop" [
         main rcon say "Server will stop in 5 minutes" --at ($at - 5min)
         main rcon say "Server will stop in 1 minute" --at ($at - 1min)
       }
-      elevate systemctl stop minecraft --when ($at | systemdTimestamp) --no-block
+      systemctl stop minecraft --when ($at | systemdTimestamp) --no-block
     } else {
       main rcon say ([ "Server will stop " ($at | date humanize) ] | str join)
       if (($at - (date now)) > 10min) {
         main rcon say "Server will stop in 5 minutes" --at ($at - 5min)
         main rcon say "Server will stop in 1 minute" --at ($at - 1min)
       }
-      elevate systemctl stop minecraft --when ($at | systemdTimestamp) --no-block
+      systemctl stop minecraft --when ($at | systemdTimestamp) --no-block
     }
   }
 }
@@ -97,7 +97,7 @@ def "main restart" [
   --after: duration
 ] {
   if (($at == null) and ($after == null)) {
-    elevate systemctl restart minecraft --no-block
+    systemctl restart minecraft --no-block
   } else {
     if ($after != null) {
       let at = (date now) + $after
@@ -106,14 +106,14 @@ def "main restart" [
         main rcon say "Server will restart in 5 minutes" --at ($at - 5min)
         main rcon say "Server will restart in 1 minute" --at ($at - 1min)
       }
-      elevate systemctl restart minecraft --when ($at | systemdTimestamp) --no-block
+      systemctl restart minecraft --when ($at | systemdTimestamp) --no-block
     } else {
       main rcon say ([ "Server is queued for a restart " ($at | date humanize) ] | str join)
       if (($at - (date now)) > 10min) {
         main rcon say "Server will restart in 5 minutes" --at ($at - 5min)
         main rcon say "Server will restart in 1 minute" --at ($at - 1min)
       }
-      elevate systemctl restart minecraft --when ($at | systemdTimestamp) --no-block
+      systemctl restart minecraft --when ($at | systemdTimestamp) --no-block
     }
   }
 }
