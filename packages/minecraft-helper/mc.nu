@@ -28,6 +28,10 @@ def systemdTime []: duration -> string {
   | str replace --regex '\s[0-9]+ns' "" # Systemd does not support nanoseconds
 }
 
+def systemdTimestamp []: datetime -> string {
+  format date "%F %T %z"
+}
+
 def processRconCommand []: list<string> -> string {
   each { |x|
     if ($x | str contains " ") {
@@ -55,9 +59,9 @@ def "main start" [
   } else {
     if ($after != null) {
       let at = (date now) + $after
-      elevate systemctl start minecraft --when ($at | format date "%+") --no-block
+      elevate systemctl start minecraft --when ($at | systemdTimestamp) --no-block
     } else {
-      elevate systemctl start minecraft --when ($at | format date "%+") --no-block
+      elevate systemctl start minecraft --when ($at | systemdTimestamp) --no-block
     }
   }
 }
@@ -76,14 +80,14 @@ def "main stop" [
         main rcon say "Server will stop in 5 minutes" --at ($at - 5min)
         main rcon say "Server will stop in 1 minute" --at ($at - 1min)
       }
-      elevate systemctl stop minecraft --when ($at | format date "%+") --no-block
+      elevate systemctl stop minecraft --when ($at | systemdTimestamp) --no-block
     } else {
       main rcon say ([ "Server will stop " ($at | date humanize) ] | str join)
       if (($at - (date now)) > 10min) {
         main rcon say "Server will stop in 5 minutes" --at ($at - 5min)
         main rcon say "Server will stop in 1 minute" --at ($at - 1min)
       }
-      elevate systemctl stop minecraft --when ($at | format date "%+") --no-block
+      elevate systemctl stop minecraft --when ($at | systemdTimestamp) --no-block
     }
   }
 }
@@ -102,14 +106,14 @@ def "main restart" [
         main rcon say "Server will restart in 5 minutes" --at ($at - 5min)
         main rcon say "Server will restart in 1 minute" --at ($at - 1min)
       }
-      elevate systemctl restart minecraft --when ($at | format date "%+") --no-block
+      elevate systemctl restart minecraft --when ($at | systemdTimestamp) --no-block
     } else {
       main rcon say ([ "Server is queued for a restart " ($at | date humanize) ] | str join)
       if (($at - (date now)) > 10min) {
         main rcon say "Server will restart in 5 minutes" --at ($at - 5min)
         main rcon say "Server will restart in 1 minute" --at ($at - 1min)
       }
-      elevate systemctl restart minecraft --when ($at | format date "%+") --no-block
+      elevate systemctl restart minecraft --when ($at | systemdTimestamp) --no-block
     }
   }
 }
@@ -136,10 +140,10 @@ def "main rcon" [
       }
     } else {
       if ($after == null) {
-        elevate systemd-run --on-calendar ($at | format date "%+") podman exec -it minecraft rcon-cli ($command | processRconCommand)
+        elevate systemd-run --on-calendar ($at | systemdTimestamp) podman exec -it minecraft rcon-cli ($command | processRconCommand)
       } else {
         let at = (date now) + $after
-        elevate systemd-run --on-calendar ($at | format date "%+") podman exec -it minecraft rcon-cli ($command | processRconCommand)
+        elevate systemd-run --on-calendar ($at | systemdTimestamp) podman exec -it minecraft rcon-cli ($command | processRconCommand)
       }
     }
   }
