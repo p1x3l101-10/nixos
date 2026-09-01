@@ -5,6 +5,9 @@ let
 in {
   programs.nushell = {
     enable = true;
+    plugins = with pkgs.nushellPlugins; [
+      formats
+    ];
     settings = {
       use_kitty_protocol = true;
       show_banner = false;
