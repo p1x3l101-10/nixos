@@ -3,7 +3,6 @@
 let
   inherit (config.lib.nushell) mkNushellInline;
 in {
-  imports = [ ./support/nu/load-final-config.nix ];
   programs.nushell = {
     enable = true;
     settings = {
