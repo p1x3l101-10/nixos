@@ -50,6 +50,10 @@ def --wrapped "main log" [
   journalctl -Wxeu minecraft ...$args
 }
 
+def --wrapped "main status" [...args] {
+  systemctl status minecraft ...$args
+}
+
 def "main start" [
   --at: datetime
   --after: duration
