@@ -8,7 +8,7 @@
         inherit userdata;
         packId = "aeronautics";
         gamerules = {
-          playersSleepingPercentage = 50;
+          playersSleepingPercentage = 101;
           disableElytraMovementCheck = true;
           doImmediateRespawn = true;
           spawnRadius = 100;
