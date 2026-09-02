@@ -153,6 +153,9 @@ let
         name = "Games";
         id = "45aik-9ajyr";
         path = "${homeDir}/Games";
+        ignorePatterns = [
+          "/ROMs"
+        ];
       })
       (mkFolder {
         name =  "MC Icons";
