@@ -260,11 +260,11 @@
         "nixpkgs-lib": "nixpkgs-lib"
       },
       "locked": {
-        "lastModified": 1775087534,
-        "narHash": "sha256-91qqW8lhL7TLwgQWijoGBbiD4t7/q75KTi8NxjVmSmA=",
+        "lastModified": 1782949081,
+        "narHash": "sha256-vp6Y/Grm98ESt6ceOkWiHWyZRDV3J1RID4w+6NWK9yA=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "3107b77cd68437b9a76194f0f7f9c55f2329ca5b",
+        "rev": "17c9d6cdfc60c64f4ee8d306f9bc0b4ccb51481e",
         "type": "github"
       },
       "original": {
@@ -708,16 +708,15 @@
         "optnix": "optnix"
       },
       "locked": {
-        "lastModified": 1775864460,
-        "narHash": "sha256-RliZUN4ksgyaZAL7yCQwY1HRhjXuxQyuthaXSD04e1U=",
+        "lastModified": 1785660397,
+        "narHash": "sha256-4T5rGN79nrfOoDG6r4k3jEFmVy2PT1M30sEW+Oc7TU0=",
         "owner": "nix-community",
         "repo": "nixos-cli",
-        "rev": "c271826e6cc755268b56269837e05c0ff9de5101",
+        "rev": "b17047e43eb19a76e2ea5a2f09d558d3b4b3c816",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
-        "ref": "0.16.1",
         "repo": "nixos-cli",
         "type": "github"
       }
@@ -841,11 +840,11 @@
     },
     "nixpkgs-lib": {
       "locked": {
-        "lastModified": 1774748309,
-        "narHash": "sha256-+U7gF3qxzwD5TZuANzZPeJTZRHS29OFQgkQ2kiTJBIQ=",
+        "lastModified": 1782614948,
+        "narHash": "sha256-ePjCwr1sNm9NYUqywL7QfK3JnlS015msC+eBu2zKlp8=",
         "owner": "nix-community",
         "repo": "nixpkgs.lib",
-        "rev": "333c4e0545a6da976206c74db8773a1645b5870a",
+        "rev": "db3f255737b94216eb71cce308e2912cf6bc2d7c",
         "type": "github"
       },
       "original": {
@@ -1064,11 +1063,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774559664,
-        "narHash": "sha256-a8FWQZgqaS7o484iH7dFK+F9t7oMahKbcH2piIwUwFc=",
+        "lastModified": 1776468647,
+        "narHash": "sha256-zx5O1RyRl6Fq+mvMh+JdS18aXR8644bcN9MKh2fN19M=",
         "owner": "water-sucks",
         "repo": "optnix",
-        "rev": "853323ece22fb1ffed19cea4ae22804032034a8e",
+        "rev": "c320dc5494c0caaca9ee4341367618c06a957709",
         "type": "github"
       },
       "original": {

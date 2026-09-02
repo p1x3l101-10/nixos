@@ -110,12 +110,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-cli = {
-      # Note to self, remember to update this
-      url = "github:nix-community/nixos-cli/0.16.1";
+      url = "github:nix-community/nixos-cli";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-compat.follows = "flake-compat";
-        #flake-parts.follows = "flake-parts";
       };
     };
     nixos-mailserver = {
