@@ -23,7 +23,7 @@ function s:Print()
   execute("!html2pdf" .. " --output " .. l:destFile .. " --paper ".. g:Hardcopy_paperType .. " " .. l:file)
   silent
   " Schedule print job
-  execute("!lp " .. l:destFile)
+  execute("!open `" .. l:destFile .. "` | gdbus call --session --dest org.freedesktop.portal.Desktop --object-path /org/freedesktop/portal/desktop --method org.freedesktop.portal.Print.Print `` `Printing from Vim` 0 `{'modal':<true>}`")
   silent
   " Cleanup
   execute("!rm " .. l:destFile .. " " .. l:file)

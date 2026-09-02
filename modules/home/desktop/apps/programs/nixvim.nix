@@ -180,6 +180,7 @@
     extraPackages = with pkgs; [
       # Hardcopy
       html2pdf
+      glib
     ];
     lsp = {
       servers = {
