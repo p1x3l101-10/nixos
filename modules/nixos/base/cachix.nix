@@ -1,26 +1,16 @@
 { eLib, ... }:
 
-{
+let
+  mkCache = cachixLoc: key: {
+    substituters = [ "https://${cachixLoc}.cachix.org" ];
+    trusted-public-keys = [ "${cachixLoc}.cachix.org-1:${key}" ];
+  };
+in {
   nix.settings = eLib.attrsets.mergeAttrs [
-    {
-      substituters = [ "https://unmojang.cachix.org" ];
-      trusted-public-keys = [ "unmojang.cachix.org-1:OfHnbBNduZ6Smx9oNbLFbYyvOWSoxb2uPcnXPj4EDQY=" ];
-    }
-    {
-      substituters = [ "https://nix-community.cachix.org" ];
-      trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
-    }
-    {
-      substituters = [ "https://hyprland.cachix.org" ];
-      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
-    }
-    {
-      substituters = [ "https://nix-gaming.cachix.org" ];
-      trusted-public-keys = [ "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=" ];
-    }
-    {
-      substituters = ["https://nix-citizen.cachix.org"];
-      trusted-public-keys = ["nix-citizen.cachix.org-1:lPMkWc2X8XD4/7YPEEwXKKBg+SVbYTVrAaLA2wQTKCo="];
-    }
+    (mkCache "unmojang" "OfHnbBNduZ6Smx9oNbLFbYyvOWSoxb2uPcnXPj4EDQY=")
+    (mkCache "nix-community" "mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=")
+    (mkCache "hyprland" "a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=")
+    (mkCache "nix-gaming" "nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=")
+    (mkCache "nix-citizen" "lPMkWc2X8XD4/7YPEEwXKKBg+SVbYTVrAaLA2wQTKCo=")
   ];
 }
