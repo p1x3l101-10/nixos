@@ -3,10 +3,13 @@
 " - g:Hardcopy_paperType
 " Depends on the following binaries:
 " - html2pdf
-" - lp
+" - gdbus
 " - rm
 " Depends on the following plugins
 " - nvim.tohtml
+" Notes
+" - Was built with the assumption that the running shell is nushell, might not
+"   work otherwise
 command Hardcopy call s:Print()
 command Hc call s:Print()
 command HC call s:Print()
