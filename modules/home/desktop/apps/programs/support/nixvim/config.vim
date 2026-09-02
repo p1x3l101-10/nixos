@@ -19,13 +19,10 @@ function s:Print()
   write
   quit
   let l:destFile = l:file .. ".pdf"
-  silent
-  execute("!html2pdf" .. " --output " .. l:destFile .. " --paper ".. g:Hardcopy_paperType .. " " .. l:file)
-  silent
+  silent execute("!html2pdf" .. " --output " .. l:destFile .. " --paper ".. g:Hardcopy_paperType .. " " .. l:file)
   " Schedule print job
-  execute("!open `" .. l:destFile .. "` | gdbus call --session --dest org.freedesktop.portal.Desktop --object-path /org/freedesktop/portal/desktop --method org.freedesktop.portal.Print.Print `` `Printing from Vim` 0 `{'modal':<true>}`")
-  silent
+  silent execute("!open `" .. l:destFile .. "` | gdbus call --session --dest org.freedesktop.portal.Desktop --object-path /org/freedesktop/portal/desktop --method org.freedesktop.portal.Print.Print `` `Printing from Vim` 0 `{'modal':<true>}`")
   " Cleanup
-  execute("!rm " .. l:destFile .. " " .. l:file)
+  silent execute("!rm " .. l:destFile .. " " .. l:file)
   return
 endfunction
