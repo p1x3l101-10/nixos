@@ -12,5 +12,6 @@ in {
     (mkCache "hyprland" "a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=")
     (mkCache "nix-gaming" "nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=")
     (mkCache "nix-citizen" "lPMkWc2X8XD4/7YPEEwXKKBg+SVbYTVrAaLA2wQTKCo=")
+    (mkCache "watersucks" "6gadPC5R8iLWQ3EUtfu3GFrVY7X6I4Fwz/ihW25Jbv8=")
   ];
 }
