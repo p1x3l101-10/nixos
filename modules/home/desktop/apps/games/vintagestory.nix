@@ -1,8 +1,5 @@
-{ pkgs, ... }:
+{ ext, ... }:
 
 {
-  home.packages = [ pkgs.vintagestory ];
-  home.allowedUnfree.packages = [
-    "vintagestory"
-  ];
+  home.packages = [ ext.unstable.unfreePkgs.vintagestory ];
 }
