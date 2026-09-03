@@ -49,8 +49,20 @@ inputs.flake-utils.lib.eachDefaultSystem
             config = (finalExt.defaultNixpkgsConfig // { allowUnfree = true; });
           };
         });
-        unstable = lib.fix (finalPkgs: {
+        mainNixpkgs = lib.fix (finalPkgs: {
           input = inputs.nixpkgs;
+          inherit (finalPkgs.input) lib;
+          pkgs = finalExt.rawPkgs {
+            nixpkgs = finalPkgs.input;
+            config = finalExt.defaultNixpkgsConfig;
+          };
+          unfreePkgs = finalExt.rawPkgs {
+            nixpkgs = finalPkgs.input;
+            config = (finalExt.defaultNixpkgsConfig // { allowUnfree = true; });
+          };
+        });
+        unstable = lib.fix (finalPkgs: {
+          input = inputs.nixpkgs-unstable;
           inherit (finalPkgs.input) lib;
           pkgs = finalExt.rawPkgs {
             nixpkgs = finalPkgs.input;
