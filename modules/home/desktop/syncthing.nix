@@ -47,6 +47,7 @@ let
           "Terraria"
           "Templates"
           "Videos"
+          "Vintage Story"
         ];
         nixosHostname = "stellar-pc";
       })
@@ -71,6 +72,7 @@ let
           "Terraria"
           "Templates"
           "Videos"
+          "Vintage Story"
         ];
         nixosHostname = "stellar-laptop";
       })
@@ -211,6 +213,11 @@ let
         name = "Videos";
         id = "qoy8g-azv4o";
         path = xdg.userDirs.videos;
+      })
+      (mkFolder {
+        name = "Vintage Story";
+        id = "vinta-ge11";
+        path = "${xdg.dataHome}/VintagestoryData";
       })
     ];
     globalIgnore = [];
