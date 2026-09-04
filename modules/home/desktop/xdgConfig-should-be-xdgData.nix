@@ -15,6 +15,7 @@
       "unityhub"
       "Blockbench"
       "blender"
+      "VintagestoryData"
     ]
   );
 }
