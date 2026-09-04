@@ -13,6 +13,7 @@
           doImmediateRespawn = true;
           spawnRadius = 100;
           spawnChunkRadius = 0;
+          fallDamage = true;
         };
       })
       {
