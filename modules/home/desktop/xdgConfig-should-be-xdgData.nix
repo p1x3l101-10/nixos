@@ -1,8 +1,11 @@
-{ config, ... }:
+{ config, lib, ... }:
 
 {
-  systemd.user.tmpfiles.rules = (map
-    (x: "L ${config.xdg.configHome}/${x} - - - - ${config.xdg.dataHome}/${x}")
+  systemd.user.tmpfiles.rules = lib.lists.flatten (map
+    (x: [
+      "L ${config.xdg.configHome}/${x} - - - - ${config.xdg.dataHome}/${x}"
+      "d ${config.xdg.dataHome}/${x} - - - - -"
+    ])
     [ # Convert this list into a link from .config to .local/share
       "steamtinkerlaunch"
       "r2modmanPlus-local"
