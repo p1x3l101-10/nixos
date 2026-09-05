@@ -87,8 +87,10 @@ in
           let
             mod = globals.modifierKey;
             # Keybinding stuff
+            b'' = keyList: action: flags: (mkLua [(builtins.concatStringsSep " + " keyList) action (lua flags)]);
             b' = keyList: action: (mkLua [(builtins.concatStringsSep " + " keyList) action]);
             b = key: action: (b' [mod key] action);
+            specialKey = keyType: keycode: "${keyType}:${keycode}";
             dsp = action: lua "hl.dsp.${action}";
             # Common actions
             exec = cmd: dsp "exec_cmd(${lQuote cmd})";
@@ -163,6 +165,15 @@ in
                   Down = "5%-";
                 }
               )
+            ) ++ (let # Mouse binds
+                b = mouseButton: action: b'' [mod (specialKey "mouse" mouseButton)] action { mouse = true; };
+                lmb = "272";
+                rmb = "273";
+                #mmb = "274";
+              in [ 
+                (b lmb (dsp "window.drag()"))
+                (b rmb (dsp "window.resize()"))
+              ]
             )
           )
         );
