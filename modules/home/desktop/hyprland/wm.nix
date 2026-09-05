@@ -87,7 +87,7 @@ in
           let
             mod = globals.modifierKey;
             # Keybinding stuff
-            b'' = keyList: action: flags: (mkLua [(builtins.concatStringsSep " + " keyList) action (lua flags)]);
+            b'' = keyList: action: flags: (mkLua [(builtins.concatStringsSep " + " keyList) action flags]);
             b' = keyList: action: (mkLua [(builtins.concatStringsSep " + " keyList) action]);
             b = key: action: (b' [mod key] action);
             specialKey = keyType: keycode: "${keyType}:${keycode}";
@@ -166,7 +166,7 @@ in
                 }
               )
             ) ++ (let # Mouse binds
-                b = mouseButton: action: b'' [mod (specialKey "mouse" mouseButton)] action { mouse = true; };
+                b = mouseButton: action: b'' [mod (specialKey "mouse" mouseButton)] action "{ mouse = true }";
                 lmb = "272";
                 rmb = "273";
                 #mmb = "274";
