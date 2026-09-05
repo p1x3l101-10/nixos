@@ -20,8 +20,8 @@ in
           _args = args;
         };
       in {
-        debug.enable_stdout_logs = 1;
         config = {
+          debug.enable_stdout_logs = 1;
           general = {
             gaps_in = 5;
             gaps_out = 10;
