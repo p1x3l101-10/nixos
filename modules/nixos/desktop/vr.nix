@@ -98,7 +98,7 @@ in {
   ];
   nixpkgs.config = {
     #xr.enable = false;
-    rocmSupport = true;
+    #rocmSupport = true;
   };
   services.avahi = {
     enable = true;
