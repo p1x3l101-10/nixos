@@ -20,6 +20,7 @@ in
           _args = args;
         };
       in {
+        debug.enable_stdout_logs = 1;
         config = {
           general = {
             gaps_in = 5;
