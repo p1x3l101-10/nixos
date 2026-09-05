@@ -219,7 +219,7 @@ in
         } else {}
       )
     );
-    systemd.enable = true;
+    systemd.enable = false;
     xwayland.enable = true;
   };
   home.packages = with pkgs; [
