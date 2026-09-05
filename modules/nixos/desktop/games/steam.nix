@@ -19,7 +19,7 @@ in {
         PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES = "1";
       };
     };
-    protontricks.enable = true;
+    protontricks.enable = false;
     localNetworkGameTransfers.openFirewall = true;
     remotePlay.openFirewall = true;
     gamescopeSession.enable = true;
