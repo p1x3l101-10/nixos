@@ -131,7 +131,7 @@ in
                     # Move focus between workspaces
                     (b workspaceKey (dsp "focus({ workspace = ${lQuote internalWorkspace} })"))
                     # Move window between workspace
-                    (b workspaceKey (dsp "window.move({ workspace = ${lQuote internalWorkspace} })"))
+                    (b [mod "SHIFT" workspaceKey] (dsp "window.move({ workspace = ${lQuote internalWorkspace} })"))
                   ]
                 )
                 (builtins.genList (x: (builtins.toString (x + 1))) 10) # 10 workspaces
