@@ -46,6 +46,7 @@ in
               vibrancy = "0.1696";
             };
           };
+          /*
           animations = {
             enabled = true;
             bezier = [
@@ -74,6 +75,7 @@ in
               "workspacesOut, 1, 1.94, almostLinear, fade"
             ];
           };
+          */
           input = {
             kb_layout = "us";
             follow_mouse = false;
