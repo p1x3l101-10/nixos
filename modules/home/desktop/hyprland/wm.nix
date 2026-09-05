@@ -1,4 +1,4 @@
-{ ext, pkgs, lib, osConfig, ... }:
+{ ext, pkgs, lib, osConfig, config, ... }:
 let
   inherit (ext) inputs system;
 in
@@ -226,4 +226,5 @@ in
     wl-clipboard
     cliphist
   ];
+  xdg.configFile."uwsm/env".source = "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
 }
