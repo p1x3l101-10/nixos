@@ -1,8 +1,7 @@
 { pkgs, lib, ext, ... }:
 
 let
-  hyprLib = import ./support/hypr-lib.nix { inherit lib ext; };
-  globals = import ./support/hypr-globals.nix { inherit pkgs lib ext hyprLib; };
+  globals = import ./support/hypr-globals.nix { inherit pkgs lib ext; };
   mkOkularApp = type: "okularApplication_${type}.desktop";
   libreOffice = builtins.listToAttrs (map 
     (x: {

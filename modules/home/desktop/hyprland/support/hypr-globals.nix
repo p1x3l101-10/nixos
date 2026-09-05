@@ -1,8 +1,18 @@
-{ pkgs, lib, ext, hyprLib }:
+{ pkgs, lib, ext }:
 
-lib.fix (self: {
-  modiferKey = "SUPER";
-  apps = hyprLib.processDesktop {
+let
+  mkDesktopExec = entry: (
+    {
+      desktop = "${entry}";
+      exec = "app2unit ${entry}";
+    }
+  );
+  processDesktop = attrs: (
+    builtins.mapAttrs (_: value: mkDesktopExec "${value}.desktop") attrs
+  );
+in lib.fix (self: {
+  modifierKey = "SUPER";
+  apps = processDesktop {
     terminal = "kitty";
     fileManager = "thunar";
     web = "zen-twilight";
