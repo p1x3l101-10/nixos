@@ -274,15 +274,18 @@
                   (mkBookmark "Nixvim" "https://nix-community.github.io/nixvim/")
                   (mkBookmark "Nixcord" "https://4evy.github.io/nixcord/")
                 ])
+                (mkFolder "Nix" [
+                  (mkBookmark "Nix" "https://nix.dev/manual/nix/${trimSemanticPatch osConfig.nix.package.version 2}")
+                  (mkBookmark "Nix.Dev" "https://nix.dev/")
+                  (mkBookmark "Nix Builtins and Nixpkgs Lib" "https://teu5us.github.io/nix-lib.html")
+                ])
                 (mkFolder "Nushell Documentation" [
                   (mkBookmark "The Nushell Book" "https://www.nushell.sh/book/")
                   (mkBookmark "Command Reference" "https://www.nushell.sh/commands/")
                   (mkBookmark "Cookbook" "https://www.nushell.sh/cookbook/")
                   (mkBookmark "Language Reference Guide" "https://www.nushell.sh/lang-guide/")
                 ])
-                (mkBookmark "Nix" "https://nix.dev/manual/nix/${trimSemanticPatch osConfig.nix.package.version 2}")
-                (mkBookmark "Nix.Dev" "https://nix.dev/")
-                (mkBookmark "Nix Builtins and Nixpkgs Lib" "https://teu5us.github.io/nix-lib.html")
+                (mkBookmark "Hyprland Wiki" "https://wiki.hypr.land")
               ])
             ])
           ]
