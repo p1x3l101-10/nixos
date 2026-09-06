@@ -13,10 +13,9 @@ in
       let
         globals = import ./support/hypr-globals.nix { inherit pkgs lib ext; };
         # Shortcut for inline lua
-        lua = lib.generators.mkLuaInline;
-        lQuote = str: "\"${str}\"";
-        # Shortcut for that strange lua thing we do
-        mkLua = args: {
+        mkLua = lib.generators.mkLuaInline;
+        forceQuote = str: "\"${str}\"";
+        mkArgs = args: {
           _args = args;
         };
       in {
@@ -70,7 +69,7 @@ in
               , x1
               , y1
               }:
-              mkLua [name { type = "bezier"; points = [ [x0 y0] [x1 y1] ]; }]
+              mkArgs [name { type = "bezier"; points = [ [x0 y0] [x1 y1] ]; }]
             );
             bezier = name: x0: y0: x1: y1: mkBezier name { inherit x0 y0 x1 y1; };
           in [
@@ -88,7 +87,7 @@ in
               { enabled ? true
               , ...
               }@args:
-              mkLua [({ inherit leaf; } // args)]
+              mkArgs [({ inherit leaf; } // args)]
             );
             # Similar syntax to hyprlang, helps with converting old animations (also just nicer to work with)
             hyprlangAnim = leaf: onOff: speed: curve: style: mkAnim leaf ({
@@ -130,13 +129,13 @@ in
           let
             mod = globals.modifierKey;
             # Keybinding stuff
-            b'' = keyList: action: flags: (mkLua [(builtins.concatStringsSep " + " keyList) action flags]);
-            b' = keyList: action: (mkLua [(builtins.concatStringsSep " + " keyList) action]);
+            b'' = keyList: action: flags: (mkArgs [(builtins.concatStringsSep " + " keyList) action flags]);
+            b' = keyList: action: (mkArgs [(builtins.concatStringsSep " + " keyList) action]);
             b = key: action: (b' [mod key] action);
             specialKey = keyType: keycode: "${keyType}:${keycode}";
-            dsp = action: lua "hl.dsp.${action}";
+            dsp = action: mkLua "hl.dsp.${action}";
             # Common actions
-            exec = cmd: dsp "exec_cmd(${lQuote cmd})";
+            exec = cmd: dsp "exec_cmd(${forceQuote cmd})";
           in (
             [
               # Main binds
@@ -150,7 +149,7 @@ in
               (b "F11" (dsp "window.fullscreen()"))
             ] ++ (# Move focus between windows
               let
-                act = direction: (dsp "focus({ direction = ${lQuote direction} })");
+                act = direction: (dsp "focus({ direction = ${forceQuote direction} })");
               in [
                 (b "H" (act "left"))
                 (b "J" (act "up"))
@@ -159,7 +158,7 @@ in
               ]
             ) ++ ( # Move windows around
               let
-                act = direction: (dsp "window.move({ direction = ${lQuote direction} })");
+                act = direction: (dsp "window.move({ direction = ${forceQuote direction} })");
                 b = key: action: b' [mod "SHIFT" key] action;
               in [
                 (b "H" (act "left"))
@@ -174,9 +173,9 @@ in
                 in
                   [
                     # Move focus between workspaces
-                    (b workspaceKey (dsp "focus({ workspace = ${lQuote internalWorkspace} })"))
+                    (b workspaceKey (dsp "focus({ workspace = ${forceQuote internalWorkspace} })"))
                     # Move window between workspace
-                    (b' [mod "SHIFT" workspaceKey] (dsp "window.move({ workspace = ${lQuote internalWorkspace} })"))
+                    (b' [mod "SHIFT" workspaceKey] (dsp "window.move({ workspace = ${forceQuote internalWorkspace} })"))
                   ]
                 )
                 (builtins.genList (x: (builtins.toString (x + 1))) 10) # 10 workspaces
