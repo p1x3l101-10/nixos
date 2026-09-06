@@ -21,6 +21,10 @@ in
         };
       in {
         config = {
+          xwayland = {
+            enabled = true;
+            force_zero_scaling = false;
+          };
           debug.enable_stdout_logs = 1;
           general = {
             gaps_in = 5;
@@ -220,7 +224,6 @@ in
       )
     );
     systemd.enable = false;
-    xwayland.enable = true;
   };
   home.packages = with pkgs; [
     wl-clipboard
