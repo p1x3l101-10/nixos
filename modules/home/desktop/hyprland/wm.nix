@@ -12,12 +12,102 @@ in
     settings = (
       let
         globals = import ./support/hypr-globals.nix { inherit pkgs lib ext; };
-        # Shortcut for inline lua
-        mkLua = lib.generators.mkLuaInline;
-        forceQuote = str: "\"${str}\"";
+        inherit (lib.generators) mkLuaInline toLua;
         mkArgs = args: {
           _args = args;
         };
+        dsp = (
+          let
+            mkDsp = target: mkLuaInline "hl.dsp.${target}";
+          in {
+            exec_cmd = arg: mkDsp "exec_cmd(${toLua { } arg})";
+            focus = arg: mkDsp "focus(${toLua { } arg})";
+            window = {
+              move = arg: mkDsp "window.move(${toLua { } arg})";
+              drag = mkDsp "window.drag()";
+              resize = mkDsp "window.resize()";
+              close = mkDsp "window.close()";
+              kill = mkDsp "window.kill()";
+              fullscreen = mkDsp "window.fullscreen()";
+              float = mkDsp "window.float()";
+            };
+            workspace = {
+              move = arg: mkDsp "workspace.move(${toLua { } arg})";
+            };
+          }
+        );
+        monitors = (
+          let
+            inherit (osConfig.networking) hostName;
+            mkMon = attrs: (
+              if (builtins.hasAttr hostName attrs) then (attrs."${hostName}") else null
+            );
+            mkCount = attrs: (
+              if (builtins.hasAttr hostName attrs) then (attrs."${hostName}") else 1
+            );
+          in {
+            count = mkCount {
+              stellar-pc = 2;
+            };
+            primary = mkMon {
+              stellar-pc = {
+                name = "DP-1";
+                offset = "0x0";
+              };
+            };
+            secondary = mkMon {
+              stellar-pc = {
+                name = "DP-2";
+                offset = "-1920x0";
+              };
+            };
+          }
+        );
+        functions = lib.fix (final: {
+          keys = lib.fix (finalKeys: {
+            special = class: code: "${class}:${builtins.toString code}";
+            mouse = {
+              left = finalKeys.special "mouse" 272;
+              right = finalKeys.special "mouse" 273;
+              middle = finalKeys.special "mouse" 274;
+            };
+          });
+          bind = lib.fix (finalBind: {
+            bind = (
+              { keys
+              , dispatcher
+              , options ? { }
+              , autoMod ? true
+              }:
+              mkArgs [
+                # All this does is process the keys to something hyprland can take
+                # Optionally lets the keys be as a list
+                # Also handles automatically adding the modifier key when enabled
+                ( 
+                  if (builtins.isList keys) then (
+                    builtins.concatStringsSep " + " (
+                      (
+                        if (autoMod && (!builtins.elem globals.mod keys)) then (
+                          [ globals.modifierKey ]
+                        ) else ([])
+                      ) ++ keys
+                    )
+                  ) else (
+                    if (autoMod && (!lib.strings.hasInfix globals.modifierKey keys)) then (
+                      globals.modifierKey + " + " + keys
+                    ) else keys
+                  )
+                )
+                dispatcher
+                options
+              ]
+            );
+            b = keys: dispatcher: finalBind.bind { inherit keys dispatcher; };
+            bnm = keys: dispatcher: finalBind.bind { inherit keys dispatcher; autoMod = false; };
+            b' = keys: dispatcher: options: finalBind.bind { inherit keys dispatcher options; };
+            bnm' = keys: dispatcher: options: finalBind.bind { inherit keys dispatcher options; autoMod = false; };
+          });
+        });
       in {
         config = {
           xwayland = {
@@ -126,30 +216,20 @@ in
           ])
         );
         bind = (
-          let
-            mod = globals.modifierKey;
-            # Keybinding stuff
-            b'' = keyList: action: flags: (mkArgs [(builtins.concatStringsSep " + " keyList) action flags]);
-            b' = keyList: action: (mkArgs [(builtins.concatStringsSep " + " keyList) action]);
-            b = key: action: (b' [mod key] action);
-            specialKey = keyType: keycode: "${keyType}:${keycode}";
-            dsp = action: mkLua "hl.dsp.${action}";
-            # Common actions
-            exec = cmd: dsp "exec_cmd(${forceQuote cmd})";
-          in (
+          with functions.bind; (
             [
               # Main binds
-              (b "Q" (exec globals.apps.terminal.exec))
-              (b "W" (exec globals.apps.web.exec))
-              (b "C" (dsp "window.close()"))
-              (b "E" (exec globals.apps.fileManager.exec))
-              (b "V" (dsp "window.float()"))
-              (b "R" (exec globals.spotlight))
-              (b' [mod "ALT" "L"] (exec globals.lockCmd))
-              (b "F11" (dsp "window.fullscreen()"))
+              (b "Q" (dsp.exec_cmd globals.apps.terminal.exec))
+              (b "W" (dsp.exec_cmd globals.apps.web.exec))
+              (b "C" dsp.window.close)
+              (b "E" (dsp.exec_cmd globals.apps.fileManager.exec))
+              (b "V" dsp.window.float)
+              (b "R" (dsp.exec_cmd globals.spotlight))
+              (b ["ALT" "L"] (dsp.exec_cmd globals.lockCmd))
+              (b "F11" dsp.window.fullscreen)
             ] ++ (# Move focus between windows
               let
-                act = direction: (dsp "focus({ direction = ${forceQuote direction} })");
+                act = direction: dsp.focus { inherit direction; };
               in [
                 (b "H" (act "left"))
                 (b "J" (act "up"))
@@ -158,8 +238,8 @@ in
               ]
             ) ++ ( # Move windows around
               let
-                act = direction: (dsp "window.move({ direction = ${forceQuote direction} })");
-                b = key: action: b' [mod "SHIFT" key] action;
+                act = direction: dsp.window.move { inherit direction; };
+                b = key: dispatcher: bind { keys = ["SHIFT" key]; inherit dispatcher; };
               in [
                 (b "H" (act "left"))
                 (b "J" (act "up"))
@@ -168,28 +248,28 @@ in
               ]
             ) ++ ( # Workspace keybinds
               lib.flatten (map
-                (internalWorkspace: let
-                  workspaceKey = if (internalWorkspace == "10") then "0" else internalWorkspace;
+                (workspace: let
+                  workspaceKey = if (workspace == "10") then "0" else workspace;
                 in
                   [
                     # Move focus between workspaces
-                    (b workspaceKey (dsp "focus({ workspace = ${forceQuote internalWorkspace} })"))
+                    (b workspaceKey (dsp.focus { inherit workspace; }))
                     # Move window between workspace
-                    (b' [mod "SHIFT" workspaceKey] (dsp "window.move({ workspace = ${forceQuote internalWorkspace} })"))
+                    (b ["SHIFT" workspaceKey] (dsp.window.move { inherit workspace; }))
                   ]
                 )
                 (builtins.genList (x: (builtins.toString (x + 1))) 10) # 10 workspaces
               )
             ) ++ [ # Screenshot stuff
-              (b' ["Print"] (exec "grimblast save screen"))
-              (b' ["SHIFT" "Print"] (exec "grimblast copy screen"))
-              (b' [mod "Print"] (exec "grimblast save area"))
-              (b' [mod "SHIFT" "Print"] (exec "grimblast copy area"))
-              (b' [mod "CTRL" "Print"] (exec "grimblast save active"))
-              (b' [mod "CTRL" "SHIFT" "Print"] (exec "grimblast copy active"))
+              (bnm "Print" (dsp.exec_cmd "grimblast save screen"))
+              (bnm ["SHIFT" "Print"] (dsp.exec_cmd "grimblast copy screen"))
+              (b "Print" (dsp.exec_cmd "grimblast save area"))
+              (b ["SHIFT" "Print"] (dsp.exec_cmd "grimblast copy area"))
+              (b ["CTRL" "Print"] (dsp.exec_cmd "grimblast save active"))
+              (b ["CTRL" "SHIFT" "Print"] (dsp.exec_cmd "grimblast copy active"))
             ] ++ ( # XFree86 Actions
               (lib.attrsets.mapAttrsToList
-                (xKey: action: (b' ["XF86Audio${xKey}"] (exec action)))
+                (xKey: action: (bnm "XF86Audio${xKey}" (dsp.exec_cmd action)))
                 {
                   RaiseVolume = "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+";
                   LowerVolume = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
@@ -201,38 +281,26 @@ in
                   Prev = "playerctl previous";
                 }
               ) ++ (lib.attrsets.mapAttrsToList
-                (xKey: brightAction: (b' ["XF86MonBrightness${xKey}"] (exec "brightnessctl -e4 -n2 set ${brightAction}")))
+                (xKey: brightAction: (b "XF86MonBrightness${xKey}" (dsp.exec_cmd "brightnessctl -e4 -n2 set ${brightAction}")))
                 {
                   Up = "5%+";
                   Down = "5%-";
                 }
               )
-            ) ++ (let # Mouse binds
-                b = mouseButton: action: b'' [mod (specialKey "mouse" mouseButton)] action "{ mouse = true }";
-                lmb = "272";
-                rmb = "273";
-                #mmb = "274";
-              in [ 
-                (b lmb (dsp "window.drag()"))
-                (b rmb (dsp "window.resize()"))
-              ]
-            )
+            ) ++ (with functions.keys; [
+              (b' mouse.left dsp.window.drag { mouse = true; })
+              (b' mouse.right dsp.window.resize { mouse = true; })
+            ])
           )
         );
-      } // (let
-        monitors = {
-          applies = (osConfig.networking.hostName == "stellar-pc");
-          primary = "DP-1";
-          secondary = "DP-2";
-        };
-      in
-        if (monitors.applies) then {
+      } // (
+        if (monitors.count == 2) then {
           workspace_rule = (
             # Primary
             (map
               (workspace: {
                 inherit workspace;
-                monitor = monitors.primary;
+                monitor = monitors.primary.name;
               })
               (builtins.genList (x: (x * 2) + 1) 5)
             )
@@ -240,19 +308,19 @@ in
             ++ (map
               (workspace: {
                 inherit workspace;
-                monitor = monitors.secondary;
+                monitor = monitors.secondary.name;
               })
               (builtins.genList (x: (x * 2) + 2) 5)
             )
           );
           monitor = [
             {
-              output = monitors.primary;
-              position = "0x0";
+              output = monitors.primary.name;
+              position = monitors.primary.offset;
             }
             {
-              output = monitors.secondary;
-              position = "-1920x0";
+              output = monitors.secondary.name;
+              position = monitors.secondary.offset;
             }
           ];
         } else {}
