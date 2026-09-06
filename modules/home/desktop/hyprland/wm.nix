@@ -50,36 +50,6 @@ in
               vibrancy = "0.1696";
             };
           };
-          /*
-          animations = {
-            enabled = true;
-            bezier = [
-              "easeOutQuint,0.23,1,0.32,1"
-              "easeInOutCubic,0.65,0.05,0.36,1"
-              "linear,0,0,1,1"
-              "almostLinear,0.5,0.5,0.75,1.0"
-              "quick,0.15,0,0.1,1"
-            ];
-            animation = [
-              "global, 1, 10, default"
-              "border, 1, 5.39, easeOutQuint"
-              "windows, 1, 4.79, easeOutQuint"
-              "windowsIn, 1, 4.1, easeOutQuint, popin 87%"
-              "windowsOut, 1, 1.49, linear, popin 87%"
-              "fadeIn, 1, 1.73, almostLinear"
-              "fadeOut, 1, 1.46, almostLinear"
-              "fade, 1, 3.03, quick"
-              "layers, 1, 3.81, easeOutQuint"
-              "layersIn, 1, 4, easeOutQuint, fade"
-              "layersOut, 1, 1.5, linear, fade"
-              "fadeLayersIn, 1, 1.79, almostLinear"
-              "fadeLayersOut, 1, 1.39, almostLinear"
-              "workspaces, 1, 1.94, almostLinear, fade"
-              "workspacesIn, 1, 1.21, almostLinear, fade"
-              "workspacesOut, 1, 1.94, almostLinear, fade"
-            ];
-          };
-          */
           input = {
             kb_layout = "us";
             follow_mouse = false;
@@ -90,6 +60,72 @@ in
             };
           };
         };
+        curve = (
+          let
+            toString = x: (if (builtins.isFloat x) then (lib.strings.floatToString x) else (builtins.toString x));
+            mkBezier = (
+              name:
+              { x0
+              , y0
+              , x1
+              , y1
+              }:
+              mkLua [name { type = "bezier"; points = [ [x0 y0] [x1 y1] ]; }]
+            );
+            bezier = name: x0: y0: x1: y1: mkBezier name { inherit x0 y0 x1 y1; };
+          in [
+            (bezier "easeOutQuint" 0.23 1 0.32 1)
+            (bezier "easeInOutCubic" 0.65 0.05 0.36 1)
+            (bezier "linear" 0 0 1 1)
+            (bezier "almostLinear" 0.5 0.5 0.75 1.0)
+            (bezier "quick" 0.15 0 0.1 1)
+          ]
+        );
+        animation = (
+          let
+            mkAnim = (
+              leaf:
+              { enabled ? true
+              , ...
+              }@args:
+              mkLua [({ inherit leaf; } // args)]
+            );
+            # Similar syntax to hyprlang, helps with converting old animations (also just nicer to work with)
+            hyprlangAnim = leaf: onOff: speed: curve: style: mkAnim leaf ({
+              enabled = (if (builtins.isBool onOff) then (onOff) else (onOff == 1)); # Hyprlang uses 1 or 0 instead of true false
+              bezier = curve;
+              inherit speed;
+            } // (if (builtins.isNull style) then {} else { inherit style; }));
+            # Shorthands
+            anim' = leaf: speed: curve: style: hyprlangAnim leaf true speed curve style;
+            anim = leaf: speed: curve: hyprlangAnim leaf true speed curve null;
+            curveShorthands = {
+              def = "default";
+              eoq = "easeOutQuint";
+              ioc = "easeInOutCubic";
+              lin = "linear";
+              aln = "almostLinear";
+              qck = "quick";
+            };
+          in (with curveShorthands; [
+            (anim "global" 10 def)
+            (anim "border" 5.39 eoq)
+            (anim "windows" 4.79 eoq)
+            (anim' "windowsIn" 4.1 eoq "popin 87%")
+            (anim' "windowsOut" 1.49 lin "popin 87%")
+            (anim "fadeIn" 1.73 aln)
+            (anim "fadeOut" 1.5 aln)
+            (anim "fade" 3.03 qck)
+            (anim "layers" 3.81 eoq)
+            (anim' "layersIn" 4 eoq "fade")
+            (anim' "layersOut" 1.5 lin "fade")
+            (anim "fadeLayersIn" 1.79 aln)
+            (anim "fadeLayersOut" 1.39 aln)
+            (anim' "workspaces" 1.94 aln "fade")
+            (anim' "workspacesIn" 1.21 aln "fade")
+            (anim' "workspacesOut" 1.94 aln "fade")
+          ])
+        );
         bind = (
           let
             mod = globals.modifierKey;
