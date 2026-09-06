@@ -12,7 +12,9 @@ in
     settings = (
       let
         globals = import ./support/hypr-globals.nix { inherit pkgs lib ext; };
-        inherit (lib.generators) mkLuaInline toLua;
+        inherit (lib.generators) mkLuaInline;
+        toLua' = lib.generators.toLua;
+        toLua = generatorConfig: toLua' ({ multiline = false; } // generatorConfig);
         mkArgs = args: {
           _args = args;
         };
@@ -87,7 +89,7 @@ in
                   if (builtins.isList keys) then (
                     builtins.concatStringsSep " + " (
                       (
-                        if (autoMod && (!builtins.elem globals.mod keys)) then (
+                        if (autoMod && (!builtins.elem globals.modifierKey keys)) then (
                           [ globals.modifierKey ]
                         ) else ([])
                       ) ++ keys
@@ -151,7 +153,6 @@ in
         };
         curve = (
           let
-            toString = x: (if (builtins.isFloat x) then (lib.strings.floatToString x) else (builtins.toString x));
             mkBezier = (
               name:
               { x0
