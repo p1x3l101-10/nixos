@@ -278,6 +278,7 @@
                   (mkBookmark "Nix" "https://nix.dev/manual/nix/${trimSemanticPatch osConfig.nix.package.version 2}")
                   (mkBookmark "Nix.Dev" "https://nix.dev/")
                   (mkBookmark "Nix Builtins and Nixpkgs Lib" "https://teu5us.github.io/nix-lib.html")
+                  (mkBookmark "Nixpkgs Manual" "https://ryantm.github.io/nixpkgs")
                 ])
                 (mkFolder "Nushell Documentation" [
                   (mkBookmark "The Nushell Book" "https://www.nushell.sh/book/")
