@@ -2,11 +2,16 @@
 , lib
 , stdenv ? stdenvNoCC
 , stdenvNoCC
+, callPackage
 , nushell
 }:
 
-stdenv.mkDerivation {
-  name = "minecraft-helper";
+let
+  inherit (callPackage ./libs.nix {}) mkNuModules;
+  #nuModules = mkNuModules { plainModules = [ ./scheduleHelper ]; };
+in
+stdenv.mkDerivation (finalDrv: {
+  name = "mc";
   version = "0.0.0";
 
   src = (
@@ -22,17 +27,11 @@ stdenv.mkDerivation {
 
   buildInputs = [
     nushell
+    #nuModules
   ];
 
   installPhase = ''
-    mkdir -p $out/bin
-    #mkdir -p $out/share/nushell/modules
-
-    #cp -r minecraftWrapper $out/share/nushell/modules
-    cp mc.nu $out/bin/mc
-    chmod +x $out/bin/mc
-
-    #substituteInPlace $out/bin/mc \
-    #  --replace-fail "use minecraftWrapper" "use $out/share/nushell/modules/minecraftWrapper"
+    install -Dm755 main.nu $out/bin/${finalDrv.name}
   '';
-}
+  # ${nuModules.patchScript "$out/bin/${finalDrv.name}"}
+})
