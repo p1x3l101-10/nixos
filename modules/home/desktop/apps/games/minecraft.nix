@@ -38,7 +38,7 @@ in {
       IgnoreJavaWizard = true;
       InstRenamingMode = "PhysicalDir";
       InstSortMode = "Name";
-      LaunchMaximized = true;
+      LaunchMaximized = false;
       NumberOfConcurrentDownloads = 6;
       NumberOfConcurrentTasks = 10;
       NumberOfManualRetries = 2;
@@ -52,6 +52,9 @@ in {
       ShowGameTimeWithoutDays = true;
       ShowGlobalGameTime = true;
       SkipModpackUpdatePrompt = false;
+      UseNativeGLFW = true;
+      UseNativeOpenAL = true;
+      UseZink = true;
       WrapperCommand = "gamemoderun";
     };
   };
