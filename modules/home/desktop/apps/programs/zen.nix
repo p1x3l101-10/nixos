@@ -208,6 +208,16 @@
             aliases = [ "nh" "hm" "homemanager" ];
           })
           (mkSearch {
+            name = "Nix Modular Services Options";
+            urlBase = "https://search.nixos.org";
+            searchExtension = mkNixosSE "modular_service" "unstable";
+            extraParams = {
+              channel = "unstable";
+            };
+            iconFile = icons.nixSnowflake;
+            aliases = [ "ns" "ms" "modularservice" ];
+          })
+          (mkSearch {
             name = "NixOS Wiki";
             urlBase = "https://wiki.nixos.org";
             searchExtension = mkSimpleSE "w/index.php" "search";
@@ -276,6 +286,7 @@
                   (mkBookmark "Stylix" "https://nix-community.github.io/stylix/")
                   (mkBookmark "Nixvim" "https://nix-community.github.io/nixvim/")
                   (mkBookmark "Nixcord" "https://4evy.github.io/nixcord/")
+                  (mkBookmark "Nimi" "https://weyl-ai.github.io/nimi/index.html")
                 ])
                 (mkFolder "Nix" [
                   (mkBookmark "Nix" "https://nix.dev/manual/nix/${trimSemanticPatch osConfig.nix.package.version 2}")
