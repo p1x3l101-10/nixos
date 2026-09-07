@@ -1,7 +1,5 @@
 { ext, pkgs, lib, osConfig, config, ... }:
-let
-  inherit (ext) inputs system;
-in
+
 {
   wayland.windowManager.hyprland = {
     enable = true;
