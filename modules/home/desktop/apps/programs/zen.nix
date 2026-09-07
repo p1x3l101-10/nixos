@@ -263,6 +263,9 @@
                 (mkBookmark "EMail" "https://mail.google.com")
               ])
               (mkFolder "Tools" [
+                (mkFolder "Server Stuff" [
+                  (mkBookmark "Cloudflare Dashboard" "https://dash.cloudflare.com")
+                ])
                 (mkBookmark "Graphing Calculator" "https://desmos.com/calculator")
               ])
               (mkFolder "Manuals" [
