@@ -292,6 +292,14 @@
             ])
           )
         );
+        on = [
+          # pcscd is borked on startup and wont detect a smartcard bc it starts too early
+          (mkArgs ["hyprland.start" (mkLuaInline ''
+            function()
+              hl.exec_cmd(${toLua { } "systemctl restart pcscd --no-block"})
+            end
+          '')])
+        ];
       } // (
         if (monitors.count == 2) then {
           workspace_rule = (

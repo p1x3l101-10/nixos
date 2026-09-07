@@ -18,8 +18,4 @@
       signByDefault = true;
     };
   };
-  # Auto restart pcscd after login because its broken somehow
-  home.services."restart-pcscd" = {
-    process.argv = [ config.systemd.user.systemctlPath "restart" "pcscd.service" ];
-  };
 }
