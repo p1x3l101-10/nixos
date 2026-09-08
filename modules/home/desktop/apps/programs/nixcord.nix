@@ -99,6 +99,6 @@ in
   };
   services.arrpc = {
     enable = true;
-    systemdTarget = "hyprland-session.target";
+    systemdTarget = "graphical-session.target";
   };
 }
