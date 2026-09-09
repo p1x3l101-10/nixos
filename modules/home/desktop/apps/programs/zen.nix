@@ -4,9 +4,6 @@
   stylix.targets.zen-browser.profileNames = [
     "mlls93c4.Default (beta)"
   ];
-  home.allowedUnfree.packages = [
-    "modern-for-wikipedia"
-  ];
   programs.zen-browser = {
     enable = true;
     policies = {
@@ -53,11 +50,8 @@
           terms-of-service-didnt-read
           temporary-containers-plus
           nekocap
-          modern-for-wikipedia
-          modern-for-hacker-news
           modrinthify
           google-container
-          gaoptout
           facebook-container
           disconnect
         ];
