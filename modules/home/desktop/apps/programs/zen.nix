@@ -49,7 +49,6 @@
           tetrio-plus
           terms-of-service-didnt-read
           temporary-containers-plus
-          protondb-steam
           nekocap
           modern-for-wikipedia
           modern-for-hacker-news
@@ -58,13 +57,6 @@
           gaoptout
           facebook-container
           disconnect
-          (ext.lib.builders.buildFirefoxXpiAddon {
-            pname = "microsoft-to-microslop";
-            version = "2.0";
-            addonId = "microsoft-to-microslop@example.com";
-            url = "https://addons.mozilla.org/firefox/downloads/file/4664641/microsoft_to_microslop-2.0.xpi";
-            sha256 = lib.fakeHash;
-          })
         ];
       };
       settings = ext.lib.attrsets.compressAttrs "." (import ./support/firefox-config.nix);
