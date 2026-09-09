@@ -4,6 +4,9 @@
   stylix.targets.zen-browser.profileNames = [
     "mlls93c4.Default (beta)"
   ];
+  home.allowedUnfree.packages = [
+    "modern-for-wikipedia"
+  ];
   programs.zen-browser = {
     enable = true;
     policies = {
