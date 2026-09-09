@@ -40,6 +40,24 @@
           indie-wiki-buddy
           darkreader
           startpage-private-search
+          youtube-nonstop
+          youtube-no-translation
+          youtube-shorts-block
+          zen-internet
+          varia-integrator
+          ubo-scope
+          tetrio-plus
+          terms-of-service-didnt-read
+          temporary-containers-plus
+          protondb-steam
+          nekocap
+          modern-for-wikipedia
+          modern-for-hacker-news
+          modrinthify
+          google-container
+          gaoptout
+          facebook-container
+          disconnect
         ];
       };
       settings = ext.lib.attrsets.compressAttrs "." (import ./support/firefox-config.nix);
