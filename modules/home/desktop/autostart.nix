@@ -14,6 +14,7 @@
           '';
         });
       })) + "/share/applications/steam-autostart.desktop")
+      "${pkgs.varia}/share/applications/io.github.giantpinkrobots.varia.desktop"
     ];
   };
 }
