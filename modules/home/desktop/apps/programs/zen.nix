@@ -43,7 +43,6 @@
           youtube-nonstop
           youtube-no-translation
           youtube-shorts-block
-          zen-internet
           varia-integrator
           ubo-scope
           tetrio-plus
