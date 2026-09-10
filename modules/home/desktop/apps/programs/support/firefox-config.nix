@@ -55,6 +55,10 @@
         "enabled.pbmode" = true;
       };
     };
+    clearOnShutdown_v2 = {
+      cookiesAndStorage = true;
+      cache = true;
+    };
   };
   zen = {
     welcome-screen.seen = true;
