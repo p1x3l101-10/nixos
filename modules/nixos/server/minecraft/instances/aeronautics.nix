@@ -21,7 +21,7 @@
         forgeVersion = "21.1.248";
         version = "1.21.1";
         java = {
-          version = "21-graalvm";
+          version = "21";
           XXargs = [
             "-XX:+UseZGC"
             "-XX:+ZGenerational"

@@ -176,11 +176,12 @@ in
             "17"
             "17-alpine"
             "17-graalvm"
+            "21"
             "21-alpine"
             "21-graalvm"
             "25"
           ];
-          default = "21-alpine";
+          default = "25";
           description = "Java version to select";
         };
         args = mkOption {
@@ -278,6 +279,11 @@ in
           type = with types; listOf str;
           default = [ ];
           description = "RCON commands to run on server startup";
+        };
+        silencePortWarning = mkOption {
+          type = types.bool;
+          default = false;
+          description = "Silence the warning for opening up RCON connections";
         };
       };
       stopTimeout = mkMcIntOption "Duration of time for the server to wait before forcefully stopping";
@@ -458,7 +464,7 @@ in
       be sure to check if there is a better way to set values
     '')
     ++
-    (lib.lists.optional (lib.lists.any (x: x.from == 25575) cfg.settings.extraPorts) ''
+    (lib.lists.optional ((lib.lists.any (x: x.from == 25575) cfg.settings.extraPorts) && (!cfg.settings.rcon.silencePortWarning)) ''
       DO NOT port forward RCON on 25575 without first setting RCON_PASSWORD to a secure value.
       It is highly recommended to only use RCON within the container, such as with rcon-cli
     '');

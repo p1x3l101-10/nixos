@@ -21,6 +21,11 @@
       imageDigest = "sha256:e0c717f8f98beda233aeac35469527c9b112fc2a1f34d33960fc95be42c534b6";
       sha256 = "sha256-TZE9S9zpQIOaNy75TaBeZU9GCm+lsCm7nI2TbuusiwQ=";
     };
+    "21" = {
+      # java21
+      imageDigest = "sha256:50bdc4b0746c48456d8e737a017786a94c02295b14a8f0f4cb02592a0388cc09";
+      sha256 = "sha256-2sZkD7g5cVJHVnjaYkrmGTvCzvSo8+mQDNXLOJsXTrY=";
+    };
     "21-alpine" = {
       # java21-alpine
       imageDigest = "sha256:4748e48f7cd6922dbe9a18e9b2cf7e9e28c395b86d118ea9b21bdab232eb013a";
