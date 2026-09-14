@@ -43,6 +43,10 @@
           ];
         };
       }
+      # Fix a stupid error where falldamage gets turned off somehome
+      {
+        rcon.onConnect = [ "gamerule fallDamage true" ];
+      }
     ];
   };
   # Persist server
