@@ -71,6 +71,8 @@ in {
     )
     [
       "Aeronautics"
+      "GTNH-Unsup"
+      "Upsilon"
     ]
   );
 }
