@@ -280,7 +280,7 @@
                   Prev = "playerctl previous";
                 }
               ) ++ (lib.attrsets.mapAttrsToList
-                (xKey: brightAction: (b "XF86MonBrightness${xKey}" (dsp.exec_cmd "brightnessctl -e4 -n2 set ${brightAction}")))
+                (xKey: brightAction: (bnm "XF86MonBrightness${xKey}" (dsp.exec_cmd "brightnessctl -e4 -n2 set ${brightAction}")))
                 {
                   Up = "5%+";
                   Down = "5%-";
