@@ -143,6 +143,7 @@
             kb_layout = "us";
             follow_mouse = false;
             sensitivity = 0;
+            numlock_by_default = true;
             touchpad = {
               natural_scroll = true;
               disable_while_typing = false;
