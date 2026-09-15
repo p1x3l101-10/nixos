@@ -289,6 +289,9 @@
                 (mkFolder "Server Stuff" [
                   (mkBookmark "Cloudflare Dashboard" "https://dash.cloudflare.com")
                 ])
+                (mkFolder "Job applications" [
+                  (mkBookmark "Target" "https://target.wd5.myworkdayjobs.com/en-US/targetcareers/userHome")
+                ])
                 (mkBookmark "Graphing Calculator" "https://desmos.com/calculator")
               ])
               (mkFolder "Manuals" [
