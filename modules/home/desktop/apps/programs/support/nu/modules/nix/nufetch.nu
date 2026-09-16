@@ -3,13 +3,27 @@ export def main [] {
   {
     nu: $env.NU_VERSION
     hardware: {
-      cpu: (sys cpu | get 0.brand | [ $in " (" (sys cpu | length) ")"] )
+      cpu: (sys cpu | get 0.brand | [ $in " (" (sys cpu | length) ")"] | str join "")
       gpu: (nix shell nixpkgs#mesa-demos --command glxinfo | lines | where { str contains "Device:" } | str trim | get 0 | str replace "Device: " "" | str replace --all --regex '^(.*?) \(.*\)$' "${1}")
-      ram: (sys mem | get total)
+      ram: (sys mem | select total free used)
       disk: {
-        esp: (sys disks | where $it.mount == /efi | get 0 | select total free type)
-        nix: (sys disks | where $it.mount == /nix | get 0 | select total free type)
-        swap: (sys mem | get "swap total")
+        esp: (sys disks | where $it.mount == /efi | get 0 | select total free type | {
+          type: $in.type
+          total: $in.total
+          free: $in.free
+          used: ($in.total - $in.free)
+        })
+        nix: (sys disks | where $it.mount == /nix | get 0 | select total free type | {
+          type: $in.type
+          total: $in.total
+          free: $in.free
+          used: ($in.total - $in.free)
+        })
+        swap: (sys mem | {
+          total: $in."swap total"
+          free: $in."swap free"
+          used: $in."swap used"
+        })
       }
     }
     os: {
