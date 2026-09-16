@@ -1,5 +1,6 @@
-def filterGpu [ gpuName: string ]: string -> string {
+def filterGpu [ gpuFull: string ]: string -> string {
   let cpuFull = $in
+  let gpuName = $in | str replace "AMD " ""
   if ($cpuFull | str contains $gpuName) {
     return (
       $cpuFull | str replace $gpuName "" | str replace "w/" "" | str trim
