@@ -1,4 +1,4 @@
-def filterGpu[ gpuName: string ]: string -> string {
+def filterGpu [ gpuName: string ]: string -> string {
   let cpuFull = $in
   if ($cpuFull | str contains $gpuName) {
     return (
