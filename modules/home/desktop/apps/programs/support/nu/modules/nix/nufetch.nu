@@ -1,10 +1,22 @@
+def filterGpu[ gpuName: string ]: string -> string {
+  let cpuFull = $in
+  if ($cpuFull | str contains $gpuName) {
+    return (
+      $cpuFull | str replace $gpuName "" | str replace "w/" "" | str trim
+    )
+  } else {
+    return $cpuFull
+  }
+}
+
 export def main [] { 
   let host = sys host
+  let gpu = (nix shell nixpkgs#mesa-demos --command glxinfo | lines | where { str contains "Device:" } | str trim | get 0 | str replace "Device: " "" | str replace --all --regex '^(.*?) \(.*\)$' "${1}")
   {
     nu: $env.NU_VERSION
     hardware: {
-      cpu: (sys cpu | get 0.brand | [ $in " (" (sys cpu | length) ")"] | str join "")
-      gpu: (nix shell nixpkgs#mesa-demos --command glxinfo | lines | where { str contains "Device:" } | str trim | get 0 | str replace "Device: " "" | str replace --all --regex '^(.*?) \(.*\)$' "${1}")
+      cpu: (sys cpu | get 0.brand | filterGpu $gpu | [ $in " (" (sys cpu | length) ")"] | str join "")
+      gpu: $gpu
       ram: (sys mem | select total free used)
       disk: {
         esp: (sys disks | where $it.mount == /efi | get 0 | select total free type | {
