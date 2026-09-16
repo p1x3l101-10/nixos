@@ -20,6 +20,7 @@ export def main [] {
           used: ($in.total - $in.free)
         })
         swap: (sys mem | {
+          type: "swap"
           total: $in."swap total"
           free: $in."swap free"
           used: $in."swap used"
