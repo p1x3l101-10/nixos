@@ -11,5 +11,6 @@
     ./sculptor.nix
     ./tmodloader.nix
     ./u2f.nix
+    ./vintagestory.nix
   ];
 }
