@@ -50,6 +50,9 @@ stdenv.mkDerivation (final: {
       --set GAMEID "votv" \
       --set WINEPREFIX '${winePrefix}' \
       --set PROTONPATH "${protonPath}"
+
+    mkdir -p $out/share
+    cp -r "${final.desktopItem}/share/applications" $out/share/applications
   '';
 
   desktopItem = makeDesktopItem {
