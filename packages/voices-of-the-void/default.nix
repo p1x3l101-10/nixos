@@ -2,6 +2,7 @@
 , lib
 , stdenvNoCC
 , fetchItchIo
+, fetchUrl
 , makeWrapper
 , p7zip
 , umu-launcher
@@ -15,13 +16,15 @@
 
 stdenv.mkDerivation (final: {
   name = "voicesofthevoid";
-  version = "a09n";
+  version = "0.9.0n";
 
-  src = fetchItchIo {
-    name = "${final.version}.7z";
-    hash = "sha256:4b80dacb0926d21d6650c6842e17785c3d9dbeaade5e2a3159346c39bba20799";
-    gameUrl = "https://mrdrnose.itch.io/votv";
-    upload = "1672704";
+  src = fetchUrl {
+    # Thankfully, the dev pushes hashes alongside the builds
+    # Find them at https://archive.votv.dev/games/votv/
+    # NOTE: The url will process from the version name, no need to change that
+    # NOTE2: Because this is base16 instead of nix-base32, be sure to prefix with `sha256:` instead of `sha256-`
+    url = "https://r2.votv.dev/archive/votv/${builtins.concatStringsSep "" (builtins.splitVersion final.version)}.7z";
+    hash = "sha256:4B80DACB0926D21D6650C6842E17785C3D9DBEAADE5E2A3159346C39BBA20799";
   };
 
   nativeBuildInputs = [
