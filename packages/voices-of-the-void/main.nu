@@ -23,7 +23,11 @@ def --wrapped umu-run [
   $env.PROTONPATH = $umuConf.protonPath
   $env.WINEPREFIX = $winePrefix
   if $exec {
-    exec winediscordipcbridge-steam.sh umu-run ...$args
+    if ($env.VOTV_PASSTHRU_RPC? | default false) {
+      exec winediscordipcbridge-steam.sh umu-run ...$args
+    } else {
+      exec umu-run ...$args
+    }
   } else {
     ^umu-run ...$args
   }
