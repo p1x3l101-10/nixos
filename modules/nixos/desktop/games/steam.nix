@@ -39,6 +39,7 @@ in {
       sgdboop
       mangohud
       gamemode
+      ext.inputs.nix-gaming.packages.${ext.system}.wine-discord-ipc-bridge # See https://github.com/0e4ef622/wine-discord-ipc-bridge for useage
     ] ++ [
       config.home-manager.users.pixel.home.pointerCursor.package
     ];
@@ -47,6 +48,7 @@ in {
     sgdboop
     mangohud
     gamemode
+    ext.inputs.nix-gaming.packages.${ext.system}.wine-discord-ipc-bridge # See https://github.com/0e4ef622/wine-discord-ipc-bridge for useage
   ];
   system.allowedUnfree.packages = [
     "steam"

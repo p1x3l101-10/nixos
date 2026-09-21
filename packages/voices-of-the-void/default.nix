@@ -2,7 +2,6 @@
 , callPackage
 , umu-launcher
 , proton-ge-bin
-, fuse-overlayfs
 , coreutils-full
 , protonPath ? proton-ge-bin.steamcompattool
 , votv-unwrapped ? callPackage ./unwrapped.nix { inherit protonPath; }
@@ -11,6 +10,7 @@
 let
   nuLibs = callPackage ./libs.nix {};
   info = builtins.fromJSON (builtins.readFile ./info.json);
+  inherit (ext.inputs.nix-gaming.packages.${ext.system}) wine-discord-ipc-bridge;
 in
 
 nuLibs.mkNuScript {
@@ -27,7 +27,7 @@ nuLibs.mkNuScript {
   binaryPath = [
     umu-launcher
     coreutils-full
-    fuse-overlayfs
+    wine-discord-ipc-bridge
   ];
 
   preProcessInstallCommands = ''
