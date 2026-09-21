@@ -1,50 +1,25 @@
 { lib
 , stdenvNoCC
-, fetchurl
+, callPackage
 , makeWrapper
 , p7zip
 , imagemagick
 , umu-launcher
 , proton-ge-bin
 , makeDesktopItem
-, stdenv ? stdenvNoCC
 , winePrefix ? "~/.local/share/voicesofthevoid-unwrapped"
 , protonPath ? "${proton-ge-bin.steamcompattool}/"
+, votvData ? callPackage ./raw.nix {}
 }:
 
 let
   info = builtins.fromJSON (builtins.readFile ./info.json);
-  verToUrl = x: builtins.concatStringsSep "" (builtins.splitVersion x);
   imgSizes = builtins.concatStringsSep " " (map (x: builtins.toString x) info.build.iconSizes);
-  # TODO: Find some pattern in pathnames and make a real function instead of hardcoding
-  verToPath = x: info.build.fixmeHardcoded.verPath;
-  # Shorten rebuild times with this
-  fetchVotV = { version, sha256 }: stdenv.mkDerivation {
-    name = "votv-source";
-    inherit version;
-
-    src = fetchurl {
-      url = info.download.urlBase + "/" + (verToUrl version) + ".7z";
-      hash = "sha256:${sha256}";
-    };
-
-    nativeBuildInputs = [ p7zip ];
-
-    unpackPhase = ''
-      7z x -y -r $src
-    '';
-    
-    installPhase = ''
-      cp -r "${verToPath version}" $out
-    '';
-  };
-in stdenv.mkDerivation (final: {
+in stdenvNoCC.mkDerivation (final: {
   name = "voicesofthevoid-unwrapped";
   version = info.download.version;
 
-  src = fetchVotV {
-    inherit (info.download) version sha256;
-  };
+  src = votvData;
 
   nativeBuildInputs = [
     p7zip
@@ -55,7 +30,6 @@ in stdenv.mkDerivation (final: {
   buildInputs = [
     umu-launcher
   ];
-
 
   buildPhase = ''
     7z e -y "WindowsNoEditor/VotV.exe" ".rsrc/ICON/4.ico"
@@ -94,6 +68,8 @@ in stdenv.mkDerivation (final: {
     desktopName = "Voices of the Void";
     categories = ["Game"];
   };
+
+  passthru.baseVotv = callPackage ./raw.nix {};
 
   meta = with lib; {
     description = "Voices of the Void is an ambient horror survival game with sandbox game elements.";

@@ -5,13 +5,11 @@
 , fuse-overlayfs
 , coreutils-full
 , protonPath ? proton-ge-bin.steamcompattool
+, votv-unwrapped ? callPackage ./unwrapped.nix { inherit protonPath; }
 }:
 
 let
   nuLibs = callPackage ./libs.nix {};
-  votv-unwrapped = callPackage ./unwrapped.nix {
-    inherit protonPath;
-  };
   info = builtins.fromJSON (builtins.readFile ./info.json);
 in
 
@@ -42,6 +40,8 @@ nuLibs.mkNuScript {
   extraInstallCommands = ''
     ln -s "${votv-unwrapped}/share" $out/share
   '';
+
+  passthru.unwrappedBase = callPackage ./unwrapped.nix { inherit protonPath; };
 
   meta = {
     inherit (votv-unwrapped.meta) description homepage;
