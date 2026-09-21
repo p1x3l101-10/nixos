@@ -14,7 +14,7 @@ in lib.fix (self: {
   modifierKey = "SUPER";
   apps = processDesktop {
     terminal = "kitty";
-    fileManager = "thunar";
+    fileManager = "yazi";
     web = "zen-twilight";
     documentViewer = "okular";
     imageViewer = "feh";
