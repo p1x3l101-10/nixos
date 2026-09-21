@@ -48,6 +48,7 @@ let
           "Templates"
           "Videos"
           "Vintage Story"
+          "VotV"
         ];
         nixosHostname = "stellar-pc";
       })
@@ -73,6 +74,7 @@ let
           "Templates"
           "Videos"
           "Vintage Story"
+          "VotV"
         ];
         nixosHostname = "stellar-laptop";
       })
@@ -218,6 +220,11 @@ let
         name = "Vintage Story";
         id = "vinta-ge11";
         path = "${xdg.dataHome}/VintagestoryData";
+      })
+      (mkFolder {
+        name = "VotV";
+        id = "argema-votv";
+        path = "${xdg.dataHome}/voicesofthevoid";
       })
     ];
     globalIgnore = [];
