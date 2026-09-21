@@ -1,0 +1,24 @@
+{
+  "download": {
+    "urlBase": "https://r2.votv.dev/archive/votv",
+    "version": "0.9.0n",
+    "sha256": "4B80DACB0926D21D6650C6842E17785C3D9DBEAADE5E2A3159346C39BBA20799"
+  },
+  "build": {
+    "iconSizes": [
+      16,
+      24,
+      32,
+      48,
+      64,
+      256
+    ],
+    "fixmeHardcoded": {
+      "verPath": "a09n"
+    }
+  },
+  "umu": {
+    "store": "itchio",
+    "gameId": "votv"
+  }
+}
