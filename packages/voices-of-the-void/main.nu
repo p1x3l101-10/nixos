@@ -100,6 +100,19 @@ def --wrapped main [...args] {
     chmod -R +w $votvRoot
   }
 
+  # Check if we should do Discord RPC
+  [ # Potential mod names
+    "Moddy-VotVDiscordRPC"
+  ] | each { |modId|
+    $gameData
+    | path join "VotV/Binaries/Win64/shimloader/mod"
+    | path join $modId
+    | path exists
+  } | where $it
+  | if ($in != []) { # If the list is not empty, there is at least 1 rpc mod installed
+    $env.VOTV_PASSTHRU_RPC = true
+  }
+
   # Launch game
   log info "Launching Voices of the Void through UMU"
   umu-run --exec ($votvRoot | path join "VotV.exe") ...$args
