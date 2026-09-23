@@ -116,7 +116,7 @@ def --env --wrapped main [...args] {
   [ # Potential mod names
     "Moddy-VotVDiscordRPC"
   ] | each { |modId|
-    $gameData
+    $votvRoot
     | path join "VotV/Binaries/Win64/Mods"
     | path join $modId
     | path exists
