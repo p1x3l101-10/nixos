@@ -92,7 +92,8 @@ def --env --wrapped main [...args] {
     $versionId | save $versionFile
   }
   if (open $versionFile) != $versionId {
-    log warning "Version mismatch detected, deleting old version"
+    log warning "Version mismatch detected, deleting old version in 5 seconds"
+    sleep 5sec
     rm -rf $votvRoot
   }
   ensurePath $votvRoot dir "Installing VotV to a writable location" {
