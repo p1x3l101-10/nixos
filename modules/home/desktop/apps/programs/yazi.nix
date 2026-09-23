@@ -103,6 +103,11 @@
           run = "plugin omni-trash";
           desc = "Open trash";
         }
+        {
+          on = [ "m" ];
+          run = "plugin relative-motions";
+          desc = "Trigger a new relative motion";
+        }
       ];
       opener.extract = [
         {
@@ -117,12 +122,16 @@
         }
       ];
     };
-    plugins = (builtins.mapAttrs 
+    plugins = (lib.mapAttrs'
       (name: value: {
-        package = pkgs.yaziPlugins."${name}";
-        setup = true;
-        settings = value;
+        name = pkgs.yaziPlugins."${name}".name;
+        value = {
+          package = pkgs.yaziPlugins."${name}";
+          setup = true;
+          settings = value;
+        };
       }) {
+        relative-motions = { };
         git = {
           order = 1500;
         };
