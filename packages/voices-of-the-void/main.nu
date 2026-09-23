@@ -107,7 +107,7 @@ def --env --wrapped main [...args] {
   log debug $ue4ssPath
   if ($ue4ssPath | path exists) {
     log info "UE4SS detected, configuring necicary environment to allow mods"
-    $env.WINEDLLOVERRIDES = "dwmapi=n,b"
+    $env.WINEDLLOVERRIDES = "UE4SS,dwmapi,oo2core_9_win64=n,b"
   } else {
     log info "UE4SS not detected"
   }
