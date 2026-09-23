@@ -4,7 +4,7 @@
   programs.yazi = {
     enable = true;
     shellWrapperName = "y";
-    settings = {
+    keymap = {
       plugin = {
         prepend_fetchers = [
           {
@@ -109,6 +109,8 @@
           desc = "Trigger a new relative motion";
         }
       ];
+    };
+    settings = {
       opener.extract = [
         {
           run = "ouch d -y %*";
