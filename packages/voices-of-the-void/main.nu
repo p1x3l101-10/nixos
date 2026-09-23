@@ -54,7 +54,7 @@ def ensurePath [
   }
 }
 
-def --wrapped main [...args] {
+def --env --wrapped main [...args] {
   # Ensure needed directories exist
   ensurePath $winePrefix dir "Creating new VotV Wine Prefix" {
   # NOTE: Because umu will exit when it isnt running anything, be sure to wrap this so the script continues
@@ -102,6 +102,7 @@ def --wrapped main [...args] {
 
   # Check if UE4SS is installed and set the needed env vars to enable modding
   if ($gameData | path join "VotV/Binaries/Win64/UE4SS.dll" | path exists) {
+    log info "Modloader detected, configuring necicary environment to allow mods"
     $env.WINEDLLOVERRIDES = "dwmapi=n,b"
   }
 
