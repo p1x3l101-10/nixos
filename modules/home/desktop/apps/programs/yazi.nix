@@ -160,5 +160,6 @@
   home.packages = with pkgs; [
     poppler-utils
     mediainfo
+    ripdrag
   ];
 }
