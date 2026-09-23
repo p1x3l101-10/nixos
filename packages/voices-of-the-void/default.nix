@@ -32,6 +32,7 @@ nuLibs.mkNuScript {
 
   preProcessInstallCommands = ''
     sed -i 's+@@VOTV_UNWRAPPED_PKG@@+${votv-unwrapped}+g' $out/bin/voicesofthevoid
+    sed -i 's+@@VOTV_VERSION@@+${votv-unwrapped.version}+g' $out/bin/voicesofthevoid
     sed -i 's+@@PROTON_PATH@@+${protonPath}+g' $out/bin/voicesofthevoid
     sed -i 's+@@UMU_STORE@@+${info.umu.store}+g' $out/bin/voicesofthevoid
     sed -i 's+@@UMU_GAMEID@@+${info.umu.gameId}+g' $out/bin/voicesofthevoid

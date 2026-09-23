@@ -2,7 +2,8 @@
 
 use std/log
 
-const votvRoot = "@@VOTV_UNWRAPPED_PKG@@/libexec/voicesofthevoid"
+const votvStoreRoot = "@@VOTV_UNWRAPPED_PKG@@/libexec/voicesofthevoid"
+const versionId = "@@VOTV_VERSION@@"
 const umuConf = {
   protonPath: "@@PROTON_PATH@@"
   gameId: "@@UMU_GAMEID@@"
@@ -10,7 +11,10 @@ const umuConf = {
 }
 let gameData = $env.XDG_DATA_HOME | path join "voicesofthevoid"
 let cacheDir = $env.XDG_CACHE_HOME | path join "voicesofthevoid"
-let winePrefix = $env.XDG_STATE_HOME | path join "voicesofthevoid"
+let stateDir = $env.XDG_STATE_HOME | path join "voicesofthevoid"
+let winePrefix = $stateDir | path join "pfx"
+let votvRoot = $stateDir | path join "gameData"
+let versionFile = $stateDir | path join "version.txt"
 let winePrefixUserPath = $winePrefix | path join "drive_c/users" | path join $env.USER
 let votvWinData = $winePrefixUserPath | path join "AppData/Local/VotV"
 
@@ -81,6 +85,19 @@ def --wrapped main [...args] {
       mkdir ($tmpDir | path dirname)
       ln -s $cacheDir $tmpDir
     }
+  }
+
+  # Version check
+  ensurePath $versionFile file "Storing curring version" {
+    $versionId | save $versionFile
+  }
+  if (open $versionFile) != $versionId {
+    log warning "Version mismatch detected, deleting old version"
+    rm -rf $votvRoot
+  }
+  ensurePath $votvRoot dir "Installing VotV to a writable location" {
+    cp -r $votvStoreRoot $votvRoot
+    chmod -R +w $votvRoot
   }
 
   # Launch game
