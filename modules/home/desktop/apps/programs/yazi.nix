@@ -148,6 +148,6 @@
   };
   # Plugin deps
   home.packages = with pkgs; [
-    pdftoppm
+    poppler-utils
   ];
 }
