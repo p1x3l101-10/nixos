@@ -225,6 +225,7 @@
               (b "E" (dsp.exec_cmd globals.apps.fileManager.exec))
               (b "V" dsp.window.float)
               (b "R" (dsp.exec_cmd globals.spotlight))
+              (b ["SHIFT" "R"] (dsp.exec_cmd globals.powerMenu))
               (b ["ALT" "L"] (dsp.exec_cmd globals.lockCmd))
               (b "F11" dsp.window.fullscreen)
             ] ++ (# Move focus between windows
