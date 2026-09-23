@@ -28,7 +28,7 @@ in lib.fix (self: {
   lockCmd = "loginctl lock-session";
   #lockCmd = "noctalia-shell ipc call lockScreen lock";
   #spotlight = "noctalia-shell ipc call launcher toggle";
-  spotlight = "wofi";
+  spotlight = "wofi --show drun";
   appLauncher = self.spotlight;
   updates = {
     updater = "kitty \"sudo nixos-rebuild boot\"";
