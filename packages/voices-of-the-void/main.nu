@@ -101,9 +101,14 @@ def --env --wrapped main [...args] {
   }
 
   # Check if UE4SS is installed and set the needed env vars to enable modding
-  if ($gameData | path join "VotV/Binaries/Win64/UE4SS.dll" | path exists) {
-    log info "Modloader detected, configuring necicary environment to allow mods"
+  let ue4ssPath = $gameData | path join "VotV/Binaries/Win64/UE4SS.dll"
+  log debug "Checking for UE4SS at the following path"
+  log debug $ue4ssPath
+  if ($ue4ssPath | path exists) {
+    log info "UE4SS detected, configuring necicary environment to allow mods"
     $env.WINEDLLOVERRIDES = "dwmapi=n,b"
+  } else {
+    log info "UE4SS not detected"
   }
 
   # Check if we should do Discord RPC
