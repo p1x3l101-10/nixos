@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   programs.wofi = {
@@ -11,4 +11,7 @@
       prompt = "Search";
     };
   };
+  home.packages = [
+    pkgs.wofi-power-menu
+  ];
 }
