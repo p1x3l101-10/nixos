@@ -7,20 +7,28 @@
       "MediaPlayer"
     ];
     center = [
-      "Clock"
       "Workspaces"
     ];
     right = [
+      "Tempo"
       [
         "Tray"
         "Privacy"
         "Settings"
       ]
+      "Notifications"
     ];
   };
-  clock.format = clockFormat.long;
+  tempo.clock_format = clockFormat.long;
   workspaces = {
     visibility_mode = "MonitorSpecific";
+  };
+  notifications = {
+    format = "%m/%d %H:%M";
+    show_timestamps = true;
+    grouped = true;
+    toast_position = "TopRight";
+    toast = true;
   };
   system_info = {
     indicators = [

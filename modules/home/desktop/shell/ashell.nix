@@ -7,7 +7,7 @@ in {
     enable = true;
     systemd = {
       enable = true;
-      target = "hyprland-session.target";
+      target = "default.target";
     };
     settings = import ./ashell.config.nix { inherit clockFormat; };
   };
