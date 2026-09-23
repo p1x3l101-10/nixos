@@ -133,11 +133,6 @@
           settings = builtins.removeAttrs value [ "_forceSetup" ] ;
         };
       }) {
-        relative-motions = {
-          show_numbers = "relative";
-          show_motion = true;
-          enter_mode = "cache_or_first";
-        };
         git = {
           order = 1500;
         };
