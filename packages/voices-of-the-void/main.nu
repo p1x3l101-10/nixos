@@ -115,6 +115,7 @@ def --env --wrapped main [...args] {
   # Check if we should do Discord RPC
   [ # Potential mod names
     "Moddy-VotVDiscordRPC"
+    "VotVDiscordRPC"
   ] | each { |modId|
     $votvRoot
     | path join "VotV/Binaries/Win64/Mods"
