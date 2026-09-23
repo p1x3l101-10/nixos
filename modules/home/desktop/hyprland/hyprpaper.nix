@@ -2,7 +2,7 @@
 
 {
   services.hyprpaper = {
-    enable = lib.mkForce false;
+    enable = true;
     settings = {
       splash = false;
     };
