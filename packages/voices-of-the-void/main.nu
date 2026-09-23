@@ -119,6 +119,7 @@ def --env --wrapped main [...args] {
     $votvRoot
     | path join "VotV/Binaries/Win64/Mods"
     | path join $modId
+    | path join "enabled.txt" # Check if actually enabled
     | path exists
   } | where $it
   | if ($in != []) { # If the list is not empty, there is at least 1 rpc mod installed
