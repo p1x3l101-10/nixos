@@ -1,7 +1,7 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, ext, ... }:
 
 let
-  inherit (import ../hyprland/support/hypr-globals.nix pkgs lib) clockFormat;
+  inherit (import ../hyprland/support/hypr-globals.nix { inherit pkgs lib ext; }) clockFormat;
 in {
   programs.ashell = {
     enable = true;

@@ -1,5 +1,8 @@
 { ... }:
 
 {
-  imports = [ ./noctalia.nix ];
+  imports = [
+    ./ashell.nix
+    ./wofi.nix
+  ];
 }

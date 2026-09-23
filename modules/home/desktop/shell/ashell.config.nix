@@ -2,15 +2,15 @@
 
 {
   modules = {
-    center = [
-      "Clock"
-    ];
     left = [
-      "Workspaces"
+      "SystemInfo"
       "MediaPlayer"
     ];
+    center = [
+      "Clock"
+      "Workspaces"
+    ];
     right = [
-      "SystemInfo"
       [
         "Tray"
         "Privacy"
@@ -28,8 +28,6 @@
       "Memory"
       "MemorySwap"
       { Disk = "/nix"; }
-      "DownloadSpeed"
-      "UploadSpeed"
     ];
     cpu = {
       warn_threshold = 60;
