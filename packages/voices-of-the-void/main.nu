@@ -121,7 +121,10 @@ def --env --wrapped main [...args] {
     | path exists
   } | where $it
   | if ($in != []) { # If the list is not empty, there is at least 1 rpc mod installed
+    log info "Enabling Discord RPC passthru"
     $env.VOTV_PASSTHRU_RPC = true
+  } else {
+    log debug "Not enabling Discord RPC passthru"
   }
 
   # Launch game
