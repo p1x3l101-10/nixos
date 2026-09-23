@@ -3,14 +3,13 @@
 {
   modules = {
     left = [
+      "Tempo"
       "SystemInfo"
-      "MediaPlayer"
     ];
     center = [
       "Workspaces"
     ];
     right = [
-      "Tempo"
       [
         "Tray"
         "Privacy"
