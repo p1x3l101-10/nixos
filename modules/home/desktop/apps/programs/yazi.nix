@@ -127,18 +127,18 @@
         name = builtins.replaceStrings [ ".yazi" ] [ "" ] pkgs.yaziPlugins."${name}".pname;
         value = {
           package = pkgs.yaziPlugins."${name}";
-          setup = true;
-          settings = value;
+          setup = (value != {});
+          settings = builtins.removeAttrs value [ "_forceSetup" ] ;
         };
       }) {
-        relative-motions = { };
+        relative-motions = { _forceSetup = true; };
         git = {
           order = 1500;
         };
         diff = { };
         ouch = { };
         chmod = { };
-        mediainfo = { };
+        mediainfo = { _forceSetup = true; };
         yafg = {
           toggle_mode_key = "alt-t";
           editor = "nvim";
