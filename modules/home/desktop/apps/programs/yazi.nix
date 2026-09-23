@@ -124,7 +124,7 @@
     };
     plugins = (lib.mapAttrs'
       (name: value: {
-        name = pkgs.yaziPlugins."${name}".name;
+        name = builtins.replaceStrings [ ".yazi" ] [ "" ] pkgs.yaziPlugins."${name}".pname;
         value = {
           package = pkgs.yaziPlugins."${name}";
           setup = true;
