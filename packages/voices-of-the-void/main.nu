@@ -100,12 +100,17 @@ def --wrapped main [...args] {
     chmod -R +w $votvRoot
   }
 
+  # Check if UE4SS is installed and set the needed env vars to enable modding
+  if ($gameData | path join "VotV/Binaries/Win64/UE4SS.dll" | path exists) {
+    $env.WINEDLLOVERRIDES = "dwmapi=n,b"
+  }
+
   # Check if we should do Discord RPC
   [ # Potential mod names
     "Moddy-VotVDiscordRPC"
   ] | each { |modId|
     $gameData
-    | path join "VotV/Binaries/Win64/shimloader/mod"
+    | path join "VotV/Binaries/Win64/Mods"
     | path join $modId
     | path exists
   } | where $it
