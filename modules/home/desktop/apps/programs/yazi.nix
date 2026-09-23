@@ -36,7 +36,7 @@
             run = "office";
           }
           {
-            name = "*.docx";
+            mime = "*.docx";
             run = "office";
           }
         ];
@@ -62,7 +62,7 @@
             run = "office";
           }
           {
-            name = "*.docx";
+            mime = "*.docx";
             run = "office";
           }
         ];
