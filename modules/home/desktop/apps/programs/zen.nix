@@ -64,7 +64,6 @@
           "570afd9d-96fa-48b5-bad3-0c106757cce9" # Sleek UI (Smaller Navbar, No border padding)
           "d8b79d4a-6cba-4495-9ff6-d6d30b0e94fe" # Better active tab
           "4ab93b88-151c-451b-a1b7-a1e0e28fa7f8" # No sidebar scrollbar
-          "nova" # UI overhaul
           "zen-auto-expand-sidebar" # Expand sidebar on hover
           "new-icons"
         ];
