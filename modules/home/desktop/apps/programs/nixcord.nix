@@ -41,6 +41,14 @@ in
           )
         )
       ))
+      # Lifted from the zen-internet discord theme
+      + ''
+        :root,
+        .theme-light,
+        .theme-dark {
+          --bg-base-primary: #00000000 !important;
+        }
+      ''
     )
   );
   programs.nixcord = {
