@@ -32,10 +32,7 @@
         };
       };
     };
-    mpd-mpris = {
-      enable = true;
-      mpd.useLocal = true;
-    };
+    mpd-mpris.enable = true;
   };
   home.packages = [
     pkgs.mpc

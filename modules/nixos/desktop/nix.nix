@@ -2,7 +2,7 @@
 {
   nix = {
     registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
-    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
+    settings.nix-path = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
     gc = {
       automatic = lib.mkDefault true;
       dates = lib.mkDefault "2day";
