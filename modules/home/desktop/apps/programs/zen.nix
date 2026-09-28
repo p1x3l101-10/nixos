@@ -53,7 +53,7 @@
           google-container
           facebook-container
           disconnect
-          transparent-zen
+          zen-internet
         ];
       };
       settings = ext.lib.attrsets.compressAttrs "." (import ./support/firefox-config.nix);
