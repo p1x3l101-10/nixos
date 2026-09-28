@@ -66,6 +66,7 @@
     view = {
       sidebar-expanded = false;
       use-single-toolbar = false;
+      compact.enable-at-startup = true;
     };
     workspaces.seperate-essentials = false;
     widget.linux.transparency = true;
