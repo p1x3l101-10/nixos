@@ -1,4 +1,4 @@
-{ clockFormat }:
+{ clockFormat, colors, fonts, opacity }:
 
 {
   modules = {
@@ -75,7 +75,30 @@
     audio_sinks_more_cmd = "hyprpwcenter";
     lock_cmd = "loginctl lock-session $XDG_SESSION_ID";
   };
-  appearance = {
-    style = "Gradient";
+  appearance = with colors.withHashtag; {
+    background_color = base00;
+    primary_color = base0D;
+    secondary_color = base01;
+    success_color = base0B;
+    danger_color = base08;
+    text_color = base05;
+    workspace_colors = [
+      base0D
+      base09
+    ];
+    opacity = opacity.desktop;
+    bar = {
+      surface = "solid";
+      radius = [
+        "none"
+        "none"
+        "md"
+        "md"
+      ];
+    };
+    menu = {
+      opacity = opacity.desktop;
+      backdrop = 0.3;
+    };
   };
 }
