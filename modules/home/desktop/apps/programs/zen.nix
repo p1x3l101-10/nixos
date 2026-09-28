@@ -53,9 +53,18 @@
           google-container
           facebook-container
           disconnect
+          transparent-zen
           zen-internet
         ];
       };
+      mods = [
+        "642854b5-88b4-4c40-b256-e035532109df" # Transparency
+        "a6335949-4465-4b71-926c-4a52d34bc9c0" # Better find bar
+        "570afd9d-96fa-48b5-bad3-0c106757cce9" # Sleek UI (Smaller Navbar, No border padding)
+        "d8b79d4a-6cba-4495-9ff6-d6d30b0e94fe" # Better active tab
+        "4ab93b88-151c-451b-a1b7-a1e0e28fa7f8" # No sidebar scrollbar
+        "72f8f48d-86b9-4487-acea-eb4977b18f21" # Better Ctrl+Tab panel
+      ];
       settings = ext.lib.attrsets.compressAttrs "." (import ./support/firefox-config.nix);
       search = {
         force = true;
