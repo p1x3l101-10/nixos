@@ -70,6 +70,11 @@
         ];
       };
       settings = ext.lib.attrsets.compressAttrs "." (import ./support/firefox-config.nix);
+      userChrome = ''
+        & browser[transparent="true"] {
+          background: none !important;
+        }
+      '';
       search = {
         force = true;
         default = "Startpage";
