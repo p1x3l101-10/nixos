@@ -22,7 +22,7 @@ in {
     */
     opacity = {
       desktop = 0.5;
-      applications = 0.9;
+      applications = 0.7;
       popups = 1.0;
       terminal = 0.7;
     };
