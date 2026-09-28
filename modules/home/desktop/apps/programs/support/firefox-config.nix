@@ -67,6 +67,7 @@
       sidebar-expanded = false;
       use-single-toolbar = false;
       compact.enable-at-startup = true;
+      grey-out-inactive-windows = false;
     };
     workspaces.seperate-essentials = false;
     widget.linux.transparency = true;
