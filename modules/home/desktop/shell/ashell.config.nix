@@ -45,6 +45,10 @@
       alert_threshold = 95;
     };
     disk = {
+      mounts = [
+        "/nix"
+        "/efi"
+      ];
       warn_threshold = 80;
       alert_threshold = 90;
     };
