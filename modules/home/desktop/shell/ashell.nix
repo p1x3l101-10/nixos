@@ -5,10 +5,7 @@ let
 in {
   programs.ashell = {
     enable = true;
-    systemd = {
-      enable = true;
-      target = "default.target";
-    };
+    systemd.enable = true;
     settings = import ./ashell.config.nix { inherit clockFormat; };
   };
 }
