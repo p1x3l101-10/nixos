@@ -13,6 +13,7 @@
     contentblocking.category = "strict";
     bookmarks.addedImportButton = false;
     toolbars.bookmarks.visibility = "always";
+    tabs.allow_transparent_browser = true;
   };
   services = {
     passwordSavingEnabled = false;
@@ -67,6 +68,7 @@
       use-single-toolbar = false;
     };
     workspaces.seperate-essentials = false;
+    widget.linux.transparency = true;
     # I dont like window sync, windows are new sessions damnit
     window-sync = {
       enabled = false;
