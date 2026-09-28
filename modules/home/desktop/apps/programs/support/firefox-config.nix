@@ -80,4 +80,8 @@
     protocol-handler.expose-all = true;
   };
   fission.autostart = true;
+  mod.sameerasw = {
+    zen_trackpad_anim = true;
+    zen_urlbar_zoom_anim = true;
+  };
 }
