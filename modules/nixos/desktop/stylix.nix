@@ -20,6 +20,12 @@ in {
       logoScale = 4.0;
     };
     */
+    opacity = {
+      desktop = 0.5;
+      applications = 0.9;
+      popups = 1.0;
+      terminal = 0.7;
+    };
     polarity = "dark";
     targets = { };
     icons = {
