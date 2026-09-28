@@ -71,6 +71,10 @@
     };
     workspaces.seperate-essentials = false;
     widget.linux.transparency = true;
+    theme = {
+      gradient.show-custom-colors = true;
+      acrylic-elements = true;
+    };
     # I dont like window sync, windows are new sessions damnit
     window-sync = {
       enabled = false;
