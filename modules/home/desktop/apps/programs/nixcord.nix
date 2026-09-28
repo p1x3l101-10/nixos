@@ -21,7 +21,7 @@ in
         (
           let
             # How many bases (starting from 00) should have an alpha channel
-            injectToBase = 8;
+            injectToBase = 3;
           in
           # Inject the alpha channel into theme generation
           (map
