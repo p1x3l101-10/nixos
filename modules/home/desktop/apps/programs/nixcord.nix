@@ -1,4 +1,4 @@
-{ config, ext, pkgs, ... }:
+{ config, ext, pkgs, lib, ... }:
 
 let
   inherit (config.lib.stylix) colors;
@@ -94,6 +94,58 @@ in
         [class*="avatarDecoration_"],
         [class^="profileEffects_"] {
           display: none !important;
+        }
+      ''
+      # Make the background translucant
+      # NOTE: This partially overrides stylix, so I need to reimpliment some of its themeing as well
+      (
+        let
+          inherit (config.lib.stylix) colors;
+          inherit (config.stylix) opacity;
+          opacityHex = lib.toHexString (builtins.ceil (opacity.applications * 255));
+          mkColorWithOpacity = base: alpha: "${colors.withHashtag."base${base}"}${alpha}";
+          mkColor = base: mkColorWithOpacity base opacityHex;
+          noColor = "#000000${opacityHex}"; # For when I can't find a match in stylix's theme
+        in
+        ''
+          :root,
+          .theme-light,
+          .theme-dark,
+          .theme-darker,
+          .theme-midnight,
+          .visual-refresh {
+            --background-secondary: ${mkColor "01"} !important;
+            --background-primary: ${mkColor "00"} !important;
+            --background-tertiary: ${mkColor "00"} !important;
+            --home-background: ${mkColor "00"} !important;
+            --bg-base-primary: ${noColor} !important;
+            --background-base-lowest: ${mkColor "00"} !important;
+            --background-base-lower: ${mkColor "00"} !important;
+            --background-modifier-accent: ${mkColor "02"} !important;
+          }
+        ''
+      )
+      # Collapse sidebar
+      ''
+        [aria-label="Servers sidebar"] + div:has(nav > #channels),
+        body:has(#channels) [aria-label="User area"] {
+          width: 0px !important;
+          transition: width 0.3s ease-in-out !important;
+
+          .buttons__37e49 {
+            display: none !important;
+          }
+
+          &:hover {
+            width: 250px !important;
+            .buttons__37e49 {
+              display: flex !important;
+            }
+          }
+        }
+
+        body:has([aria-label="Servers sidebar"]:hover) [aria-label="Servers sidebar"] + div:has(nav > #channels) {
+          width: 250px !important;
         }
       ''
     ];
