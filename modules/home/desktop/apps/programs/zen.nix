@@ -53,7 +53,6 @@
           google-container
           facebook-container
           disconnect
-          transparent-zen
           zen-internet
         ];
       };
