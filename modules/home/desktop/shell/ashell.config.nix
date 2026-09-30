@@ -75,8 +75,8 @@
     suspend_cmd = "systemctl suspend";
     reboot_cmd = "systemctl reboot";
     logout_cmd = "loginctl kill-session $XDG_SESSION_ID";
-    audio_sources_more_cmd = "hyprpwcenter";
-    audio_sinks_more_cmd = "hyprpwcenter";
+    audio_sources_more_cmd = "pipewire-control-center";
+    audio_sinks_more_cmd = "pipewire-control-center";
     lock_cmd = "loginctl lock-session $XDG_SESSION_ID";
   };
   appearance = with colors.withHashtag; {
