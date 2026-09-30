@@ -11,4 +11,5 @@ in {
     settings = import ./ashell.config.nix { inherit clockFormat colors fonts opacity; };
   };
   stylix.targets.ashell.enable = false;
+  systemd.user.services.ashell.Unit.X-Restart-Triggers = [ "${config.xdg.configHome}/ashell/config.toml" ];
 }
