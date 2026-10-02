@@ -66,7 +66,7 @@
     view = {
       sidebar-expanded = false;
       use-single-toolbar = false;
-      compact.enable-at-startup = true;
+      compact.enable-at-startup = false;
       grey-out-inactive-windows = false;
     };
     workspaces.seperate-essentials = false;
