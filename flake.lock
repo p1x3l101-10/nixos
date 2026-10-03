@@ -551,7 +551,7 @@
       "inputs": {
         "millennium-src": "millennium-src",
         "nixpkgs": [
-          "nixpkgs-stable"
+          "nixpkgs"
         ],
         "nixpkgs-bun": "nixpkgs-bun"
       },
