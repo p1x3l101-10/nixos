@@ -10,6 +10,11 @@
     # Declare the remaining inputs I need
     ## Speeds up eval for the flakes that use it by only using the arch I use
     systems.url = "github:nix-systems/x86_64-linux";
+    ## The flake framework that I use
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+      inputs.systems.follows = "systems";
+    };
     ## Basic stuff that I layer on top of base nixos
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -136,10 +141,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ## Common flake tooling that I dont use
-    flake-utils = {
-      url = "github:numtide/flake-utils";
-      inputs.systems.follows = "systems";
-    };
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
