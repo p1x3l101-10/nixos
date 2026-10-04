@@ -29,7 +29,13 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    impermanence.url = "github:nix-community/impermanence";
+    impermanence = {
+      url = "github:nix-community/impermanence";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
     nixpak = {
       url = "github:nixpak/nixpak";
       inputs = {
@@ -44,14 +50,6 @@
         flake-utils.follows = "flake-utils";
       };
     };
-    nixpkgs-xr = {
-      url = "github:nix-community/nixpkgs-xr";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
-        systems.follows = "systems";
-      };
-    };
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       #url = "github:0xc000022070/zen-browser-flake/d93443c0f6fdb3b179bed68856f322dba4842612";
@@ -60,11 +58,10 @@
         home-manager.follows = "home-manager";
       };
     };
-    fjordlauncher = {
-      url = "github:unmojang/FjordLauncher";
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     systems.url = "github:nix-systems/x86_64-linux";
     flake-utils = {
       url = "github:numtide/flake-utils";

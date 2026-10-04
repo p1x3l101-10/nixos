@@ -125,7 +125,6 @@ inputs.flake-utils.lib.eachDefaultSystem
         ] ++ (with inputs; [
           self.nixosModules.desktop
           noctalia.nixosModules.default
-          nixpkgs-xr.nixosModules.nixpkgs-xr
         ]) ++ (with inputs.nixos-hardware.nixosModules; [
           common-pc
           common-pc-ssd
