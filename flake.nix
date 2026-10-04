@@ -19,6 +19,7 @@
       url = "github:nix-community/lanzaboote";
       inputs = {
         nixpkgs.follows = "nixpkgs";
+        pre-commit.inputs.flake-compat.follows = "flake-compat";
       };
     };
     disko = {
@@ -88,6 +89,7 @@
         nix-gaming.follows = "nix-gaming";
         nixpkgs.follows = "nixpkgs";
         flake-compat.follows = "flake-compat";
+        treefmt-nix.follows = "treefmt-nix";
       };
     };
     zen-browser = {
@@ -109,6 +111,8 @@
       url = "github:FlameFlag/nixcord";
       inputs = {
         nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+        treefmt-nix.follows = "treefmt-nix";
       };
     };
     app2unit = {
@@ -124,6 +128,7 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-compat.follows = "flake-compat";
+        flake-parts.follows = "flake-parts";
       };
     };
     steam-fetcher = {
@@ -140,6 +145,10 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
     flake-compat.url = "github:edolstra/flake-compat";
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = inputs: import ./outputs.nix inputs;
 }
