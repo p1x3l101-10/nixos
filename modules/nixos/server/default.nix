@@ -11,7 +11,6 @@ in
   imports = [
     #./cdn
     ./cloudflare-tunnel
-    #./email
     ./ensurePerms
     #./matrix
     ./minecraft

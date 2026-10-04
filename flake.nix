@@ -116,13 +116,6 @@
         flake-compat.follows = "flake-compat";
       };
     };
-    nixos-mailserver = {
-      url = "gitlab:simple-nixos-mailserver/nixos-mailserver/main";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-compat.follows = "flake-compat";
-      };
-    };
     steam-fetcher = {
       url = "github:nix-community/steam-fetcher";
       inputs.nixpkgs.follows = "nixpkgs";
