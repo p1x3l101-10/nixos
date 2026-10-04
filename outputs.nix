@@ -152,14 +152,6 @@ inputs.flake-utils.lib.eachDefaultSystem
           common-cpu-intel-cpu-only
         ]) ++ common-modules;
       };
-      hetzner-vps = lib.nixosSystem {
-        inherit system specialArgs;
-        modules = [
-          ./systems/hetzner-vps
-        ] ++ (with inputs; (with self.nixosModules; [
-          vps
-        ]) ++ [ ]) ++ common-modules;
-      };
       iso = lib.nixosSystem {
         inherit system specialArgs;
         modules = [
