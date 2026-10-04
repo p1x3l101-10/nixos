@@ -124,7 +124,6 @@ inputs.flake-utils.lib.eachDefaultSystem
           ./systems/stellar-pc
         ] ++ (with inputs; [
           self.nixosModules.desktop
-          noctalia.nixosModules.default
         ]) ++ (with inputs.nixos-hardware.nixosModules; [
           common-pc
           common-pc-ssd
@@ -138,7 +137,6 @@ inputs.flake-utils.lib.eachDefaultSystem
           ./systems/stellar-laptop
         ] ++ (with inputs; [
           self.nixosModules.desktop
-          noctalia.nixosModules.default
         ]) ++ (with inputs.nixos-hardware.nixosModules; [
           framework-16-7040-amd
         ]) ++ common-modules;

@@ -26,8 +26,6 @@ in lib.fix (self: {
     archiveManager = "xarchiver";
   };
   lockCmd = "loginctl lock-session";
-  #lockCmd = "noctalia-shell ipc call lockScreen lock";
-  #spotlight = "noctalia-shell ipc call launcher toggle";
   spotlight = "wofi --show drun";
   powerMenu = "wofi-power-menu";
   appLauncher = self.spotlight;

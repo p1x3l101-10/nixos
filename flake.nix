@@ -102,10 +102,6 @@
       url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell/3aab45a2f34fd47666b05892b95054952e788de1"; # Pin noctalia, TODO: Finish my own shell so i am not stuck in the past
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nixos-cli = {
       url = "github:nix-community/nixos-cli";
       inputs = {

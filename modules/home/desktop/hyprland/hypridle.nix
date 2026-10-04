@@ -9,7 +9,6 @@ in
     settings = {
       general = {
         lock_cmd = "pidof hyprlock || hyprlock"; # Ensure we dont accidentally start 2 or more lockscreens
-        #lock_cmd = "noctalia-shell ipc call lockScreen lock";
         unlock_cmd = "pkill -USR1 hyprlock";
         before_sleep_cmd = "";
         after_sleep_cmd = "";

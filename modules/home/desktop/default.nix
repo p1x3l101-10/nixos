@@ -12,7 +12,6 @@
     zen-browser.homeModules.twilight
     nixvim.homeModules.nixvim
     nixcord.homeModules.nixcord
-    noctalia.homeModules.default
   ]) ++ (eLib.confTemplates.importList ./.);
   home = {
     allowedUnfree.enable = true;
