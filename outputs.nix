@@ -80,7 +80,7 @@ inputs.flake-utils.lib.eachDefaultSystem
         );
         assets = (eLib.attrsets.mapDirTree ./assets);
         lib = inputs.self.lib;
-        hostInfo = import ./hostInfo.nix { inherit lib; };
+        hostInfo = import ./hostInfo.nix { inherit lib; ext = finalExt; };
       });
       eLib = final.ext.lib; # Conveniance
       inherit (final.ext) inputs; # Backwards compat
