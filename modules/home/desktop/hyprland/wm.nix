@@ -11,46 +11,10 @@
       let
         globals = import ./support/hypr-globals.nix { inherit pkgs lib ext; };
         inherit (lib.generators) mkLuaInline;
-        toLua' = lib.generators.toLua;
-        toLua = generatorConfig: toLua' ({ multiline = false; } // generatorConfig);
         mkArgs = args: {
           _args = args;
         };
-        hl = lib.fix (hl: let
-          mkCmd = cmd: mkLuaInline "hl.${cmd}";
-        in {
-          exec_cmd = arg: mkCmd "exec_cmd(${toLua { } arg})";
-          dsp = (
-            let
-              mkDsp = target: mkCmd "dsp.${target}";
-              mkWrappedCmd = (
-                { wrapperFunction ? (x: x)
-                , wrappedCmd ? "true"
-                }:
-                {
-                  __functor = wrapperFunction;
-                  _raw = wrappedCmd;
-                }
-              );
-              quickWrap = wrappedCmd: wrapperFunction: mkWrappedCmd { inherit wrapperFunction wrappedCmd; };
-            in {
-              exec_cmd = quickWrap (arg: mkDsp "exec_cmd(${toLua { } arg})") (final: arg: final._raw "app2unit -- ${arg}");
-              focus = arg: mkDsp "focus(${toLua { } arg})";
-              window = {
-                move = arg: mkDsp "window.move(${toLua { } arg})";
-                drag = mkDsp "window.drag()";
-                resize = mkDsp "window.resize()";
-                close = mkDsp "window.close()";
-                kill = mkDsp "window.kill()";
-                fullscreen = mkDsp "window.fullscreen()";
-                float = mkDsp "window.float()";
-              };
-              workspace = {
-                move = arg: mkDsp "workspace.move(${toLua { } arg})";
-              };
-            }
-          );
-        });
+        inherit (import ./support/luaCmds.nix) hl;
         monitors = (
           let
             inherit (osConfig.networking) hostName;
@@ -239,7 +203,7 @@
               (b "C" dsp.window.close)
               (b "E" (dsp.exec_cmd globals.apps.fileManager.exec))
               (b "V" dsp.window.float)
-              (b "R" (dsp.exec_cmd globals.spotlight))
+              (b "R" (dsp.exec_cmd._raw globals.spotlight))
               (b ["SHIFT" "R"] (dsp.exec_cmd globals.powerMenu))
               (b ["ALT" "L"] (dsp.exec_cmd._raw globals.lockCmd))
               (b "F11" dsp.window.fullscreen)
