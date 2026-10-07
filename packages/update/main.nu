@@ -20,13 +20,27 @@ def main [] {
   cd $flakePath
   $packagesWithUpdaters
   | each { |package|
+    let infoPath = $flakePath | path join "packages" | path join $package | path join "info.json"
+    let oldHash = open $infoPath | hash sha256
     mainLog $"Updating package ($package)"
     let updateScript = nix eval $"($flakePath)#($package).meta.passthru.updateScript"
     run-external $updateScript
-    git add ($flakePath | path join "packages" | path join $package | path join "info.json")
+    let newHash = open $infoPath | hash sha256
+    if $oldHash != $newHash {
+      git add ($flakePath | path join "packages" | path join $package | path join "info.json")
+      return true
+    } else {
+      mainLog "No update was performed"
+      return false
+    }
   }
-  mainLog "Commiting package updates"
-  git commit --message "Update package locks"
+  | where $it
+  | if ($in != []) {
+    mainLog "Commiting package updates"
+    git commit --message "Update package locks"
+  } else {
+    mainLog "No package updates were available"
+  }
   mainLog "Updating flake"
   nix flake update --commit-lock-file
   mainLog "Updates complete"
