@@ -33,7 +33,7 @@ def checkTimestamp []: nothing -> bool {
     return true
   }
   let lastRun = (ls -la $timestampFile | get 0.created)
-  return ($lastRun > $updateCooldown)
+  return ($lastRun < ((date now) - $updateCooldown))
 }
 
 def main [] {
@@ -41,11 +41,11 @@ def main [] {
   $packagesWithUpdaters
   | each { |package|
     let infoPath = $flakePath | path join "packages" | path join $package | path join "info.json"
-    let oldHash = open $infoPath | hash sha256
+    let oldHash = open --raw $infoPath | hash sha256
     mainLog $"Updating package ($package)"
     let updateScript = nix eval $"($flakePath)#($package).meta.passthru.updateScript"
     run-external $updateScript
-    let newHash = open $infoPath | hash sha256
+    let newHash = open --raw $infoPath | hash sha256
     if $oldHash != $newHash {
       git add ($flakePath | path join "packages" | path join $package | path join "info.json")
       return true
@@ -54,8 +54,7 @@ def main [] {
       return false
     }
   }
-  | where $it
-  | if ($in != []) {
+  | if (true in $in) {
     mainLog "Commiting package updates"
     git commit --message "Update package locks"
   } else {
