@@ -2,6 +2,8 @@
 , callPackage
 , nix
 , nix-output-monitor
+, nushell
+, git
 }:
 
 let
@@ -16,5 +18,7 @@ nuLibs.mkNuScript {
   binaryPath = [
     nix
     nix-output-monitor
+    nushell
+    git
   ];
 }

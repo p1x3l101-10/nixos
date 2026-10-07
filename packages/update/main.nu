@@ -1,6 +1,6 @@
 #!/usr/bin/env nu
 
-let flakePath = ls -Dla | get 0.target
+let flakePath = ls /etc/nixos -Dla | get 0.target
 const packagesWithUpdaters = [
   "osu-lazer-bin"
   "voices-of-the-void"
@@ -23,7 +23,7 @@ def main [] {
     mainLog $"Updating package ($package)"
     let updateScript = nix eval $"($flakePath)#($package).meta.passthru.updateScript"
     run-external $updateScript
-    git add ($flakePath | path join $package | path join "info.json")
+    git add ($flakePath | path join "packages" | path join $package | path join "info.json")
   }
   mainLog "Commiting package updates"
   git commit --message "Update package locks"
