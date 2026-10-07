@@ -24,7 +24,6 @@
   osu-mime ? ext.inputs.nix-gaming.packages."${ext.system}".osu-mime
 }:
 let
-  pkgPath = ext.inputs.nix-gaming.outPath + "/pkgs/osu-lazer-bin";
   pname = "osu-lazer-bin";
   info = (builtins.fromJSON (builtins.readFile ./info.json))."${releaseStream}";
   inherit (info) version;
@@ -86,8 +85,8 @@ symlinkJoin {
       unfreeRedistributable # osu-framework contains libbass.so in repository
     ];
     */
-    mainProgram = "osu!";
     passthru.updateScript = ./update.nu;
+    mainProgram = "osu!";
     platforms = [ "x86_64-linux" ];
   };
 }
