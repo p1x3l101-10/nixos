@@ -1,6 +1,8 @@
 #!/usr/bin/env nu
 
 let flakePath = ls /etc/nixos -Dla | get 0.target
+let timestampFile = $flakePath | path join ".git/nu-hooks/update-timestamp"
+const updateCooldown = 1day
 const packagesWithUpdaters = [
   "osu-lazer-bin"
   "voices-of-the-void"
@@ -14,6 +16,24 @@ def --wrapped "nix flake" [...args] { nom flake ...$args }
 
 def mainLog [message] {
   print $"(ansi blue)>>> ($message)(ansi reset)"
+}
+
+def makeTimestamp []: nothing -> nothing {
+  if not ($timestampFile | path dirname | path exists) {
+    mkdir ($timestampFile | path dirname)
+  }
+  if ($timestampFile | path exists) {
+    rm $timestampFile
+  }
+  touch $timestampFile
+}
+
+def checkTimestamp []: nothing -> bool {
+  if not ($timestampFile | path exists) {
+    return true
+  }
+  let lastRun = (ls -la $timestampFile | get 0.created)
+  return ($lastRun > $updateCooldown)
 }
 
 def main [] {
@@ -41,8 +61,13 @@ def main [] {
   } else {
     mainLog "No package updates were available"
   }
-  mainLog "Updating flake"
-  nix flake update --commit-lock-file
+  if (checkTimestamp) {
+    mainLog "Updating flake"
+    nix flake update --commit-lock-file
+    makeTimestamp
+  } else {
+    mainLog "Skipping flake update"
+  }
   mainLog "Updates complete"
   return
 }
