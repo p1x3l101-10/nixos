@@ -1,8 +1,8 @@
 {
   "download": {
-    "urlBase": "https://r2.votv.dev/archive/votv",
+    "url": "https://r2.votv.dev/archive/votv/090n.7z",
     "version": "0.9.0n",
-    "sha256": "4B80DACB0926D21D6650C6842E17785C3D9DBEAADE5E2A3159346C39BBA20799"
+    "sha256": "4b80dacb0926d21d6650c6842e17785c3d9dbeaade5e2a3159346c39bba20799"
   },
   "build": {
     "iconSizes": [
@@ -12,10 +12,7 @@
       48,
       64,
       256
-    ],
-    "fixmeHardcoded": {
-      "verPath": "a09n"
-    }
+    ]
   },
   "umu": {
     "store": "itchio",

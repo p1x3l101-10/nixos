@@ -6,9 +6,6 @@
 
 let
   info = builtins.fromJSON (builtins.readFile ./info.json);
-  verToUrl = x: builtins.concatStringsSep "" (builtins.splitVersion x);
-  # TODO: Find some pattern in pathnames and make a real function instead of hardcoding
-  verToPath = x: info.build.fixmeHardcoded.verPath;
 in
 
 stdenvNoCC.mkDerivation (final: {
@@ -16,7 +13,7 @@ stdenvNoCC.mkDerivation (final: {
   version = info.download.version;
 
   src = fetchurl {
-    url = info.download.urlBase + "/" + (verToUrl final.version) + ".7z";
+    url = info.download.url;
     hash = "sha256:${info.download.sha256}";
   };
 
@@ -27,6 +24,6 @@ stdenvNoCC.mkDerivation (final: {
   '';
     
   installPhase = ''
-    cp -r "${verToPath final.version}" $out
+    cp -r "$(find . -mindepth 1 -print -quit)" $out
   '';
 })

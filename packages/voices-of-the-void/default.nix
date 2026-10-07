@@ -1,4 +1,5 @@
 { ext
+, lib
 , callPackage
 , umu-launcher
 , proton-ge-bin
@@ -18,7 +19,13 @@ nuLibs.mkNuScript {
   version = info.download.version;
 
   packageDir = ./.;
-  packageDirFilter = (file: (!file.hasExt "nix") || (!file.hasExt "json"));
+  packageDirFilter = (file: 
+    lib.any [
+      (!file.hasExt "nix")
+      (!file.hasExt "json")
+      (!file.name == "update.nu")
+    ]
+  );
 
   extraBuildInputs = [
     votv-unwrapped
@@ -46,5 +53,6 @@ nuLibs.mkNuScript {
 
   meta = {
     inherit (votv-unwrapped.meta) description homepage;
+    passthru.updateScript = ./update.nu;
   };
 }

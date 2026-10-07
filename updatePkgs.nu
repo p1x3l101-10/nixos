@@ -3,6 +3,7 @@
 const flakePath = path self | path dirname
 const packagesWithUpdaters = [
   "osu-lazer-bin"
+  "voices-of-the-void"
 ]
 
 def --wrapped "nix run" [...args] {
