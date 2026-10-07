@@ -20,7 +20,7 @@ nuLibs.mkNuScript {
 
   packageDir = ./.;
   packageDirFilter = (file: 
-    lib.any [
+    builtins.any (x: x) [
       (!file.hasExt "nix")
       (!file.hasExt "json")
       (!file.name == "update.nu")
