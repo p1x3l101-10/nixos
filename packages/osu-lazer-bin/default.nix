@@ -26,7 +26,7 @@
 let
   pkgPath = ext.inputs.nix-gaming.outPath + "/pkgs/osu-lazer-bin";
   pname = "osu-lazer-bin";
-  info = (builtins.fromJSON (builtins.readFile (pkgPath + "/info.json"))).${releaseStream};
+  info = (builtins.fromJSON (builtins.readFile ./info.json))."${releaseStream}";
   inherit (info) version;
 
   src = fetchurl {
@@ -87,7 +87,7 @@ symlinkJoin {
     ];
     */
     mainProgram = "osu!";
-    passthru.updateScript = pkgPath + "/update.sh";
+    passthru.updateScript = ./update.nu;
     platforms = [ "x86_64-linux" ];
   };
 }
