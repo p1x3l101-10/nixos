@@ -24,6 +24,6 @@ stdenvNoCC.mkDerivation (final: {
   '';
     
   installPhase = ''
-    cp -r "$(find . -mindepth 1 -print -quit)" $out
+    cp -r "$(find . -type d -mindepth 1 -print -quit)" $out
   '';
 })
