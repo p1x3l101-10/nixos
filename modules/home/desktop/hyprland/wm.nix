@@ -277,7 +277,7 @@
           let
             mkTarget = target: commands: mkArgs [target (mkLuaInline ''
               function()
-                ${builtins.concatStringsSep "\n" commands}
+                ${builtins.concatStringsSep "\n" (map (x: x.expr) commands)}
               end
             '')];
           in
