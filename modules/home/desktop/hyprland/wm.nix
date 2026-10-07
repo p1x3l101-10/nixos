@@ -16,26 +16,41 @@
         mkArgs = args: {
           _args = args;
         };
-        dsp = (
-          let
-            mkDsp = target: mkLuaInline "hl.dsp.${target}";
-          in {
-            exec_cmd = arg: mkDsp "exec_cmd(${toLua { } arg})";
-            focus = arg: mkDsp "focus(${toLua { } arg})";
-            window = {
-              move = arg: mkDsp "window.move(${toLua { } arg})";
-              drag = mkDsp "window.drag()";
-              resize = mkDsp "window.resize()";
-              close = mkDsp "window.close()";
-              kill = mkDsp "window.kill()";
-              fullscreen = mkDsp "window.fullscreen()";
-              float = mkDsp "window.float()";
-            };
-            workspace = {
-              move = arg: mkDsp "workspace.move(${toLua { } arg})";
-            };
-          }
-        );
+        hl = lib.fix (hl: let
+          mkCmd = cmd: mkLuaInline "hl.${cmd}";
+        in {
+          exec_cmd = arg: mkCmd "exec_cmd(${toLua { } arg})";
+          dsp = (
+            let
+              mkDsp = target: mkCmd "dsp.${target}";
+              mkWrappedCmd = (
+                { wrapperFunction ? (x: x)
+                , wrappedCmd ? "true"
+                }:
+                {
+                  __functor = wrapperFunction;
+                  _raw = wrappedCmd;
+                }
+              );
+              quickWrap = wrappedCmd: wrapperFunction: mkWrappedCmd { inherit wrapperFunction wrappedCmd; };
+            in {
+              exec_cmd = quickWrap (arg: mkDsp "exec_cmd(${toLua { } arg})") (final: arg: final._raw "app2unit -- ${arg}");
+              focus = arg: mkDsp "focus(${toLua { } arg})";
+              window = {
+                move = arg: mkDsp "window.move(${toLua { } arg})";
+                drag = mkDsp "window.drag()";
+                resize = mkDsp "window.resize()";
+                close = mkDsp "window.close()";
+                kill = mkDsp "window.kill()";
+                fullscreen = mkDsp "window.fullscreen()";
+                float = mkDsp "window.float()";
+              };
+              workspace = {
+                move = arg: mkDsp "workspace.move(${toLua { } arg})";
+              };
+            }
+          );
+        });
         monitors = (
           let
             inherit (osConfig.networking) hostName;
@@ -215,7 +230,7 @@
             (anim' "workspacesOut" 1.94 aln "fade")
           ])
         );
-        bind = (
+        bind = let inherit (hl) dsp; in (
           with functions.bind; (
             [
               # Main binds
@@ -226,7 +241,7 @@
               (b "V" dsp.window.float)
               (b "R" (dsp.exec_cmd globals.spotlight))
               (b ["SHIFT" "R"] (dsp.exec_cmd globals.powerMenu))
-              (b ["ALT" "L"] (dsp.exec_cmd globals.lockCmd))
+              (b ["ALT" "L"] (dsp.exec_cmd._raw globals.lockCmd))
               (b "F11" dsp.window.fullscreen)
             ] ++ (# Move focus between windows
               let
@@ -262,12 +277,12 @@
                 (builtins.genList (x: (builtins.toString (x + 1))) 10) # 10 workspaces
               )
             ) ++ [ # Screenshot stuff
-              (bnm "Print" (dsp.exec_cmd "grimblast save screen"))
-              (bnm ["SHIFT" "Print"] (dsp.exec_cmd "grimblast copy screen"))
-              (b "Print" (dsp.exec_cmd "grimblast save area"))
-              (b ["SHIFT" "Print"] (dsp.exec_cmd "grimblast copy area"))
-              (b ["CTRL" "Print"] (dsp.exec_cmd "grimblast save active"))
-              (b ["CTRL" "SHIFT" "Print"] (dsp.exec_cmd "grimblast copy active"))
+              (bnm "Print" (dsp.exec_cmd._raw "grimblast save screen"))
+              (bnm ["SHIFT" "Print"] (dsp.exec_cmd._raw "grimblast copy screen"))
+              (b "Print" (dsp.exec_cmd._raw "grimblast save area"))
+              (b ["SHIFT" "Print"] (dsp.exec_cmd._raw "grimblast copy area"))
+              (b ["CTRL" "Print"] (dsp.exec_cmd._raw "grimblast save active"))
+              (b ["CTRL" "SHIFT" "Print"] (dsp.exec_cmd._raw "grimblast copy active"))
             ] ++ ( # XFree86 Actions
               (lib.attrsets.mapAttrsToList
                 (xKey: action: (bnm "XF86Audio${xKey}" (dsp.exec_cmd action)))
@@ -282,7 +297,7 @@
                   Prev = "playerctl previous";
                 }
               ) ++ (lib.attrsets.mapAttrsToList
-                (xKey: brightAction: (bnm "XF86MonBrightness${xKey}" (dsp.exec_cmd "brightnessctl -e4 -n2 set ${brightAction}")))
+                (xKey: brightAction: (bnm "XF86MonBrightness${xKey}" (dsp.exec_cmd._raw "brightnessctl -e4 -n2 set ${brightAction}")))
                 {
                   Up = "5%+";
                   Down = "5%-";
@@ -294,14 +309,21 @@
             ])
           )
         );
-        on = [
-          # pcscd is borked on startup and wont detect a smartcard bc it starts too early
-          (mkArgs ["hyprland.start" (mkLuaInline ''
-            function()
-              hl.exec_cmd(${toLua { } "systemctl restart pcscd --no-block"})
-            end
-          '')])
-        ];
+        on = (
+          let
+            mkTarget = target: commands: mkArgs [target (mkLuaInline ''
+              function()
+                ${builtins.concatStringsSep "\n" commands}
+              end
+            '')];
+          in
+          [
+            # pcscd is borked on startup and wont detect a smartcard bc it starts too early
+            (mkTarget "hyprland.start" [
+              (hl.exec_cmd "systemctl restart pcscd --no-block")
+            ])
+          ]
+        );
       } // (
         if (monitors.count == 2) then {
           workspace_rule = (

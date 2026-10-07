@@ -10,6 +10,9 @@ let
   processDesktop = attrs: (
     builtins.mapAttrs (_: value: mkDesktopExec "${value}.desktop") attrs
   );
+  wofiWrapped = pkgs.mkShellScript "wofi-drun" ''
+    app2unit "$(wofi --show drun --define=drun-print_desktop_file=true | sed -E 's/(\.desktop) /\1:/')"
+  '';
 in lib.fix (self: {
   modifierKey = "SUPER";
   apps = processDesktop {
@@ -26,7 +29,7 @@ in lib.fix (self: {
     archiveManager = "xarchiver";
   };
   lockCmd = "loginctl lock-session";
-  spotlight = "wofi --show drun";
+  spotlight = wofiWrapped;
   powerMenu = "wofi-power-menu";
   appLauncher = self.spotlight;
   updates = {
