@@ -11,6 +11,7 @@ let
     builtins.mapAttrs (_: value: mkDesktopExec "${value}.desktop") attrs
   );
   wofiWrapped = pkgs.writeShellScript "wofi-drun" ''
+    kill wofi
     app2unit "$(wofi --show drun --define=drun-print_desktop_file=true | sed -E 's/(\.desktop) /\1:/')"
   '';
 in lib.fix (self: {
