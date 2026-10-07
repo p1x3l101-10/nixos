@@ -14,7 +14,7 @@
         mkArgs = args: {
           _args = args;
         };
-        inherit (import ./support/luaCmds.nix) hl;
+        inherit (import ./support/luaCmds.nix { inherit lib; }) hl;
         monitors = (
           let
             inherit (osConfig.networking) hostName;
