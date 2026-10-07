@@ -18,4 +18,5 @@ def main [] {
     let updateScript = nix eval $"($flakePath)#($package).meta.passthru.updateScript"
     run-external $updateScript
   }
+  return
 }
