@@ -30,6 +30,7 @@
     toast = true;
   };
   system_info = {
+    temperature.units = "Celsius";
     indicators = [
       "Cpu"
       "Memory"
