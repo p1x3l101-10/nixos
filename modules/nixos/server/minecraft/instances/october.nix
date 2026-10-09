@@ -10,7 +10,7 @@
       })
       {
         type = "forge";
-        forgeVersion = "14.32.5.2859";
+        forgeVersion = "14.23.5.2859";
         version = "1.12.2";
         java.version = "8";
       }
