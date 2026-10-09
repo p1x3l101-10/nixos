@@ -14,8 +14,8 @@ lib.fix (self: {
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK9YD5mX4qfWS35Kcrk2hymaXlcSEUs3lWYa9bLKOcNW Pixels-PC"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAx/wpS8Ix+smNyCL+RBlw0YIzONm5LDxxOtVRQ1nZSR SSHPORTAL"
       ];
-      mcUsername = "P1x3l101";
-      factorioUsername = "P1x3l101";
+      mcUsername = "St3llar_Nova";
+      factorioUsername = "st3llar_nova";
     };
     cayden = {
       proxyKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDXIBP2bh+ZS1kRsK8VVUobrVrV+DM1Z8iL6spqpHWVe cbaxter@tv-c07yvbmhjg2x.normanps.norman.k12.ok.us";
