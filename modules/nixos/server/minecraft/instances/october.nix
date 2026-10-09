@@ -6,7 +6,7 @@
     settings = eLib.attrsets.mergeAttrs [
       (import ../overrides/settings.nix {
         inherit userdata;
-        packId = "october-pack";
+        packId = "october-modpack";
       })
       {
         type = "forge";
