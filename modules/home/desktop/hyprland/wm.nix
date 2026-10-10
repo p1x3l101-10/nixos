@@ -1,13 +1,16 @@
 { pkgs, config, ... }@args:
 
-{
+let
+  loadCfg = config: import (./support/settings + "/${config}.nix") args;
+in {
   wayland.windowManager.hyprland = {
     enable = true;
     # Nixos manages these packages
     package = null;
     portalPackage = null;
     configType = "lua";
-    settings = import ./support/settings/hyprland.nix args;
+    settings = loadCfg "hyprland";
+    xdph.settings = loadCfg "xdph";
     systemd.enable = false;
   };
   home.packages = with pkgs; [

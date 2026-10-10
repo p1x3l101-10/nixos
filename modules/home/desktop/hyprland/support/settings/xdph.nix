@@ -1,0 +1,12 @@
+{ ... }:
+
+{
+  general.toplevel_dynamic_bind = true;
+  screencopy = {
+    allow_token_by_default = true;
+    cursor_mode = 2;
+    custom_picker_binary = "hyprland-share-picker";
+    force_shm = false;
+    max_fps = 60;
+  };
+}
