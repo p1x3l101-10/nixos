@@ -128,6 +128,15 @@
               disable_while_typing = false;
             };
           };
+          cursor = {
+            inactive_timeout = 10;
+            hide_on_key_press = false;
+          };
+          ecosystem = {
+            no_update_news = true;
+            no_donation_nag = true;
+          };
+          quirks.prefer_hdr = 2; # Prefer HDR for only gamescope
         };
         curve = (
           let
