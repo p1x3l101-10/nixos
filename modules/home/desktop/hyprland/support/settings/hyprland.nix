@@ -148,7 +148,7 @@ in {
       (mkPerm pkgs.grim "screencopy" "allow") # Let grimblast actually take screenshots
       (mkPerm pkgs.internal.osu-lazer-bin "input-capture" "allow") # Give osu touchpad acess
     ] ++ (map # Allow XDPH to manage itself; Basically, give it allow for everything
-      (perm: mkPerm osConfig.programs.hyprland.portalPackage perm "allow")
+      (perm: mkPerm' (osConfig.programs.hyprland.portalPackage + "/libexec/.xdg-desktop-portal-hyprland-wrapped") perm "allow")
       [
         "screencopy"
         "plugin"
