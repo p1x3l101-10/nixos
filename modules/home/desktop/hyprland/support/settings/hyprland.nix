@@ -111,7 +111,7 @@ in {
       };
     };
     input = {
-            kb_layout = "us";
+      kb_layout = "us";
       follow_mouse = false;
       sensitivity = 0;
       numlock_by_default = true;
