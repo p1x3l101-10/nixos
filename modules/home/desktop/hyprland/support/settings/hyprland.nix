@@ -127,38 +127,9 @@ in {
     ecosystem = {
       no_update_news = true;
       no_donation_nag = true;
-      enforce_permissions = true;
     };
     quirks.prefer_hdr = 2; # Prefer HDR for only gamescope
   };
-  permission = (
-    let
-      mkPermission = (
-        { binary
-        , type
-        , mode
-        }@args:
-        mkArgs [args]
-      );
-      # For full paths
-      mkPerm' = binary: type: mode: mkPermission { inherit type mode; binary = lib.escapeRegex binary; };
-      # For simple paths, only a package
-      mkPerm = package: type: mode: mkPermission { inherit type mode; binary = lib.getExe package; };
-    in [
-      (mkPerm pkgs.grim "screencopy" "allow") # Let grimblast actually take screenshots
-      (mkPerm pkgs.internal.osu-lazer-bin "input-capture" "allow") # Give osu touchpad acess
-    ] ++ (map # Allow XDPH to manage itself; Basically, give it allow for everything
-      (perm: mkPerm' (osConfig.programs.hyprland.portalPackage + "/libexec/.xdg-desktop-portal-hyprland-wrapped") perm "allow")
-      [
-        "screencopy"
-        "plugin"
-        "cursorpos"
-        "input-capture"
-      ]
-    ) ++ [
-      (mkPerm' ".*" "plugin" "deny") # Plugins are to be loaded only by home manager, and not on the fly
-    ]
-  );
   curve = (
     let
       mkBezier = (
