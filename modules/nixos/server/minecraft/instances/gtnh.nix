@@ -24,7 +24,7 @@
       {
         type = "custom";
         java = {
-          version = "21-graalvm";
+          version = "21";
           args = [
             "-Dfml.readTimeout=180"
             "@java9args.txt"

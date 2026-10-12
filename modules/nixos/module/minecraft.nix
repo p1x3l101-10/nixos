@@ -174,11 +174,7 @@ in
           type = types.enum [
             "8"
             "17"
-            "17-alpine"
-            "17-graalvm"
             "21"
-            "21-alpine"
-            "21-graalvm"
             "25"
           ];
           default = "25";

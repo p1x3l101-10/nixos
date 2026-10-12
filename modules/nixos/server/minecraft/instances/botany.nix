@@ -12,7 +12,7 @@
         type = "forge";
         forgeVersion = "47.4.12";
         version = "1.20.1";
-        java.version = "17-graalvm";
+        java.version = "17";
         extraPorts = [
           24454 # Simple voice chat
         ];

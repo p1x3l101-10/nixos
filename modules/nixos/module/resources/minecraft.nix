@@ -6,35 +6,15 @@
       imageDigest = "sha256:63b6aa8b742154cad6909bfc1c3a3093c067f2e07d81363b53293b50134ab6de";
       sha256 = "sha256-zm7jqRWe1PeQ4W7+8PCxsk6GkC0ZpcSs/2m8rMW1590=";
     };
-    "17-alpine" = {
-      # java17-alpine
-      imageDigest = "sha256:c9e70f7376c18b6cf0f9e6c4a2fd57892cc39b16e6b74fe30185d9ce2b214aa3";
-      sha256 = "sha256-PkUfIqS/MsGYizfBHmGGPwuRvCy1918xAKCQ8WQT+bY=";
-    };
     "17" = {
       # java17
       imageDigest = "sha256:1efcfbe78e96e99672f63c8517b7b933b3e1f9df8236bd069e3e8d5a481f66a2";
       sha256 = "sha256-61pN0bBdxN/uqo1d/wvM0W/ZhJee/Bsx4mgZLx5i89A=";
     };
-    "17-graalvm" = {
-      # java17-graalvm
-      imageDigest = "sha256:e0c717f8f98beda233aeac35469527c9b112fc2a1f34d33960fc95be42c534b6";
-      sha256 = "sha256-TZE9S9zpQIOaNy75TaBeZU9GCm+lsCm7nI2TbuusiwQ=";
-    };
     "21" = {
       # java21
       imageDigest = "sha256:50bdc4b0746c48456d8e737a017786a94c02295b14a8f0f4cb02592a0388cc09";
       sha256 = "sha256-2sZkD7g5cVJHVnjaYkrmGTvCzvSo8+mQDNXLOJsXTrY=";
-    };
-    "21-alpine" = {
-      # java21-alpine
-      imageDigest = "sha256:4748e48f7cd6922dbe9a18e9b2cf7e9e28c395b86d118ea9b21bdab232eb013a";
-      sha256 = "sha256-42u5FmTIKHpfQ2zZQXIrFkAN2/XvU0wWnCRrQkQzcNI=";
-    };
-    "21-graalvm" = {
-      # java21-graalvm
-      imageDigest = "sha256:2533b1d0916508973e691bd34afa5c1c7b6ec59b6846d5a1ce6f3bb7afc7bd57";
-      sha256 = "sha256-4EzE2SROs4TDM61gNQSijwlCnp8hoeUc3C/NO0+Rirw=";
     };
     "25" = {
       # Java 25
