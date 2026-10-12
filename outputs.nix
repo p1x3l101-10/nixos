@@ -81,6 +81,16 @@ inputs.flake-utils.lib.eachDefaultSystem
         assets = (eLib.attrsets.mapDirTree ./assets);
         lib = inputs.self.lib;
         hostInfo = import ./hostInfo.nix { inherit lib; ext = finalExt; };
+        mkNixPak = {
+          __functor = self: self.default; # This is normally a function call, so I can sneak in a functor to allow easy access to the unfree packages
+          default = inputs.nixpak.lib.nixpak {
+            inherit (finalExt.mainNixpkgs) pkgs lib;
+          };
+          unfree = inputs.nixpak.lib.nixpak {
+            inherit (finalExt.mainNixpkgs) lib;
+            pkgs = finalExt.mainNixpkgs.unfreePkgs;
+          };
+        };
       });
       eLib = final.ext.lib; # Conveniance
       inherit (final.ext) inputs; # Backwards compat
