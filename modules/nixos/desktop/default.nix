@@ -25,7 +25,6 @@
     ./nebula.nix
     ./network.nix
     ./nushell.nix
-    ./nix-exper.nix
     ./nix-ld.nix
     ./nix.nix
     ./nss.nix
