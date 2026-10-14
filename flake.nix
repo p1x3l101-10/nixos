@@ -38,6 +38,15 @@
         home-manager.follows = "home-manager";
       };
     };
+    ## Dependancies for the lib section
+    infuse = {
+      url = "git+https://codeberg.org/amjoseph/infuse.nix.git";
+      flake = false;
+    };
+    yants = {
+      url = "github:divnix/yants";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     ## Eyecandy
     stylix = {
       url = "github:nix-community/stylix";

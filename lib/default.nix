@@ -10,6 +10,9 @@ in
 genLib ./. [
   "internal" # Always first
 
+  # Yants can be used almost everywhere (and I should be), so put them up high
+  "infusion"
+
   # No deps (other than internal)
   "trivial"
   "attrsets"

@@ -7,6 +7,14 @@
       url = "github:numtide/flake-utils";
       inputs.systems.follows = "systems";
     };
+    infuse = {
+      url = "git+https://codeberg.org/amjoseph/infuse.nix.git";
+      flake = false;
+    };
+    yants = {
+      url = "github:divnix/yants";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = inputs: (
     inputs.flake-utils.lib.eachDefaultSystem
