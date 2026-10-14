@@ -1,11 +1,7 @@
 {
   "name": "kitten-space-agency",
-  "version": "2026.9.7.5402",
-  "tarball": {
-    "algo": "sha256",
-    "hash": "sha256-nMpb7hUrbZg61DvQVLZ2GUy6A81ykHbhROb1a78/oPA=",
-    "mode": "flat"
-  },
+  "version": "2026.10.13.5602",
+  "hash": "sha256-BRTbt0yuJmSkvFycTnSeXHUM+eW4MVPy1l/Na8gQAJo=",
   "meta": {
     "description": "Rocket engineering simulator game",
     "homepage": "https://ahwoo.com/app/100000/kitten-space-agency"

@@ -12,9 +12,9 @@ stdenvNoCC.mkDerivation {
 
   KSA_REFRESH_TOKEN = refreshToken;
 
-  outputHash = info.tarball.hash;
-  outputHashAlgo = info.tarball.algo;
-  outputHashMode = info.tarball.mode;
+  outputHash = info.hash;
+  outputHashAlgo = "sha256";
+  outputHashMode = "flat";
 
   nativeBuildInputs = [
     curl
