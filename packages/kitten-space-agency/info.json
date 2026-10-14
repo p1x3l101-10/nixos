@@ -1,9 +1,9 @@
 {
   "name": "kitten-space-agency",
-  "version": "2026.7.6.4939",
+  "version": "2026.9.7.5402",
   "tarball": {
     "algo": "sha256",
-    "hash": "0mm4kw809xx9rq7hwljj8b6hmh54wa99gs9y7b4sfhpmw0b735sh",
+    "hash": "sha256-nMpb7hUrbZg61DvQVLZ2GUy6A81ykHbhROb1a78/oPA=",
     "mode": "flat"
   },
   "meta": {
