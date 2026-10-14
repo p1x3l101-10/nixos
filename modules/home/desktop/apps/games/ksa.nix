@@ -17,4 +17,12 @@ in
   home.packages = [
     ksaFinalPkg
   ];
+  xdg.desktopEntries.ksa = {
+    categories = [
+      "Game"
+    ];
+    exec = "kitten-space-agency-launcher %U";
+    name = "Kitten Space Agency";
+    terminal = false;
+  };
 }
