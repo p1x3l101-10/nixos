@@ -130,10 +130,10 @@ inputs.flake-utils.lib.eachDefaultSystem
               }:
               {
                 inherit name;
-                value = callOverlay (srcDir + name);
+                value = callOverlay (srcDir + "/${name}");
               }
             )
-            (lib.lists.attrsToList
+            (lib.attrsets.attrsToList
               (builtins.readDir srcDir)
             )
           )
