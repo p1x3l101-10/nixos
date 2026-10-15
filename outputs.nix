@@ -116,31 +116,9 @@ inputs.flake-utils.lib.eachDefaultSystem
   {
     inherit (specialArgs.ext) assets;
     lib = eLib;
-    overlays = (
-      let
-        callOverlay = overlayPath: import overlayPath {
-          inherit (eLib.infusion) infuse yants;
-          inherit (inputs.nixpkgs) lib;
-        };
-        genOverlay = srcDir: (builtins.listToAttrs
-          (map
-            (
-              { name
-              , value
-              }:
-              {
-                inherit name;
-                value = callOverlay (srcDir + "/${name}");
-              }
-            )
-            (lib.attrsets.attrsToList
-              (builtins.readDir srcDir)
-            )
-          )
-        );
-      in
-      genOverlay ./overlays
-    );
+    overlays = eLib.flake.genOverlay {
+      src = ./overlays;
+    };
     nixosModules = eLib.flake.genModules {
       src = ./modules/nixos;
     };

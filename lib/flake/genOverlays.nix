@@ -1,17 +1,28 @@
 { lib, ext, self }:
 
-{ src }:
+{ src
+, additionalOverlayArgs ? {}
+}:
 
-lib.attrsets.mapAttrs
-  (name: _:
-  import (src + "/${name}") ext
-  )
+let
+  overlayArgs = ({
+    inherit (self.infusion) infuse;
+  } // additionalOverlayArgs);
+  callOverlay = path: import path overlayArgs;
+in
+
+
+builtins.listToAttrs (map
   (
-    lib.attrsets.filterAttrs
-      (_: type:
-      type == "directory"
-      )
-      (
-        builtins.readDir src
-      )
+    { name
+    , value
+    }:
+    {
+      inherit name;
+      value = callOverlay (src + "/${name}");
+    }
   )
+  (lib.attrsets.attrsToList
+    (builtins.readDir src)
+  )
+)
