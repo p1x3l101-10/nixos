@@ -4,13 +4,11 @@ let
   # TODO: Avoid lib pollution
   inherit (inputs.nixpkgs) lib;
   eLib = import ./lib { inherit inputs namespace lib; };
-  # I have made the executive decision to use infusions instead of overlays, so here goes
-  mkInfusedPkgs = pkgs: eLib.infusions.infuse pkgs ((eLib.flake.genInfusionList { src = ./infusions; }) ++ []);
 in
 inputs.flake-utils.lib.eachDefaultSystem
   (system:
     let
-      pkgs = inputs.nixpkgs.legacyPackages.${system};
+      pkgs = eLib.infusions.mkInfusedPkgs inputs.nixpkgs.legacyPackages.${system} [];
     in
     {
       formatter = pkgs.nixpkgs-fmt;
