@@ -116,11 +116,31 @@ inputs.flake-utils.lib.eachDefaultSystem
   {
     inherit (specialArgs.ext) assets;
     lib = eLib;
-    overlays = {
-      fix-ca-conflicts = import ./overlays/fix-ca-conflicts;
-      build-fixes = import ./overlays/build-fixes;
-      wifi-fixes = import ./overlays/wifi-fixes;
-    };
+    overlays = (
+      let
+        callOverlay = overlayPath: import overlayPath {
+          inherit (eLib.infusion) infuse yants;
+          inherit (inputs.nixpkgs) lib;
+        };
+        genOverlay = srcDir: (builtins.listToAttrs
+          (map
+            (
+              { name
+              , value
+              }:
+              {
+                inherit name;
+                value = callOverlay (srcDir + name);
+              }
+            )
+            (lib.lists.attrsToList
+              (builtins.readDir srcDir)
+            )
+          )
+        );
+      in
+      genOverlay ./overlays
+    );
     nixosModules = eLib.flake.genModules {
       src = ./modules/nixos;
     };

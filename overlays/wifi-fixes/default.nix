@@ -1,7 +1,5 @@
-final: prev: {
-  wpa_supplicant = prev.wpa_supplicant.overrideAttrs (old: {
-    extraConfig = (old.extraConfig or "") + ''
-      CONFIG_WEP=y
-    '';
-  });
+{ infuse, ... }:
+
+final: prev: infuse prev {
+  wpa_supplicant.__output.extraConfig.__append = "CONFIG_WEP=y";
 }

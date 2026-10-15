@@ -1,12 +1,7 @@
-final: prev: {
-  assimp = prev.assimp.overrideAttrs (oldAttrs: {
-    doCheck = false;
-  });
-  pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
-    (pFinal: pPrev: {
-      patool = pPrev.patool.overrideAttrs (old: {
-        doCheck = false;
-      });
-    })
-  ];
+{ infuse, ... }:
+
+
+final: prev: infuse prev {
+  assimp.__output.doCheck.__assign = false;
+  pythonPackagesExtensions.__overlay.patool.__output.doCheck.__assign = false;
 }
