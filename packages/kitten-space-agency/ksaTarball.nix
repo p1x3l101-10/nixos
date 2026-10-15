@@ -1,5 +1,5 @@
 { info
-, refreshToken ? builtins.getEnv "KSA_REFRESH_TOKEN"
+, refreshToken
 , stdenvNoCC
 , curl
 , jq

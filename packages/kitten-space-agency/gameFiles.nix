@@ -1,7 +1,8 @@
 { info
 , stdenvNoCC
 , callPackage
-, ksaTarball ? callPackage ./ksaTarball.nix { inherit info; }
+, refreshToken
+, ksaTarball ? callPackage ./ksaTarball.nix { inherit info refreshToken; }
 }:
 
 stdenvNoCC.mkDerivation {
@@ -23,6 +24,5 @@ stdenvNoCC.mkDerivation {
   meta = {
     inherit (info.meta) description homepage;
     platforms = [ "x86_64-linux" ];
-    passthru.ksaTarball = ksaTarball; # To allow threading an override
   };
 }

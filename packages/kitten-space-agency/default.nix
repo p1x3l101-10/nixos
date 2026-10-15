@@ -1,7 +1,8 @@
 { ext
 , info ? (builtins.fromJSON (builtins.readFile ./info.json))
 , callPackage # To load the other bundles
-, gameFiles ? callPackage ./gameFiles.nix { inherit info; } # Game bundle
+, refreshToken ? builtins.getEnv "KSA_REFRESH_TOKEN"
+, gameFiles ? callPackage ./gameFiles.nix { inherit info refreshToken; } # Game bundle
 , buildFHSEnv
 , writeShellScript
 , writeShellApplication
@@ -88,9 +89,7 @@ buildFHSEnv {
   };
 
   meta = {
-    inherit (info.meta) description homepage;
-    inherit (gameFiles.meta) platforms;
+    inherit (gameFiles.meta) description homepage platforms;
     mainProgram = "${info.name}-launcher";
-    passthru.gameFiles = gameFiles; # To allow threading an override
   };
 }
