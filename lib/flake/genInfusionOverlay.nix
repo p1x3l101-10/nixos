@@ -5,14 +5,9 @@
 }:
 
 let
-  callArgs = (
-    { final
-    , prev }:
-    {
-      inherit final prev;
-    } // additionalArgs
-  );
-  mkInfusionOverlay = infuseInstructions: (final: prev: self.infusion.infuse prev infuseInstructions);
+  inherit (self.infusion) infuse;
+  callArgs = ({} // additionalArgs);
+  mkInfusionOverlay = infuseInstructions: (final: prev: infuse prev infuseInstructions);
   callInfusion = path: mkInfusionOverlay (import path callArgs);
 in
 
