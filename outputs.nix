@@ -116,8 +116,8 @@ inputs.flake-utils.lib.eachDefaultSystem
   {
     inherit (specialArgs.ext) assets;
     lib = eLib;
-    overlays = eLib.flake.genOverlay {
-      src = ./overlays;
+    overlays = eLib.flake.genInfusionOverlay {
+      src = ./infusionOverlays;
     };
     nixosModules = eLib.flake.genModules {
       src = ./modules/nixos;
