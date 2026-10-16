@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./instances/october.nix
+    ./instances/techrpg.nix
     #./fail2ban.nix
     #./bluemap-nginx.nix
     #./svc.nix
