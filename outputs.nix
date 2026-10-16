@@ -106,7 +106,7 @@ inputs.flake-utils.lib.eachDefaultSystem
       nix-citizen.nixosModules.default
       { lib."${namespace}" = eLib; }
       {
-        nixpkgs.infusions = with inputs.self.infusions; [
+        nixpkgs.infusion.infusions = with inputs.self.infusions; [
           {
             "${namespace}".__assign = inputs.self.packages.${system};
           }

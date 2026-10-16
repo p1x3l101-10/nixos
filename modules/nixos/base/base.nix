@@ -38,7 +38,6 @@
     enable = true;
     package = lib.mkDefault pkgs.gitMinimal;
   };
-  nixpkgs.config = ext.defaultNixpkgsConfig;
 
   # Networking
   systemd.network = {

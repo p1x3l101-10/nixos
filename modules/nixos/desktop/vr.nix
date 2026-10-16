@@ -96,10 +96,6 @@ in {
     "libnpp"
     "libnvjitlink"
   ];
-  nixpkgs.config = {
-    #xr.enable = false;
-    #rocmSupport = true;
-  };
   services.avahi = {
     enable = true;
     nssmdns4 = true;
