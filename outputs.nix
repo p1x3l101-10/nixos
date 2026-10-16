@@ -78,6 +78,7 @@ inputs.flake-utils.lib.eachDefaultSystem
             inherit system config;
           }
         );
+        selfPkgs = inputs.self.packages.${finalExt.system};
         assets = (eLib.attrsets.mapDirTree ./assets);
         lib = inputs.self.lib;
         hostInfo = import ./hostInfo.nix { inherit lib; ext = finalExt; };

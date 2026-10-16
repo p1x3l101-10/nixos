@@ -1,6 +1,6 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, ext, ... }:
 lib.mkIf (config.networking.hostName == "stellar-pc") (let
-  wivrn = pkgs.internal.wivrn-force-update;
+  wivrn = ext.selfPkgs.wivrn-force-update;
 in {
   # Main vr service
   services.wivrn = {

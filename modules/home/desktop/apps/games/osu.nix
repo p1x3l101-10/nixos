@@ -1,8 +1,8 @@
-{ pkgs, ... }:
+{ ext, ... }:
 
 {
   home.packages = [
-    pkgs.internal.osu-lazer-bin
+    ext.selfPkgs.osu-lazer-bin
   ];
   home.allowedUnfree.packages = [ "osu-lazer-bin" ];
 }

@@ -1,5 +1,5 @@
-{ pkgs, ... }:
+{ ext, ... }:
 
 {
-  home.packages = [ pkgs.internal.voices-of-the-void ];
+  home.packages = [ ext.selfPkgs.voices-of-the-void ];
 }
