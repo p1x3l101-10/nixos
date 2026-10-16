@@ -5,7 +5,7 @@
     enable = true;
     curseforge.pack = {
       slug = "techrpg";
-      fileId = "8643011";
+      fileId = 8643011;
     };
     settings = eLib.attrsets.mergeAttrs [
       (import ../overrides/settings.nix {
