@@ -8,7 +8,7 @@ in
 inputs.flake-utils.lib.eachDefaultSystem
   (system:
     let
-      pkgs = eLib.infusions.mkInfusedPkgs inputs.nixpkgs.legacyPackages.${system} [];
+      pkgs = eLib.infusion.mkInfusedPkgs inputs.nixpkgs.legacyPackages.${system} [];
     in
     {
       formatter = pkgs.nixpkgs-fmt;

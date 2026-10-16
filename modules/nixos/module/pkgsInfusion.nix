@@ -29,7 +29,9 @@ in {
     ) else (
       {
         nixpkgs.overlays = (map
-          (infusion: ext.lib.infusion.genOverlay infusion)
+          (infusion: 
+            (final: prev: ext.lib.infusion.infuse prev infusion)
+          )
           cfg.infusions
         );
         nixpkgs.config = cfg.config;
