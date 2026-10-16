@@ -2,4 +2,4 @@
 
 pkgs: infusion:
 
-self.infusions.infuse pkgs infusion
+self.infusion.infuse pkgs infusion

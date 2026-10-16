@@ -8,6 +8,7 @@
     ./iwd.nix
     ./licenses.nix
     ./minecraft.nix
+    ./pkgsInfusion.nix
     ./sculptor.nix
     ./tmodloader.nix
     ./u2f.nix

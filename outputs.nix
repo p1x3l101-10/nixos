@@ -105,9 +105,11 @@ inputs.flake-utils.lib.eachDefaultSystem
       self.nixosModules.module
       nix-citizen.nixosModules.default
       { lib."${namespace}" = eLib; }
-      (eLib.flake.genPkgOverlay { inherit namespace; packages = inputs.self.packages.${system}; })
       {
-        nixpkgs.overlays = with inputs.self.overlays; [
+        nixpkgs.infusions = with inputs.self.infusions; [
+          {
+            "${namespace}".__assign = inputs.self.packages.${system};
+          }
           wifi-fixes
         ];
       }
@@ -116,12 +118,10 @@ inputs.flake-utils.lib.eachDefaultSystem
   {
     inherit (specialArgs.ext) assets;
     lib = eLib;
-    overlays = eLib.flake.genInfusionOverlay {
-      src = ./infusions;
-    };
     infusions = eLib.flake.genInfusions {
       src = ./infusions;
     };
+    overlays = eLib.infusion.genOverlay inputs.self.infusions;
     nixosModules = eLib.flake.genModules {
       src = ./modules/nixos;
     };
