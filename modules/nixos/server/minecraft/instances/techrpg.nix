@@ -3,6 +3,7 @@
 {
   services.minecraft = {
     enable = true;
+    curseforge.apiKey = import ../overrides/cfApiKey.nix;
     curseforge.pack = {
       slug = "techrpg";
       fileId = 8643011;
