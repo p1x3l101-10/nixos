@@ -26,4 +26,6 @@
 
   # Laptop can move, timezone override
   #time.timeZone = lib.mkForce "US/Mountain";
+  # Sometimes the laptop is online without any networking, so dont slow down the boot process
+  systemd.services.NetworkManager-wait-online.enable = false;
 }
