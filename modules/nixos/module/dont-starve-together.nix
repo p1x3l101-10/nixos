@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, ext, ... }:
 
 let
   cfg = config.services.dontStarveTogether;
@@ -12,7 +12,7 @@ in {
       package = mkOption {
         description = "Server depot package to use";
         type = types.package;
-        default = pkgs.internal.dst-server;
+        default = ext.selfPkgs.dst-server;
       };
     }
   );

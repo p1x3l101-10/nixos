@@ -1,6 +1,6 @@
 # NOTE: THIS IS UNFINISHED
 # TODO: expand the list of options exposed without relying on cfg.settings.extraEnv
-{ config, options, pkgs, lib, eLib, ... }:
+{ config, ext, lib, eLib, ... }:
 let
   cfg = config.services.minecraft;
   inherit (lib.options) mkOption mkEnableOption;
@@ -385,7 +385,7 @@ in
       ];
       # Sets the javaVersion of the image from the respecive values from the attrSet at the begining
       image = "internal/docker-minecraft:${toString cfg.settings.java.version}";
-      imageFile = pkgs.internal.dockerMinecraft.override {
+      imageFile = ext.selfPkgs.dockerMinecraft.override {
         inherit ((import (./resources/minecraft.nix)).versionList.${cfg.settings.java.version}) imageDigest sha256;
         finalImageTag = (toString cfg.settings.java.version);
       };

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ext, ... }:
 
 {
   imports = [
@@ -13,6 +13,6 @@
     24454
   ];
   environment.systemPackages = [
-    pkgs.internal.minecraft-helper
+    ext.selfPkgs.minecraft-helper
   ];
 }

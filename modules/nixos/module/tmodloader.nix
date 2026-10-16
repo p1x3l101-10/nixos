@@ -1,4 +1,4 @@
-{ config, options, pkgs, lib, eLib, ... }:
+{ config, ext, lib, eLib, ... }:
 let
   cfg = config.services.tmodloader;
   inherit (lib.options) mkOption mkEnableOption;
@@ -128,8 +128,8 @@ in
     };
     image = mkOption {
       type = types.package;
-      default = pkgs.internal.dockerTmodloader;
-      example = pkgs.internal.dockerTmodloader.override { imageDigest = "sha256:digest-here"; sha256 = "valid-hash"; };
+      default = ext.selfPkgs.dockerTmodloader;
+      example = ext.selfPkgs.dockerTmodloader.override { imageDigest = "sha256:digest-here"; sha256 = "valid-hash"; };
       description = "tModLoader server image";
     };
     extraConfig = mkOption {

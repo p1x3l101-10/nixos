@@ -1,4 +1,4 @@
-{ config, options, pkgs, lib, ... }:
+{ config, ext, pkgs, lib, ... }:
 
 let
   cfg = config.services.sculptor;
@@ -13,7 +13,7 @@ in
     package = mkOption {
       type = types.package;
       description = "Package to use";
-      default = pkgs.internal.sculptor;
+      default = ext.selfPkgs.sculptor;
     };
     openFirewall = mkEnableOption "opening firewall";
     config = {
