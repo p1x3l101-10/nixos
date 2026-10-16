@@ -18,7 +18,7 @@
     };
   };
   config = lib.mkIf config.system.allowedUnfree.enable {
-    nixpkgs.config = {
+    nixpkgs.infusion.config = {
       allowUnfreePredicate = lib.mkForce (pkg: builtins.elem (lib.getName pkg) (config.system.allowedUnfree.packages));
       allowlistedLicenses = lib.mkForce (config.system.allowedUnfree.licenses);
       blocklistedLicenses = lib.mkForce (config.system.allowedUnfree.blockedLicenses);
