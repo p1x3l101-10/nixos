@@ -80,7 +80,7 @@ $env.config = (
   $env.config?
   | upsert hooks { default {} }
   | upsert hooks.env_change { default {} }
-  | upsert hooks.env_change.PWD [
+  | upsert hooks.env_change.PWD { |row| ($row.hooks.env_change.PWD? | default []) ++ [
     {
       condition: {|before, after|
         let repo = $after | __hook-in-git-repo_locate
@@ -93,5 +93,5 @@ $env.config = (
         $after | __hook-in-git-repo_locate | __hook-in-git-repo
       }
     }
-  ]
+  ] }
 )
