@@ -1,4 +1,4 @@
-{ ext, ... }:
+{ ext, osConfig, lib, ... }:
 
 let
   # Inject the token into the build so it doesn't read the envvar
@@ -6,9 +6,10 @@ let
   ksaPkgs = ext.lib.infusion.infuse ext.selfPkgs {
     kitten-space-agency.__input.refreshToken.__assign = refreshToken;
   };
+  isDesktop = osConfig.networking.hostName == "stellar-pc";
 in
 
-{
+lib.mkIf isDesktop {
   home.packages = [
     ksaPkgs.kitten-space-agency
   ];
