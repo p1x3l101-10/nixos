@@ -76,21 +76,22 @@ def "__hook-in-git-repo" []: string -> nothing {
 }
 
 # Inject hook into nushell
-$env.config = ($env.config | upsert hooks {
-  env_change: {
-    PWD: [
-      {
-        condition: {|before, after|
-          let repo = $after | __hook-in-git-repo_locate
-          if ($repo | is-empty) {
-            return false
-          }
-          not ($repo | __hook-in-git-repo_cooldown)
+$env.config = (
+  $env.config?
+  | upsert hooks { default {} }
+  | upsert hooks.env_change { default {} }
+  | upsert hooks.env_change.PWD [
+    {
+      condition: {|before, after|
+        let repo = $after | __hook-in-git-repo_locate
+        if ($repo | is-empty) {
+          return false
         }
-        code: {|before, after|
-          $after | __hook-in-git-repo_locate | __hook-in-git-repo
-        }
+        not ($repo | __hook-in-git-repo_cooldown)
       }
-    ]
-  }
-})
+      code: {|before, after|
+        $after | __hook-in-git-repo_locate | __hook-in-git-repo
+      }
+    }
+  ]
+)
