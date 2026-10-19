@@ -3,15 +3,16 @@
 # This turns an attrset into something that a firefox bookmark generator will understand
 
 let
-  inherit (self.infusion) yants infuse;
+  yants = self.infusion.yants "firefox:transcribeBookmarks";
+  inherit (self.infusion) infuse;
   inherit (yants) defun;
   # A horrible terrible amalgamation of my custom types superimposed ontop of yants
   types = infuse yants (lib.mapAttrs (_: v: { __assign = v; }) (with yants; rec {
+      recursive = any; # *Sigh* Yants gives nothing for recursive types :(
       entryContents = eitherN [
         string
-        # Any is an abstraction to avoid infinite recursion error
-        (attrs any)
-        (list any)
+        (attrs recursive)
+        (list recursive)
       ];
       entry = struct {
         name = string;
@@ -19,7 +20,18 @@ let
       };
       unorderedBookmarks = attrs entryContents;
       orderedBookmarks = list entry;
-      transcribedBookmark = attrs (either string (list any));
+      bookmarkFolder = struct {
+        name = string;
+        bookmarks = list recursive;
+        toolbar = bool;
+      };
+      bookmark = struct {
+        name = string;
+        url = string;
+        tags = list string;
+        keyword = option string;
+      };
+      transcribedBookmark = either bookmarkFolder bookmark;
       transcribedBookmarks = list transcribedBookmark;
       inputData = either (list entryContents) (attrs entryContents);
     })
@@ -38,6 +50,8 @@ let
       {
         inherit (acc) name;
         url = acc.value;
+        tags = [];
+        keyword = null;
       }
     ) else ( # Is a folder of some kind
       if (acc.name == "Toolbar") then ( # Is the bookmarks folder
@@ -49,6 +63,7 @@ let
       ) else ( # Is a normal folder
         {
           inherit (acc) name;
+          toolbar = false;
           bookmarks = (map transcribeBookmarks' (prepPrimeRun acc.value));
         }
       )
