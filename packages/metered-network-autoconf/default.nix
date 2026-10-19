@@ -1,12 +1,7 @@
 { ext
-, callPackage
 }:
 
-let
-  nuLibs = callPackage ./libs.nix {};
-in
-
-nuLibs.mkNuScript {
+ext.lib.builders.nushell.mkNuScript {
   name = "metered-network-autoconf";
   packageDir = ./.;
 }

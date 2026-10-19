@@ -1,16 +1,15 @@
-{ lib
-, runCommand
-, symlinkJoin
-, stdenvNoCC
-, nushell
-, makeWrapper
-}:
+{ lib, ext, self }:
+
+let
+  inherit (ext.pkgs) runCommand symlinkJoin stdenvNoCC nushell makeWrapper;
+in
+
 lib.fix (finalLib: {
   renamePath = source: destination: runCommand "rename-path" {} ''
     mkdir -p "$out/$(dirname "${destination}")"
     cp -r "${source}" "$out/${destination}"
   '';
-  mkNuModules = (
+  mkNuModules = lib.makeOverridable (
     { plainModules ? []
     , plainModuleFolders ? []
     , installedModules ? []
@@ -33,7 +32,7 @@ lib.fix (finalLib: {
       };
     }))
   );
-  mkNuScript = (
+  mkNuScript = lib.makeOverridable (
     { name
     , version ? "0.0.0"
     , packageDir
