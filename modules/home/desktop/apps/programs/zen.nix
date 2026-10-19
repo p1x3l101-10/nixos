@@ -270,64 +270,87 @@
         force = true;
         settings = (
           let
-            mkBookmark = name: url: { inherit name url; };
-            mkFolder = name: bookmarks: { inherit name bookmarks; };
-            mkToolbar = b: (mkFolder "Toolbar" b) // { toolbar = true; };
             trimSemanticPatch = version: maxPlaces: builtins.addErrorContext "While trimming SemVer" (builtins.concatStringsSep "."
               (lib.lists.take
                 maxPlaces
                 (builtins.splitVersion version)
               )
             );
-          in [
-            (mkToolbar [
-              (mkFolder "College" [
-                (mkBookmark "LMS" "https://occc.mrooms3.net")
-                (mkBookmark "Student Services" "https://experience.elluciancloud.com/occc151")
-                (mkBookmark "EMail" "https://outlook.cloud.microsoft/mail")
-                (mkBookmark "Homepage" "https://occc.edu")
-                (mkBookmark "Kahoot" "https://www.kahoot.it")
-                (mkBookmark "Interlibrary Loans" "https://58718.account.worldcat.org/account/requests")
-              ])
-              (mkFolder "GSuite" [
-                (mkBookmark "Calendar" "https://calendar.google.com")
-                (mkBookmark "EMail" "https://mail.google.com")
-              ])
-              (mkFolder "Tools" [
-                (mkFolder "Server Stuff" [
-                  (mkBookmark "Cloudflare Dashboard" "https://dash.cloudflare.com")
-                ])
-                (mkFolder "Job applications" [
-                  (mkBookmark "Target" "https://target.wd5.myworkdayjobs.com/en-US/targetcareers/userHome")
-                ])
-                (mkBookmark "Graphing Calculator" "https://desmos.com/calculator")
-              ])
-              (mkFolder "Manuals" [
-                (mkFolder "NixOS Modules" [
-                  (mkBookmark "NixOS" "file://${osConfig.system.build.manual.manualHTML}/share/doc/nixos/index.html")
-                  (mkBookmark "nixos-cli" "https://nix-community.github.io/nixos-cli/")
-                  (mkBookmark "Home Manager" "https://nix-community.github.io/home-manager/")
-                  (mkBookmark "Stylix" "https://nix-community.github.io/stylix/")
-                  (mkBookmark "Nixvim" "https://nix-community.github.io/nixvim/")
-                  (mkBookmark "Nixcord" "https://4evy.github.io/nixcord/")
-                  (mkBookmark "Nimi" "https://weyl-ai.github.io/nimi/index.html")
-                ])
-                (mkFolder "Nix" [
-                  (mkBookmark "Nix" "https://nix.dev/manual/nix/${trimSemanticPatch osConfig.nix.package.version 2}")
-                  (mkBookmark "Nix.Dev" "https://nix.dev/")
-                  (mkBookmark "Nix Builtins and Nixpkgs Lib" "https://teu5us.github.io/nix-lib.html")
-                  (mkBookmark "Nixpkgs Manual" "https://ryantm.github.io/nixpkgs")
-                ])
-                (mkFolder "Nushell Documentation" [
-                  (mkBookmark "The Nushell Book" "https://www.nushell.sh/book/")
-                  (mkBookmark "Command Reference" "https://www.nushell.sh/commands/")
-                  (mkBookmark "Cookbook" "https://www.nushell.sh/cookbook/")
-                  (mkBookmark "Language Reference Guide" "https://www.nushell.sh/lang-guide/")
-                ])
-                (mkBookmark "Hyprland Wiki" "https://wiki.hypr.land")
-              ])
-            ])
-          ]
+            transcribeBookmarks' = acc: builtins.addErrorContext "While transcribing the bookmark tree ${acc.name}" (
+              if (builtins.isString acc.value) then ( # Is a bookmark
+                {
+                  inherit (acc) name;
+                  url = acc.value;
+                }
+              ) else (
+                if (builtins.isAttrs acc.value) then ( # Is a folder of some kind
+                  if (acc.name == "Toolbar") then ( # Is the bookmarks folder
+                    {
+                      inherit (acc) name;
+                      toolbar = true;
+                      bookmarks = (map transcribeBookmarks' (lib.attrsets.attrsToList acc.value));
+                    }
+                  ) else ( # Is a normal folder
+                    {
+                      inherit (acc) name;
+                      bookmarks = (map transcribeBookmarks' (lib.attrsets.attrsToList acc.value));
+                    }
+                  )
+                ) else ( # What have you done to manage this?
+                  builtins.throw "Bookmark trees can only contain attribute sets or strings"
+                )
+              )
+            );
+            transcribeBookmarks = attrs: builtins.addErrorContext "While transcribing bookmarks" (map transcribeBookmarks' (lib.attrsets.attrsToList attrs));
+          in transcribeBookmarks {
+            Toolbar = {
+              College = {
+                LMS = "https://occc.mrooms3.net";
+                "Student Services" = "https://experience.elluciancloud.com/occc151";
+                EMail = "https://outlook.cloud.microsoft/mail";
+                Homepage = "https://occc.edu";
+                Kahoot = "https://www.kahoot.it";
+                "Interlibrary Loans" = "https://58718.account.worldcat.org/account/requests";
+             };
+              GSuite = {
+                Calendar = "https://calendar.google.com";
+                EMail = "https://mail.google.com";
+             };
+              Tools = {
+                "Server Stuff" = {
+                  "Cloudflare Dashboard" = "https://dash.cloudflare.com";
+               };
+                "Job applications" = {
+                  Target = "https://target.wd5.myworkdayjobs.com/en-US/targetcareers/userHome";
+               };
+                "Graphing Calculator" = "https://desmos.com/calculator";
+             };
+              Manuals = {
+                "NixOS Modules" = {
+                  NixOS = "file://${osConfig.system.build.manual.manualHTML}/share/doc/nixos/index.html";
+                  "nixos-cli" = "https://nix-community.github.io/nixos-cli/";
+                  "Home Manager" = "https://nix-community.github.io/home-manager/";
+                  Stylix = "https://nix-community.github.io/stylix/";
+                  Nixvim = "https://nix-community.github.io/nixvim/";
+                  Nixcord = "https://4evy.github.io/nixcord/";
+                  Nimi = "https://weyl-ai.github.io/nimi/index.html";
+               };
+                Nix = {
+                  Nix = "https://nix.dev/manual/nix/${trimSemanticPatch osConfig.nix.package.version 2}";
+                  "Nix.Dev" = "https://nix.dev/";
+                  "Nix Builtins and Nixpkgs Lib" = "https://teu5us.github.io/nix-lib.html";
+                  "Nixpkgs Manual" = "https://ryantm.github.io/nixpkgs";
+               };
+                "Nushell Documentation" = {
+                  "The Nushell Book" = "https://www.nushell.sh/book/";
+                  "Command Reference" = "https://www.nushell.sh/commands/";
+                  Cookbook = "https://www.nushell.sh/cookbook/";
+                  "Language Reference Guide" = "https://www.nushell.sh/lang-guide/";
+               };
+                "Hyprland Wiki" = "https://wiki.hypr.land";
+             };
+           };
+          }
         );
       };
     };
