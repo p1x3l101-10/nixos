@@ -6,7 +6,7 @@ rec {
   mkArgs = args: {
     _args = args;
   };
-  inherit (import ../luaCmds.nix { inherit lib; }) hl;
+  luaCmds = import ../luaCmds.nix { inherit lib; };
   monitors = (
     let
       inherit (osConfig.networking) hostName;

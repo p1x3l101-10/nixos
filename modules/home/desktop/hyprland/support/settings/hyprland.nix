@@ -1,4 +1,4 @@
-{ lib, ... }@hmArgs:
+{ config, ext, lib, ... }@hmArgs:
 
 let
   # Block got too long, move to other file and then import it
@@ -6,10 +6,11 @@ let
     globals
     mkLuaInline
     mkArgs
-    hl
+    luaCmds
     monitors
     functions
   ;
+  inherit (luaCmds) hl;
 in {
   config = {
     xwayland = {
