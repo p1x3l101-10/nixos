@@ -226,15 +226,15 @@ in {
       types = ext.lib.infusion.mkTypes "Hyprland Settings:window_rule" (yants:
         with yants; let
           mkOptional = attrs: (lib.mapAttrs
-            (_: v: optional v)
+            (_: v: option v)
             attrs
           );
         in rec {
           regex = string;
           workspaceSelector = int;
-          windowRule = openStruct { # Open because I cant be bothered to do all the window effects
+          windowRule = openStruct "windowRule" { # Open because I cant be bothered to do all the window effects
             name = option string;
-            match = struct (mkOptional {
+            match = struct "windowRule_matcher" (mkOptional {
               class = regex;
               content = string;
               focus = bool;
@@ -252,37 +252,52 @@ in {
               xdg_tag = regex;
               xwayland = bool;
             });
-            opacity = opacity;
+            opacity = either opacity string;
           };
-          validContents = eitherN (lib.uniq [
-            regex
-            workspaceSelector
+          luaArgs = struct "luaArgs" {
+            _args = list any;
+          };
+          override = type: struct "override" {
+            override = bool;
+            data = type;
+          };
+          allowOverride = type: either type (override type);
+          stringCastable = eitherN [
             string
-            int
-            bool
-          ]);
-          luaArgs = list any;
-          allowOverride = type: either type (
-            struct {
-              override = bool;
-              value = type;
-            }
-          );
-          opacity = struct {
+            float
+          ];
+          opacity = struct "opacity" {
             base = allowOverride float;
-            inactive = optional (allowOverride float);
-            fullscreen = optional (allowOverride float);
+            inactive = option (allowOverride float);
+            fullscreen = option (allowOverride float);
           };
         }
       );
       inherit (types) defun;
 
       # Helper functions for casting actions (Lua sometypes has horrible syntax)
-      filterEmpty = defun (with types; [ (attrs (optional validContents)) (attrs validContents) ]) (attrs:
+      filterEmpty = defun (with types; [ (attrs (option any)) (attrs any) ]) (attrs:
         builtins.listToAttrs (
           builtins.filter
           (x: !builtins.isNull x)
           (lib.attrsToList attrs)
+        )
+      );
+      ## Value to check, then attrName (null if not attrset), returns bool if value is set
+      checkOptional = defun (with types; [ (either (attrs any) (option any)) (option string) bool ]) (valueToCheck: attrName:
+        if (!builtins.isNull attrName) then (
+          if (builtins.hasAttr attrName valueToCheck) then (
+            !builtins.isNull (valueToCheck."${attrName}")
+          ) else false
+        ) else (
+          !builtins.isNull valueToCheck
+        )
+      );
+      castOverride = defun (with types; [ (allowOverride stringCastable) string ]) (x:
+        if x.override then (
+          (builtins.toString x.data) + " override"
+        ) else (
+          builtins.toString x.data
         )
       );
       castingFunctions = {
@@ -291,48 +306,47 @@ in {
             builtins.concatStringsSep " " (map
               (x:
                 if (builtins.isAttrs x) then (
-                  if x.override then (
-                    (builtins.toString x.value) + " override"
-                  ) else (
-                    builtins.toString x.value
-                  )
+                  castOverride x
                 ) else (
                   builtins.toString x
                 )
               )
               (
                 [opacity.base] ++ (
-                  if (!builtins.isNull opacity.inactive) then [opacity.inactive] else (
-                    if (!builtins.isNull opacity.fullscreen) then [opacity.base] else []
+                  if (checkOptional opacity "inactive") then [opacity.inactive] else (
+                    if (checkOptional opacity "fullscreen") then [opacity.base] else []
                   )
                 ) ++ (
-                    if (!builtins.isNull opacity.fullscreen) then [opacity.fullscreen] else []
+                    if (checkOptional opacity "fullscreen") then [opacity.fullscreen] else []
                 )
               )
             )
           )
         );
       };
+      # Primary functions
       mkRule = defun (with types; [ windowRule luaArgs ]) (
-        { name
+        { name ? null
         , match
-        , ... # Represents actions
-        }@args:
-        { match = filterEmpty match; }
-        // (if (!builtins.isNull name) then { inherit name; } else {})
-        // (lib.mapAttrs
-          (name: value:
-            if (builtins.hasAttr name castingFunctions) then (
-              castingFunctions."${name}" value
-            ) else (
-              value
+        , ...
+        }@windowRule:
+        mkArgs [(
+          { match = filterEmpty windowRule.match; }
+          // (if (!builtins.isNull name) then { inherit name; } else {})
+          // (lib.mapAttrs
+            (name: value:
+              if (builtins.hasAttr name castingFunctions) then (
+                castingFunctions."${name}" value
+              ) else (
+                value
+              )
             )
+            (filterEmpty (builtins.removeAttrs windowRule (if (builtins.hasAttr "name" windowRule) then [ "name" "match" ] else [ "match" ])))
           )
-          (filterEmpty (builtins.removeAttrs args [ "name" "match" ]))
-        )
+        )]
       );
-      mkOverride = defun (with types; [ any (override any) ]) (value:
-        { inherit value; override = true; }
+      mkOverride = defun (with types; [ any (allowOverride any) ]) (data:
+        { inherit data; override = true; }
       );
     in
     [
