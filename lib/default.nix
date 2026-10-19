@@ -19,6 +19,7 @@ genLib ./. [
   "builders"
   "confTemplates"
   "lists"
+  "firefox"
 
   # Has deps, must be ordered
   "environment" # Depends on `(attrsets) createAttr`

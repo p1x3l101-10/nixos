@@ -268,42 +268,7 @@
       };
       bookmarks = {
         force = true;
-        settings = (
-          let
-            trimSemanticPatch = version: maxPlaces: builtins.addErrorContext "While trimming SemVer" (builtins.concatStringsSep "."
-              (lib.lists.take
-                maxPlaces
-                (builtins.splitVersion version)
-              )
-            );
-            transcribeBookmarks' = acc: builtins.addErrorContext "While transcribing the bookmark tree ${acc.name}" (
-              if (builtins.isString acc.value) then ( # Is a bookmark
-                {
-                  inherit (acc) name;
-                  url = acc.value;
-                }
-              ) else (
-                if (builtins.isAttrs acc.value) then ( # Is a folder of some kind
-                  if (acc.name == "Toolbar") then ( # Is the bookmarks folder
-                    {
-                      inherit (acc) name;
-                      toolbar = true;
-                      bookmarks = (map transcribeBookmarks' (lib.attrsets.attrsToList acc.value));
-                    }
-                  ) else ( # Is a normal folder
-                    {
-                      inherit (acc) name;
-                      bookmarks = (map transcribeBookmarks' (lib.attrsets.attrsToList acc.value));
-                    }
-                  )
-                ) else ( # What have you done to manage this?
-                  builtins.throw "Bookmark trees can only contain attribute sets or strings"
-                )
-              )
-            );
-            transcribeBookmarks = attrs: builtins.addErrorContext "While transcribing bookmarks" (map transcribeBookmarks' (lib.attrsets.attrsToList attrs));
-            in transcribeBookmarks (import ./support/firefox/bookmarks.nix hmArgs)
-        );
+        settings = (ext.lib.firefox.transcribeBookmarks (import ./support/firefox/bookmarks.nix hmArgs));
       };
     };
   };
