@@ -221,6 +221,127 @@ in {
       ])
     ]
   );
+  window_rule = (
+    let
+      types = ext.lib.infusion.mkTypes "Hyprland Settings:window_rule" (yants:
+        with yants; let
+          mkOptional = attrs: (lib.mapAttrs
+            (_: v: optional v)
+            attrs
+          );
+        in rec {
+          regex = string;
+          workspaceSelector = int;
+          windowRule = openStruct { # Open because I cant be bothered to do all the window effects
+            name = option string;
+            match = struct (mkOptional {
+              class = regex;
+              content = string;
+              focus = bool;
+              fullscreen = bool;
+              fullscreen_state_client = int;
+              fullscreen_state_internal = int;
+              float = bool;
+              group = bool;
+              initial_class = regex;
+              initial_title = regex;
+              modal = bool;
+              pin = bool;
+              tag = string;
+              workspace = workspaceSelector;
+              xdg_tag = regex;
+              xwayland = bool;
+            });
+            opacity = opacity;
+          };
+          validContents = eitherN (lib.uniq [
+            regex
+            workspaceSelector
+            string
+            int
+            bool
+          ]);
+          luaArgs = list any;
+          allowOverride = type: either type (
+            struct {
+              override = bool;
+              value = type;
+            }
+          );
+          opacity = struct {
+            base = allowOverride float;
+            inactive = optional (allowOverride float);
+            fullscreen = optional (allowOverride float);
+          };
+        }
+      );
+      inherit (types) defun;
+
+      # Helper functions for casting actions (Lua sometypes has horrible syntax)
+      filterEmpty = defun (with types; [ (attrs (optional validContents)) (attrs validContents) ]) (attrs:
+        builtins.listToAttrs (
+          builtins.filter
+          (x: !builtins.isNull x)
+          (lib.attrsToList attrs)
+        )
+      );
+      castingFunctions = {
+        opacity = defun (with types; [ (either opacity string) string ]) (opacity:
+          if (builtins.isString opacity) then opacity else (
+            builtins.concatStringsSep " " (map
+              (x:
+                if (builtins.isAttrs x) then (
+                  if x.override then (
+                    (builtins.toString x.value) + " override"
+                  ) else (
+                    builtins.toString x.value
+                  )
+                ) else (
+                  builtins.toString x
+                )
+              )
+              (
+                [opacity.base] ++ (
+                  if (!builtins.isNull opacity.inactive) then [opacity.inactive] else (
+                    if (!builtins.isNull opacity.fullscreen) then [opacity.base] else []
+                  )
+                ) ++ (
+                    if (!builtins.isNull opacity.fullscreen) then [opacity.fullscreen] else []
+                )
+              )
+            )
+          )
+        );
+      };
+      mkRule = defun (with types; [ windowRule luaArgs ]) (
+        { name
+        , match
+        , ... # Represents actions
+        }@args:
+        { match = filterEmpty match; }
+        // (if (!builtins.isNull name) then { inherit name; } else {})
+        // (lib.mapAttrs
+          (name: value:
+            if (builtins.hasAttr name castingFunctions) then (
+              castingFunctions."${name}" value
+            ) else (
+              value
+            )
+          )
+          (filterEmpty (builtins.removeAttrs args [ "name" "match" ]))
+        )
+      );
+      mkOverride = defun (with types; [ any (override any) ]) (value:
+        { inherit value; override = true; }
+      );
+    in
+    [
+      (mkRule { match.class = "kitty"; opacity = with config.stylix.opacity; {
+        base = mkOverride terminal;
+        fullscreen = mkOverride 1.0;
+      }; })
+    ]
+  );
 } // (
   if (monitors.count == 2) then {
     workspace_rule = (
