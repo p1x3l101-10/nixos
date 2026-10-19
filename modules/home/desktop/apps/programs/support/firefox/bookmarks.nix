@@ -16,6 +16,12 @@ in {
       Homepage = "https://occc.edu";
       Kahoot = "https://www.kahoot.it";
       "Interlibrary Loans" = "https://58718.account.worldcat.org/account/requests";
+      Info = {
+        "Services for Students" = "https://catalog.occc.edu/content.php?catoid=7&navoid=288";
+        "Recreation and Fitness" = "https://occc.edu/our-campus/fitness-center/index.html";
+        "Student Life" = "https://occc.edu/student-life/index.html";
+        Map = "https://map.concept3d.com/?id=468#!ct/6602,6630,7611?s/";
+      };
     };
     GSuite = {
       Calendar = "https://calendar.google.com";
