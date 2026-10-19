@@ -39,7 +39,7 @@ export def copy [
 # Paste contenst of system clipboard
 export def paste []: nothing -> string {
   let sysClip = match (getClipType) {
-    "linux-wayland" => ({|| wl-paste -no-newline})
+    "linux-wayland" => ({|| wl-paste --no-newline})
   }
   do $sysClip
 }
