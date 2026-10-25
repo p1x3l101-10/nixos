@@ -83,4 +83,7 @@ in lib.fix (final: {
       })
     )
   );
+  wrapForDefault = defun (with types; [ string (attrs app) (attrs app) ]) (defaultName: apps:
+    apps // { default = apps."${defaultName}"; }
+  );
 })
