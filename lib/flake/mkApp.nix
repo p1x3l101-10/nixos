@@ -45,13 +45,31 @@ let
     }
   );
   inherit (types) defun;
-  filterEmpty = defun (with types; [ (attrs (option any)) (attrs any) ]) (attrs:
-    builtins.listToAttrs (
-      builtins.filter
-      (x: !builtins.isNull x)
-      (lib.attrsToList attrs)
-    )
-  );
+  filterAttrs = lib.fix (finalFilter: 
+    let
+      attrset = with types; attrs any;
+      defun' = midType: function: defun [ attrset midType attrset ] function;
+      autoFun = function: defun [ attrset attrset ] function;
+    in {
+    __functor = self: self.generic;
+    filters = {
+      rejectByType = typeFilter: ({ name, value }: !typeFilter value);
+    };
+    generic = defun' types.function (attrs: filterFunction:
+      builtins.listToAttrs (
+        builtins.filter
+        filterFunction
+        (lib.attrsToList attrs)
+      )
+    );
+    # Seems silly, but still
+    byName = defun' (with types; list string) (attrs: forbiddenStrings:
+      builtins.removeAttrs attrs forbiddenStrings
+    );
+    empty = autoFun (attrs:
+      finalFilter.generic attrs (finalFilter.filters.rejectByType builtins.isNull)
+    );
+  });
 in lib.fix (final: {
   __functor = self: self.generic;
   generic = defun (with types; [ drv app ]) (drv:
@@ -65,7 +83,7 @@ in lib.fix (final: {
     let
       inherit (self.builders.nushell) mkNuScript renamePath;
     in final.generic (mkNuScript
-      ((filterEmpty builderArgs) // {
+      ((filterAttrs.empty builderArgs) // {
         inherit name;
         packageDirFilter = (_: true);
         srcScriptName = "main.nu";
@@ -77,7 +95,7 @@ in lib.fix (final: {
   script = final.bash;
   bash = defun (with types; [ string bashArgs string app ]) (name: builderArgs: content:
     final.generic ext.pkgs.writeShellApplication (
-      ((filterEmpty builderArgs) // {
+      ((filterAttrs.empty builderArgs) // {
         inherit name;
         text = content;
       })
