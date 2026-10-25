@@ -51,7 +51,7 @@ lib.fix (finalLib: {
       useModules = ! builtins.isNull nuModules;
     in
     stdenvNoCC.mkDerivation {
-      inherit name version meta;
+      inherit name version meta passthru;
 
       src = lib.fileset.toSource {
         fileset = (lib.fileset.fileFilter packageDirFilter packageDir);
