@@ -35,7 +35,7 @@ lib.fix (finalLib: {
   mkNuScript = lib.extendMkDerivation {
     constructDrv = stdenvNoCC;
     inheritFunctionArgs = false;
-    extendDrvArgs = (
+    extendDrvArgs = finalAttrs: (
       { name
       , version ? "0.0.0"
       , packageDir
