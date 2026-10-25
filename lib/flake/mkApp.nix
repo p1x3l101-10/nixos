@@ -101,7 +101,26 @@ in lib.fix (final: {
       })
     )
   );
-  wrapForDefault = defun (with types; [ string (attrs app) (attrs app) ]) (defaultName: apps:
-    apps // { default = apps."${defaultName}"; }
-  );
+  wrap = {
+    __functor = self: self.generic;
+    generic = defun (with types; [ (attrs (either app drv)) (attrs app) ]) (apps:
+      (builtins.mapAttrs
+        (_: value:
+          if (types.app.check value) then (
+            types.app value
+          ) else (
+            final.generic (types.drv value)
+          )
+        )
+        apps
+      )
+    );
+    setDefault = defun (with types; [ string (attrs (either app drv)) (attrs app) ]) (defaultName: apps:
+      let
+        processedApps = final.wrap.generic apps;
+      in (
+        processedApps // { default = processedApps."${defaultName}"; }
+      )
+    );
+  };
 })
