@@ -32,51 +32,55 @@ lib.fix (finalLib: {
       };
     }))
   );
-  mkNuScript = lib.makeOverridable (
-    { name
-    , version ? "0.0.0"
-    , packageDir
-    , scriptName ? name
-    , srcScriptName ? "main.nu"
-    , packageDirFilter ? (file: ! file.hasExt "nix")
-    , binaryPath ? []
-    , extraBuildInputs ? []
-    , nuModules ? null
-    , preProcessInstallCommands ? "" # Run after script is installed, but before any wrapping
-    , extraInstallCommands ? "" # Run after script is wrapped
-    , meta ? {}
-    , passthru ? {}
-    }:
-    let
-      useModules = ! builtins.isNull nuModules;
-    in
-    stdenvNoCC.mkDerivation {
-      inherit name version meta passthru;
-
-      src = lib.fileset.toSource {
-        fileset = (lib.fileset.fileFilter packageDirFilter packageDir);
-        root = packageDir;
-      };
-
-      nativeBuildInputs = [
-        makeWrapper
-      ];
-
-      buildInputs = [
-        nushell
-      ] ++ binaryPath ++ extraBuildInputs ++ lib.optional useModules nuModules;
-
-      installPhase = builtins.concatStringsSep "\n" (
-        [ "install -Dm755 ${srcScriptName} $out/bin/${scriptName}" ]
-        ++ [ preProcessInstallCommands ]
-        ++ (lib.optional useModules (nuModules.patchScript "$out/bin/${scriptName}"))
-        ++ (lib.optional (binaryPath != []) ''
-          wrapProgram "$out/bin/${scriptName}" \
-            --inherit-argv0 \
-            --set PATH ${lib.makeBinPath binaryPath}
-        '')
-        ++ [ extraInstallCommands ]
-      );
-    }
-  );
+  mkNuScript = lib.extendMkDerivation {
+    constructDrv = stdenvNoCC;
+    inheritFunctionArgs = false;
+    extendDrvArgs = (
+      { name
+      , version ? "0.0.0"
+      , packageDir
+      , scriptName ? name
+      , srcScriptName ? "main.nu"
+      , packageDirFilter ? (file: ! file.hasExt "nix")
+      , binaryPath ? []
+      , extraBuildInputs ? []
+      , nuModules ? null
+      , preProcessInstallCommands ? "" # Run after script is installed, but before any wrapping
+      , extraInstallCommands ? "" # Run after script is wrapped
+      , meta ? {}
+      , passthru ? {}
+      }:
+      let
+        useModules = ! builtins.isNull nuModules;
+      in
+      {
+        inherit name version meta passthru;
+  
+        src = lib.fileset.toSource {
+          fileset = (lib.fileset.fileFilter packageDirFilter packageDir);
+          root = packageDir;
+        };
+  
+        nativeBuildInputs = [
+          makeWrapper
+        ];
+  
+        buildInputs = [
+          nushell
+        ] ++ binaryPath ++ extraBuildInputs ++ lib.optional useModules nuModules;
+  
+        installPhase = builtins.concatStringsSep "\n" (
+          [ "install -Dm755 ${srcScriptName} $out/bin/${scriptName}" ]
+          ++ [ preProcessInstallCommands ]
+          ++ (lib.optional useModules (nuModules.patchScript "$out/bin/${scriptName}"))
+          ++ (lib.optional (binaryPath != []) ''
+            wrapProgram "$out/bin/${scriptName}" \
+              --inherit-argv0 \
+              --set PATH ${lib.makeBinPath binaryPath}
+          '')
+          ++ [ extraInstallCommands ]
+        );
+      }
+    );
+  };
 })
