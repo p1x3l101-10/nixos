@@ -344,16 +344,41 @@ in {
         { inherit data; override = true; }
       );
       inherit (hl.plugin) darkwindow;
-      inherit (luaCmds.helpers) toVec3;
     in
     [
       (mkRule {
         match.class = "kitty";
         "darkwindow:shade" = darkwindow.build_rule_effect {
-          shader = "chromakey";
-          bkg = with config.lib.stylix.colors; toVec3 base00-dec-r base00-dec-g base00-dec-b;
+          shader = "enforceTransparent";
           targetOpacity = config.stylix.opacity.terminal;
         };
+      })
+    ]
+  );
+  "plugin.darkwindow.load_shader" = (
+    let
+      types = ext.lib.infusion.mkTypes "Hyprland Settings:darkwindow:load_shaders" (yants: with yants; rec {
+        transformShader = openStruct "shaderTransform" {
+          from = string;
+          args = string;
+        };
+        shaderConstructor = eitherN [ transformShader ];
+        luaArgs = struct "luaArgs" {
+          _args = list any;
+        };
+      });
+      inherit (types) defun;
+      mkShader = defun (with types; [ string shaderConstructor luaArgs ]) (name: shaderConstructor:
+        mkArgs [
+          name
+          shaderConstructor
+        ]
+      );
+    in
+    [
+      (mkShader "enforceTransparent" {
+        from = "chromakey";
+        args = with config.lib.stylix.colors; "bkg=[${base00-dec-r} ${base00-dec-g} ${base00-dec-b}]";
       })
     ]
   );
