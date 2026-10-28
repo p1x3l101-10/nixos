@@ -341,6 +341,7 @@ in {
           )
         )]
       );
+      # mkRule wrappers
       mkTransparent = defun (with types; [ windowRule_matcher float luaArgs ]) (match: targetOpacity:
         mkRule {
           inherit match;
@@ -350,15 +351,24 @@ in {
           };
         }
       );
+      noMaximize = defun (with types; [ windowRule_matcher luaArgs ]) (match:
+        mkRule {
+          inherit match;
+          suppress_event = "maximize";
+        }
+      );
+      # Common matches
+      matchTargets = {
+        kitty = {
+          class = "kitty";
+        };
+      };
     in
     ((types.list types.luaArgs) [
       # Transparency
-      (mkTransparent { class = "kitty"; } config.stylix.opacity.terminal)
+      (mkTransparent matchTargets.kitty config.stylix.opacity.terminal)
       # Stop kitty from fullscreening
-      (mkRule {
-        match.class = "kitty";
-        suppress_event = "maximize";
-      })
+      (noMaximize matchTargets.kitty)
     ])
   );
   "plugin.darkwindow.load_shader" = (
