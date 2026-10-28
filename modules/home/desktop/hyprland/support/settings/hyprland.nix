@@ -357,19 +357,20 @@ in {
           suppress_event = "maximize";
         }
       );
-      # Common matches
-      matchTargets = {
-        kitty = {
-          class = "kitty";
-        };
-      };
     in
-    ((types.list types.luaArgs) [
+    ((types.list types.luaArgs) (lib.flatten [
       # Transparency
-      (mkTransparent matchTargets.kitty config.stylix.opacity.terminal)
+      (map
+        (class: mkTransparent { inherit class; } config.stylix.opacity.terminal)
+        [
+          "kitty"
+          "vesktop"
+          "org.prismlauncher.PrismLauncher"
+        ]
+      )
       # Stop kitty from fullscreening
-      (noMaximize matchTargets.kitty)
-    ])
+      (noMaximize { class = "kitty"; })
+    ]))
   );
   "plugin.darkwindow.load_shader" = (
     let
