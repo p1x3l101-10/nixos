@@ -347,12 +347,6 @@ in {
       inherit (luaCmds.helpers) toVec3;
     in
     [
-      /*
-      (mkRule { match.class = "kitty"; opacity = with config.stylix.opacity; {
-        base = mkOverride terminal;
-        fullscreen = mkOverride 1.0;
-      }; })
-      */
       (mkRule {
         match.class = "kitty";
         "darkwindow:shade" = darkwindow.build_rule_effect {
