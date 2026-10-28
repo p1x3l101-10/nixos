@@ -350,10 +350,12 @@ in {
       );
     in
     [
+      /*
       (mkRule { match.class = "kitty"; opacity = with config.stylix.opacity; {
         base = mkOverride terminal;
         fullscreen = mkOverride 1.0;
       }; })
+      */
     ]
   );
 } // (
