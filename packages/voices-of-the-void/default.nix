@@ -50,9 +50,9 @@ nuLibs.mkNuScript {
   '';
 
   passthru.unwrappedBase = callPackage ./unwrapped.nix { inherit protonPath; };
+  passthru.updateScript = ./update.nu;
 
   meta = {
     inherit (votv-unwrapped.meta) description homepage;
-    passthru.updateScript = ./update.nu;
   };
 }

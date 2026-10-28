@@ -43,7 +43,7 @@ def main [] {
     let infoPath = $flakePath | path join "packages" | path join $package | path join "info.json"
     let oldHash = open --raw $infoPath | hash sha256
     mainLog $"Updating package ($package)"
-    let updateScript = nix eval $"($flakePath)#($package).meta.passthru.updateScript"
+    let updateScript = nix eval $"($flakePath)#($package).updateScript"
     run-external $updateScript
     let newHash = open --raw $infoPath | hash sha256
     if $oldHash != $newHash {

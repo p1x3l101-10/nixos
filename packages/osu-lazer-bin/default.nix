@@ -74,6 +74,7 @@ symlinkJoin {
     osu-mime
   ];
 
+  passthru.updateScript = ./update.nu;
   meta = {
     description = "Rhythm is just a *click* away";
     longDescription = "osu-lazer extracted from the official AppImage to retain multiplayer support.";
@@ -85,7 +86,6 @@ symlinkJoin {
       unfreeRedistributable # osu-framework contains libbass.so in repository
     ];
     */
-    passthru.updateScript = ./update.nu;
     mainProgram = "osu!";
     platforms = [ "x86_64-linux" ];
   };
