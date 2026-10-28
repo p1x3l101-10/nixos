@@ -351,7 +351,7 @@ in {
         }
       );
     in
-    [
+    ((types.list types.luaArgs) [
       # Transparency
       (mkTransparent { class = "kitty"; } config.stylix.opacity.terminal)
       # Stop kitty from fullscreening
@@ -359,7 +359,7 @@ in {
         match.class = "kitty";
         suppress_event = "maximize";
       })
-    ]
+    ])
   );
   "plugin.darkwindow.load_shader" = (
     let
@@ -381,12 +381,12 @@ in {
         ]
       );
     in
-    [
+    ((types.list types.luaArgs) [
       (mkShader "enforceTransparent" {
         from = "chromakey";
         args = with config.lib.stylix.colors; "bkg=[${base00-dec-r} ${base00-dec-g} ${base00-dec-b}]";
       })
-    ]
+    ])
   );
 } // (
   if (monitors.count == 2) then {
