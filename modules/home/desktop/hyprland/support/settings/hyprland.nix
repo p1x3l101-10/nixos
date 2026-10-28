@@ -233,26 +233,27 @@ in {
         in rec {
           regex = string;
           workspaceSelector = int;
+          windowRule_matcher = struct "windowRule_matcher" (mkOptional {
+            class = regex;
+            content = string;
+            focus = bool;
+            fullscreen = bool;
+            fullscreen_state_client = int;
+            fullscreen_state_internal = int;
+            float = bool;
+            group = bool;
+            initial_class = regex;
+            initial_title = regex;
+            modal = bool;
+            pin = bool;
+            tag = string;
+            workspace = workspaceSelector;
+            xdg_tag = regex;
+            xwayland = bool;
+          });
           windowRule = openStruct "windowRule" { # Open because I cant be bothered to do all the window effects
             name = option string;
-            match = struct "windowRule_matcher" (mkOptional {
-              class = regex;
-              content = string;
-              focus = bool;
-              fullscreen = bool;
-              fullscreen_state_client = int;
-              fullscreen_state_internal = int;
-              float = bool;
-              group = bool;
-              initial_class = regex;
-              initial_title = regex;
-              modal = bool;
-              pin = bool;
-              tag = string;
-              workspace = workspaceSelector;
-              xdg_tag = regex;
-              xwayland = bool;
-            });
+            match = windowRule_matcher;
           };
           luaArgs = struct "luaArgs" {
             _args = list any;
@@ -340,18 +341,23 @@ in {
           )
         )]
       );
-      mkOverride = defun (with types; [ any (allowOverride any) ]) (data:
-        { inherit data; override = true; }
+      mkTransparent = defun (with types; [ windowRule_matcher float luaArgs ]) (match: targetOpacity:
+        mkRule {
+          inherit match;
+          "darkwindow:shade" = hl.plugin.darkwindow.build_rule_effect {
+            shader = "enforceTransparent";
+            inherit targetOpacity;
+          };
+        }
       );
-      inherit (hl.plugin) darkwindow;
     in
     [
+      # Transparency
+      (mkTransparent { class = "kitty"; } config.stylix.opacity.terminal)
+      # Stop kitty from fullscreening
       (mkRule {
         match.class = "kitty";
-        "darkwindow:shade" = darkwindow.build_rule_effect {
-          shader = "enforceTransparent";
-          targetOpacity = config.stylix.opacity.terminal;
-        };
+        suppress_event = "maximize";
       })
     ]
   );
