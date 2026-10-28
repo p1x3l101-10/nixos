@@ -146,8 +146,8 @@ in {
           act = direction: dsp.focus { inherit direction; };
         in [
           (b "H" (act "left"))
-          (b "J" (act "up"))
-          (b "K" (act "down"))
+          (b "J" (act "down"))
+          (b "K" (act "up"))
           (b "L" (act "right"))
         ]
       ) ++ ( # Move windows around
@@ -156,8 +156,8 @@ in {
           b = key: dispatcher: bind { keys = ["SHIFT" key]; inherit dispatcher; };
         in [
           (b "H" (act "left"))
-          (b "J" (act "up"))
-          (b "K" (act "down"))
+          (b "J" (act "down"))
+          (b "K" (act "up"))
           (b "L" (act "right"))
         ]
       ) ++ ( # Workspace keybinds
