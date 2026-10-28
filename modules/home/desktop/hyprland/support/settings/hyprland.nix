@@ -61,6 +61,7 @@ in {
       no_donation_nag = true;
     };
     quirks.prefer_hdr = 2; # Prefer HDR for only gamescope
+    plugin.darkwindow.load_shaders = "chromakey";
   };
   curve = (
     let
@@ -348,6 +349,8 @@ in {
       mkOverride = defun (with types; [ any (allowOverride any) ]) (data:
         { inherit data; override = true; }
       );
+      inherit (hl.plugin) darkwindow;
+      inherit (luaCmds.helpers) toVec3;
     in
     [
       /*
@@ -356,6 +359,14 @@ in {
         fullscreen = mkOverride 1.0;
       }; })
       */
+      (mkRule {
+        match.class = "kitty";
+        "darkwindow:shade" = darkwindow.build_rule_effect {
+          shader = "chromakey";
+          bkg = with config.lib.stylix.colors; toVec3 base00-dec-r base00-dec-g base00-dec-b;
+          targetOpacity = config.stylix.opacity.terminal;
+        };
+      })
     ]
   );
 } // (

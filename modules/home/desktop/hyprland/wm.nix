@@ -12,6 +12,9 @@ in {
     settings = loadCfg "hyprland";
     xdph.settings = loadCfg "xdph";
     systemd.enable = false;
+    plugins = with pkgs.hyprlandPlugins; [
+      hypr-darkwindow
+    ];
   };
   home.packages = with pkgs; [
     wl-clipboard

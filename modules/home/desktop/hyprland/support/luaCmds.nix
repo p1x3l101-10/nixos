@@ -6,6 +6,7 @@ let
   toLua = generatorConfig: toLua' ({ multiline = false; } // generatorConfig);
   mkCmd = cmd: mkLuaInline "hl.${cmd}";
   mkDsp = target: mkCmd "dsp.${target}";
+  mkPlugBlock = plugName: builder: (builder (target: mkCmd "plugin.${plugName}.${target}"));
   mkWrappedCmd = (
     { wrapperFunction ? (x: x)
     , wrappedCmd ? "true"
@@ -36,5 +37,14 @@ in {
         move = arg: mkDsp "workspace.move(${toLua { } arg})";
       };
     };
+    plugin = {
+      darkwindow = mkPlugBlock "darkwindow" (mkPlug: {
+        build_rule_effect = args: mkPlug "build_rule_effect(${toLua { } args})";
+        dsp_shade = args: mkPlug "dsp_shade(${toLua { } args})";
+      });
+    };
+  };
+  helpers = {
+    toVec3 = x: y: z: [ x y z ];
   };
 }
