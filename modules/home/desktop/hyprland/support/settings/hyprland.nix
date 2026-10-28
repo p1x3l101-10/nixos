@@ -253,7 +253,6 @@ in {
               xdg_tag = regex;
               xwayland = bool;
             });
-            opacity = either opacity string;
           };
           luaArgs = struct "luaArgs" {
             _args = list any;
@@ -267,11 +266,6 @@ in {
             string
             float
           ];
-          opacity = struct "opacity" {
-            base = allowOverride float;
-            inactive = option (allowOverride float);
-            fullscreen = option (allowOverride float);
-          };
         }
       );
       inherit (types) defun;
