@@ -3,7 +3,7 @@
 {
   home.packages = with pkgs; [
     min-ed-launcher
-    edhm-ui
+    #edhm-ui
     ed-odyssey-materials-helper
     edmarketconnector
   ];
