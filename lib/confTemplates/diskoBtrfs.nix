@@ -108,6 +108,7 @@ in
     luks = {
       devices.nix = {
         crypttabExtraOpts = ["fido2-device=auto"];
+        /*
         fido2 = {
           passwordLess = true;
           gracePeriod = 10;
@@ -115,6 +116,7 @@ in
             "c916081a02987f4f065c2a823582867fd127f0962998bedfe98cd29a30b7c1425ea2d7b1f59c6398e5bdd74a6668896a"
           ];
         };
+        */
       };
     };
   };
