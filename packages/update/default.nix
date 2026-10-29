@@ -1,16 +1,11 @@
 { ext
-, callPackage
 , nix
 , nix-output-monitor
 , nushell
 , git
 }:
 
-let
-  nuLibs = callPackage ./libs.nix {};
-in
-
-nuLibs.mkNuScript {
+ext.lib.builders.nushell.mkNuScript {
   name = "update-flake";
 
   packageDir = ./.;
