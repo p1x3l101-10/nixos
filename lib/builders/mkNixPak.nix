@@ -1,7 +1,3 @@
 { lib, ext, self }:
 
-lib.nixpak.nixpak {
-  # Only give nixpak nixpkgs things
-  inherit (ext) pkgs;
-  inherit lib;
-}
+self.builders.mkNixPak' ext.pkgs
