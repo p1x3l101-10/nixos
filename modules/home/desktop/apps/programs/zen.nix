@@ -46,7 +46,6 @@
           varia-integrator
           ubo-scope
           tetrio-plus
-          terms-of-service-didnt-read
           temporary-containers-plus
           nekocap
           modrinthify
