@@ -13,3 +13,4 @@ use nix/nufetch.nu
 use kp
 use wifictl
 use clip
+use printer
