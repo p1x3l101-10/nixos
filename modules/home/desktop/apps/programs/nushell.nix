@@ -19,6 +19,7 @@ in {
     };
     extraConfig = builtins.readFile ./support/nu/config.nu;
     loginFile.source = ./support/nu/login.nu;
+    loadSessionVariables = true;
   };
   # Autoload
   xdg.configFile."nushell/autoload" = {

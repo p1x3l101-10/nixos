@@ -81,7 +81,7 @@ in
             vsCodeTheme = import vsCodeTemplatePath config.lib.stylix.colors;
             vsCodeThemeFile = pkgs.writers.writeJSON "shiki-theme-stylix.json" vsCodeTheme;
           in "file://${vsCodeThemeFile}");
-          tryHljs = "SECONDARY";
+          tryDiscordHighlighter = "SECONDARY";
           useDevIcon = "COLOR";
         };
         spotifyCrack.enable = true;

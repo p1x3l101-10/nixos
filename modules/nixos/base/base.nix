@@ -18,7 +18,6 @@
         edk2-uefi-shell.enable = true;
       };
     };
-    initrd.systemd.enable = true;
     uki.tries = 1;
   };
 
