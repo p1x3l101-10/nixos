@@ -9,23 +9,22 @@
 }:
 
 let
-  nuLibs = callPackage ./libs.nix {};
   info = builtins.fromJSON (builtins.readFile ./info.json);
   inherit (ext.inputs.nix-gaming.packages.${ext.system}) wine-discord-ipc-bridge;
 in
 
-nuLibs.mkNuScript {
+ext.lib.builders.nushell.mkNuScript (finalAttrs: {
   name = "voicesofthevoid";
   version = info.download.version;
 
   packageDir = ./.;
-  packageDirFilter = (file: 
-    builtins.any (x: x) [
-      (!file.hasExt "nix")
-      (!file.hasExt "json")
-      (!file.name == "update.nu")
-    ]
-  );
+  excludeFileExtensions = [
+    "nix"
+    "json"
+  ];
+  excludeFileNames = [
+    "update.nu"
+  ];
 
   extraBuildInputs = [
     votv-unwrapped
@@ -57,4 +56,4 @@ nuLibs.mkNuScript {
   meta = {
     inherit (votv-unwrapped.meta) description homepage;
   };
-}
+})

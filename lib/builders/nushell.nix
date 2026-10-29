@@ -34,17 +34,6 @@ lib.fix (finalLib: {
   );
   mkNuScript = lib.extendMkDerivation {
     constructDrv = stdenvNoCC.mkDerivation;
-    excludeFunctionArgNames = [
-      "scriptName"
-      "binaryPath"
-      "extraBuildInputs"
-      "preProcessInstallCommands"
-      "extraInstallCommands"
-      "srcScriptName"
-      "scriptName"
-      "packageDir"
-      "packageDirFilter"
-    ];
     inheritFunctionArgs = false;
     extendDrvArgs = (
       finalAttrs:
@@ -53,21 +42,39 @@ lib.fix (finalLib: {
       , packageDir
       , scriptName ? name
       , srcScriptName ? "main.nu"
-      , packageDirFilter ? (file: ! file.hasExt "nix")
+      , excludeFileExtensions ? [ "nix" ]
+      , excludeFileNames ? []
       , binaryPath ? []
       , extraBuildInputs ? []
       , nuModules ? null
       , preProcessInstallCommands ? "" # Run after script is installed, but before any wrapping
       , extraInstallCommands ? "" # Run after script is wrapped
+      , meta ? {}
+      , passthru ? {}
       }:
       let
         useModules = ! builtins.isNull nuModules;
       in
       {
-        inherit name version ;
+        inherit name version meta passthru;
   
         src = lib.fileset.toSource {
-          fileset = (lib.fileset.fileFilter packageDirFilter packageDir);
+          fileset = (lib.fileset.fileFilter
+            (file: builtins.any
+              (x: x)
+              (
+                (map
+                  (ext: !file.hasExt ext) 
+                  excludeFileExtensions
+                )
+                ++ (map
+                  (name: !file.name == name)
+                  excludeFileNames
+                )
+              )
+            )
+            packageDir
+          );
           root = packageDir;
         };
   
