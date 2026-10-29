@@ -49,8 +49,10 @@ nuLibs.mkNuScript {
     ln -s "${votv-unwrapped}/share" $out/share
   '';
 
-  passthru.unwrappedBase = callPackage ./unwrapped.nix { inherit protonPath; };
-  passthru.updateScript = ./update.nu;
+  passthru = {
+    updateScript = ./update.nu;
+    unwrappedBase = votv-unwrapped;
+  };
 
   meta = {
     inherit (votv-unwrapped.meta) description homepage;

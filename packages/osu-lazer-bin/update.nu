@@ -21,6 +21,7 @@ def genUrl [ version: string ]: nothing -> string {
 
 def --wrapped "nix store" [ operation, ...args ]: nothing -> record {
   ^nix store $operation --json ...$args
+  | from json
 }
 
 def saveInfo []: record -> nothing {
@@ -53,7 +54,7 @@ def main [] {
     } else {
       log info $"Update found for stream `($releaseStream)`"
       let dlUrl = genUrl $version
-      let downloadedFile = $workdir | path join $"osu!-($releaseStream).appimage"
+      let downloadedFile = $workdir | path join $"osu-($releaseStream).appimage"
       http get $dlUrl | save -p $downloadedFile
       let nixData = nix store prefetch-file $"file://($downloadedFile)"
       return {
