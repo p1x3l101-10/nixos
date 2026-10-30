@@ -12,6 +12,11 @@ in {
       default = pkgs.alfis-nogui;
       example = pkgs.alfis;
     };
+    allowOverride = mkOption {
+      description = "Overrides the packge to enforce a binary wrapper";
+      type = types.bool;
+      default = true;
+    };
     integrations = let
       mkDescription = name: "Whether to hook into ${name} for name resolution";
     in {
@@ -147,7 +152,15 @@ in {
       };
     };
   };
-  config = mkIf cfg.enable (mkMerge [
+  config = mkIf cfg.enable (let
+    package = if (cfg.allowOverride) then (
+      cfg.package.override {
+        makeWrapper = pkgs.makeBinaryWrapper;
+      }
+    ) else (
+      cfg.package
+    );
+  in mkMerge [
     {
       users = {
         users.alfis = {
@@ -178,7 +191,7 @@ in {
               AmbientCapabilities = "CAP_NET_BIND_SERVICE";
               SyslogIdentifier = "alfis";
               WorkingDirectory = "/var/lib/alfis";
-              ExecStart = "${cfg.package}/bin/alfis -n -c /etc/alfis.toml";
+              ExecStart = "${package}/bin/alfis -n -c /etc/alfis.toml";
               Restart = "always";
               TimeoutStopSec = 5;
             };
@@ -192,7 +205,7 @@ in {
       };
       environment.etc."alfis.toml".source = (pkgs.formats.toml { }).generate "alfis.toml" cfg.settings;
       security.wrappers.alfis = {
-        source = "${cfg.package}/bin/alfis";
+        source = "${package}/bin/alfis";
         capabilities = "cap_net_bind_service=+ep";
         owner = "alfis";
         group = "alfis";
