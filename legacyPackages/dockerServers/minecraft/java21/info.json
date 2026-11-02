@@ -1,5 +1,9 @@
 {
   "name": "itzg/minecraft-server",
+  "final": {
+    "imageName": "itzg/minecraft-server",
+    "imageTag": "java21"
+  },
   "download": {
     "manifest": "sha256:49544c0a15ede66914451b3c6cb880cb0bd2470b2bfa6f39794f14da02cca79a",
     "hash": "sha256-/lcgfmFSL4g9j9FHXYLfElOZaceODIis2/a2EG1L/aQ="
