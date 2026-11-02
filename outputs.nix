@@ -18,6 +18,12 @@ inputs.flake-utils.lib.eachDefaultSystem
           inherit inputs system;
         };
       };
+      legacyPackages = eLib.flake.genLegacyPackages ./legacyPackages pkgs.newScope {
+        ext = {
+          lib = eLib;
+          inherit inputs system;
+        };
+      };
       devShells = {
         # A devShell that contains the currently specified kernel with the needed extra deps to run `make menuconfig`
         desktopKernel = inputs.self.nixosConfigurations.stellar-pc.config.boot.kernelPackages.kernel.overrideAttrs (oldAttrs: {
