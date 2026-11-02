@@ -2,7 +2,6 @@
 
 use std/log
 
-const infoPath = "packages/osu-lazer-bin/info.json"
 const releaseApi = "https://api.github.com/repos/ppy/osu/releases"
 const releaseTypes = [ "lazer", "tachyon" ]
 
@@ -24,7 +23,7 @@ def --wrapped "nix store" [ operation, ...args ]: nothing -> record {
   | from json
 }
 
-def saveInfo []: record -> nothing {
+def saveInfo [ infoPath: string ]: record -> nothing {
   let info = $in
   log info "Saving info.json"
   $info
@@ -32,9 +31,10 @@ def saveInfo []: record -> nothing {
   | save --force $infoPath
 }
 
-def main [] {
+def main [ packagePath: string ] {
   log info "Loading information"
   let releases = http get $releaseApi | sort-by created_at | reverse
+  let infoPath = $packagePath | path join "info.json"
   let info = open $infoPath
   # Setup
   let workdir = mktemp --dry
@@ -73,6 +73,6 @@ def main [] {
     ]
   }
   | into record
-  | saveInfo
+  | saveInfo $infoPath
   log info "Done"
 }
