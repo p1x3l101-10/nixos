@@ -2,12 +2,12 @@
 
 use std/log
 
-const infoPath = "packages/voices-of-the-void/info.json"
 const manifestUrl = "https://archive.votv.dev/manifest.json"
 const allowPrerelease = false
 
-def main [] {
+def main [ packagePath: string ] {
   let manifest = http get $manifestUrl
+  let infoPath = $packagePath | path join "info.json"
   if $manifest.schemaVersion != 1 {
     log critical "Votv manifest schema version has changed, please apply an update to this script!"
     exit 1
