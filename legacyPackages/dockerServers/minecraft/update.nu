@@ -35,6 +35,10 @@ def main [ packagePath: string ] {
   let prefetchedData = prefetchImage $imageName $version
   {
     name: $prefetchedData.imageName
+    final: {
+      imageName: $prefetchedData.finalImageName
+      imageTag: $prefetchedData.finalImageTag
+    }
     download: {
       manifest: $prefetchedData.imageDigest
       hash: $prefetchedData.hash

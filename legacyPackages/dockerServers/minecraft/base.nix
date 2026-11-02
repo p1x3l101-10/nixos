@@ -7,8 +7,8 @@ in
   imageName = info.name;
   imageDigest = info.download.manifest;
   sha256 = info.download.hash;
-  finalImageTag = "latest";
-  finalImageName = "internal/docker-minecraft";
+  finalImageTag = info.final.imageTag;
+  finalImageName = info.final.imageName;
 }) // {
   passthru.updateScript = ./update.nu;
   updateScript = ./update.nu;

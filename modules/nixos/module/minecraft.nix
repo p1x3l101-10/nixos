@@ -383,7 +383,7 @@ in
         "/var/lib/minecraft/global:/global:ro"
         "/nix/store:/nix/store:ro"
       ];
-      image = "internal/docker-minecraft:latest";
+      image = "itzg/minecraft-server:java${cfg.settings.java.version}";
       imageFile = ext.selfPkgs.dockerServers.minecraft."java${cfg.settings.java.version}";
       autoStart = true;
       extraOptions = (lib.lists.optionals (mcBool cfg.autoPause.enable false) [ "--cap-add=CAP_NET_RAW" "--network=slirp4netns:port_handler=slirp4netns" ]);
