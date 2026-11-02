@@ -383,12 +383,8 @@ in
         "/var/lib/minecraft/global:/global:ro"
         "/nix/store:/nix/store:ro"
       ];
-      # Sets the javaVersion of the image from the respecive values from the attrSet at the begining
-      image = "internal/docker-minecraft:${toString cfg.settings.java.version}";
-      imageFile = ext.selfPkgs.dockerMinecraft.override {
-        inherit ((import (./resources/minecraft.nix)).versionList.${cfg.settings.java.version}) imageDigest sha256;
-        finalImageTag = (toString cfg.settings.java.version);
-      };
+      image = "internal/docker-minecraft:latest";
+      imageFile = ext.selfPkgs.dockerServers.minecraft."java${cfg.settings.java.version}";
       autoStart = true;
       extraOptions = (lib.lists.optionals (mcBool cfg.autoPause.enable false) [ "--cap-add=CAP_NET_RAW" "--network=slirp4netns:port_handler=slirp4netns" ]);
       podman.sdnotify = "healthy";
