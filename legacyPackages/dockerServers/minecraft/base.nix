@@ -1,7 +1,7 @@
 dockerTools: basePath:
 
 let
-  info = builtins.fromJSON (builtins.readFile (basePath + "info.json"));
+  info = builtins.fromJSON (builtins.readFile (basePath + "/info.json"));
 in
 (dockerTools.pullImage {
   imageName = info.name;
