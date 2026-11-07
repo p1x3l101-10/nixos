@@ -2,6 +2,7 @@
 
 let
   loadCfg = config: import (./support/settings + "/${config}.nix") args;
+  hyprPlugins = pkgs.hyprlandPlugins;
 in {
   wayland.windowManager.hyprland = {
     enable = true;
@@ -12,8 +13,8 @@ in {
     settings = loadCfg "hyprland";
     xdph.settings = loadCfg "xdph";
     systemd.enable = false;
-    plugins = with pkgs.hyprlandPlugins; [
-      hypr-darkwindow
+    plugins = with hyprPlugins; [
+      #hypr-darkwindow
     ];
   };
   home.packages = with pkgs; [

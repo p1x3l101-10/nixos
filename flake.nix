@@ -96,6 +96,14 @@
         flake-compat.follows = "flake-compat";
       };
     };
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs = {
+        # Ensure that the cache hits, dont follow nixpkgs
+        #nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+      };
+    };
     ## Additional package repos, but for a specific package
     nix-citizen = {
       url = "github:LovingMelody/nix-citizen";
