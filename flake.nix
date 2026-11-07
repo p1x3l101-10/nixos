@@ -4,6 +4,7 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-25_11.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-26_05.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixpkgs-hyprland.follows = "hyprland/nixpkgs";
     # Pin the common ones
     nixpkgs.follows = "nixpkgs-unstable";
     nixpkgs-stable.follows = "nixpkgs-26_05";

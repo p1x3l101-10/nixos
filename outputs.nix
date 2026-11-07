@@ -37,42 +37,22 @@ inputs.flake-utils.lib.eachDefaultSystem
         inherit inputs system;
         defaultNixpkgsConfig = {
         };
-        stable = lib.fix (finalPkgs: {
-          input = inputs.nixpkgs-stable;
-          inherit (finalPkgs.input) lib;
+        stable = finalExt.mkNixpkgs inputs.nixpkgs-stable;
+        mainNixpkgs = finalExt.mkNixpkgs inputs.nixpkgs;
+        unstable = finalExt.mkNixpkgs inputs.nixpkgs-unstable;
+        hyprlandNixpkgs = finalExt.mkNixpkgs inputs.nixpkgs-hyprland;
+        mkNixpkgs = input: {
+          inherit input;
+          inherit (input) lib;
           pkgs = finalExt.rawPkgs {
-            nixpkgs = finalPkgs.input;
+            nixpkgs = input;
             config = finalExt.defaultNixpkgsConfig;
           };
-          unfreePkgs = finalExt.rawPkgs {
-            nixpkgs = finalPkgs.input;
+          unfreePkgs = {
+            nixpkgs = input;
             config = (finalExt.defaultNixpkgsConfig // { allowUnfree = true; });
           };
-        });
-        mainNixpkgs = lib.fix (finalPkgs: {
-          input = inputs.nixpkgs;
-          inherit (finalPkgs.input) lib;
-          pkgs = finalExt.rawPkgs {
-            nixpkgs = finalPkgs.input;
-            config = finalExt.defaultNixpkgsConfig;
-          };
-          unfreePkgs = finalExt.rawPkgs {
-            nixpkgs = finalPkgs.input;
-            config = (finalExt.defaultNixpkgsConfig // { allowUnfree = true; });
-          };
-        });
-        unstable = lib.fix (finalPkgs: {
-          input = inputs.nixpkgs-unstable;
-          inherit (finalPkgs.input) lib;
-          pkgs = finalExt.rawPkgs {
-            nixpkgs = finalPkgs.input;
-            config = finalExt.defaultNixpkgsConfig;
-          };
-          unfreePkgs = finalExt.rawPkgs {
-            nixpkgs = finalPkgs.input;
-            config = (finalExt.defaultNixpkgsConfig // { allowUnfree = true; });
-          };
-        });
+        };
         rawPkgs = { nixpkgs ? finalExt.unstable.input, config }: (
           import nixpkgs {
             inherit system config;
