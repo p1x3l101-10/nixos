@@ -104,6 +104,14 @@
         systems.follows = "systems";
       };
     };
+    hypr-darkwindow = {
+      url = "github:micha4w/Hypr-DarkWindow";
+      inputs.hyprland.follows = "hyprland";
+    };
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
     ## Additional package repos, but for a specific package
     nix-citizen = {
       url = "github:LovingMelody/nix-citizen";
