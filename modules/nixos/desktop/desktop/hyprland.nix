@@ -1,15 +1,16 @@
 { pkgs, lib, ext, ... }:
 
-lib.fix (self: {
+let
+  hyprPkgs = ext.inputs.hyprland.packages.${ext.system};
+in lib.fix (self: {
   programs.hyprland = {
     enable = true;
+    package = hyprPkgs.hyprland;
+    portalPackage = hyprPkgs.xdg-desktop-portal-hyprland;
     withUWSM = true;
     xwayland.enable = true;
   };
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
-  };
+  xdg.portal.enable = true;
   services.udisks2.enable = true;
   programs.uwsm.enable = true;
   services.gvfs.enable = true;
