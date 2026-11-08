@@ -267,7 +267,7 @@
       };
       bookmarks = {
         force = true;
-        settings = (ext.lib.firefox.transcribeBookmarks (import ./support/firefox/bookmarks.nix hmArgs));
+        settings = import ./support/firefox/bookmarks.nix hmArgs;
       };
     };
   };
