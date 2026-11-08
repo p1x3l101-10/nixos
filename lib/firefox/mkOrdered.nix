@@ -1,4 +1,4 @@
 { lib, ext, self }:
 
-# Simple wrapper
-self.attrsets.createAttr
+name: value:
+{ inherit name value; }

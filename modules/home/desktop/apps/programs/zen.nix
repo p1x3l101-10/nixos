@@ -11,7 +11,7 @@
       isDefault = true;
       extensions = {
         force = true;
-        packges = import ./support/firefox/extensions.nix hmArgs;
+        packages = import ./support/firefox/extensions.nix hmArgs;
       };
       mods = [
         "642854b5-88b4-4c40-b256-e035532109df" # Transparency

@@ -8,7 +8,7 @@ let
     )
   );
 in import ./bookmarks.raw.nix {
-  inherit (ext.lib.firefox) transcribeBookmarks;
+  firefoxLib = ext.lib.firefox;
   nixManualVersion = trimSemanticPatch osConfig.nix.package.version 2;
   nixosManualUrl = "file://${osConfig.system.build.manual.manualHTML}/share/doc/nixos/index.html";
 }

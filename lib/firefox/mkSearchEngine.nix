@@ -17,7 +17,7 @@ builtins.addErrorContext "While defining a search engine" (
   , additionalUrls ? []
   }:
   {
-    "${name}" = ext.lib.attrsets.mergeAttrs [
+    "${name}" = self.attrsets.mergeAttrs [
       {
         inherit name updateInterval;
         urls = (

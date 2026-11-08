@@ -14,18 +14,18 @@ let
         (attrs recursive)
         (list recursive)
       ];
-      entry = struct {
+      entry = struct "entry" {
         name = string;
         value = entryContents;
       };
       unorderedBookmarks = attrs entryContents;
       orderedBookmarks = list entry;
-      bookmarkFolder = struct {
+      bookmarkFolder = struct "bookmarkFolder" {
         name = string;
         bookmarks = list recursive;
         toolbar = bool;
       };
-      bookmark = struct {
+      bookmark = struct "bookmark" {
         name = string;
         url = string;
         tags = list string;
