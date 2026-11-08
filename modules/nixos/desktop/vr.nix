@@ -9,6 +9,7 @@ in {
     autoStart = true;
     openFirewall = true;
     package = wivrn;
+    steam.enable = true;
     config = {
       enable = true;
       json = {
