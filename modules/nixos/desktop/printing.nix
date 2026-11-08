@@ -5,8 +5,9 @@
     nssmdns4 = true;
     openFirewall = true;
     publish = {
-      enable = true;
-      userServices = true;
+      disable-publishing = false;
+      disable-user-service-publishing = false;
+      publish.publish-addresses = true;
     };
   };
 
