@@ -61,7 +61,7 @@
         "d8b79d4a-6cba-4495-9ff6-d6d30b0e94fe" # Better active tab
         "4ab93b88-151c-451b-a1b7-a1e0e28fa7f8" # No sidebar scrollbar
       ];
-      settings = ext.lib.attrsets.compressAttrs "." (import ./support/firefox-config.nix);
+      settings = ext.lib.attrsets.compressAttrs "." (import ./support/firefox/config.nix);
       search = {
         force = true;
         default = "Startpage";

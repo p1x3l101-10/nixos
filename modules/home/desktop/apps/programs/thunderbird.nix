@@ -10,7 +10,7 @@
       extensions = [ ];
       withExternalGnupg = true;
       settings = eLib.attrsets.compressAttrs "." (eLib.attrsets.mergeAttrs [
-        (import ./support/firefox-config.nix)
+        (import ./support/firefox/config.nix)
         {
           font.name = {
             monospace.x-western = config.stylix.fonts.monospace.name;
