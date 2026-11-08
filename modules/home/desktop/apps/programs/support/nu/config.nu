@@ -14,3 +14,4 @@ use kp
 use wifictl
 use clip
 use printer
+use customSystem "sys"

@@ -14,7 +14,7 @@ def processTime [] {
 }
 
 # View information on system battery
-export def "sys battery" [ --all ] {
+export def main [ --all ] {
   upower -e | lines
   | where { str contains BAT }
   | each { upower -i $in }
