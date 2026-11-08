@@ -4,10 +4,10 @@
     enable = true;
     nssmdns4 = true;
     openFirewall = true;
-    publish = {
+    settings.publish = {
       disable-publishing = false;
       disable-user-service-publishing = false;
-      publish.publish-addresses = true;
+      publish-addresses = true;
     };
   };
 
