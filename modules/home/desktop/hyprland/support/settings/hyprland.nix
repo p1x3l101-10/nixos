@@ -364,7 +364,6 @@ in {
         (class: mkTransparent { inherit class; } config.stylix.opacity.terminal)
         [
           "kitty"
-          "vesktop"
           "org.prismlauncher.PrismLauncher"
         ]
       )
