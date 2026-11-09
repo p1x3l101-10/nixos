@@ -2,7 +2,7 @@
 
 {
   imports = [
-    #./ashell.nix
+    ./ashell.nix
     ./wofi.nix
   ];
 }
