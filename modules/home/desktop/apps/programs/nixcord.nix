@@ -39,7 +39,6 @@ in
       autoUpdateNotification = false;
       frameless = true;
       useQuickCss = true;
-      transparent = true;
       plugins = {
         accountPanelServerProfile.enable = true;
         betterGifAltText.enable = true;
