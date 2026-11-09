@@ -370,6 +370,16 @@ in {
       )
       # Stop kitty from fullscreening
       (noMaximize { class = "kitty"; })
+      # Set games to the game type
+      (map
+        (class: mkRule {
+          match.class = class;
+          content = "game";
+        })
+        [
+          "steam_app_.[0-9]"
+        ]
+      )
     ]))
   );
   "plugin.darkwindow.load_shader" = (
