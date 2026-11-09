@@ -49,6 +49,7 @@ let
           "Videos"
           "Vintage Story"
           "VotV"
+          "Zoxide"
         ];
         nixosHostname = "stellar-pc";
       })
@@ -75,6 +76,7 @@ let
           "Videos"
           "Vintage Story"
           "VotV"
+          "Zoxide"
         ];
         nixosHostname = "stellar-laptop";
       })
@@ -225,6 +227,11 @@ let
         name = "VotV";
         id = "argema-votv";
         path = "${xdg.dataHome}/voicesofthevoid";
+      })
+      (mkFolder {
+        name = "Zoxide";
+        id = "zoxide-db";
+        path = "${xdg.dataHome}/zoxide";
       })
     ];
     globalIgnore = [];
