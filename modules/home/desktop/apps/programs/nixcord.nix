@@ -23,7 +23,7 @@ in
         arRPC = true;
         splashColor = genRGB "0D";
         splashBackground = genRGB "00";
-        tray = true;
+        tray = false;
         openLinksWithElectron = false;
         hardwareVideoAcceleration = true;
         spellCheckLanguages = [
