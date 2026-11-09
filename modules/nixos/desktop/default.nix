@@ -13,6 +13,7 @@
   imports = [
     ./adb.nix
     ./alfis.nix
+    ./corefonts.nix
     ./cleanup.nix
     ./bluetooth.nix
     ./gamemode.nix
