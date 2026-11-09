@@ -17,7 +17,7 @@ let
 in lib.fix (self: {
   modifierKey = "SUPER";
   apps = processDesktop {
-    terminal = "kitty";
+    terminal = "foot";
     fileManager = "yazi";
     web = "zen-twilight";
     documentViewer = "okular";
@@ -34,7 +34,7 @@ in lib.fix (self: {
   powerMenu = "wofi-power-menu";
   appLauncher = self.spotlight;
   updates = {
-    updater = "kitty \"sudo nixos-rebuild boot\"";
+    updater = "${self.apps.terminal.exec} \"sudo nixos-rebuild boot\"";
   };
   clockFormat = {
     date = "%a, %d %b";
