@@ -2,7 +2,7 @@
 
 {
   home.packages = [
-    ext.selfPkgs.osu-lazer-bin
+    ext.selfPkgs.games.osu-lazer-bin
   ];
   home.allowedUnfree.packages = [ "osu-lazer-bin" ];
 }

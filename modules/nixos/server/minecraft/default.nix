@@ -13,6 +13,6 @@
     24454
   ];
   environment.systemPackages = [
-    ext.selfPkgs.minecraft-helper
+    ext.selfPkgs.helper-scripts.minecraft
   ];
 }
