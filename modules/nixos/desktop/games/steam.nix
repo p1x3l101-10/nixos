@@ -1,4 +1,4 @@
-{ pkgs, config, ext, lib, ... }:
+{ pkgs, config, ext, ... }:
 
 let
   msPkgs = ext.inputs.millennium.packages."${ext.system}";
@@ -19,22 +19,6 @@ in {
         DRI_PRIME = "0";
         PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES = "1";
       };
-      extraBwrapArgs = (
-        # Flat binds
-        (map
-          ({ new, old }: "--bind ${new} ${old}")
-          (map
-            (baseName: { new = "$XDG_DATA_HOME/${baseName}"; old = "$HOME/.${baseName}"; })
-            [
-              "factorio"
-              "LUFTRAUSERS"
-              "klei"
-              "paradoxlauncher"
-              "renpy"
-            ]
-          )
-        )
-      );
     };
     protontricks.enable = false;
     localNetworkGameTransfers.openFirewall = true;
