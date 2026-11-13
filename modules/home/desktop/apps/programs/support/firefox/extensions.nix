@@ -3,6 +3,10 @@
 with ext.inputs.nur.legacyPackages.${ext.system}.repos.rycee.firefox-addons;
 
 [
+  batchcamp
+  pronoundb
+  purpleadblock
+  twitch-auto-points
   stylus
   ublock-origin
   sponsorblock
