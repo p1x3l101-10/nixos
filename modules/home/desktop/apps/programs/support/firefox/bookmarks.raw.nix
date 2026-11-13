@@ -61,5 +61,11 @@ in transcribeBookmarks {
       };
       "Hyprland Wiki" = "https://wiki.hypr.land";
     })
+    (mkOrdered "Pinned" {
+      Twitch = {
+        "Rin Penrose" = "https://www.twitch.tv/rinpenrose";
+        DougDoug = "https://www.twitch.tv/dougdoug";
+      };
+    })
   ];
 }
