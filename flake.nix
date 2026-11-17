@@ -101,7 +101,7 @@
       url = "github:LovingMelody/nix-citizen";
       inputs = {
         nix-gaming.follows = "nix-gaming";
-        nixpkgs.follows = "nixpkgs";
+        #nixpkgs.follows = "nixpkgs";
         flake-compat.follows = "flake-compat";
         treefmt-nix.follows = "treefmt-nix";
       };
