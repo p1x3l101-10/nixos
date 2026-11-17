@@ -10,7 +10,7 @@
   SpaceTheme = fetchFromGitHub {
     owner = "SpaceTheme";
     repo = "Steam";
-    rev = "96837647ee0c59010db2e432896c7bfcb94f9933";
-    hash = "sha256-plS3emPWpNWBxoJt/xim5LohojLokxwmQpz1w9+zytw=";
+    rev = "65bc106e8a1fe04c359d5b9d5c6f00e4081506ef";
+    hash = "sha256-TjPGjKQLicT6nKp1iqKtNmHpeKhXZIekAmfZCLhFHic=";
   };
 }
