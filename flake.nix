@@ -4,7 +4,6 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-25_11.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-26_05.url = "github:NixOS/nixpkgs/nixos-26.05";
-    nixpkgs-hyprland.follows = "hyprland/nixpkgs";
     # Pin the common ones
     nixpkgs.follows = "nixpkgs-unstable";
     nixpkgs-stable.follows = "nixpkgs-26_05";
@@ -96,22 +95,6 @@
         flake-parts.follows = "flake-parts";
         flake-compat.follows = "flake-compat";
       };
-    };
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-      inputs = {
-        # Ensure that the cache hits, dont follow nixpkgs
-        #nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
-      };
-    };
-    hypr-darkwindow = {
-      url = "github:micha4w/Hypr-DarkWindow";
-      inputs.hyprland.follows = "hyprland";
-    };
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
     };
     ## Additional package repos, but for a specific package
     nix-citizen = {

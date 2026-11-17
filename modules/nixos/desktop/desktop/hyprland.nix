@@ -1,7 +1,7 @@
-{ pkgs, lib, ext, ... }:
+{ pkgs, lib, ... }:
 
 let
-  hyprPkgs = ext.inputs.hyprland.packages.${ext.system};
+  hyprPkgs = pkgs;
 in lib.fix (self: {
   programs.hyprland = {
     enable = true;

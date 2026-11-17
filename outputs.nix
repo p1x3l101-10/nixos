@@ -40,7 +40,6 @@ inputs.flake-utils.lib.eachDefaultSystem
         stable = finalExt.mkNixpkgs inputs.nixpkgs-stable;
         mainNixpkgs = finalExt.mkNixpkgs inputs.nixpkgs;
         unstable = finalExt.mkNixpkgs inputs.nixpkgs-unstable;
-        hyprlandNixpkgs = finalExt.mkNixpkgs inputs.nixpkgs-hyprland;
         mkNixpkgs = input: {
           inherit input;
           inherit (input) lib;

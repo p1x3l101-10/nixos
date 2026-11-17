@@ -1,4 +1,4 @@
-{ pkgs, config, ext, ... }@args:
+{ pkgs, config, ... }@args:
 
 let
   loadCfg = config: import (./support/settings + "/${config}.nix") args;
@@ -12,8 +12,8 @@ in {
     settings = loadCfg "hyprland";
     xdph.settings = loadCfg "xdph";
     systemd.enable = false;
-    plugins = [
-      ext.inputs.hypr-darkwindow.packages.${ext.system}.default
+    plugins = with pkgs.hyprlandPlugins; [
+      hypr-darkwindow
     ];
   };
   home.packages = with pkgs; [
