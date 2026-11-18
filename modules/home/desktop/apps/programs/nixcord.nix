@@ -163,4 +163,9 @@ in
     enable = true;
     systemdTarget = "graphical-session.target";
   };
+  # Force clobber vesktop files
+  home.file = {
+    "${config.xdg.configHome}/vesktop/settings.json".force = true;
+    "${config.xdg.configHome}/vesktop/state.json".force = true;
+  };
 }
