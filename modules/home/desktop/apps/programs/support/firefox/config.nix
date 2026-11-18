@@ -63,6 +63,7 @@
   };
   zen = {
     welcome-screen.seen = true;
+    little-window.enabled = false;
     view = {
       sidebar-expanded = false;
       use-single-toolbar = false;
