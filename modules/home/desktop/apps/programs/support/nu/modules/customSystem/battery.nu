@@ -26,7 +26,7 @@ export def main [ --all ] {
       percentage: ($info | getValue percentage)
       capacity: ($info | getValue capacity)
       state: ($info | getValue state)
-      time-to-empty: ($info | getValue "time to empty" | processTime)
+      time-to-empty: ($info | getValue "time to empty" | processTime | into duration)
       energy: ($info | getValue energy)
       energy-empty: ($info | getValue energy-empty)
       energy-full: ($info | getValue energy-full)
